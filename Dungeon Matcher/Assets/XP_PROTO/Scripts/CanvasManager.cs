@@ -12,7 +12,8 @@ namespace Management
     public class CanvasManager : MonoBehaviour
     {
         public GameObject profilPrefab;
-       
+        public GameObject spawnPosition;
+
 
         void Start()
         {

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/XP_PROTO/XP_PROTO.unity
+    guid: 0a653644f48413c4babb23416c390a6e
   m_configObjects: {}

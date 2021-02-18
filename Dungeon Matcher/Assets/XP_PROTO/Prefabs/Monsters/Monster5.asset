@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Monster5
   m_EditorClassIdentifier: 
   description: EEE
-  name: BOULE
+  name: RAAAAAAAARE
   health: 10
   rarety: 1
   profilPicture: {fileID: 0}
