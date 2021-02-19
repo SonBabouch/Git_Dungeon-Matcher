@@ -85,7 +85,7 @@ namespace Management
 
                 //Instantier le gameObject avec le bon positionnement;
                 GameObject profilSpawned = Instantiate(GameManager.Instance.canvasManager.profilPrefab, transform.position, Quaternion.identity);
-                profilSpawned.transform.SetParent(GameManager.Instance.canvasManager.GetComponent<CanvasManager>().spawnPosition.transform);
+                profilSpawned.transform.SetParent(GameManager.Instance.canvasManager.GetComponent<MatchCanvasManager>().spawnPosition.transform);
                 profilSpawned.GetComponent<RectTransform>().localScale = new Vector3(8f, 8f, 8f);
                 
                 //Reset la liste de pick.
@@ -101,7 +101,7 @@ namespace Management
         
         public void Match()
         {
-            if (monsterSpawned.Count != 0)
+            if (monsterSpawned.Count != 0 && EnergyManager.energy >0)
             {
                 //Checker si (energie > 0 && liste pas complète).
                 profilPresented.GetComponent<Animator>().SetTrigger("Like");
@@ -118,7 +118,9 @@ namespace Management
                 }
 
                 rareChance++;
-                //energy --;
+                EnergyManager.energy--;
+                GameManager.Instance.matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+
             }
             else
             {
@@ -129,7 +131,7 @@ namespace Management
 
         public void Dislike()
         {
-            if (monsterSpawned.Count !=0)
+            if (monsterSpawned.Count !=0 && EnergyManager.energy > 0)
             {
                 profilPresented.GetComponent<Animator>().SetTrigger("Dislike");
                 monsterSpawned.Remove(profilPresented);
@@ -145,7 +147,8 @@ namespace Management
                 }
                 
                 rareChance++;
-                //energy --;
+                EnergyManager.energy--;
+                GameManager.Instance.matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
             }
             else
             {

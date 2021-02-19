@@ -10,22 +10,22 @@ namespace Management
 
     public class GameManager : Singleton<GameManager>
     {
+        //Script Référence.
         public MatchManager matchManager;
-        public CanvasManager canvasManager;
+        public MatchCanvasManager canvasManager;
+        public ListCanvasManager listCanvasManager;
+        public EnergyManager energyManager;
+        public CameraManager cameraManager;
 
-        public GameObject canvas;
-        public GameObject spawnPosition;
+        public GameObject matchCanvas;
+        public GameObject listCanvas;
+        
+        public enum gameState { Match,List }
+        public static gameState currentGameState;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            currentGameState = gameState.Match;
         }
     }
 }

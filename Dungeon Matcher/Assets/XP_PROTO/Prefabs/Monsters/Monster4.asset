@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster4
   m_EditorClassIdentifier: 
-  description: DDD
+  description: Ref de Lol
   name: BARD
   health: 10
   rarety: 0
