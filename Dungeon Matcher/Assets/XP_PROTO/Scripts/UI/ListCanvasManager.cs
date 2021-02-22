@@ -9,7 +9,6 @@ namespace Management
         public void SwitchToMatchMenu()
         {
             GameManager.currentGameState = GameManager.gameState.Match;
-            GameManager.Instance.cameraManager.GetComponent<CameraManager>().UpdateCamera();
         }
     }
 }

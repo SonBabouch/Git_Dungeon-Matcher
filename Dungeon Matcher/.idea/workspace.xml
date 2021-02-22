@@ -74,15 +74,21 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="360" y="160" width="1200" height="800" key="AVDManager" timestamp="1613670998253">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="2280" y="159" width="1200" height="800" key="AVDManager" timestamp="1614001261567">
+      <screen x="1920" y="39" width="1920" height="1040" />
     </state>
-    <state x="360" y="160" width="1200" height="800" key="AVDManager/1920.39.1920.1040/0.40.1920.1040@0.40.1920.1040" timestamp="1613670998253" />
-    <state x="437" y="240" key="SettingsEditor" timestamp="1613673106892">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="2280" y="159" width="1200" height="800" key="AVDManager/1920.39.1920.1040/0.40.1920.1040@0.40.1920.1040" timestamp="1614001261567" />
+    <state x="2462" y="366" key="FileChooserDialogImpl" timestamp="1613987980574">
+      <screen x="1920" y="39" width="1920" height="1040" />
     </state>
-    <state x="437" y="240" key="SettingsEditor/1920.39.1920.1040/0.40.1920.1040@0.40.1920.1040" timestamp="1613673106892" />
+    <state x="2462" y="366" key="FileChooserDialogImpl/1920.39.1920.1040/0.40.1920.1040@1920.39.1920.1040" timestamp="1613987980574" />
+    <state x="2183" y="270" key="SettingsEditor" timestamp="1613989058558">
+      <screen x="1920" y="39" width="1920" height="1040" />
+    </state>
+    <state x="2183" y="270" key="SettingsEditor/1920.39.1920.1040/0.40.1920.1040@0.40.1920.1040" timestamp="1613987957569" />
+    <state x="2183" y="270" key="SettingsEditor/1920.39.1920.1040/0.40.1920.1040@1920.39.1920.1040" timestamp="1613989058558" />
   </component>
 </project>

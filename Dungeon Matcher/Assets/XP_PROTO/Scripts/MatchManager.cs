@@ -68,6 +68,7 @@ namespace Management
                 }
                 else
                 {
+                    rareChance++;
                     choosenList = commonMonsterList;
                 }
                 #endregion
@@ -82,19 +83,17 @@ namespace Management
                     storedIndex.Add(tirageIndex);
                     isRare = false;
                 }
-
+               
                 //Instantier le gameObject avec le bon positionnement;
-                GameObject profilSpawned = Instantiate(GameManager.Instance.canvasManager.profilPrefab, transform.position, Quaternion.identity);
-                profilSpawned.transform.SetParent(GameManager.Instance.canvasManager.GetComponent<MatchCanvasManager>().spawnPosition.transform);
-                profilSpawned.GetComponent<RectTransform>().localScale = new Vector3(8f, 8f, 8f);
-                
-                //Reset la liste de pick.
-                choosenList = null;
+                GameObject profilSpawned = Instantiate(GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().profilPrefab, transform.position, Quaternion.identity);
+                profilSpawned.transform.SetParent(GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().spawnPosition.transform);
+                profilSpawned.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
 
                 //Afficher les valeurs.
                 profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
                 profilPresented = profilSpawned;
                 monsterSpawned.Add(profilPresented);
+               
             }
            
         }
@@ -107,6 +106,7 @@ namespace Management
                 profilPresented.GetComponent<Animator>().SetTrigger("Like");
                 
                 monsterSpawned.Remove(profilPresented);
+
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)
                 {
@@ -117,7 +117,7 @@ namespace Management
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
                 }
 
-                rareChance++;
+               
                 EnergyManager.energy--;
                 GameManager.Instance.matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
 
@@ -134,6 +134,7 @@ namespace Management
             if (monsterSpawned.Count !=0 && EnergyManager.energy > 0)
             {
                 profilPresented.GetComponent<Animator>().SetTrigger("Dislike");
+
                 monsterSpawned.Remove(profilPresented);
 
                 //pour eviter la null reference d'index quand il n'y a plus de profils.

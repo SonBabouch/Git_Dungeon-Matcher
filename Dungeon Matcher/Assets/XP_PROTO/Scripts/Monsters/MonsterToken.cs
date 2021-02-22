@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Monster
 {
-
     public class MonsterToken : MonoBehaviour
     {
         [SerializeField] private MonsterCard template;
@@ -26,8 +25,6 @@ namespace Monster
             rarety = (raretyEnum)template.rarety;
             profilPicture = template.profilPicture;
         }
-
-
     }
 }
 

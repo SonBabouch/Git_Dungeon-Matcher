@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Management;
 
 public class EnergyManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class EnergyManager : MonoBehaviour
     {
         maxEnergy = 10;
         energy = maxEnergy;
+        GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
     }
 
 }

@@ -25,7 +25,6 @@ namespace Management
         public void SwitchToListMenu()
         {
             GameManager.currentGameState = GameManager.gameState.List;
-            GameManager.Instance.cameraManager.GetComponent<CameraManager>().UpdateCamera();
         }
 
         public void UpdateEnergy()
