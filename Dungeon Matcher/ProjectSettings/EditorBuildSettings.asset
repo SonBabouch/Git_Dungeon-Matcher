@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/XP_PROTO/XP_SceneAnim.unity
+    path: Assets/Scenes/Xanthin/XP_SceneAnim.unity
     guid: 0509df0de18bdb14e98207802c70aa21
   m_configObjects: {}
