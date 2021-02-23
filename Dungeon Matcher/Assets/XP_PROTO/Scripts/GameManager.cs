@@ -13,15 +13,12 @@ namespace Management
         //Référence Canvas
         public GameObject canvasManager; //Dans ce script se trouve les 3 différents GameObjects responsables des Canvas de : Match, List & Bag.
 
-        public GameObject matchCanvas;
-        public GameObject listCanvas;
-
-        public CameraController cameraMain;
-
         //Script Référence.
         public MatchManager matchManager;
         public EnergyManager energyManager;
-        
+        public ListManager listManager;
+        public PlayerLevel playerLevel;
+
 
         public enum gameState { Shop,Match,List,Bag }  //Index 0 à 3 (dans l'ordre).
         public static gameState currentGameState;

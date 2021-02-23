@@ -15,6 +15,9 @@ namespace Management
         public List<GameObject> commonMonsterList = new List<GameObject>();
         public List<GameObject> rareMonsterList = new List<GameObject>();
         private List<GameObject> choosenList = new List<GameObject>();
+        [SerializeField] int[] numberCommonPool;
+        [SerializeField] int[] numberRarePool;
+
 
         public List<GameObject> monsterSpawned = new List<GameObject>();
 
@@ -65,25 +68,20 @@ namespace Management
                 {
                     choosenList = rareMonsterList;
                     rareChance = 5;
+                    int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel] - 1);
+                    monsterPresented = choosenList[tirageIndex];
                 }
                 else
                 {
                     rareChance++;
                     choosenList = commonMonsterList;
+                    int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevel.playerLevel] - 1);
+                    storedIndex.Add(tirageIndex);
+                    monsterPresented = choosenList[tirageIndex];
+                    isRare = false;
                 }
                 #endregion
 
-                //Tirage au sort.
-                int tirageIndex = Random.Range(0, choosenList.Count - 1);
-                monsterPresented = choosenList[tirageIndex];
-
-                //Stocker la Valeur dans le tableau.
-                if (isRare == false)
-                {
-                    storedIndex.Add(tirageIndex);
-                    isRare = false;
-                }
-               
                 //Instantier le gameObject avec le bon positionnement;
                 GameObject profilSpawned = Instantiate(GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().profilPrefab, transform.position, Quaternion.identity);
                 profilSpawned.transform.SetParent(GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().spawnPosition.transform);
@@ -100,7 +98,7 @@ namespace Management
         
         public void Match()
         {
-            if (monsterSpawned.Count != 0 && EnergyManager.energy >0)
+            if (monsterSpawned.Count != 0 && EnergyManager.energy >0 && GameManager.Instance.listManager.listCurrentSize < GameManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel])
             {
                 //Checker si (energie > 0 && liste pas complète).
                 profilPresented.GetComponent<Animator>().SetTrigger("Like");
@@ -119,7 +117,7 @@ namespace Management
 
                
                 EnergyManager.energy--;
-                GameManager.Instance.matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+                GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
 
             }
             else
@@ -149,7 +147,7 @@ namespace Management
                 
                 rareChance++;
                 EnergyManager.energy--;
-                GameManager.Instance.matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+                GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
             }
             else
             {
