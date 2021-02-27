@@ -5,6 +5,8 @@ using Management;
 
 public class ProfilBehaviour : MonoBehaviour
 {
+    public GameObject monsterPick;
+
     public Image profilAsset;
     public TextMeshProUGUI profilName;
     public TextMeshProUGUI description;
@@ -12,10 +14,11 @@ public class ProfilBehaviour : MonoBehaviour
 
     public void Initialisation()
     {
-        profilAsset.sprite = GameManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().profilPicture;
-        profilName.text = GameManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().name;
-        description.text = GameManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().description;
-        health.text = GameManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().health.ToString();
+        monsterPick = MenuManager.Instance.matchManager.monsterPresented;
+        profilAsset.sprite = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().profilPicture;
+        profilName.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().name;
+        description.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().description;
+        health.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().health.ToString();
     }
 
     public void Destroy()

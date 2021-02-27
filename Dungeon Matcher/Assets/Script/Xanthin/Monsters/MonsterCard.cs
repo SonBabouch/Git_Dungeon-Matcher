@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Monster
 {
     /// <summary>
-    /// Template de Monstre
+    /// XP_Template de Monstre (Scriptable Object)
     /// </summary>
     
     [CreateAssetMenu(fileName = "Monster", menuName = "MonsterCard", order = 1)]

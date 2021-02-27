@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Management;
 
 public class CombatProfilList : MonoBehaviour
 {
@@ -19,12 +20,19 @@ public class CombatProfilList : MonoBehaviour
 
     public void UpdateVisualMatch()
     {
+        //Permet de set les visuel lors du match.
+        numberCombat = MenuManager.Instance.matchManager.GetComponent<MatchManager>().matchList.Count;
+        chanceDrop.enabled = false;
+
+        profilAsset = MenuManager.Instance.matchManager.GetComponent<MatchManager>().matchList[numberCombat-1].GetComponent<Monster.MonsterToken>().profilPicture;
+
         profilImage.sprite = profilAsset;
         numberCombatText.text = "Combat " + numberCombat.ToString() + ".";
     }
 
     public void UpdateVisualCombat()
     {
+        chanceDrop.enabled = true;
         chanceDrop.text = chanceClaim.ToString() + " %";
     }
 }

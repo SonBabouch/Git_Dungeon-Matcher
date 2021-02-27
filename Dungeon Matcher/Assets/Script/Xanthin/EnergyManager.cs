@@ -5,6 +5,7 @@ using Management;
 
 public class EnergyManager : MonoBehaviour
 {
+    //Valeurs liées à l'energie
     public static int energy;
     public static int maxEnergy;
 
@@ -13,9 +14,10 @@ public class EnergyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Initialisation
         maxEnergy = 10;
         energy = maxEnergy;
-        GameManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+        MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
     }
 
 }

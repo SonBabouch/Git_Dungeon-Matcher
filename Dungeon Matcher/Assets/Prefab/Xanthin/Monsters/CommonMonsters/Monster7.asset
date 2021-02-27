@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster7
   m_EditorClassIdentifier: 
-  description: 
-  name: 
-  health: 0
+  description: Monster7
+  name: Monster7
+  health: 10
   rarety: 0
   profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}

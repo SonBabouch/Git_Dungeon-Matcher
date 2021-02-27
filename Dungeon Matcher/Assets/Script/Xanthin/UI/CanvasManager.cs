@@ -19,25 +19,25 @@ namespace Management
         public void GoToList()
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State",2);
-            GameManager.currentGameState = GameManager.gameState.List;
+            MenuManager.currentGameState = MenuManager.gameState.List;
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
         public void GoToMatch()
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
-            GameManager.currentGameState = GameManager.gameState.Match;
+            MenuManager.currentGameState = MenuManager.gameState.Match;
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
         public void GoToShop()
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
-            GameManager.currentGameState = GameManager.gameState.Shop;
+            MenuManager.currentGameState = MenuManager.gameState.Shop;
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
         public void GoToBag()
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
-            GameManager.currentGameState = GameManager.gameState.Bag;
+            MenuManager.currentGameState = MenuManager.gameState.Bag;
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
 

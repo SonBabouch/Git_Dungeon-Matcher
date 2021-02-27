@@ -8,7 +8,7 @@ namespace Management
     /// XP_Ce script régi l'entièreté du jeu. ce script aura une référence de tous les autres scripts.
     /// </summary>
 
-    public class GameManager : Singleton<GameManager>
+    public class MenuManager : Singleton<MenuManager>
     {
         //Référence Canvas
         public GameObject canvasManager; //Dans ce script se trouve les 3 différents GameObjects responsables des Canvas de : Match, List & Bag.
