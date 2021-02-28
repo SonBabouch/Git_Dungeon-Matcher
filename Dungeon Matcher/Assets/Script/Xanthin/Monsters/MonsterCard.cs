@@ -12,11 +12,15 @@ namespace Monster
         public string description;
         public string name;
         public float health;
-
         public enum raretyEnum {Common, Rare};
         public raretyEnum rarety;
 
         public Sprite profilPicture;
+
+        public enum monsterSide {Ally, Enemy};
+        public monsterSide side;
+        //public List<Skill> AllyMonster;
+        //public List<Skill> EnemyMonster;
     }
 }
 
