@@ -8,6 +8,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
     public GameObject timerDisplay;
     public int secondsLeft = 60;
+    [HideInInspector]
     public bool takingTimeAway = false;
 
     private void Awake()
@@ -32,10 +33,10 @@ public class CombatManager : MonoBehaviour
     {
         if (!takingTimeAway && secondsLeft > 0)
         {
-            StartCoroutine(Timer());
+            StartCoroutine(CombatTimer());
         }
     }
-    public IEnumerator Timer()
+    public IEnumerator CombatTimer()
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
