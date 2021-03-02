@@ -6,5 +6,16 @@ using Management;
 /// </summary>
 public class BagCanvasManager : MonoBehaviour
 {
-       
+    public GameObject currentSelected;
+    public GameObject detailsBackground;
+
+    private void Start()
+    {
+        currentSelected = null;
+    }
+
+    public void closeDetails()
+    {
+        detailsBackground.SetActive(false);
+    }
 }

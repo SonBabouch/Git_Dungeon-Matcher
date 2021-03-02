@@ -8,12 +8,15 @@ using UnityEngine.UI;
 /// </summary>
 public class BagButtonBehaviour : MonoBehaviour
 {
+    private Animator animator;
+
     [SerializeField] private GameObject detailsButton;
     [SerializeField] private GameObject equipButton;
     [SerializeField] private GameObject upgradeButton;
 
     private void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         detailsButton.SetActive(false);
         equipButton.SetActive(false);
         upgradeButton.SetActive(false);
@@ -22,10 +25,10 @@ public class BagButtonBehaviour : MonoBehaviour
 
     public void Details()
     {
-
+        MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().detailsBackground.SetActive(true);
     }
 
-    public void Use()
+    public void Equip()
     {
 
     }
@@ -33,5 +36,25 @@ public class BagButtonBehaviour : MonoBehaviour
     public void Upgrade()
     {
 
+    }
+
+    public void Selected()
+    {
+        if(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != gameObject && MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
+        {
+            MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+            animator.SetTrigger("Selected");
+            MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = gameObject;
+        }
+        else
+        {
+            MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = gameObject;
+            animator.SetTrigger("Selected");
+        }
+    }
+
+    public void UnSelected()
+    {
+        animator.SetTrigger("Unselected");
     }
 }

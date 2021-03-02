@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5884150080937957424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -251,7 +251,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1683502005364965348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5573372876228777913}
+        m_MethodName: Equip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1275726407949227692
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +483,7 @@ GameObject:
   - component: {fileID: 7131477214526701427}
   - component: {fileID: 2560216835545904562}
   - component: {fileID: 5573372876228777913}
+  - component: {fileID: 3970657118458235396}
   m_Layer: 5
   m_Name: BagButton
   m_TagString: Untagged
@@ -581,7 +593,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7131477214526701427}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5573372876228777913}
+        m_MethodName: Selected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5573372876228777913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,8 +618,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detailsButton: {fileID: 3889249203722665975}
-  useButton: {fileID: 879698641760924600}
+  equipButton: {fileID: 879698641760924600}
   upgradeButton: {fileID: 6672914622411765576}
+--- !u!95 &3970657118458235396
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630200999447732031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b08a1834ab31e040b05c31eac61b4ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3889249203722665975
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &654753546221826815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -715,7 +757,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5824497071481546901}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5573372876228777913}
+        m_MethodName: Details
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6513344387807254529
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &160943576914416856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -967,4 +1020,15 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4599931591926339039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5573372876228777913}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
