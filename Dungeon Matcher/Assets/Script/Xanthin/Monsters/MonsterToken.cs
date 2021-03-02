@@ -15,10 +15,8 @@ namespace Monster
         [HideInInspector] public enum raretyEnum { Common, Rare };
         [HideInInspector] public raretyEnum rarety;
         [HideInInspector] public Sprite profilPicture;
-        public enum monsterSide {Ally, Enemy}
+        public enum monsterSide {Enemy, Ally}
         public monsterSide side;
-        [SerializeField]
-        bool switchSide;
         // Start is called before the first frame update
         void Awake()
         {
