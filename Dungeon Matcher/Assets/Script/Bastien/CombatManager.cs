@@ -27,7 +27,7 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
-        timerDisplay.GetComponent<Text>().text = "00:" + secondsLeft;
+        timerDisplay.GetComponent<TextMeshProUGUI>().text = "00:" + secondsLeft;
     }
 
     private void Update()
@@ -44,11 +44,11 @@ public class CombatManager : MonoBehaviour
         secondsLeft -= 1;
         if(secondsLeft < 10)
         {
-            timerDisplay.GetComponent<Text>().text = "00:0" + secondsLeft;
+            timerDisplay.GetComponent<TextMeshProUGUI>().text = "00:0" + secondsLeft;
         }
         else
         {
-            timerDisplay.GetComponent<Text>().text = "00:" + secondsLeft;
+            timerDisplay.GetComponent<TextMeshProUGUI>().text = "00:" + secondsLeft;
         }
         takingTimeAway = false;
     }
