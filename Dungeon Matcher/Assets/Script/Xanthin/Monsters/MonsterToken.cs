@@ -10,7 +10,7 @@ namespace Monster
 
         //Values From CardTemplate
         [HideInInspector] public string description;
-        public string name;
+        public string monsterName;
         [HideInInspector] public float health;
         [HideInInspector] public enum raretyEnum { Common, Rare };
         [HideInInspector] public raretyEnum rarety;
@@ -21,7 +21,7 @@ namespace Monster
         void Awake()
         {
             description = template.description;
-            name = template.name;
+            monsterName = template.monsterName;
             health = template.health;
             rarety = (raretyEnum)template.rarety;
             profilPicture = template.profilPicture;

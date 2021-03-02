@@ -7,7 +7,7 @@ using TMPro;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
-    public GameObject timerDisplay;
+    public TextMeshProUGUI timerDisplay;
     public int secondsLeft = 60;
     [HideInInspector]
     public bool takingTimeAway = false;

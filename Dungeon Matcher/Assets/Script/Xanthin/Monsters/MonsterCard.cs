@@ -1,3 +1,4 @@
+<<<<<<< develop
 ﻿using UnityEngine;
 
 namespace Monster
@@ -8,10 +9,24 @@ namespace Monster
     
     [CreateAssetMenu(fileName = "Monster", menuName = "MonsterCard", order = 1)]
     public class MonsterCard : ScriptableObject
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Monster
+{
+    /// <summary>
+    /// Template de Monstre
+    /// </summary>
+    
+    [CreateAssetMenu(fileName = "Monster", menuName = "MonsterCard", order = 1)]
+    public class MonsterCard : ScriptableObject
+>>>>>>> WIp Combat
     {
         #region Match Statement
         public string description;
-        public string name;
+        public string monsterName;
         public float health;
         public enum raretyEnum {Common, Rare};
         public raretyEnum rarety;
@@ -23,10 +38,9 @@ namespace Monster
         public enum monsterSide {Enemy, Ally};
         public monsterSide side = monsterSide.Enemy;
         public bool inCombat = false;
+        public List<Skill> AllyMonster;
+        public List<Skill> EnemyMonster;
         #endregion
-
-        //public List<Skill> AllyMonster;
-        //public List<Skill> EnemyMonster;
     }
 }
 
