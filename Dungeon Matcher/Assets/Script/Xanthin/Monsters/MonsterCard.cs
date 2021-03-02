@@ -13,7 +13,7 @@ namespace Monster
     {
         #region Match Statement
         public string description;
-        public string name;
+        public string monsterName;
         public float health;
         public enum raretyEnum {Common, Rare};
         public raretyEnum rarety;
@@ -25,10 +25,9 @@ namespace Monster
         public enum monsterSide {Enemy, Ally};
         public monsterSide side = monsterSide.Enemy;
         public bool inCombat = false;
+        public List<Skill> AllyMonster;
+        public List<Skill> EnemyMonster;
         #endregion
-
-        //public List<Skill> AllyMonster;
-        //public List<Skill> EnemyMonster;
     }
 }
 
