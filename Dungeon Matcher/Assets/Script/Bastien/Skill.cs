@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public abstract class Skill : ScriptableObject
 {
     public string skillName;
-    public Button[] buttons;
     public abstract void Initialize(GameObject obj);
     public abstract void Use();
 }

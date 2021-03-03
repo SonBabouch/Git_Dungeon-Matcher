@@ -25,8 +25,6 @@ namespace Monster
         public enum monsterSide {Enemy, Ally};
         public monsterSide side = monsterSide.Enemy;
         public bool inCombat = false;
-        public List<Skill> AllyMonster;
-        public List<Skill> EnemyMonster;
         #endregion
     }
 }

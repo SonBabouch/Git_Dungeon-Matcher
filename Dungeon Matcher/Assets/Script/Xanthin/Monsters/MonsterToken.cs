@@ -17,6 +17,9 @@ namespace Monster
         [HideInInspector] public Sprite profilPicture;
         public enum monsterSide {Enemy, Ally}
         public monsterSide side;
+
+        public GameObject owner;
+        public List<Skill> skills;
         // Start is called before the first frame update
         void Awake()
         {
@@ -26,6 +29,14 @@ namespace Monster
             rarety = (raretyEnum)template.rarety;
             profilPicture = template.profilPicture;
             side = (monsterSide)template.side;
+        }
+
+        private void Start()
+        {
+            foreach (Skill skill in skills)
+            {
+                skill.Initialize(owner);
+            }
         }
     }
 }
