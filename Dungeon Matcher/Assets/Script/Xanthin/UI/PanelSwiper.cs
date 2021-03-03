@@ -35,13 +35,9 @@ public class PanelSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         }*/
     }
 
-    
-
     public void OnEndDrag(PointerEventData data)
     {
         Debug.Log(panelLocation);
         panelLocation = transform.localPosition;
-
-        
     }
 }

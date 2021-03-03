@@ -18,6 +18,7 @@ namespace Management
         public EnergyManager energyManager;
         public ListManager listManager;
         public PlayerLevel playerLevel;
+        public BagManager bagManager;
 
 
         public enum gameState { Shop,Match,List,Bag }  //Index 0 à 3 (dans l'ordre).

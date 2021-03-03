@@ -20,18 +20,33 @@ namespace Management
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State",2);
             MenuManager.currentGameState = MenuManager.gameState.List;
-            //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
+            
+            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
+            {
+                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = null;
+            }
         }
         public void GoToMatch()
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
             MenuManager.currentGameState = MenuManager.gameState.Match;
+            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
+            {
+                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = null;
+            }
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
         public void GoToShop()
         {
             fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
             MenuManager.currentGameState = MenuManager.gameState.Shop;
+            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
+            {
+                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = null;
+            }
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
         public void GoToBag()
