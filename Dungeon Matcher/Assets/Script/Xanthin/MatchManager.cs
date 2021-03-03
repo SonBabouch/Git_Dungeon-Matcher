@@ -99,7 +99,7 @@ namespace Management
                 
                 //Le monstre est ajouté à une liste pouvant être traquée.
                 monsterSpawned.Add(profilPresented);
-                Debug.Log(monsterPresented);
+                //Debug.Log(monsterPresented);
             }
            
         }
@@ -147,7 +147,7 @@ namespace Management
         {
             if (monsterSpawned.Count != 0 && EnergyManager.energy >0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1])
             {
-                Debug.Log("In");
+                //Debug.Log("In");
                 //Checker si (energie > 0 && liste pas complète).
                 profilPresented.GetComponent<Animator>().SetTrigger("Like");
 

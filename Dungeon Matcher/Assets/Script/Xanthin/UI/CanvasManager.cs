@@ -18,34 +18,50 @@ namespace Management
         //navigation
         public void GoToList()
         {
-            fullCanvas.GetComponent<Animator>().SetInteger("State",2);
-            MenuManager.currentGameState = MenuManager.gameState.List;
-            
             if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
             {
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = null;
+                
+            }
+
+            if (MenuManager.Instance.bagManager.detailShow == false)
+            {
+                fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
+                MenuManager.currentGameState = MenuManager.gameState.List;
             }
         }
         public void GoToMatch()
         {
-            fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
-            MenuManager.currentGameState = MenuManager.gameState.Match;
+           
             if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
             {
+               
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = null;
+            }
+
+            if (MenuManager.Instance.bagManager.detailShow == false)
+            {
+                fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
+                MenuManager.currentGameState = MenuManager.gameState.Match;
             }
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }
         public void GoToShop()
         {
-            fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
-            MenuManager.currentGameState = MenuManager.gameState.Shop;
+           
             if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected != null)
             {
+                
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected.GetComponent<BagButtonBehaviour>().UnSelected();
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentSelected = null;
+            }
+
+            if (MenuManager.Instance.bagManager.detailShow == false)
+            {
+                fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
+                MenuManager.currentGameState = MenuManager.gameState.Shop;
             }
             //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
         }

@@ -18,6 +18,5 @@ public class BagCanvasManager : MonoBehaviour
     {
         detailsBackground.SetActive(false);
         MenuManager.Instance.bagManager.GetComponent<BagManager>().detailShow = false;
-        Debug.Log("detailsShow =" + MenuManager.Instance.bagManager.GetComponent<BagManager>().detailShow);
     }
 }
