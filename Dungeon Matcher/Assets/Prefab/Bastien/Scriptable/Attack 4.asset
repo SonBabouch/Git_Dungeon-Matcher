@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
-  m_Name: Monster 1
+  m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
+  m_Name: Attack 4
   m_EditorClassIdentifier: 
-  description: OUI
-  name: 2
-  health: 20
-  rarety: 0
-  profilPicture: {fileID: 0}
-  side: 1
+  skillName: 
+  monster: {fileID: 0}
+  owner: {fileID: 0}
+  damage: 4
