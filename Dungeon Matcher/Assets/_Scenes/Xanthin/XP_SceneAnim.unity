@@ -2459,6 +2459,7 @@ MonoBehaviour:
   listCanvas: {fileID: 1349755350}
   bagCanvas: {fileID: 1496993008}
   shopCanvas: {fileID: 1613233354}
+  detailsCanvasManager: {fileID: 1474904446}
   topCanvas: {fileID: 846738191}
   fullCanvas: {fileID: 2006944005}
 --- !u!1 &925069670
@@ -3386,7 +3387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab57141f6550add4dbfe07298b704e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonMonsterParents: {fileID: 0}
+  commonMonsterParents: {fileID: 1035750108}
+  rareMonsterParents: {fileID: 555721279}
   allCommonMonster: []
   allRareMonster: []
 --- !u!1 &1117271217

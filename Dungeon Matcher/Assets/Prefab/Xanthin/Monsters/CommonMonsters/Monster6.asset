@@ -16,6 +16,8 @@ MonoBehaviour:
   monsterName: Monster6
   health: 10
   rarety: 0
+  statement: 0
+  monsterIndexPosition: 6
   profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}
   side: 0
   inCombat: 0

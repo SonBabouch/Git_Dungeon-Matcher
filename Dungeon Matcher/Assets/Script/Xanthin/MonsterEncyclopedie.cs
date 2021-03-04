@@ -8,6 +8,7 @@ namespace Monster
     public class MonsterEncyclopedie : MonoBehaviour
     {
         [SerializeField] private GameObject commonMonsterParents;
+        [SerializeField] private GameObject rareMonsterParents;
 
         public List<MonsterToken> allCommonMonster = new List<MonsterToken>();
         public List<MonsterToken> allRareMonster = new List<MonsterToken>();
@@ -15,8 +16,15 @@ namespace Monster
         // Start is called before the first frame update
         void Start()
         {
-            //récupérer les Enfants des GameObjects.
+            foreach (Transform child in commonMonsterParents.transform)
+            {
+                allCommonMonster.Add(child.gameObject.GetComponent<Monster.MonsterToken>());
+            }
 
+            foreach (Transform child in rareMonsterParents.transform)
+            {
+                allRareMonster.Add(child.gameObject.GetComponent<Monster.MonsterToken>());
+            }
 
 
 
@@ -25,7 +33,7 @@ namespace Monster
                 allCommonMonster[i].statement = MonsterToken.statementEnum.Indisponible;
             }
 
-            for (int i = 0; i < allCommonMonster.Count; i++)
+            for (int i = 0; i < allRareMonster.Count; i++)
             {
                 allRareMonster[i].statement = MonsterToken.statementEnum.Indisponible;
             }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731263988056315023}
   - component: {fileID: 8761877609787509778}
   m_Layer: 0
-  m_Name: Monster5
+  m_Name: Monster6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 11400000, guid: 19b3be359edd30347abeabd288e7a8c9, type: 2}
+  template: {fileID: 11400000, guid: ca29897f79a99f140b35b6a636bf6bdb, type: 2}
   description: 
   name: 
   health: 0
   rarety: 0
+  profilPicture: {fileID: 0}

@@ -16,6 +16,8 @@ MonoBehaviour:
   monsterName: RARE2
   health: 20
   rarety: 1
+  statement: 0
+  monsterIndexPosition: 1
   profilPicture: {fileID: 0}
   side: 0
   inCombat: 0
