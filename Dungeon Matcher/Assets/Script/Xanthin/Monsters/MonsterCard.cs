@@ -19,6 +19,10 @@ namespace Monster
         public enum raretyEnum {Common, Rare};
         public raretyEnum rarety;
 
+        public enum statementEnum { Equipe, Disponible, Indisponible };
+        public statementEnum statement;
+
+        public int monsterIndexPosition;
         public Sprite profilPicture;
         #endregion
 

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Monster2
   m_EditorClassIdentifier: 
   description: C'est un poisson.
-  name: SIRENE
+  monsterName: Monster2
   health: 10
   rarety: 0
   profilPicture: {fileID: 21300000, guid: 4e85a69591c91cc4389ae72378fbf8aa, type: 3}
+  side: 0
+  inCombat: 0

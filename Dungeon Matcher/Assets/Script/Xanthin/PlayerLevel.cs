@@ -14,10 +14,9 @@ public class PlayerLevel : MonoBehaviour
         {
             currentExperience = 0;
             playerLevel++;
+
+            //Permet de Update le Visuel et l'état des monstres dans le Jeu
+            Management.MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
         }
-        
     }
-
-   
-
 }

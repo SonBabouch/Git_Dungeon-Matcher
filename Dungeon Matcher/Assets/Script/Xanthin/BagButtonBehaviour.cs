@@ -27,6 +27,7 @@ public class BagButtonBehaviour : MonoBehaviour
     {
         MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().detailsBackground.SetActive(true);
         MenuManager.Instance.bagManager.GetComponent<BagManager>().detailShow = true;
+        MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().detailsCanvasManager.GetComponent<DetailsCanvasManager>().UpdateDetailsMenu();
     }
 
     public void Equip()

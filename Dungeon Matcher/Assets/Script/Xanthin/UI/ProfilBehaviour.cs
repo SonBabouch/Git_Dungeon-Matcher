@@ -19,6 +19,7 @@ public class ProfilBehaviour : MonoBehaviour
         profilName.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().name;
         description.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().description;
         health.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().health.ToString();
+       
     }
 
     public void Destroy()

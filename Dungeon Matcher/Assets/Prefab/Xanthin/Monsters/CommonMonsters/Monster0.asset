@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
-  m_Name: Monster1
+  m_Name: Monster0
   m_EditorClassIdentifier: 
   description: Il est Gros.
-  monsterName: 
+  monsterName: Monster0
   health: 10
   rarety: 0
+  monsterIndexPosition: 0
   profilPicture: {fileID: 21300000, guid: 01127a331e8d5ae4a9f623e14ae5667d, type: 3}
   side: 0
   inCombat: 0

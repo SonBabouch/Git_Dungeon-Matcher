@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MonsterRare1
   m_EditorClassIdentifier: 
   description: RARE2
-  name: Rare2
+  monsterName: RARE2
   health: 20
   rarety: 1
   profilPicture: {fileID: 0}
+  side: 0
+  inCombat: 0

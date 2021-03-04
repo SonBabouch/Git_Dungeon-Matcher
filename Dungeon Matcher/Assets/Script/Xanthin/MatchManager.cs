@@ -17,8 +17,8 @@ namespace Management
         public List<GameObject> rareMonsterList = new List<GameObject>();
         public List<GameObject> choosenList = new List<GameObject>();
         public List<GameObject> matchList = new List<GameObject>();
-        [SerializeField] int[] numberCommonPool;
-        [SerializeField] int[] numberRarePool;
+        public int[] numberCommonPool;
+        public int[] numberRarePool;
 
 
         public List<GameObject> monsterSpawned = new List<GameObject>();

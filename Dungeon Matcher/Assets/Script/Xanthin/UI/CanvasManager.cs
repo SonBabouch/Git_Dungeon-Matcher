@@ -9,6 +9,7 @@ namespace Management
         public GameObject listCanvas;
         public GameObject bagCanvas;
         public GameObject shopCanvas;
+        public DetailsCanvasManager detailsCanvasManager;
 
         //NavigationTopButtons
         public GameObject topCanvas;

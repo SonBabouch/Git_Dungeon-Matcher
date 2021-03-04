@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Monster6
   m_EditorClassIdentifier: 
   description: Monster6
-  name: Monster6
+  monsterName: Monster6
   health: 10
   rarety: 0
   profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}
+  side: 0
+  inCombat: 0
