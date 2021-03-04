@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< develop
 ﻿using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace Monster
     [CreateAssetMenu(fileName = "Monster", menuName = "MonsterCard", order = 1)]
     public class MonsterCard : ScriptableObject
 =======
+=======
+>>>>>>> PRBA_SPR1_Scriptables&Combat
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +25,10 @@ namespace Monster
     
     [CreateAssetMenu(fileName = "Monster", menuName = "MonsterCard", order = 1)]
     public class MonsterCard : ScriptableObject
+<<<<<<< HEAD
 >>>>>>> WIp Combat
+=======
+>>>>>>> PRBA_SPR1_Scriptables&Combat
     {
         #region Match Statement
         public string description;
