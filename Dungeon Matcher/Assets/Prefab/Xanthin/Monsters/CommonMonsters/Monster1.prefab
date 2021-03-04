@@ -50,7 +50,7 @@ MonoBehaviour:
   rarety: 0
   profilPicture: {fileID: 0}
   side: 0
-  owner: {fileID: 0}
+  owner: {fileID: 3352059483369707408}
   skills:
   - {fileID: 0}
   - {fileID: 0}

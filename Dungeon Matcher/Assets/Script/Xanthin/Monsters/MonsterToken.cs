@@ -19,7 +19,8 @@ namespace Monster
         public monsterSide side;
 
         public GameObject owner;
-        public List<Skill> skills;
+        public List<Skill> allySkills;
+        public List<Skill> ennemySkills;
         // Start is called before the first frame update
         void Awake()
         {
@@ -33,7 +34,11 @@ namespace Monster
 
         private void Start()
         {
-            foreach (Skill skill in skills)
+            foreach (Skill skill in allySkills)
+            {
+                skill.Initialize(owner);
+            }
+            foreach (Skill skill in ennemySkills)
             {
                 skill.Initialize(owner);
             }
