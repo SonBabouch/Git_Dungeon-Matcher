@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     public List<Skill> playerSkills;
+    public float health;
 
     private void Awake()
     {
