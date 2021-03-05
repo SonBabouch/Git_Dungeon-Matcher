@@ -14,6 +14,8 @@ public class BagButtonBehaviour : MonoBehaviour
     [SerializeField] private GameObject equipButton;
     [SerializeField] private GameObject upgradeButton;
 
+    public GameObject monsterContainer;
+
     private void Start()
     {
         animator = gameObject.GetComponent<Animator>();

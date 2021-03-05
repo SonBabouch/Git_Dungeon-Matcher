@@ -30,9 +30,8 @@ namespace Monster
 
             for (int i = 0; i < allCommonMonster.Count; i++)
             {
-                allCommonMonster[i].statement = MonsterToken.statementEnum.Indisponible;
+                allCommonMonster[i].statement = MonsterToken.statementEnum.Indisponible; ;
             }
-
             for (int i = 0; i < allRareMonster.Count; i++)
             {
                 allRareMonster[i].statement = MonsterToken.statementEnum.Indisponible;

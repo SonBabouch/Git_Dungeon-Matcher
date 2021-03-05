@@ -1020,12 +1020,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -1900}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &464792234 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3352059483369707408, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-    type: 3}
-  m_PrefabInstance: {fileID: 668954108}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &494422295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3352059483369707408, guid: e0d2603e04e43c54eb2158a975a17c03,
@@ -1592,75 +1586,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660382487}
   m_CullTransparentMesh: 0
---- !u!1001 &668954108
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1035750109}
-    m_Modifications:
-    - target: {fileID: 3352059483369707408, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_Name
-      value: Monster12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ff8ff0c8c155ff245a840f5d12e7e0e2, type: 3}
 --- !u!1 &696149929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,7 +3002,6 @@ Transform:
   - {fileID: 2004860659}
   - {fileID: 545998670}
   - {fileID: 1327511774}
-  - {fileID: 1771680106}
   m_Father: {fileID: 1103601183}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5608,6 +5532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSelected: {fileID: 0}
   detailsBackground: {fileID: 1474904442}
+  bagButtonParent: {fileID: 1801688546}
+  bagButtonList: []
 --- !u!1 &1504317943
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,12 +6529,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768464212}
   m_CullTransparentMesh: 0
---- !u!4 &1771680106 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7731263988056315023, guid: ff8ff0c8c155ff245a840f5d12e7e0e2,
-    type: 3}
-  m_PrefabInstance: {fileID: 668954108}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1777699839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8177,7 +8097,7 @@ MonoBehaviour:
   - {fileID: 1815635475}
   - {fileID: 1404794318}
   - {fileID: 494422295}
-  - {fileID: 464792234}
+  - {fileID: 0}
   rareMonsterList:
   - {fileID: 1009908753}
   - {fileID: 1253199657}
