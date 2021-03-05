@@ -32,17 +32,28 @@ public class DetailsCanvasManager : MonoBehaviour
 
     public void UpdateDetailsMenu()
     {
-        //Update les Informations du 
-        if(MenuManager.Instance.canvasManager.GetComponent<BagCanvasManager>().currentSelected != null)
+        //Update les Informations du Menu Details.
+        if(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected != null)
         {
             //Description Stuff
-            GameObject monsterToShow = MenuManager.Instance.canvasManager.GetComponent<BagCanvasManager>().currentSelected;
+            GameObject monsterToShow = MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected;
             monsterLevel.text = monsterToShow.GetComponent<Monster.MonsterToken>().monsterLevel.ToString();
             monsterName.text = monsterToShow.GetComponent<Monster.MonsterToken>().monsterName;
             monsterDescription.text = monsterToShow.GetComponent<Monster.MonsterToken>().description;
-            fullMonsterImage.sprite = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().fullMonsterImage;
+            fullMonsterImage.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().profilPicture;
 
 
+            /*Description Skills
+            skill1Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[0].skillName;
+            skill2Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[1].skillName;
+            skill3Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[2].skillName;
+            skill4Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[3].skillName;
+
+            skill1Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[0].skillImage;
+            skill2Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[1].skillImage;
+            skill3Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[2].skillImage;
+            skill4Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[3].skillImage;
+            */
         }
     }
     

@@ -41,7 +41,19 @@ namespace Management
         // Start is called before the first frame update
         void Start()
         {
+            rareChance = 5;
             choosenList = null;
+
+            foreach (Transform child in  MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().commonMonsterParents.transform)
+            {
+                commonMonsterList.Add(child.gameObject);
+            }
+
+            foreach (Transform child in MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().rareMonsterParents.transform)
+            {
+                rareMonsterList.Add(child.gameObject);
+            }
+
             Tirage();
         }
         

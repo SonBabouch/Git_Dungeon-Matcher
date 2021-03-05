@@ -7,8 +7,8 @@ namespace Monster
 {
     public class MonsterEncyclopedie : MonoBehaviour
     {
-        [SerializeField] private GameObject commonMonsterParents;
-        [SerializeField] private GameObject rareMonsterParents;
+        public GameObject commonMonsterParents;
+        public GameObject rareMonsterParents;
 
         public List<MonsterToken> allCommonMonster = new List<MonsterToken>();
         public List<MonsterToken> allRareMonster = new List<MonsterToken>();
@@ -30,7 +30,7 @@ namespace Monster
 
             for (int i = 0; i < allCommonMonster.Count; i++)
             {
-                allCommonMonster[i].statement = MonsterToken.statementEnum.Indisponible; ;
+                allCommonMonster[i].statement = MonsterToken.statementEnum.Indisponible; 
             }
             for (int i = 0; i < allRareMonster.Count; i++)
             {

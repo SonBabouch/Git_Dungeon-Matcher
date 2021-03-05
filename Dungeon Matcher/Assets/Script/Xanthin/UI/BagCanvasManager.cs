@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Management;
+using UnityEngine.UI;
 
 /// <summary>
 /// Ce script permet de gérer le visuel de l'inventaire.
 /// </summary>
 public class BagCanvasManager : MonoBehaviour
 {
-    public GameObject currentSelected;
+    public GameObject currentButtonSelected;
+    public GameObject currentMonsterSelected;
+
     public GameObject detailsBackground;
 
     [SerializeField] private GameObject bagButtonParent;
@@ -23,11 +26,21 @@ public class BagCanvasManager : MonoBehaviour
 
     private void Start()
     {
-        currentSelected = null;
+        currentButtonSelected = null;
+        currentMonsterSelected = null;
 
-        for (int i = 0; i < bagButtonList.Count; i++)
+        for (int i = 0; i < MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i++)
         {
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster[i].gameObject;
+            bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<Monster.MonsterToken>().profilPicture;
+
+
+        }
+
+        for (int i = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i < MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster.Count + MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i++)
+        {
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster[i- MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].gameObject;
+            bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<Monster.MonsterToken>().profilPicture;
         }
     }
 

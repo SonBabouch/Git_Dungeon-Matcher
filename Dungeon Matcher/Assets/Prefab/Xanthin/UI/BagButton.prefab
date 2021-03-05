@@ -511,7 +511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -300, y: -500}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3703082488084835539
@@ -620,6 +620,7 @@ MonoBehaviour:
   detailsButton: {fileID: 3889249203722665975}
   equipButton: {fileID: 879698641760924600}
   upgradeButton: {fileID: 6672914622411765576}
+  monsterContainer: {fileID: 0}
 --- !u!95 &3970657118458235396
 Animator:
   serializedVersion: 3

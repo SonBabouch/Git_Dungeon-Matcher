@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731263988056315023}
   - component: {fileID: 8761877609787509778}
   m_Layer: 0
-  m_Name: Monster2
+  m_Name: Monster1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 11400000, guid: 7e7fe7d265a52674caae0b17dba2fcb0, type: 2}
+  template: {fileID: 11400000, guid: f5cf0fb36c3dc0144a9fec119421ac40, type: 2}
+  monsterIndexPosition: 0
+  numberOfFragments: 0
+  numberOfFragmentsRequired: 
+  monsterLevel: 0
   description: 
-  name: 
+  monsterName: 
   health: 0
   rarety: 0
+  statement: 0
+  profilPicture: {fileID: 0}
+  fullMonsterImage: {fileID: 0}
+  side: 0
+  owner: {fileID: 0}
+  skills: []
