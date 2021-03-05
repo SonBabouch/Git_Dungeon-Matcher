@@ -21,6 +21,15 @@ public class BasicAttack : Skill
 
     public override void Use()
     {
-        monster.health += damage;
+        switch(monster.side)
+        {
+            case MonsterToken.monsterSide.Ally:
+                CombatManager.Instance.combatList[0].health += damage;
+                break;
+            case MonsterToken.monsterSide.Enemy:
+                Player.Instance.health += damage;
+                break;
+        }
+
     }
 }
