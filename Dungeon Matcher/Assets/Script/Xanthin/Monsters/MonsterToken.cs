@@ -22,7 +22,7 @@ namespace Monster
         [HideInInspector] public raretyEnum rarety;
 
         [HideInInspector] public enum statementEnum { Equipe, Disponible, Indisponible };
-        [HideInInspector] public statementEnum statement;
+         public statementEnum statement;
 
         [HideInInspector] public Sprite profilPicture;
         [HideInInspector] public Sprite fullMonsterImage;

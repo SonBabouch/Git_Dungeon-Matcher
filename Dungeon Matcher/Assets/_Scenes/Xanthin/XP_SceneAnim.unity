@@ -1335,8 +1335,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 929362758}
   - {fileID: 729111753}
+  - {fileID: 929362758}
   m_Father: {fileID: 1496993009}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1858,7 +1858,7 @@ RectTransform:
   m_Children:
   - {fileID: 1479923204}
   m_Father: {fileID: 575088730}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2705,7 +2705,7 @@ RectTransform:
   m_Children:
   - {fileID: 1540923675}
   m_Father: {fileID: 575088730}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -5124,7 +5124,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1479923206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1496993010}
+        m_MethodName: RemoveLeftEquipement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1479923206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5355,6 +5366,9 @@ MonoBehaviour:
   detailsBackground: {fileID: 1474904442}
   bagButtonParent: {fileID: 1801688546}
   bagButtonList: []
+  equipeButton:
+  - {fileID: 729111755}
+  - {fileID: 929362760}
 --- !u!1 &1504317943
 GameObject:
   m_ObjectHideFlags: 0
@@ -5675,7 +5689,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1540923677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1496993010}
+        m_MethodName: RemoveRightEquipement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1540923677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6370,6 +6395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761877609787509778, guid: d2a6930b7f476cc4d8fff8483b34fa06,
+        type: 3}
+      propertyPath: statement
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}

@@ -55,6 +55,22 @@ public class DetailsCanvasManager : MonoBehaviour
             skill4Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[3].skillImage;
             */
         }
+        
+       
     }
-    
+
+    public void RemoveLeftEquipement()
+    {
+        MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<Monster.MonsterToken>().statement = Monster.MonsterToken.statementEnum.Disponible;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
+
+       
+    }
+
+    public void RemoveRightEquipement()
+    {
+        MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<Monster.MonsterToken>().statement = Monster.MonsterToken.statementEnum.Disponible;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
+    }
+
 }

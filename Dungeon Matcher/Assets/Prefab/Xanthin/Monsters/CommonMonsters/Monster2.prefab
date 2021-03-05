@@ -52,7 +52,7 @@ MonoBehaviour:
   monsterName: 
   health: 0
   rarety: 0
-  statement: 0
+  statement: 1
   profilPicture: {fileID: 0}
   fullMonsterImage: {fileID: 0}
   side: 0

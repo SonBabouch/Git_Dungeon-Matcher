@@ -5,7 +5,9 @@ using UnityEngine;
 public class BagManager : MonoBehaviour
 {
     //Maximum 2 Monstres.
-    public GameObject[] monsterTeam;
+    public List<GameObject> monsterTeam = new List<GameObject>();
 
     public bool detailShow = false;
+
+   
 }

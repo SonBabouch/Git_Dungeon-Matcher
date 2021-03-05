@@ -16,16 +16,21 @@ public class BagCanvasManager : MonoBehaviour
     [SerializeField] private GameObject bagButtonParent;
     public List<GameObject> bagButtonList = new List<GameObject>();
 
+    public List<Image> equipeButton = new List<Image>();
+    private Sprite defaultImage;
     private void Awake()
     {
         foreach (Transform child in bagButtonParent.transform)
         {
             bagButtonList.Add(child.gameObject);
         }
+        defaultImage = equipeButton[0].GetComponent<Image>().sprite;
     }
 
     private void Start()
     {
+        
+
         currentButtonSelected = null;
         currentMonsterSelected = null;
 
@@ -33,7 +38,6 @@ public class BagCanvasManager : MonoBehaviour
         {
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster[i].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<Monster.MonsterToken>().profilPicture;
-
 
         }
 
@@ -48,5 +52,36 @@ public class BagCanvasManager : MonoBehaviour
     {
         detailsBackground.SetActive(false);
         MenuManager.Instance.bagManager.GetComponent<BagManager>().detailShow = false;
+    }
+
+    public void UpdateEquipeButton()
+    {
+        int repetition = 0;
+
+        for (int i = 0; i < MenuManager.Instance.bagManager.monsterTeam.Count; i++)
+        {
+            equipeButton[i].sprite = MenuManager.Instance.bagManager.monsterTeam[i].GetComponent<Monster.MonsterToken>().profilPicture;
+            repetition++;
+        }
+
+        if(repetition == 1)
+        {
+            equipeButton[1].sprite = defaultImage;
+        }
+        
+    }
+
+    public void RemoveLeftEquipement()
+    {
+        MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<Monster.MonsterToken>().statement = Monster.MonsterToken.statementEnum.Disponible;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
+        UpdateEquipeButton();
+    }
+
+    public void RemoveRightEquipement()
+    {
+        MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<Monster.MonsterToken>().statement = Monster.MonsterToken.statementEnum.Disponible;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
+        UpdateEquipeButton();
     }
 }
