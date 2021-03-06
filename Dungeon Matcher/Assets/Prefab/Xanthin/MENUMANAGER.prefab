@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3499666006585480131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3499666006585480128}
+  - component: {fileID: 3499666006585480129}
+  - component: {fileID: 3499666006585480134}
+  - component: {fileID: 3499666006585480135}
+  - component: {fileID: 3499666006585480133}
+  - component: {fileID: 3499666006585480132}
+  - component: {fileID: 3499666006585480154}
+  m_Layer: 0
+  m_Name: MENUMANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3499666006585480128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3499666006585480129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9200013f998bc174da66dc2129823923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasManager: {fileID: 0}
+  matchManager: {fileID: 3499666006585480133}
+  energyManager: {fileID: 3499666006585480134}
+  listManager: {fileID: 3499666006585480132}
+  playerLevel: {fileID: 3499666006585480135}
+  bagManager: {fileID: 3499666006585480154}
+  monsterEncyclopedie: {fileID: 0}
+--- !u!114 &3499666006585480134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891bf823f99e0cb4c978789aa98b8bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productionTime: 0
+--- !u!114 &3499666006585480135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55554790a4ff2134c947a19104b5c00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredExperience: 64000000c8000000
+--- !u!114 &3499666006585480133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63cd4a9900b59448cc0cd23574173f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonMonsterList: []
+  rareMonsterList: []
+  choosenList: []
+  matchList: []
+  numberCommonPool: 04000000080000000c000000
+  numberRarePool: 0100000002000000
+  monsterSpawned: []
+  storedIndex: 
+  maxStoredValues: 0
+  rareChance: 5
+  nbOfProfilsMax: 8
+  monsterPresented: {fileID: 0}
+  profilPresented: {fileID: 0}
+--- !u!114 &3499666006585480132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023eb9bd1784bec41afb61a72c5386b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listCurrentSize: 0
+  listMaxSize: 030000000600000009000000
+--- !u!114 &3499666006585480154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499666006585480131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0afabc7c5709f642a65f403e6399f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterTeam: []
+  detailShow: 0

@@ -9,6 +9,13 @@ namespace Management
     {
         public int listCurrentSize;
         public int[] listMaxSize;
+
+        public void StartCombat()
+        {
+            
+        }
     }
+
+   
 }
 
