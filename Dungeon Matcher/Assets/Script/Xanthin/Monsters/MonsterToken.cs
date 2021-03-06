@@ -37,6 +37,23 @@ namespace Monster
         // Start is called before the first frame update
         void Awake()
         {
+            Initialize();
+        }
+        
+        //private void Start()
+        //{
+        //    foreach (Skill skill in allySkills)
+        //    {
+        //        skill.Initialize(owner);
+        //    }
+        //    foreach (Skill skill in ennemySkills)
+        //    {
+        //        skill.Initialize(owner);
+        //    }
+        //}
+
+        public void Initialize()
+        {
             statement = (statementEnum)template.statement;
             description = template.description;
             monsterName = template.monsterName;
@@ -45,18 +62,6 @@ namespace Monster
             profilPicture = template.profilPicture;
             side = (monsterSide)template.side;
             monsterIndexPosition = template.monsterIndexPosition;
-        }
-        /*
-        private void Start()
-        {
-            foreach (Skill skill in allySkills)
-            {
-                skill.Initialize(owner);
-            }
-            foreach (Skill skill in ennemySkills)
-            {
-                skill.Initialize(owner);
-            }
         }
     }
 }
