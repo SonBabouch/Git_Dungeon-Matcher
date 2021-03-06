@@ -42,9 +42,8 @@ namespace Management
         //Update le constamment les infos car on peut pas traquer le moment ou le joueur passe de niveau.
         private void Update()
         {
-            playerLevelText.text = PlayerLevel.playerLevel.ToString();
+            playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
             playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel-1]);
-
         }
 
         public void ShowExpérience()

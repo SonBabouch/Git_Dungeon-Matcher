@@ -7,6 +7,8 @@ namespace Monster
 {
     public class MonsterEncyclopedie : MonoBehaviour
     {
+        
+
         public GameObject commonMonsterParents;
         public GameObject rareMonsterParents;
 
@@ -41,7 +43,7 @@ namespace Monster
         }
         private void Start()
         {
-            UpdateMonsterEncyclopedie();
+           
         }
 
         public void UpdateMonsterEncyclopedie()

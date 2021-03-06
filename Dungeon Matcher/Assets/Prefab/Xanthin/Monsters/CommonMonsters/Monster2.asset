@@ -18,6 +18,6 @@ MonoBehaviour:
   rarety: 0
   statement: 2
   monsterIndexPosition: 2
-  profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}
+  profilPicture: {fileID: 21300000, guid: c8ea675b75eeb5e489dd1a164046d030, type: 3}
   side: 0
   inCombat: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731263988056315023}
   - component: {fileID: 8761877609787509778}
   m_Layer: 0
-  m_Name: MonsterRare 1
+  m_Name: MonsterRare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   template: {fileID: 11400000, guid: 699d8b4acc3677f438097df5aa91deb7, type: 2}
+  monsterIndexPosition: 0
+  numberOfFragments: 0
+  numberOfFragmentsRequired: 
+  monsterLevel: 0
   description: 
-  name: 
+  monsterName: 
   health: 0
   rarety: 0
+  statement: 1
   profilPicture: {fileID: 0}
+  fullMonsterImage: {fileID: 0}
+  side: 0
+  owner: {fileID: 0}
+  allySkills: []
+  ennemySkills: []

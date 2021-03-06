@@ -25,11 +25,11 @@ public class BagCanvasManager : MonoBehaviour
             bagButtonList.Add(child.gameObject);
         }
         defaultImage = equipeButton[0].GetComponent<Image>().sprite;
-    }
 
+       
+    }
     private void Start()
     {
-
         currentButtonSelected = null;
         currentMonsterSelected = null;
 
@@ -47,11 +47,16 @@ public class BagCanvasManager : MonoBehaviour
         {
             Debug.Log(i);
             MenuManager.Instance.monsterEncyclopedie.allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].Initialize();
-            
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster[i- MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].gameObject;
+
+
+
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<Monster.MonsterToken>().profilPicture;
         }
+
+        MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
     }
+
 
     public void closeDetails()
     {

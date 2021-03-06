@@ -33,7 +33,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     public void OnBeginDrag(PointerEventData eventData)
     {
 
-        print(eventData);
+        //print(eventData);
 
     }
 
@@ -75,14 +75,17 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             if (percentage > 0)//Vers la droite
             {
 
-                print("Like");
+                //print("Dislike");
+                Management.MenuManager.Instance.matchManager.Dislike();
+                
 
             }
             else if (percentage < 0)//vers la gauche
             {
 
-                print("Dislike");
-
+                //print("Like");
+                Management.MenuManager.Instance.matchManager.Match();
+               
             }
 
             panelLocation = newLocation; //Attribution de la nouvelle position du panel holder

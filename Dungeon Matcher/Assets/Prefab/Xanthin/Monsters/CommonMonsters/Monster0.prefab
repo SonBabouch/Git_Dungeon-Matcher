@@ -54,11 +54,8 @@ MonoBehaviour:
   rarety: 0
   statement: 1
   profilPicture: {fileID: 0}
-  fullMonsterImage: {fileID: 0}
+  fullMonsterImage: {fileID: 21300000, guid: 77370d1174cd7fb449903c75ace6df85, type: 3}
   side: 0
   owner: {fileID: 0}
-  skills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  allySkills: []
+  ennemySkills: []

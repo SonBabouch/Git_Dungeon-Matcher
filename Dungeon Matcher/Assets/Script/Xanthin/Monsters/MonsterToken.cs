@@ -25,7 +25,7 @@ namespace Monster
          public statementEnum statement;
 
         [HideInInspector] public Sprite profilPicture;
-        [HideInInspector] public Sprite fullMonsterImage;
+         public Sprite fullMonsterImage;
 
         //Combat Stuff
         public enum monsterSide {Enemy, Ally}

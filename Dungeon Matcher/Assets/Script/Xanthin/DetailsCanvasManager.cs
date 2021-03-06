@@ -40,7 +40,7 @@ public class DetailsCanvasManager : MonoBehaviour
             monsterLevel.text = monsterToShow.GetComponent<Monster.MonsterToken>().monsterLevel.ToString();
             monsterName.text = monsterToShow.GetComponent<Monster.MonsterToken>().monsterName;
             monsterDescription.text = monsterToShow.GetComponent<Monster.MonsterToken>().description;
-            fullMonsterImage.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().profilPicture;
+            fullMonsterImage.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().fullMonsterImage;
 
 
             /*Description Skills
