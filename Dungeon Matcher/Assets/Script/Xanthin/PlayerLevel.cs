@@ -2,7 +2,7 @@
 
 public class PlayerLevel : MonoBehaviour
 {
-    public static float currentExperience = 0;
+    public static float currentExperience =10f;
     public static int playerLevel = 1;
     
     public int[] requiredExperience;

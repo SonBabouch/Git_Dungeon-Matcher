@@ -18,6 +18,10 @@ namespace Management
         public TextMeshProUGUI playerLevelText;
         public Image playerExperienceBar;
 
+        //ShowExpérience
+        public bool switchExp = false;
+        [SerializeField] private TextMeshProUGUI experienceText;
+        [SerializeField] private Image experienceShower;
         void Start()
         {
             UpdateEnergy();
@@ -40,6 +44,33 @@ namespace Management
         {
             playerLevelText.text = PlayerLevel.playerLevel.ToString();
             playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel-1]);
+
+        }
+
+        public void ShowExpérience()
+        {
+            experienceText.text = PlayerLevel.currentExperience.ToString() + " / " + MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel-1].ToString();
+
+            if (!switchExp)
+            {
+                switchExp = true;
+            }
+            else if (switchExp)
+            {
+                switchExp = false;
+            }
+
+            if (switchExp)
+            {
+                experienceShower.GetComponent<Animator>().SetTrigger("Show");
+                
+            }
+            else
+            {
+                experienceShower.GetComponent<Animator>().SetTrigger("Unshow");
+                
+            }
+
 
         }
     }
