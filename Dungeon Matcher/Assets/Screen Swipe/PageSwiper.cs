@@ -27,7 +27,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         float difference = data.pressPosition.x - data.position.x; //Différence entre les deux positions pour savoir vers quel coté on swip, positif à droite et négatif à gauche
         //C'est aussi la position exact du pointer sur le l'écran lorsqu'il drag
 
-        if (currentPanelNumber > 0 && currentPanelNumber < 4)
+        if (currentPanelNumber > -1 && currentPanelNumber < 2)
         {
 
             transform.position = panelLocation - new Vector2(difference, 0); //Déplacer le pannel holder en focntion de la position du pointer
@@ -54,7 +54,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             //4.1.1- Modification de la futur position du panel holder vers le nouveau panel
             if (percentage > 0)//Vers la droite
             {
-                if (currentPanelNumber < 4)
+                if (currentPanelNumber < 2)
                 {
                     newLocation += new Vector2(-Screen.width, 0);
 
@@ -68,7 +68,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             }
             else if (percentage < 0)//vers la gauche
             {
-                if (currentPanelNumber > 0)
+                if (currentPanelNumber > -1)
                 {
                     newLocation += new Vector2(Screen.width, 0);
 
