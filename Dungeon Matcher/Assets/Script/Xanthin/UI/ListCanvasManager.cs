@@ -17,7 +17,7 @@ namespace Management
 
         //Bas d'écran
         [SerializeField] private GameObject combatButton;
-        [SerializeField] private TextMeshProUGUI alerteCombat;
+        [SerializeField] private GameObject alerteCombat;
 
         //Prefab à instancier quand le joueur match
         [SerializeField] private GameObject listPrefab;
@@ -33,18 +33,15 @@ namespace Management
 
         private void Update()
         {
-            
-           
-
             if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2 )
             {
-                alerteCombat.enabled = true;
+                alerteCombat.SetActive(true);
                 combatButton.SetActive(false);
             }
             else if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count == 2 && MenuManager.Instance.matchManager.matchList.Count >=1)
             {
                 combatButton.SetActive(true);
-                alerteCombat.enabled = false;
+                alerteCombat.SetActive(false);
             }
         }
 

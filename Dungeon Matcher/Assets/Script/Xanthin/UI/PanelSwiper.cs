@@ -9,8 +9,8 @@ public class PanelSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     private Vector3 panelLocation;
 
-    [SerializeField] private GameObject maxPosition;
-    [SerializeField] private GameObject minPosition;
+    //[SerializeField] private GameObject maxPosition;
+    //[SerializeField] private GameObject minPosition;
 
     // Start is called before the first frame update
     void Start()

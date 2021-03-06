@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 512}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8524058428306293636
@@ -323,6 +323,7 @@ MonoBehaviour:
   profilImage: {fileID: 8524058428435555816}
   numberCombatText: {fileID: 8524058428141701107}
   chanceDrop: {fileID: 8524058428170134142}
+  monsterContainer: {fileID: 0}
 --- !u!1 &8524058428435555819
 GameObject:
   m_ObjectHideFlags: 0
