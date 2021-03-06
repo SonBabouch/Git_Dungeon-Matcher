@@ -29,9 +29,14 @@ public class Player : MonoBehaviour
         {
             foreach (Skill skill in monster.GetComponent<MonsterToken>().allySkills)
             {
+                skill.side = Skill.monsterSide.Ally;
                 playerSkills.Add(skill);
             }
         }
+        CombatManager.Instance.combatButtons[0].onClick.AddListener(playerSkills[0].Use);
+        CombatManager.Instance.combatButtons[1].onClick.AddListener(playerSkills[1].Use);
+        CombatManager.Instance.combatButtons[2].onClick.AddListener(playerSkills[2].Use);
+        CombatManager.Instance.combatButtons[3].onClick.AddListener(playerSkills[3].Use);
     }
     private void Update()
     {
