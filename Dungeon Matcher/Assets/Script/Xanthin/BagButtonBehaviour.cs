@@ -38,8 +38,6 @@ public class BagButtonBehaviour : MonoBehaviour
             MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = null;
             MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected = null;
         }    
-
-       
     }
 
     public void Equip()

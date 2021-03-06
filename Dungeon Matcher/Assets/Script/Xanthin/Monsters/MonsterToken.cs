@@ -35,11 +35,7 @@ namespace Monster
         public List<Skill> allySkills;
         public List<Skill> ennemySkills;
         // Start is called before the first frame update
-        void Awake()
-        {
-            Initialize();
-        }
-        
+       
         //private void Start()
         //{
         //    foreach (Skill skill in allySkills)
