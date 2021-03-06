@@ -36,7 +36,7 @@ namespace Management
         //A appeler à chaque fois que le joueur perd ou gagne de l'energie.
         public void UpdateEnergy()
         {
-            energy.text = "Energie : " + EnergyManager.energy.ToString() + "/" + EnergyManager.maxEnergy.ToString();
+            energy.text = EnergyManager.energy.ToString() + "/" + EnergyManager.maxEnergy.ToString();
         }
 
         //Update le constamment les infos car on peut pas traquer le moment ou le joueur passe de niveau.

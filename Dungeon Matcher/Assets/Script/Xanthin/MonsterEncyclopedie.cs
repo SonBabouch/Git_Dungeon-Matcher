@@ -36,6 +36,8 @@ namespace Monster
             {
                 allRareMonster[i].statement = MonsterToken.statementEnum.Indisponible;
             }
+
+            UpdateMonsterEncyclopedie();
         }
 
 

@@ -29,7 +29,7 @@ public class BagButtonBehaviour : MonoBehaviour
 
     public void Details()
     {
-        if(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected.GetComponent<Monster.MonsterToken>().statement == Monster.MonsterToken.statementEnum.Disponible)
+        if(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected.GetComponent<Monster.MonsterToken>().statement == Monster.MonsterToken.statementEnum.Disponible || MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected.GetComponent<Monster.MonsterToken>().statement == Monster.MonsterToken.statementEnum.Equipe)
         {
             MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().detailsBackground.SetActive(true);
             MenuManager.Instance.bagManager.GetComponent<BagManager>().detailShow = true;
