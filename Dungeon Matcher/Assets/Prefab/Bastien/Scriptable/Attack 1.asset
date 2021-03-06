@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Attack 1
   m_EditorClassIdentifier: 
   skillName: 
+  side: 1
   monster: {fileID: 0}
   owner: {fileID: 0}
   damage: 1

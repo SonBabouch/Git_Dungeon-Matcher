@@ -13,7 +13,8 @@ public class CombatManager : MonoBehaviour
     public int secondsLeft = 60;
     [HideInInspector]
     public bool takingTimeAway = false;
-    public List<MonsterCard> combatList = new List<MonsterCard>();
+    public List<GameObject> combatList = new List<GameObject>();
+    public List<Button> combatButtons = new List<Button>();
 
     private void Awake()
     {
@@ -30,6 +31,11 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
+        foreach(GameObject monster in combatList)
+        {
+            monster.GetComponent<MonsterToken>().Initialize();
+        }
+        Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
         timerDisplay.GetComponent<TextMeshProUGUI>().text = "00:" + secondsLeft;
     }
 

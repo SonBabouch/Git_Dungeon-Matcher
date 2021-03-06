@@ -13,6 +13,7 @@ public class BasicAttack : Skill
     [SerializeField]
     private float damage;
 
+
     public override void Initialize(GameObject obj)
     {
         owner = obj;
@@ -21,13 +22,16 @@ public class BasicAttack : Skill
 
     public override void Use()
     {
-        switch(monster.side)
+        //Debug.Log(damage);
+        //Debug.Log(side);
+        switch (side)
         {
-            case MonsterToken.monsterSide.Ally:
-                CombatManager.Instance.combatList[0].health += damage;
+            case monsterSide.Ally:
+                CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health += damage;
+                Debug.Log(CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health);
                 break;
-            case MonsterToken.monsterSide.Enemy:
-                Player.Instance.health += damage;
+            case monsterSide.Enemy:
+                Player.Instance.health -= damage;
                 break;
         }
 
