@@ -17,7 +17,10 @@ public class CombatProfilList : MonoBehaviour
     [SerializeField] private Image profilImage;
     [SerializeField] private TextMeshProUGUI numberCombatText;
     [SerializeField] private TextMeshProUGUI chanceDrop;
+    [SerializeField] private GameObject monsterContainer;
 
+
+    //S'appele quand le profil est matché.
     public void UpdateVisualMatch()
     {
         //Permet de set les visuel lors du match.
@@ -28,6 +31,18 @@ public class CombatProfilList : MonoBehaviour
 
         profilImage.sprite = profilAsset;
         numberCombatText.text = "Combat " + numberCombat.ToString() + ".";
+
+        monsterContainer = MenuManager.Instance.matchManager.GetComponent<MatchManager>().matchList[numberCombat - 1];
+    }
+
+    //Fonction on click
+    public void OnClickButton()
+    {
+        //Checker cb de combat on été fait.
+        //Si c'est celui qui doit être fait :
+        //Checker si le joueur a des monstres :
+        //Si il en a pas deux, on lance pas => Afficher un message.
+        //Si y'en 
     }
 
     public void UpdateVisualCombat()

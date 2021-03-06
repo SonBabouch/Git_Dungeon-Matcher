@@ -15,6 +15,10 @@ namespace Management
         public List<GameObject> listPosition = new List<GameObject>();
         [SerializeField] private GameObject parentPositions;
 
+        //Bas d'écran
+        [SerializeField] private GameObject combatButton;
+        [SerializeField] private TextMeshProUGUI alerteCombat;
+
         //Prefab à instancier quand le joueur match
         [SerializeField] private GameObject listPrefab;
 
@@ -24,6 +28,23 @@ namespace Management
             foreach (Transform child in parentPositions.transform)
             {
                 listPosition.Add(child.gameObject);
+            }
+        }
+
+        private void Update()
+        {
+            
+           
+
+            if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2 )
+            {
+                alerteCombat.enabled = true;
+                combatButton.SetActive(false);
+            }
+            else if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count == 2 && MenuManager.Instance.matchManager.matchList.Count >=1)
+            {
+                combatButton.SetActive(true);
+                alerteCombat.enabled = false;
             }
         }
 
