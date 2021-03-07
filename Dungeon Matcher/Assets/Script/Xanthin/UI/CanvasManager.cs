@@ -4,6 +4,8 @@ namespace Management
 {
     public class CanvasManager : MonoBehaviour
     {
+        public PageSwiper pageSwiper;
+
         //Differents Menu
         public GameObject matchCanvas;
         public GameObject listCanvas;
@@ -31,9 +33,11 @@ namespace Management
                 
             }
 
+            //Faire le changement de Panel;
             if (MenuManager.Instance.bagManager.detailShow == false)
             {
-                fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
+                pageSwiper.GetComponent<PageSwiper>().GoToList();
+                //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
                 MenuManager.currentGameState = MenuManager.gameState.List;
             }
         }
@@ -47,12 +51,14 @@ namespace Management
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = null;
             }
 
+            //Faire le changement de Panel;
             if (MenuManager.Instance.bagManager.detailShow == false)
             {
-                fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
+                pageSwiper.GetComponent<PageSwiper>().GoToMatch();
+                //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
                 MenuManager.currentGameState = MenuManager.gameState.Match;
             }
-            //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
+            
         }
         public void GoToShop()
         {
@@ -68,12 +74,15 @@ namespace Management
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = null;
             }
 
+            //Faire le changement de Panel;
             if (MenuManager.Instance.bagManager.detailShow == false)
             {
-                fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
+                pageSwiper.GetComponent<PageSwiper>().GoToShop();
+
+                //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
                 MenuManager.currentGameState = MenuManager.gameState.Shop;
             }
-            //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
+            
         }
         public void GoToBag()
         {
@@ -81,9 +90,11 @@ namespace Management
             {
                 MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().ShowExpérience();
             }
-            fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
+            pageSwiper.GetComponent<PageSwiper>().GoToBag();
+            //Faire le changement de Panel;
+            //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
             MenuManager.currentGameState = MenuManager.gameState.Bag;
-            //GameManager.Instance.GetComponent<CameraController>().MoveCamera();
+           
         }
 
     }
