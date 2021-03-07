@@ -47,5 +47,6 @@ MonoBehaviour:
   playerSkills: []
   health: 100
   maxHealth: 100
+  minHealth: 0
   playerHealthBar: {fileID: 0}
-  energy: 0
+  energy: 100

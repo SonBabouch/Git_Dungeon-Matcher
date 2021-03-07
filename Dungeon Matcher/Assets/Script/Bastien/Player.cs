@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Monster;
 using UnityEngine.UI;
+using Management;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        monsters = MenuManager.Instance.bagManager.monsterTeam;
     }
     private void Start()
     {
@@ -46,5 +49,10 @@ public class Player : MonoBehaviour
     private void Update()
     {
         playerHealthBar.fillAmount = health / maxHealth;
+    }
+
+    public void gobackmenu()
+    {
+        SceneManager.LoadScene("PROTOBUILD", LoadSceneMode.Single);
     }
 }

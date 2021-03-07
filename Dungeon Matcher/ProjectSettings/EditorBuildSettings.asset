@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Xanthin/XP_SceneAnim.unity
+  - enabled: 0
+    path: Assets/_Scenes/Xanthin/XP_SceneAnim.unity
     guid: 0509df0de18bdb14e98207802c70aa21
+  - enabled: 1
+    path: Assets/_Scenes/Dev & Builds/PROTOBUILD.unity
+    guid: 1f696d8624ab8894f9a023792b4dd4bf
+  - enabled: 1
+    path: Assets/_Scenes/Bastien/PRBA_TestingScene.unity
+    guid: 701b8d7e5e10a054dbf43f9e74eb2b3d
   m_configObjects: {}

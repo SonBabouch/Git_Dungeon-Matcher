@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Management
 {
@@ -12,7 +13,7 @@ namespace Management
 
         public void StartCombat()
         {
-            
+            SceneManager.LoadScene("PRBA_TestingScene", LoadSceneMode.Single);
         }
     }
    

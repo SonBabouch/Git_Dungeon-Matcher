@@ -33,6 +33,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        combatList = MenuManager.Instance.matchManager.matchList;
     }
 
     private void Start()
