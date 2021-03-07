@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Monster;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Player : MonoBehaviour
     private List<GameObject> monsters;
     public List<Skill> playerSkills;
     public float health;
+    public float maxHealth;
+    public float minHealth;
+    public Image playerHealthBar;
+    public float energy = 10f;
 
     private void Awake()
     {
@@ -40,6 +45,6 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-
+        playerHealthBar.fillAmount = health / maxHealth;
     }
 }

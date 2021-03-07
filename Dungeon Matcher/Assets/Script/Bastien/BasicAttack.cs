@@ -27,11 +27,19 @@ public class BasicAttack : Skill
         switch (side)
         {
             case monsterSide.Ally:
-                CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health += damage;
-                Debug.Log(CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health);
+                if (Player.Instance.energy > energyCost)
+                {
+                    CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health += damage;
+                    Player.Instance.energy -= energyCost;
+                    Debug.Log(CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health);
+                    Debug.Log(Player.Instance.energy);
+                }
                 break;
             case monsterSide.Enemy:
-                Player.Instance.health -= damage;
+                if(CombatManager.Instance.enemyEnergy > energyCost)
+                {
+                    Player.Instance.health -= damage;
+                }
                 break;
         }
 

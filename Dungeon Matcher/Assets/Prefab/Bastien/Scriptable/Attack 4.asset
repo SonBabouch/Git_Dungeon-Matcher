@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Attack 4
   m_EditorClassIdentifier: 
   skillName: 
+  side: 1
+  energyCost: 3
   monster: {fileID: 0}
   owner: {fileID: 0}
   damage: 4

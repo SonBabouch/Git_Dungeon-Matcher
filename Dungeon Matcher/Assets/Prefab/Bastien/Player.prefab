@@ -43,5 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048a14b138d757f42af2f545e4632dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsters: []
   playerSkills: []
   health: 100
+  maxHealth: 100
+  playerHealthBar: {fileID: 0}
+  energy: 0
