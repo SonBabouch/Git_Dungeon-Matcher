@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster4
   m_EditorClassIdentifier: 
-  description: Monster4
-  monsterName: Monster4
-  health: 10
+  description: "Salut !  J'ai l'air m\xE9chant avec mes crocs, on me le dit souvent
+    mais je suis plut\xF4t sympa ! :) J'aime rire, combattre, voir des amis. Par
+    contre, j'aime pas trop m'ennuyer et rester trop longtemps sur cette application
+    >:["
+  monsterName: Julian
+  health: 18
   rarety: 0
   statement: 1
   monsterIndexPosition: 4

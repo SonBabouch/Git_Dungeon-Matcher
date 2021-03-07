@@ -49,7 +49,7 @@ MonoBehaviour:
   numberOfFragmentsRequired: 
   monsterLevel: 0
   description: 
-  monsterName: 
+  monsterName: "S\xE9r\xE9na"
   health: 0
   rarety: 0
   statement: 1
