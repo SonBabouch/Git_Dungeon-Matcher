@@ -50,9 +50,4 @@ public class Player : MonoBehaviour
     {
         playerHealthBar.fillAmount = health / maxHealth;
     }
-
-    public void gobackmenu()
-    {
-        SceneManager.LoadScene("PROTOBUILD", LoadSceneMode.Single);
-    }
 }
