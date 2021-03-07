@@ -4401,7 +4401,12 @@ PrefabInstance:
     - target: {fileID: 3499666006585480133, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: nbOfProfilsMax
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3499666006585480133, guid: 4614c2cbe54a2cd47be341abc9584319,
+        type: 3}
+      propertyPath: numberCommonPool.Array.data[0]
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4614c2cbe54a2cd47be341abc9584319, type: 3}

@@ -14,12 +14,12 @@ public class ProfilBehaviour : MonoBehaviour
 
     public void Initialisation()
     {
+        //Debug.Log("Initialisation ProfilBehvaiour");
         monsterPick = MenuManager.Instance.matchManager.monsterPresented;
-        profilAsset.sprite = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().profilPicture;
-        profilName.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().name;
-        description.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().description;
-        health.text = MenuManager.Instance.matchManager.monsterPresented.GetComponent<Monster.MonsterToken>().health.ToString();
-       
+        profilAsset.sprite = monsterPick.GetComponent<Monster.MonsterToken>().profilPicture;
+        profilName.text = monsterPick.GetComponent<Monster.MonsterToken>().name;
+        description.text = monsterPick.GetComponent<Monster.MonsterToken>().description;
+        health.text = monsterPick.GetComponent<Monster.MonsterToken>().health.ToString();
     }
 
     public void Destroy()

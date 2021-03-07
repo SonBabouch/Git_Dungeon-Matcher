@@ -39,7 +39,7 @@ namespace Management
         public GameObject profilPresented;
 
         // Start is called before the first frame update
-        void Awake()
+        void Start()
         {
             rareChance = 5;
             choosenList = null;
@@ -100,16 +100,16 @@ namespace Management
                 #endregion
 
                 //Instantier le gameObject avec le bon positionnement;
-                Debug.Log("Instantiate");
+                Debug.Log("Initialisation");
                 GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().profilPrefab, transform.position, Quaternion.identity);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().spawnPosition.transform);
-                //Besoin de Set le Scale de l'objet pour le faire feet au reste de l'écran.
                 
+                //Besoin de Set le Scale de l'objet pour le faire feet au reste de l'écran.
                 //profilSpawned.GetComponent<RectTransform>().transform.position = new Vector3(0f, 0f, 0f);
 
                 //Afficher les valeurs.
-                profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
                 profilPresented = profilSpawned;
+                profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
                 
                 //Le monstre est ajouté à une liste pouvant être traquée.
                 monsterSpawned.Add(profilPresented);

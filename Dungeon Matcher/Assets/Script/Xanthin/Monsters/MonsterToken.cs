@@ -50,6 +50,7 @@ namespace Monster
 
         public void Initialize()
         {
+            Debug.Log("Initialize 1");
             statement = (statementEnum)template.statement;
             description = template.description;
             monsterName = template.monsterName;

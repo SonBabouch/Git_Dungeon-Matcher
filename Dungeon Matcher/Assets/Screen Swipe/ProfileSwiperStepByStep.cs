@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Management;
 
 public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
@@ -75,16 +76,32 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             if (percentage > 0)//Vers la droite
             {
 
-                //print("Dislike");
-                Management.MenuManager.Instance.matchManager.Dislike();
-                
+                if (MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManager.energy > 0)
+                {
+                    MenuManager.Instance.matchManager.Dislike();
+                }
+                else
+                {
+                    transform.position = panelLocation;
+                    transform.rotation = panelRotation;
+                }
 
             }
             else if (percentage < 0)//vers la gauche
             {
 
                 //print("Like");
-                Management.MenuManager.Instance.matchManager.Match();
+                if(MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManager.energy > 0)
+                {
+                    MenuManager.Instance.matchManager.Match();
+                }
+                else
+                {
+                    transform.position = panelLocation;
+                    transform.rotation = panelRotation;
+                }
+
+               
                
             }
 
@@ -97,7 +114,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             transform.position = panelLocation;
             transform.rotation = panelRotation;
 
-            print("position de base");
+            //print("position de base");
 
         }
 

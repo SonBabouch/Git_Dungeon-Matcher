@@ -36,7 +36,7 @@ public class BagCanvasManager : MonoBehaviour
         for (int i = 0; i < MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i++)
         {
 
-            MenuManager.Instance.monsterEncyclopedie.allCommonMonster[i].Initialize();
+           
 
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster[i].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<Monster.MonsterToken>().profilPicture;
@@ -46,9 +46,6 @@ public class BagCanvasManager : MonoBehaviour
         for (int i = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i < MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster.Count + MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i++)
         {
             Debug.Log(i);
-            MenuManager.Instance.monsterEncyclopedie.allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].Initialize();
-
-
 
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<Monster.MonsterToken>().profilPicture;
