@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster2
   m_EditorClassIdentifier: 
-  description: Il n'a pas d'image
-  monsterName: Monster2
-  health: 10
+  description: "C'est le mec \xE0 gauche qui \xE9crit ! Et le mec \xE0 droite qui
+    parle ! On est pas toujours d'accord, mais ce ce qui nous rend unique ! Promis,
+    on n'est pas prise de t\xEAte !"
+  monsterName: Noel et Joel
+  health: 25
   rarety: 0
   statement: 2
   monsterIndexPosition: 2

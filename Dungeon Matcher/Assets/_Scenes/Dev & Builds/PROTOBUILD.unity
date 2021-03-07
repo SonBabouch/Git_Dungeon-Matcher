@@ -2662,7 +2662,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.48205566, y: -140}
+  m_AnchoredPosition: {x: 335, y: 720}
   m_SizeDelta: {x: -76.96414, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &710520505
@@ -3108,7 +3108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.48205566, y: 40}
+  m_AnchoredPosition: {x: -392, y: 718}
   m_SizeDelta: {x: -76.96413, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839998479
@@ -4116,6 +4116,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2622316558542867954, guid: 4614c2cbe54a2cd47be341abc9584319,
+        type: 3}
+      propertyPath: monsterName
+      value: "Noel et L\xE9on"
+      objectReference: {fileID: 0}
     - target: {fileID: 3499666006585480128, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4176,25 +4181,10 @@ PrefabInstance:
       propertyPath: canvasManager
       value: 
       objectReference: {fileID: 2064679435}
-    - target: {fileID: 3499666006585480129, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: monsterEncyclopedie
-      value: 
-      objectReference: {fileID: 5231359515142762724}
     - target: {fileID: 3499666006585480131, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: m_Name
       value: MENUMANAGER
-      objectReference: {fileID: 0}
-    - target: {fileID: 3499666006585480133, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: nbOfProfilsMax
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3499666006585480133, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: numberCommonPool.Array.data[0]
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4614c2cbe54a2cd47be341abc9584319, type: 3}
@@ -7596,8 +7586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.48205566, y: -50}
-  m_SizeDelta: {x: -76.96413, y: 50}
+  m_AnchoredPosition: {x: -0.48205566, y: -62.8}
+  m_SizeDelta: {x: -76.96411, y: 259.5724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069980084
 MonoBehaviour:
@@ -7971,15 +7961,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2095366273}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5231359515142762724 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 976083023540209402, guid: 4614c2cbe54a2cd47be341abc9584319,
-    type: 3}
-  m_PrefabInstance: {fileID: 1029685924}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab57141f6550add4dbfe07298b704e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

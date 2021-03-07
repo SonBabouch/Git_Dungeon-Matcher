@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster1
   m_EditorClassIdentifier: 
-  description: C'est un poisson.
-  monsterName: Monster1
-  health: 10
+  description: "Jeune sir\xE8ne cherche son barracuda pour trip aquatique.  Si tu
+    fais moins de 3 m\xE8tres, tu m'int\xE9resses pas.  Ajoute-moi quand m\xEAme
+    sur Rawrchat : @6ReineDesMers"
+  monsterName: "S\xE9r\xE9na"
+  health: 22
   rarety: 0
   statement: 2
   monsterIndexPosition: 1

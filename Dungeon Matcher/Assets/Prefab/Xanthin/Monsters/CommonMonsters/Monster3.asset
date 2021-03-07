@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster3
   m_EditorClassIdentifier: 
-  description: Ref de Lol
-  monsterName: Monster3
-  health: 10
+  description: "Succombe \xE0 mon regard charmeur mais attention, derri\xE8re ce
+    corps de r\xEAve se cache un monstre des plus\u2026 farouche ;)  Attention, ma
+    vie c'est comme une bo\xEEte de nuit, je ne laisse pas rentrer n'importe qui
+    ;)"
+  monsterName: Loukatmi
+  health: 21
   rarety: 0
   statement: 2
   monsterIndexPosition: 3

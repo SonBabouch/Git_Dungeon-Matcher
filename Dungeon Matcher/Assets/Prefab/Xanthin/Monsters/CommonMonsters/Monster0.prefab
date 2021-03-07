@@ -49,7 +49,7 @@ MonoBehaviour:
   numberOfFragmentsRequired: 
   monsterLevel: 0
   description: 
-  monsterName: 
+  monsterName: Grogrumo
   health: 0
   rarety: 0
   statement: 1
