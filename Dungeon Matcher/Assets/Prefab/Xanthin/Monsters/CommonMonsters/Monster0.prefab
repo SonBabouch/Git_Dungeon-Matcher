@@ -51,12 +51,13 @@ MonoBehaviour:
   description: 
   monsterName: Grogrumo
   health: 0
+  maxHealth: 0
   rarety: 0
   statement: 1
   profilPicture: {fileID: 0}
   fullMonsterImage: {fileID: 21300000, guid: 77370d1174cd7fb449903c75ace6df85, type: 3}
   side: 0
-  owner: {fileID: 0}
+  owner: {fileID: 3352059483369707408}
   allySkills:
   - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}
   - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}

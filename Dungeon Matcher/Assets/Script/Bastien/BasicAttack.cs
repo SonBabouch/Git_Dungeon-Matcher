@@ -32,6 +32,12 @@ public class BasicAttack : Skill
                     Player.Instance.energy -= energyCost;
                     Debug.Log(CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health);
                     Debug.Log(Player.Instance.energy);
+
+                    if (CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health >= CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().maxHealth)
+                    {
+                        CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health = CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().maxHealth;
+                    }
+
                 }
                 break;
             case monsterSide.Enemy:

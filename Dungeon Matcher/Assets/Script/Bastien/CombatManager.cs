@@ -13,7 +13,6 @@ public class CombatManager : MonoBehaviour
     public int secondsLeft = 60;
     public int maxSecondsLeft;
     public int minSecondsLeft;
-    [HideInInspector]
     public bool takingTimeAway = false;
     public List<GameObject> combatList = new List<GameObject>();
     public List<Button> combatButtons = new List<Button>();
@@ -22,6 +21,10 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private Image enemyhealthBar;
     public float enemyEnergy;
+    [SerializeField]
+    bool isCombatEnded = false;
+    [SerializeField]
+    GameObject finito;
 
 
     private void Awake()
@@ -44,18 +47,16 @@ public class CombatManager : MonoBehaviour
         {
             monster.GetComponent<MonsterToken>().Initialize();
         }
-        Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
-        timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
+        StartCoroutine(DamagePlayer());
+        //Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
+        //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
     }
 
     private void Update()
     {
         InfoButtons();
 
-        if (combatList[0].GetComponent<MonsterToken>().health >= combatList[0].GetComponent<MonsterToken>().maxHealth)
-        {
-            combatList[0].GetComponent<MonsterToken>().health = combatList[0].GetComponent<MonsterToken>().maxHealth;
-        }
+                
         RunningTimer();
         enemyhealthBar.fillAmount = combatList[0].GetComponent<MonsterToken>().health / 100;
 
@@ -82,9 +83,14 @@ public class CombatManager : MonoBehaviour
 
     void RunningTimer()
     {
-        if (!takingTimeAway && secondsLeft > 0)
+        if (!takingTimeAway && secondsLeft > minSecondsLeft && !isCombatEnded)
         {
             StartCoroutine(CombatTimer());
+            isCombatEnded = false;
+        }
+        else if(secondsLeft <= minSecondsLeft)
+        {
+            isCombatEnded = true;
         }
     }
 
@@ -99,5 +105,34 @@ public class CombatManager : MonoBehaviour
         damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].damage.ToString();
         damageText[2].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[2].damage.ToString();
         damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].damage.ToString();
+    }
+
+    public void ResetCombat()
+    {
+        if(isCombatEnded)
+        {
+            secondsLeft = maxSecondsLeft;
+            combatList.Remove(combatList[0]);
+            isCombatEnded = false;
+
+            StartCoroutine(DamagePlayer());
+
+            takingTimeAway = false;
+            if(combatList.Count == 0)
+            {
+                finito.SetActive(true);
+                combatList = null;
+            }
+        }
+    }
+
+    IEnumerator DamagePlayer()
+    {
+        if (!isCombatEnded)
+        {
+            yield return new WaitForSeconds(5f);
+            Player.Instance.health -= 5f;
+            StartCoroutine(DamagePlayer());
+        }
     }
 }
