@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack 2
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Attaque 2
+  damage: 2
   side: 1
   energyCost: 1
   monster: {fileID: 0}
   owner: {fileID: 0}
-  damage: 2

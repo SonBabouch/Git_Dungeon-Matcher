@@ -54,6 +54,10 @@ public class Player : MonoBehaviour
         {
             energy = maxEnergy;
         }
+        if(health >= maxHealth)
+        {
+            health = maxHealth;
+        }
         playerHealthBar.fillAmount = health / maxHealth;
         playerEnergyBar.fillAmount = energy / maxEnergy;
     }

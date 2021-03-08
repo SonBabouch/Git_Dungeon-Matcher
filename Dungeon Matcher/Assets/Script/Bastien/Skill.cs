@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public abstract class Skill : ScriptableObject
 {
     public string skillName;
+    public float damage;
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;
     public float energyCost;

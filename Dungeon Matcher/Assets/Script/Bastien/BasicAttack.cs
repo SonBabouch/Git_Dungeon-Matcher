@@ -10,8 +10,7 @@ public class BasicAttack : Skill
     private MonsterToken monster;
     [SerializeField]
     private GameObject owner;
-    [SerializeField]
-    private float damage;
+
 
 
     public override void Initialize(GameObject obj)

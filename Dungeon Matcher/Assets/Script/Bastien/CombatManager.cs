@@ -17,6 +17,8 @@ public class CombatManager : MonoBehaviour
     public bool takingTimeAway = false;
     public List<GameObject> combatList = new List<GameObject>();
     public List<Button> combatButtons = new List<Button>();
+    public TextMeshProUGUI[] energyCostText;
+    public TextMeshProUGUI[] damageText;
     [SerializeField]
     private Image enemyhealthBar;
     public float enemyEnergy;
@@ -48,7 +50,17 @@ public class CombatManager : MonoBehaviour
 
     private void Update()
     {
-        if(combatList[0].GetComponent<MonsterToken>().health >= combatList[0].GetComponent<MonsterToken>().maxHealth)
+        energyCostText[0].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[0].energyCost.ToString();
+        energyCostText[1].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[1].energyCost.ToString();
+        energyCostText[2].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[2].energyCost.ToString();
+        energyCostText[3].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[3].energyCost.ToString();
+
+        damageText[0].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[0].damage.ToString();
+        damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].damage.ToString();
+        damageText[2].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[2].damage.ToString();
+        damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].damage.ToString();
+
+        if (combatList[0].GetComponent<MonsterToken>().health >= combatList[0].GetComponent<MonsterToken>().maxHealth)
         {
             combatList[0].GetComponent<MonsterToken>().health = combatList[0].GetComponent<MonsterToken>().maxHealth;
         }
