@@ -184,7 +184,7 @@ MonoBehaviour:
   storedIndex: 
   maxStoredValues: 0
   rareChance: 5
-  nbOfProfilsMax: 5
+  nbOfProfilsMax: 10
   monsterPresented: {fileID: 0}
   profilPresented: {fileID: 0}
 --- !u!114 &3499666006585480132
@@ -402,7 +402,7 @@ PrefabInstance:
         type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26,
+      objectReference: {fileID: 11400000, guid: 19b3be359edd30347abeabd288e7a8c9,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 007514818ad3da843ad2a7ec8dd83f00, type: 3}
@@ -558,7 +558,7 @@ PrefabInstance:
         type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 3f9b51805f86c54449c552c9b0cb3305,
+      objectReference: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 117d7e950ec732d4ea425ff3e2367a51, type: 3}
@@ -714,7 +714,7 @@ PrefabInstance:
         type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 7e7fe7d265a52674caae0b17dba2fcb0,
+      objectReference: {fileID: 11400000, guid: 3f9b51805f86c54449c552c9b0cb3305,
         type: 2}
     - target: {fileID: 8761877609787509778, guid: 128c2a1f3f9096949820c2766d880706,
         type: 3}
