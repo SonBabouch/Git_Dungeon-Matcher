@@ -1307,21 +1307,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6112064790068759581, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.015755717
-      objectReference: {fileID: 0}
-    - target: {fileID: 6112064790068759581, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.7598199
-      objectReference: {fileID: 0}
-    - target: {fileID: 6112064790068759581, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 594.33984
-      objectReference: {fileID: 0}
-    - target: {fileID: 6112064790068759581, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -1404,6 +1389,11 @@ PrefabInstance:
       propertyPath: playerHealthBar
       value: 
       objectReference: {fileID: 740926122}
+    - target: {fileID: 6944320052984937159, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: playerEnergyBar
+      value: 
+      objectReference: {fileID: 1856974967}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e383cf0074529d546b18a93a1cc531b6, type: 3}
 --- !u!1 &1349106878

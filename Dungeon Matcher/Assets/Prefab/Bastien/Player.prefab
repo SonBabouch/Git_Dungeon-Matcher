@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588003221780998661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.015755717, y: 1.7598199, z: 594.33984}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,4 +49,6 @@ MonoBehaviour:
   maxHealth: 100
   minHealth: 0
   playerHealthBar: {fileID: 0}
-  energy: 100
+  playerEnergyBar: {fileID: 0}
+  energy: 3
+  maxEnergy: 6

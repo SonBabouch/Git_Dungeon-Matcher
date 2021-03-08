@@ -16,7 +16,9 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float minHealth;
     public Image playerHealthBar;
-    public float energy = 10f;
+    public Image playerEnergyBar;
+    public float energy = 3f;
+    public float maxEnergy = 6f;
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        monsters = MenuManager.Instance.bagManager.monsterTeam;
+        //monsters = MenuManager.Instance.bagManager.monsterTeam;
     }
     private void Start()
     {
@@ -48,6 +50,11 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if(energy >= maxEnergy)
+        {
+            energy = maxEnergy;
+        }
         playerHealthBar.fillAmount = health / maxHealth;
+        playerEnergyBar.fillAmount = energy / maxEnergy;
     }
 }

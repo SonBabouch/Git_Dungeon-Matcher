@@ -18,6 +18,7 @@ namespace Monster
         [HideInInspector] public string description;
         public string monsterName;
         [HideInInspector] public float health;
+        [HideInInspector] public float maxHealth;
         [HideInInspector] public enum raretyEnum { Common, Rare };
         [HideInInspector] public raretyEnum rarety;
 
@@ -34,19 +35,18 @@ namespace Monster
         public GameObject owner;
         public List<Skill> allySkills;
         public List<Skill> ennemySkills;
-        // Start is called before the first frame update
-       
-        //private void Start()
-        //{
-        //    foreach (Skill skill in allySkills)
-        //    {
-        //        skill.Initialize(owner);
-        //    }
-        //    foreach (Skill skill in ennemySkills)
-        //    {
-        //        skill.Initialize(owner);
-        //    }
-        //}
+
+        private void Start()
+        {
+            foreach (Skill skill in allySkills)
+            {
+                skill.Initialize(owner);
+            }
+            foreach (Skill skill in ennemySkills)
+            {
+                skill.Initialize(owner);
+            }
+        }
 
         public void Initialize()
         {
@@ -59,6 +59,7 @@ namespace Monster
             profilPicture = template.profilPicture;
             side = (monsterSide)template.side;
             monsterIndexPosition = template.monsterIndexPosition;
+            maxHealth = 100f;
         }
     }
 }

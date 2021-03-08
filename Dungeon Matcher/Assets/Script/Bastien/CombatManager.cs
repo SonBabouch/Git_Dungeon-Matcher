@@ -33,7 +33,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        combatList = MenuManager.Instance.matchManager.matchList;
+        //combatList = MenuManager.Instance.matchManager.matchList;
     }
 
     private void Start()
@@ -48,6 +48,10 @@ public class CombatManager : MonoBehaviour
 
     private void Update()
     {
+        if(combatList[0].GetComponent<MonsterToken>().health >= combatList[0].GetComponent<MonsterToken>().maxHealth)
+        {
+            combatList[0].GetComponent<MonsterToken>().health = combatList[0].GetComponent<MonsterToken>().maxHealth;
+        }
         RunningTimer();
         enemyhealthBar.fillAmount = combatList[0].GetComponent<MonsterToken>().health / 100;
 
@@ -57,7 +61,8 @@ public class CombatManager : MonoBehaviour
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        combatList[0].GetComponent<MonsterToken>().health--;
+        combatList[0].GetComponent<MonsterToken>().health -= 0.5f;
+        Player.Instance.energy++;
         Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
         secondsLeft -= 1;
         if(secondsLeft < 10)
