@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Management
 {
@@ -17,6 +18,13 @@ namespace Management
         public GameObject topCanvas;
         public GameObject fullCanvas;
 
+        //Tittel Screen
+        [SerializeField] private GameObject titleScreen;
+
+        public void TitleScreen()
+        {
+            titleScreen.SetActive(false);
+        }
 
         //navigation
         public void GoToList()
