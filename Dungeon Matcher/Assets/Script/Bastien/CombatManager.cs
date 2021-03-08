@@ -38,7 +38,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //combatList = MenuManager.Instance.matchManager.matchList;
+        combatList = MenuManager.Instance.matchManager.matchList;
     }
 
     private void Start()
@@ -96,6 +96,7 @@ public class CombatManager : MonoBehaviour
 
     void InfoButtons()
     {
+
         energyCostText[0].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[0].energyCost.ToString();
         energyCostText[1].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[1].energyCost.ToString();
         energyCostText[2].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[2].energyCost.ToString();
@@ -103,7 +104,7 @@ public class CombatManager : MonoBehaviour
 
         damageText[0].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[0].damage.ToString();
         damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].damage.ToString();
-        damageText[2].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[2].damage.ToString();
+        damageText[2].GetComponent<TextMeshProUGUI>().text = "Heal = " + Player.Instance.playerSkills[2].damage.ToString();
         damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].damage.ToString();
     }
 

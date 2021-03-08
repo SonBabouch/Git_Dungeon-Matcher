@@ -61,6 +61,6 @@ MonoBehaviour:
   allySkills:
   - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}
   - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
-  - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
+  - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}
   - {fileID: 11400000, guid: f377e9a35f56ab5498f6b5c373b36e07, type: 2}
   ennemySkills: []

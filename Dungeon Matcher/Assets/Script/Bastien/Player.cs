@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //monsters = MenuManager.Instance.bagManager.monsterTeam;
+        monsters = MenuManager.Instance.bagManager.monsterTeam;
     }
     private void Start()
     {
