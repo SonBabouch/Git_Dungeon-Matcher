@@ -20,7 +20,7 @@ namespace Management
         public ListManager listManager;
         public PlayerLevel playerLevel;
         public BagManager bagManager;
-        public Monster.MonsterEncyclopedie monsterEncyclopedie;
+        public MonsterEncyclopedie monsterEncyclopedie;
 
         public enum gameState { Shop,Match,List,Bag }  //Index 0 à 3 (dans l'ordre).
         public static gameState currentGameState;

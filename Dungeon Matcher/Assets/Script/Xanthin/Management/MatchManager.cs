@@ -44,12 +44,12 @@ namespace Management
             rareChance = 5;
             choosenList = null;
 
-            foreach (Transform child in  MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().commonMonsterParents.transform)
+            foreach (Transform child in  MenuManager.Instance.monsterEncyclopedie.commonMonsterParents.transform)
             {
                 commonMonsterList.Add(child.gameObject);
             }
 
-            foreach (Transform child in MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().rareMonsterParents.transform)
+            foreach (Transform child in MenuManager.Instance.monsterEncyclopedie.rareMonsterParents.transform)
             {
                 rareMonsterList.Add(child.gameObject);
             }
@@ -100,7 +100,7 @@ namespace Management
                 #endregion
 
                 //Instantier le gameObject avec le bon positionnement;
-                Debug.Log("Initialisation");
+                
                 GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, transform.position, Quaternion.identity);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.spawnPosition.transform);
                 

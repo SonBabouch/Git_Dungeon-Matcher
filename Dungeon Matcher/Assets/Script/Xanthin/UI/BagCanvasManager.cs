@@ -33,17 +33,17 @@ public class BagCanvasManager : MonoBehaviour
         currentButtonSelected = null;
         currentMonsterSelected = null;
 
-        for (int i = 0; i < MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i++)
+        for (int i = 0; i < MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
         {
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster[i].gameObject;
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.allCommonMonster[i].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
         }
 
-        for (int i = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i < MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster.Count + MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count; i++)
+        for (int i = MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i < MenuManager.Instance.monsterEncyclopedie.allRareMonster.Count + MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
         {
             Debug.Log(i);
 
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.GetComponent<Monster.MonsterEncyclopedie>().allCommonMonster.Count].gameObject;
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
         }
 

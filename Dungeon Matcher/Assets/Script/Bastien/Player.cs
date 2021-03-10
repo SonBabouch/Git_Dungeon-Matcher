@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Monster;
 using UnityEngine.UI;
 using Management;
 using UnityEngine.SceneManagement;

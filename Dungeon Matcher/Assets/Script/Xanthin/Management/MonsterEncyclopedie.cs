@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Management;
 
-namespace Monster
-{
+
     public class MonsterEncyclopedie : MonoBehaviour
     {
         
@@ -12,33 +11,33 @@ namespace Monster
         public GameObject commonMonsterParents;
         public GameObject rareMonsterParents;
 
-        public List<MonsterToken> allCommonMonster = new List<MonsterToken>();
-        public List<MonsterToken> allRareMonster = new List<MonsterToken>();
+        public List<GameObject> allCommonMonster = new List<GameObject>();
+        public List<GameObject> allRareMonster = new List<GameObject>();
 
         // Start is called before the first frame update
         void Awake()
         {
+
+            //Initialisation des valeurs pour chaque Monstres.
             foreach (Transform child in commonMonsterParents.transform)
             {
-                allCommonMonster.Add(child.gameObject.GetComponent<MonsterToken>());
+                allCommonMonster.Add(child.gameObject);
                 child.gameObject.GetComponent<MonsterToken>().Initialize();
             }
 
             foreach (Transform child in rareMonsterParents.transform)
             {
-                allRareMonster.Add(child.gameObject.GetComponent<MonsterToken>());
+                allRareMonster.Add(child.gameObject);
                 child.gameObject.GetComponent<MonsterToken>().Initialize();
             }
 
-
-
             for (int i = 0; i < allCommonMonster.Count; i++)
             {
-                allCommonMonster[i].statement = MonsterToken.statementEnum.Indisponible; 
+                allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible; 
             }
             for (int i = 0; i < allRareMonster.Count; i++)
             {
-                allRareMonster[i].statement = MonsterToken.statementEnum.Indisponible;
+                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
             }
 
             
@@ -48,18 +47,18 @@ namespace Monster
         {
             for (int i = 0; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i++)
             {
-                allCommonMonster[i].statement = MonsterToken.statementEnum.Disponible;
+                allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
             }
 
             for (int i = 0; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i++)
             {
-                allRareMonster[i].statement = MonsterToken.statementEnum.Disponible;
+                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
             }
 
         }
        
     }
-}
+
     
 
 
