@@ -4175,7 +4175,7 @@ PrefabInstance:
         type: 3}
       propertyPath: canvasManager
       value: 
-      objectReference: {fileID: 2064679435}
+      objectReference: {fileID: 2064679436}
     - target: {fileID: 3499666006585480131, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: m_Name
@@ -7649,9 +7649,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pageSwiper: {fileID: 315274385}
-  matchCanvas: {fileID: 822126488}
-  listCanvas: {fileID: 1010982314}
-  bagCanvas: {fileID: 918873690}
+  matchCanvas: {fileID: 822126492}
+  listCanvas: {fileID: 1010982318}
+  bagCanvas: {fileID: 918873694}
   shopCanvas: {fileID: 630397119}
   detailsCanvasManager: {fileID: 1146713999}
   topCanvas: {fileID: 467273606}

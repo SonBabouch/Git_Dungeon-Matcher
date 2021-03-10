@@ -20,14 +20,14 @@ namespace Monster
         {
             foreach (Transform child in commonMonsterParents.transform)
             {
-                allCommonMonster.Add(child.gameObject.GetComponent<Monster.MonsterToken>());
-                child.gameObject.GetComponent<Monster.MonsterToken>().Initialize();
+                allCommonMonster.Add(child.gameObject.GetComponent<MonsterToken>());
+                child.gameObject.GetComponent<MonsterToken>().Initialize();
             }
 
             foreach (Transform child in rareMonsterParents.transform)
             {
-                allRareMonster.Add(child.gameObject.GetComponent<Monster.MonsterToken>());
-                child.gameObject.GetComponent<Monster.MonsterToken>().Initialize();
+                allRareMonster.Add(child.gameObject.GetComponent<MonsterToken>());
+                child.gameObject.GetComponent<MonsterToken>().Initialize();
             }
 
 

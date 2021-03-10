@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Monster
-{
+
+
     public class MonsterToken : MonoBehaviour
     {
         [SerializeField] private MonsterCard template;
@@ -61,6 +61,6 @@ namespace Monster
             monsterIndexPosition = template.monsterIndexPosition;
             maxHealth = 100f;
         }
+    
     }
-}
 

@@ -101,8 +101,8 @@ namespace Management
 
                 //Instantier le gameObject avec le bon positionnement;
                 Debug.Log("Initialisation");
-                GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().profilPrefab, transform.position, Quaternion.identity);
-                profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().spawnPosition.transform);
+                GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, transform.position, Quaternion.identity);
+                profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.spawnPosition.transform);
                 
                 //Besoin de Set le Scale de l'objet pour le faire feet au reste de l'écran.
                 //profilSpawned.GetComponent<RectTransform>().transform.position = new Vector3(0f, 0f, 0f);
@@ -181,19 +181,20 @@ namespace Management
                     //Reset le controle des boutons sur le profil suivant
                     Destroy(profilPresented);
                     profilPresented = monsterSpawned[monsterSpawned.Count-1];
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1];
                 }
 
                 //Baisse de l'energy
                 EnergyManager.energy--;
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+                MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
                 
                 //Augmentation de la taille de la liste actuelle.
                 MenuManager.Instance.listManager.listCurrentSize++;
 
+                Debug.Log("1");
                 //Instantie le profil matché dans la liste
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().listCanvas.GetComponent<ListCanvasManager>().InstantiateProfil();
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().listCanvas.GetComponent<ListCanvasManager>().UpdateList();
+                MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
+                MenuManager.Instance.canvasManager.listCanvas.UpdateList();
 
 
                 
@@ -224,23 +225,19 @@ namespace Management
                 {
                     Destroy(profilPresented);
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1];
                 }
                 
                 rareChance++;
                 EnergyManager.energy--;
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+                MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
                 
             }
             else
             {
                 return;
             }
-
-
         }
-
-       
         #endregion
     }
 }

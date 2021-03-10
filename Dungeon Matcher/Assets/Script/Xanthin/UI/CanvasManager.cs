@@ -8,9 +8,9 @@ namespace Management
         public PageSwiper pageSwiper;
 
         //Differents Menu
-        public GameObject matchCanvas;
-        public GameObject listCanvas;
-        public GameObject bagCanvas;
+        public MatchCanvasManager matchCanvas;
+        public ListCanvasManager listCanvas;
+        public BagCanvasManager bagCanvas;
         public GameObject shopCanvas;
         public DetailsCanvasManager detailsCanvasManager;
 
@@ -29,15 +29,15 @@ namespace Management
         //navigation
         public void GoToList()
         {
-            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().switchExp)
+            if (MenuManager.Instance.canvasManager.matchCanvas.switchExp)
             {
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().ShowExpérience();
+                MenuManager.Instance.canvasManager.matchCanvas.ShowExpérience();
             }
 
-            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected != null)
+            if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = null;
+                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
                 
             }
 
@@ -52,11 +52,11 @@ namespace Management
         public void GoToMatch()
         {
            
-            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected != null)
+            if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
                
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = null;
+                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
             }
 
             //Faire le changement de Panel;
@@ -70,16 +70,16 @@ namespace Management
         }
         public void GoToShop()
         {
-            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().switchExp)
+            if (MenuManager.Instance.canvasManager.matchCanvas.switchExp)
             {
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().ShowExpérience();
+                MenuManager.Instance.canvasManager.matchCanvas.ShowExpérience();
             }
 
-            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected != null)
+            if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
                 
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = null;
+                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
+                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
             }
 
             //Faire le changement de Panel;
@@ -94,9 +94,9 @@ namespace Management
         }
         public void GoToBag()
         {
-            if (MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().switchExp)
+            if (MenuManager.Instance.canvasManager.matchCanvas.switchExp)
             {
-                MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().ShowExpérience();
+                MenuManager.Instance.canvasManager.matchCanvas.ShowExpérience();
             }
             pageSwiper.GetComponent<PageSwiper>().GoToBag();
             //Faire le changement de Panel;

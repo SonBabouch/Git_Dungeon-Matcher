@@ -33,14 +33,14 @@ public class DetailsCanvasManager : MonoBehaviour
     public void UpdateDetailsMenu()
     {
         //Update les Informations du Menu Details.
-        if(MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected != null)
+        if(MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected != null)
         {
             //Description Stuff
-            GameObject monsterToShow = MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected;
-            monsterLevel.text = monsterToShow.GetComponent<Monster.MonsterToken>().monsterLevel.ToString();
-            monsterName.text = monsterToShow.GetComponent<Monster.MonsterToken>().monsterName;
-            monsterDescription.text = monsterToShow.GetComponent<Monster.MonsterToken>().description;
-            fullMonsterImage.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().fullMonsterImage;
+            GameObject monsterToShow = MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected;
+            monsterLevel.text = monsterToShow.GetComponent<MonsterToken>().monsterLevel.ToString();
+            monsterName.text = monsterToShow.GetComponent<MonsterToken>().monsterName;
+            monsterDescription.text = monsterToShow.GetComponent<MonsterToken>().description;
+            fullMonsterImage.sprite = monsterToShow.GetComponent<MonsterToken>().fullMonsterImage;
 
 
             /*Description Skills

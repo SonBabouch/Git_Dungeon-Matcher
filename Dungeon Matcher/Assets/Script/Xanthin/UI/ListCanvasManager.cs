@@ -64,7 +64,9 @@ namespace Management
             instantiatedProfil.transform.SetParent(listPosition[MenuManager.Instance.listManager.GetComponent<ListManager>().listCurrentSize - 1].transform);
             instantiatedProfil.transform.localScale = new Vector3(1f, 1f, 1f);
             instantiatedProfil.GetComponent<CombatProfilList>().numberCombat = MenuManager.Instance.listManager.GetComponent<ListManager>().listCurrentSize;
+            Debug.Log("2");
             instantiatedProfil.GetComponent<CombatProfilList>().UpdateVisualMatch();
+            
         }
     }
 

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Monster
-{
+
+
     /// <summary>
     /// Template de Monstre
     /// </summary>
@@ -32,6 +32,6 @@ namespace Monster
         public bool inCombat = false;
         #endregion
     }
-}
+
 
 

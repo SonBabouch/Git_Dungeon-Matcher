@@ -12,7 +12,7 @@ namespace Management
     {
         //Référence Canvas
         public static MenuManager Instance;
-        public GameObject canvasManager; //Dans ce script se trouve les 3 différents GameObjects responsables des Canvas de : Match, List & Bag.
+        public CanvasManager canvasManager; //Dans ce script se trouve les 3 différents GameObjects responsables des Canvas de : Match, List & Bag.
 
         //Script Référence.
         public MatchManager matchManager;

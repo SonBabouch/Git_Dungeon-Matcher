@@ -23,16 +23,17 @@ public class CombatProfilList : MonoBehaviour
     //S'appele quand le profil est matché.
     public void UpdateVisualMatch()
     {
+        
         //Permet de set les visuel lors du match.
-        numberCombat = MenuManager.Instance.matchManager.GetComponent<MatchManager>().matchList.Count;
+        numberCombat = MenuManager.Instance.matchManager.matchList.Count;
         chanceDrop.enabled = false;
 
-        profilAsset = MenuManager.Instance.matchManager.GetComponent<MatchManager>().matchList[numberCombat-1].GetComponent<Monster.MonsterToken>().profilPicture;
+        profilAsset = MenuManager.Instance.matchManager.matchList[numberCombat-1].GetComponent<MonsterToken>().profilPicture;
 
         profilImage.sprite = profilAsset;
         numberCombatText.text = "Combat " + numberCombat.ToString() + ".";
 
-        monsterContainer = MenuManager.Instance.matchManager.GetComponent<MatchManager>().matchList[numberCombat - 1];
+        monsterContainer = MenuManager.Instance.matchManager.matchList[numberCombat - 1];
     }
 
     //Fonction on click
