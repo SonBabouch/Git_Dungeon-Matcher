@@ -217,9 +217,9 @@ MonoBehaviour:
   numberRarePool: 0100000002000000
   monsterSpawned: []
   storedIndex: 
-  maxStoredValues: 0
+  maxStoredValues: 3
   rareChance: 5
-  nbOfProfilsMax: 10
+  nbOfProfilsMax: 6
   monsterPresented: {fileID: 0}
   profilPresented: {fileID: 0}
 --- !u!114 &8224612494735233243
@@ -542,6 +542,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761877609787509778, guid: d2a6930b7f476cc4d8fff8483b34fa06,
+        type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: f5cf0fb36c3dc0144a9fec119421ac40,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
 --- !u!4 &4058008413495544219 stripped

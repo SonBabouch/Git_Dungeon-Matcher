@@ -54,16 +54,16 @@ namespace Management
         //appeler à chaque match pour update le visuel du menu
         public void UpdateList()
         {
-            listeState.text = "Taille " + MenuManager.Instance.listManager.GetComponent<ListManager>().listCurrentSize + " / " + MenuManager.Instance.listManager.GetComponent<ListManager>().listMaxSize[PlayerLevel.playerLevel-1];
+            listeState.text = "Taille " + MenuManager.Instance.listManager.listCurrentSize + " / " + MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1];
         }
 
         //Instancier le profil à une position particulière. 
         public void InstantiateProfil()
         {
-            GameObject instantiatedProfil =  Instantiate(listPrefab, listPosition[MenuManager.Instance.listManager.GetComponent<ListManager>().listCurrentSize - 1].transform.position, Quaternion.identity);
-            instantiatedProfil.transform.SetParent(listPosition[MenuManager.Instance.listManager.GetComponent<ListManager>().listCurrentSize - 1].transform);
+            GameObject instantiatedProfil =  Instantiate(listPrefab, listPosition[MenuManager.Instance.listManager.listCurrentSize - 1].transform.position, Quaternion.identity);
+            instantiatedProfil.transform.SetParent(listPosition[MenuManager.Instance.listManager.listCurrentSize - 1].transform);
             instantiatedProfil.transform.localScale = new Vector3(1f, 1f, 1f);
-            instantiatedProfil.GetComponent<CombatProfilList>().numberCombat = MenuManager.Instance.listManager.GetComponent<ListManager>().listCurrentSize;
+            instantiatedProfil.GetComponent<CombatProfilList>().numberCombat = MenuManager.Instance.listManager.listCurrentSize;
             Debug.Log("2");
             instantiatedProfil.GetComponent<CombatProfilList>().UpdateVisualMatch();
             

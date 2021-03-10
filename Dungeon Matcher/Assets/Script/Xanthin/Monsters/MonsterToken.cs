@@ -25,7 +25,7 @@ using UnityEngine;
         [HideInInspector] public enum statementEnum { Equipe, Disponible, Indisponible };
          public statementEnum statement;
 
-        [HideInInspector] public Sprite profilPicture;
+         public Sprite profilPicture;
          public Sprite fullMonsterImage;
 
         //Combat Stuff

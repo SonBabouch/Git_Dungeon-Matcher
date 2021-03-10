@@ -5,7 +5,7 @@ using Management;
 
 public class ProfilBehaviour : MonoBehaviour
 {
-    public MonsterToken monsterPick;
+    public GameObject monsterPick;
 
     public Image profilAsset;
     public TextMeshProUGUI profilName;
@@ -15,12 +15,12 @@ public class ProfilBehaviour : MonoBehaviour
     public void Initialisation()
     {
         //Debug.Log("Initialisation ProfilBehvaiour");
-        monsterPick = MenuManager.Instance.matchManager.monsterPresented.GetComponent<MonsterToken>();
-        profilAsset.sprite = monsterPick.profilPicture;
+        monsterPick = MenuManager.Instance.matchManager.monsterPresented;
+        profilAsset.sprite = monsterPick.GetComponent<MonsterToken>().profilPicture;
        
-        description.text = monsterPick.description;
-        health.text = monsterPick.health.ToString();
-        profilName.text = monsterPick.monsterName;
+        description.text = monsterPick.GetComponent<MonsterToken>().description;
+        health.text = monsterPick.GetComponent<MonsterToken>().health.ToString();
+        profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
     }
 
     public void Destroy()

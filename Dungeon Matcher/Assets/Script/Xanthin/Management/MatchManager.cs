@@ -41,18 +41,19 @@ namespace Management
         // Start is called before the first frame update
         void Start()
         {
-            rareChance = 5;
+            rareChance = 3;
             choosenList = null;
 
-            foreach (Transform child in  MenuManager.Instance.monsterEncyclopedie.commonMonsterParents.transform)
+            //update la liste de Monstre via l'encyclopédie.
+            for (int i = 0; i < MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
             {
-                commonMonsterList.Add(child.gameObject);
+                commonMonsterList.Add(MenuManager.Instance.monsterEncyclopedie.allCommonMonster[i]);
+            }
+            for (int i = 0; i < MenuManager.Instance.monsterEncyclopedie.allRareMonster.Count; i++)
+            {
+                rareMonsterList.Add(MenuManager.Instance.monsterEncyclopedie.allRareMonster[i]);
             }
 
-            foreach (Transform child in MenuManager.Instance.monsterEncyclopedie.rareMonsterParents.transform)
-            {
-                rareMonsterList.Add(child.gameObject);
-            }
 
             Tirage();
         }
@@ -65,27 +66,18 @@ namespace Management
             {
                 //2-Test pour savoir si un monstre rare sort ou non;
                 #region RaretyTest
-                bool isRare = false;
                 int testRare = Random.Range(0, 100);
                 //Debug.Log(testRare);
 
-                if (testRare >= rareChance)
+                if (testRare <= rareChance)
                 {
-                    isRare = false;
-                }
-                else
-                {
-                    isRare = true;
-                }
-
-                if (isRare)
-                {
-                    //La liste choisit est celle des monstres Rares.
+                    //C'est un rare.
                     choosenList = rareMonsterList;
-                    //Reset de la chance.
-                    rareChance = 5;
+                    //Reset de la chance pour ne pas re avoir de monstre Rare.
+                    rareChance = 3;
                     //Tirage aléatoire parmis la pool de monstre rare selon le niveau du joueur.
                     int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel - 1]);
+                    //MonsterPresented = Un monstre tiré dans la liste.
                     monsterPresented = choosenList[tirageIndex];
                 }
                 else
@@ -94,28 +86,25 @@ namespace Management
                     rareChance++;
                     //La liste choisit est celles de monstres Communs.
                     choosenList = commonMonsterList;
-
+                    //On lance une fonction pour verifier qu'un même index ne sort pas deux fois
                     TirageIndexCommon();
                 }
                 #endregion
 
                 //Instantier le gameObject avec le bon positionnement;
-                
                 GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, transform.position, Quaternion.identity);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.spawnPosition.transform);
-                
-                //Besoin de Set le Scale de l'objet pour le faire feet au reste de l'écran.
-                //profilSpawned.GetComponent<RectTransform>().transform.position = new Vector3(0f, 0f, 0f);
-
-                //Afficher les valeurs.
                 profilPresented = profilSpawned;
+
                 profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
-                
                 //Le monstre est ajouté à une liste pouvant être traquée.
-                monsterSpawned.Add(profilPresented);
+                monsterSpawned.Add(profilSpawned);
                 //Debug.Log(monsterPresented);
             }
+
            
+            
+
         }
         // Permet de répéter le test de la valeur sortie pour ne pas qu'elle soit similaire sur 3 tirages d'affiléS.
         public void TirageIndexCommon()
@@ -123,12 +112,11 @@ namespace Management
             //Tirage aléatoire parmis la pool de monstre selon le niveau du joueur.
             int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevel.playerLevel - 1]);
             //Répéter la manip si le chiffre à déja été selectionné dans les X dernières valeurs.
-
             bool testGood = true;
             //Si y'a rien, ca rentre pas dedans.
             for (int i = 0; i < storedIndex.Count; i++)
             {
-                if (storedIndex[i] == tirageIndex)
+                if (tirageIndex == storedIndex[i])
                 {
                     testGood = false;
                 }
@@ -140,17 +128,15 @@ namespace Management
             }
             else
             {
-                if (storedIndex.Count < 3)
-                {
-                    storedIndex.Add(tirageIndex);
-                }
-                else
-                {
-                    storedIndex[2] = storedIndex[1];
-                    storedIndex[1] = storedIndex[0];
-                    storedIndex[0] = tirageIndex;
-                }
+                Debug.Log(tirageIndex);
                 monsterPresented = choosenList[tirageIndex];
+                storedIndex.Add(tirageIndex);
+                
+                if(storedIndex.Count > maxStoredValues)
+                {
+                    storedIndex.Remove(storedIndex[0]);
+                }
+                
             }
 
 
@@ -163,26 +149,9 @@ namespace Management
             {
                 //Debug.Log("In");
                 //Checker si (energie > 0 && liste pas complète).
+
                 
-
                 matchList.Add(monsterPresented);
-
-                monsterSpawned.Remove(profilPresented);
-
-                //pour eviter la null reference d'index quand il n'y a plus de profils.
-                if (monsterSpawned.Count == 0)
-                {
-                    Destroy(profilPresented);
-                    profilPresented = null;
-                    monsterPresented = null;
-                }
-                else
-                {
-                    //Reset le controle des boutons sur le profil suivant
-                    Destroy(profilPresented);
-                    profilPresented = monsterSpawned[monsterSpawned.Count-1];
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1];
-                }
 
                 //Baisse de l'energy
                 EnergyManager.energy--;
@@ -190,14 +159,28 @@ namespace Management
                 
                 //Augmentation de la taille de la liste actuelle.
                 MenuManager.Instance.listManager.listCurrentSize++;
-
-                Debug.Log("1");
-                //Instantie le profil matché dans la liste
-                MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
                 MenuManager.Instance.canvasManager.listCanvas.UpdateList();
 
+                Debug.Log("1");
+                //Instantie le profil matché dans la liste.
+                MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
 
-                
+                monsterSpawned.Remove(profilPresented);
+                //pour eviter la null reference d'index quand il n'y a plus de profils.
+                if (monsterSpawned.Count == 0)
+                {
+                    Destroy(profilPresented);
+                    monsterPresented = null;
+                    profilPresented = null;
+                }
+                else
+                {
+                    //Reset le controle des boutons sur le profil suivant
+                    Destroy(profilPresented);
+                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                    profilPresented = monsterSpawned[monsterSpawned.Count-1];
+                }
+
             }
             else
             {
@@ -224,8 +207,9 @@ namespace Management
                 else
                 {
                     Destroy(profilPresented);
+                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1];
+                
                 }
                 
                 rareChance++;

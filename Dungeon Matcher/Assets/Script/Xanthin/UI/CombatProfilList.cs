@@ -17,24 +17,24 @@ public class CombatProfilList : MonoBehaviour
     [SerializeField] private Image profilImage;
     [SerializeField] private TextMeshProUGUI numberCombatText;
     [SerializeField] private TextMeshProUGUI chanceDrop;
-    [SerializeField] private GameObject monsterContainer;
+    public GameObject monsterContainer;
 
 
     //S'appele quand le profil est matché.
     public void UpdateVisualMatch()
     {
-        
+        monsterContainer = MenuManager.Instance.matchManager.matchList[MenuManager.Instance.matchManager.matchList.Count - 1];
+        profilAsset = monsterContainer.GetComponent<MonsterToken>().profilPicture;
         //Permet de set les visuel lors du match.
         numberCombat = MenuManager.Instance.matchManager.matchList.Count;
         chanceDrop.enabled = false;
 
-        profilAsset = MenuManager.Instance.matchManager.matchList[numberCombat-1].GetComponent<MonsterToken>().profilPicture;
-
         profilImage.sprite = profilAsset;
         numberCombatText.text = "Combat " + numberCombat.ToString() + ".";
 
-        monsterContainer = MenuManager.Instance.matchManager.matchList[numberCombat - 1];
     }
+
+    
 
     //Fonction on click
     public void OnClickButton()
