@@ -34,6 +34,21 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        Initialize();
+        CombatManager.Instance.combatButtons[0].onClick.AddListener(playerSkills[0].Use);
+        CombatManager.Instance.combatButtons[1].onClick.AddListener(playerSkills[1].Use);
+        CombatManager.Instance.combatButtons[2].onClick.AddListener(playerSkills[2].Use);
+        CombatManager.Instance.combatButtons[3].onClick.AddListener(playerSkills[3].Use);
+    }
+    private void Update()
+    {
+        limitHealthAndEnergy();
+        playerHealthBar.fillAmount = health / maxHealth;
+        playerEnergyBar.fillAmount = energy / maxEnergy;
+    }
+
+    public void Initialize()
+    {
         foreach (GameObject monster in monsters)
         {
             foreach (Skill skill in monster.GetComponent<MonsterToken>().allySkills)
@@ -42,22 +57,17 @@ public class Player : MonoBehaviour
                 playerSkills.Add(skill);
             }
         }
-        CombatManager.Instance.combatButtons[0].onClick.AddListener(playerSkills[0].Use);
-        CombatManager.Instance.combatButtons[1].onClick.AddListener(playerSkills[1].Use);
-        CombatManager.Instance.combatButtons[2].onClick.AddListener(playerSkills[2].Use);
-        CombatManager.Instance.combatButtons[3].onClick.AddListener(playerSkills[3].Use);
     }
-    private void Update()
+
+    void limitHealthAndEnergy()
     {
-        if(energy >= maxEnergy)
+        if (energy >= maxEnergy)
         {
             energy = maxEnergy;
         }
-        if(health >= maxHealth)
+        if (health >= maxHealth)
         {
             health = maxHealth;
         }
-        playerHealthBar.fillAmount = health / maxHealth;
-        playerEnergyBar.fillAmount = energy / maxEnergy;
     }
 }

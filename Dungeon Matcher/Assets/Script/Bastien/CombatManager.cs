@@ -21,10 +21,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private Image enemyhealthBar;
     public float enemyEnergy;
-    [SerializeField]
-    bool isCombatEnded = false;
-    [SerializeField]
-    GameObject finito;
 
 
     private void Awake()
@@ -47,7 +43,6 @@ public class CombatManager : MonoBehaviour
         {
             monster.GetComponent<MonsterToken>().Initialize();
         }
-        StartCoroutine(DamagePlayer());
         //Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
         //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
     }
@@ -106,34 +101,5 @@ public class CombatManager : MonoBehaviour
         damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].damage.ToString();
         damageText[2].GetComponent<TextMeshProUGUI>().text = "Heal = " + Player.Instance.playerSkills[2].damage.ToString();
         damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].damage.ToString();
-    }
-
-    public void ResetCombat()
-    {
-        if(isCombatEnded)
-        {
-            secondsLeft = maxSecondsLeft;
-            combatList.Remove(combatList[0]);
-            isCombatEnded = false;
-
-            StartCoroutine(DamagePlayer());
-
-            takingTimeAway = false;
-            if(combatList.Count == 0)
-            {
-                finito.SetActive(true);
-                combatList = null;
-            }
-        }
-    }
-
-    IEnumerator DamagePlayer()
-    {
-        if (!isCombatEnded)
-        {
-            yield return new WaitForSeconds(5f);
-            Player.Instance.health -= 5f;
-            StartCoroutine(DamagePlayer());
-        }
     }
 }
