@@ -21,6 +21,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private Image enemyhealthBar;
     public float enemyEnergy;
+    public bool isCombatEnded = false;
 
 
     private void Awake()
