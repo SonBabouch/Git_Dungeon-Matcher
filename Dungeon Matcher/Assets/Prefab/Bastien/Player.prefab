@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048a14b138d757f42af2f545e4632dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsters:
+  allyMonsters:
+  - {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a, type: 3}
   - {fileID: 3352059483369707408, guid: f2c245234c5ab6844b81620a815fc6eb, type: 3}
-  - {fileID: 3352059483369707408, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
   playerSkills: []
   health: 100
   maxHealth: 100

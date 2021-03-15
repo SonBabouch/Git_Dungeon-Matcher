@@ -9,15 +9,17 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     [SerializeField]
-    private List<GameObject> monsters;
+    private List<GameObject> allyMonsters;
     public List<Skill> playerSkills;
     public float health;
     public float maxHealth;
     public float minHealth;
     public Image playerHealthBar;
     public Image playerEnergyBar;
-    public float energy = 3f;
-    public float maxEnergy = 6f;
+    public float energy;
+    public float maxEnergy;
+    public Skill[] playerHand = new Skill[4];
+    public Skill[] playerDraw = new Skill[4];
 
     private void Awake()
     {
@@ -30,11 +32,11 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        monsters = MenuManager.Instance.bagManager.monsterTeam;
+        //allyMonsters = MenuManager.Instance.bagManager.monsterTeam;
     }
     private void Start()
     {
-        Initialize();
+        InitializePlayer();
         CombatManager.Instance.combatButtons[0].onClick.AddListener(playerSkills[0].Use);
         CombatManager.Instance.combatButtons[1].onClick.AddListener(playerSkills[1].Use);
         CombatManager.Instance.combatButtons[2].onClick.AddListener(playerSkills[2].Use);
@@ -47,9 +49,9 @@ public class Player : MonoBehaviour
         playerEnergyBar.fillAmount = energy / maxEnergy;
     }
 
-    public void Initialize()
+    public void InitializePlayer()
     {
-        foreach (GameObject monster in monsters)
+        foreach (GameObject monster in allyMonsters)
         {
             foreach (Skill skill in monster.GetComponent<MonsterToken>().allySkills)
             {
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
                 playerSkills.Add(skill);
             }
         }
+        ShufflePlayerSkills();
     }
 
     void limitHealthAndEnergy()
@@ -69,5 +72,23 @@ public class Player : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+
+    public void ShufflePlayerSkills()
+    {
+        playerSkills.ShuffleFisherYates();
+    }
+    
+    public void SetPlayerHandAndDraw()
+    {
+        playerSkills[0] = playerHand[0];
+        playerSkills[1] = playerHand[1];
+        playerSkills[2] = playerHand[2];
+        playerSkills[3] = playerHand[3];
+
+        playerSkills[4] = playerDraw[0];
+        playerSkills[5] = playerDraw[1];
+        playerSkills[6] = playerDraw[2];
+        playerSkills[7] = playerDraw[3];
     }
 }

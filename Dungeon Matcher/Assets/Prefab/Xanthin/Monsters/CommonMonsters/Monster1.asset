@@ -17,9 +17,9 @@ MonoBehaviour:
     sur Rawrchat : @6ReineDesMers"
   monsterName: "S\xE9r\xE9na"
   health: 22
+  maxHealth: 100
+  minHealh: 0
   rarety: 0
   statement: 2
   monsterIndexPosition: 1
   profilPicture: {fileID: 21300000, guid: 88f2978de721d744fbed1db691eb3e06, type: 3}
-  side: 0
-  inCombat: 0

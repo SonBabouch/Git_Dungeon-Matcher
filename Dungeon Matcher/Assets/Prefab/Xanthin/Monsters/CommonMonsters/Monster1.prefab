@@ -48,16 +48,17 @@ MonoBehaviour:
   numberOfFragments: 0
   numberOfFragmentsRequired: 
   monsterLevel: 0
-  description: "Jeune sir\xE8ne cherche son barracuda pour trip aquatique.  Si tu
-    fais moins de 3 m\xE8tres, tu m'int\xE9resses pas.  Ajoute-moi quand m\xEAme
-    sur Rawrchat : @6ReineDesMers"
-  monsterName: "S\xE9r\xE9na"
-  health: 27
+  description: "Succombe \xE0 mon regard charmeur mais attention, derri\xE8re ce
+    corps de r\xEAve se cache un monstre des plus\u2026 farouche ;)  Attention, ma
+    vie c'est comme une bo\xEEte de nuit, je ne laisse pas rentrer n'importe qui
+    ;)"
+  monsterName: Loukatmi
+  health: 8.5
   maxHealth: 100
   rarety: 0
   isGet: 0
   statement: 2
-  profilPicture: {fileID: 21300000, guid: 88f2978de721d744fbed1db691eb3e06, type: 3}
+  profilPicture: {fileID: 21300000, guid: e489ae6486b00b74396e919d200124c5, type: 3}
   fullMonsterImage: {fileID: 21300000, guid: 4c1749e39da7aef40afb779a5ab873a5, type: 3}
   side: 0
   owner: {fileID: 3352059483369707408}
@@ -66,4 +67,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
   - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}
   - {fileID: 11400000, guid: f377e9a35f56ab5498f6b5c373b36e07, type: 2}
-  ennemySkills: []
+  ennemySkills:
+  - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
+  - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
+  - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
+  - {fileID: 11400000, guid: f377e9a35f56ab5498f6b5c373b36e07, type: 2}
+  - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}
+  - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
+  - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
+  - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}

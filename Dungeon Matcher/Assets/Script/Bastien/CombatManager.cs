@@ -10,17 +10,13 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
     public TextMeshProUGUI timerDisplay;
-    public int secondsLeft = 60;
+    public int secondsLeft;
     public int maxSecondsLeft;
     public int minSecondsLeft;
     public bool takingTimeAway = false;
-    public List<GameObject> combatList = new List<GameObject>();
-    public List<Button> combatButtons = new List<Button>();
+    public List<Button> combatButtons;
     public TextMeshProUGUI[] energyCostText;
     public TextMeshProUGUI[] damageText;
-    [SerializeField]
-    private Image enemyhealthBar;
-    public float enemyEnergy;
     public bool isCombatEnded = false;
 
 
@@ -35,36 +31,25 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        combatList = MenuManager.Instance.matchManager.matchList;
+        //combatList = MenuManager.Instance.matchManager.matchList;
     }
 
     private void Start()
     {
-        foreach(GameObject monster in combatList)
-        {
-            monster.GetComponent<MonsterToken>().Initialize();
-        }
-        //Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
         //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        InfoButtons();
-
-                
         RunningTimer();
-        enemyhealthBar.fillAmount = combatList[0].GetComponent<MonsterToken>().health / 100;
-
     }
 
     public IEnumerator CombatTimer()
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        combatList[0].GetComponent<MonsterToken>().health -= 0.5f;
+        Enemy.Instance.health -= 0.5f;
         Player.Instance.energy++;
-        Debug.Log(combatList[0].GetComponent<MonsterToken>().health);
         secondsLeft -= 1;
         if(secondsLeft < 10)
         {
@@ -82,7 +67,6 @@ public class CombatManager : MonoBehaviour
         if (!takingTimeAway && secondsLeft > minSecondsLeft && !isCombatEnded)
         {
             StartCoroutine(CombatTimer());
-            isCombatEnded = false;
         }
         else if(secondsLeft <= minSecondsLeft)
         {
@@ -98,9 +82,9 @@ public class CombatManager : MonoBehaviour
         energyCostText[2].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[2].energyCost.ToString();
         energyCostText[3].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[3].energyCost.ToString();
 
-        damageText[0].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[0].damage.ToString();
-        damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].damage.ToString();
-        damageText[2].GetComponent<TextMeshProUGUI>().text = "Heal = " + Player.Instance.playerSkills[2].damage.ToString();
-        damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].damage.ToString();
+        damageText[0].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[0].healthAmount.ToString();
+        damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].healthAmount.ToString();
+        damageText[2].GetComponent<TextMeshProUGUI>().text = "Heal = " + Player.Instance.playerSkills[2].healthAmount.ToString();
+        damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].healthAmount.ToString();
     }
 }
