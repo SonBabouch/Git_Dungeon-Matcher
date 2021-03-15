@@ -11,6 +11,7 @@ public class ProfilBehaviour : MonoBehaviour
     public TextMeshProUGUI profilName;
     public TextMeshProUGUI description;
     public TextMeshProUGUI health;
+    public GameObject certification;
 
     public void Initialisation()
     {
@@ -21,6 +22,15 @@ public class ProfilBehaviour : MonoBehaviour
         description.text = monsterPick.GetComponent<MonsterToken>().description;
         health.text = monsterPick.GetComponent<MonsterToken>().health.ToString();
         profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
+
+        if (monsterPick.GetComponent<MonsterToken>().isGet)
+        {
+            certification.SetActive(true);
+        }
+        else
+        {
+            certification.SetActive(false);
+        }
     }
 
     public void Destroy()

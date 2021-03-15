@@ -56,6 +56,7 @@ namespace Management
 
 
             Tirage();
+            DisableVisual();
         }
         
         #region Methods
@@ -101,10 +102,6 @@ namespace Management
                 monsterSpawned.Add(profilSpawned);
                 //Debug.Log(monsterPresented);
             }
-
-           
-            
-
         }
         // Permet de répéter le test de la valeur sortie pour ne pas qu'elle soit similaire sur 3 tirages d'affiléS.
         public void TirageIndexCommon()
@@ -140,6 +137,24 @@ namespace Management
             }
 
 
+        }
+
+        public void DisableVisual()
+        {
+            for (int i = 0; i < monsterSpawned.Count; i++)
+            {
+                monsterSpawned[i].SetActive(false);
+            }
+
+            if(monsterSpawned.Count >= 2)
+            {
+                monsterSpawned[monsterSpawned.Count-1].SetActive(true);
+                monsterSpawned[monsterSpawned.Count - 2].SetActive(true);
+            }
+            else if (monsterSpawned.Count == 1)
+            {
+                monsterSpawned[monsterSpawned.Count - 1].SetActive(true);
+            }
         }
 
         //A activer quand le bouton match est préssé.
@@ -180,7 +195,7 @@ namespace Management
                     monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count-1];
                 }
-
+                DisableVisual();
             }
             else
             {
@@ -215,12 +230,16 @@ namespace Management
                 rareChance++;
                 EnergyManager.energy--;
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
-                
+
+                DisableVisual();
+
+
             }
             else
             {
                 return;
             }
+
         }
         #endregion
     }

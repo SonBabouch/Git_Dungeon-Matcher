@@ -47,24 +47,30 @@ public class BagButtonBehaviour : MonoBehaviour
             return;
         }
 
-        //Ajouter à l'équipe si Count pas = à 2
-        if(MenuManager.Instance.bagManager.monsterTeam.Count < 2)
+        switch (MenuManager.Instance.bagManager.monsterTeam.Count)
         {
-            MenuManager.Instance.bagManager.monsterTeam.Insert(0, monsterContainer);
-            monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
-        }
-        else
-        {
-            GameObject monsterToRemove = MenuManager.Instance.bagManager.monsterTeam[1];
-            monsterToRemove.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+            case 0:
+                MenuManager.Instance.bagManager.monsterTeam.Add(monsterContainer);
+                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                break;
+            case 1:
+                MenuManager.Instance.bagManager.monsterTeam.Insert(1,monsterContainer);
+                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                break;
+            case 2:
+                GameObject monsterToRemove = MenuManager.Instance.bagManager.monsterTeam[1];
+                monsterToRemove.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
 
-            MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
-            MenuManager.Instance.bagManager.monsterTeam.Insert(0,monsterContainer);
-            monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
+                MenuManager.Instance.bagManager.monsterTeam.Insert(1, monsterContainer);
+                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                break;
+            default:
+                print("Incorrect intelligence level.");
+                break;
         }
 
         MenuManager.Instance.canvasManager.bagCanvas.UpdateEquipeButton();
-
     }
 
     public void Upgrade()

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Management
 {
@@ -18,8 +18,23 @@ namespace Management
         public GameObject topCanvas;
         public GameObject fullCanvas;
 
-        //Tittel Screen
+        //Title Screen
         [SerializeField] private GameObject titleScreen;
+
+        //Notifications
+        [SerializeField] private GameObject notificationBubble;
+        [SerializeField] private TextMeshProUGUI numberNotif;
+
+
+        private void Update()
+        {
+            if(MenuManager.Instance.listManager.listCurrentSize > 0)
+            {
+                notificationBubble.SetActive(true);
+                numberNotif.text = MenuManager.Instance.listManager.listCurrentSize.ToString();
+            }
+        }
+
 
         public void TitleScreen()
         {
@@ -104,6 +119,8 @@ namespace Management
             MenuManager.currentGameState = MenuManager.gameState.Bag;
            
         }
+
+
 
     }
 }

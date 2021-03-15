@@ -23,6 +23,7 @@ using UnityEngine;
         [HideInInspector] public raretyEnum rarety;
 
         [HideInInspector] public enum statementEnum { Equipe, Disponible, Indisponible };
+          public bool isGet;
          public statementEnum statement;
 
          public Sprite profilPicture;
