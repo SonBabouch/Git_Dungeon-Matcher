@@ -21,29 +21,20 @@ public class BasicAttack : Skill
 
     public override void Use()
     {
-        //Debug.Log(damage);
-        //Debug.Log(side);
         switch (side)
         {
             case monsterSide.Ally:
                 if (Player.Instance.energy >= energyCost)
                 {
-                    CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health += damage;
                     Player.Instance.energy -= energyCost;
-                    Debug.Log(CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health);
-                    Debug.Log(Player.Instance.energy);
-
-                    if (CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health >= CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().maxHealth)
-                    {
-                        CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().health = CombatManager.Instance.combatList[0].GetComponent<MonsterToken>().maxHealth;
-                    }
-
+                    Enemy.Instance.health += healthAmount;
                 }
                 break;
             case monsterSide.Enemy:
-                if(CombatManager.Instance.enemyEnergy >= energyCost)
+                if (Enemy.Instance.energy >= energyCost)
                 {
-                    Player.Instance.health -= damage;
+                    Enemy.Instance.energy -= energyCost;
+                    Player.Instance.health += healthAmount;
                 }
                 break;
         }
