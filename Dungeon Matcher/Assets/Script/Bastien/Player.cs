@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Management;
 using UnityEngine.SceneManagement;
 
@@ -14,12 +13,13 @@ public class Player : MonoBehaviour
     public float health;
     public float maxHealth;
     public float minHealth;
-    public Image playerHealthBar;
-    public Image playerEnergyBar;
+
     public float energy;
     public float maxEnergy;
-    public Skill[] playerHand = new Skill[4];
-    public Skill[] playerDraw = new Skill[4];
+    public List<Skill> playerHand = new List<Skill>();
+    public List<Skill> playerDraw = new List<Skill>();
+
+    public bool isSkillUsed;
 
     private void Awake()
     {
@@ -37,16 +37,11 @@ public class Player : MonoBehaviour
     private void Start()
     {
         InitializePlayer();
-        CombatManager.Instance.combatButtons[0].onClick.AddListener(playerSkills[0].Use);
-        CombatManager.Instance.combatButtons[1].onClick.AddListener(playerSkills[1].Use);
-        CombatManager.Instance.combatButtons[2].onClick.AddListener(playerSkills[2].Use);
-        CombatManager.Instance.combatButtons[3].onClick.AddListener(playerSkills[3].Use);
+        SetPlayerHandAndDraw();
     }
     private void Update()
     {
         limitHealthAndEnergy();
-        playerHealthBar.fillAmount = health / maxHealth;
-        playerEnergyBar.fillAmount = energy / maxEnergy;
     }
 
     public void InitializePlayer()
@@ -78,17 +73,21 @@ public class Player : MonoBehaviour
     {
         playerSkills.ShuffleFisherYates();
     }
-    
+
     public void SetPlayerHandAndDraw()
     {
-        playerSkills[0] = playerHand[0];
-        playerSkills[1] = playerHand[1];
-        playerSkills[2] = playerHand[2];
-        playerSkills[3] = playerHand[3];
+        for (int i = 0; i < playerHand.Count; i++)
+        {
+            playerHand[i] = playerSkills[i];
+            playerDraw[i] = playerSkills[i + 4];
+        }
+    }
 
-        playerSkills[4] = playerDraw[0];
-        playerSkills[5] = playerDraw[1];
-        playerSkills[6] = playerDraw[2];
-        playerSkills[7] = playerDraw[3];
+    public void SwapSkill(int index)
+    {
+        playerDraw.Add(playerHand[index]);
+        playerHand.RemoveAt(index);
+        playerHand.Insert(index, playerDraw[0]);
+        playerDraw.RemoveAt(0);
     }
 }

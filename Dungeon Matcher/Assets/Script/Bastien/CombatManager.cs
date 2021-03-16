@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Management;
 
 
 public class CombatManager : MonoBehaviour
@@ -37,6 +36,7 @@ public class CombatManager : MonoBehaviour
     private void Start()
     {
         //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
+        ButtonsUpdate();
     }
 
     private void FixedUpdate()
@@ -48,7 +48,7 @@ public class CombatManager : MonoBehaviour
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        Enemy.Instance.health -= 0.5f;
+        Enemy.Instance.health -= 1f;
         Player.Instance.energy++;
         secondsLeft -= 1;
         if(secondsLeft < 10)
@@ -74,17 +74,42 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void InfoButtons()
+    void ButtonsInfos()
     {
-
         energyCostText[0].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[0].energyCost.ToString();
         energyCostText[1].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[1].energyCost.ToString();
         energyCostText[2].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[2].energyCost.ToString();
         energyCostText[3].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerSkills[3].energyCost.ToString();
 
-        damageText[0].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[0].healthAmount.ToString();
-        damageText[1].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[1].healthAmount.ToString();
-        damageText[2].GetComponent<TextMeshProUGUI>().text = "Heal = " + Player.Instance.playerSkills[2].healthAmount.ToString();
-        damageText[3].GetComponent<TextMeshProUGUI>().text = "Damage = " + Player.Instance.playerSkills[3].healthAmount.ToString();
+        damageText[0].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerSkills[0].skillDescription;
+        damageText[1].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerSkills[1].skillDescription;
+        damageText[2].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerSkills[2].skillDescription;
+        damageText[3].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerSkills[3].skillDescription;
     }
+
+    public void ButtonsInitialization()
+    {
+        for (int i = 0; i < combatButtons.Count; i++)
+        {
+            combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
+        }
+        ButtonsInfos();
+    }
+    public void ButtonsUpdate()
+    {
+        for (int i = 0; i < combatButtons.Count; i++)
+        {
+            combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
+        }
+        ButtonsInfos();
+    }
+
+    public void ResetButtons()
+    {
+        for (int i = 0; i < combatButtons.Count; i++)
+        {
+            combatButtons[i].onClick.RemoveAllListeners();
+        }
+    }
+
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2336706625598943703}
   - component: {fileID: 1504451362838087437}
+  - component: {fileID: 6958789301845541581}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51,10 +52,32 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   minHealth: 0
-  playerHealthBar: {fileID: 1797867049949512096}
-  playerEnergyBar: {fileID: 3650887762287888988}
   energy: 3
   maxEnergy: 6
+  playerHand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerDraw:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &6958789301845541581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977588376116025295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33469066cfde0042b1afe8ddb841597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealthBar: {fileID: 1797867049949512096}
+  playerEnergyBar: {fileID: 3650887762287888988}
 --- !u!1001 &1344591643440354356
 PrefabInstance:
   m_ObjectHideFlags: 0
