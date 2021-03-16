@@ -95,6 +95,8 @@ namespace Management
                 //Instantier le gameObject avec le bon positionnement;
                 GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, transform.position, Quaternion.identity);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.spawnPosition.transform);
+                profilSpawned.transform.position = new Vector3(1080 / 2,1920/2,0);
+                profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
                 profilPresented = profilSpawned;
 
                 profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
