@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using Management;
+using System.Collections;
 
 public class ProfilBehaviour : MonoBehaviour
 {
@@ -33,8 +34,43 @@ public class ProfilBehaviour : MonoBehaviour
         }
     }
 
+    public void MatchAnim(int lenght)
+    {
+        StartCoroutine(MatchFade(lenght));
+    }
+
+    public void DisLikeAnim(int lenght)
+    {
+        StartCoroutine(DislikeFade(lenght));
+    }
+
+    
+
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    IEnumerator MatchFade(int lenght)
+    {
+        for (int i = 0; i < lenght; i++)
+        {
+            Vector3 translate = new Vector3(50, 0, 1);
+            gameObject.transform.Translate(translate);
+            yield return null;
+        }
+        Destroy();
+    }
+
+    IEnumerator DislikeFade(int lenght)
+    {
+        for (int i = 0; i < lenght; i++)
+        {
+            Vector3 translate = new Vector3(-50, 0, 1);
+            gameObject.transform.Translate(translate);
+            yield return null;
+
+        }
+        Destroy();
     }
 }

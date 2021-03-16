@@ -93,10 +93,13 @@ namespace Management
                 #endregion
 
                 //Instantier le gameObject avec le bon positionnement;
-                GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, transform.position, Quaternion.identity);
+                GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, MenuManager.Instance.canvasManager.matchCanvas.spawnPosition.transform.position, Quaternion.identity);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.spawnPosition.transform);
-                profilSpawned.transform.position = new Vector3(1080 / 2,1920/2,0);
-                profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
+                //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
+               
+                
+                
+                
                 profilPresented = profilSpawned;
 
                 profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
@@ -186,17 +189,23 @@ namespace Management
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)
                 {
-                    Destroy(profilPresented);
+                    //Trigger Animation et Destroy sur le Prefab
+                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50);
+
+                    //Reset le controle des boutons sur le profil suivant
                     monsterPresented = null;
                     profilPresented = null;
                 }
                 else
                 {
+
+                    //Trigger Animation et Destroy sur le Prefab
+                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50);
                     //Reset le controle des boutons sur le profil suivant
-                    Destroy(profilPresented);
                     monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count-1];
                 }
+                MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
                 DisableVisual();
             }
             else
@@ -217,13 +226,13 @@ namespace Management
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)
                 {
-                    Destroy(profilPresented);
+                    profilPresented.GetComponent<ProfilBehaviour>().DisLikeAnim(50);
                     profilPresented = null;
                     monsterPresented = null;
                 }
                 else
                 {
-                    Destroy(profilPresented);
+                    profilPresented.GetComponent<ProfilBehaviour>().DisLikeAnim(50);
                     monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
                 
@@ -232,7 +241,7 @@ namespace Management
                 rareChance++;
                 EnergyManager.energy--;
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
-
+                MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
                 DisableVisual();
 
 

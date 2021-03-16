@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
+
 namespace Management
 {
     /// <summary>
@@ -15,6 +16,7 @@ namespace Management
 
         //Player Information
         public TextMeshProUGUI energy;
+        public GameObject energySpend;
         public TextMeshProUGUI playerLevelText;
         public Image playerExperienceBar;
 
@@ -22,6 +24,7 @@ namespace Management
         public bool switchExp = false;
         [SerializeField] private TextMeshProUGUI experienceText;
         [SerializeField] private Image experienceShower;
+
         void Start()
         {
             UpdateEnergy();
@@ -32,7 +35,7 @@ namespace Management
         {
             MenuManager.currentGameState = MenuManager.gameState.List;
         }
-        
+
         //A appeler à chaque fois que le joueur perd ou gagne de l'energie.
         public void UpdateEnergy()
         {
@@ -43,12 +46,12 @@ namespace Management
         private void Update()
         {
             playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
-            playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel-1]);
+            playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
         }
 
         public void ShowExpérience()
         {
-            experienceText.text = PlayerLevel.currentExperience.ToString() + " / " + MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel-1].ToString();
+            experienceText.text = PlayerLevel.currentExperience.ToString() + " / " + MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1].ToString();
 
             if (!switchExp)
             {
@@ -62,16 +65,17 @@ namespace Management
             if (switchExp)
             {
                 experienceShower.GetComponent<Animator>().SetTrigger("Show");
-                
+
             }
             else
             {
                 experienceShower.GetComponent<Animator>().SetTrigger("Unshow");
-                
+
             }
 
 
         }
-    }
+
+    }     
 }
 
