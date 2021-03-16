@@ -25,6 +25,7 @@ public class Heal : Skill
                 {
                     Player.Instance.energy -= energyCost;
                     Player.Instance.health -= healthAmount;
+
                 }
                 break;
             case monsterSide.Enemy:
