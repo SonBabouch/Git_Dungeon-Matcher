@@ -100,6 +100,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     //5- Coroutine pour une transition
     IEnumerator SmoothMove(Vector2 startPos, Vector2 endPos, float seconds)
     {
+        MenuManager.Instance.matchManager.canMatch = false;
+
         canChange = false;
         float t = 0f; //float pour le timer
 
@@ -116,6 +118,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         panelLocation = endPos;
         canChange = true;
+
+        MenuManager.Instance.matchManager.canMatch = true;
     }
 
     public void GoToList()
@@ -131,7 +135,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     //Anim *2
                     newLocation += new Vector2(-Screen.width * 2, 0);
                     currentPanelNumber = 1;
-                    Debug.Log("Called");
+                    
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
                     break;
 
@@ -140,7 +144,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     //Anim *1
                     newLocation += new Vector2(-Screen.width, 0);
                     currentPanelNumber = 1;
-                    Debug.Log("Called");
+                    
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
                     break;
 
@@ -150,7 +154,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
                     newLocation += new Vector2(Screen.width, 0);
                     currentPanelNumber = 1;
-                    Debug.Log("Called");
+                    
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
                     break;
                 default:
@@ -283,6 +287,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     break;
             }
         }
-       
+
+        
+
     }
 }

@@ -50,12 +50,22 @@ using Management;
                 allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
             }
 
+            for (int i = MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel]; i++)
+            {
+            allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
+            }
+
             for (int i = 0; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i++)
             {
                 allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
             }
 
-        }
+            for (int i = MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel]; i++)
+            {
+                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
+            }
+
+    }
        
     }
 

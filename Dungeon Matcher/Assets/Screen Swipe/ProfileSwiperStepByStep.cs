@@ -30,6 +30,35 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
 
     }
 
+    void Update()
+    {
+
+        if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameState == MenuManager.gameState.Match && MenuManager.Instance.matchManager.canMatch)
+        {
+            if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
+            {
+                MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(true);
+                Debug.Log("La");
+            }
+            else if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
+            {
+                Debug.Log("Ici");
+                MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
+            }
+
+            if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x)
+            {
+                MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(true);
+            }
+            else if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x)
+            {
+                MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+            }
+        }
+
+
+    }
+
     //2.2- Drag on start
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -41,7 +70,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch)
+        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1])
         {
             //3.1- Récupération des donner X et Y 
             float differenceX = data.pressPosition.x - data.position.x;
@@ -60,14 +89,15 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             transform.rotation = Quaternion.Slerp(transform.rotation, rotationToApply, Time.deltaTime * 1);
         }
 
-       
+        
+
 
     }
 
     //4- On End Drag
     public void OnEndDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch)
+        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
         {
             float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 
@@ -122,6 +152,8 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                 //print("position de base");
 
             }
+
+            
         }
 
         

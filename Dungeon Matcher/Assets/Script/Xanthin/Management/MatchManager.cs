@@ -32,7 +32,8 @@ namespace Management
         [SerializeField] private int maxStoredValues;
 
         [Header("Chance")]
-        [SerializeField] private int rareChance;
+        public int ChanceCount;
+        public int MaxChanceCount;
 
         public int nbOfProfilsMax;
 
@@ -43,7 +44,8 @@ namespace Management
         // Start is called before the first frame update
         void Start()
         {
-            rareChance = 3;
+            MaxChanceCount = 100;
+            ChanceCount = 0;
             choosenList = null;
 
             //update la liste de Monstre via l'encyclopédie.
@@ -73,24 +75,26 @@ namespace Management
                 canMatch = false;
                 //2-Test pour savoir si un monstre rare sort ou non;
                 #region RaretyTest
-            int testRare = Random.Range(0, 100);
+            
                     //Debug.Log(testRare);
 
-                    if (testRare <= rareChance)
+                    if (ChanceCount >= 100)
                     {
                         //C'est un rare.
                         choosenList = rareMonsterList;
                         //Reset de la chance pour ne pas re avoir de monstre Rare.
-                        rareChance = 3;
+                        ChanceCount = 0;
+
+                        MenuManager.Instance.canvasManager.matchCanvas.ResetBarMethod();
+                        MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = true;
+                       
                         //Tirage aléatoire parmis la pool de monstre rare selon le niveau du joueur.
-                        int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel - 1]);
+                        int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel]);
                         //MonsterPresented = Un monstre tiré dans la liste.
                         monsterPresented = choosenList[tirageIndex];
                     }
                     else
                     {
-                        //C'est pas un rare donc on augmente la chance d'avoir un rare.
-                        rareChance++;
                         //La liste choisit est celles de monstres Communs.
                         choosenList = commonMonsterList;
                         //On lance une fonction pour verifier qu'un même index ne sort pas deux fois
@@ -122,24 +126,23 @@ namespace Management
 
             //2-Test pour savoir si un monstre rare sort ou non;
             #region RaretyTest
-            int testRare = Random.Range(0, 100);
-            //Debug.Log(testRare);
+           
 
-            if (testRare <= rareChance)
+            if (MaxChanceCount == ChanceCount)
             {
                 //C'est un rare.
                 choosenList = rareMonsterList;
                 //Reset de la chance pour ne pas re avoir de monstre Rare.
-                rareChance = 3;
+                ChanceCount = 0;
                 //Tirage aléatoire parmis la pool de monstre rare selon le niveau du joueur.
-                int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel - 1]);
+                int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel]);
                 //MonsterPresented = Un monstre tiré dans la liste.
                 monsterPresented = choosenList[tirageIndex];
             }
             else
             {
                 //C'est pas un rare donc on augmente la chance d'avoir un rare.
-                rareChance++;
+                
                 //La liste choisit est celles de monstres Communs.
                 choosenList = commonMonsterList;
                 //On lance une fonction pour verifier qu'un même index ne sort pas deux fois
@@ -171,7 +174,7 @@ namespace Management
         public void TirageIndexCommon()
         {
             //Tirage aléatoire parmis la pool de monstre selon le niveau du joueur.
-            int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevel.playerLevel - 1]);
+            int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevel.playerLevel]);
             //Répéter la manip si le chiffre à déja été selectionné dans les X dernières valeurs.
             bool testGood = true;
             //Si y'a rien, ca rentre pas dedans.
@@ -212,23 +215,34 @@ namespace Management
             {
                 //Debug.Log("In");
                 //Checker si (energie > 0 && liste pas complète).
+                if(MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+                {
+                    MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
+                }
 
-                
-                matchList.Add(monsterPresented);
+
+
+                if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible)
+                {
+                    matchList.Add(monsterPresented);
+
+                    //Augmentation de la taille de la liste actuelle.
+                    MenuManager.Instance.listManager.listCurrentSize++;
+                    MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+
+                    Debug.Log("1");
+                    //Instantie le profil matché dans la liste.
+                    MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
+                }
+
+                //Afficher FeedBackErreur.
 
                 //Baisse de l'energy
                 EnergyManager.energy--;
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
                 
-                //Augmentation de la taille de la liste actuelle.
-                MenuManager.Instance.listManager.listCurrentSize++;
-                MenuManager.Instance.canvasManager.listCanvas.UpdateList();
-
-                Debug.Log("1");
-                //Instantie le profil matché dans la liste.
-                MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
-
                 monsterSpawned.Remove(profilPresented);
+
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)
                 {
@@ -248,6 +262,9 @@ namespace Management
                     monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count-1];
                 }
+
+                MenuManager.Instance.canvasManager.matchCanvas.IncreaseRareBar();
+
                 MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
 
                 Tirage();
@@ -266,6 +283,11 @@ namespace Management
         {
             if (monsterSpawned.Count !=0 && EnergyManager.energy > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch)
             {
+                if (MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+                {
+                    MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
+                }
+
 
                 monsterSpawned.Remove(profilPresented);
 
@@ -283,15 +305,11 @@ namespace Management
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
                 
                 }
-                
-                rareChance++;
                 EnergyManager.energy--;
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
                 MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
 
                 Tirage();
-
-
             }
             else
             {

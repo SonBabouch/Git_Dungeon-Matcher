@@ -13,7 +13,7 @@ namespace Management
     {
         //Apparition du GameObject Profil à un point précis dans la scène.
         public GameObject profilPrefab;
-        public GameObject spawnPosition;
+        public GameObject[] profilPosition;
 
         //Player Information
         public TextMeshProUGUI energy;
@@ -26,13 +26,27 @@ namespace Management
         [SerializeField] private TextMeshProUGUI experienceText;
         [SerializeField] private Image experienceShower;
 
-        public GameObject[] profilPosition;
-
+        //Animation Finish;
         private bool zeroFinish = false;
         private bool oneFinish = false;
+
+        //rareStuff;
+        [SerializeField] private Image rareBar;
+        [SerializeField] private GameObject rareParticules;
+        [SerializeField] private ParticleSystem rareSystemParticule;
+        public bool ThereIsARare = false;
+
+        //Marker
+        public GameObject dislikeMarker;
+        public GameObject likeMarker;
         
         void Start()
         {
+            rareSystemParticule = rareParticules.GetComponent<ParticleSystem>();
+
+            var emission = rareSystemParticule.emission;
+            emission.enabled = false;
+
             UpdateEnergy();
         }
 
@@ -48,13 +62,22 @@ namespace Management
             energy.text = EnergyManager.energy.ToString() + "/" + EnergyManager.maxEnergy.ToString();
         }
 
+        public void IncreaseRareBar()
+        {
+            int NeedToFill = 10;
+
+            StartCoroutine(IncreaseBar(NeedToFill));
+        }
+
         //Update le constamment les infos car on peut pas traquer le moment ou le joueur passe de niveau.
         private void Update()
         {
             playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
             playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
 
-            if(zeroFinish && oneFinish)
+           
+
+            if (zeroFinish && oneFinish)
             {
                 zeroFinish = false;
                 oneFinish = false;
@@ -62,6 +85,12 @@ namespace Management
                 MenuManager.Instance.matchManager.canMatch = true;
             }
         }
+
+        public void ResetBarMethod()
+        {
+            StartCoroutine(ResetBar());
+        }
+       
 
         public void ShowExpérience()
         {
@@ -102,10 +131,43 @@ namespace Management
         public void UpdateProfilPosition()
         {
 
+            if (ThereIsARare)
+            {
+                var emission = rareSystemParticule.emission;
+                emission.enabled = true;
+            }
+            else
+            {
+                var emission = rareSystemParticule.emission;
+                emission.enabled = false;
+            }
+        
+
             StartCoroutine(StarterCoroutine());
 
         }
 
+
+        IEnumerator IncreaseBar(int lenght)
+        {
+            for (int i = 0; i < lenght; i++)
+            {
+                MenuManager.Instance.matchManager.ChanceCount++;
+                rareBar.fillAmount +=0.01f; 
+                yield return new WaitForSeconds(0.05f);
+                
+            }
+        }
+
+        IEnumerator ResetBar()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                rareBar.fillAmount -= 0.01f;
+                yield return new WaitForSeconds(0.001f);
+            }
+            
+        }
 
         IEnumerator StarterCoroutine()
         {

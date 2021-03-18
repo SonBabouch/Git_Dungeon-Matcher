@@ -15,7 +15,7 @@ public class EnergyManager : MonoBehaviour
     void Start()
     {
         //Initialisation
-        maxEnergy = 10;
+        maxEnergy = 30;
         energy = maxEnergy;
         MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
     }

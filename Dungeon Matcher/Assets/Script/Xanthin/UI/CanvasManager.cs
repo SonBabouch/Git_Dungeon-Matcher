@@ -44,9 +44,12 @@ namespace Management
         //navigation
         public void GoToList()
         {
+
+            
             if (MenuManager.Instance.canvasManager.matchCanvas.switchExp)
             {
                 MenuManager.Instance.canvasManager.matchCanvas.ShowExpérience();
+                
             }
 
             if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
@@ -63,10 +66,12 @@ namespace Management
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
                 MenuManager.currentGameState = MenuManager.gameState.List;
             }
+
+            
         }
         public void GoToMatch()
         {
-           
+            
             if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
                
@@ -104,6 +109,8 @@ namespace Management
 
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
                 MenuManager.currentGameState = MenuManager.gameState.Shop;
+
+                
             }
             
         }
@@ -117,7 +124,9 @@ namespace Management
             //Faire le changement de Panel;
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
             MenuManager.currentGameState = MenuManager.gameState.Bag;
-           
+
+            
+
         }
 
 

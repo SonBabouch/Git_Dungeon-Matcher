@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 11400000, guid: 3f9b51805f86c54449c552c9b0cb3305, type: 2}
+  template: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26, type: 2}
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 

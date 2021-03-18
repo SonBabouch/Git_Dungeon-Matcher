@@ -20,7 +20,7 @@ using UnityEngine;
         [HideInInspector] public float health;
         [HideInInspector] public float maxHealth;
         [HideInInspector] public enum raretyEnum { Common, Rare };
-        [HideInInspector] public raretyEnum rarety;
+         public raretyEnum rarety;
 
         [HideInInspector] public enum statementEnum { Equipe, Disponible, Indisponible };
           public bool isGet;
