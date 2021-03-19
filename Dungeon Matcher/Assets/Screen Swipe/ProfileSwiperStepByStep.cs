@@ -70,7 +70,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1])
+        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject)
         {
             //3.1- Récupération des donner X et Y 
             float differenceX = data.pressPosition.x - data.position.x;
