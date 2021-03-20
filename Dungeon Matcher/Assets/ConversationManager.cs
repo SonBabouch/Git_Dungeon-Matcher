@@ -21,9 +21,7 @@ public class ConversationManager : MonoBehaviour
 
     public int spawnPositionIndex;
 
-    public List<GameObject> playerMsg = new List<GameObject>();
-    public List<GameObject> enemyMsg = new List<GameObject>();
-    public List<GameObject> allMsg = new List<GameObject>();
+    public GameObject[] allMsg; 
 
     // Start is called before the first frame update
     void Start()
@@ -38,51 +36,46 @@ public class ConversationManager : MonoBehaviour
         {
             enemyMsgPositions.Add(child.gameObject);
         }
+
+        allMsg = new  GameObject [enemyMsgPositions.Count];
     }
 
+   
 
     public void UpdatePosition()
     {
-        //Différencier les différents Types de messages
-
-        for (int i = allMsg.Count - 1; i > 0 ; i--)
+        if (allMsg[allMsg.Length-1] != null)
         {
-            if(allMsg[i].GetComponent<MessageBehaviour>().teamMsg == MessageBehaviour.team.Player)
-            {
-                if(allMsg[i].GetComponent<MessageBehaviour>().typeOfMsg == MessageBehaviour.typeOf.Small)
-                {
-                    playerMsg[i].transform.position = playerMsgPositions[i + 1].transform.position;
-                    playerMsg[i].transform.SetParent(playerMsgPositions[i + 1].transform);
-                    playerMsg[i].transform.localPosition = Vector3.zero;
-                }
-                else
-                {
-                    playerMsg[i].transform.position = playerMsgPositions[i + 2].transform.position;
-                    playerMsg[i].transform.SetParent(playerMsgPositions[i + 2].transform);
-                    playerMsg[i].transform.localPosition = Vector3.zero;
-                }
-            }
-            else
-            {
-                if (allMsg[i].GetComponent<MessageBehaviour>().typeOfMsg == MessageBehaviour.typeOf.Small)
-                {
-                    enemyMsg[i].transform.position = enemyMsgPositions[i + 1].transform.position;
-                    enemyMsg[i].transform.SetParent(enemyMsgPositions[i + 1].transform);
-                    enemyMsg[i].transform.localPosition = Vector3.zero;
-                }
-                else
-                {
-                    enemyMsg[i].transform.position = enemyMsgPositions[i + 2].transform.position;
-                    enemyMsg[i].transform.SetParent(enemyMsgPositions[i + 2].transform);
-                    enemyMsg[i].transform.localPosition = Vector3.zero;
-                }
-            }
+            GameObject currentGO = allMsg[allMsg.Length-1];
 
-           
+            allMsg[allMsg.Length - 1] = null;
+            //Activer La Fonction ici pour les Emojis LeaveBattle();
+            
+
+            Destroy(currentGO);
         }
 
-        
+        for (int i = allMsg.Length -1; i > -1; i--)
+        {
+            if(allMsg[i] != null)
+            {
+                    //augmenter Current Position;
+                    allMsg[i + 1] = allMsg[i];
 
+                    if (allMsg[i + 1].GetComponent<MessageBehaviour>().teamMsg == MessageBehaviour.team.Player)
+                    {
+                        allMsg[i] = null;
+                        allMsg[i + 1].transform.SetParent(playerMsgPositions[i + 1].transform);
+                        allMsg[i + 1].transform.localPosition = Vector3.zero;
+                    }
+                    else
+                    {
+                        allMsg[i] = null;
+                        allMsg[i + 1].transform.SetParent(enemyMsgPositions[i + 1].transform);
+                        allMsg[i + 1].transform.localPosition = Vector3.zero;
+                    }
+            }
+        }
     }
 
 
@@ -92,8 +85,8 @@ public class ConversationManager : MonoBehaviour
         UpdatePosition();
         GameObject msg = Instantiate(SmallMessagePlayer.gameObject, playerMsgPositions[0].transform.position,Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
-        allMsg.Add(msg);
-        playerMsg.Add(msg);
+        allMsg[0] = msg;
+        
     }
 
     public void PlayerLargeMessage()
@@ -101,8 +94,7 @@ public class ConversationManager : MonoBehaviour
         UpdatePosition();
         GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
-        allMsg.Add(msg);
-        playerMsg.Add(msg);
+        allMsg[0] = msg;
     }
 
     public void PlayerEmojis()
@@ -110,8 +102,7 @@ public class ConversationManager : MonoBehaviour
         UpdatePosition();
         GameObject msg = Instantiate(EmojiPlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
-        allMsg.Add(msg);
-        playerMsg.Add(msg);
+        allMsg[0] = msg;
     }
     #endregion
 
@@ -121,8 +112,7 @@ public class ConversationManager : MonoBehaviour
         UpdatePosition();
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
-        allMsg.Add(msg);
-        enemyMsg.Add(msg);
+        allMsg[0] = msg;
     }
 
     public void EnemyLargeMessage()
@@ -130,8 +120,7 @@ public class ConversationManager : MonoBehaviour
         UpdatePosition();
         GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
-        allMsg.Add(msg);
-        enemyMsg.Add(msg);
+        allMsg[0] = msg;
     }
 
     public void EnemyEmojis()
@@ -139,8 +128,9 @@ public class ConversationManager : MonoBehaviour
         UpdatePosition();
         GameObject msg = Instantiate(EmojiEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
-        allMsg.Add(msg);
-        enemyMsg.Add(msg);
+        allMsg[0] = msg;
     }
     #endregion
+
+    
 }

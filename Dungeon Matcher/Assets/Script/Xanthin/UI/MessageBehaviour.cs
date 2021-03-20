@@ -10,6 +10,6 @@ public class MessageBehaviour : MonoBehaviour
     public enum team{Player,Enemy};
     public team teamMsg;
 
-    public int currentPosition;
+    public int currentPosition = 0;
 
 }
