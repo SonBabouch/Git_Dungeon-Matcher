@@ -23,11 +23,8 @@ public class MonsterToken : MonoBehaviour
 
     [HideInInspector] public enum raretyEnum { Common, Rare };
     [HideInInspector] public raretyEnum rarety;
-        [HideInInspector] public enum statementEnum { Equipe, Disponible, Indisponible };
-          public bool isGet;
-         public statementEnum statement;
-
     [HideInInspector] public enum statementEnum { Equipe, Disponible, Indisponible };
+    public bool isGet;
     public statementEnum statement;
 
     public Sprite profilPicture;
