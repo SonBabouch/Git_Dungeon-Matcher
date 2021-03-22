@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     private List<GameObject> enemyMonsters = new List<GameObject>();
     [SerializeField]
     private List<Skill> enemySkills = new List<Skill>();
+    [SerializeField]
+    private List<Skill> enemyHand = new List<Skill>();
+    [SerializeField]
+    private List<Skill> enemyDraw = new List<Skill>();
 
 
 
@@ -55,4 +59,22 @@ public class Enemy : MonoBehaviour
             enemySkills.Add(skill);
         }
     }
+
+    public void SetEnemyHandAndDraw()
+    {
+        for (int i = 0; i < enemyHand.Count; i++)
+        {
+            enemyHand[i] = enemySkills[i];
+            enemyDraw[i] = enemySkills[i + 4];
+        }
+    }
+
+    public void EnemySwapSkill(int index)
+    {
+        enemyDraw.Add(enemyHand[index]);
+        enemyHand.RemoveAt(index);
+        enemyHand.Insert(index, enemyDraw[0]);
+        enemyDraw.RemoveAt(0);
+    }
+
 }

@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SwapSkill(int index)
+    public void PlayerSwapSkill(int index)
     {
         playerDraw.Add(playerHand[index]);
         playerHand.RemoveAt(index);
