@@ -25,7 +25,7 @@ public class Heal : Skill
                 {
                     Player.Instance.energy -= energyCost;
                     Player.Instance.health -= healthAmount;
-
+                    CombatManager.Instance.ButtonsUpdate();
                 }
                 break;
             case monsterSide.Enemy:
@@ -36,5 +36,6 @@ public class Heal : Skill
                 }
                 break;
         }
+        CombatManager.Instance.index = 0;
     }
 }
