@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public List<Skill> playerDraw = new List<Skill>();
 
     public bool isSkillUsed;
+    public bool isBurn;
 
     private void Awake()
     {
@@ -90,4 +91,11 @@ public class Player : MonoBehaviour
         playerHand.Insert(index, playerDraw[0]);
         playerDraw.RemoveAt(0);
     }
+
+    public void AllyAlteration()
+    {
+        //Creer une méthode qui gere un type d'altération et l'appeller ici
+    }
+
+    
 }

@@ -17,12 +17,13 @@ public class Heal : Skill
     }
 
     public override void Use()
-    {
+    { 
         switch (side)
         {
             case monsterSide.Ally:
                 if (Player.Instance.energy >= energyCost)
                 {
+                    Player.Instance.AllyAlteration();
                     Player.Instance.energy -= energyCost;
                     Player.Instance.health -= healthAmount;
                     CombatManager.Instance.ButtonsUpdate();
