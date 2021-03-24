@@ -29,6 +29,7 @@ public class BasicAttack : Skill
                     Player.Instance.energy -= energyCost;
                     Enemy.Instance.health += healthAmount;
                     CombatManager.Instance.ButtonsUpdate();
+                    ConversationManager.Instance.SendMessagesPlayer(this);
                 }
                 break;
             case monsterSide.Enemy:
@@ -36,6 +37,7 @@ public class BasicAttack : Skill
                 {
                     Enemy.Instance.energy -= energyCost;
                     Player.Instance.health += healthAmount;
+                    ConversationManager.Instance.SendMessagesEnemy(this);
                 }
                 break;
         }

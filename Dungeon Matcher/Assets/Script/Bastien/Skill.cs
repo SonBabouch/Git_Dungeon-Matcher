@@ -12,6 +12,10 @@ public abstract class Skill : ScriptableObject
     public float healthAmount;
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;
+
+    public enum typeOfMessage { Small, Big, Emoji}
+    public typeOfMessage messageType;
+
     public float energyCost;
     public abstract void Initialize(GameObject obj);
     public abstract void Use();

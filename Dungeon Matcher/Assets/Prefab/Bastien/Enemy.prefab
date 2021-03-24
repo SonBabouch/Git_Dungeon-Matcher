@@ -132,7 +132,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &7240008832939619595
 MonoBehaviour:
@@ -228,6 +228,8 @@ MonoBehaviour:
   - {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a, type: 3}
   - {fileID: 3352059483369707408, guid: f2c245234c5ab6844b81620a815fc6eb, type: 3}
   enemySkills: []
+  enemyHand: []
+  enemyDraw: []
 --- !u!114 &3961628646244606166
 MonoBehaviour:
   m_ObjectHideFlags: 0

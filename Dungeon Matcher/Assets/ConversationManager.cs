@@ -21,7 +21,24 @@ public class ConversationManager : MonoBehaviour
 
     public int spawnPositionIndex;
 
-    public GameObject[] allMsg; 
+    public GameObject[] allMsg;
+
+    public static ConversationManager Instance;
+
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +97,44 @@ public class ConversationManager : MonoBehaviour
 
 
     #region Player
+    public void SendMessagesPlayer(Skill capacity)
+    {
+        switch (capacity.messageType)
+        {
+            case Skill.typeOfMessage.Small:
+                PlayerSmallMessage();
+                break;
+            case Skill.typeOfMessage.Big:
+                PlayerLargeMessage();
+                break;
+            case Skill.typeOfMessage.Emoji:
+                PlayerEmojis();
+                break;
+            default:
+                
+                break;
+        }
+    }
+
+    public void SendMessagesEnemy(Skill capacity)
+    {
+        switch (capacity.messageType)
+        {
+            case Skill.typeOfMessage.Small:
+                EnemySmallMessage();
+                break;
+            case Skill.typeOfMessage.Big:
+                EnemyLargeMessage();
+                break;
+            case Skill.typeOfMessage.Emoji:
+                EnemyEmojis();
+                break;
+            default:
+
+                break;
+        }
+    }
+
     public void PlayerSmallMessage()
     {
         UpdatePosition();
