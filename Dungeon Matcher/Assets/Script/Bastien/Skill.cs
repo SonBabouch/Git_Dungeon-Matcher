@@ -19,4 +19,6 @@ public abstract class Skill : ScriptableObject
     public float energyCost;
     public abstract void Initialize(GameObject obj);
     public abstract void Use();
+    public abstract void PlayerEffect();
+    public abstract void MonsterEffect();
 }

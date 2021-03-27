@@ -25,7 +25,7 @@ public class Heal : Skill
                 {
                     Player.Instance.AllyAlteration();
                     Player.Instance.energy -= energyCost;
-                    Player.Instance.health -= healthAmount;
+                    PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this);
                 }
@@ -34,11 +34,23 @@ public class Heal : Skill
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
-                    Enemy.Instance.health -= healthAmount;
+                    MonsterEffect();
                     ConversationManager.Instance.SendMessagesEnemy(this);
                 }
                 break;
         }
         CombatManager.Instance.index = 0;
+    }
+
+    public override void PlayerEffect()
+    {
+        Player.Instance.health -= healthAmount;
+        Player.Instance.lastPlayerCompetence = this;
+    }
+
+    public override void MonsterEffect()
+    {
+        Enemy.Instance.health -= healthAmount;
+        //Monsterer.Instance.lastMonsterCompetence = this;
     }
 }

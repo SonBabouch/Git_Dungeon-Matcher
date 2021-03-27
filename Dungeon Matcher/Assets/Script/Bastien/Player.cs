@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
 
     public bool isSkillUsed;
     public bool isBurn;
+    public bool isCharging;
+
+    public Skill lastPlayerCompetence;
 
     private void Awake()
     {

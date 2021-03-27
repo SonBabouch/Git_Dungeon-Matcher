@@ -27,7 +27,7 @@ public class BasicAttack : Skill
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;
-                    Enemy.Instance.health += healthAmount;
+                    PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this);
                 }
@@ -36,11 +36,23 @@ public class BasicAttack : Skill
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
-                    Player.Instance.health += healthAmount;
+                    MonsterEffect();
                     ConversationManager.Instance.SendMessagesEnemy(this);
                 }
                 break;
         }
         CombatManager.Instance.index = 0;
+    }
+
+    public override void PlayerEffect()
+    {
+        Enemy.Instance.health += healthAmount;
+        Player.Instance.lastPlayerCompetence = this;
+    }
+
+    public override void MonsterEffect()
+    {
+        Player.Instance.health += healthAmount;
+        //Monsterer.Instance.lastMonsterCompetence = this;
     }
 }
