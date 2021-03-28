@@ -8,6 +8,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public bool canChange = true;
 
+    public bool onDrag = false;
+
     //1- Variables
     private Vector2 panelLocation; // vector2 pour la position du panel holder
     public float percentThreshold = 0.75f; //pourcentage de la surface de l'écran a drag
@@ -27,6 +29,9 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
+        onDrag = true;
+        MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+        MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
 
         float difference = data.pressPosition.x - data.position.x; //Différence entre les deux positions pour savoir vers quel coté on swip, positif à droite et négatif à gauche
         //C'est aussi la position exact du pointer sur le l'écran lorsqu'il drag
@@ -46,6 +51,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     //4- On End Drag void
     public void OnEndDrag(PointerEventData data)
     {
+       
+
         float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 
         //4.1- Vérification pour savoir si le pourcentage de l'écran dragué est superieur ou égale au pourcentage à drag pour valider la saisi
@@ -62,6 +69,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     newLocation += new Vector2(-Screen.width, 0);
 
                     currentPanelNumber = currentPanelNumber + 1;
+                  
                 }
                 else
                 {
@@ -76,6 +84,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     newLocation += new Vector2(Screen.width, 0);
 
                     currentPanelNumber = currentPanelNumber - 1;
+                   
                 }
                 else
                 {
@@ -93,16 +102,30 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         else //Le swip n'est pas validé
         {
             StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+            
         }
+        onDrag = false;
+    }
 
+    void CancelMatch()
+    {
+        if (currentPanelNumber == 0 && canChange)
+        {
+            MenuManager.Instance.matchManager.canMatch = true;
+        }
+        else
+        {
+            MenuManager.Instance.matchManager.canMatch = false;
+            MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+            MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
+        }
     }
 
     //5- Coroutine pour une transition
     IEnumerator SmoothMove(Vector2 startPos, Vector2 endPos, float seconds)
     {
-        MenuManager.Instance.matchManager.canMatch = false;
-
         canChange = false;
+        CancelMatch();
         float t = 0f; //float pour le timer
 
         //Le timer
@@ -119,7 +142,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         panelLocation = endPos;
         canChange = true;
 
-        MenuManager.Instance.matchManager.canMatch = true;
+        CancelMatch();
     }
 
     public void GoToList()
@@ -133,29 +156,34 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                 case -1:
                     //Je viens du Shop (donc de la gauche);
                     //Anim *2
+                   
                     newLocation += new Vector2(-Screen.width * 2, 0);
                     currentPanelNumber = 1;
                     
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
+                    MenuManager.currentGameState = MenuManager.gameState.List;
                     break;
 
                 case 0:
                     //Je viens du Match (donc de la gauche);
                     //Anim *1
+                    
                     newLocation += new Vector2(-Screen.width, 0);
                     currentPanelNumber = 1;
                     
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
+                    MenuManager.currentGameState = MenuManager.gameState.List;
                     break;
 
                 case 2:
                     //Je viens du Bag (donc de la droite);
                     //Anim *1
-
+                    
                     newLocation += new Vector2(Screen.width, 0);
                     currentPanelNumber = 1;
                     
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
+                    MenuManager.currentGameState = MenuManager.gameState.List;
                     break;
                 default:
                     break;
@@ -173,31 +201,36 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             switch (currentPanelNumber)
             {
                 case -1:
+                   
                     //Je viens du Shop (donc de la gauche);
                     //Anim *3
                     newLocation += new Vector2(-Screen.width * 3, 0);
                     currentPanelNumber = 2;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
+                    MenuManager.currentGameState = MenuManager.gameState.Bag;
                     break;
 
                 case 0:
                     //Je viens du Match (donc de la gauche);
                     //Anim *2
+                    
                     newLocation += new Vector2(-Screen.width * 2, 0);
                     currentPanelNumber = 2;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
+                    MenuManager.currentGameState = MenuManager.gameState.Bag;
                     break;
 
                 case 1:
                     //Je viens du list (donc de la gauche);
                     //Anim *1
-
+                   
                     newLocation += new Vector2(-Screen.width, 0);
                     currentPanelNumber = 2;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
+                    MenuManager.currentGameState = MenuManager.gameState.Bag;
                     break;
                 default:
                     break;
@@ -217,29 +250,34 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                 case 2:
                     //Je viens du Bag (donc de la gauche);
                     //Anim *2
+                   
                     newLocation += new Vector2(Screen.width * 3, 0);
                     currentPanelNumber = -1;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
+                    MenuManager.currentGameState = MenuManager.gameState.Shop;
                     break;
 
                 case 1:
                     //Je viens du List (donc de la gauche);
                     //Anim *1
+                    
                     newLocation += new Vector2(Screen.width * 2, 0);
                     currentPanelNumber = -1;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
+                    MenuManager.currentGameState = MenuManager.gameState.Shop;
                     break;
 
                 case 0:
                     //Je viens du match (donc de la droite);
                     //Anim *1
-
+                   
                     newLocation += new Vector2(Screen.width, 0);
                     currentPanelNumber = -1;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
+                    MenuManager.currentGameState = MenuManager.gameState.Shop;
                     break;
                 default:
                     break;
@@ -259,29 +297,34 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                 case -1:
                     //Je viens du Shop (donc de la gauche);
                     //Anim *2
+                   
                     newLocation += new Vector2(-Screen.width, 0);
                     currentPanelNumber = 0;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
+                    MenuManager.currentGameState = MenuManager.gameState.Match;
                     break;
 
                 case 1:
                     //Je viens de list (donc de la droite);
                     //Anim *1
+                    
                     newLocation += new Vector2(Screen.width, 0);
                     currentPanelNumber = 0;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
+                    MenuManager.currentGameState = MenuManager.gameState.Match;
                     break;
 
                 case 2:
                     //Je viens du Shop (donc de la droite);
                     //Anim *1
-
+                   
                     newLocation += new Vector2(Screen.width * 2, 0);
                     currentPanelNumber = 0;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
+                    MenuManager.currentGameState = MenuManager.gameState.Match;
                     break;
                 default:
                     break;

@@ -21,6 +21,8 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     public float toHighQ = 25f;
     float properRotation;
 
+    
+
     //2.1- Void Start
     void Start()
     {
@@ -33,7 +35,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     void Update()
     {
 
-        if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameState == MenuManager.gameState.Match && MenuManager.Instance.matchManager.canMatch)
+        if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameState == MenuManager.gameState.Match && MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.canvasManager.pageSwiper.onDrag == false)
         {
             if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
             {

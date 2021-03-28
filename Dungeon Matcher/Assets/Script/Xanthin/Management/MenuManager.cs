@@ -25,6 +25,8 @@ namespace Management
         public enum gameState { Shop,Match,List,Bag }  //Index 0 à 3 (dans l'ordre).
         public static gameState currentGameState;
 
+        public gameState stillcurrent;
+
         private void Awake()
         {
             if (Instance == null)
@@ -40,6 +42,10 @@ namespace Management
         private void Start()
         {
             currentGameState = gameState.Match;
+        }
+        private void Update()
+        {
+            stillcurrent = currentGameState;
         }
     }
 }
