@@ -2640,6 +2640,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: allyMonsters.Array.data[1]
+      value: 
+      objectReference: {fileID: 3352059483369707408, guid: 117d7e950ec732d4ea425ff3e2367a51,
+        type: 3}
     - target: {fileID: 2336706625598943703, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2810,6 +2816,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3418568245561289491, guid: a3308b51da5fa204a91b8b953cb71e7f,
+        type: 3}
+      propertyPath: lastMonsterCompetence
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d,
+        type: 2}
     - target: {fileID: 6337657827009170765, guid: a3308b51da5fa204a91b8b953cb71e7f,
         type: 3}
       propertyPath: m_LocalPosition.z

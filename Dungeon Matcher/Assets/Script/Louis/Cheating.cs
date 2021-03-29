@@ -45,12 +45,12 @@ public class Cheating : Skill
     public override void PlayerEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        //Enemy.Instance.lastCompetence.MonstererEffect();
+        Enemy.Instance.lastMonsterCompetence.PlayerEffect();
         Player.Instance.lastPlayerCompetence = this;
     }
     public override void MonsterEffect()
     {
-        Player.Instance.lastPlayerCompetence.PlayerEffect();
-        //Monsterer.Instance.lastMonsterCompetence = this;
+        Player.Instance.lastPlayerCompetence.MonsterEffect();
+        Enemy.Instance.lastMonsterCompetence = this;
     }
 }

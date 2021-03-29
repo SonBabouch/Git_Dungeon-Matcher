@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433c9d858dfa7b42b8ed7f8d0354084, type: 3}
   m_Name: Echo 1
   m_EditorClassIdentifier: 
-  skillDescription: 
+  skillDescription: Echo
   healthAmount: 0
   side: 1
   messageType: 0

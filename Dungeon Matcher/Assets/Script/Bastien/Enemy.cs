@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private List<Skill> enemyDraw = new List<Skill>();
 
+    public Skill lastMonsterCompetence;
+
 
 
     private void Awake()
