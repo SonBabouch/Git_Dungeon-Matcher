@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     public Skill lastPlayerCompetence;
 
+    public float chargingTime;
+
     private void Awake()
     {
         if (Instance == null)
@@ -100,5 +102,15 @@ public class Player : MonoBehaviour
         //Creer une méthode qui gere un type d'altération et l'appeller ici
     }
 
-    
+    public IEnumerator ChargeAttack(Skill skillToCharge)
+    {
+        Debug.Log("Charging Attack");
+
+        Player.Instance.isCharging = true;
+        yield return new WaitForSeconds(chargingTime);
+        Debug.Log("End");
+        Player.Instance.isCharging = false;
+        skillToCharge.InUse();
+    }
+
 }

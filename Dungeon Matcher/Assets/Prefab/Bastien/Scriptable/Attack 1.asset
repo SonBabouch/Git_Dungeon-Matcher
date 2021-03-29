@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack 1
   m_EditorClassIdentifier: 
-  coroutine: {fileID: 0}
   skillDescription: 10 Damage
   healthAmount: 10
   side: 1
   messageType: 0
   energyCost: 1
-  chargingAttack: 0
-  ChargingTime: 0
+  chargingAttack: 1
+  ChargingTime: 5
   monster: {fileID: 0}
   owner: {fileID: 0}

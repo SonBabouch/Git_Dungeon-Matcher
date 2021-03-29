@@ -8,8 +8,6 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Skill : ScriptableObject
 {
-    public SkillCoroutine coroutine;
-
     public string skillDescription;
     public float healthAmount;
     public enum monsterSide { Enemy, Ally }
@@ -30,9 +28,5 @@ public abstract class Skill : ScriptableObject
     public abstract void MonsterEffect();
     public abstract void InUse();
 
-    public abstract IEnumerator ChargeAttack();
-    public abstract class SkillCoroutine : MonoBehaviour {
-        public SkillCoroutine(){ }
-    }
-
+    
 }

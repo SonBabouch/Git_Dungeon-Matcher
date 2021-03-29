@@ -18,13 +18,18 @@ public class Cheating : Skill
 
     public override void Use()
     {
-        if (chargingAttack)
+        chargingAttack = Enemy.Instance.lastMonsterCompetence.chargingAttack;
+
+        if (Player.Instance.isCharging == false)
         {
-            coroutine.StartCoroutine(ChargeAttack());
-        }
-        else
-        {
-            InUse();
+            if (chargingAttack)
+            {
+                Player.Instance.ChargeAttack(this);
+            }
+            else
+            {
+                InUse();
+            }
         }
     }
 
@@ -66,11 +71,5 @@ public class Cheating : Skill
         CombatManager.Instance.index = 0;
     }
 
-    public override IEnumerator ChargeAttack()
-    {
-        Player.Instance.isCharging = true;
-        yield return new WaitForSeconds(ChargingTime);
-        Player.Instance.isCharging = false;
-        InUse();
-    }
+    
 }

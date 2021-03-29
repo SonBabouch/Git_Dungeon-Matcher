@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skills/basic Attack")]
 public class BasicAttack : Skill
 {
+   
+
     [SerializeField]
     private MonsterToken monster;
     [SerializeField]
@@ -13,20 +15,24 @@ public class BasicAttack : Skill
 
     public override void Initialize(GameObject obj)
     {
+       
         owner = obj;
         monster = owner.GetComponent<MonsterToken>();
     }
 
     public override void Use()
     {
-        if (chargingAttack)
+        if (Player.Instance.isCharging == false)
         {
-            coroutine.StartCoroutine(ChargeAttack());    
-        }
-        else
-        {
-            InUse();
-        }
+            if (chargingAttack)
+            {
+                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+            }
+            else
+            {
+                InUse();
+            }
+        }      
     }
 
     public override void InUse()
@@ -65,11 +71,5 @@ public class BasicAttack : Skill
         Player.Instance.health += healthAmount;
     }
 
-    public override IEnumerator ChargeAttack()
-    {
-        Player.Instance.isCharging = true;
-        yield return new WaitForSeconds(ChargingTime);
-        Player.Instance.isCharging = false;
-        InUse();
-    }
+    
 }
