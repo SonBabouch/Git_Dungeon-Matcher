@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         InitializeMonster();
+        SetEnemyHandAndDraw();
     }
 
     public void InitializeMonster()
@@ -72,8 +73,13 @@ public class Enemy : MonoBehaviour
             skill.side = Skill.monsterSide.Enemy;
             enemySkills.Add(skill);
         }
+        ShuffleEnemySkill();
     }
 
+    public void ShuffleEnemySkill()
+    {
+        enemySkills.ShuffleFisherYates();
+    }
     public void SetEnemyHandAndDraw()
     {
         for (int i = 0; i < enemyHand.Count; i++)

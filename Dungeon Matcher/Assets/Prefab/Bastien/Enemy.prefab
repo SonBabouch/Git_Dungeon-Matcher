@@ -228,7 +228,11 @@ MonoBehaviour:
   - {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a, type: 3}
   - {fileID: 3352059483369707408, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
   enemySkills: []
-  enemyHand: []
+  enemyHand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemyDraw: []
   lastMonsterCompetence: {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae,
     type: 2}
