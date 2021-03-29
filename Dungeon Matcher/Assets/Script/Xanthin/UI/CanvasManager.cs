@@ -49,7 +49,6 @@ namespace Management
             if (MenuManager.Instance.canvasManager.matchCanvas.switchExp)
             {
                 MenuManager.Instance.canvasManager.matchCanvas.ShowExpérience();
-                
             }
 
             if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
