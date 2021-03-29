@@ -45,12 +45,11 @@ public class Echo : Skill
     public override void PlayerEffect()
     {
         Player.Instance.lastPlayerCompetence.PlayerEffect();
-        Player.Instance.lastPlayerCompetence = this;
     }
     public override void MonsterEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        //Enemy.Instance.lastCompetence.MonstererEffect();
-        //Enemy.Instance.lastMonsterCompetence = this;
+        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
+        Enemy.Instance.lastMonsterCompetence = this;
     }
 }
