@@ -137,5 +137,10 @@ PrefabInstance:
       propertyPath: teamMsg
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9165936558463618290, guid: 8ac75bd72c9e40f48bcb86791bf65883,
+        type: 3}
+      propertyPath: ally
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac75bd72c9e40f48bcb86791bf65883, type: 3}

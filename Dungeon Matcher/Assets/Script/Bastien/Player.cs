@@ -104,13 +104,16 @@ public class Player : MonoBehaviour
 
     public IEnumerator ChargeAttack(Skill skillToCharge)
     {
-        Debug.Log("Charging Attack");
-
+        Player.Instance.lastPlayerCompetence = skillToCharge;
         Player.Instance.isCharging = true;
+        CombatManager.Instance.ButtonsUpdate();
+        ConversationManager.Instance.SendMessagesPlayer(skillToCharge);
         yield return new WaitForSeconds(chargingTime);
         Debug.Log("End");
         Player.Instance.isCharging = false;
-        skillToCharge.InUse();
+        ConversationManager.Instance.UpdateLastMessageState();
+        skillToCharge.PlayerEffect();
+        
     }
 
 }

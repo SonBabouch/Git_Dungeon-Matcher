@@ -15,7 +15,7 @@ MonoBehaviour:
   skillDescription: 10 Damage
   healthAmount: 10
   side: 1
-  messageType: 0
+  messageType: 1
   energyCost: 1
   chargingAttack: 1
   ChargingTime: 5

@@ -123,7 +123,6 @@ namespace Management
 
         public void FirstTirage()
         {
-
             //2-Test pour savoir si un monstre rare sort ou non;
             #region RaretyTest
            
@@ -154,11 +153,6 @@ namespace Management
             GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform.position, Quaternion.identity);
             profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
             //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
-
-
-
-
-            
 
             profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
             //Le monstre est ajouté à une liste pouvant être traquée.
