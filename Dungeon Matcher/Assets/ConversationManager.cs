@@ -103,7 +103,6 @@ public class ConversationManager : MonoBehaviour
                 PlayerEmojis();
                 break;
             default:
-                
                 break;
         }
     }

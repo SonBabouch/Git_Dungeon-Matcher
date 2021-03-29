@@ -11,8 +11,6 @@ public class BasicAttack : Skill
     [SerializeField]
     private GameObject owner;
 
-
-
     public override void Initialize(GameObject obj)
     {
         owner = obj;
@@ -20,6 +18,18 @@ public class BasicAttack : Skill
     }
 
     public override void Use()
+    {
+        if (chargingAttack)
+        {
+            coroutine.StartCoroutine(ChargeAttack());    
+        }
+        else
+        {
+            InUse();
+        }
+    }
+
+    public override void InUse()
     {
         switch (side)
         {
@@ -53,6 +63,13 @@ public class BasicAttack : Skill
     public override void MonsterEffect()
     {
         Player.Instance.health += healthAmount;
-        //Monsterer.Instance.lastMonsterCompetence = this;
+    }
+
+    public override IEnumerator ChargeAttack()
+    {
+        Player.Instance.isCharging = true;
+        yield return new WaitForSeconds(ChargingTime);
+        Player.Instance.isCharging = false;
+        InUse();
     }
 }

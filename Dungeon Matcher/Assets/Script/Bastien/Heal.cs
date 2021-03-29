@@ -17,7 +17,31 @@ public class Heal : Skill
     }
 
     public override void Use()
-    { 
+    {
+        if (chargingAttack)
+        {
+            coroutine.StartCoroutine(ChargeAttack());
+        }
+        else
+        {
+            InUse();
+        }
+    }
+
+    public override void PlayerEffect()
+    {
+        Player.Instance.health -= healthAmount;
+        Player.Instance.lastPlayerCompetence = this;
+    }
+
+    public override void MonsterEffect()
+    {
+        Enemy.Instance.health -= healthAmount;
+        //Monsterer.Instance.lastMonsterCompetence = this;
+    }
+
+    public override void InUse()
+    {
         switch (side)
         {
             case monsterSide.Ally:
@@ -42,15 +66,11 @@ public class Heal : Skill
         CombatManager.Instance.index = 0;
     }
 
-    public override void PlayerEffect()
+    public override IEnumerator ChargeAttack()
     {
-        Player.Instance.health -= healthAmount;
-        Player.Instance.lastPlayerCompetence = this;
-    }
-
-    public override void MonsterEffect()
-    {
-        Enemy.Instance.health -= healthAmount;
-        //Monsterer.Instance.lastMonsterCompetence = this;
+        Player.Instance.isCharging = true;
+        yield return new WaitForSeconds(ChargingTime);
+        Player.Instance.isCharging = false;
+        InUse();
     }
 }
