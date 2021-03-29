@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private List<Skill> enemyHand = new List<Skill>();
     [SerializeField]
     private List<Skill> enemyDraw = new List<Skill>();
+    private int index;
 
     public Skill lastEnemyCompetence;
 
@@ -54,6 +55,11 @@ public class Enemy : MonoBehaviour
     {
         InitializeMonster();
         SetEnemyHandAndDraw();
+
+    }
+    private void Update()
+    {
+        EnemyBasicBehavior();
     }
 
     public void InitializeMonster()
@@ -70,7 +76,7 @@ public class Enemy : MonoBehaviour
 
         foreach (Skill skill in currentMonster.GetComponent<MonsterToken>().ennemySkills)
         {
-            skill.side = Skill.monsterSide.Enemy;
+            //skill.side = Skill.monsterSide.Enemy;
             enemySkills.Add(skill);
         }
         ShuffleEnemySkill();
@@ -89,7 +95,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void EnemySwapSkill(int index)
+    public void EnemySwapSkill()
     {
         enemyDraw.Add(enemyHand[index]);
         enemyHand.RemoveAt(index);
@@ -125,4 +131,13 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
     #endregion
+    public void EnemyBasicBehavior()
+    {
+        if(energy >= maxEnergy / 2)
+        {
+            index = Random.Range(0, 3);
+            enemyHand[index].Use();
+            Debug.Log(enemyHand[index].skillDescription);
+        }
+    }
 }

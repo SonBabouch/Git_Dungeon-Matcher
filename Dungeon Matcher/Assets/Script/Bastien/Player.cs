@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         {
             foreach (Skill skill in monster.GetComponent<MonsterToken>().allySkills)
             {
-                skill.side = Skill.monsterSide.Ally;
+                //skill.side = Skill.monsterSide.Ally;
                 playerSkills.Add(skill);
             }
         }

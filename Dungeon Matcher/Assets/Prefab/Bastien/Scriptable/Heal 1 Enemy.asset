@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
-  m_Name: Attack 2
+  m_Script: {fileID: 11500000, guid: 4ac76f159b98fbe4eb7c59c2617a2cc8, type: 3}
+  m_Name: Heal 1 Enemy
   m_EditorClassIdentifier: 
-  skillDescription: 20 Damage
+  skillDescription: 20 Heal
   healthAmount: 20
-  side: 1
+  side: 0
+  messageType: 0
   energyCost: 2
   monster: {fileID: 0}
   owner: {fileID: 0}

@@ -136,6 +136,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    #region Buttons
     void ButtonsInfos()
     {
         for (int i = 0; i < Player.Instance.playerHand.Count; i++)
@@ -353,5 +354,5 @@ public class CombatManager : MonoBehaviour
             index = 3;
         }
     }
-
+    #endregion
 }

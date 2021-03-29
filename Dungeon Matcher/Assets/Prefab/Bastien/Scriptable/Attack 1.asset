@@ -13,16 +13,8 @@ MonoBehaviour:
   m_Name: Attack 1
   m_EditorClassIdentifier: 
   skillDescription: 10 Damage
-  effectValue: 10
+  healthAmount: 10
   side: 1
-  messageType: 1
-  typeOfCapacity: 0
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
-  isComboSkill: 0
-  comboEffectValue: 0
-  chargingAttack: 1
+  energyCost: 1
   monster: {fileID: 0}
   owner: {fileID: 0}
