@@ -18,6 +18,29 @@ public class Echo : Skill
 
     public override void Use()
     {
+        if (chargingAttack)
+        {
+            coroutine.StartCoroutine(ChargeAttack());
+        }
+        else
+        {
+            InUse();
+        }
+    }
+
+    public override void PlayerEffect()
+    {
+        Player.Instance.lastPlayerCompetence.PlayerEffect();
+    }
+    public override void MonsterEffect()
+    {
+        //potentiellement yield return 0.1 secondes -> Coroutine
+        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
+        Enemy.Instance.lastMonsterCompetence = this;
+    }
+
+    public override void InUse()
+    {
         switch (side)
         {
             case monsterSide.Ally:
@@ -42,14 +65,11 @@ public class Echo : Skill
         CombatManager.Instance.index = 0;
     }
 
-    public override void PlayerEffect()
+    public override IEnumerator ChargeAttack()
     {
-        Player.Instance.lastPlayerCompetence.PlayerEffect();
-    }
-    public override void MonsterEffect()
-    {
-        //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
-        Enemy.Instance.lastMonsterCompetence = this;
+        Player.Instance.isCharging = true;
+        yield return new WaitForSeconds(ChargingTime);
+        Player.Instance.isCharging = false;
+        InUse();
     }
 }

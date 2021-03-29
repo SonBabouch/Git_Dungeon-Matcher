@@ -18,6 +18,30 @@ public class Break : Skill
 
     public override void Use()
     {
+        if (chargingAttack)
+        {
+            coroutine.StartCoroutine(ChargeAttack());
+        }
+        else
+        {
+            InUse();
+        }
+    }
+
+    public override void PlayerEffect()
+    {
+        //Capa annulée.
+        Player.Instance.lastPlayerCompetence = this;
+    }
+
+    public override void MonsterEffect()
+    {
+        //Capa annulée
+        //Monsterer.Instance.lastMonsterCompetence = this;
+    }
+
+    public override void InUse()
+    {
         switch (side)
         {
             case monsterSide.Ally:
@@ -48,15 +72,11 @@ public class Break : Skill
         CombatManager.Instance.index = 0;
     }
 
-    public override void PlayerEffect()
+    public override IEnumerator ChargeAttack()
     {
-        //Capa annulée.
-        Player.Instance.lastPlayerCompetence = this;
-    }
-
-    public override void MonsterEffect()
-    {
-        //Capa annulée
-        //Monsterer.Instance.lastMonsterCompetence = this;
+        Player.Instance.isCharging = true;
+        yield return new WaitForSeconds(ChargingTime);
+        Player.Instance.isCharging = false;
+        InUse();
     }
 }

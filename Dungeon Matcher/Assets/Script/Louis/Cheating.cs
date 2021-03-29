@@ -18,6 +18,30 @@ public class Cheating : Skill
 
     public override void Use()
     {
+        if (chargingAttack)
+        {
+            coroutine.StartCoroutine(ChargeAttack());
+        }
+        else
+        {
+            InUse();
+        }
+    }
+
+    public override void PlayerEffect()
+    {
+        //potentiellement yield return 0.1 secondes -> Coroutine
+        Enemy.Instance.lastMonsterCompetence.PlayerEffect();
+        Player.Instance.lastPlayerCompetence = this;
+    }
+    public override void MonsterEffect()
+    {
+        Player.Instance.lastPlayerCompetence.MonsterEffect();
+        Enemy.Instance.lastMonsterCompetence = this;
+    }
+
+    public override void InUse()
+    {
         switch (side)
         {
             case monsterSide.Ally:
@@ -42,15 +66,11 @@ public class Cheating : Skill
         CombatManager.Instance.index = 0;
     }
 
-    public override void PlayerEffect()
+    public override IEnumerator ChargeAttack()
     {
-        //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastMonsterCompetence.PlayerEffect();
-        Player.Instance.lastPlayerCompetence = this;
-    }
-    public override void MonsterEffect()
-    {
-        Player.Instance.lastPlayerCompetence.MonsterEffect();
-        Enemy.Instance.lastMonsterCompetence = this;
+        Player.Instance.isCharging = true;
+        yield return new WaitForSeconds(ChargingTime);
+        Player.Instance.isCharging = false;
+        InUse();
     }
 }
