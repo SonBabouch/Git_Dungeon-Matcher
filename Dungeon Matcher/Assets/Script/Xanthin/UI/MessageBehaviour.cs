@@ -7,9 +7,183 @@ public class MessageBehaviour : MonoBehaviour
     public enum team{Player,Enemy};
     public team teamMsg;
 
+    public enum effect {InspirationLimitation, AttiranceLimitation, Curse, Mark, Charm, Silence, Lock, Weakened };
+    public effect EmojiEffect;
+
     public bool ally;
     public bool big;
+    public bool emoji;
 
-    public int currentPosition = 0;
+    public void GetEffect(int number)
+    {
+        switch (number)
+        {
+            //0 = Null;
+            case 1:
+                EmojiEffect = effect.InspirationLimitation;
+                break;
+            case 2:
+                EmojiEffect = effect.AttiranceLimitation;
+                break;
+            case 3:
+                EmojiEffect = effect.Curse;
+                break;
+            case 4:
+                EmojiEffect = effect.Mark;
+                break;
+            case 5:
+                EmojiEffect = effect.Silence;
+                break;
+            case 6:
+                EmojiEffect = effect.Lock;
+                break;
+            case 7:
+                EmojiEffect = effect.Weakened;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void EmojiEffectBegin()
+    {
+        //Changer ce qu'il faut quand la compétence est lancé chez le joueur
+        if(teamMsg == team.Player)
+        {
+            switch (EmojiEffect)
+            {
+                case effect.InspirationLimitation:
+                    //Change la bool en true;
+                    break;
+                case effect.AttiranceLimitation:
+                    //Change la bool en true;
+                    break;
+                case effect.Curse:
+                    //Change la bool en true;
+                    break;
+                case effect.Mark:
+                    //Change la bool en true;
+                    break;
+                case effect.Charm:
+                    //Change la bool en true;
+                    break;
+                case effect.Silence:
+                    //Change la bool en true;
+                    break;
+                case effect.Lock:
+                    //Change la bool en true;
+                    break; ;
+            case effect.Weakened:
+                    //Change la bool en true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (EmojiEffect)
+            {
+                case effect.InspirationLimitation:
+                    //Change la bool en false;
+                    break;
+                case effect.AttiranceLimitation:
+                    //Change la bool en false;
+                    break;
+                case effect.Curse:
+                    //Change la bool en false;
+                    break;
+                case effect.Mark:
+                    //Change la bool en false;
+                    break;
+                case effect.Charm:
+                    //Change la bool en false;
+                    break;
+                case effect.Silence:
+                    //Change la bool en false;
+                    break;
+                case effect.Lock:
+                    //Change la bool en false;
+                    break; ;
+                case effect.Weakened:
+                    //Change la bool en false;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    public void EmojiEffectEnd()
+    {
+        //Changer ce qu'il faut quand la compétence est lancé chez le joueur
+        if (teamMsg == team.Player)
+        {
+            switch (EmojiEffect)
+            {
+                case effect.InspirationLimitation:
+                    //Effet
+                    break;
+                case effect.AttiranceLimitation:
+                    //Effet
+                    break;
+                case effect.Curse:
+                    //Effet
+                    break;
+                case effect.Mark:
+                    //Effet
+                    break;
+                case effect.Charm:
+                    //Effet
+                    break;
+                case effect.Silence:
+                    //Effet
+                    break;
+                case effect.Lock:
+                    //Effet
+                    break; ;
+                case effect.Weakened:
+                    //Effet
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (EmojiEffect)
+            {
+                case effect.InspirationLimitation:
+                    //Effet
+                    break;
+                case effect.AttiranceLimitation:
+                    //Effet
+                    break;
+                case effect.Curse:
+                    //Effet
+                    break;
+                case effect.Mark:
+                    //Effet
+                    break;
+                case effect.Charm:
+                    //Effet
+                    break;
+                case effect.Silence:
+                    //Effet
+                    break;
+                case effect.Lock:
+                    //Effet
+                    break; ;
+                case effect.Weakened:
+                    //Effet
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+
+   
+
 
 }

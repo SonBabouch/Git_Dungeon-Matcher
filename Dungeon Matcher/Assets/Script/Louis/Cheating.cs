@@ -57,7 +57,7 @@ public class Cheating : Skill
                     Player.Instance.AllyAlteration();
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this);
+                    ConversationManager.Instance.SendMessagesPlayer(this,0);
                 }
                 break;
             case monsterSide.Enemy:
@@ -65,7 +65,7 @@ public class Cheating : Skill
                 {
                     Enemy.Instance.energy -= energyCost;
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this);
+                    ConversationManager.Instance.SendMessagesEnemy(this,0);
                 }
                 break;
         }

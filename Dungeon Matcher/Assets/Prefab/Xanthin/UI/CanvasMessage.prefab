@@ -710,7 +710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 79}
+  m_AnchoredPosition: {x: 0, y: 125}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4732558562833465874
@@ -841,7 +841,7 @@ MonoBehaviour:
     type: 3}
   EmojiEnemy: {fileID: 1935285267537220315, guid: 2835054c7b14f334fb78e8036be55ced,
     type: 3}
-  longMessage: {fileID: 21300000, guid: 7a677cf3941310042a3bc77249d0f725, type: 3}
+  longMessage: {fileID: 21300000, guid: 00a3bf8fba9a47f4c94d24ada0886c50, type: 3}
   playerParentMsg: {fileID: 4732558562734361195}
   playerMsgPositions: []
   enemyParentMsg: {fileID: 4732558563323923650}
@@ -1107,7 +1107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 79}
+  m_AnchoredPosition: {x: 0, y: 125}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4732558563379721480

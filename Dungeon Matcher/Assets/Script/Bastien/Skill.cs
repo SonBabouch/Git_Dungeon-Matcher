@@ -17,6 +17,7 @@ public abstract class Skill : ScriptableObject
     public typeOfMessage messageType;
 
     public float energyCost;
+    
 
     //Charging Stuff
     public bool chargingAttack;

@@ -57,7 +57,7 @@ public class Break : Skill
                         PlayerEffect();
                     }*/
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this);
+                    ConversationManager.Instance.SendMessagesPlayer(this,0);
                 }
                 break;
             case monsterSide.Enemy:
@@ -68,7 +68,7 @@ public class Break : Skill
                         Enemy.Instance.energy -= energyCost;
                         MonsterEffect();
                     }
-                    ConversationManager.Instance.SendMessagesEnemy(this);
+                    ConversationManager.Instance.SendMessagesEnemy(this,0);
                 }
                 break;
         }

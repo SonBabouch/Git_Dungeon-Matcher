@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         Player.Instance.lastPlayerCompetence = skillToCharge;
         Player.Instance.isCharging = true;
         CombatManager.Instance.ButtonsUpdate();
-        ConversationManager.Instance.SendMessagesPlayer(skillToCharge);
+        ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
         yield return new WaitForSeconds(chargingTime);
         Debug.Log("End");
         Player.Instance.isCharging = false;

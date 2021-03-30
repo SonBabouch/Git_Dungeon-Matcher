@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skills/basic Attack")]
 public class BasicAttack : Skill
 {
-   
-
     [SerializeField]
     private MonsterToken monster;
     [SerializeField]
@@ -49,7 +47,7 @@ public class BasicAttack : Skill
                     Player.Instance.energy -= energyCost;
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this);
+                    ConversationManager.Instance.SendMessagesPlayer(this,0);
                 }
                 break;
             case monsterSide.Enemy:
@@ -57,7 +55,7 @@ public class BasicAttack : Skill
                 {
                     Enemy.Instance.energy -= energyCost;
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this);
+                    ConversationManager.Instance.SendMessagesEnemy(this,0);
                 }
                 break;
         }
