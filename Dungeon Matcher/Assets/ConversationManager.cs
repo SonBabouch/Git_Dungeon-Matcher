@@ -30,7 +30,13 @@ public class ConversationManager : MonoBehaviour
 
     public static ConversationManager Instance;
 
+    public int numberOfMessageMoved =0;
+    public int numberOfMessageTotal =0;
 
+    public enum typeToSpawn { Null,PlayerSmall,PlayerBig,PlayerEmote, EnemySmall, EnemyBig, EnemyEmote }
+    public typeToSpawn messageToSpawn;
+
+    public bool canAttack = true;
 
     private void Awake()
     {
@@ -52,6 +58,8 @@ public class ConversationManager : MonoBehaviour
         }
 
         allMsg = new  GameObject [enemyMsgPositions.Count];
+
+        Debug.Log(allMsg.Length);
     }
 
     /*private void Update()
@@ -65,7 +73,79 @@ public class ConversationManager : MonoBehaviour
         }
         
     }*/
+    //1 - Le joueur appuie sur un bouton, ca lance SendMessage (enemy ou allié).
+    public void SendMessagesPlayer(Skill capacity)
+    {
+        switch (capacity.messageType)
+        {
+            case Skill.typeOfMessage.Small:
+                messageToSpawn = typeToSpawn.PlayerSmall;
+                UpdatePosition();
+                break;
+            case Skill.typeOfMessage.Big:
+                messageToSpawn = typeToSpawn.PlayerBig;
+                UpdatePosition();
+                break;
+            case Skill.typeOfMessage.Emoji:
+                messageToSpawn = typeToSpawn.PlayerEmote;
+                UpdatePosition();
+                break;
+            default:
+                break;
+        }
+    }
 
+    public void SendMessagesEnemy(Skill capacity)
+    {
+        switch (capacity.messageType)
+        {
+            case Skill.typeOfMessage.Small:
+                messageToSpawn = typeToSpawn.EnemySmall;
+                UpdatePosition();
+                break;
+            case Skill.typeOfMessage.Big:
+                messageToSpawn = typeToSpawn.EnemyBig;
+                UpdatePosition();
+                break;
+            case Skill.typeOfMessage.Emoji:
+                messageToSpawn = typeToSpawn.EnemyEmote;
+                UpdatePosition();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void UpdatePosition()
+    {
+        numberOfMessageTotal = 0;
+
+        if (allMsg[allMsg.Length - 1] != null)
+        {
+            GameObject currentGO = allMsg[allMsg.Length - 1];
+            //Activer La Fonction ici pour les Emojis LeaveBattle();
+            allMsg[allMsg.Length - 1] = null;
+
+            Destroy(currentGO);
+        }
+
+        for (int i = allMsg.Length - 2; i > -1; i--)
+        {
+            if (allMsg[i] != null)
+            {
+                numberOfMessageTotal++;
+                StartCoroutine(MessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally)); ;
+            }
+        }
+
+        if (numberOfMessageTotal==0)
+        {
+            PrintMessage();
+        }
+    }
+
+
+    #region ChargingRegion
     public void UpdateLastMessageState()
     {
         if (allMsg[0].GetComponent<MessageBehaviour>().big && allMsg[0] != null)
@@ -115,113 +195,111 @@ public class ConversationManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    public void UpdatePosition()
+
+    IEnumerator MessageMovement(GameObject message, int index, bool ally)
     {
-
-        if (allMsg[allMsg.Length-1] != null)
-        {
-            GameObject currentGO = allMsg[allMsg.Length-1];
-
-            allMsg[allMsg.Length - 1] = null;
-            //Activer La Fonction ici pour les Emojis LeaveBattle();
-            
-
-            Destroy(currentGO);
-        }
-
-        for (int i = allMsg.Length -2; i > -1; i--)
-        {
-            Debug.Log(i);
-
-            if(allMsg[i] != null)
-            {
-                StartCoroutine(MessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally));
-            }
-        }
-    }
-
-    IEnumerator MessageMovement(GameObject messageToMove, int messageIndex,bool ally)
-    {
-        Debug.Log("Called");
         //Déplacer message joueur
-        if (ally)
+        if (message.GetComponent<MessageBehaviour>().ally)
         {
-           messageToMove
+            while (message.transform.position.y < playerMsgPositions[index + 1].transform.position.y)
+            {
+                Vector3 translateVector = new Vector3(0f, 4f, 0f);
+                message.transform.Translate(translateVector);
+                yield return null;
+
+            }
+            numberOfMessageMoved++;
+            message.transform.SetParent(playerMsgPositions[index + 1].transform);
+            message.transform.localPosition = Vector3.zero;
         }
         else //Déplacer message ennemi
         {
-            
+
+        }
+
+        if(numberOfMessageMoved == numberOfMessageTotal)
+        {
+            UpdateArrayIndex();
         }
 
         yield return null;
-    }
-    
-    public void SendMessagesPlayer(Skill capacity)
-    {
-        switch (capacity.messageType)
-        {
-            case Skill.typeOfMessage.Small:
-                PlayerSmallMessage();
-                break;
-            case Skill.typeOfMessage.Big:
-                PlayerLargeMessage();
-                break;
-            case Skill.typeOfMessage.Emoji:
-                PlayerEmojis();
-                break;
-            default:
-                break;
-        }
+
     }
 
-    public void SendMessagesEnemy(Skill capacity)
+    void UpdateArrayIndex()
     {
-        switch (capacity.messageType)
+        print("Called");
+
+        numberOfMessageMoved = 0;
+
+        for (int i = allMsg.Length - 2; i > 0; i--)
         {
-            case Skill.typeOfMessage.Small:
+            print(i - 1 + " " + (i));
+
+            allMsg[i] = allMsg[i - 1];
+        }
+       
+        PrintMessage();
+    }
+
+    void PrintMessage()
+    {
+        switch (messageToSpawn)
+        {
+            case typeToSpawn.PlayerSmall:
+                PlayerSmallMessage();
+                break;
+            case typeToSpawn.PlayerBig:
+                PlayerLargeMessage();
+                break;
+            case typeToSpawn.PlayerEmote:
+                PlayerEmojis();
+                break;
+            case typeToSpawn.EnemySmall:
                 EnemySmallMessage();
                 break;
-            case Skill.typeOfMessage.Big:
+            case typeToSpawn.EnemyBig:
                 EnemyLargeMessage();
                 break;
-            case Skill.typeOfMessage.Emoji:
+            case typeToSpawn.EnemyEmote:
                 EnemyEmojis();
                 break;
             default:
-
                 break;
+
         }
     }
-    
+
     #region Player
     public void PlayerSmallMessage()
     {
-        UpdatePosition();
+      
         GameObject msg = Instantiate(SmallMessagePlayer.gameObject, playerMsgPositions[0].transform.position,Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
-        
+        messageToSpawn = typeToSpawn.Null;
         //Lancer Methode pour le Text;
     }
 
     public void PlayerLargeMessage()
     {
-        UpdatePosition();
+       
         GameObject msg = Instantiate(ChargingMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
-
+        messageToSpawn = typeToSpawn.Null;
         //Lancer Methode pour le Text;
     }
 
     public void PlayerEmojis()
     {
-        UpdatePosition();
+        
         GameObject msg = Instantiate(EmojiPlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
-
+        messageToSpawn = typeToSpawn.Null;
         //Lancer Methode pour le Text;
     }
     #endregion
@@ -229,31 +307,32 @@ public class ConversationManager : MonoBehaviour
     #region Enemy
     public void EnemySmallMessage()
     {
-        UpdatePosition();
+
+        //A lancer à la fin de la coroutine.
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
-
+        messageToSpawn = typeToSpawn.Null;
         //Lancer Methode pour le Text;
     }
 
     public void EnemyLargeMessage()
     {
-        UpdatePosition();
+     
         GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
-
+        messageToSpawn = typeToSpawn.Null;
         //Lancer Methode pour le Text;
     }
 
     public void EnemyEmojis()
     {
-        UpdatePosition();
+      
         GameObject msg = Instantiate(EmojiEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
-
+        messageToSpawn = typeToSpawn.Null;
         //Lancer Methode pour le Text;
     }
     #endregion
