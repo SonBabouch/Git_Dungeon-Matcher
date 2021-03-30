@@ -20,15 +20,18 @@ public class Heal : Skill
 
     public override void Use()
     {
-        if (Player.Instance.isCharging == false)
+        if (ConversationManager.Instance.canAttack)
         {
-            if (chargingAttack)
+            if (Player.Instance.isCharging == false)
             {
-                Player.Instance.ChargeAttack(himSelf);
-            }
-            else
-            {
-                InUse();
+                if (chargingAttack)
+                {
+                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                }
+                else
+                {
+                    InUse();
+                }
             }
         }
     }

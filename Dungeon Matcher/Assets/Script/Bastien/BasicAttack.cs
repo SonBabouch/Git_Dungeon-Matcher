@@ -15,24 +15,28 @@ public class BasicAttack : Skill
 
     public override void Initialize(GameObject obj)
     {
-       
         owner = obj;
         monster = owner.GetComponent<MonsterToken>();
     }
 
     public override void Use()
     {
-        if (Player.Instance.isCharging == false)
+        if (ConversationManager.Instance.canAttack)
         {
-            if (chargingAttack)
+            if (Player.Instance.isCharging == false)
             {
-                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                if (chargingAttack)
+                {
+                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                }
+                else
+                {
+                    InUse();
+                }
             }
-            else
-            {
-                InUse();
-            }
-        }      
+        }
+
+        
     }
 
     public override void InUse()

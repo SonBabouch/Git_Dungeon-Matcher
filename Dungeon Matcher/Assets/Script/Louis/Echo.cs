@@ -18,18 +18,18 @@ public class Echo : Skill
 
     public override void Use()
     {
-
-        chargingAttack = Player.Instance.lastPlayerCompetence.chargingAttack;
-
-        if (Player.Instance.isCharging == false)
+        if (ConversationManager.Instance.canAttack)
         {
-            if (chargingAttack)
+            if (Player.Instance.isCharging == false)
             {
-                Player.Instance.ChargeAttack(this);
-            }
-            else
-            {
-                InUse();
+                if (chargingAttack)
+                {
+                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                }
+                else
+                {
+                    InUse();
+                }
             }
         }
     }

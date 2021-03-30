@@ -76,6 +76,7 @@ public class ConversationManager : MonoBehaviour
     //1 - Le joueur appuie sur un bouton, ca lance SendMessage (enemy ou allié).
     public void SendMessagesPlayer(Skill capacity)
     {
+        canAttack = false;
         switch (capacity.messageType)
         {
             case Skill.typeOfMessage.Small:
@@ -97,6 +98,7 @@ public class ConversationManager : MonoBehaviour
 
     public void SendMessagesEnemy(Skill capacity)
     {
+        canAttack = false;
         switch (capacity.messageType)
         {
             case Skill.typeOfMessage.Small:
@@ -156,6 +158,7 @@ public class ConversationManager : MonoBehaviour
                 GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
                 msg.transform.SetParent(playerMsgPositions[0].transform);
                 allMsg[0] = msg;
+                canAttack = true;
             }
             else
             {
@@ -163,6 +166,7 @@ public class ConversationManager : MonoBehaviour
                 GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
                 msg.transform.SetParent(enemyMsgPositions[0].transform);
                 allMsg[0] = msg;
+                
             }
             
         }
@@ -280,6 +284,7 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
         //Lancer Methode pour le Text;
     }
 
@@ -289,7 +294,8 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(ChargingMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
-        messageToSpawn = typeToSpawn.Null;
+        messageToSpawn = typeToSpawn.Null; 
+        
         //Lancer Methode pour le Text;
     }
 
@@ -300,6 +306,7 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
         //Lancer Methode pour le Text;
     }
     #endregion
@@ -313,6 +320,7 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
         //Lancer Methode pour le Text;
     }
 
@@ -323,6 +331,7 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
         //Lancer Methode pour le Text;
     }
 
@@ -333,6 +342,7 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
         //Lancer Methode pour le Text;
     }
     #endregion
