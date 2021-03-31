@@ -77,15 +77,42 @@ public class CombatManager : MonoBehaviour
 
     void ButtonsInfos()
     {
-        energyCostText[0].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerHand[0].energyCost.ToString();
-        energyCostText[1].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerHand[1].energyCost.ToString();
-        energyCostText[2].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerHand[2].energyCost.ToString();
-        energyCostText[3].GetComponent<TextMeshProUGUI>().text = "Cost = " + Player.Instance.playerHand[3].energyCost.ToString();
+        if (Player.Instance.isCramp)
+        {
+            int cost1 = Player.Instance.playerHand[0].energyCost + 1;
+            int cost2 = Player.Instance.playerHand[1].energyCost + 1;
+            int cost3 = Player.Instance.playerHand[2].energyCost + 1;
+            int cost4 = Player.Instance.playerHand[3].energyCost + 1;
 
-        damageText[0].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerHand[0].skillDescription;
-        damageText[1].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerHand[1].skillDescription;
-        damageText[2].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerHand[2].skillDescription;
-        damageText[3].GetComponent<TextMeshProUGUI>().text = Player.Instance.playerHand[3].skillDescription;
+            energyCostText[0].text = "Cost = " + cost1;
+            energyCostText[1].text = "Cost = " + cost2;
+            energyCostText[2].text = "Cost = " + cost3;
+            energyCostText[3].text = "Cost = " + cost4;
+
+            energyCostText[0].color = Color.red;
+            energyCostText[1].color = Color.red;
+            energyCostText[2].color = Color.red;
+            energyCostText[3].color = Color.red;
+        }
+        else
+        {
+            energyCostText[0].text = "Cost = " + Player.Instance.playerHand[0].energyCost.ToString();
+            energyCostText[1].text = "Cost = " + Player.Instance.playerHand[1].energyCost.ToString();
+            energyCostText[2].text = "Cost = " + Player.Instance.playerHand[2].energyCost.ToString();
+            energyCostText[3].text = "Cost = " + Player.Instance.playerHand[3].energyCost.ToString();
+
+            energyCostText[0].color = Color.black;
+            energyCostText[1].color = Color.black;
+            energyCostText[2].color = Color.black;
+            energyCostText[3].color = Color.black;
+        }
+
+       
+
+        damageText[0].text = Player.Instance.playerHand[0].skillDescription;
+        damageText[1].text = Player.Instance.playerHand[1].skillDescription;
+        damageText[2].text = Player.Instance.playerHand[2].skillDescription;
+        damageText[3].text = Player.Instance.playerHand[3].skillDescription;
     }
 
     public void ButtonsInitialization()

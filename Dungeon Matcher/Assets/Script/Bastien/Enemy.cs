@@ -23,7 +23,8 @@ public class Enemy : MonoBehaviour
 
     public Skill lastMonsterCompetence;
 
-
+    public bool isCramp = false;
+    public bool isCharging = false;
 
     private void Awake()
     {

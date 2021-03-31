@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Skills/Echo")]
-public class Echo : Skill
+[CreateAssetMenu(menuName = "Skills/Cramp")]
+public class Cramp : Skill
 {
     [SerializeField]
     private MonsterToken monster;
@@ -16,7 +16,71 @@ public class Echo : Skill
         crampEnergyCost = initialEnergyCost + 1;
         owner = obj;
         owner.GetComponent<MonsterToken>();
+    }
+
+    public override void InUse()
+    {
+        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
+        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
+        switch (side)
+        {
+            case monsterSide.Ally:
+
+                if (Player.Instance.energy >= energyCost)
+                {
+                    Player.Instance.energy -= energyCost;
+
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+
+                    PlayerEffect();
+                    CombatManager.Instance.ButtonsUpdate();
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
+                }
+
+                break;
+            case monsterSide.Enemy:
+
+
+                if (Enemy.Instance.energy >= energyCost)
+                {
+                    Enemy.Instance.energy -= energyCost;
+
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    MonsterEffect();
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
+                }
+
+                break;
+        }
+        CombatManager.Instance.index = 0;
+    }
+
+    public override void MonsterEffect()
+    {
+        Enemy.Instance.isCramp = true;
         CombatManager.Instance.ButtonsUpdate();
+    }
+
+    public override void PlayerEffect()
+    {
+        //A inverser J'ai du Tester.
+        Player.Instance.isCramp = true;
     }
 
     public override void Use()
@@ -85,70 +149,7 @@ public class Echo : Skill
                 break;
         }
     }
-
-    public override void PlayerEffect()
-    {
-        Player.Instance.lastPlayerCompetence.PlayerEffect();
-    }
-    public override void MonsterEffect()
-    {
-        //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
-        Enemy.Instance.lastMonsterCompetence = this;
-    }
-
-    public override void InUse()
-    {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        switch (side)
-        {
-            case monsterSide.Ally:
-
-                if (Player.Instance.energy >= energyCost)
-                {
-                    Player.Instance.energy -= energyCost;
-
-                    if (Player.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-
-                    PlayerEffect();
-                    CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
-                }
-
-                break;
-            case monsterSide.Enemy:
-
-
-                if (Enemy.Instance.energy >= energyCost)
-                {
-                    Enemy.Instance.energy -= energyCost;
-
-                    if (Enemy.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                    MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
-                }
-
-                break;
-        }
-        CombatManager.Instance.index = 0;
-    }
-
-    
 }
+
+ 
+

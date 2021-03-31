@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
-  m_Name: Attack 4
+  m_Script: {fileID: 11500000, guid: df7dc68aeb20c6d4cb994e3e4896f329, type: 3}
+  m_Name: Cramp 1
   m_EditorClassIdentifier: 
-  skillDescription: 40 Damage
-  healthAmount: 40
+  skillDescription: Cramp
+  healthAmount: 0
   side: 1
-  messageType: 0
-  energyCost: 4
+  messageType: 2
+  energyCost: 0
   chargingAttack: 0
   ChargingTime: 0
   monster: {fileID: 0}

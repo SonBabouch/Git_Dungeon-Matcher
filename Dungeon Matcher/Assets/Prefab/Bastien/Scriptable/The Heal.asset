@@ -15,6 +15,10 @@ MonoBehaviour:
   skillDescription: 20 Heal
   healthAmount: 20
   side: 1
+  messageType: 0
   energyCost: 2
+  chargingAttack: 0
+  ChargingTime: 0
+  himSelf: {fileID: 0}
   monster: {fileID: 0}
   owner: {fileID: 0}

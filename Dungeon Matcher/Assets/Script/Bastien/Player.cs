@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public bool isSkillUsed;
     public bool isBurn;
     public bool isCharging;
+    public bool isCramp = false;
 
     public Skill lastPlayerCompetence;
 
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour
         CombatManager.Instance.ButtonsUpdate();
         ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
         yield return new WaitForSeconds(chargingTime);
-        Debug.Log("End");
+        //Debug.Log("End");
         Player.Instance.isCharging = false;
         ConversationManager.Instance.UpdateLastMessageState();
         skillToCharge.PlayerEffect();

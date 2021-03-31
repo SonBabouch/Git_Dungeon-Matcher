@@ -7,7 +7,7 @@ public class MessageBehaviour : MonoBehaviour
     public enum team{Player,Enemy};
     public team teamMsg;
 
-    public enum effect {InspirationLimitation, AttiranceLimitation, Curse, Mark, Charm, Silence, Lock, Weakened };
+    public enum effect {InspirationLimitation, AttiranceLimitation, Curse, Mark, Charm, Silence, Lock, Cramp };
     public effect EmojiEffect;
 
     public bool ally;
@@ -38,7 +38,7 @@ public class MessageBehaviour : MonoBehaviour
                 EmojiEffect = effect.Lock;
                 break;
             case 7:
-                EmojiEffect = effect.Weakened;
+                EmojiEffect = effect.Cramp;
                 break;
             default:
                 break;
@@ -73,8 +73,8 @@ public class MessageBehaviour : MonoBehaviour
                 case effect.Lock:
                     //Change la bool en true;
                     break; ;
-            case effect.Weakened:
-                    //Change la bool en true;
+            case effect.Cramp:
+                    Enemy.Instance.isCramp = true;
                     break;
                 default:
                     break;
@@ -105,8 +105,8 @@ public class MessageBehaviour : MonoBehaviour
                 case effect.Lock:
                     //Change la bool en false;
                     break; ;
-                case effect.Weakened:
-                    //Change la bool en false;
+                case effect.Cramp:
+                    Player.Instance.isCramp = true;
                     break;
                 default:
                     break;
@@ -115,6 +115,8 @@ public class MessageBehaviour : MonoBehaviour
     }
     public void EmojiEffectEnd()
     {
+
+        Debug.Log("CancelCramp");
         //Changer ce qu'il faut quand la compétence est lancé chez le joueur
         if (teamMsg == team.Player)
         {
@@ -141,8 +143,10 @@ public class MessageBehaviour : MonoBehaviour
                 case effect.Lock:
                     //Effet
                     break; ;
-                case effect.Weakened:
-                    //Effet
+                case effect.Cramp:
+                    Enemy.Instance.isCramp = false;
+                    
+                  
                     break;
                 default:
                     break;
@@ -173,8 +177,10 @@ public class MessageBehaviour : MonoBehaviour
                 case effect.Lock:
                     //Effet
                     break; ;
-                case effect.Weakened:
-                    //Effet
+                case effect.Cramp:
+
+                    Player.Instance.isCramp = false;
+                    CombatManager.Instance.ButtonsUpdate();
                     break;
                 default:
                     break;

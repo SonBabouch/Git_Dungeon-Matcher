@@ -226,10 +226,13 @@ MonoBehaviour:
   currentMonster: {fileID: 0}
   enemyMonsters:
   - {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a, type: 3}
-  - {fileID: 3352059483369707408, guid: f2c245234c5ab6844b81620a815fc6eb, type: 3}
+  - {fileID: 3352059483369707408, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
   enemySkills: []
   enemyHand: []
   enemyDraw: []
+  lastMonsterCompetence: {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae,
+    type: 2}
+  isCramp: 0
 --- !u!114 &3961628646244606166
 MonoBehaviour:
   m_ObjectHideFlags: 0

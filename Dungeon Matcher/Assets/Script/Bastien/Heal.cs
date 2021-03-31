@@ -14,25 +14,76 @@ public class Heal : Skill
     private GameObject owner;
     public override void Initialize(GameObject obj)
     {
+        energyCost = initialEnergyCost;
+        crampEnergyCost = initialEnergyCost + 1;
         owner = obj;
         owner.GetComponent<MonsterToken>();
     }
 
     public override void Use()
     {
-        if (ConversationManager.Instance.canAttack)
+        switch (side)
         {
-            if (Player.Instance.isCharging == false)
-            {
-                if (chargingAttack)
+            case monsterSide.Enemy:
+                if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
                 {
-                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = crampEnergyCost;
+                    }
+                    else
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    if (chargingAttack)
+                    {
+                        if (Enemy.Instance.energy >= energyCost)
+                        {
+                            Enemy.Instance.energy -= energyCost;
+
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                        }
+                    }
+                    else
+                    {
+                        InUse();
+                    }
                 }
-                else
+
+                break;
+            case monsterSide.Ally:
+
+                if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
-                    InUse();
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = crampEnergyCost;
+                    }
+                    else
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    if (chargingAttack)
+                    {
+                        if (Player.Instance.energy >= energyCost)
+                        {
+                            Player.Instance.energy -= energyCost;
+
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                        }
+                    }
+                    else
+                    {
+                        InUse();
+                    }
                 }
-            }
+                break;
+            default:
+                break;
         }
     }
 
@@ -58,25 +109,52 @@ public class Heal : Skill
 
     public override void InUse()
     {
+        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
+        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
         switch (side)
         {
             case monsterSide.Ally:
+
                 if (Player.Instance.energy >= energyCost)
                 {
-                    Player.Instance.AllyAlteration();
                     Player.Instance.energy -= energyCost;
+
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this,0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
                 }
+
                 break;
             case monsterSide.Enemy:
+
+
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
+
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this,0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
                 }
+
                 break;
         }
         CombatManager.Instance.index = 0;

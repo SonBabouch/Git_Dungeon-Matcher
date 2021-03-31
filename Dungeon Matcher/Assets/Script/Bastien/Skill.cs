@@ -16,7 +16,9 @@ public abstract class Skill : ScriptableObject
     public enum typeOfMessage { Small, Big, Emoji }
     public typeOfMessage messageType;
 
-    public float energyCost;
+    public int energyCost;
+    public int initialEnergyCost;
+    public int crampEnergyCost;
     
 
     //Charging Stuff

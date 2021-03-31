@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamMsg: 0
+  EmojiEffect: 0
   ally: 1
   big: 0
-  currentPosition: 0
+  emoji: 1

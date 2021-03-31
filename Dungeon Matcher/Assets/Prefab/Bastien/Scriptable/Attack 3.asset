@@ -15,6 +15,9 @@ MonoBehaviour:
   skillDescription: 30 Damage
   healthAmount: 30
   side: 0
+  messageType: 0
   energyCost: 3
+  chargingAttack: 0
+  ChargingTime: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

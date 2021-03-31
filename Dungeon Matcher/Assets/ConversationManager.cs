@@ -40,9 +40,6 @@ public class ConversationManager : MonoBehaviour
     public enum typeToSpawn { Null,PlayerSmall,PlayerBig,PlayerEmote, EnemySmall, EnemyBig, EnemyEmote }
     public typeToSpawn messageToSpawn;
 
-
-
-
     public bool canAttack = true;
 
     private void Awake()
@@ -66,7 +63,7 @@ public class ConversationManager : MonoBehaviour
 
         allMsg = new  GameObject [enemyMsgPositions.Count];
 
-        Debug.Log(allMsg.Length);
+        //Debug.Log(allMsg.Length);
     }
 
     /*private void Update()
@@ -76,6 +73,7 @@ public class ConversationManager : MonoBehaviour
             //A mettre dans le break.
             StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
             Player.Instance.isCharging = false;
+            Player.Instance.canAttack = false;
             CancelPosition();
         }
         
@@ -97,7 +95,7 @@ public class ConversationManager : MonoBehaviour
                 break;
             case Skill.typeOfMessage.Emoji:
                 messageToSpawn = typeToSpawn.PlayerEmote;
-                numberForEmojiEffect = futurEmojiEffect;
+                futurEmojiEffect = numberForEmojiEffect;
                 UpdatePosition();
                 break;
             default:
@@ -120,7 +118,7 @@ public class ConversationManager : MonoBehaviour
                 break;
             case Skill.typeOfMessage.Emoji:
                 messageToSpawn = typeToSpawn.EnemyEmote;
-                numberForEmojiEffect = futurEmojiEffect;
+                futurEmojiEffect = numberForEmojiEffect;
                 UpdatePosition();
                 break;
             default:
@@ -132,19 +130,20 @@ public class ConversationManager : MonoBehaviour
     {
         numberOfMessageTotal = 0;
         //2 - Enleve le dernier message
-        if (allMsg[allMsg.Length - 1] != null)
+        if (allMsg[allMsg.Length-2] != null)
         {
-            GameObject currentGO = allMsg[allMsg.Length - 1];
+            Debug.Log("Destroy");
 
-            if (currentGO.GetComponent<MessageBehaviour>().emoji)
+            if (allMsg[allMsg.Length - 2].GetComponent<MessageBehaviour>().emoji)
             {
-                currentGO.GetComponent<MessageBehaviour>().EmojiEffectEnd();
+                allMsg[allMsg.Length - 2].GetComponent<MessageBehaviour>().EmojiEffectEnd();
                 emojis.Remove(emojis[emojis.Count - 1]);
             }
-            
-            allMsg[allMsg.Length - 1] = null;
 
-            Destroy(currentGO);
+            //Destroy(allMsg[allMsg.Length - 1]);
+            
+
+            Debug.Log(allMsg[allMsg.Length - 1]);
         }
         //3- Compte le nombre de message présent. Donc le nombre de message à déplacer.
         for (int i = allMsg.Length - 2; i > -1; i--)
@@ -259,14 +258,14 @@ public class ConversationManager : MonoBehaviour
 
     void UpdateArrayIndex()
     {
-        print("Called");
+        //print("Called");
 
         //6 - Reset des messages à bouger.
         numberOfMessageMoved = 0;
 
         for (int i = allMsg.Length - 2; i > 0; i--)
         {
-            print(i - 1 + " " + (i));
+            //print(i - 1 + " " + (i));
             //7 - Tous les messages augmente d'un index (en partant du haut).
             allMsg[i] = allMsg[i - 1];
         }
@@ -346,8 +345,10 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Player;
+        msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);
         msg.GetComponent<MessageBehaviour>().EmojiEffectBegin();
-
+        futurEmojiEffect = 0;
+        
         //On stock l'emoji dans un tableau, pour réactiver son effet;
         emojis.Add(msg);
 
@@ -388,6 +389,8 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Enemy;
+        msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);
+        futurEmojiEffect = 0;
         msg.GetComponent<MessageBehaviour>().EmojiEffectBegin();
         emojis.Add(msg);
 
