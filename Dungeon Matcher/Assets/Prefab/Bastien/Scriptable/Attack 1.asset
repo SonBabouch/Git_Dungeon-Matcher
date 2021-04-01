@@ -17,7 +17,8 @@ MonoBehaviour:
   side: 1
   messageType: 1
   energyCost: 1
+  initialEnergyCost: 1
+  crampEnergyCost: 2
   chargingAttack: 1
-  ChargingTime: 5
   monster: {fileID: 0}
   owner: {fileID: 0}

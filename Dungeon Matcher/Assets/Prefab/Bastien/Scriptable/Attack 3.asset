@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: 30 Damage
   healthAmount: 30
-  side: 0
+  side: 1
   messageType: 0
   energyCost: 3
+  initialEnergyCost: 3
+  crampEnergyCost: 4
   chargingAttack: 0
-  ChargingTime: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

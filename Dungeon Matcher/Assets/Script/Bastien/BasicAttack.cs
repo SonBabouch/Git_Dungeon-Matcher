@@ -53,7 +53,6 @@ public class BasicAttack : Skill
 
                 break;
             case monsterSide.Ally:
-
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
@@ -64,6 +63,7 @@ public class BasicAttack : Skill
                     {
                         energyCost = initialEnergyCost;
                     }
+
 
                     if (chargingAttack)
                     {
@@ -84,8 +84,6 @@ public class BasicAttack : Skill
             default:
                 break;
         }
-
-       
     }
 
     public override void InUse()

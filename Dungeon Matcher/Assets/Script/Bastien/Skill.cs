@@ -23,7 +23,6 @@ public abstract class Skill : ScriptableObject
 
     //Charging Stuff
     public bool chargingAttack;
-    public float ChargingTime;
 
     public abstract void Initialize(GameObject obj);
     public abstract void Use();

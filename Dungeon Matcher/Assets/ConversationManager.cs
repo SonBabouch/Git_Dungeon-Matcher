@@ -74,7 +74,7 @@ public class ConversationManager : MonoBehaviour
             StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
             Player.Instance.isCharging = false;
             Player.Instance.canAttack = false;
-            CancelPosition();
+            CancelPosition(); => Cancel position permet de faire l'animation dans le sens inverse => Pas encore animé, ca sera du tp.
         }
         
     }*/

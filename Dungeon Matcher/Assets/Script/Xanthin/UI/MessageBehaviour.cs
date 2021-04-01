@@ -146,7 +146,6 @@ public class MessageBehaviour : MonoBehaviour
                 case effect.Cramp:
                     Enemy.Instance.isCramp = false;
                     
-                  
                     break;
                 default:
                     break;
