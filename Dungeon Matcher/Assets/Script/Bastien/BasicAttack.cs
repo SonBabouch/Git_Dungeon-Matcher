@@ -92,8 +92,6 @@ public class BasicAttack : Skill
         {
             case monsterSide.Ally:
 
-
-
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;

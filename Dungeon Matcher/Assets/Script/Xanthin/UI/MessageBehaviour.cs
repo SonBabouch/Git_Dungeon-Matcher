@@ -7,6 +7,7 @@ public class MessageBehaviour : MonoBehaviour
     public enum team{Player,Enemy};
     public team teamMsg;
 
+    //Changer BoostInspiration & SlowInspiration plutot que inspirationLimitation;
     public enum effect {InspirationLimitation, AttiranceLimitation, Curse, Mark, Charm, Silence, Lock, Cramp };
     public effect EmojiEffect;
 
@@ -73,7 +74,7 @@ public class MessageBehaviour : MonoBehaviour
                 case effect.Lock:
                     //Change la bool en true;
                     break; ;
-            case effect.Cramp:
+                case effect.Cramp:
                     Enemy.Instance.isCramp = true;
                     break;
                 default:

@@ -78,6 +78,7 @@ public class ConversationManager : MonoBehaviour
         }
         
     }*/
+
     //1 - Le joueur appuie sur un bouton, ca lance SendMessage (enemy ou allié). Mettre 0 en EmojiEffect si l'attaque n'est pas un Emoji
     public void SendMessagesPlayer(Skill capacity, int numberForEmojiEffect)
     {
