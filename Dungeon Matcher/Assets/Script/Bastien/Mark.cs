@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Skills/Cramp")]
-public class Cramp : Skill
+
+[CreateAssetMenu(menuName = "Skills/Mark")]
+public class Mark : Skill
 {
     [SerializeField]
     private MonsterToken monster;
@@ -16,70 +17,6 @@ public class Cramp : Skill
         crampEnergyCost = initialEnergyCost + 1;
         owner = obj;
         owner.GetComponent<MonsterToken>();
-    }
-
-    public override void InUse()
-    {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        switch (side)
-        {
-            case monsterSide.Ally:
-
-                if (Player.Instance.energy >= energyCost)
-                {
-                    Player.Instance.energy -= energyCost;
-
-                    if (Player.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-
-                    PlayerEffect();
-                    CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
-                }
-
-                break;
-            case monsterSide.Enemy:
-
-
-                if (Enemy.Instance.energy >= energyCost)
-                {
-                    Enemy.Instance.energy -= energyCost;
-
-                    if (Enemy.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                    MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
-                }
-
-                break;
-        }
-        CombatManager.Instance.index = 0;
-    }
-
-    public override void MonsterEffect()
-    {
-        Player.Instance.isCramp = true;
-        CombatManager.Instance.ButtonsUpdate();
-    }
-
-    public override void PlayerEffect()
-    {
-        Enemy.Instance.isCramp = true;
     }
 
     public override void Use()
@@ -116,7 +53,6 @@ public class Cramp : Skill
 
                 break;
             case monsterSide.Ally:
-
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
@@ -127,6 +63,7 @@ public class Cramp : Skill
                     {
                         energyCost = initialEnergyCost;
                     }
+
 
                     if (chargingAttack)
                     {
@@ -148,7 +85,53 @@ public class Cramp : Skill
                 break;
         }
     }
+
+    public override void InUse()
+    {
+        switch (side)
+        {
+            case monsterSide.Ally:
+
+                if (Player.Instance.energy >= energyCost)
+                {
+                    Player.Instance.energy -= energyCost;
+
+                    PlayerEffect();
+                    CombatManager.Instance.ButtonsUpdate();
+                    ConversationManager.Instance.SendMessagesPlayer(this, 4);
+                }
+
+                break;
+            case monsterSide.Enemy:
+
+
+                if (Enemy.Instance.energy >= energyCost)
+                {
+                    Enemy.Instance.energy -= energyCost;
+
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    MonsterEffect();
+                    ConversationManager.Instance.SendMessagesEnemy(this, 4);
+                }
+
+                break;
+        }
+        CombatManager.Instance.index = 0;
+    }
+
+    public override void PlayerEffect()
+    {
+        Player.Instance.isBoosted = true;
+        Player.Instance.lastPlayerCompetence = this;
+    }
+
+    public override void MonsterEffect()
+    {
+        Enemy.Instance.isBoosted = true;
+    }
+
 }
-
- 
-

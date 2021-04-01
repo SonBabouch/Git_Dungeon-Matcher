@@ -140,13 +140,14 @@ public class BasicAttack : Skill
 
     public override void PlayerEffect()
     {
-        Enemy.Instance.health += healthAmount;
+        Player.Instance.AllyAlteration();
+        Enemy.Instance.health += healthAmount * Player.Instance.boostAttack;
         Player.Instance.lastPlayerCompetence = this;
     }
 
     public override void MonsterEffect()
     {
-        Player.Instance.health += healthAmount;
+        Player.Instance.health += healthAmount * Enemy.Instance.boostAttack;
     }
 
     
