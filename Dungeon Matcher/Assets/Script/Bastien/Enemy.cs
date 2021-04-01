@@ -26,6 +26,9 @@ public class Enemy : MonoBehaviour
     public bool isCramp = false;
     public bool isCharging = false;
 
+    public bool isBoosted = false;
+    public float boostAttack = 1f;
+
     private void Awake()
     {
         if (Instance == null)

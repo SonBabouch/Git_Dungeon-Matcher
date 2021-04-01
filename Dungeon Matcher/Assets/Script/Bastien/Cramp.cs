@@ -73,14 +73,13 @@ public class Cramp : Skill
 
     public override void MonsterEffect()
     {
-        Enemy.Instance.isCramp = true;
+        Player.Instance.isCramp = true;
         CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void PlayerEffect()
     {
-        //A inverser J'ai du Tester.
-        Player.Instance.isCramp = true;
+        Enemy.Instance.isCramp = true;
     }
 
     public override void Use()

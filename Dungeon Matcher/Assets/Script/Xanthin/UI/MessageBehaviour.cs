@@ -63,7 +63,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Change la bool en true;
                     break;
                 case effect.Mark:
-                    //Change la bool en true;
+                    Player.Instance.isBoosted = true;
                     break;
                 case effect.Charm:
                     //Change la bool en true;
@@ -95,7 +95,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Change la bool en false;
                     break;
                 case effect.Mark:
-                    //Change la bool en false;
+                    Enemy.Instance.isBoosted = true;
                     break;
                 case effect.Charm:
                     //Change la bool en false;
@@ -133,7 +133,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Effet
                     break;
                 case effect.Mark:
-                    //Effet
+                    Player.Instance.isBoosted = false;
                     break;
                 case effect.Charm:
                     //Effet
@@ -166,7 +166,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Effet
                     break;
                 case effect.Mark:
-                    //Effet
+                    Enemy.Instance.isBoosted = false;
                     break;
                 case effect.Charm:
                     //Effet

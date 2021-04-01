@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     public bool isCharging;
     public bool isCramp = false;
 
+    public bool isBoosted = false;
+    public float boostAttack = 1f;
+
     public Skill lastPlayerCompetence;
 
     public float chargingTime;
@@ -101,6 +104,16 @@ public class Player : MonoBehaviour
     public void AllyAlteration()
     {
         //Creer une méthode qui gere un type d'altération et l'appeller ici
+
+        //Attack Boosté;
+        if (isBoosted)
+        {
+            boostAttack = 1.2f;
+        }
+        else
+        {
+            boostAttack = 1f;
+        }
     }
 
     public IEnumerator ChargeAttack(Skill skillToCharge)

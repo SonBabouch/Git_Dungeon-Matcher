@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "Skills/BasicAttack")]
-public class BasicAttack : Skill
+[CreateAssetMenu(menuName = "Skills/Mark")]
+public class Mark : Skill
 {
     [SerializeField]
     private MonsterToken monster;
@@ -98,7 +98,7 @@ public class BasicAttack : Skill
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 4);
                 }
 
                 break;
@@ -115,7 +115,7 @@ public class BasicAttack : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 4);
                 }
 
                 break;
@@ -125,15 +125,13 @@ public class BasicAttack : Skill
 
     public override void PlayerEffect()
     {
-        Player.Instance.AllyAlteration();
-        Enemy.Instance.health += healthAmount * Player.Instance.boostAttack;
+        Player.Instance.isBoosted = true;
         Player.Instance.lastPlayerCompetence = this;
     }
 
     public override void MonsterEffect()
     {
-        Player.Instance.health += healthAmount * Enemy.Instance.boostAttack;
+        Enemy.Instance.isBoosted = true;
     }
 
-    
 }
