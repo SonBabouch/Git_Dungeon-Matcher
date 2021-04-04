@@ -18,6 +18,68 @@ public class Break : Skill
 
     public override void Use()
     {
+        switch (side)
+        {
+            case monsterSide.Enemy:
+                if(Enemy.Instance.isCharging == false && ConversationManager.Instance.canAttack)
+                {
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = crampEnergyCost;
+                    }
+                    else
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    if (chargingAttack)
+                    {
+                        if (Enemy.Instance.energy >= energyCost)
+                        {
+                            Enemy.Instance.energy -= energyCost;
+                        }
+
+                        //ici ce sera Enemy plutôt que Player
+                        Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                    }
+                    else
+                    {
+                        InUse();
+                    }
+                }
+                break;
+            case monsterSide.Ally:
+                if(ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
+                {
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = crampEnergyCost;
+                    }
+                    else
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    if (chargingAttack)
+                    {
+                        if (Player.Instance.energy >= energyCost)
+                        {
+                            Player.Instance.energy -= energyCost;
+
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                        }
+                    }
+                    else
+                    {
+                        InUse();
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
         if (Player.Instance.isCharging == false)
         {
             if (chargingAttack)
@@ -33,29 +95,44 @@ public class Break : Skill
 
     public override void PlayerEffect()
     {
-        //Capa annulée.
+        //Enemy.Instance.StopCoroutine(ChargeAttack());
         Player.Instance.lastPlayerCompetence = this;
     }
 
     public override void MonsterEffect()
     {
-        //Capa annulée
-        //Monsterer.Instance.lastMonsterCompetence = this;
+        Player.Instance.StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
+        Enemy.Instance.lastMonsterCompetence = this;
     }
 
     public override void InUse()
     {
+        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
+        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
         switch (side)
         {
             case monsterSide.Ally:
                 if (Player.Instance.energy >= energyCost)
                 {
-                    /*if (/*Enemy.Instance.isCharging)
+                    if (Enemy.Instance.isCharging)
                     {
                         Player.Instance.AllyAlteration();
                         Player.Instance.energy -= energyCost;
+
+                        if (Player.Instance.isCramp)
+                        {
+                            energyCost = initialEnergyCost;
+                        }
                         PlayerEffect();
-                    }*/
+                    }
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this,0);
                 }

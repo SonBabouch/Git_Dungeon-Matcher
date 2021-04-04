@@ -92,7 +92,7 @@ public class Cheating : Skill
             energyCost = crampEnergyCost;
         }
 
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
         {
             energyCost = crampEnergyCost;
         }
@@ -109,7 +109,6 @@ public class Cheating : Skill
                     {
                         energyCost = initialEnergyCost;
                     }
-
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();

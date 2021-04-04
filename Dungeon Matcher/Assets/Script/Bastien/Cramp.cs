@@ -25,7 +25,7 @@ public class Cramp : Skill
             energyCost = crampEnergyCost;
         }
 
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
         {
             energyCost = crampEnergyCost;
         }

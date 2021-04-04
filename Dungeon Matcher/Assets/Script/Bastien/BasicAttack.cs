@@ -88,6 +88,16 @@ public class BasicAttack : Skill
 
     public override void InUse()
     {
+        if (Player.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
+        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
+        {
+            energyCost = crampEnergyCost;
+        }
+
         switch (side)
         {
             case monsterSide.Ally:
@@ -95,6 +105,11 @@ public class BasicAttack : Skill
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;
+
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
