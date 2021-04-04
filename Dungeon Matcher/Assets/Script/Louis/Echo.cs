@@ -86,29 +86,8 @@ public class Echo : Skill
         }
     }
 
-    public override void PlayerEffect()
-    {
-        Player.Instance.lastPlayerCompetence.PlayerEffect();
-    }
-    public override void MonsterEffect()
-    {
-        //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
-        Enemy.Instance.lastMonsterCompetence = this;
-    }
-
     public override void InUse()
     {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
         switch (side)
         {
             case monsterSide.Ally:
@@ -124,13 +103,11 @@ public class Echo : Skill
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
-
                 break;
+
             case monsterSide.Enemy:
-
-
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
@@ -141,13 +118,21 @@ public class Echo : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
-
                 break;
         }
         CombatManager.Instance.index = 0;
     }
 
-    
+    public override void PlayerEffect()
+    {
+        Player.Instance.lastPlayerCompetence.PlayerEffect();
+    }
+    public override void MonsterEffect()
+    {
+        //potentiellement yield return 0.1 secondes -> Coroutine
+        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
+        Enemy.Instance.lastMonsterCompetence = this;
+    }
 }

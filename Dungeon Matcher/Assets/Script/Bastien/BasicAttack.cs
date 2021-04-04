@@ -53,6 +53,7 @@ public class BasicAttack : Skill
 
                 break;
             case monsterSide.Ally:
+
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
@@ -63,7 +64,6 @@ public class BasicAttack : Skill
                     {
                         energyCost = initialEnergyCost;
                     }
-
 
                     if (chargingAttack)
                     {
@@ -88,16 +88,6 @@ public class BasicAttack : Skill
 
     public override void InUse()
     {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
         switch (side)
         {
             case monsterSide.Ally:
@@ -113,13 +103,11 @@ public class BasicAttack : Skill
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
-
                 break;
+
             case monsterSide.Enemy:
-
-
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
@@ -130,9 +118,8 @@ public class BasicAttack : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
-
                 break;
         }
         CombatManager.Instance.index = 0;

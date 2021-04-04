@@ -109,16 +109,6 @@ public class Heal : Skill
 
     public override void InUse()
     {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
         switch (side)
         {
             case monsterSide.Ally:
@@ -132,16 +122,13 @@ public class Heal : Skill
                         energyCost = initialEnergyCost;
                     }
 
-
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
-
                 break;
+
             case monsterSide.Enemy:
-
-
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
@@ -152,9 +139,8 @@ public class Heal : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
-
                 break;
         }
         CombatManager.Instance.index = 0;

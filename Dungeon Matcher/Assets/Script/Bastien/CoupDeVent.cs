@@ -50,8 +50,8 @@ public class CoupDeVent : Skill
                         InUse();
                     }
                 }
-
                 break;
+
             case monsterSide.Ally:
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
@@ -63,7 +63,6 @@ public class CoupDeVent : Skill
                     {
                         energyCost = initialEnergyCost;
                     }
-
 
                     if (chargingAttack)
                     {
@@ -91,20 +90,22 @@ public class CoupDeVent : Skill
         switch (side)
         {
             case monsterSide.Ally:
-
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;
 
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
-
                 break;
+
             case monsterSide.Enemy:
-
-
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
@@ -115,9 +116,8 @@ public class CoupDeVent : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
-
                 break;
         }
         CombatManager.Instance.index = 0;

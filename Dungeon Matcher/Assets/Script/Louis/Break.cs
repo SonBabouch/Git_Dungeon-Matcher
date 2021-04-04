@@ -21,7 +21,7 @@ public class Break : Skill
         switch (side)
         {
             case monsterSide.Enemy:
-                if(Enemy.Instance.isCharging == false && ConversationManager.Instance.canAttack)
+                if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
                 {
                     if (Enemy.Instance.isCramp)
                     {
@@ -37,19 +37,21 @@ public class Break : Skill
                         if (Enemy.Instance.energy >= energyCost)
                         {
                             Enemy.Instance.energy -= energyCost;
-                        }
 
-                        //ici ce sera Enemy plutôt que Player
-                        Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                        }
                     }
                     else
                     {
                         InUse();
                     }
                 }
+
                 break;
             case monsterSide.Ally:
-                if(ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
+
+                if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
                     {
@@ -78,18 +80,6 @@ public class Break : Skill
                 break;
             default:
                 break;
-        }
-
-        if (Player.Instance.isCharging == false)
-        {
-            if (chargingAttack)
-            {
-                Player.Instance.ChargeAttack(this);
-            }
-            else
-            {
-                InUse();
-            }
         }
     }
 

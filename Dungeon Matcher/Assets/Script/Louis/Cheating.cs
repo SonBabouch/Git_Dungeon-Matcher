@@ -47,8 +47,8 @@ public class Cheating : Skill
                         InUse();
                     }
                 }
-                break;
 
+                break;
             case monsterSide.Ally:
 
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
@@ -87,16 +87,6 @@ public class Cheating : Skill
 
     public override void InUse()
     {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
         switch (side)
         {
             case monsterSide.Ally:
@@ -112,13 +102,11 @@ public class Cheating : Skill
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
-
                 break;
+
             case monsterSide.Enemy:
-
-
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
@@ -129,9 +117,8 @@ public class Cheating : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
-
                 break;
         }
         CombatManager.Instance.index = 0;
