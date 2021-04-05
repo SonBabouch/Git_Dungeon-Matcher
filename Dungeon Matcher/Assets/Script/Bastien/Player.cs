@@ -138,18 +138,26 @@ public class Player : MonoBehaviour
 
     private void UpdateComboVisuel()
     {
-        //Check de toutes la main.
-        for (int i = 0; i < playerHand.Count; i++)
+        if (isCombo)
         {
-            if (playerHand[i].isComboSkill)
+            //Check de toutes la main.
+            for (int i = 0; i < playerHand.Count; i++)
             {
-                playerUi.comboSkillFeedback[i].enabled = true;
+                if (playerHand[i].isComboSkill)
+                {
+                    playerUi.comboSkillFeedback[i].enabled = true;
+                }
+
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < playerHand.Count; i++)
             {
                 playerUi.comboSkillFeedback[i].enabled = false;
             }
         }
+        
     }
 
     public IEnumerator PlayerCombo()
