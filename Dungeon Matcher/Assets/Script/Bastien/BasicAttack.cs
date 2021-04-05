@@ -21,6 +21,8 @@ public class BasicAttack : Skill
 
     public override void Use()
     {
+
+
         switch (side)
         {
             case monsterSide.Enemy:

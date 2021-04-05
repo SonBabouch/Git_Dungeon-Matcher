@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ConversationManager : MonoBehaviour
 {
+    public MessageManager messageManager;
+
     //Prefabs To Instantiate.
     [SerializeField] private GameObject SmallMessagePlayer;
     [SerializeField] private GameObject ChargingMessagePlayer;
@@ -88,16 +90,16 @@ public class ConversationManager : MonoBehaviour
         {
             case Skill.typeOfMessage.Small:
                 messageToSpawn = typeToSpawn.PlayerSmall;
-                UpdatePosition();
+                UpdatePosition(capacity);
                 break;
             case Skill.typeOfMessage.Big:
                 messageToSpawn = typeToSpawn.PlayerBig;
-                UpdatePosition();
+                UpdatePosition(capacity);
                 break;
             case Skill.typeOfMessage.Emoji:
                 messageToSpawn = typeToSpawn.PlayerEmote;
                 futurEmojiEffect = numberForEmojiEffect;
-                UpdatePosition();
+                UpdatePosition(capacity);
                 break;
             default:
                 break;
@@ -111,23 +113,23 @@ public class ConversationManager : MonoBehaviour
         {
             case Skill.typeOfMessage.Small:
                 messageToSpawn = typeToSpawn.EnemySmall;
-                UpdatePosition();
+                UpdatePosition(capacity);
                 break;
             case Skill.typeOfMessage.Big:
                 messageToSpawn = typeToSpawn.EnemyBig;
-                UpdatePosition();
+                UpdatePosition(capacity);
                 break;
             case Skill.typeOfMessage.Emoji:
                 messageToSpawn = typeToSpawn.EnemyEmote;
                 futurEmojiEffect = numberForEmojiEffect;
-                UpdatePosition();
+                UpdatePosition(capacity);
                 break;
             default:
                 break;
         }
     }
     //2 - Enleve le dernier message
-    public void UpdatePosition()
+    public void UpdatePosition(Skill skillType)
     {
         numberOfMessageTotal = 0;
         //2 - Enleve le dernier message
@@ -152,19 +154,19 @@ public class ConversationManager : MonoBehaviour
             if (allMsg[i] != null)
             {
                 numberOfMessageTotal++;
-                StartCoroutine(MessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally)); ;
+                StartCoroutine(MessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally,skillType)); ;
             }
         }
 
         if (numberOfMessageTotal==0)
         {
-            PrintMessage();
+            PrintMessage(skillType);
         }
     }
 
 
     #region ChargingRegion
-    public void UpdateLastMessageState()
+    public void UpdateLastMessageState(Skill skill)
     {
         if (allMsg[0].GetComponent<MessageBehaviour>().big && allMsg[0] != null)
         {
@@ -174,6 +176,9 @@ public class ConversationManager : MonoBehaviour
                 GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
                 msg.transform.SetParent(playerMsgPositions[0].transform);
                 allMsg[0] = msg;
+
+                messageManager.ChoseArray(skill, msg);
+
                 canAttack = true;
             }
             else
@@ -182,7 +187,9 @@ public class ConversationManager : MonoBehaviour
                 GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
                 msg.transform.SetParent(enemyMsgPositions[0].transform);
                 allMsg[0] = msg;
-                
+
+                messageManager.ChoseArray(skill, msg);
+
             }
             
         }
@@ -218,7 +225,7 @@ public class ConversationManager : MonoBehaviour
     #endregion
 
     //4- Animation des Messages.
-    IEnumerator MessageMovement(GameObject message, int index, bool ally)
+    IEnumerator MessageMovement(GameObject message, int index, bool ally, Skill skillToSpawn)
     {
         //Déplacer message joueur
         if (message.GetComponent<MessageBehaviour>().ally)
@@ -250,14 +257,14 @@ public class ConversationManager : MonoBehaviour
 
         if(numberOfMessageMoved == numberOfMessageTotal)
         {   //5 - Quand tous les messages ont bougés, je peux update leur emplacement dans l'array.
-            UpdateArrayIndex();
+            UpdateArrayIndex(skillToSpawn);
         }
 
         yield return null;
 
     }
 
-    void UpdateArrayIndex()
+    void UpdateArrayIndex(Skill skillToSpawn)
     {
         //print("Called");
 
@@ -272,12 +279,12 @@ public class ConversationManager : MonoBehaviour
         }
 
         //8- Update des Effets des Emojis.
-        UpdateEmojiEffect();
+        UpdateEmojiEffect(skillToSpawn);
         
     }
     
     //rejoue les effets des emojis si jamais ils sont en double pas de soucis;
-    void UpdateEmojiEffect()
+    void UpdateEmojiEffect(Skill skillToSpawn)
     {
         for (int i = 0; i < emojis.Count-1; i++)
         {
@@ -285,31 +292,31 @@ public class ConversationManager : MonoBehaviour
         }
 
         //9- Instancie le message
-        PrintMessage();
+        PrintMessage(skillToSpawn);
     }
 
     //Instancier le message en fonction de la compétences.
-    void PrintMessage()
+    void PrintMessage(Skill capacity)
     {
         switch (messageToSpawn)
         {
             case typeToSpawn.PlayerSmall:
-                PlayerSmallMessage();
+                PlayerSmallMessage(capacity);
                 break;
             case typeToSpawn.PlayerBig:
-                PlayerLargeMessage();
+                PlayerLargeMessage(capacity);
                 break;
             case typeToSpawn.PlayerEmote:
-                PlayerEmojis();
+                PlayerEmojis(capacity);
                 break;
             case typeToSpawn.EnemySmall:
-                EnemySmallMessage();
+                EnemySmallMessage(capacity);
                 break;
             case typeToSpawn.EnemyBig:
-                EnemyLargeMessage();
+                EnemyLargeMessage(capacity);
                 break;
             case typeToSpawn.EnemyEmote:
-                EnemyEmojis();
+                EnemyEmojis(capacity);
                 break;
             default:
                 break;
@@ -318,29 +325,34 @@ public class ConversationManager : MonoBehaviour
     }
 
     #region Player
-    public void PlayerSmallMessage()
+    public void PlayerSmallMessage(Skill skill)
     {
       
         GameObject msg = Instantiate(SmallMessagePlayer.gameObject, playerMsgPositions[0].transform.position,Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
+
+        //Debug.Log(skill);
+        messageManager.ChoseArray(skill, msg);
+
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         //Lancer Methode pour le Text;
     }
 
-    public void PlayerLargeMessage()
+    public void PlayerLargeMessage(Skill skill)
     {
        
         GameObject msg = Instantiate(ChargingMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
+
         messageToSpawn = typeToSpawn.Null; 
         
         //Lancer Methode pour le Text;
     }
 
-    public void PlayerEmojis()
+    public void PlayerEmojis(Skill skill)
     {
         GameObject msg = Instantiate(EmojiPlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
@@ -360,7 +372,7 @@ public class ConversationManager : MonoBehaviour
     #endregion
 
     #region Enemy
-    public void EnemySmallMessage()
+    public void EnemySmallMessage(Skill skill)
     {
 
         //A lancer à la fin de la coroutine.
@@ -372,7 +384,7 @@ public class ConversationManager : MonoBehaviour
         //Lancer Methode pour le Text;
     }
 
-    public void EnemyLargeMessage()
+    public void EnemyLargeMessage(Skill skill)
     {
      
         GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
@@ -383,7 +395,7 @@ public class ConversationManager : MonoBehaviour
         //Lancer Methode pour le Text;
     }
 
-    public void EnemyEmojis()
+    public void EnemyEmojis(Skill skill)
     {
       
         GameObject msg = Instantiate(EmojiEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);

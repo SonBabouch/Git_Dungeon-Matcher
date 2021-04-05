@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MessageBehaviour : MonoBehaviour
 {
+    public TextMeshProUGUI messageText;
+
     public enum team{Player,Enemy};
     public team teamMsg;
 
     //Changer BoostInspiration & SlowInspiration plutot que inspirationLimitation;
     public enum effect {InspirationLimitation, AttiranceLimitation, Curse, Mark, Charm, Silence, Lock, Cramp };
     public effect EmojiEffect;
+
+   
 
     public bool ally;
     public bool big;

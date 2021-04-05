@@ -113,6 +113,8 @@ public class CombatManager : MonoBehaviour
         damageText[1].text = Player.Instance.playerHand[1].skillDescription;
         damageText[2].text = Player.Instance.playerHand[2].skillDescription;
         damageText[3].text = Player.Instance.playerHand[3].skillDescription;
+
+        Player.Instance.UpdateComboVisuel();
     }
 
     public void ButtonsInitialization()
@@ -122,16 +124,20 @@ public class CombatManager : MonoBehaviour
             combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
         }
         ButtonsInfos();
+        Player.Instance.UpdateComboVisuel();
+
     }
     public void ButtonsUpdate()
     {
         ResetButtons();
         Player.Instance.PlayerSwapSkill(index);
+        
         for (int i = 0; i < combatButtons.Count; i++)
         {
             combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
         }
         ButtonsInfos();
+        
     }
 
     public void ResetButtons()

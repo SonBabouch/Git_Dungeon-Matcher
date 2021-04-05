@@ -16,6 +16,7 @@ MonoBehaviour:
   effectValue: 2
   side: 1
   messageType: 0
+  typeOfCapacity: 1
   energyCost: 2
   initialEnergyCost: 2
   crampEnergyCost: 2

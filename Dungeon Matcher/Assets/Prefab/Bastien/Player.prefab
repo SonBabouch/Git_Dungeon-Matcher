@@ -72,10 +72,10 @@ MonoBehaviour:
   isCombo: 0
   isDefending: 0
   isBoosted: 0
-  boostAttack: 1
+  boostAttack: 1.2
   lastPlayerCompetence: {fileID: 0}
   chargingTime: 3
-  comboTime: 0
+  comboTime: 4
 --- !u!114 &6958789301845541581
 MonoBehaviour:
   m_ObjectHideFlags: 0

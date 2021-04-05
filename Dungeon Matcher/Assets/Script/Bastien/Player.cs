@@ -132,11 +132,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(chargingTime);
         //Debug.Log("End");
         Player.Instance.isCharging = false;
-        ConversationManager.Instance.UpdateLastMessageState();
+        ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
         skillToCharge.PlayerEffect();
     }
 
-    private void UpdateComboVisuel()
+    public void UpdateComboVisuel()
     {
         if (isCombo)
         {
@@ -147,17 +147,14 @@ public class Player : MonoBehaviour
                 {
                     playerUi.comboSkillFeedback[i].enabled = true;
                 }
+                else
+                {
+                   playerUi.comboSkillFeedback[i].enabled = false;
+                    
+                }
 
             }
         }
-        else
-        {
-            for (int i = 0; i < playerHand.Count; i++)
-            {
-                playerUi.comboSkillFeedback[i].enabled = false;
-            }
-        }
-        
     }
 
     public IEnumerator PlayerCombo()

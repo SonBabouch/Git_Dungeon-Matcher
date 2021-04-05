@@ -726,6 +726,7 @@ GameObject:
   - component: {fileID: 4732558562833465872}
   - component: {fileID: 4732558562833465875}
   - component: {fileID: 4732558562833473007}
+  - component: {fileID: 5974917372964063664}
   m_Layer: 5
   m_Name: CanvasMessage
   m_TagString: Untagged
@@ -825,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1502086ed0fbb3b44a55548a548c980b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageManager: {fileID: 5974917372964063664}
   SmallMessagePlayer: {fileID: 7268332571913141224, guid: 6a93b222334f42742bf32bc9b1f8e2f7,
     type: 3}
   ChargingMessagePlayer: {fileID: 7352670091459577414, guid: c61e63bb58689474d9d572f9d69fef9f,
@@ -854,6 +856,36 @@ MonoBehaviour:
   futurEmojiEffect: 0
   messageToSpawn: 0
   canAttack: 1
+--- !u!114 &5974917372964063664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732558562833465874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e8091e42576084d81d00628df8d7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackMessages:
+  - Attack1
+  - Attack2
+  - Attack3
+  - Attack4
+  attackMessagesCombo: []
+  healMessages:
+  - Heal1
+  - Heal2
+  - Heal3
+  - Heal4
+  defenseMessages: []
+  divinTouchMessages: []
+  drainMessages: []
+  echoMessages: []
+  paralyseMessages: []
+  plagiatMessages: []
+  coupDeVentMessages: []
 --- !u!1 &4732558562980638246
 GameObject:
   m_ObjectHideFlags: 0
