@@ -23,15 +23,15 @@ public class Player : MonoBehaviour
     public bool isBurn;
     public bool isCharging;
     public bool isCramp = false;
-<<<<<<< HEAD
+
     public bool isCombo = false;
     public bool isDefending = false;
 
     public bool isBoosted = false;
     public float boostAttack = 1f;
-=======
+
     public bool isDefending = false;
->>>>>>> HR_compétences_défence
+
 
     public Skill lastPlayerCompetence;
 
