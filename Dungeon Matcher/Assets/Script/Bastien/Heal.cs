@@ -89,7 +89,7 @@ public class Heal : Skill
 
     public override void PlayerEffect()
     {
-        Player.Instance.health -= healthAmount;
+        Player.Instance.health -= effectValue;
         if(Player.Instance.health < 0)
         {
             Player.Instance.health = 0;
@@ -99,7 +99,7 @@ public class Heal : Skill
 
     public override void MonsterEffect()
     {
-        Enemy.Instance.health -= healthAmount;
+        Enemy.Instance.health -= effectValue;
         if (Enemy.Instance.health < 0)
         {
             Enemy.Instance.health = 0;

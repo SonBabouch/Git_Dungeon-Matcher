@@ -26,6 +26,9 @@ public class Enemy : MonoBehaviour
     public bool isCramp = false;
     public bool isCharging = false;
 
+    public bool isCombo = false;
+    [SerializeField] private float comboTime;
+
     public bool isBoosted = false;
     public float boostAttack = 1f;
 
@@ -83,4 +86,10 @@ public class Enemy : MonoBehaviour
         enemyDraw.RemoveAt(0);
     }
 
+    public IEnumerator EnemyCombo()
+    {
+        isCombo = true;
+        yield return new WaitForSeconds(comboTime);
+        isCombo = false;
+    }
 }

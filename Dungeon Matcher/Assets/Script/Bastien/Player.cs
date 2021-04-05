@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public bool isBurn;
     public bool isCharging;
     public bool isCramp = false;
+    public bool isCombo = false;
 
     public bool isBoosted = false;
     public float boostAttack = 1f;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     public Skill lastPlayerCompetence;
 
     public float chargingTime;
+    public float comboTime;
 
     private void Awake()
     {
@@ -127,7 +129,12 @@ public class Player : MonoBehaviour
         Player.Instance.isCharging = false;
         ConversationManager.Instance.UpdateLastMessageState();
         skillToCharge.PlayerEffect();
-        
     }
 
+    public IEnumerator PlayerCombo()
+    {
+        isCombo = true;
+        yield return new WaitForSeconds(comboTime);
+        isCombo = false;
+    }
 }

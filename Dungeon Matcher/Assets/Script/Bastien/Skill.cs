@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public abstract class Skill : ScriptableObject
 {
     public string skillDescription;
-    public float healthAmount;
+    public float effectValue;
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;
 
@@ -19,7 +19,8 @@ public abstract class Skill : ScriptableObject
     public int energyCost;
     public int initialEnergyCost;
     public int crampEnergyCost;
-    
+
+    public bool isComboSkill = false;
 
     //Charging Stuff
     public bool chargingAttack;
