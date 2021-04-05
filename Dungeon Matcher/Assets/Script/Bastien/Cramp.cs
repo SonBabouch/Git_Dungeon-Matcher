@@ -128,11 +128,17 @@ public class Cramp : Skill
     {
         Player.Instance.isCramp = true;
         CombatManager.Instance.ButtonsUpdate();
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
     }
 
     public override void PlayerEffect()
     {
         Enemy.Instance.isCramp = true;
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
     }
 
     

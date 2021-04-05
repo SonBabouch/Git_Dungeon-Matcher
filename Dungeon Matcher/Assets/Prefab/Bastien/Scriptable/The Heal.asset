@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: The Heal
   m_EditorClassIdentifier: 
   skillDescription: 20 Heal
-  healthAmount: 20
+  effectValue: 2
   side: 1
   messageType: 0
   energyCost: 2
   initialEnergyCost: 2
   crampEnergyCost: 2
+  isComboSkill: 0
+  comboEffectValue: 4
   chargingAttack: 0
   himSelf: {fileID: 0}
   monster: {fileID: 0}

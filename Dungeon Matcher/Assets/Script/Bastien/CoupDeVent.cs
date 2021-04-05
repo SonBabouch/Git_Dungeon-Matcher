@@ -133,6 +133,9 @@ public class CoupDeVent : Skill
         Enemy.Instance.EnemySwapSkill(3);
 
         Player.Instance.lastPlayerCompetence = this;
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
     }
 
     public override void MonsterEffect()
@@ -141,6 +144,11 @@ public class CoupDeVent : Skill
         Player.Instance.PlayerSwapSkill(1);
         Player.Instance.PlayerSwapSkill(2);
         Player.Instance.PlayerSwapSkill(3);
+
+        Enemy.Instance.lastEnemyCompetence = this;
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
     }
 
 

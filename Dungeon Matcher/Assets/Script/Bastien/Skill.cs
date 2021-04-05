@@ -21,6 +21,7 @@ public abstract class Skill : ScriptableObject
     public int crampEnergyCost;
 
     public bool isComboSkill = false;
+    public float comboEffectValue;
 
     //Charging Stuff
     public bool chargingAttack;

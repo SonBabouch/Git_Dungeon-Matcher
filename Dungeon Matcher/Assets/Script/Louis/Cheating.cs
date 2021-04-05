@@ -127,12 +127,17 @@ public class Cheating : Skill
     public override void PlayerEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastMonsterCompetence.PlayerEffect();
-        Player.Instance.lastPlayerCompetence = this;
+        Enemy.Instance.lastEnemyCompetence.PlayerEffect();
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
     }
     public override void MonsterEffect()
     {
         Player.Instance.lastPlayerCompetence.MonsterEffect();
-        Enemy.Instance.lastMonsterCompetence = this;
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+
     }
 }

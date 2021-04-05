@@ -128,11 +128,18 @@ public class Echo : Skill
     public override void PlayerEffect()
     {
         Player.Instance.lastPlayerCompetence.PlayerEffect();
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
     }
+
     public override void MonsterEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastMonsterCompetence.MonsterEffect();
-        Enemy.Instance.lastMonsterCompetence = this;
+        Enemy.Instance.lastEnemyCompetence.MonsterEffect();
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+
     }
 }

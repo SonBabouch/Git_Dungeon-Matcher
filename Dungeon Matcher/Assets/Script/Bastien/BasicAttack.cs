@@ -128,13 +128,41 @@ public class BasicAttack : Skill
     public override void PlayerEffect()
     {
         Player.Instance.AllyAlteration();
-        Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+
+        if (Enemy.Instance.isDefending == false)
+        {
+            if(Player.Instance.isCombo && isComboSkill)
+            {
+                Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+            }
+            else
+            {
+                Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+            }
+        }
         Player.Instance.lastPlayerCompetence = this;
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
     }
 
     public override void MonsterEffect()
     {
-        Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
+        if(Player.Instance.isDefending == false)
+        {
+            if(Enemy.Instance.isCombo && isComboSkill)
+            {
+                Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
+            }
+            else
+            {
+                Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
+            }
+        }
+        Enemy.Instance.lastEnemyCompetence = this;
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
     }
 
     

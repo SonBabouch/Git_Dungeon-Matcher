@@ -21,12 +21,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private List<Skill> enemyDraw = new List<Skill>();
 
-    public Skill lastMonsterCompetence;
+    public Skill lastEnemyCompetence;
 
     public bool isCramp = false;
     public bool isCharging = false;
     public bool isDefending = false;
-
 
     public bool isCombo = false;
     [SerializeField] private float comboTime;
@@ -88,6 +87,7 @@ public class Enemy : MonoBehaviour
         enemyHand.Insert(index, enemyDraw[0]);
         enemyDraw.RemoveAt(0);
     }
+
 
     public IEnumerator EnemyCombo()
     {

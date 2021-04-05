@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Attack 4
   m_EditorClassIdentifier: 
   skillDescription: 40 Damage
-  healthAmount: 40
+  effectValue: 4
   side: 1
   messageType: 0
   energyCost: 4
   initialEnergyCost: 4
   crampEnergyCost: 5
+  isComboSkill: 0
+  comboEffectValue: 0
   chargingAttack: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

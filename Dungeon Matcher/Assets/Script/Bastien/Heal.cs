@@ -87,26 +87,6 @@ public class Heal : Skill
         }
     }
 
-    public override void PlayerEffect()
-    {
-        Player.Instance.health -= effectValue;
-        if(Player.Instance.health < 0)
-        {
-            Player.Instance.health = 0;
-        }
-        Player.Instance.lastPlayerCompetence = this;
-    }
-
-    public override void MonsterEffect()
-    {
-        Enemy.Instance.health -= effectValue;
-        if (Enemy.Instance.health < 0)
-        {
-            Enemy.Instance.health = 0;
-        }
-        //Monsterer.Instance.lastMonsterCompetence = this;
-    }
-
     public override void InUse()
     {
         switch (side)
@@ -145,6 +125,53 @@ public class Heal : Skill
         }
         CombatManager.Instance.index = 0;
     }
+
+    public override void PlayerEffect()
+    {
+        //Combo effect
+        if(Player.Instance.isCombo && isComboSkill)
+        {
+            Player.Instance.health -= comboEffectValue;
+        }
+        else
+        {
+            Player.Instance.health -= effectValue;
+        }
+
+        if(Player.Instance.health < 0)
+        {
+            Player.Instance.health = 0;
+        }
+
+        Player.Instance.lastPlayerCompetence = this;
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+    }
+
+    public override void MonsterEffect()
+    {
+        //Combo effect
+        if (Enemy.Instance.isCombo && isComboSkill)
+        {
+            Enemy.Instance.health -= comboEffectValue;
+        }
+        else
+        {
+            Enemy.Instance.health -= effectValue;
+        }
+
+        if (Enemy.Instance.health < 0)
+        {
+            Enemy.Instance.health = 0;
+        }
+        Enemy.Instance.lastEnemyCompetence = this;
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+    }
+
+   
 
     
 }

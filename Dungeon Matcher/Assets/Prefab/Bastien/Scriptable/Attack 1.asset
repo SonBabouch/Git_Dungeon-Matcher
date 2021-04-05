@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Attack 1
   m_EditorClassIdentifier: 
   skillDescription: 10 Damage
-  healthAmount: 10
+  effectValue: 3
   side: 1
   messageType: 1
   energyCost: 1
   initialEnergyCost: 1
   crampEnergyCost: 2
+  isComboSkill: 0
+  comboEffectValue: 0
   chargingAttack: 1
   monster: {fileID: 0}
   owner: {fileID: 0}

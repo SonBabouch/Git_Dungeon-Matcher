@@ -87,12 +87,18 @@ public class Break : Skill
     {
         //Enemy.Instance.StopCoroutine(ChargeAttack());
         Player.Instance.lastPlayerCompetence = this;
+
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
     }
 
     public override void MonsterEffect()
     {
         Player.Instance.StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
-        Enemy.Instance.lastMonsterCompetence = this;
+        Enemy.Instance.lastEnemyCompetence = this;
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
     }
 
     public override void InUse()

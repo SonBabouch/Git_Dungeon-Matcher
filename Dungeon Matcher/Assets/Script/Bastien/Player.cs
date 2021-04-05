@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+
+    public PlayerUI playerUi;
+
     [SerializeField]
     private List<GameObject> allyMonsters;
     public List<Skill> playerSkills;
@@ -29,9 +32,6 @@ public class Player : MonoBehaviour
 
     public bool isBoosted = false;
     public float boostAttack = 1f;
-
-    
-
 
     public Skill lastPlayerCompetence;
 
@@ -134,6 +134,31 @@ public class Player : MonoBehaviour
         Player.Instance.isCharging = false;
         ConversationManager.Instance.UpdateLastMessageState();
         skillToCharge.PlayerEffect();
+    }
+
+    private void UpdateComboVisuel()
+    {
+        //Check de toutes la main.
+        for (int i = 0; i < playerHand.Count; i++)
+        {
+            if (playerHand[i].isComboSkill)
+            {
+                playerUi.comboSkillFeedback[i].enabled = true;
+            }
+            else
+            {
+                playerUi.comboSkillFeedback[i].enabled = false;
+            }
+        }
+    }
+
+    public IEnumerator PlayerCombo()
+    {
+        isCombo = true;
+        UpdateComboVisuel();
+        yield return new WaitForSeconds(comboTime);
+        isCombo = false;
+        UpdateComboVisuel();
     }
 
     //Failed Attack Feedback

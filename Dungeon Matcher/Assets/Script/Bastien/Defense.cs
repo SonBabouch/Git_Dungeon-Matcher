@@ -28,16 +28,11 @@ public class Defense : Skill
     //3- Use: verification of differente conditions (eg: MonsterSide, Cramp, etc...)
     public override void Use()
     {
-
-        //3.1- Verification of the Side of the monster
         switch (side)
         {
-            //a- Is Monster
             case monsterSide.Enemy:
-                //a.1- verification if attack is not charging
-                if(Enemy.Instance.isCharging == false && ConversationManager.Instance.canAttack)
+                if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
                 {
-                    //a.1.1- Verifications of the cramp
                     if (Enemy.Instance.isCramp)
                     {
                         energyCost = crampEnergyCost;
@@ -46,32 +41,28 @@ public class Defense : Skill
                     {
                         energyCost = initialEnergyCost;
                     }
-                    //a.1.2- Verification if it's a charging attack
+
                     if (chargingAttack)
                     {
-
-                        if(Enemy.Instance.energy >= energyCost)
+                        if (Enemy.Instance.energy >= energyCost)
                         {
-
                             Enemy.Instance.energy -= energyCost;
+
+                            //ici ca sera Enemy plutot que player
                             Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
-
                         }
-
                     }
                     else
                     {
                         InUse();
                     }
-
                 }
 
                 break;
-            //b- Is Ally
             case monsterSide.Ally:
-                if(ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
-                {
 
+                if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
+                {
                     if (Player.Instance.isCramp)
                     {
                         energyCost = crampEnergyCost;
@@ -81,50 +72,34 @@ public class Defense : Skill
                         energyCost = initialEnergyCost;
                     }
 
+                    if (chargingAttack)
+                    {
+                        if (Player.Instance.energy >= energyCost)
+                        {
+                            Player.Instance.energy -= energyCost;
+
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                        }
+                    }
+                    else
+                    {
+                        InUse();
+                    }
                 }
-
                 break;
-
-        }
-
-        if (Player.Instance.isCharging == false)
-        {
-            if (chargingAttack)
-            {
-                Player.Instance.ChargeAttack(this);
-            }
-            else
-            {
-                InUse();
-            }
+            default:
+                break;
         }
     }
 
-    //4- Effect On the Player
-    public override void PlayerEffect()
-    {
-
-        Player.Instance.isDefending = true;
-        CombatManager.Instance.ButtonsUpdate();
-
-    }
-
-    //5- Effect On The Monster
-    public override void MonsterEffect()
-    {
-
-        Enemy.Instance.isDefending = true;
-        CombatManager.Instance.ButtonsUpdate();
-
-    }
-
-    //6- Launching of the attack
     public override void InUse()
     {
         //6.1-Verification of the monster side
         switch (side)
         {
             case monsterSide.Ally:
+
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;
@@ -134,12 +109,12 @@ public class Defense : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    Player.Instance.AllyAlteration();
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this,0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
                 break;
+
             case monsterSide.Enemy:
                 if (Enemy.Instance.energy >= energyCost)
                 {
@@ -151,11 +126,37 @@ public class Defense : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this,0);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
                 break;
         }
         CombatManager.Instance.index = 0;
     }
+
+    //4- Effect On the Player
+    public override void PlayerEffect()
+    {
+        Player.Instance.isDefending = true;
+
+        Player.Instance.lastPlayerCompetence = this;
+        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+
+    }
+
+    //5- Effect On The Monster
+    public override void MonsterEffect()
+    {
+
+        Enemy.Instance.isDefending = true;
+
+        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        Enemy.Instance.lastEnemyCompetence = this;
+
+    }
+
+    //6- Launching of the attack
+    
 
 }
