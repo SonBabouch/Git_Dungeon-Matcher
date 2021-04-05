@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public bool isBoosted = false;
     public float boostAttack = 1f;
 
-    public bool isDefending = false;
+    
 
 
     public Skill lastPlayerCompetence;
