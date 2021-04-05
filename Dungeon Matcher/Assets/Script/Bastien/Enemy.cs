@@ -25,12 +25,16 @@ public class Enemy : MonoBehaviour
 
     public bool isCramp = false;
     public bool isCharging = false;
+    public bool isDefending = false;
+<<<<<<< HEAD
 
     public bool isCombo = false;
     [SerializeField] private float comboTime;
 
     public bool isBoosted = false;
     public float boostAttack = 1f;
+=======
+>>>>>>> HR_compétences_défence
 
     private void Awake()
     {
