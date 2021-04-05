@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public bool isCharging;
     public bool isCramp = false;
     public bool isCombo = false;
+    public bool isDefending = false;
 
     public bool isBoosted = false;
     public float boostAttack = 1f;
@@ -131,10 +132,4 @@ public class Player : MonoBehaviour
         skillToCharge.PlayerEffect();
     }
 
-    public IEnumerator PlayerCombo()
-    {
-        isCombo = true;
-        yield return new WaitForSeconds(comboTime);
-        isCombo = false;
-    }
 }
