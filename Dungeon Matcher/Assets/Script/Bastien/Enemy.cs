@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     public bool isCramp = false;
     public bool isCharging = false;
+    public bool isDefending = false;
 
     private void Awake()
     {

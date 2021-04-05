@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public bool isBurn;
     public bool isCharging;
     public bool isCramp = false;
+    public bool isDefending = false;
 
     public Skill lastPlayerCompetence;
 
@@ -116,5 +117,12 @@ public class Player : MonoBehaviour
         skillToCharge.PlayerEffect();
         
     }
+
+    //Failed Attack Feedback
+    public void FailedAttack()
+    {
+        Debug.Log("The Attack has failed");
+    }
+
 
 }
