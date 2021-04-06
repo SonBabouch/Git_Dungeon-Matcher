@@ -35,26 +35,46 @@ public class Echo : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    if (chargingAttack)
+                    //Test Curse
+                    if (Enemy.Instance.isCurse)
                     {
-                        if (Enemy.Instance.energy >= energyCost)
+                        int test = Random.Range(0, 100);
+                        if (test < 10)
                         {
                             Enemy.Instance.energy -= energyCost;
                             Enemy.Instance.trueEnergy -= trueEnergyCost;
 
-                            //ici ca sera Enemy plutot que player
-                            Enemy.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            //switch la carte de la main de l'enemy;
+
+                            break;
                         }
+                        else
+                        {
+                            //=> Sinon ca fait la suite.
+
+                            if (chargingAttack)
+                            {
+                                if (Enemy.Instance.energy >= energyCost)
+                                {
+                                    Enemy.Instance.energy -= energyCost;
+                                    Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                                    //ici ca sera Enemy plutot que player
+                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                }
+                            }
+                            else
+                            {
+                                InUse();
+                            }
+                        }
+
                     }
-                    else
-                    {
-                        InUse();
-                    }
+
                 }
-
                 break;
-            case monsterSide.Ally:
 
+            case monsterSide.Ally:
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
@@ -66,20 +86,36 @@ public class Echo : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    if (chargingAttack)
+                    if (Player.Instance.isCurse)
                     {
-                        if (Player.Instance.energy >= energyCost)
+                        int test = Random.Range(0, 100);
+                        if (test < 10)
                         {
                             Player.Instance.energy -= energyCost;
+                            Player.Instance.trueEnergy -= trueEnergyCost;
+                            CombatManager.Instance.ButtonsUpdate();
+                            break;
+                        }
+                        else
+                        {
+                            if (chargingAttack)
+                            {
+                                if (Player.Instance.energy >= energyCost)
+                                {
+                                    Player.Instance.energy -= energyCost;
+                                    Player.Instance.trueEnergy -= trueEnergyCost;
 
-                            //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                    //ici ca sera Enemy plutot que player
+                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                }
+                            }
+                            else
+                            {
+                                InUse();
+                            }
                         }
                     }
-                    else
-                    {
-                        InUse();
-                    }
+
                 }
                 break;
             default:
@@ -132,8 +168,11 @@ public class Echo : Skill
     {
         Player.Instance.lastPlayerCompetence.PlayerEffect();
 
-        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
-        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        if (!chargingAttack)
+        {
+            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        }
     }
 
     public override void MonsterEffect()
@@ -141,8 +180,11 @@ public class Echo : Skill
         //potentiellement yield return 0.1 secondes -> Coroutine
         Enemy.Instance.lastEnemyCompetence.MonsterEffect();
 
-        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
-        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        if (!chargingAttack)
+        {
+            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        }
 
     }
 }

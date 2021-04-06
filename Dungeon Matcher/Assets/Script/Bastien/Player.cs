@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     public bool isSkillUsed;
     public bool isBurn;
+    public bool isCurse;
     public bool isCharging;
     public bool isCramp = false;
 

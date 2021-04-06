@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Skills/Curse")]
 
-[CreateAssetMenu(menuName = "Skills/BasicAttack")]
-public class BasicAttack : Skill
+public class Curse : Skill
 {
     [SerializeField]
     private MonsterToken monster;
@@ -39,11 +39,11 @@ public class BasicAttack : Skill
                     if (Enemy.Instance.isCurse)
                     {
                         int test = Random.Range(0, 100);
-                        if (test < 10)
+                        if(test < 10)
                         {
                             Enemy.Instance.energy -= energyCost;
                             Enemy.Instance.trueEnergy -= trueEnergyCost;
-
+                            
                             //switch la carte de la main de l'enemy;
 
                             break;
@@ -68,9 +68,9 @@ public class BasicAttack : Skill
                                 InUse();
                             }
                         }
-
+                       
                     }
-
+                   
                 }
                 break;
 
@@ -115,7 +115,7 @@ public class BasicAttack : Skill
                             }
                         }
                     }
-
+ 
                 }
                 break;
             default:
@@ -128,23 +128,17 @@ public class BasicAttack : Skill
         switch (side)
         {
             case monsterSide.Ally:
-
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;
                     Player.Instance.trueEnergy -= trueEnergyCost;
 
-                    if (Player.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 3);
                 }
-                break;
 
+                break;
             case monsterSide.Enemy:
                 if (Enemy.Instance.energy >= energyCost)
                 {
@@ -157,7 +151,7 @@ public class BasicAttack : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 3);
                 }
                 break;
         }
@@ -166,19 +160,7 @@ public class BasicAttack : Skill
 
     public override void PlayerEffect()
     {
-        Player.Instance.AllyAlteration();
-
-        if (Enemy.Instance.isDefending == false)
-        {
-            if(Player.Instance.isCombo && isComboSkill)
-            {
-                Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
-            }
-            else
-            {
-                Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
-            }
-        }
+        Player.Instance.isCurse = true;
         Player.Instance.lastPlayerCompetence = this;
 
         if (!chargingAttack)
@@ -190,17 +172,7 @@ public class BasicAttack : Skill
 
     public override void MonsterEffect()
     {
-        if(Player.Instance.isDefending == false)
-        {
-            if(Enemy.Instance.isCombo && isComboSkill)
-            {
-                Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
-            }
-            else
-            {
-                Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
-            }
-        }
+        Enemy.Instance.isCurse = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
         if (!chargingAttack)
@@ -210,5 +182,4 @@ public class BasicAttack : Skill
         }
     }
 
-    
 }

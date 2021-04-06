@@ -27,9 +27,11 @@ public class Enemy : MonoBehaviour
     public bool isCramp = false;
     public bool isCharging = false;
     public bool isDefending = false;
+    public bool isCurse = false;
 
     public bool isCombo = false;
     [SerializeField] private float comboTime;
+    [SerializeField] private float maxComboTime;
 
     public bool isBoosted = false;
     public float boostAttack = 1f;
@@ -89,11 +91,32 @@ public class Enemy : MonoBehaviour
         enemyDraw.RemoveAt(0);
     }
 
+    #region Combo
+    public IEnumerator TimerCombo()
+    {
+        if (isCombo)
+        {
+            if (comboTime < maxComboTime)
+            {
+                comboTime++;
+                yield return new WaitForSeconds(0.05f);
+                StartCoroutine(TimerCombo());
+            }
+            else
+            {
+                isCombo = false;
+                comboTime = 0;
+            }
+        }
+    }
 
     public IEnumerator EnemyCombo()
     {
         isCombo = true;
-        yield return new WaitForSeconds(comboTime);
-        isCombo = false;
+        comboTime = 0;
+        StopCoroutine(TimerCombo());
+        StartCoroutine(TimerCombo());
+        yield return null;
     }
+    #endregion
 }

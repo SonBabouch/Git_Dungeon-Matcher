@@ -8,8 +8,10 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Skill : ScriptableObject
 {
+    [Header("Common")]
     public string skillDescription;
     public float effectValue;
+   
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;
 
@@ -19,15 +21,15 @@ public abstract class Skill : ScriptableObject
     public enum capacityType { Attack, Heal, Defense,Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat};
     public capacityType typeOfCapacity;
 
+    [Header("Energy Cost")]
     public int trueEnergyCost;
     public int energyCost;
     public int initialEnergyCost;
     public int crampEnergyCost;
 
+    [Header("TypeOfCapacity")]
     public bool isComboSkill = false;
     public float comboEffectValue;
-
-    //Charging Stuff
     public bool chargingAttack;
 
     public abstract void Initialize(GameObject obj);
