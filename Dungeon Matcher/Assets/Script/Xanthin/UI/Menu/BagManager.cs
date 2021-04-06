@@ -8,6 +8,4 @@ public class BagManager : MonoBehaviour
     public List<GameObject> monsterTeam = new List<GameObject>();
 
     public bool detailShow = false;
-
-   
 }

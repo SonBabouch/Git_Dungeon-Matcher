@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
     public float comboTime;
     public float maxComboTime;
 
-
     private void Awake()
     {
         if (Instance == null)
@@ -135,7 +134,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(chargingTime);
         //Debug.Log("End");
         Player.Instance.isCharging = false;
-        ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
+
+        if(ConversationManager.Instance.allMsg[0] != null)
+        {
+            ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
+        }
         skillToCharge.PlayerEffect();
     }
 
@@ -184,6 +187,7 @@ public class Player : MonoBehaviour
         isCombo = true;
         UpdateComboVisuel();
         comboTime = 0;
+        StopCoroutine(TimerCombo()); 
         StartCoroutine(TimerCombo());
         yield return null;
     }

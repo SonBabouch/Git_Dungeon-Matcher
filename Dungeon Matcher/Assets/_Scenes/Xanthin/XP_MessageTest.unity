@@ -1314,6 +1314,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesCombo.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesCombo.Array.data[0]
+      value: ComboAttack1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7203faabaf3ac94292c560364bcec1e, type: 3}
 --- !u!1 &686964903

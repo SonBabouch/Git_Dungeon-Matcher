@@ -121,8 +121,7 @@ public class MessageBehaviour : MonoBehaviour
     }
     public void EmojiEffectEnd()
     {
-
-        Debug.Log("CancelCramp");
+        //Debug.Log("CancelEmoji");
         //Changer ce qu'il faut quand la compétence est lancé chez le joueur
         if (teamMsg == team.Player)
         {

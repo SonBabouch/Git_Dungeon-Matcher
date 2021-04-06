@@ -75,6 +75,8 @@ public class BasicAttack : Skill
 
                             //ici ca sera Enemy plutot que player
                             Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+                            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
                         }
                     }
                     else
@@ -144,8 +146,11 @@ public class BasicAttack : Skill
         }
         Player.Instance.lastPlayerCompetence = this;
 
-        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
-        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        if (!chargingAttack)
+        {
+            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        }
     }
 
     public override void MonsterEffect()
