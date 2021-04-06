@@ -36,7 +36,10 @@ public class Player : MonoBehaviour
     public Skill lastPlayerCompetence;
 
     public float chargingTime;
+    
     public float comboTime;
+    public float maxComboTime;
+
 
     private void Awake()
     {
@@ -157,13 +160,32 @@ public class Player : MonoBehaviour
         }
     }
 
+    public IEnumerator TimerCombo()
+    {
+        if (isCombo)
+        {
+            if (comboTime < maxComboTime)
+            {
+                comboTime++;
+                yield return new WaitForSeconds(0.05f);
+                StartCoroutine(TimerCombo());
+            }
+            else
+            {
+                isCombo = false;
+                comboTime = 0;
+                UpdateComboVisuel();
+            }
+        }
+    }
+
     public IEnumerator PlayerCombo()
     {
         isCombo = true;
         UpdateComboVisuel();
-        yield return new WaitForSeconds(comboTime);
-        isCombo = false;
-        UpdateComboVisuel();
+        comboTime = 0;
+        StartCoroutine(TimerCombo());
+        yield return null;
     }
 
     //Failed Attack Feedback
