@@ -65,7 +65,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Change la bool en true;
                     break;
                 case effect.Curse:
-                    //Change la bool en true;
+                    Enemy.Instance.isCurse = true;
                     break;
                 case effect.Mark:
                     Player.Instance.isBoosted = true;
@@ -97,7 +97,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Change la bool en false;
                     break;
                 case effect.Curse:
-                    //Change la bool en false;
+                    Player.Instance.isCurse = true;
                     break;
                 case effect.Mark:
                     Enemy.Instance.isBoosted = true;
@@ -134,7 +134,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Effet
                     break;
                 case effect.Curse:
-                    //Effet
+                    Enemy.Instance.isCurse = false;
                     break;
                 case effect.Mark:
                     Player.Instance.isBoosted = false;
@@ -167,7 +167,7 @@ public class MessageBehaviour : MonoBehaviour
                     //Effet
                     break;
                 case effect.Curse:
-                    //Effet
+                    Player.Instance.isCurse = false;
                     break;
                 case effect.Mark:
                     Enemy.Instance.isBoosted = false;
@@ -182,7 +182,6 @@ public class MessageBehaviour : MonoBehaviour
                     //Effet
                     break; ;
                 case effect.Cramp:
-
                     Player.Instance.isCramp = false;
                     CombatManager.Instance.ButtonsUpdate();
                     break;
