@@ -53,8 +53,10 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   minHealth: 0
-  energy: 3
-  maxEnergy: 6
+  energy: 30
+  maxEnergy: 60
+  modifierEnergy: 1
+  trueEnergy: 0
   playerHand:
   - {fileID: 0}
   - {fileID: 0}
@@ -67,6 +69,7 @@ MonoBehaviour:
   - {fileID: 0}
   isSkillUsed: 0
   isBurn: 0
+  isCurse: 0
   isCharging: 0
   isCramp: 0
   isCombo: 0

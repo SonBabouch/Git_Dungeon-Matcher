@@ -13,11 +13,20 @@ public class CombatManager : MonoBehaviour
     public int maxSecondsLeft;
     public int minSecondsLeft;
     public bool takingTimeAway = false;
-    public List<Button> combatButtons;
-    public TextMeshProUGUI[] energyCostText;
-    public TextMeshProUGUI[] damageText;
+
     public bool isCombatEnded = false;
 
+    public List<Button> combatButtons;
+    [Header("BoutonsUI")]
+    public Image[] capacityIcon;
+    public Image[] capacityType;
+    public TextMeshProUGUI[] energyCostText;
+    public TextMeshProUGUI[] damageText;
+
+    public Sprite[] iconRessource;
+
+    //Combo = 0 /  
+    public Sprite[] typeRessource;
 
     private void Awake()
     {
@@ -45,8 +54,6 @@ public class CombatManager : MonoBehaviour
         RunningTimer();
         ButtonIndex();
     }
-
-    
 
     public IEnumerator PlayerEnergyGenerator()
     {
@@ -151,7 +158,7 @@ public class CombatManager : MonoBehaviour
         else
         {
             energyCostText[0].text =  Player.Instance.playerHand[0].trueEnergyCost.ToString();
-            energyCostText[1].text =    Player.Instance.playerHand[1].trueEnergyCost.ToString();
+            energyCostText[1].text =  Player.Instance.playerHand[1].trueEnergyCost.ToString();
             energyCostText[2].text =  Player.Instance.playerHand[2].trueEnergyCost.ToString();
             energyCostText[3].text =  Player.Instance.playerHand[3].trueEnergyCost.ToString();
 
@@ -161,14 +168,111 @@ public class CombatManager : MonoBehaviour
             energyCostText[3].color = Color.black;
         }
 
-       
-
         damageText[0].text = Player.Instance.playerHand[0].skillDescription;
         damageText[1].text = Player.Instance.playerHand[1].skillDescription;
         damageText[2].text = Player.Instance.playerHand[2].skillDescription;
         damageText[3].text = Player.Instance.playerHand[3].skillDescription;
 
+        ButtonIcon();
+        ButtonTypeOf();
+
         Player.Instance.UpdateComboVisuel();
+    }
+
+    public void ButtonIcon()
+    {
+        for (int i = 0; i < Player.Instance.playerHand.Count; i++)
+        {
+            Sprite spriteToShow = null;
+
+            switch (Player.Instance.playerHand[i].typeOfCapacity)
+            {
+                case Skill.capacityType.Attack:
+                    spriteToShow = iconRessource[0];
+                break;
+                case Skill.capacityType.CoupDeVent:
+                    spriteToShow = iconRessource[1];
+                    break;
+                case Skill.capacityType.Defense:
+                    spriteToShow = iconRessource[2];
+                    break;
+                case Skill.capacityType.DivinTouch:
+                    spriteToShow = iconRessource[3];
+                    break;
+                case Skill.capacityType.Drain:
+                    spriteToShow = iconRessource[4];
+                    break;
+                case Skill.capacityType.Echo:
+                    spriteToShow = iconRessource[5];
+                    break;
+                case Skill.capacityType.Heal:
+                    spriteToShow = iconRessource[6];
+                    break;
+                case Skill.capacityType.Paralysie:
+                    spriteToShow = iconRessource[7];
+                    break;
+                case Skill.capacityType.Plagiat:
+                    spriteToShow = iconRessource[8];
+                    break;
+                case Skill.capacityType.Mark:
+                    spriteToShow = iconRessource[9];
+                    break;
+                case Skill.capacityType.Curse:
+                    spriteToShow = iconRessource[10];
+                    break;
+                case Skill.capacityType.Cramp:
+                    spriteToShow = iconRessource[11];
+                    break;
+                case Skill.capacityType.Charm:
+                    spriteToShow = iconRessource[12];
+                    break;
+                case Skill.capacityType.Silence:
+                    spriteToShow = iconRessource[13];
+                    break;
+                case Skill.capacityType.Lock:
+                    spriteToShow = iconRessource[14];
+                    break;
+                case Skill.capacityType.Break:
+                    spriteToShow = iconRessource[15];
+                    break;
+                default:
+                    break;
+            }
+
+            capacityIcon[i].sprite = spriteToShow;
+        }
+    }
+
+    public void ButtonTypeOf()
+    {
+        for (int i = 0; i < Player.Instance.playerHand.Count; i++)
+        {
+            Sprite spriteToShow = null;
+
+            switch (Player.Instance.playerHand[i].messageType)  
+            {
+                case Skill.typeOfMessage.Small:
+                    if (Player.Instance.playerHand[i].isComboSkill)
+                    {
+                        spriteToShow = typeRessource[0];
+                    }
+                    else
+                    {
+                        spriteToShow = null; //Ou mettre icon qui indique que c'est instant.
+                    }
+                    break;
+                case Skill.typeOfMessage.Big:
+                    spriteToShow = typeRessource[1];
+                    break;
+                case Skill.typeOfMessage.Emoji:
+                    spriteToShow = typeRessource[2];
+                    break;
+                default:
+                    break;
+            }
+
+            capacityType[i].sprite = spriteToShow;
+        }
     }
 
     public void ButtonsInitialization()

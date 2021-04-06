@@ -18,7 +18,7 @@ public abstract class Skill : ScriptableObject
     public enum typeOfMessage { Small, Big, Emoji }
     public typeOfMessage messageType;
 
-    public enum capacityType { Attack, Heal, Defense,Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat};
+    public enum capacityType { Attack, Heal, Defense,Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat, Mark,Curse,Cramp,Charm,Silence,Lock,Break};
     public capacityType typeOfCapacity;
 
     [Header("Energy Cost")]
