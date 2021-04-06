@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Attack 4
   m_EditorClassIdentifier: 
   skillDescription: 40 Damage
-  effectValue: 4
+  effectValue: 40
   side: 1
   messageType: 0
-  energyCost: 4
-  initialEnergyCost: 4
-  crampEnergyCost: 5
+  typeOfCapacity: 0
+  trueEnergyCost: 4
+  energyCost: 40
+  initialEnergyCost: 40
+  crampEnergyCost: 50
   isComboSkill: 0
   comboEffectValue: 0
   chargingAttack: 0

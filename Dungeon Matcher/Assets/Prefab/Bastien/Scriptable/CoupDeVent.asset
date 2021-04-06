@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c167868c1b0e745bbf4ec760156631, type: 3}
   m_Name: CoupDeVent
   m_EditorClassIdentifier: 
-  skillDescription: 
+  skillDescription: Wind
   effectValue: 0
   side: 1
   messageType: 0
   typeOfCapacity: 5
-  energyCost: 1
-  initialEnergyCost: 1
-  crampEnergyCost: 2
+  trueEnergyCost: 1
+  energyCost: 10
+  initialEnergyCost: 10
+  crampEnergyCost: 20
   isComboSkill: 0
   comboEffectValue: 0
   chargingAttack: 0

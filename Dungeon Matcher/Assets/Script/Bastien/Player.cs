@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     public float energy;
     public float maxEnergy;
+    public float modifierEnergy = 1f;
+    public float trueEnergy=0;
     public List<Skill> playerHand = new List<Skill>();
     public List<Skill> playerDraw = new List<Skill>();
 
@@ -142,6 +144,7 @@ public class Player : MonoBehaviour
         skillToCharge.PlayerEffect();
     }
 
+    #region Combo
     public void UpdateComboVisuel()
     {
         if (isCombo)
@@ -191,6 +194,7 @@ public class Player : MonoBehaviour
         StartCoroutine(TimerCombo());
         yield return null;
     }
+    #endregion
 
     //Failed Attack Feedback
     public void FailedAttack()

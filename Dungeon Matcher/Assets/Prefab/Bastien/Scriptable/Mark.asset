@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Mark
   m_EditorClassIdentifier: 
   skillDescription: Mark
-  healthAmount: 0
+  effectValue: 0
   side: 1
   messageType: 2
-  energyCost: 1
-  initialEnergyCost: 1
-  crampEnergyCost: 2
+  typeOfCapacity: 0
+  trueEnergyCost: 1
+  energyCost: 10
+  initialEnergyCost: 10
+  crampEnergyCost: 20
+  isComboSkill: 0
+  comboEffectValue: 0
   chargingAttack: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

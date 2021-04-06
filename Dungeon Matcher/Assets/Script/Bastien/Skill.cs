@@ -19,6 +19,7 @@ public abstract class Skill : ScriptableObject
     public enum capacityType { Attack, Heal, Defense,Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat};
     public capacityType typeOfCapacity;
 
+    public int trueEnergyCost;
     public int energyCost;
     public int initialEnergyCost;
     public int crampEnergyCost;

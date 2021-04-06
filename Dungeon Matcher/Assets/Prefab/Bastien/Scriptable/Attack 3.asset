@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Attack 3
   m_EditorClassIdentifier: 
   skillDescription: 30 Damage
-  effectValue: 3
+  effectValue: 30
   side: 1
   messageType: 0
-  energyCost: 3
-  initialEnergyCost: 3
-  crampEnergyCost: 4
+  typeOfCapacity: 0
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 1
-  comboEffectValue: 6
+  comboEffectValue: 40
   chargingAttack: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

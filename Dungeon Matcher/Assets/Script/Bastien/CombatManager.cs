@@ -37,6 +37,7 @@ public class CombatManager : MonoBehaviour
     {
         //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
         ButtonsInitialization();
+        StartCoroutine(PlayerEnergyGenerator());
     }
 
     private void FixedUpdate()
@@ -45,12 +46,65 @@ public class CombatManager : MonoBehaviour
         ButtonIndex();
     }
 
+    
+
+    public IEnumerator PlayerEnergyGenerator()
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        Player.Instance.energy += 1 * Player.Instance.modifierEnergy;
+
+        if(Player.Instance.energy > Player.Instance.maxEnergy)
+        {
+            Player.Instance.energy = Player.Instance.maxEnergy;
+        }
+
+        GetTrueEnergy();
+
+        if (!isCombatEnded)
+        {
+          StartCoroutine(PlayerEnergyGenerator());
+        }
+    }
+
+    public void GetTrueEnergy()
+    { float energy = Player.Instance.energy;
+
+        if(energy < 10)
+        {
+            Player.Instance.trueEnergy = 0;
+        }
+        else if (energy >= 10 && energy <20)
+        {
+            Player.Instance.trueEnergy = 1;
+        }
+        else if (energy >= 20 && energy < 30)
+        {
+            Player.Instance.trueEnergy = 2;
+        }
+        else if (energy >= 30 && energy < 40)
+        {
+            Player.Instance.trueEnergy = 3;
+        }
+        else if (energy >= 40 && energy < 50)
+        {
+            Player.Instance.trueEnergy = 4;
+        }
+        else if (energy >= 50 && energy < 60)
+        {
+            Player.Instance.trueEnergy = 5;
+        }
+        else if (energy == 60)
+        {
+            Player.Instance.trueEnergy = 6;
+        }
+    }
+
     public IEnumerator CombatTimer()
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        Enemy.Instance.health -= 1f;
-        Player.Instance.energy++;
+        Enemy.Instance.health--;
         secondsLeft -= 1;
         if(secondsLeft < 10)
         {
@@ -79,10 +133,10 @@ public class CombatManager : MonoBehaviour
     {
         if (Player.Instance.isCramp)
         {
-            int cost1 = Player.Instance.playerHand[0].energyCost + 1;
-            int cost2 = Player.Instance.playerHand[1].energyCost + 1;
-            int cost3 = Player.Instance.playerHand[2].energyCost + 1;
-            int cost4 = Player.Instance.playerHand[3].energyCost + 1;
+            int cost1 = Player.Instance.playerHand[0].trueEnergyCost + 1;
+            int cost2 = Player.Instance.playerHand[1].trueEnergyCost + 1;
+            int cost3 = Player.Instance.playerHand[2].trueEnergyCost + 1;
+            int cost4 = Player.Instance.playerHand[3].trueEnergyCost + 1;
 
             energyCostText[0].text = "Cost = " + cost1;
             energyCostText[1].text = "Cost = " + cost2;
@@ -96,10 +150,10 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            energyCostText[0].text = "Cost = " + Player.Instance.playerHand[0].energyCost.ToString();
-            energyCostText[1].text = "Cost = " + Player.Instance.playerHand[1].energyCost.ToString();
-            energyCostText[2].text = "Cost = " + Player.Instance.playerHand[2].energyCost.ToString();
-            energyCostText[3].text = "Cost = " + Player.Instance.playerHand[3].energyCost.ToString();
+            energyCostText[0].text =  Player.Instance.playerHand[0].trueEnergyCost.ToString();
+            energyCostText[1].text =    Player.Instance.playerHand[1].trueEnergyCost.ToString();
+            energyCostText[2].text =  Player.Instance.playerHand[2].trueEnergyCost.ToString();
+            energyCostText[3].text =  Player.Instance.playerHand[3].trueEnergyCost.ToString();
 
             energyCostText[0].color = Color.black;
             energyCostText[1].color = Color.black;

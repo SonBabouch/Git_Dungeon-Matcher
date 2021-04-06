@@ -42,6 +42,7 @@ public class BasicAttack : Skill
                         if (Enemy.Instance.energy >= energyCost)
                         {
                             Enemy.Instance.energy -= energyCost;
+                            Enemy.Instance.trueEnergy -= trueEnergyCost;
 
                             //ici ca sera Enemy plutot que player
                             Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
@@ -72,6 +73,7 @@ public class BasicAttack : Skill
                         if (Player.Instance.energy >= energyCost)
                         {
                             Player.Instance.energy -= energyCost;
+                            Player.Instance.trueEnergy -= trueEnergyCost;
 
                             //ici ca sera Enemy plutot que player
                             Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
@@ -99,6 +101,7 @@ public class BasicAttack : Skill
                 if (Player.Instance.energy >= energyCost)
                 {
                     Player.Instance.energy -= energyCost;
+                    Player.Instance.trueEnergy -= trueEnergyCost;
 
                     if (Player.Instance.isCramp)
                     {
@@ -115,6 +118,7 @@ public class BasicAttack : Skill
                 if (Enemy.Instance.energy >= energyCost)
                 {
                     Enemy.Instance.energy -= energyCost;
+                    Enemy.Instance.trueEnergy -= trueEnergyCost;
 
                     if (Enemy.Instance.isCramp)
                     {
