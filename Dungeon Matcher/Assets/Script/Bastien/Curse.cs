@@ -39,11 +39,11 @@ public class Curse : Skill
                     if (Enemy.Instance.isCurse)
                     {
                         int test = Random.Range(0, 100);
-                        if(test < 10)
+                        if (test < 10)
                         {
                             Enemy.Instance.energy -= energyCost;
                             Enemy.Instance.trueEnergy -= trueEnergyCost;
-                            
+
                             //switch la carte de la main de l'enemy;
 
                             break;
@@ -68,9 +68,9 @@ public class Curse : Skill
                                 InUse();
                             }
                         }
-                       
+
                     }
-                   
+
                 }
                 break;
 
@@ -115,7 +115,25 @@ public class Curse : Skill
                             }
                         }
                     }
- 
+                    else
+                    {
+                        if (chargingAttack)
+                        {
+                            if (Player.Instance.energy >= energyCost)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+                    }
+
                 }
                 break;
             default:

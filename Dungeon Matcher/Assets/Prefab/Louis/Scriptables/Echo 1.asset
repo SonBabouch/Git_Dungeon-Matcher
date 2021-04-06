@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Echo 1
   m_EditorClassIdentifier: 
   skillDescription: Echo
-  healthAmount: 0
+  effectValue: 0
   side: 1
   messageType: 0
-  energyCost: 1
+  typeOfCapacity: 7
+  trueEnergyCost: 0
+  energyCost: 0
+  initialEnergyCost: 0
+  crampEnergyCost: 0
+  isComboSkill: 0
+  comboEffectValue: 0
+  chargingAttack: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

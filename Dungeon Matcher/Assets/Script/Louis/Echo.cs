@@ -17,6 +17,10 @@ public class Echo : Skill
         owner = obj;
         owner.GetComponent<MonsterToken>();
         CombatManager.Instance.ButtonsUpdate();
+
+        typeOfCapacity = capacityType.Echo;
+        chargingAttack = false;
+        isComboSkill = false;
     }
 
     public override void Use()
@@ -115,6 +119,24 @@ public class Echo : Skill
                             }
                         }
                     }
+                    else
+                    {
+                        if (chargingAttack)
+                        {
+                            if (Player.Instance.energy >= energyCost)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+                    }
 
                 }
                 break;
@@ -173,6 +195,10 @@ public class Echo : Skill
             Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
             Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
         }
+
+        typeOfCapacity = capacityType.Echo;
+        isComboSkill = false;
+        chargingAttack = false;
     }
 
     public override void MonsterEffect()
@@ -185,6 +211,9 @@ public class Echo : Skill
             Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
             Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
         }
-
+        typeOfCapacity = capacityType.Echo;
+        isComboSkill = false;
+        chargingAttack = false;
+        
     }
 }

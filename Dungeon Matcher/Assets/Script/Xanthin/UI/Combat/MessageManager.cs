@@ -6,69 +6,92 @@ public class MessageManager : MonoBehaviour
 {
 
     [Header("ArrayOfMessages")]
-    [SerializeField] private string[] attackMessages;
-    [SerializeField] private string[] attackMessagesCombo;
-    [SerializeField] private string[] healMessages;
-    [SerializeField] private string[] defenseMessages;
-    [SerializeField] private string[] divinTouchMessages;
-    [SerializeField] private string[] drainMessages;
-    [SerializeField] private string[] echoMessages;
-    [SerializeField] private string[] paralyseMessages;
-    [SerializeField] private string[] plagiatMessages;
-    [SerializeField] private string[] coupDeVentMessages;
+    [SerializeField] private string[] attackMessagesPlayer;
+    [SerializeField] private string[] attackMessagesComboPlayer;
+    [SerializeField] private string[] healMessagesPlayer;
+    [SerializeField] private string[] defenseMessagesPlayer;
+    [SerializeField] private string[] divinTouchMessagesPlayer;
+    [SerializeField] private string[] drainMessagesPlayer;
+    [SerializeField] private string[] echoMessagesPlayer;
+    [SerializeField] private string[] paralyseMessagesPlayer;
+    [SerializeField] private string[] plagiatMessagesPlayer;
+    [SerializeField] private string[] coupDeVentMessagesPlayer;
 
     private string[] chosenList;
 
     public void ChoseArray(Skill skill, GameObject Go)
     {
-        switch (skill.typeOfCapacity)
+        switch (skill.side)
         {
-            //Attention car attack peut être combo+Chargée.
-            case Skill.capacityType.Attack:
-                if (skill.isComboSkill)
+            case Skill.monsterSide.Enemy:
+                if (skill.typeOfCapacity == Skill.capacityType.Echo)
                 {
-                    //=> Tableau Combo.
+                    skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
                 }
-                else
-                {
-                    chosenList = attackMessages;
-                }
-                break;
-            case Skill.capacityType.CoupDeVent:
-                chosenList = coupDeVentMessages;
-                break;
-            case Skill.capacityType.Defense:
-                chosenList = defenseMessages;
-                break;
-            case Skill.capacityType.DivinTouch:
-                chosenList = divinTouchMessages;
-                break;
-            case Skill.capacityType.Drain:
-                chosenList = drainMessages;
-                break;
-            case Skill.capacityType.Echo:
-                chosenList = echoMessages;
-                break;
-            case Skill.capacityType.Heal:
-                if (skill.isComboSkill)
-                {
-                    //=> Tableau Combo Heal.
-                }
-                else
-                {
-                    chosenList = healMessages;
-                }
-                break;
-            case Skill.capacityType.Paralysie:
-                chosenList = paralyseMessages;
-                break;
-            case Skill.capacityType.Plagiat:
-                chosenList = plagiatMessages;
+
+                //Faire pareil pour l'enemy
                 break;
 
+            case Skill.monsterSide.Ally:
+
+                if(skill.typeOfCapacity == Skill.capacityType.Echo)
+                {
+                    skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
+                }
+
+                switch (skill.typeOfCapacity)
+                {
+                    //Attention car attack peut être combo+Chargée.
+                    case Skill.capacityType.Attack:
+                        if (skill.isComboSkill && Player.Instance.isCombo && Player.Instance.lastPlayerCompetence != null)
+                        {
+                            chosenList = attackMessagesComboPlayer;
+                        }
+                        else
+                        {
+                            chosenList = attackMessagesPlayer;
+                        }
+                        break;
+                    case Skill.capacityType.CoupDeVent:
+                        chosenList = coupDeVentMessagesPlayer;
+                        break;
+                    case Skill.capacityType.Defense:
+                        chosenList = defenseMessagesPlayer;
+                        break;
+                    case Skill.capacityType.DivinTouch:
+                        chosenList = divinTouchMessagesPlayer;
+                        break;
+                    case Skill.capacityType.Drain:
+                        chosenList = drainMessagesPlayer;
+                        break;
+                    case Skill.capacityType.Echo:
+                        chosenList = echoMessagesPlayer;
+                        break;
+                    case Skill.capacityType.Heal:
+                        if (skill.isComboSkill && Player.Instance.isCombo)
+                        {
+                            //=> Tableau Combo Heal.
+                        }
+                        else
+                        {
+                            chosenList = healMessagesPlayer;
+                        }
+                        break;
+                    case Skill.capacityType.Paralysie:
+                        chosenList = paralyseMessagesPlayer;
+                        break;
+                    case Skill.capacityType.Plagiat:
+                        chosenList = plagiatMessagesPlayer;
+                        break;
+
+                    default:
+                        break;
+                }
+                break;
             default:
                 break;
         }
+        
 
         WriteMessages(Go);
     }

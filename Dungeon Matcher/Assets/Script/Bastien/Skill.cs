@@ -32,6 +32,8 @@ public abstract class Skill : ScriptableObject
     public float comboEffectValue;
     public bool chargingAttack;
 
+    public bool isEcho;
+
     public abstract void Initialize(GameObject obj);
     public abstract void Use();
     public abstract void PlayerEffect();

@@ -873,7 +873,8 @@ MonoBehaviour:
   - Attack2
   - Attack3
   - Attack4
-  attackMessagesCombo: []
+  attackMessagesCombo:
+  - ComboAttack1
   healMessages:
   - Heal1
   - Heal2

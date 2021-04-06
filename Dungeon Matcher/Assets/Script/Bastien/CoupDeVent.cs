@@ -115,6 +115,24 @@ public class CoupDeVent : Skill
                             }
                         }
                     }
+                    else
+                    {
+                        if (chargingAttack)
+                        {
+                            if (Player.Instance.energy >= energyCost)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+                    }
 
                 }
                 break;

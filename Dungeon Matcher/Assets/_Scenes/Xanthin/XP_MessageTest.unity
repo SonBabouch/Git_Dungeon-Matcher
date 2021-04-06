@@ -1100,16 +1100,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: maxEnergy
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: energy
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 2336706625598943703, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1552,13 +1542,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
         type: 3}
-      propertyPath: attackMessagesCombo.Array.size
+      propertyPath: attackMessagesPlayer.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesComboPlayer.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
         type: 3}
-      propertyPath: attackMessagesCombo.Array.data[0]
+      propertyPath: healMessagesPlayer.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesPlayer.Array.data[0]
+      value: Attack1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesPlayer.Array.data[1]
+      value: Attack2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesPlayer.Array.data[2]
+      value: Attack3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesPlayer.Array.data[3]
+      value: Attack4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: attackMessagesComboPlayer.Array.data[0]
       value: ComboAttack1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: healMessagesPlayer.Array.data[0]
+      value: Heal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: healMessagesPlayer.Array.data[1]
+      value: Heal2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: healMessagesPlayer.Array.data[2]
+      value: Heal3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974917372964063664, guid: f7203faabaf3ac94292c560364bcec1e,
+        type: 3}
+      propertyPath: healMessagesPlayer.Array.data[3]
+      value: Heal4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7203faabaf3ac94292c560364bcec1e, type: 3}
@@ -1702,6 +1742,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e88552c4c25387543b6f3ef4c0b6edfa, type: 3}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 21300000, guid: 8da4521f6276cb149bc76618b9128c18, type: 3}
+  - {fileID: 21300000, guid: 95137aabc141f4646aecbb1c9ea656e0, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1709,8 +1751,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: b0daab4308a15314cb5459fa9f44ee8b, type: 3}
+  - {fileID: 21300000, guid: a78c395de94ce074cb137846315a37d4, type: 3}
   typeRessource:
   - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

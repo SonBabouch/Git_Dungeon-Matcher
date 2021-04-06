@@ -138,6 +138,33 @@ public class CombatManager : MonoBehaviour
 
     void ButtonsInfos()
     {
+        for (int i = 0; i < Player.Instance.playerHand.Count; i++)
+        {
+            if (Player.Instance.playerHand[i].isEcho && Player.Instance.lastPlayerCompetence != null)
+            {
+                Debug.Log("echoInit");
+                Player.Instance.playerHand[i].typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
+                Player.Instance.playerHand[i].initialEnergyCost = Player.Instance.lastPlayerCompetence.initialEnergyCost;
+                Player.Instance.playerHand[i].trueEnergyCost = Player.Instance.lastPlayerCompetence.trueEnergyCost;
+                Player.Instance.playerHand[i].crampEnergyCost = Player.Instance.lastPlayerCompetence.crampEnergyCost;
+                Player.Instance.playerHand[i].messageType = Player.Instance.lastPlayerCompetence.messageType;
+                Player.Instance.playerHand[i].isComboSkill = Player.Instance.lastPlayerCompetence.isComboSkill;
+                Player.Instance.playerHand[i].chargingAttack = Player.Instance.lastPlayerCompetence.chargingAttack;
+            }
+
+            if (Player.Instance.playerHand[i].typeOfCapacity == Skill.capacityType.Plagiat && Enemy.Instance.lastEnemyCompetence != null)
+            {
+                Player.Instance.playerHand[i].typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
+                Player.Instance.playerHand[i].initialEnergyCost = Enemy.Instance.lastEnemyCompetence.initialEnergyCost;
+                Player.Instance.playerHand[i].trueEnergyCost = Enemy.Instance.lastEnemyCompetence.trueEnergyCost;
+                Player.Instance.playerHand[i].crampEnergyCost = Enemy.Instance.lastEnemyCompetence.crampEnergyCost;
+                Player.Instance.playerHand[i].messageType = Enemy.Instance.lastEnemyCompetence.messageType;
+                Player.Instance.playerHand[i].isComboSkill = Enemy.Instance.lastEnemyCompetence.isComboSkill;
+                Player.Instance.playerHand[i].chargingAttack = Enemy.Instance.lastEnemyCompetence.chargingAttack;
+            }
+        }
+
+
         if (Player.Instance.isCramp)
         {
             int cost1 = Player.Instance.playerHand[0].trueEnergyCost + 1;

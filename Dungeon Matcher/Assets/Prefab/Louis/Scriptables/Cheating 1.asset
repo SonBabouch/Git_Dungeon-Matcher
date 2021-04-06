@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Cheating 1
   m_EditorClassIdentifier: 
   skillDescription: 
-  healthAmount: 0
+  effectValue: 0
   side: 1
   messageType: 0
+  typeOfCapacity: 8
+  trueEnergyCost: 0
   energyCost: 1
+  initialEnergyCost: 0
+  crampEnergyCost: 0
+  isComboSkill: 0
+  comboEffectValue: 0
+  chargingAttack: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

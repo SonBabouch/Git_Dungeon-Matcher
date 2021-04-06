@@ -32,25 +32,46 @@ public class Break : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    if (chargingAttack)
+                    //Test Curse
+                    if (Enemy.Instance.isCurse)
                     {
-                        if (Enemy.Instance.energy >= energyCost)
+                        int test = Random.Range(0, 100);
+                        if (test < 10)
                         {
                             Enemy.Instance.energy -= energyCost;
+                            Enemy.Instance.trueEnergy -= trueEnergyCost;
 
-                            //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            //switch la carte de la main de l'enemy;
+
+                            break;
                         }
+                        else
+                        {
+                            //=> Sinon ca fait la suite.
+
+                            if (chargingAttack)
+                            {
+                                if (Enemy.Instance.energy >= energyCost)
+                                {
+                                    Enemy.Instance.energy -= energyCost;
+                                    Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                                    //ici ca sera Enemy plutot que player
+                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                }
+                            }
+                            else
+                            {
+                                InUse();
+                            }
+                        }
+
                     }
-                    else
-                    {
-                        InUse();
-                    }
+
                 }
-
                 break;
-            case monsterSide.Ally:
 
+            case monsterSide.Ally:
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
@@ -62,20 +83,54 @@ public class Break : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    if (chargingAttack)
+                    if (Player.Instance.isCurse)
                     {
-                        if (Player.Instance.energy >= energyCost)
+                        int test = Random.Range(0, 100);
+                        if (test < 10)
                         {
                             Player.Instance.energy -= energyCost;
+                            Player.Instance.trueEnergy -= trueEnergyCost;
+                            CombatManager.Instance.ButtonsUpdate();
+                            break;
+                        }
+                        else
+                        {
+                            if (chargingAttack)
+                            {
+                                if (Player.Instance.energy >= energyCost)
+                                {
+                                    Player.Instance.energy -= energyCost;
+                                    Player.Instance.trueEnergy -= trueEnergyCost;
 
-                            //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                    //ici ca sera Enemy plutot que player
+                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                }
+                            }
+                            else
+                            {
+                                InUse();
+                            }
                         }
                     }
                     else
                     {
-                        InUse();
+                        if (chargingAttack)
+                        {
+                            if (Player.Instance.energy >= energyCost)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
                     }
+
                 }
                 break;
             default:
@@ -88,8 +143,11 @@ public class Break : Skill
         //Enemy.Instance.StopCoroutine(ChargeAttack());
         Player.Instance.lastPlayerCompetence = this;
 
-        Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
-        Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        if (!chargingAttack)
+        {
+            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        }
     }
 
     public override void MonsterEffect()
@@ -97,52 +155,47 @@ public class Break : Skill
         Player.Instance.StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
         Enemy.Instance.lastEnemyCompetence = this;
 
-        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
-        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        if (!chargingAttack)
+        {
+            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        }
     }
 
     public override void InUse()
     {
-        if (Player.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
-        if (Enemy.Instance.isCramp && side == monsterSide.Ally)
-        {
-            energyCost = crampEnergyCost;
-        }
-
         switch (side)
         {
             case monsterSide.Ally:
+
                 if (Player.Instance.energy >= energyCost)
                 {
-                    if (Enemy.Instance.isCharging)
-                    {
-                        Player.Instance.AllyAlteration();
-                        Player.Instance.energy -= energyCost;
+                    Player.Instance.energy -= energyCost;
+                    Player.Instance.trueEnergy -= trueEnergyCost;
 
-                        if (Player.Instance.isCramp)
-                        {
-                            energyCost = initialEnergyCost;
-                        }
-                        PlayerEffect();
-                    }
+                    PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this,0);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 4);
                 }
+
                 break;
             case monsterSide.Enemy:
+
+
                 if (Enemy.Instance.energy >= energyCost)
                 {
-                    if (Player.Instance.isCharging)
+                    Enemy.Instance.energy -= energyCost;
+                    Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                    if (Enemy.Instance.isCramp)
                     {
-                        Enemy.Instance.energy -= energyCost;
-                        MonsterEffect();
+                        energyCost = initialEnergyCost;
                     }
-                    ConversationManager.Instance.SendMessagesEnemy(this,0);
+
+                    MonsterEffect();
+                    ConversationManager.Instance.SendMessagesEnemy(this, 4);
                 }
+
                 break;
         }
         CombatManager.Instance.index = 0;
