@@ -15,14 +15,15 @@ MonoBehaviour:
   skillDescription: Echo
   effectValue: 0
   side: 1
-  messageType: 0
+  messageType: 1
   typeOfCapacity: 7
-  trueEnergyCost: 0
-  energyCost: 0
-  initialEnergyCost: 0
-  crampEnergyCost: 0
+  trueEnergyCost: 1
+  energyCost: 10
+  initialEnergyCost: 10
+  crampEnergyCost: 20
   isComboSkill: 0
   comboEffectValue: 0
-  chargingAttack: 0
+  chargingAttack: 1
+  isEcho: 1
   monster: {fileID: 0}
   owner: {fileID: 0}
