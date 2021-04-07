@@ -24,6 +24,13 @@ public class BasicAttack : Skill
         switch (side)
         {
             case monsterSide.Enemy:
+
+                if (Enemy.Instance.isCombo && isComboSkill)
+                {
+                    comesFromCombo = true;
+                }
+
+
                 if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
                 {
                     if (Enemy.Instance.isCramp)
@@ -75,6 +82,12 @@ public class BasicAttack : Skill
                 break;
 
             case monsterSide.Ally:
+
+                if (Player.Instance.isCombo && isComboSkill)
+                {
+                    comesFromCombo = true;
+                }
+
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)
@@ -204,6 +217,8 @@ public class BasicAttack : Skill
             Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
             Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
         }
+
+        comesFromCombo = false;
     }
 
     public override void MonsterEffect()
@@ -226,7 +241,10 @@ public class BasicAttack : Skill
             Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
             Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
         }
+
+        comesFromCombo = false;
     }
+}
 
     
-}
+

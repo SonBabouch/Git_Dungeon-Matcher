@@ -140,7 +140,7 @@ public class CombatManager : MonoBehaviour
     {
         for (int i = 0; i < Player.Instance.playerHand.Count; i++)
         {
-            if (Player.Instance.playerHand[i].isEcho && Player.Instance.lastPlayerCompetence != null)
+            if(Player.Instance.playerHand[i].isEcho && Player.Instance.lastPlayerCompetence != null)
             {
                 Debug.Log("echoInit");
                 Player.Instance.playerHand[i].typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;

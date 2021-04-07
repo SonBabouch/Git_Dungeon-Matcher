@@ -29,6 +29,7 @@ public abstract class Skill : ScriptableObject
 
     [Header("TypeOfCapacity")]
     public bool isComboSkill = false;
+    public bool comesFromCombo = false;
     public float comboEffectValue;
     public bool chargingAttack;
 

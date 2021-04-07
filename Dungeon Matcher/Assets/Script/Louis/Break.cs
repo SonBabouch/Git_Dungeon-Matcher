@@ -21,6 +21,7 @@ public class Break : Skill
         switch (side)
         {
             case monsterSide.Enemy:
+
                 if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
                 {
                     if (Enemy.Instance.isCramp)
@@ -72,6 +73,7 @@ public class Break : Skill
                 break;
 
             case monsterSide.Ally:
+
                 if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
                 {
                     if (Player.Instance.isCramp)

@@ -43,7 +43,7 @@ public class MessageManager : MonoBehaviour
                 {
                     //Attention car attack peut être combo+Chargée.
                     case Skill.capacityType.Attack:
-                        if (skill.isComboSkill && Player.Instance.isCombo && Player.Instance.lastPlayerCompetence != null)
+                        if (skill.isComboSkill && skill.comesFromCombo && Player.Instance.isCombo && Player.Instance.lastPlayerCompetence != null)
                         {
                             chosenList = attackMessagesComboPlayer;
                         }
@@ -68,7 +68,7 @@ public class MessageManager : MonoBehaviour
                         chosenList = echoMessagesPlayer;
                         break;
                     case Skill.capacityType.Heal:
-                        if (skill.isComboSkill && Player.Instance.isCombo)
+                        if (skill.isComboSkill && skill.comesFromCombo && Player.Instance.isCombo)
                         {
                             //=> Tableau Combo Heal.
                         }
