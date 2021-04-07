@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: 30 Damage
   effectValue: 30
-  side: 0
+  side: 1
   messageType: 0
   typeOfCapacity: 0
   trueEnergyCost: 3
-  energyCost: 3
+  energyCost: 30
   initialEnergyCost: 30
   crampEnergyCost: 40
   isComboSkill: 1

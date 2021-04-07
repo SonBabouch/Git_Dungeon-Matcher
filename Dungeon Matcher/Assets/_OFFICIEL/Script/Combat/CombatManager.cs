@@ -141,11 +141,32 @@ public class CombatManager : MonoBehaviour
     #region Buttons
     void ButtonsInfos()
     {
+        for (int i = 0; i < Player.Instance.playerDraw.Count; i++)
+        {
+            if (Player.Instance.playerDraw[i].isEcho)
+            {
+                Player.Instance.playerDraw[i].typeOfCapacity = Skill.capacityType.Echo;
+                Player.Instance.playerDraw[i].messageType = Skill.typeOfMessage.Small;
+                Player.Instance.playerDraw[i].isComboSkill = false;
+                Player.Instance.playerDraw[i].chargingAttack = false;
+            }
+        }
+
+        for (int i = 0; i < Enemy.Instance.enemyDraw.Count; i++)
+        {
+            if (Enemy.Instance.enemyDraw[i].isEcho)
+            {
+                Enemy.Instance.enemyDraw[i].typeOfCapacity = Skill.capacityType.Echo;
+                Enemy.Instance.enemyDraw[i].messageType = Skill.typeOfMessage.Small;
+                Enemy.Instance.enemyDraw[i].isComboSkill = false;
+                Enemy.Instance.enemyDraw[i].chargingAttack = false;
+            }
+        }
+
         for (int i = 0; i < Player.Instance.playerHand.Count; i++)
         {
             if(Player.Instance.playerHand[i].isEcho && Player.Instance.lastPlayerCompetence != null)
             {
-                Debug.Log("echoInit");
                 Player.Instance.playerHand[i].typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
                 Player.Instance.playerHand[i].initialEnergyCost = Player.Instance.lastPlayerCompetence.initialEnergyCost;
                 Player.Instance.playerHand[i].trueEnergyCost = Player.Instance.lastPlayerCompetence.trueEnergyCost;

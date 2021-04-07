@@ -18,9 +18,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private List<Skill> enemySkills = new List<Skill>();
     [SerializeField]
-    private List<Skill> enemyHand = new List<Skill>();
+    public List<Skill> enemyHand = new List<Skill>();
     [SerializeField]
-    private List<Skill> enemyDraw = new List<Skill>();
+    public List<Skill> enemyDraw = new List<Skill>();
     private int index;
 
     public Skill lastEnemyCompetence;
