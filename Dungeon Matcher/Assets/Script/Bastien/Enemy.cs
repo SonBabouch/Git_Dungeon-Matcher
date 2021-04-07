@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour
         enemyDraw.RemoveAt(0);
     }
 
+    bool canAttack;
     #region Combo
     public IEnumerator TimerCombo()
     {
@@ -133,11 +134,14 @@ public class Enemy : MonoBehaviour
     #endregion
     public void EnemyBasicBehavior()
     {
-        if(energy >= maxEnergy / 2)
+        if(energy >= 5f && canAttack)
         {
+            canAttack = false;
             index = Random.Range(0, 3);
             enemyHand[index].Use();
             Debug.Log(enemyHand[index].skillDescription);
         }
+        //yield return new WaitForSeconds(0.5f);
+        canAttack = true;
     }
 }

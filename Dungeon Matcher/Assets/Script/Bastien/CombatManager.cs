@@ -111,7 +111,8 @@ public class CombatManager : MonoBehaviour
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        Enemy.Instance.health--;
+        Enemy.Instance.energy++;
+        Enemy.Instance.health -= 1f;
         secondsLeft -= 1;
         if(secondsLeft < 10)
         {
