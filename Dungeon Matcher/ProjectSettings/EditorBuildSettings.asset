@@ -6,12 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_Scenes/Xanthin/XP_SceneAnim.unity
+    path: Assets/OFFICIEL/_Scenes/Xanthin/XP_SceneAnim.unity
     guid: 0509df0de18bdb14e98207802c70aa21
   - enabled: 1
-    path: Assets/_Scenes/Dev & Builds/PROTOBUILD.unity
+    path: Assets/_OFFICIEL/_Scenes/PROTOBUILD.unity
     guid: 1f696d8624ab8894f9a023792b4dd4bf
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/_Scenes/Lea/CombatAssets.unity
+=======
+    path: Assets/BASTIEN/PRBA_TestingScene.unity
+>>>>>>> develop
     guid: 701b8d7e5e10a054dbf43f9e74eb2b3d
   m_configObjects: {}
