@@ -223,13 +223,14 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   minHealth: 0
-  energy: 3
-  maxEnergy: 6
+  energy: 30
+  maxEnergy: 60
+  energyModifierEnemy: 1
   trueEnergy: 0
   currentMonster: {fileID: 0}
   enemyMonsters:
   - {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a, type: 3}
-  - {fileID: 3352059483369707408, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
+  - {fileID: 3352059483369707408, guid: f2c245234c5ab6844b81620a815fc6eb, type: 3}
   enemySkills: []
   enemyHand:
   - {fileID: 0}

@@ -172,7 +172,7 @@ public class BasicAttack : Skill
 
                     PlayerEffect();
                     CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
+                    ConversationManager.Instance.SendMessagesPlayer(this, 0);
                 }
                 break;
 
@@ -188,7 +188,7 @@ public class BasicAttack : Skill
                     }
 
                     MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
+                    ConversationManager.Instance.SendMessagesEnemy(this, 0);
                 }
                 break;
         }

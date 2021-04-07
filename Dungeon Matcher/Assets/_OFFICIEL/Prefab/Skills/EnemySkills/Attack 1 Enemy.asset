@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Attack 1 Enemy
   m_EditorClassIdentifier: 
   skillDescription: 10 Damage
-  effectValue: 0
+  effectValue: 10
   side: 0
   messageType: 0
   typeOfCapacity: 0
-  trueEnergyCost: 0
-  energyCost: 1
-  initialEnergyCost: 0
-  crampEnergyCost: 0
+  trueEnergyCost: 1
+  energyCost: 10
+  initialEnergyCost: 10
+  crampEnergyCost: 20
   isComboSkill: 0
   comesFromCombo: 0
   comboEffectValue: 0

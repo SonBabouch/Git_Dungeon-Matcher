@@ -45,8 +45,11 @@ public class CombatManager : MonoBehaviour
     private void Start()
     {
         //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
+        CharacterSkillInitialisation();
         ButtonsInitialization();
+
         StartCoroutine(PlayerEnergyGenerator());
+        StartCoroutine(EnemyEnergyGenerator());
     }
 
     private void FixedUpdate()
@@ -55,6 +58,13 @@ public class CombatManager : MonoBehaviour
         ButtonIndex();
     }
 
+    public void CharacterSkillInitialisation()
+    {
+        Player.Instance.InitializePlayer();
+        Player.Instance.SetPlayerHandAndDraw();
+        Enemy.Instance.InitializeMonster();
+        Enemy.Instance.SetEnemyHandAndDraw();
+    }
     public IEnumerator PlayerEnergyGenerator()
     {
        
@@ -67,7 +77,7 @@ public class CombatManager : MonoBehaviour
             Player.Instance.energy = Player.Instance.maxEnergy;
         }
 
-        GetTrueEnergy();
+        GetPlayerTrueEnergy();
 
         if (!isCombatEnded)
         {
@@ -75,7 +85,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void GetTrueEnergy()
+    public void GetPlayerTrueEnergy()
     { float energy = Player.Instance.energy;
 
         if(energy < 10)
@@ -107,12 +117,61 @@ public class CombatManager : MonoBehaviour
             Player.Instance.trueEnergy = 6;
         }
     }
+    public IEnumerator EnemyEnergyGenerator()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.energy += 1 * Enemy.Instance.energyModifierEnemy;
+        if (Enemy.Instance.energy >= Enemy.Instance.maxEnergy)
+        {
+            Enemy.Instance.energy = Enemy.Instance.maxEnergy;
+        }
+        GetEnemyTrueEnergy();
 
+        if (!isCombatEnded)
+        {
+            StartCoroutine(EnemyEnergyGenerator());
+        }
+    
+    }
+
+    public void GetEnemyTrueEnergy()
+    {
+
+        float energy = Enemy.Instance.energy;
+
+        if (energy < 10)
+        {
+            Enemy.Instance.trueEnergy = 0;
+        }
+        else if (energy >= 10 && energy < 20)
+        {
+            Enemy.Instance.trueEnergy = 1;
+        }
+        else if (energy >= 20 && energy < 30)
+        {
+            Enemy.Instance.trueEnergy = 2;
+        }
+        else if (energy >= 30 && energy < 40)
+        {
+            Enemy.Instance.trueEnergy = 3;
+        }
+        else if (energy >= 40 && energy < 50)
+        {
+            Enemy.Instance.trueEnergy = 4;
+        }
+        else if (energy >= 50 && energy < 60)
+        {
+            Enemy.Instance.trueEnergy = 5;
+        }
+        else if (energy == 60)
+        {
+            Enemy.Instance.trueEnergy = 6;
+        }
+    }
     public IEnumerator CombatTimer()
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        Enemy.Instance.energy++;
         Enemy.Instance.health -= 1f;
         secondsLeft -= 1;
         if(secondsLeft < 10)

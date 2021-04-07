@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float minHealth;
     public float energy;
     public float maxEnergy;
+    public float energyModifierEnemy;
     public int trueEnergy;
     public GameObject currentMonster;
     [SerializeField]
@@ -51,12 +52,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        InitializeMonster();
-        SetEnemyHandAndDraw();
-
-    }
     private void Update()
     {
         EnemyBasicBehavior();

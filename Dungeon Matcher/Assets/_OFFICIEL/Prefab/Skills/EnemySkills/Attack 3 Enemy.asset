@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
-  m_Name: Attack 3 Player
+  m_Name: Attack 3 Enemy
   m_EditorClassIdentifier: 
   skillDescription: 30 Damage
-  effectValue: 0
-  side: 1
+  effectValue: 30
+  side: 0
   messageType: 0
   typeOfCapacity: 0
-  trueEnergyCost: 0
-  energyCost: 3
-  initialEnergyCost: 0
-  crampEnergyCost: 0
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 0
   comesFromCombo: 0
   comboEffectValue: 0

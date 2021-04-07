@@ -230,6 +230,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273854986186883806}
     m_Modifications:
+    - target: {fileID: 7573319943327200532, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
+        type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1273854986459921572}
+    - target: {fileID: 7573319943536581544, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
+        type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1273854986400993816}
+    - target: {fileID: 7573319944554154302, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
+        type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1273854986400993816}
+    - target: {fileID: 7573319944858687140, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
+        type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1273854985473711892}
     - target: {fileID: 7573319945375785237, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
         type: 3}
       propertyPath: m_Name
