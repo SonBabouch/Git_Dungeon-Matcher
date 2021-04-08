@@ -34,6 +34,17 @@ public class Drain : Skill
                         energyCost = initialEnergyCost;
                     }
 
+                    if (Enemy.Instance.isCurse)
+                    {
+                        int test = Random.Range(0, 100);
+                        if (test < 10)
+                        {
+                            Enemy.Instance.energy -= energyCost;
+                            Enemy.Instance.trueEnergy -= trueEnergyCost;
+                            break;
+                        }
+                    }
+
                     if (chargingAttack)
                     {
                         if (Enemy.Instance.energy >= energyCost)
@@ -41,7 +52,7 @@ public class Drain : Skill
                             Enemy.Instance.energy -= energyCost;
 
                             //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
+                            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
                         }
                     }
                     else
@@ -62,6 +73,18 @@ public class Drain : Skill
                     else
                     {
                         energyCost = initialEnergyCost;
+                    }
+
+                    if (Player.Instance.isCurse)
+                    {
+                        int test = Random.Range(0, 100);
+                        if (test < 10)
+                        {
+                            Player.Instance.energy -= energyCost;
+                            Player.Instance.trueEnergy -= trueEnergyCost;
+                            CombatManager.Instance.ButtonsUpdate();
+                            break;
+                        }
                     }
 
                     if (chargingAttack)

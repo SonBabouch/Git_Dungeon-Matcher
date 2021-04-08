@@ -55,29 +55,22 @@ public class Defense : Skill
 
                             break;
                         }
-                        else
-                        {
-                            //=> Sinon ca fait la suite.
-
-                            if (chargingAttack)
-                            {
-                                if (Enemy.Instance.energy >= energyCost)
-                                {
-                                    Enemy.Instance.energy -= energyCost;
-                                    Enemy.Instance.trueEnergy -= trueEnergyCost;
-
-                                    //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
-                                }
-                            }
-                            else
-                            {
-                                InUse();
-                            }
-                        }
-
                     }
+                    if (chargingAttack)
+                    {
+                        if (Enemy.Instance.energy >= energyCost)
+                        {
+                            Enemy.Instance.energy -= energyCost;
+                            Enemy.Instance.trueEnergy -= trueEnergyCost;
 
+                            //ici ca sera Enemy plutot que player
+                            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
+                        }
+                    }
+                    else
+                    {
+                        InUse();
+                    }
                 }
                 break;
 
@@ -103,42 +96,22 @@ public class Defense : Skill
                             CombatManager.Instance.ButtonsUpdate();
                             break;
                         }
-                        else
-                        {
-                            if (chargingAttack)
-                            {
-                                if (Player.Instance.energy >= energyCost)
-                                {
-                                    Player.Instance.energy -= energyCost;
-                                    Player.Instance.trueEnergy -= trueEnergyCost;
+                    }
 
-                                    //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
-                                }
-                            }
-                            else
-                            {
-                                InUse();
-                            }
+                    if (chargingAttack)
+                    {
+                        if (Player.Instance.energy >= energyCost)
+                        {
+                            Player.Instance.energy -= energyCost;
+                            Player.Instance.trueEnergy -= trueEnergyCost;
+
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                         }
                     }
                     else
                     {
-                        if (chargingAttack)
-                        {
-                            if (Player.Instance.energy >= energyCost)
-                            {
-                                Player.Instance.energy -= energyCost;
-                                Player.Instance.trueEnergy -= trueEnergyCost;
-
-                                //ici ca sera Enemy plutot que player
-                                Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
-                            }
-                        }
-                        else
-                        {
-                            InUse();
-                        }
+                        InUse();
                     }
 
                 }

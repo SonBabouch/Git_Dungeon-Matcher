@@ -15,7 +15,7 @@ MonoBehaviour:
   skillDescription: 50 Damage
   effectValue: 50
   side: 1
-  messageType: 1
+  messageType: 0
   typeOfCapacity: 0
   trueEnergyCost: 1
   energyCost: 10
@@ -24,7 +24,7 @@ MonoBehaviour:
   isComboSkill: 0
   comesFromCombo: 0
   comboEffectValue: 0
-  chargingAttack: 1
+  chargingAttack: 0
   isEcho: 0
   monster: {fileID: 0}
   owner: {fileID: 0}
