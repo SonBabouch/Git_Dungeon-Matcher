@@ -58,7 +58,7 @@ public class Break : Skill
                                     Enemy.Instance.trueEnergy -= trueEnergyCost;
 
                                     //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                    Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                                 }
                             }
                             else
@@ -105,7 +105,7 @@ public class Break : Skill
                                     Player.Instance.trueEnergy -= trueEnergyCost;
 
                                     //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                    Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                                 }
                             }
                             else
@@ -124,7 +124,7 @@ public class Break : Skill
                                 Player.Instance.trueEnergy -= trueEnergyCost;
 
                                 //ici ca sera Enemy plutot que player
-                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                             }
                         }
                         else
@@ -154,7 +154,7 @@ public class Break : Skill
 
     public override void MonsterEffect()
     {
-        Player.Instance.StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
+        Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
         Enemy.Instance.lastEnemyCompetence = this;
 
         if (!chargingAttack)

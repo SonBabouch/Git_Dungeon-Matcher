@@ -22,9 +22,11 @@ public class Enemy : MonoBehaviour
     public List<Skill> enemyHand = new List<Skill>();
     [SerializeField]
     public List<Skill> enemyDraw = new List<Skill>();
-    private int index;
+    [HideInInspector]
+    public int enemyIndex;
 
     public Skill lastEnemyCompetence;
+    public float enemyChargingTime;
 
     public bool isCramp = false;
     public bool isCharging = false;
@@ -77,6 +79,24 @@ public class Enemy : MonoBehaviour
         ShuffleEnemySkill();
     }
 
+    public IEnumerator EnemyChargeAttack(Skill skillToCharge)
+    {
+        Enemy.Instance.lastEnemyCompetence = skillToCharge;
+        Enemy.Instance.isCharging = true;
+        CombatManager.Instance.ButtonsUpdate();
+        ConversationManager.Instance.SendMessagesPlayer(skillToCharge, 0);
+        yield return new WaitForSeconds(enemyChargingTime);
+        //Debug.Log("End");
+        Enemy.Instance.isCharging = false;
+
+        if (ConversationManager.Instance.allMsg[0] != null)
+        {
+            ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
+        }
+        skillToCharge.MonsterEffect();
+    }
+
+    #region Shuffle
     public void ShuffleEnemySkill()
     {
         enemySkills.ShuffleFisherYates();
@@ -98,6 +118,7 @@ public class Enemy : MonoBehaviour
         enemyHand.Insert(index, enemyDraw[0]);
         enemyDraw.RemoveAt(0);
     }
+    #endregion
 
     #region Combo
     public IEnumerator TimerCombo()
@@ -131,12 +152,12 @@ public class Enemy : MonoBehaviour
     bool canAttack;
     public void EnemyBasicBehavior()
     {
-        if(energy >= 5f && canAttack)
+        if(trueEnergy >= 3f && canAttack)
         {
             canAttack = false;
-            index = Random.Range(0, 3);
-            enemyHand[index].Use();
-            Debug.Log(enemyHand[index].skillDescription);
+            enemyIndex = Random.Range(0, 3);
+            enemyHand[enemyIndex].InUse();
+            //Debug.Log(enemyHand[index].skillDescription);
         }
         //yield return new WaitForSeconds(0.5f);
         canAttack = true;

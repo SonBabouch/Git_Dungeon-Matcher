@@ -73,7 +73,7 @@ public class ConversationManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Player.Instance.isCharging)
         {
             //A mettre dans le break.
-            StopCoroutine(Player.Instance.ChargeAttack(Player.Instance.lastPlayerCompetence));
+            StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
             Player.Instance.isCharging = false;
             canAttack = false;
             CancelPosition(); 

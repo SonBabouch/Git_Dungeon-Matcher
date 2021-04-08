@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack 1
   m_EditorClassIdentifier: 
-  skillDescription: 10 Damage
-  effectValue: 10
+  skillDescription: 50 Damage
+  effectValue: 50
   side: 1
   messageType: 1
   typeOfCapacity: 0
   trueEnergyCost: 1
-  energyCost: 1
+  energyCost: 10
   initialEnergyCost: 10
   crampEnergyCost: 20
   isComboSkill: 0

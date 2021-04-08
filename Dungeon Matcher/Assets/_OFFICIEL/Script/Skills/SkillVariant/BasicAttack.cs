@@ -52,30 +52,24 @@ public class BasicAttack : Skill
                             Enemy.Instance.trueEnergy -= trueEnergyCost;
 
                             //switch la carte de la main de l'enemy;
-
                             break;
                         }
-                        else
+                    }
+                    //=> Sinon ca fait la suite.
+                    if (chargingAttack)
+                    {
+                        if (Enemy.Instance.energy >= energyCost)
                         {
-                            //=> Sinon ca fait la suite.
+                            Enemy.Instance.energy -= energyCost;
+                            Enemy.Instance.trueEnergy -= trueEnergyCost;
 
-                            if (chargingAttack)
-                            {
-                                if (Enemy.Instance.energy >= energyCost)
-                                {
-                                    Enemy.Instance.energy -= energyCost;
-                                    Enemy.Instance.trueEnergy -= trueEnergyCost;
-
-                                    //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
-                                }
-                            }
-                            else
-                            {
-                                InUse();
-                            }
+                            //ici ca sera Enemy plutot que player
+                            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
                         }
-
+                    }
+                    else
+                    {
+                        InUse();
                     }
 
                 }
@@ -109,42 +103,22 @@ public class BasicAttack : Skill
                             CombatManager.Instance.ButtonsUpdate();
                             break;
                         }
-                        else
+                        
+                    }
+                    if (chargingAttack)
+                    {
+                        if (Player.Instance.energy >= energyCost)
                         {
-                            if (chargingAttack)
-                            {
-                                if (Player.Instance.energy >= energyCost)
-                                {
-                                    Player.Instance.energy -= energyCost;
-                                    Player.Instance.trueEnergy -= trueEnergyCost;
+                            Player.Instance.energy -= energyCost;
+                            Player.Instance.trueEnergy -= trueEnergyCost;
 
-                                    //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
-                                }
-                            }
-                            else
-                            {
-                                InUse();
-                            }
+                            //ici ca sera Enemy plutot que player
+                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                         }
                     }
                     else
                     {
-                        if (chargingAttack)
-                        {
-                            if (Player.Instance.energy >= energyCost)
-                            {
-                                Player.Instance.energy -= energyCost;
-                                Player.Instance.trueEnergy -= trueEnergyCost;
-
-                                //ici ca sera Enemy plutot que player
-                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
-                            }
-                        }
-                        else
-                        {
-                            InUse();
-                        }
+                        InUse();
                     }
 
                 }
@@ -179,6 +153,7 @@ public class BasicAttack : Skill
             case monsterSide.Enemy:
                 if (Enemy.Instance.energy >= energyCost)
                 {
+                    Debug.Log(Enemy.Instance.energy + Enemy.Instance.trueEnergy);
                     Enemy.Instance.energy -= energyCost;
                     Enemy.Instance.trueEnergy -= trueEnergyCost;
 
@@ -188,6 +163,7 @@ public class BasicAttack : Skill
                     }
 
                     MonsterEffect();
+                    Enemy.Instance.EnemySwapSkill(Enemy.Instance.enemyIndex);
                     ConversationManager.Instance.SendMessagesEnemy(this, 0);
                 }
                 break;

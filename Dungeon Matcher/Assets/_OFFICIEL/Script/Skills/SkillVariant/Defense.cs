@@ -67,7 +67,7 @@ public class Defense : Skill
                                     Enemy.Instance.trueEnergy -= trueEnergyCost;
 
                                     //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                    Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                                 }
                             }
                             else
@@ -113,7 +113,7 @@ public class Defense : Skill
                                     Player.Instance.trueEnergy -= trueEnergyCost;
 
                                     //ici ca sera Enemy plutot que player
-                                    Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                    Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                                 }
                             }
                             else
@@ -132,7 +132,7 @@ public class Defense : Skill
                                 Player.Instance.trueEnergy -= trueEnergyCost;
 
                                 //ici ca sera Enemy plutot que player
-                                Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                                Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                             }
                         }
                         else

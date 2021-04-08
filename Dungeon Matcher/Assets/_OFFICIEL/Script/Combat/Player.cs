@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     public Skill lastPlayerCompetence;
 
-    public float chargingTime;
+    public float playerChargingTime;
     
     public float comboTime;
     public float maxComboTime;
@@ -58,8 +58,7 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        InitializePlayer();
-        SetPlayerHandAndDraw();
+
     }
     private void Update()
     {
@@ -128,13 +127,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public IEnumerator ChargeAttack(Skill skillToCharge)
+    public IEnumerator PlayerChargeAttack(Skill skillToCharge)
     {
         Player.Instance.lastPlayerCompetence = skillToCharge;
         Player.Instance.isCharging = true;
         CombatManager.Instance.ButtonsUpdate();
         ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
-        yield return new WaitForSeconds(chargingTime);
+        yield return new WaitForSeconds(playerChargingTime);
         //Debug.Log("End");
         Player.Instance.isCharging = false;
 

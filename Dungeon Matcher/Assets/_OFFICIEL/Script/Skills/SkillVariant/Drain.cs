@@ -41,7 +41,7 @@ public class Drain : Skill
                             Enemy.Instance.energy -= energyCost;
 
                             //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                         }
                     }
                     else
@@ -71,7 +71,7 @@ public class Drain : Skill
                             Player.Instance.energy -= energyCost;
 
                             //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.ChargeAttack(this));
+                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
                         }
                     }
                     else
