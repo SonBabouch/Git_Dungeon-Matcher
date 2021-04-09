@@ -113,30 +113,6 @@ public class Break : Skill
         }
     }
 
-    public override void PlayerEffect()
-    {
-        //Enemy.Instance.StopCoroutine(ChargeAttack());
-        Player.Instance.lastPlayerCompetence = this;
-
-        if (!chargingAttack)
-        {
-            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
-            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
-        }
-    }
-
-    public override void MonsterEffect()
-    {
-        Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
-        Enemy.Instance.lastEnemyCompetence = this;
-
-        if (!chargingAttack)
-        {
-            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
-            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
-        }
-    }
-
     public override void InUse()
     {
         switch (side)
@@ -176,5 +152,29 @@ public class Break : Skill
         CombatManager.Instance.index = 0;
     }
 
-   
+    public override void PlayerEffect()
+    {
+        //Enemy.Instance.StopCoroutine(ChargeAttack());
+        Player.Instance.lastPlayerCompetence = this;
+
+        if (!chargingAttack)
+        {
+            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        }
+    }
+
+    public override void MonsterEffect()
+    {
+        Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
+        Enemy.Instance.lastEnemyCompetence = this;
+
+        if (!chargingAttack)
+        {
+            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        }
+    }
+
+
 }

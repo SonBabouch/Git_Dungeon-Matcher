@@ -153,7 +153,6 @@ public class BasicAttack : Skill
             case monsterSide.Enemy:
                 if (Enemy.Instance.energy >= energyCost)
                 {
-                    Debug.Log(Enemy.Instance.energy + Enemy.Instance.trueEnergy);
                     Enemy.Instance.energy -= energyCost;
                     Enemy.Instance.trueEnergy -= trueEnergyCost;
 
@@ -179,11 +178,11 @@ public class BasicAttack : Skill
         {
             if(Player.Instance.isCombo && isComboSkill)
             {
-                Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+                Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
             }
             else
             {
-                Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+                Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
             }
         }
         Player.Instance.lastPlayerCompetence = this;

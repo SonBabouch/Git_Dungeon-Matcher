@@ -150,7 +150,7 @@ public class Curse : Skill
 
     public override void PlayerEffect()
     {
-        Player.Instance.isCurse = true;
+        Enemy.Instance.isCurse = true;
         Player.Instance.lastPlayerCompetence = this;
 
         if (!chargingAttack)
@@ -162,7 +162,7 @@ public class Curse : Skill
 
     public override void MonsterEffect()
     {
-        Enemy.Instance.isCurse = true;
+        Player.Instance.isCurse = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
         if (!chargingAttack)
