@@ -230,9 +230,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 855918313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5bce6eea4bdfc04cbe45c1b6c058507, type: 3}
+  m_Script: {fileID: 11500000, guid: 38d2cfc6a65f3e543a33c4e253972c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerFilePath: PlayerMessages
+  enemyFilePath: EnemyMessages
+  indexAmount: 5
 --- !u!4 &855918315
 Transform:
   m_ObjectHideFlags: 0
