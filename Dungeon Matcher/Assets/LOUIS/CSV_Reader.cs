@@ -104,6 +104,7 @@ public class CSV_Reader : MonoBehaviour
         }
     }
 
+    /*
     public void PutLinesInTabels()
     {
         MessageManager.instance.playerIndex1Attack = new List<string>(playerDataStructure[0]["Dégâts"].Count);
@@ -351,6 +352,7 @@ public class CSV_Reader : MonoBehaviour
         //_______________________________________
         enemyDataStructure[0]["ATK Chargée"] = MessageManager.instance.enemyIndex1Charged;
     }
+    */
 
     public string GetRandomLineForPlayer(int playerMessageIndex, string playerAbility)
     {

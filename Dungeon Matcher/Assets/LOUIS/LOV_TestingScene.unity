@@ -196,7 +196,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 109665598}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &263390596
+--- !u!114 &263390590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,12 +205,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 263390589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d2cfc6a65f3e543a33c4e253972c56, type: 3}
+  m_Script: {fileID: 11500000, guid: 828a3a87666cb5e4f91766ddd64be649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLines: []
+  enemyLines: []
+  playerLinesAlt: []
   playerFilePath: PlayerMessages
   enemyFilePath: EnemyMessages
-  indexAmount: 5
 --- !u!114 &304975379 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1273854986509344266, guid: 605908147add77a4499ff67b9d35900e,

@@ -10,133 +10,148 @@ public class MessageManager : MonoBehaviour
 
     [Header("ArraysOfMessagesForPlayer")]
     [Header("ArraysOfPlayerAttackMessages")]
-    [HideInInspector] public List<string> playerIndex1Attack = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Attack = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Attack = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Attack = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Attack = new List<string>();
+     public string[] playerIndex1Attack = new string[4];
+     public string[] playerIndex2Attack = new string[4];
+     public string[] playerIndex3Attack = new string[4];
+     public string[] playerIndex4Attack = new string[4];
+     public string[] playerIndex5Attack = new string[4];
+
     [Header("ArraysOfPlayerDefenseMessages")]
-    [HideInInspector] public List<string> playerIndex1Defense = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Defense = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Defense = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Defense = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Defense = new List<string>();
+    [HideInInspector] public string[] playerIndex1Defense = new string[4];
+    [HideInInspector] public string[] playerIndex2Defense = new string[4];
+    [HideInInspector] public string[] playerIndex3Defense = new string[4];
+    [HideInInspector] public string[] playerIndex4Defense = new string[4];
+    [HideInInspector] public string[] playerIndex5Defense = new string[4];
+
     [Header("ArraysOfPlayerHealMessages")]
-    [HideInInspector] public List<string> playerIndex1Heal = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Heal = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Heal = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Heal = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Heal = new List<string>();
+    [HideInInspector] public string[] playerIndex1Heal = new string[4];
+    [HideInInspector] public string[] playerIndex2Heal = new string[4];
+    [HideInInspector] public string[] playerIndex3Heal = new string[4];
+    [HideInInspector] public string[] playerIndex4Heal = new string[4];
+    [HideInInspector] public string[] playerIndex5Heal = new string[4];
+
     [Header("ArraysOfPlayerBreakMessages")]
-    [HideInInspector] public List<string> playerIndex1Break = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Break = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Break = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Break = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Break = new List<string>();
+    [HideInInspector] public string[] playerIndex1Break = new string[4];
+    [HideInInspector] public string[] playerIndex2Break = new string[4];
+    [HideInInspector] public string[] playerIndex3Break = new string[4];
+    [HideInInspector] public string[] playerIndex4Break = new string[4];
+    [HideInInspector] public string[] playerIndex5Break = new string[4];
     [Header("ArraysOfPlayerDrainMessages")]
-    [HideInInspector] public List<string> playerIndex1Drain = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Drain = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Drain = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Drain = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Drain = new List<string>();
+    [HideInInspector] public string[] playerIndex1Drain = new string[4];
+    [HideInInspector] public string[] playerIndex2Drain = new string[4];
+    [HideInInspector] public string[] playerIndex3Drain = new string[4];
+    [HideInInspector] public string[] playerIndex4Drain = new string[4];
+    [HideInInspector] public string[] playerIndex5Drain = new string[4];
     [Header("ArraysOfPlayerParalysisMessages")]
-    [HideInInspector] public List<string> playerIndex1Paralysis = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Paralysis = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Paralysis = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Paralysis = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Paralysis = new List<string>();
+    [HideInInspector] public string[] playerIndex1Paralysis = new string[4];
+    [HideInInspector] public string[] playerIndex2Paralysis = new string[4];
+    [HideInInspector] public string[] playerIndex3Paralysis = new string[4];
+    [HideInInspector] public string[] playerIndex4Paralysis = new string[4];
+    [HideInInspector] public string[] playerIndex5Paralysis = new string[4];
     [Header("ArraysOfPlayerCharmMessages")]
-    [HideInInspector] public List<string> playerIndex1Charm = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Charm = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Charm = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Charm = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Charm = new List<string>();
+    [HideInInspector] public string[] playerIndex1Charm = new string[4];
+    [HideInInspector] public string[] playerIndex2Charm = new string[4];
+    [HideInInspector] public string[] playerIndex3Charm = new string[4];
+    [HideInInspector] public string[] playerIndex4Charm = new string[4];
+    [HideInInspector] public string[] playerIndex5Charm = new string[4];
+
     [Header("ArraysOfPlayerDivineTouchMessages")]
-    [HideInInspector] public List<string> playerIndex1DivineTouch = new List<string>();
-    [HideInInspector] public List<string> playerIndex2DivineTouch = new List<string>();
-    [HideInInspector] public List<string> playerIndex3DivineTouch = new List<string>();
-    [HideInInspector] public List<string> playerIndex4DivineTouch = new List<string>();
-    [HideInInspector] public List<string> playerIndex5DivineTouch = new List<string>();
+    [HideInInspector] public string[] playerIndex1DivineTouch = new string[4];
+    [HideInInspector] public string[] playerIndex2DivineTouch = new string[4];
+    [HideInInspector] public string[] playerIndex3DivineTouch = new string[4];
+    [HideInInspector] public string[] playerIndex4DivineTouch = new string[4];
+    [HideInInspector] public string[] playerIndex5DivineTouch = new string[4];
+
     [Header("ArraysOfPlayerWindstormMessages")]
-    [HideInInspector] public List<string> playerIndex1Windstorm = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Windstorm = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Windstorm = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Windstorm = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Windstorm = new List<string>();
+    [HideInInspector] public string[] playerIndex1Windstorm = new string[4];
+    [HideInInspector] public string[] playerIndex2Windstorm = new string[4];
+    [HideInInspector] public string[] playerIndex3Windstorm = new string[4];
+    [HideInInspector] public string[] playerIndex4Windstorm = new string[4];
+    [HideInInspector] public string[] playerIndex5Windstorm = new string[4];
+
     [Header("ArraysOfPlayerChargedmMessages")]
-    [HideInInspector] public List<string> playerIndex1Charged = new List<string>();
-    [HideInInspector] public List<string> playerIndex2Charged = new List<string>();
-    [HideInInspector] public List<string> playerIndex3Charged = new List<string>();
-    [HideInInspector] public List<string> playerIndex4Charged = new List<string>();
-    [HideInInspector] public List<string> playerIndex5Charged = new List<string>();
+    /*[HideInInspector]*/ public string[] playerIndex1Charged = new string[4];
+    [HideInInspector] public string[] playerIndex2Charged = new string[4];
+    [HideInInspector] public string[] playerIndex3Charged = new string[4];
+    [HideInInspector] public string[] playerIndex4Charged = new string[4];
+    [HideInInspector] public string[] playerIndex5Charged = new string[4];
 
     [Header("ArraysOfMessagesForEnemy")]
     [Header("ArraysOfEnemyAttackMessages")]
-    [HideInInspector] public List<string> enemyIndex1Attack = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Attack = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Attack = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Attack = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Attack = new List<string>();
-    [Header("ArraysOfEnemyDefenseMessages")]
-    [HideInInspector] public List<string> enemyIndex1Defense = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Defense = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Defense = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Defense = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Defense = new List<string>();
-    [Header("ArraysOfEnemyHealMessages")]
-    [HideInInspector] public List<string> enemyIndex1Heal = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Heal = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Heal = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Heal = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Heal = new List<string>();
-    [Header("ArraysOfEnemyBreakMessages")]
-    [HideInInspector] public List<string> enemyIndex1Break = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Break = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Break = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Break = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Break = new List<string>();
-    [Header("ArraysOfEnemyDrainMessages")]
-    [HideInInspector] public List<string> enemyIndex1Drain = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Drain = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Drain = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Drain = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Drain = new List<string>();
-    [Header("ArraysOfEnemyParalysisMessages")]
-    [HideInInspector] public List<string> enemyIndex1Paralysis = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Paralysis = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Paralysis = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Paralysis = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Paralysis = new List<string>();
-    [Header("ArraysOfEnemyCharmMessages")]
-    [HideInInspector] public List<string> enemyIndex1Charm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Charm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Charm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Charm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Charm = new List<string>();
-    [Header("ArraysOfEnemyDivineTouchMessages")]
-    [HideInInspector] public List<string> enemyIndex1DivineTouch = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2DivineTouch = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3DivineTouch = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4DivineTouch = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5DivineTouch = new List<string>();
-    [Header("ArraysOfEnemyWindstormMessages")]
-    [HideInInspector] public List<string> enemyIndex1Windstorm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Windstorm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Windstorm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Windstorm = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Windstorm = new List<string>();
-    [Header("ArraysOfEnemyChargedmMessages")]
-    [HideInInspector] public List<string> enemyIndex1Charged = new List<string>();
-    [HideInInspector] public List<string> enemyIndex2Charged = new List<string>();
-    [HideInInspector] public List<string> enemyIndex3Charged = new List<string>();
-    [HideInInspector] public List<string> enemyIndex4Charged = new List<string>();
-    [HideInInspector] public List<string> enemyIndex5Charged = new List<string>();
+    [HideInInspector] public string[] enemyIndex1Attack = new string[4];
+    [HideInInspector] public string[] enemyIndex2Attack = new string[4];
+    [HideInInspector] public string[] enemyIndex3Attack = new string[4];
+    [HideInInspector] public string[] enemyIndex4Attack = new string[4];
+    [HideInInspector] public string[] enemyIndex5Attack = new string[4];
 
-    private List<string> chosenList = new List<string>();
+    [Header("ArraysOfEnemyDefenseMessages")]
+    [HideInInspector] public string[] enemyIndex1Defense = new string[4];
+    [HideInInspector] public string[] enemyIndex2Defense = new string[4];
+    [HideInInspector] public string[] enemyIndex3Defense = new string[4];
+    [HideInInspector] public string[] enemyIndex4Defense = new string[4];
+    [HideInInspector] public string[] enemyIndex5Defense = new string[4];
+    [Header("ArraysOfEnemyHealMessages")]
+    [HideInInspector] public string[] enemyIndex1Heal = new string[4];
+    [HideInInspector] public string[] enemyIndex2Heal = new string[4];
+    [HideInInspector] public string[] enemyIndex3Heal = new string[4];
+    [HideInInspector] public string[] enemyIndex4Heal = new string[4];
+    [HideInInspector] public string[] enemyIndex5Heal = new string[4];
+    [Header("ArraysOfEnemyBreakMessages")]
+    [HideInInspector] public string[] enemyIndex1Break = new string[4];
+    [HideInInspector] public string[] enemyIndex2Break = new string[4];
+    [HideInInspector] public string[] enemyIndex3Break = new string[4];
+    [HideInInspector] public string[] enemyIndex4Break = new string[4];
+    [HideInInspector] public string[] enemyIndex5Break = new string[4];
+
+    [Header("ArraysOfEnemyDrainMessages")]
+    [HideInInspector] public string[] enemyIndex1Drain = new string[4];
+    [HideInInspector] public string[] enemyIndex2Drain = new string[4];
+    [HideInInspector] public string[] enemyIndex3Drain = new string[4];
+    [HideInInspector] public string[] enemyIndex4Drain = new string[4];
+    [HideInInspector] public string[] enemyIndex5Drain = new string[4];
+    [Header("ArraysOfEnemyParalysisMessages")]
+    [HideInInspector] public string[] enemyIndex1Paralysis = new string[4];
+    [HideInInspector] public string[] enemyIndex2Paralysis = new string[4];
+    [HideInInspector] public string[] enemyIndex3Paralysis = new string[4];
+    [HideInInspector] public string[] enemyIndex4Paralysis = new string[4];
+    [HideInInspector] public string[] enemyIndex5Paralysis = new string[4];
+
+    [Header("ArraysOfEnemyCharmMessages")]
+    [HideInInspector] public string[] enemyIndex1Charm = new string[4];
+    [HideInInspector] public string[] enemyIndex2Charm = new string[4];
+    [HideInInspector] public string[] enemyIndex3Charm = new string[4];
+    [HideInInspector] public string[] enemyIndex4Charm = new string[4];
+    [HideInInspector] public string[] enemyIndex5Charm = new string[4];
+
+    [Header("ArraysOfEnemyDivineTouchMessages")]
+    [HideInInspector] public string[] enemyIndex1DivineTouch = new string[4];
+    [HideInInspector] public string[] enemyIndex2DivineTouch = new string[4];
+    [HideInInspector] public string[] enemyIndex3DivineTouch = new string[4];
+    [HideInInspector] public string[] enemyIndex4DivineTouch = new string[4];
+    [HideInInspector] public string[] enemyIndex5DivineTouch = new string[4];
+
+    [Header("ArraysOfEnemyWindstormMessages")]
+    [HideInInspector] public string[] enemyIndex1Windstorm = new string[4];
+    [HideInInspector] public string[] enemyIndex2Windstorm = new string[4];
+    [HideInInspector] public string[] enemyIndex3Windstorm = new string[4];
+    [HideInInspector] public string[] enemyIndex4Windstorm = new string[4];
+    [HideInInspector] public string[] enemyIndex5Windstorm = new string[4];
+
+    [Header("ArraysOfEnemyChargedmMessages")]
+     public string[] enemyIndex1Charged = new string[4];
+     public string[] enemyIndex2Charged = new string[4];
+    public string[] enemyIndex3Charged = new string[4];
+     public string[] enemyIndex4Charged = new string[4];
+     public string[] enemyIndex5Charged = new string[4];
+
+
+    private string[] chosenList;
 
     private void Awake()
     {
+        instance = this;
         conversationIndex = 0;
+
     }
 
     public void ChoseArray(Skill skill, GameObject Go)
@@ -604,7 +619,7 @@ public class MessageManager : MonoBehaviour
     }
     public void WriteMessages(GameObject message)
     {
-        int chosenText = Random.Range(0, chosenList.Count - 1);
+        int chosenText = Random.Range(0, chosenList.Length - 1);
         message.GetComponent<MessageBehaviour>().messageText.text = chosenList[chosenText];
         IncreaseIndex();
         Debug.Log(chosenList[chosenText]);
@@ -615,7 +630,7 @@ public class MessageManager : MonoBehaviour
         conversationIndex++;
         if(conversationIndex >= 5)
         {
-            conversationIndex = 3;
+            conversationIndex = 2;
         }
     }
 }
