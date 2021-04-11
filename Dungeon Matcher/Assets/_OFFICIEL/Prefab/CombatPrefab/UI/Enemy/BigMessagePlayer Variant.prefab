@@ -22,20 +22,46 @@ PrefabInstance:
       propertyPath: ally
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 18623060406239032, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 18623060406239032, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.2
+      objectReference: {fileID: 0}
     - target: {fileID: 557122021631550047, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.6509804
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 557122021631550047, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.22352943
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 557122021631550047, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.23529413
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557122021631550047, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 534676aef117fe14b86570d079f0ffea,
+        type: 3}
+    - target: {fileID: 557122021631550047, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557122021631550047, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5201216149507242941, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
@@ -105,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 5201216149507242941, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 537.7036
       objectReference: {fileID: 0}
     - target: {fileID: 5201216149507242941, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 90
+      value: 121.41968
       objectReference: {fileID: 0}
     - target: {fileID: 5201216149507242941, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
@@ -142,6 +168,43 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.31132078
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.31132078
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.31132078
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4283387727
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d4121383bb591304eaf1608663774c46,
+        type: 2}
+    - target: {fileID: 6185078784032192735, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7053987937150392625, guid: d4121383bb591304eaf1608663774c46,
+        type: 2}
     - target: {fileID: 7352670091459577414, guid: 17632bf8cb1a6f649af992d3cf6bb7a5,
         type: 3}
       propertyPath: m_Name
