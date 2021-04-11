@@ -187,7 +187,7 @@ public class ConversationManager : MonoBehaviour
                 GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
                 msg.transform.SetParent(enemyMsgPositions[0].transform);
                 allMsg[0] = msg;
-
+                
                 messageManager.ChoseArray(skill, msg);
 
             }
@@ -427,6 +427,8 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
+        messageManager.ChoseArray(skill, msg);
+
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         //Lancer Methode pour le Text;
