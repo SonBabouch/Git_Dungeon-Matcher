@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< develop
 guid: 58372e5e459ad664fa5f37a9cfc6aa57
 =======
 guid: e2df58e285b899747af5a7627cd4a8d1
 >>>>>>> Ecran combat propre
+=======
+guid: e2df58e285b899747af5a7627cd4a8d1
+>>>>>>> LM_Integration
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
