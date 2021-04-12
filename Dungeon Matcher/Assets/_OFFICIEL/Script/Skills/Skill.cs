@@ -15,7 +15,7 @@ public abstract class Skill : ScriptableObject
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;
 
-    public enum typeOfMessage { Small, Big, Emoji }
+    public enum typeOfMessage { Small, Big, Emoji, Charging }
     public typeOfMessage messageType;
 
     public enum capacityType { Attack, Heal, Defense,Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat, Mark,Curse,Cramp,Charm,Silence,Lock,Break};

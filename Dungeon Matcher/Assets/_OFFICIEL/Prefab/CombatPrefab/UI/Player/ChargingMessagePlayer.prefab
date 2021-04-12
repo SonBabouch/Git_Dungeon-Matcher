@@ -87,7 +87,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290bb169778e3654e93729efc2b14a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messageText: {fileID: 0}
+  iconeImage: {fileID: 0}
   teamMsg: 0
+  EmojiEffect: 0
   ally: 1
-  big: 1
-  currentPosition: 0
+  big: 0
+  isCharging: 1
+  emoji: 0

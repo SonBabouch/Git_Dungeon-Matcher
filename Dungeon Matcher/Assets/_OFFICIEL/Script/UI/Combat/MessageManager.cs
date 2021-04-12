@@ -622,7 +622,7 @@ public class MessageManager : MonoBehaviour
         int chosenText = Random.Range(0, chosenList.Length - 1);
         message.GetComponent<MessageBehaviour>().messageText.text = chosenList[chosenText];
         IncreaseIndex();
-        Debug.Log(chosenList[chosenText]);
+        //Debug.Log(chosenList[chosenText]);
     }
 
     public void IncreaseIndex()

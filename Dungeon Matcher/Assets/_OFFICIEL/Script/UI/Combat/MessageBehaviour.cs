@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class MessageBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
 
+    public Image iconeImage;
     public enum team{Player,Enemy};
     public team teamMsg;
 
@@ -18,6 +19,7 @@ public class MessageBehaviour : MonoBehaviour
 
     public bool ally;
     public bool big;
+    public bool isCharging;
     public bool emoji;
 
     public void GetEffect(int number)
@@ -190,9 +192,5 @@ public class MessageBehaviour : MonoBehaviour
             }
         }
     }
-
-
-   
-
 
 }

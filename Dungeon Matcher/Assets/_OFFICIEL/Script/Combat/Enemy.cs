@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     public bool isBoosted = false;
     public float boostAttack = 1f;
 
+    
 
     private void Awake()
     {
@@ -149,7 +150,7 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-    bool canAttack;
+    public bool canAttack;
     public void EnemyBasicBehavior()
     {
         if(trueEnergy >= 3f && canAttack)

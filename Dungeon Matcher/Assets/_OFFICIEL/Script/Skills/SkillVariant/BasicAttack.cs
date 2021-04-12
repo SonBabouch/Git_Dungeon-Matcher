@@ -21,18 +21,12 @@ public class BasicAttack : Skill
 
     public override void Use()
     {
-        switch (side)
+        if (ConversationManager.Instance.canAttack)
         {
-            case monsterSide.Enemy:
+            switch (side)
+            {
+                case monsterSide.Enemy:
 
-                if (Enemy.Instance.isCombo && isComboSkill)
-                {
-                    comesFromCombo = true;
-                }
-
-
-                if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
-                {
                     if (Enemy.Instance.isCramp)
                     {
                         energyCost = crampEnergyCost;
@@ -42,48 +36,48 @@ public class BasicAttack : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    //Test Curse
-                    if (Enemy.Instance.isCurse)
+                    if (Enemy.Instance.isCharging = false && Enemy.Instance.canAttack && Enemy.Instance.energy >= energyCost)
                     {
-                        int test = Random.Range(0, 100);
-                        if (test < 10)
+                        if (Enemy.Instance.isCombo && isComboSkill)
                         {
-                            Enemy.Instance.energy -= energyCost;
-                            Enemy.Instance.trueEnergy -= trueEnergyCost;
-
-                            //switch la carte de la main de l'enemy;
-                            break;
+                            comesFromCombo = true;
                         }
-                    }
-                    //=> Sinon ca fait la suite.
-                    if (chargingAttack)
-                    {
-                        if (Enemy.Instance.energy >= energyCost)
+
+                        //Test Curse
+                        if (Enemy.Instance.isCurse)
                         {
-                            Enemy.Instance.energy -= energyCost;
-                            Enemy.Instance.trueEnergy -= trueEnergyCost;
+                            int test = Random.Range(0, 100);
+                            if (test < 10)
+                            {
+                                Enemy.Instance.energy -= energyCost;
+                                Enemy.Instance.trueEnergy -= trueEnergyCost;
 
-                            //ici ca sera Enemy plutot que player
-                            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
+                                //switch la carte de la main de l'enemy;
+                                break;
+                            }
                         }
+                        //=> Sinon ca fait la suite.
+                        if (chargingAttack)
+                        {
+                            if (Enemy.Instance.energy >= energyCost)
+                            {
+                                Enemy.Instance.energy -= energyCost;
+                                Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+
                     }
-                    else
-                    {
-                        InUse();
-                    }
+                    break;
 
-                }
-                break;
+                case monsterSide.Ally:
 
-            case monsterSide.Ally:
-
-                if (Player.Instance.isCombo && isComboSkill)
-                {
-                    comesFromCombo = true;
-                }
-
-                if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
-                {
                     if (Player.Instance.isCramp)
                     {
                         energyCost = crampEnergyCost;
@@ -93,40 +87,59 @@ public class BasicAttack : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    if (Player.Instance.isCurse)
+                    if (Player.Instance.canAttack && Player.Instance.isCharging == false && Player.Instance.energy >= energyCost)
                     {
-                        int test = Random.Range(0, 100);
-                        if (test < 10)
+                        if (Player.Instance.isCombo && isComboSkill)
                         {
-                            Player.Instance.energy -= energyCost;
-                            Player.Instance.trueEnergy -= trueEnergyCost;
-                            CombatManager.Instance.ButtonsUpdate();
-                            break;
+                            comesFromCombo = true;
                         }
-                        
-                    }
-                    if (chargingAttack)
-                    {
-                        if (Player.Instance.energy >= energyCost)
+
+                        if (Player.Instance.isCramp)
                         {
-                            Player.Instance.energy -= energyCost;
-                            Player.Instance.trueEnergy -= trueEnergyCost;
-
-                            //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
+                            energyCost = crampEnergyCost;
                         }
-                    }
-                    else
-                    {
-                        InUse();
-                    }
+                        else
+                        {
+                            energyCost = initialEnergyCost;
+                        }
 
-                }
-                break;
-            default:
-                break;
+                        if (Player.Instance.isCurse)
+                        {
+                            int test = Random.Range(0, 100);
+                            if (test < 10)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+                                CombatManager.Instance.ButtonsUpdate();
+                                break;
+                            }
+
+                        }
+                        if (chargingAttack)
+                        {
+                            if (Player.Instance.energy >= energyCost)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
+
+       
 
     public override void InUse()
     {
@@ -192,8 +205,15 @@ public class BasicAttack : Skill
             Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
             Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
         }
+        
+        if(messageType == typeOfMessage.Big)
+        {
+            messageType = typeOfMessage.Charging;
+
+        }
 
         comesFromCombo = false;
+        Player.Instance.canAttack = true;
     }
 
     public override void MonsterEffect()
@@ -217,7 +237,13 @@ public class BasicAttack : Skill
             Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
         }
 
+        if (messageType == typeOfMessage.Big)
+        {
+            messageType = typeOfMessage.Charging;
+        }
+
         comesFromCombo = false;
+        Enemy.Instance.canAttack = true;
     }
 }
 
