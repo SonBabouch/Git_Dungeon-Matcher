@@ -51,14 +51,11 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     //4- On End Drag void
     public void OnEndDrag(PointerEventData data)
     {
-       
-
         float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 
         //4.1- Vérification pour savoir si le pourcentage de l'écran dragué est superieur ou égale au pourcentage à drag pour valider la saisi
         if (Mathf.Abs(percentage) >= percentThreshold) //Le swip est validé
         {
-
             Vector2 newLocation = panelLocation; //on récupère la position du panel pour pouvoir la changer juste après
 
             //4.1.1- Modification de la futur position du panel holder vers le nouveau panel
@@ -69,7 +66,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     newLocation += new Vector2(-Screen.width, 0);
 
                     currentPanelNumber = currentPanelNumber + 1;
-                  
+                    UpdateStateAccordingPanelNumber();
                 }
                 else
                 {
@@ -84,7 +81,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     newLocation += new Vector2(Screen.width, 0);
 
                     currentPanelNumber = currentPanelNumber - 1;
-                   
+                    UpdateStateAccordingPanelNumber();
                 }
                 else
                 {
@@ -105,6 +102,27 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             
         }
         onDrag = false;
+    }
+
+    void UpdateStateAccordingPanelNumber()
+    {
+        switch (currentPanelNumber)
+        {   
+            case -1:
+                MenuManager.currentGameState = MenuManager.gameState.Shop;
+                break;
+            case 0:
+                MenuManager.currentGameState = MenuManager.gameState.Match;
+                break;
+            case 1:
+                MenuManager.currentGameState = MenuManager.gameState.List;
+                break;
+            case 2:
+                MenuManager.currentGameState = MenuManager.gameState.Bag;
+                break;
+            default:
+                break;
+        }
     }
 
     void CancelMatch()
@@ -141,7 +159,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         panelLocation = endPos;
         canChange = true;
-
+        MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
         CancelMatch();
     }
 
@@ -188,6 +206,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                 default:
                     break;
             }
+            
         }
         
     }
@@ -206,7 +225,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     //Anim *3
                     newLocation += new Vector2(-Screen.width * 3, 0);
                     currentPanelNumber = 2;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
                     MenuManager.currentGameState = MenuManager.gameState.Bag;
                     break;
@@ -217,7 +236,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     
                     newLocation += new Vector2(-Screen.width * 2, 0);
                     currentPanelNumber = 2;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
                     MenuManager.currentGameState = MenuManager.gameState.Bag;
                     break;
@@ -228,7 +247,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                    
                     newLocation += new Vector2(-Screen.width, 0);
                     currentPanelNumber = 2;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
                     MenuManager.currentGameState = MenuManager.gameState.Bag;
                     break;
@@ -264,7 +283,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     
                     newLocation += new Vector2(Screen.width * 2, 0);
                     currentPanelNumber = -1;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
                     MenuManager.currentGameState = MenuManager.gameState.Shop;
                     break;
@@ -275,13 +294,14 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                    
                     newLocation += new Vector2(Screen.width, 0);
                     currentPanelNumber = -1;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
                     MenuManager.currentGameState = MenuManager.gameState.Shop;
                     break;
                 default:
                     break;
             }
+            
         }
         
     }
@@ -300,7 +320,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                    
                     newLocation += new Vector2(-Screen.width, 0);
                     currentPanelNumber = 0;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
                     MenuManager.currentGameState = MenuManager.gameState.Match;
                     break;
@@ -311,7 +331,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     
                     newLocation += new Vector2(Screen.width, 0);
                     currentPanelNumber = 0;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
                     MenuManager.currentGameState = MenuManager.gameState.Match;
                     break;
@@ -322,13 +342,14 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                    
                     newLocation += new Vector2(Screen.width * 2, 0);
                     currentPanelNumber = 0;
-                    Debug.Log("Called");
+                    //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
                     MenuManager.currentGameState = MenuManager.gameState.Match;
                     break;
                 default:
                     break;
             }
+            
         }
 
         
