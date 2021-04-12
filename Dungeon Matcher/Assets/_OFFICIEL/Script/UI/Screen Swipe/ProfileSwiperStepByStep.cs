@@ -34,17 +34,16 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
 
     void Update()
     {
-
         if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameState == MenuManager.gameState.Match && MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.canvasManager.pageSwiper.onDrag == false)
         {
             if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
             {
                 MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(true);
-                Debug.Log("La");
+                //Debug.Log("La");
             }
             else if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
             {
-                Debug.Log("Ici");
+                //Debug.Log("Ici");
                 MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
             }
 
@@ -90,10 +89,6 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             Quaternion rotationToApply = Quaternion.Euler(0, 0, properRotation);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotationToApply, Time.deltaTime * 1);
         }
-
-        
-
-
     }
 
     //4- On End Drag

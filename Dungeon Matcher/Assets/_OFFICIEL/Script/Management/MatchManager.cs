@@ -186,7 +186,7 @@ namespace Management
             }
             else
             {
-                Debug.Log(tirageIndex);
+                //Debug.Log(tirageIndex);
                 monsterPresented = choosenList[tirageIndex];
                 storedIndex.Add(tirageIndex);
                 
