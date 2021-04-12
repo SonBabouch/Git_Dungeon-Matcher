@@ -164,12 +164,18 @@ public class Heal : Skill
                         energyCost = initialEnergyCost;
                     }
 
+<<<<<<< develop
                     
+=======
+                    MonsterEffect();
+                    Enemy.Instance.EnemySwapSkill(Enemy.Instance.enemyIndex);
+>>>>>>> Check what is in enemy hand
                     ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
                 break;
         }
         CombatManager.Instance.index = 0;
+        Enemy.Instance.enemyIndex = 0;
     }
 
     public override void PlayerEffect()

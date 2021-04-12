@@ -156,11 +156,54 @@ public class Enemy : MonoBehaviour
         if(trueEnergy >= 3f && canAttack)
         {
             canAttack = false;
-            enemyIndex = Random.Range(0, 3);
+            enemyIndex = Random.Range(0, enemyHand.Count);
             enemyHand[enemyIndex].InUse();
             //Debug.Log(enemyHand[index].skillDescription);
         }
         //yield return new WaitForSeconds(0.5f);
         canAttack = true;
+    }
+
+    public void CheckTypeOfSkillInHand()
+    {
+        foreach(Skill skillInHand in enemyHand)
+        {
+            switch(skillInHand.typeOfCapacity)
+            {
+                case Skill.capacityType.Attack:
+                    break;
+                case Skill.capacityType.Break:
+                    break;
+                case Skill.capacityType.Charm:
+                    break;
+                case Skill.capacityType.CoupDeVent:
+                    break;
+                case Skill.capacityType.Cramp:
+                    break;
+                case Skill.capacityType.Curse:
+                    break;
+                case Skill.capacityType.Defense:
+                    break;
+                case Skill.capacityType.DivinTouch:
+                    break;
+                case Skill.capacityType.Drain:
+                    break;
+                case Skill.capacityType.Echo:
+                    break;
+                case Skill.capacityType.Heal:
+                    break;
+                case Skill.capacityType.Lock:
+                    break;
+                case Skill.capacityType.Mark:
+                    break;
+                case Skill.capacityType.Paralysie:
+                    break;
+                case Skill.capacityType.Plagiat:
+                    break;
+                case Skill.capacityType.Silence:
+                    break;
+
+            }    
+        }
     }
 }

@@ -63,10 +63,10 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}
+  - {fileID: 11400000, guid: 569dce34347666043be89a3400bfb127, type: 2}
   - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
   - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
-  - {fileID: 11400000, guid: f377e9a35f56ab5498f6b5c373b36e07, type: 2}
+  - {fileID: 11400000, guid: 958c92bd9eafec24b9bec67dc66c6553, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
   - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}

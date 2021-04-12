@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ac76f159b98fbe4eb7c59c2617a2cc8, type: 3}
-  m_Name: The Heal
+  m_Name: Heal 2
   m_EditorClassIdentifier: 
-  skillDescription: 20 Heal
-  effectValue: 20
+  skillDescription: 30 Heal
+  effectValue: 30
   side: 1
   messageType: 0
   typeOfCapacity: 1
-  trueEnergyCost: 2
-  energyCost: 2
+  trueEnergyCost: 3
+  energyCost: 20
   initialEnergyCost: 20
   crampEnergyCost: 30
-  isComboSkill: 0
-  comesFromCombo: 0
-  comboEffectValue: 30
+  isComboSkill: 1
+  comesFromCombo: 1
+  comboEffectValue: 40
   chargingAttack: 0
   isEcho: 0
   himSelf: {fileID: 0}

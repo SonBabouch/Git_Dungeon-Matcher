@@ -183,6 +183,7 @@ public class BasicAttack : Skill
                 break;
         }
         CombatManager.Instance.index = 0;
+        Enemy.Instance.enemyIndex = 0;
     }
 
     public override void PlayerEffect()

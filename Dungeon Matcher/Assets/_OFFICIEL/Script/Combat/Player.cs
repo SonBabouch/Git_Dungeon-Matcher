@@ -58,10 +58,7 @@ public class Player : MonoBehaviour
         }
         //allyMonsters = MenuManager.Instance.bagManager.monsterTeam;
     }
-    private void Start()
-    {
 
-    }
     private void Update()
     {
         limitHealthAndEnergy();

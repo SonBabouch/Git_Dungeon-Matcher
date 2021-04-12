@@ -9,22 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
-  m_Name: Attack 4
+  m_Script: {fileID: 11500000, guid: 4ac76f159b98fbe4eb7c59c2617a2cc8, type: 3}
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  skillDescription: 40 Damage
-  effectValue: 40
+  skillDescription: 20 Heal
+  effectValue: 20
   side: 1
-  messageType: 3
-  typeOfCapacity: 0
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
+  messageType: 0
+  typeOfCapacity: 1
+  trueEnergyCost: 2
+  energyCost: 20
+  initialEnergyCost: 20
+  crampEnergyCost: 30
   isComboSkill: 0
   comesFromCombo: 0
-  comboEffectValue: 50
+  comboEffectValue: 30
   chargingAttack: 0
   isEcho: 0
+  himSelf: {fileID: 0}
   monster: {fileID: 0}
   owner: {fileID: 0}

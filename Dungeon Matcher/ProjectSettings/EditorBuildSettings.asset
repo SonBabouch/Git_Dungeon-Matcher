@@ -11,8 +11,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_OFFICIEL/_Scenes/PROTOBUILD.unity
     guid: 1f696d8624ab8894f9a023792b4dd4bf
-  - enabled: 0
-    path: Assets/BASTIEN/PRBA_TestingScene.unity
+  - enabled: 1
+    path: Assets/Bastien/PRBA_TestingScene.unity
     guid: 701b8d7e5e10a054dbf43f9e74eb2b3d
   - enabled: 1
     path: Assets/XANTHIN/XP_Rework.unity
