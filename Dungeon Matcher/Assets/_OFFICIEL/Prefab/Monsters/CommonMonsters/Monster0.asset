@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster0
   m_EditorClassIdentifier: 
-  description: "Envie de c\xE2lins tr\xE8s tendre avec un aventurier mignon. Je suis
-    ouvert d'esprits, et pas que. Si t'aimes les monstres sportifs et raffin\xE9s,
-    je suis la boule qu'il te faut.  "
+  description: "Je suis un mec \xE9norme et un peu sec, si tu cherches de la masse,
+    je vais t'en donner. Bref, tu fais pas le poids."
   monsterName: Grogrumo
   health: 20
   maxHealth: 100

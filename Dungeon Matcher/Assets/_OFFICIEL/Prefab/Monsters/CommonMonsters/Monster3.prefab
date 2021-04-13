@@ -52,9 +52,10 @@ MonoBehaviour:
   monsterName: Lookatmi
   health: 0
   maxHealth: 0
+  minHealth: 0
   rarety: 0
   isGet: 0
-  statement: 1
+  statement: 2
   profilPicture: {fileID: 0}
   fullMonsterImage: {fileID: 21300000, guid: 9f6e111e1fd3f6747be2a6e0e0b3067e, type: 3}
   side: 0
