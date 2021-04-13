@@ -147,7 +147,7 @@ public class Heal : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    PlayerEffect();
+                  
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this, 7);
                 }
@@ -164,7 +164,7 @@ public class Heal : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    MonsterEffect();
+                    
                     ConversationManager.Instance.SendMessagesEnemy(this, 7);
                 }
                 break;
