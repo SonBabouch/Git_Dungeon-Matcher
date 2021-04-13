@@ -130,8 +130,16 @@ namespace Management
 
         public void UpdateProfilPosition()
         {
+            
+            UpdateParticuleSystemRare();
 
-            if (ThereIsARare)
+            StartCoroutine(StarterCoroutine());
+
+        }
+
+        public void UpdateParticuleSystemRare()
+        {
+            if (ThereIsARare && MenuManager.currentGameState == MenuManager.gameState.Match)
             {
                 var emission = rareSystemParticule.emission;
                 emission.enabled = true;
@@ -141,12 +149,7 @@ namespace Management
                 var emission = rareSystemParticule.emission;
                 emission.enabled = false;
             }
-        
-
-            StartCoroutine(StarterCoroutine());
-
         }
-
 
         IEnumerator IncreaseBar(int lenght)
         {

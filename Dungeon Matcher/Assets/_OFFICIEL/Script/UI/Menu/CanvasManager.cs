@@ -44,8 +44,6 @@ namespace Management
         //navigation
         public void GoToList()
         {
-
-            
             if (MenuManager.Instance.canvasManager.matchCanvas.switchExp)
             {
                 MenuManager.Instance.canvasManager.matchCanvas.ShowExpérience();
@@ -66,7 +64,7 @@ namespace Management
                 MenuManager.currentGameState = MenuManager.gameState.List;
             }
 
-            
+            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
         }
         public void GoToMatch()
         {
@@ -85,7 +83,7 @@ namespace Management
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
                 MenuManager.currentGameState = MenuManager.gameState.Match;
             }
-            
+            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
         }
         public void GoToShop()
         {
@@ -111,7 +109,7 @@ namespace Management
 
                 
             }
-            
+            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
         }
         public void GoToBag()
         {
@@ -124,11 +122,11 @@ namespace Management
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
             MenuManager.currentGameState = MenuManager.gameState.Bag;
 
-            
+            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
 
         }
 
-
+        
 
     }
 }

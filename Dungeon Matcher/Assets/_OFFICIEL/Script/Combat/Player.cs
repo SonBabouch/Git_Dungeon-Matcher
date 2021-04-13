@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     public float comboTime;
     public float maxComboTime;
 
+    public bool canAttack = true;
+
     private void Awake()
     {
         if (Instance == null)
@@ -131,16 +133,12 @@ public class Player : MonoBehaviour
     {
         Player.Instance.lastPlayerCompetence = skillToCharge;
         Player.Instance.isCharging = true;
-        CombatManager.Instance.ButtonsUpdate();
         ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
         yield return new WaitForSeconds(playerChargingTime);
+        skillToCharge.messageType = Skill.typeOfMessage.Big;
         //Debug.Log("End");
+        ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
         Player.Instance.isCharging = false;
-
-        if(ConversationManager.Instance.allMsg[0] != null)
-        {
-            ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
-        }
         skillToCharge.PlayerEffect();
     }
 

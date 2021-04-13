@@ -353,6 +353,69 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void MessageIcon(GameObject message,Skill skill)
+    {
+        
+            Sprite spriteToShow = null;
+
+            switch (skill.typeOfCapacity)
+            {
+                case Skill.capacityType.Attack:
+                    spriteToShow = iconRessource[0];
+                    break;
+                case Skill.capacityType.CoupDeVent:
+                    spriteToShow = iconRessource[1];
+                    break;
+                case Skill.capacityType.Defense:
+                    spriteToShow = iconRessource[2];
+                    break;
+                case Skill.capacityType.DivinTouch:
+                    spriteToShow = iconRessource[3];
+                    break;
+                case Skill.capacityType.Drain:
+                    spriteToShow = iconRessource[4];
+                    break;
+                case Skill.capacityType.Echo:
+                    spriteToShow = iconRessource[5];
+                    break;
+                case Skill.capacityType.Heal:
+                    spriteToShow = iconRessource[6];
+                    break;
+                case Skill.capacityType.Paralysie:
+                    spriteToShow = iconRessource[7];
+                    break;
+                case Skill.capacityType.Plagiat:
+                    spriteToShow = iconRessource[8];
+                    break;
+                case Skill.capacityType.Mark:
+                    spriteToShow = iconRessource[9];
+                    break;
+                case Skill.capacityType.Curse:
+                    spriteToShow = iconRessource[10];
+                    break;
+                case Skill.capacityType.Cramp:
+                    spriteToShow = iconRessource[11];
+                    break;
+                case Skill.capacityType.Charm:
+                    spriteToShow = iconRessource[12];
+                    break;
+                case Skill.capacityType.Silence:
+                    spriteToShow = iconRessource[13];
+                    break;
+                case Skill.capacityType.Lock:
+                    spriteToShow = iconRessource[14];
+                    break;
+                case Skill.capacityType.Break:
+                    spriteToShow = iconRessource[15];
+                    break;
+                default:
+                    break;
+            }
+
+            message.GetComponent<MessageBehaviour>().iconeImage.sprite = spriteToShow;
+
+    }
+
     public void ButtonTypeOf()
     {
         for (int i = 0; i < Player.Instance.playerHand.Count; i++)
