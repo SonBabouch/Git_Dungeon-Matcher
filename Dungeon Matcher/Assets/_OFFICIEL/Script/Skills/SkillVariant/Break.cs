@@ -42,7 +42,7 @@ public class Break : Skill
                             Enemy.Instance.energy -= energyCost;
                             Enemy.Instance.trueEnergy -= trueEnergyCost;
 
-                            //switch la carte de la main de l'enemy;
+                            //switch la carte de la main de l'ene;
 
                             break;
                         }
@@ -176,5 +176,8 @@ public class Break : Skill
         }
     }
 
-
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseBreak = true;
+    }
 }

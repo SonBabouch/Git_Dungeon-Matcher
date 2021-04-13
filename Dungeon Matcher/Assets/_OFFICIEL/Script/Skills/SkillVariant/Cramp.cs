@@ -178,7 +178,10 @@ public class Cramp : Skill
         }
     }
 
-    
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseCramp = true;
+    }
 }
 
  

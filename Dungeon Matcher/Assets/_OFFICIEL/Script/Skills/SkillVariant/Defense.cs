@@ -193,6 +193,9 @@ public class Defense : Skill
     }
 
     //6- Launching of the attack
-    
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseDefense = true;
+    }
 
 }

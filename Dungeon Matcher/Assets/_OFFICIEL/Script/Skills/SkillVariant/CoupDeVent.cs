@@ -187,5 +187,8 @@ public class CoupDeVent : Skill
         }
     }
 
-
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseCoupdeVent = true;
+    }
 }

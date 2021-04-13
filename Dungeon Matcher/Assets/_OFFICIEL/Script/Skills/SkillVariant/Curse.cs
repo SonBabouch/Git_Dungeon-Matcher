@@ -172,4 +172,8 @@ public class Curse : Skill
         }
     }
 
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseCurse = true;
+    }
 }

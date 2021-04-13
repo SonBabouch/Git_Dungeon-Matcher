@@ -245,7 +245,8 @@ public class Heal : Skill
         Enemy.Instance.canAttack = true;
     }
 
-   
-
-    
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseHeal = true;
+    }
 }

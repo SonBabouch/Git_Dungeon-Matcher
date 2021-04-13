@@ -29,10 +29,12 @@ public class BasicAttack : Skill
 
                     if (Enemy.Instance.isCramp)
                     {
+                        Debug.Log("cramp");
                         energyCost = crampEnergyCost;
                     }
                     else
                     {
+                        Debug.Log("No Cramp");
                         energyCost = initialEnergyCost;
                     }
 
@@ -247,6 +249,11 @@ public class BasicAttack : Skill
 
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;
+    }
+
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseAttack = true;
     }
 }
 

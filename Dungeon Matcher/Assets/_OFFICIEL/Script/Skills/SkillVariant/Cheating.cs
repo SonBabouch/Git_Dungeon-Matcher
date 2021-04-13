@@ -110,9 +110,6 @@ public class Cheating : Skill
                 break;
         }
     }
-
-    
-
     public override void InUse()
     {
         switch (side)
@@ -175,5 +172,10 @@ public class Cheating : Skill
             Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
         }
 
+    }
+
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUsePlagiat = true;
     }
 }

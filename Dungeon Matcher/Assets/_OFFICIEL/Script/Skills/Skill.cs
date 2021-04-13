@@ -35,6 +35,7 @@ public abstract class Skill : ScriptableObject
 
     public bool isEcho;
 
+    public abstract void SetEnemyBoolType();
     public abstract void Initialize(GameObject obj);
     public abstract void Use();
     public abstract void PlayerEffect();

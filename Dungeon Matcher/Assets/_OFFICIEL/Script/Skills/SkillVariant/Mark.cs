@@ -177,4 +177,8 @@ public class Mark : Skill
         }
     }
 
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseMark = true;
+    }
 }

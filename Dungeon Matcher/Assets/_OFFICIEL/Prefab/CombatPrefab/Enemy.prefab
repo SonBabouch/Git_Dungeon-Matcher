@@ -242,16 +242,35 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  enemyIndex: 0
   lastEnemyCompetence: {fileID: 0}
+  enemyChargingTime: 0
   isCramp: 0
   isCharging: 0
   isDefending: 0
   isCurse: 0
+  canAttack: 1
   isCombo: 0
   comboTime: 0
   maxComboTime: 0
   isBoosted: 0
   boostAttack: 1
+  canUseAttack: 0
+  canUseBreak: 0
+  canUseCharm: 0
+  canUseCoupdeVent: 0
+  canUseCramp: 0
+  canUseCurse: 0
+  canUseDefense: 0
+  canUseDivinTouch: 0
+  canUseDrain: 0
+  canUseEcho: 0
+  canUseHeal: 0
+  canUseLock: 0
+  canUseMark: 0
+  canUseParalysie: 0
+  canUsePlagiat: 0
+  canUseSilence: 0
 --- !u!114 &3961628646244606166
 MonoBehaviour:
   m_ObjectHideFlags: 0

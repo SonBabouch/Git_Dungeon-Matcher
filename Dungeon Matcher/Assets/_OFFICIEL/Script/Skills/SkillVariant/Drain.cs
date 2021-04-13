@@ -169,4 +169,9 @@ public class Drain : Skill
         }
         Enemy.Instance.lastEnemyCompetence = this;
     }
+
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseDrain = true;
+    }
 }

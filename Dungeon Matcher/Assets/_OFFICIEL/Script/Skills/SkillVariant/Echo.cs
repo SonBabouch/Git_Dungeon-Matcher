@@ -190,5 +190,8 @@ public class Echo : Skill
         
     }
 
-
+    public override void SetEnemyBoolType()
+    {
+        Enemy.Instance.canUseEcho = true;
+    }
 }
