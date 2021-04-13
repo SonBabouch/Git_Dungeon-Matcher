@@ -232,7 +232,7 @@ public class ConversationManager : MonoBehaviour
             {
                 //SetActiveFalse serait mieux
                 Destroy(allMsg[0]);
-                EnemyLargeMessage(skill);
+                SendMessagesEnemy(skill, 0);
             }
  
     }
@@ -386,12 +386,14 @@ public class ConversationManager : MonoBehaviour
 
         for (int i = allMsg.Length - 2; i > 2; i--)
         {
-            if (allMsg[i] != null)
+            allMsg[i] = allMsg[i - 2];
+
+            /*if (allMsg[i] != null)
             {
                 //print(i - 1 + " " + (i));
                 //7 - Tous les messages augmente d'un index (en partant du haut).
-                allMsg[i] = allMsg[i-2];
-            }
+                
+            }*/
         }
 
         //8- Update des Effets des Emojis.
@@ -405,11 +407,13 @@ public class ConversationManager : MonoBehaviour
         //6 - Reset des messages à bouger.
         numberOfMessageMoved = 0;
 
+        
         for (int i = allMsg.Length - 1; i > 1; i--)
         {
+            allMsg[i] = allMsg[i - 1];
             //print(i - 1 + " " + (i));
             //7 - Tous les messages augmente d'un index (en partant du haut).
-            allMsg[i] = allMsg[i - 1];
+
         }
 
         //8- Update des Effets des Emojis.
@@ -433,9 +437,7 @@ public class ConversationManager : MonoBehaviour
 
         canAttack = true;
     }
-    
-    
-    
+
     //rejoue les effets des emojis si jamais ils sont en double pas de soucis;
     void UpdateEmojiEffect(Skill skillToSpawn)
     {

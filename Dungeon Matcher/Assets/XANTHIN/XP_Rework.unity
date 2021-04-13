@@ -633,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 1273854986162655077, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 27.799805
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986162655077, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
@@ -674,12 +674,12 @@ PrefabInstance:
     - target: {fileID: 1273854986174575048, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 27.799805
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986174575048, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 290.7
+      value: 291
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986179436620, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
@@ -710,12 +710,12 @@ PrefabInstance:
     - target: {fileID: 1273854986179436621, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 27.799805
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986179436621, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 810.93
+      value: 811
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986186883792, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
@@ -938,7 +938,7 @@ PrefabInstance:
     - target: {fileID: 1273854986509344267, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 27.799805
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986509344267, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
@@ -1308,7 +1308,7 @@ PrefabInstance:
     - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
       propertyPath: playerChargingTime
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2336706625598943703, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
@@ -1364,6 +1364,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036345021491197655, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606525776707269390, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 316
       objectReference: {fileID: 0}
     - target: {fileID: 6958789301845541581, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}

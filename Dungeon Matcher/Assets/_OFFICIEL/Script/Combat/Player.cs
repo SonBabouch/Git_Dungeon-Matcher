@@ -137,8 +137,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(playerChargingTime);
         skillToCharge.messageType = Skill.typeOfMessage.Big;
         //Debug.Log("End");
-        Player.Instance.isCharging = false;
         ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
+        Player.Instance.isCharging = false;
         skillToCharge.PlayerEffect();
     }
 
