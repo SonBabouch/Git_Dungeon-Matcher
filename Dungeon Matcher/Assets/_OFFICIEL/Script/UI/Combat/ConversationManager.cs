@@ -148,7 +148,7 @@ public class ConversationManager : MonoBehaviour
 
                 if (emojis.Count > 0)
                 {
-                    emojis.Remove(emojis[emojis.Count - 1]);
+                    emojis.Remove(emojis[allMsg.Length - 1]);
                 }
             }
             
@@ -168,7 +168,7 @@ public class ConversationManager : MonoBehaviour
 
                 if (emojis.Count > 0)
                 {
-                    emojis.Remove(emojis[emojis.Count - 1]);
+                    emojis.Remove(allMsg[allMsg.Length-2]);
                 }
             }
 
