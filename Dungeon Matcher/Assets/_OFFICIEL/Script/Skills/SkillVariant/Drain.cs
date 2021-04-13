@@ -20,154 +20,81 @@ public class Drain : Skill
 
     public override void Use()
     {
-        switch (side)
-        {
-            case monsterSide.Enemy:
-                if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
-                {
-                    if (Enemy.Instance.isCramp)
-                    {
-                        energyCost = crampEnergyCost;
-                    }
-                    else
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                    if (Enemy.Instance.isCurse)
-                    {
-                        int test = Random.Range(0, 100);
-                        if (test < 10)
-                        {
-                            Enemy.Instance.energy -= energyCost;
-                            Enemy.Instance.trueEnergy -= trueEnergyCost;
-                            break;
-                        }
-                    }
-
-                    if (chargingAttack)
-                    {
-                        if (Enemy.Instance.energy >= energyCost)
-                        {
-                            Enemy.Instance.energy -= energyCost;
-
-                            //ici ca sera Enemy plutot que player
-                            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
-                        }
-                    }
-                    else
-                    {
-                        InUse();
-                    }
-                }
-
-                break;
-            case monsterSide.Ally:
-
-                if (ConversationManager.Instance.canAttack && Player.Instance.isCharging == false)
-                {
-                    if (Player.Instance.isCramp)
-                    {
-                        energyCost = crampEnergyCost;
-                    }
-                    else
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                    if (Player.Instance.isCurse)
-                    {
-                        int test = Random.Range(0, 100);
-                        if (test < 10)
-                        {
-                            Player.Instance.energy -= energyCost;
-                            Player.Instance.trueEnergy -= trueEnergyCost;
-                            CombatManager.Instance.ButtonsUpdate();
-                            break;
-                        }
-                    }
-
-                    if (chargingAttack)
-                    {
-                        if (Player.Instance.energy >= energyCost)
-                        {
-                            Player.Instance.energy -= energyCost;
-
-                            //ici ca sera Enemy plutot que player
-                            Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
-                        }
-                    }
-                    else
-                    {
-                        InUse();
-                    }
-                }
-                break;
-            default:
-                break;
-        }
+        realUse();
     }
 
     public override void InUse()
     {
-        switch (side)
-        {
-            case monsterSide.Ally:
-
-                if (Player.Instance.energy >= energyCost)
-                {
-                    Player.Instance.energy -= energyCost;
-
-                    if (Player.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                    PlayerEffect();
-                    CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
-                }
-                break;
-
-            case monsterSide.Enemy:
-                if (Enemy.Instance.energy >= energyCost)
-                {
-                    Enemy.Instance.energy -= energyCost;
-
-                    if (Enemy.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                    MonsterEffect();
-                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
-                }
-                break;
-        }
-        CombatManager.Instance.index = 0;
+        realInUse(skillIndex);
     }
 
     public override void PlayerEffect()
     {
         Player.Instance.AllyAlteration();
-        Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
-        Player.Instance.health -= effectValue * Player.Instance.boostAttack;
+        if(comesFromCombo)
+        {
+            Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+            Player.Instance.health -= comboEffectValue * Player.Instance.boostAttack;
+        }
+        else
+        {
+            Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+            Player.Instance.health -= effectValue * Player.Instance.boostAttack;
+        }
+
         if (Player.Instance.health < 0)
         {
             Player.Instance.health = 0;
         }
+
+        if (!chargingAttack)
+        {
+            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+        }
+
+        if (messageType == typeOfMessage.Big)
+        {
+            messageType = typeOfMessage.Charging;
+        }
+
         Player.Instance.lastPlayerCompetence = this;
+        comesFromCombo = false;
+        Player.Instance.canAttack = true;
     }
 
     public override void MonsterEffect()
     {
-        Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
-        Enemy.Instance.health -= effectValue * Enemy.Instance.boostAttack;
+        if(comesFromCombo)
+        {
+            Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
+            Enemy.Instance.health -= comboEffectValue * Enemy.Instance.boostAttack;
+        }
+        else
+        {
+            Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
+            Enemy.Instance.health -= effectValue * Enemy.Instance.boostAttack;
+        }
+
         if (Enemy.Instance.health < 0)
         {
             Enemy.Instance.health = 0;
         }
+
+        if (!chargingAttack)
+        {
+            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+        }
+
+        if (messageType == typeOfMessage.Big)
+        {
+            messageType = typeOfMessage.Charging;
+        }
+
         Enemy.Instance.lastEnemyCompetence = this;
+        comesFromCombo = false;
+        Enemy.Instance.canAttack = true;
     }
 
     public override void SetEnemyBoolType()

@@ -24,17 +24,18 @@ public class Mark : Skill
         switch (side)
         {
             case monsterSide.Enemy:
-                if (Enemy.Instance.isCharging = false && ConversationManager.Instance.canAttack)
-                {
-                    if (Enemy.Instance.isCramp)
-                    {
-                        energyCost = crampEnergyCost;
-                    }
-                    else
-                    {
-                        energyCost = initialEnergyCost;
-                    }
 
+                if (Enemy.Instance.isCramp)
+                {
+                    energyCost = crampEnergyCost;
+                }
+                else
+                {
+                    energyCost = initialEnergyCost;
+                }
+
+                if (!Enemy.Instance.isCharging && ConversationManager.Instance.canAttack && Enemy.Instance.energy >= energyCost)
+                {
                     //Test Curse
                     if (Enemy.Instance.isCurse)
                     {

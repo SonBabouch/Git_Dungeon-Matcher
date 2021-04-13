@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     public bool isCharging = false;
     public bool isDefending = false;
     public bool isCurse = false;
-    public bool canAttack;
+    public bool canAttack = true;
 
     public bool isCombo = false;
     [SerializeField] private float comboTime;
@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
 
     public void InitializeMonster()
     {
+        canAttack = true;
         foreach (GameObject monster in enemyMonsters)
         {
             monster.GetComponent<MonsterToken>().Initialize();
@@ -174,14 +175,11 @@ public class Enemy : MonoBehaviour
 
     public void EnemyBasicBehavior()
     {
-        if(trueEnergy >= 3f && canAttack)
+        if(trueEnergy >= 3f && canAttack && ConversationManager.Instance.canAttack)
         {
-            canAttack = false;
             enemyIndex = Random.Range(0, enemyHand.Count);
-            enemyHand[enemyIndex].InUse();
+            enemyHand[enemyIndex].Use();
         }
-        //yield return new WaitForSeconds(0.5f);
-        canAttack = true;
     }
 
     public void CheckTypeOfSkillInHand()

@@ -411,8 +411,11 @@ public class CombatManager : MonoBehaviour
                 default:
                     break;
             }
-
+        if (skill.messageType == Skill.typeOfMessage.Big || skill.messageType == Skill.typeOfMessage.Small)
+        {
             message.GetComponent<MessageBehaviour>().iconeImage.sprite = spriteToShow;
+        }
+
 
     }
 

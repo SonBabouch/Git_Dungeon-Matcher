@@ -35,6 +35,7 @@ public abstract class Skill : ScriptableObject
 
     public bool isEcho;
 
+    public int skillIndex;
     public abstract void SetEnemyBoolType();
     public abstract void Initialize(GameObject obj);
     public abstract void Use();
@@ -42,5 +43,168 @@ public abstract class Skill : ScriptableObject
     public abstract void MonsterEffect();
     public abstract void InUse();
 
-    
+    public void realUse()
+    {
+        if (ConversationManager.Instance.canAttack)
+        {
+            switch (side)
+            {
+                case monsterSide.Enemy:
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = crampEnergyCost;
+                    }
+                    else
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    if (!Enemy.Instance.isCharging && Enemy.Instance.canAttack && Enemy.Instance.energy >= energyCost)
+                    {
+                        Enemy.Instance.canAttack = false;
+
+                        if (Enemy.Instance.isCombo && isComboSkill)
+                        {
+                            comesFromCombo = true;
+                        }
+
+                        //Test Curse
+                        if (Enemy.Instance.isCurse)
+                        {
+                            int test = Random.Range(0, 100);
+                            if (test < 10)
+                            {
+                                Enemy.Instance.energy -= energyCost;
+                                Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                                //switch la carte de la main de l'enemy;
+                                break;
+                            }
+                        }
+                        //=> Sinon ca fait la suite.
+                        if (chargingAttack)
+                        {
+                            if (Enemy.Instance.energy >= energyCost)
+                            {
+                                Enemy.Instance.energy -= energyCost;
+                                Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+
+                    }
+                    break;
+
+                case monsterSide.Ally:
+
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = crampEnergyCost;
+                    }
+                    else
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+                    if (Player.Instance.canAttack && Player.Instance.isCharging == false && Player.Instance.energy >= energyCost)
+                    {
+                        if (Player.Instance.isCombo && isComboSkill)
+                        {
+                            comesFromCombo = true;
+                        }
+
+                        if (Player.Instance.isCramp)
+                        {
+                            energyCost = crampEnergyCost;
+                        }
+                        else
+                        {
+                            energyCost = initialEnergyCost;
+                        }
+
+                        if (Player.Instance.isCurse)
+                        {
+                            int test = Random.Range(0, 100);
+                            if (test < 10)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+                                CombatManager.Instance.ButtonsUpdate();
+                                break;
+                            }
+
+                        }
+                        if (chargingAttack)
+                        {
+                            if (Player.Instance.energy >= energyCost)
+                            {
+                                Player.Instance.energy -= energyCost;
+                                Player.Instance.trueEnergy -= trueEnergyCost;
+
+                                //ici ca sera Enemy plutot que player
+                                Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
+                            }
+                        }
+                        else
+                        {
+                            InUse();
+                        }
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    public void realInUse(int index)
+    {
+        switch (side)
+        {
+            case monsterSide.Ally:
+
+                if (Player.Instance.energy >= energyCost)
+                {
+                    Player.Instance.energy -= energyCost;
+                    Player.Instance.trueEnergy -= trueEnergyCost;
+
+                    if (Player.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+
+                    CombatManager.Instance.ButtonsUpdate();
+                    ConversationManager.Instance.SendMessagesPlayer(this, index);
+
+                }
+                break;
+
+            case monsterSide.Enemy:
+                if (Enemy.Instance.energy >= energyCost)
+                {
+                    Enemy.Instance.energy -= energyCost;
+                    Enemy.Instance.trueEnergy -= trueEnergyCost;
+
+                    if (Enemy.Instance.isCramp)
+                    {
+                        energyCost = initialEnergyCost;
+                    }
+
+
+                    Enemy.Instance.EnemySwapSkill(Enemy.Instance.enemyIndex);
+                    ConversationManager.Instance.SendMessagesEnemy(this, index);
+
+                }
+                break;
+        }
+        CombatManager.Instance.index = 0;
+        Enemy.Instance.enemyIndex = 0;
+    }
 }

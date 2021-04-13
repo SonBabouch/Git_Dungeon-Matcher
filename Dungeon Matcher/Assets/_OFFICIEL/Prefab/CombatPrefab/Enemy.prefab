@@ -249,7 +249,7 @@ MonoBehaviour:
   isCharging: 0
   isDefending: 0
   isCurse: 0
-  canAttack: 1
+  canAttack: 0
   isCombo: 0
   comboTime: 0
   maxComboTime: 0

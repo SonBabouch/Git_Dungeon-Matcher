@@ -22,166 +22,18 @@ public class Heal : Skill
 
     public override void Use()
     {
-        if (ConversationManager.Instance.canAttack)
-        {
-            switch (side)
-            {
-                case monsterSide.Enemy:
-
-                    if (Enemy.Instance.isCharging = false && Enemy.Instance.canAttack)
-                    {
-                        if (Enemy.Instance.isCombo && isComboSkill)
-                        {
-                            comesFromCombo = true;
-                        }
-
-                        if (Enemy.Instance.isCramp)
-                        {
-                            energyCost = crampEnergyCost;
-                        }
-                        else
-                        {
-                            energyCost = initialEnergyCost;
-                        }
-
-                        //Test Curse
-                        if (Enemy.Instance.isCurse)
-                        {
-                            int test = Random.Range(0, 100);
-                            if (test < 10)
-                            {
-                                Enemy.Instance.energy -= energyCost;
-                                Enemy.Instance.trueEnergy -= trueEnergyCost;
-
-                                //switch la carte de la main de l'enemy;
-                                break;
-                            }
-                        }
-                        //=> Sinon ca fait la suite.
-                        if (chargingAttack)
-                        {
-                            if (Enemy.Instance.energy >= energyCost)
-                            {
-                                Enemy.Instance.energy -= energyCost;
-                                Enemy.Instance.trueEnergy -= trueEnergyCost;
-
-                                //ici ca sera Enemy plutot que player
-                                Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
-                            }
-                        }
-                        else
-                        {
-                            InUse();
-                        }
-
-                    }
-                    break;
-
-                case monsterSide.Ally:
-
-                    if (Player.Instance.canAttack && Player.Instance.isCharging == false)
-                    {
-                        if (Player.Instance.isCombo && isComboSkill)
-                        {
-                            comesFromCombo = true;
-                        }
-
-                        if (Player.Instance.isCramp)
-                        {
-                            energyCost = crampEnergyCost;
-                        }
-                        else
-                        {
-                            energyCost = initialEnergyCost;
-                        }
-
-                        if (Player.Instance.isCurse)
-                        {
-                            int test = Random.Range(0, 100);
-                            if (test < 10)
-                            {
-                                Player.Instance.energy -= energyCost;
-                                Player.Instance.trueEnergy -= trueEnergyCost;
-                                CombatManager.Instance.ButtonsUpdate();
-                                break;
-                            }
-
-                        }
-                        if (chargingAttack)
-                        {
-                            if (Player.Instance.energy >= energyCost)
-                            {
-                                Player.Instance.energy -= energyCost;
-                                Player.Instance.trueEnergy -= trueEnergyCost;
-
-                                //ici ca sera Enemy plutot que player
-                                Player.Instance.StartCoroutine(Player.Instance.PlayerChargeAttack(this));
-                            }
-                        }
-                        else
-                        {
-                            InUse();
-                        }
-
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
+        realUse();
     }
 
     public override void InUse()
     {
-        switch (side)
-        {
-            case monsterSide.Ally:
-
-                if (Player.Instance.energy >= energyCost)
-                {
-                    Player.Instance.energy -= energyCost;
-                    Player.Instance.trueEnergy -= trueEnergyCost;
-
-                    if (Player.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-                  
-                    CombatManager.Instance.ButtonsUpdate();
-                    ConversationManager.Instance.SendMessagesPlayer(this, 7);
-                }
-                break;
-
-            case monsterSide.Enemy:
-                if (Enemy.Instance.energy >= energyCost)
-                {
-                    Enemy.Instance.energy -= energyCost;
-                    Enemy.Instance.trueEnergy -= trueEnergyCost;
-
-                    if (Enemy.Instance.isCramp)
-                    {
-                        energyCost = initialEnergyCost;
-                    }
-
-<<<<<<< develop
-                    
-=======
-                    MonsterEffect();
-                    Enemy.Instance.EnemySwapSkill(Enemy.Instance.enemyIndex);
->>>>>>> Check what is in enemy hand
-                    ConversationManager.Instance.SendMessagesEnemy(this, 7);
-                }
-                break;
-        }
-        CombatManager.Instance.index = 0;
-        Enemy.Instance.enemyIndex = 0;
+        realInUse(skillIndex);
     }
 
     public override void PlayerEffect()
     {
         //Combo effect
-        if(Player.Instance.isCombo && isComboSkill)
+        if(comesFromCombo)
         {
             Player.Instance.health -= comboEffectValue;
         }
@@ -195,8 +47,6 @@ public class Heal : Skill
             Player.Instance.health = 0;
         }
 
-        Player.Instance.lastPlayerCompetence = this;
-
         if (!chargingAttack)
         {
             Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
@@ -208,6 +58,7 @@ public class Heal : Skill
             messageType = typeOfMessage.Charging;
         }
 
+        Player.Instance.lastPlayerCompetence = this;
         Player.Instance.canAttack = true;
         comesFromCombo = false;
     }
@@ -215,7 +66,7 @@ public class Heal : Skill
     public override void MonsterEffect()
     {
         //Combo effect
-        if (Enemy.Instance.isCombo && isComboSkill)
+        if (comesFromCombo)
         {
             Enemy.Instance.health -= comboEffectValue;
         }
