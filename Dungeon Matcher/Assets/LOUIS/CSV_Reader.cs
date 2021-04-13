@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class CSV_Reader : MonoBehaviour

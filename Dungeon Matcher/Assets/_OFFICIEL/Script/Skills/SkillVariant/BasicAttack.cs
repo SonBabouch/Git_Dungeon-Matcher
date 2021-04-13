@@ -157,9 +157,10 @@ public class BasicAttack : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    PlayerEffect();
+                    
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this, 0);
+                    
                 }
                 break;
 
@@ -174,9 +175,10 @@ public class BasicAttack : Skill
                         energyCost = initialEnergyCost;
                     }
 
-                    MonsterEffect();
+                    
                     Enemy.Instance.EnemySwapSkill(Enemy.Instance.enemyIndex);
                     ConversationManager.Instance.SendMessagesEnemy(this, 0);
+                    
                 }
                 break;
         }

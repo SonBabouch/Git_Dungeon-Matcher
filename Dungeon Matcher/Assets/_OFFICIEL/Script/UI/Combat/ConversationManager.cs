@@ -92,7 +92,6 @@ public class ConversationManager : MonoBehaviour
                 UpdatePosition(capacity);
                 break;
             case Skill.typeOfMessage.Charging:
-                messageToSpawn = typeToSpawn.PlayerCharging;
                 PlayerChargingMessage(capacity);
                 break;
             case Skill.typeOfMessage.Big:
@@ -118,7 +117,6 @@ public class ConversationManager : MonoBehaviour
                 UpdatePosition(capacity);
                 break;
             case Skill.typeOfMessage.Charging:
-                messageToSpawn = typeToSpawn.EnemyCharging;
                 EnemyChargingMessage(capacity);
                 break;
             case Skill.typeOfMessage.Big:
@@ -153,9 +151,10 @@ public class ConversationManager : MonoBehaviour
                     emojis.Remove(emojis[emojis.Count - 1]);
                 }
             }
+            
+            //Destroy le message
             Destroy(allMsg[allMsg.Length - 1]);
             allMsg[allMsg.Length - 1] = null;
-            
         }
 
         //2 - Enleve l'avant dernier message
@@ -175,17 +174,17 @@ public class ConversationManager : MonoBehaviour
 
             Destroy(allMsg[allMsg.Length - 2]);
             allMsg[allMsg.Length - 2] = null;
-           
         }
 
         //Si un gros message va être instancier, on déplace de deux
         if (skillType.messageType == Skill.typeOfMessage.Big)
         {
-            //3- Compte le nombre de message présent. Donc le nombre de message à déplacer.
-            for (int i = allMsg.Length - 1; i > 0; i--)
+            //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
+            for (int i = allMsg.Length - 3; i > 0; i--)
             {
                 if (allMsg[i] != null)
                 {
+                    Debug.Log("Double");
                     numberOfMessageTotal++;
                     StartCoroutine(MessageMovementDouble(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
                 }
@@ -201,7 +200,7 @@ public class ConversationManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("ici");
+
             for (int i = allMsg.Length - 1; i > 0; i--)
             {
                 if (allMsg[i] != null)
@@ -234,7 +233,6 @@ public class ConversationManager : MonoBehaviour
                 Destroy(allMsg[0]);
                 SendMessagesEnemy(skill, 0);
             }
- 
     }
 
     public void CancelPosition()
@@ -384,10 +382,10 @@ public class ConversationManager : MonoBehaviour
         //6 - Reset des messages à bouger.
         numberOfMessageMoved = 0;
 
-        for (int i = allMsg.Length - 2; i > 2; i--)
+        for (int i = allMsg.Length - 3; i > 0; i--)
         {
-            allMsg[i] = allMsg[i - 2];
-
+            allMsg[i+2] = allMsg[i];
+            allMsg[i] = null;
             /*if (allMsg[i] != null)
             {
                 //print(i - 1 + " " + (i));
@@ -408,9 +406,10 @@ public class ConversationManager : MonoBehaviour
         numberOfMessageMoved = 0;
 
         
-        for (int i = allMsg.Length - 1; i > 1; i--)
+        for (int i = allMsg.Length - 3; i > 0; i--)
         {
-            allMsg[i] = allMsg[i - 1];
+            allMsg[i+1] = allMsg[i];
+            allMsg[i] = null;
             //print(i - 1 + " " + (i));
             //7 - Tous les messages augmente d'un index (en partant du haut).
 
@@ -494,7 +493,7 @@ public class ConversationManager : MonoBehaviour
         CombatManager.Instance.MessageIcon(msg, skill);
         //Debug.Log(skill);
         messageManager.ChoseArray(skill, msg);
-
+        skill.PlayerEffect();
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         //Lancer Methode pour le Text;
@@ -513,11 +512,12 @@ public class ConversationManager : MonoBehaviour
     public void PlayerLargeMessage(Skill skill)
     {
         Debug.Log("BigMessage");
-        GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[1].transform.position, Quaternion.identity);
-        msg.transform.SetParent(playerMsgPositions[1].transform);
+        GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[2].transform.position, Quaternion.identity);
+        msg.transform.SetParent(playerMsgPositions[2].transform);
         allMsg[2] = msg;
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
+        skill.PlayerEffect();
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         //Lancer Methode pour le Text;
@@ -553,7 +553,7 @@ public class ConversationManager : MonoBehaviour
         allMsg[1] = msg;
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
-
+        skill.MonsterEffect();
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         //Lancer Methode pour le Text;
@@ -579,6 +579,7 @@ public class ConversationManager : MonoBehaviour
         allMsg[2] = msg;
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
+        skill.MonsterEffect();
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         
