@@ -61,8 +61,16 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: 958c92bd9eafec24b9bec67dc66c6553, type: 2}
+  - {fileID: 11400000, guid: a4168c85f48cdbc45895a7c749c021af, type: 2}
+  - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
   - {fileID: 11400000, guid: 09bd3f01b1d68ca4782c265ba42f6321, type: 2}
   - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}
-  - {fileID: 11400000, guid: f377e9a35f56ab5498f6b5c373b36e07, type: 2}
-  ennemySkills: []
+  ennemySkills:
+  - {fileID: 11400000, guid: 12ca176f613a8d047a49085db8f560e1, type: 2}
+  - {fileID: 11400000, guid: 12ca176f613a8d047a49085db8f560e1, type: 2}
+  - {fileID: 11400000, guid: 68126908127bd674d8ed7e89089252cd, type: 2}
+  - {fileID: 11400000, guid: 68126908127bd674d8ed7e89089252cd, type: 2}
+  - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
+  - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
+  - {fileID: 11400000, guid: e6971442e1502844aa54926ed91f61c6, type: 2}
+  - {fileID: 11400000, guid: 3ec8722f3de8fd04c821499b5a2d17aa, type: 2}

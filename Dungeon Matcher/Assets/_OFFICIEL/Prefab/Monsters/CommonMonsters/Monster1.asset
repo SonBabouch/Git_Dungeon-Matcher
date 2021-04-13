@@ -15,11 +15,11 @@ MonoBehaviour:
   description: "Jeune sir\xE8ne cherche son barracuda pour trip aquatique.  Si tu
     fais moins de 3 m\xE8tres, tu m'int\xE9resses pas.  Ajoute-moi quand m\xEAme
     sur Rawrchat : @6ReineDesMers"
-  monsterName: "S\xE9r\xE9na"
+  monsterName: Marina
   health: 22
   maxHealth: 100
   minHealh: 0
   rarety: 0
-  statement: 2
+  statement: 1
   monsterIndexPosition: 1
   profilPicture: {fileID: 21300000, guid: 88f2978de721d744fbed1db691eb3e06, type: 3}
