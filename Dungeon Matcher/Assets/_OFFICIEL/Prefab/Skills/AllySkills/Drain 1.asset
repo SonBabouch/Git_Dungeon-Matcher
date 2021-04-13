@@ -17,10 +17,10 @@ MonoBehaviour:
   side: 1
   messageType: 0
   typeOfCapacity: 0
-  trueEnergyCost: 0
-  energyCost: 3
-  initialEnergyCost: 0
-  crampEnergyCost: 0
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 0
   comesFromCombo: 0
   comboEffectValue: 0
