@@ -46,6 +46,7 @@ public class BasicAttack : Skill
                 Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
             }
         }
+        
 
         if (!chargingAttack)
         {
@@ -62,6 +63,7 @@ public class BasicAttack : Skill
         Player.Instance.lastPlayerCompetence = this;
         comesFromCombo = false;
         Player.Instance.canAttack = true;
+        Enemy.Instance.isDefending = false;
     }
 
     public override void MonsterEffect()
@@ -92,6 +94,7 @@ public class BasicAttack : Skill
         Enemy.Instance.lastEnemyCompetence = this;
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;
+        Player.Instance.isDefending = false;
     }
 
     public override void SetEnemyBoolType()
