@@ -66,7 +66,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}
   - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
   - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}
-  - {fileID: 11400000, guid: a4168c85f48cdbc45895a7c749c021af, type: 2}
+  - {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
   - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}

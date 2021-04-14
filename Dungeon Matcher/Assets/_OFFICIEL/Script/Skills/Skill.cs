@@ -11,7 +11,9 @@ public abstract class Skill : ScriptableObject
     [Header("Common")]
     public string skillDescription;
     public float effectValue;
-   
+
+    public GameObject owner;
+
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;
 
@@ -30,6 +32,7 @@ public abstract class Skill : ScriptableObject
     [Header("TypeOfCapacity")]
     public bool isComboSkill = false;
     public bool comesFromCombo = false;
+    public bool comesFromCurse = false;
     public float comboEffectValue;
     public bool chargingAttack;
 
@@ -74,9 +77,7 @@ public abstract class Skill : ScriptableObject
                             int test = Random.Range(0, 100);
                             if (test < 10)
                             {
-                                Enemy.Instance.energy -= energyCost;
-                                Enemy.Instance.trueEnergy -= trueEnergyCost;
-
+                                comesFromCurse = true;
                                 //switch la carte de la main de l'enemy;
                                 break;
                             }
@@ -88,7 +89,7 @@ public abstract class Skill : ScriptableObject
                             {
                                 Enemy.Instance.energy -= energyCost;
                                 Enemy.Instance.trueEnergy -= trueEnergyCost;
-
+                                
                                 //ici ca sera Enemy plutot que player
                                 Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
                             }
@@ -131,14 +132,15 @@ public abstract class Skill : ScriptableObject
                         if (Player.Instance.isCurse)
                         {
                             int test = Random.Range(0, 100);
-                            if (test < 10)
+                            Debug.Log(test);
+                            if (test < 30)
                             {
-                                Player.Instance.energy -= energyCost;
-                                Player.Instance.trueEnergy -= trueEnergyCost;
+                                Debug.Log("Cursed");
+                                comesFromCurse = true;
                                 CombatManager.Instance.ButtonsUpdate();
-                                break;
+                                InUse();
                             }
-
+                            Debug.Log("PasCursed");
                         }
                         if (chargingAttack)
                         {

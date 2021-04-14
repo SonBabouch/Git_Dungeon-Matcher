@@ -41,6 +41,7 @@ public class Tweener : MonoBehaviour
 
     IEnumerator TweeningPositionTo(Vector2 targetPos, float duration, EaseDelegate ease, bool local)
     {
+        Debug.Log("Called");
         Vector2 startPos = local?transform.localPosition:transform.position;
         float counter = 0;
         while (counter < duration)

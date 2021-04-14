@@ -26,6 +26,8 @@ namespace Management
         public static gameState currentGameState;
 
         public gameState stillcurrent;
+        public bool blockAction = false;
+
 
         private void Awake()
         {

@@ -115,7 +115,16 @@ public class Enemy : MonoBehaviour
         {
             ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
         }
-        skillToCharge.MonsterEffect();
+
+        if (!skillToCharge.comesFromCurse)
+        {
+            skillToCharge.MonsterEffect();
+        }
+        else
+        {
+            skillToCharge.comesFromCurse = false;
+        }
+        
     }
 
     #region Shuffle

@@ -987,6 +987,21 @@ PrefabInstance:
       propertyPath: numberOfMessageTotal
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5764828164197234271, guid: 605908147add77a4499ff67b9d35900e,
+        type: 3}
+      propertyPath: cursedColor.r
+      value: 0.5330404
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764828164197234271, guid: 605908147add77a4499ff67b9d35900e,
+        type: 3}
+      propertyPath: cursedColor.g
+      value: 0.3255162
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764828164197234271, guid: 605908147add77a4499ff67b9d35900e,
+        type: 3}
+      propertyPath: cursedColor.b
+      value: 0.7264151
+      objectReference: {fileID: 0}
     - target: {fileID: 5764828164297209706, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1889,12 +1904,28 @@ MonoBehaviour:
   isCharging: 0
   isDefending: 0
   isCurse: 0
+  canAttack: 0
   isCombo: 0
   comboTime: 0
   maxComboTime: 0
   isBoosted: 0
   boostAttack: 1
-  canAttack: 0
+  canUseAttack: 0
+  canUseBreak: 0
+  canUseCharm: 0
+  canUseCoupdeVent: 0
+  canUseCramp: 0
+  canUseCurse: 0
+  canUseDefense: 0
+  canUseDivinTouch: 0
+  canUseDrain: 0
+  canUseEcho: 0
+  canUseHeal: 0
+  canUseLock: 0
+  canUseMark: 0
+  canUseParalysie: 0
+  canUsePlagiat: 0
+  canUseSilence: 0
 --- !u!4 &2119210363
 Transform:
   m_ObjectHideFlags: 0

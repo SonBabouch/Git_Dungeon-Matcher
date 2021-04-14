@@ -136,7 +136,15 @@ public class Player : MonoBehaviour
         //Debug.Log("End");
         ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
         Player.Instance.isCharging = false;
-        skillToCharge.PlayerEffect();
+
+        if (!skillToCharge.comesFromCurse)
+        {
+            skillToCharge.PlayerEffect();
+        }
+        else
+        {
+            skillToCharge.comesFromCurse = false;
+        }
     }
 
     #region Combo

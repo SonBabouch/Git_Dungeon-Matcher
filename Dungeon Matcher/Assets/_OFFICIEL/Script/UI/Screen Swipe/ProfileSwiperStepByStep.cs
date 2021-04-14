@@ -71,7 +71,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject)
+        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject &&  !MenuManager.Instance.blockAction)
         {
             //3.1- Récupération des donner X et Y 
             float differenceX = data.pressPosition.x - data.position.x;
@@ -94,7 +94,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     //4- On End Drag
     public void OnEndDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
+        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && !MenuManager.Instance.blockAction)
         {
             float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 

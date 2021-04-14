@@ -6,7 +6,7 @@ using Management;
 
 public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    public bool canChange = true;
+    public static bool canChange = true;
 
     public bool onDrag = false;
 
@@ -29,79 +29,86 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
-        onDrag = true;
-        MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
-        MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
-
-        float difference = data.pressPosition.x - data.position.x; //Différence entre les deux positions pour savoir vers quel coté on swip, positif à droite et négatif à gauche
-        //C'est aussi la position exact du pointer sur le l'écran lorsqu'il drag
-
-        if (currentPanelNumber > -1 && currentPanelNumber < 2)
+        if (!MenuManager.Instance.blockAction)
         {
+            onDrag = true;
+            MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+            MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
 
-            transform.position = panelLocation - new Vector2(difference, 0); //Déplacer le panel holder en fonction de la position du pointer
+            float difference = data.pressPosition.x - data.position.x; //Différence entre les deux positions pour savoir vers quel coté on swip, positif à droite et négatif à gauche
+                                                                       //C'est aussi la position exact du pointer sur le l'écran lorsqu'il drag
 
+            if (currentPanelNumber > -1 && currentPanelNumber < 2)
+            {
+
+                transform.position = panelLocation - new Vector2(difference, 0); //Déplacer le panel holder en fonction de la position du pointer
+
+            }
+            else
+            {
+                transform.position = panelLocation;
+            }
         }
-        else
-        {
-            transform.position = panelLocation;
-        }
+
     }
 
     //4- On End Drag void
     public void OnEndDrag(PointerEventData data)
     {
-        float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
-
-        //4.1- Vérification pour savoir si le pourcentage de l'écran dragué est superieur ou égale au pourcentage à drag pour valider la saisi
-        if (Mathf.Abs(percentage) >= percentThreshold) //Le swip est validé
+        if (!MenuManager.Instance.blockAction)
         {
-            Vector2 newLocation = panelLocation; //on récupère la position du panel pour pouvoir la changer juste après
+            float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 
-            //4.1.1- Modification de la futur position du panel holder vers le nouveau panel
-            if (percentage > 0)//Vers la droite
+            //4.1- Vérification pour savoir si le pourcentage de l'écran dragué est superieur ou égale au pourcentage à drag pour valider la saisi
+            if (Mathf.Abs(percentage) >= percentThreshold) //Le swip est validé
             {
-                if (currentPanelNumber < 2)
-                {
-                    newLocation += new Vector2(-Screen.width, 0);
+                Vector2 newLocation = panelLocation; //on récupère la position du panel pour pouvoir la changer juste après
 
-                    currentPanelNumber = currentPanelNumber + 1;
-                    UpdateStateAccordingPanelNumber();
-                }
-                else
+                //4.1.1- Modification de la futur position du panel holder vers le nouveau panel
+                if (percentage > 0)//Vers la droite
                 {
-                    StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                    if (currentPanelNumber < 2)
+                    {
+                        newLocation += new Vector2(-Screen.width, 0);
+
+                        currentPanelNumber = currentPanelNumber + 1;
+                        UpdateStateAccordingPanelNumber();
+                    }
+                    else
+                    {
+                        StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                    }
+
                 }
+                else if (percentage < 0)//vers la gauche
+                {
+                    if (currentPanelNumber > -1)
+                    {
+                        newLocation += new Vector2(Screen.width, 0);
+
+                        currentPanelNumber = currentPanelNumber - 1;
+                        UpdateStateAccordingPanelNumber();
+                    }
+                    else
+                    {
+                        StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
+                    }
+
+                }
+
+                //4.1.2- Début de la coroutine pour faire une transition smooth vers la nouvelle position
+                StartCoroutine(SmoothMove(transform.position, newLocation, easing));
+
+                panelLocation = newLocation; //Attribution de la nouvelle position du panel holder
 
             }
-            else if (percentage < 0)//vers la gauche
+            else //Le swip n'est pas validé
             {
-                if (currentPanelNumber > -1)
-                {
-                    newLocation += new Vector2(Screen.width, 0);
-
-                    currentPanelNumber = currentPanelNumber - 1;
-                    UpdateStateAccordingPanelNumber();
-                }
-                else
-                {
-                    StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
-                }
+                StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
 
             }
-
-            //4.1.2- Début de la coroutine pour faire une transition smooth vers la nouvelle position
-            StartCoroutine(SmoothMove(transform.position, newLocation, easing));
-
-            panelLocation = newLocation; //Attribution de la nouvelle position du panel holder
-
+            onDrag = false;
         }
-        else //Le swip n'est pas validé
-        {
-            StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
-            
-        }
-        onDrag = false;
     }
 
     void UpdateStateAccordingPanelNumber()
@@ -127,7 +134,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void CancelMatch()
     {
-        if (currentPanelNumber == 0 && canChange)
+        if (currentPanelNumber == 0 && canChange && !MenuManager.Instance.blockAction)
         {
             MenuManager.Instance.matchManager.canMatch = true;
         }
@@ -165,7 +172,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToList()
     {
-        if (canChange)
+        if (canChange && !MenuManager.Instance.blockAction)
         {
             Vector2 newLocation = panelLocation;
 
@@ -213,7 +220,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToBag()
     {
-        if (canChange)
+        if (canChange && !MenuManager.Instance.blockAction)
         {
             Vector2 newLocation = panelLocation;
 
@@ -260,7 +267,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToShop()
     {
-        if (canChange)
+        if (canChange && !MenuManager.Instance.blockAction)
         {
             Vector2 newLocation = panelLocation;
 
@@ -308,7 +315,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToMatch()
     {
-        if (canChange)
+        if (canChange && !MenuManager.Instance.blockAction)
         {
             Vector2 newLocation = panelLocation;
 

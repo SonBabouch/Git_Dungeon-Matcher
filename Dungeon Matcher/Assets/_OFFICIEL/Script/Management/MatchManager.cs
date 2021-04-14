@@ -65,9 +65,6 @@ namespace Management
             {
                 FirstTirage();
             }
-
-            
-           
         }
         
         #region Methods
@@ -196,18 +193,13 @@ namespace Management
                 {
                     storedIndex.Remove(storedIndex[0]);
                 }
-                
             }
-
-
         }
-
-       
 
         //A activer quand le bouton match est préssé.
         public void Match()
         {
-            if (monsterSpawned.Count != 0 && EnergyManager.energy >0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && canMatch)
+            if (monsterSpawned.Count != 0 && EnergyManager.energy >0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && canMatch && !MenuManager.Instance.blockAction)
             {
                 //Debug.Log("In");
                 //Checker si (energie > 0 && liste pas complète).
@@ -224,7 +216,7 @@ namespace Management
                     MenuManager.Instance.listManager.listCurrentSize++;
                     MenuManager.Instance.canvasManager.listCanvas.UpdateList();
 
-                    Debug.Log("1");
+                    //Debug.Log("1");
                     //Instantie le profil matché dans la liste.
                     MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
                 }
@@ -262,6 +254,7 @@ namespace Management
                 MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
 
                 Tirage();
+                MenuManager.Instance.canvasManager.matchCanvas.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(2));
                 numberOfDislike = 0;
 
             }
@@ -275,7 +268,7 @@ namespace Management
         //A activer quand le bouton dislike est préssé.
         public void Dislike()
         {
-            if (monsterSpawned.Count !=0 && EnergyManager.energy > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch)
+            if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManager.Instance.blockAction)
             {
                 if (MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
                 {
@@ -313,7 +306,7 @@ namespace Management
                 else
                 { 
                     numberOfDislike = 0;
-                    StartCoroutine(AlerteDislike());  
+                    MenuManager.Instance.canvasManager.matchCanvas.AlerteDislike();
                 }
             }
             else
@@ -321,12 +314,6 @@ namespace Management
                 return;
             }
 
-        }
-
-        private IEnumerator AlerteDislike() 
-        {
-            Debug.Log("wallah match");
-            yield return null;
         }
         #endregion
     }

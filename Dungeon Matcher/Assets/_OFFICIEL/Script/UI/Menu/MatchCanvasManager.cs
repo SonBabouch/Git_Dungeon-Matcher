@@ -39,9 +39,19 @@ namespace Management
         //Marker
         public GameObject dislikeMarker;
         public GameObject likeMarker;
-        
+
+        //Advertissing dislike to much.
+        [SerializeField] private GameObject advertising;
+        public Tweener tweener;
+        [SerializeField] private GameObject textBubble;
+        [SerializeField] private GameObject buttonSkip;
+        [SerializeField] private GameObject initialPosition;
+        [SerializeField] private GameObject tweenPosition;
+       
         void Start()
         {
+            tweener = advertising.GetComponent<Tweener>();
+
             rareSystemParticule = rareParticules.GetComponent<ParticleSystem>();
 
             var emission = rareSystemParticule.emission;
@@ -72,11 +82,6 @@ namespace Management
         //Update le constamment les infos car on peut pas traquer le moment ou le joueur passe de niveau.
         private void Update()
         {
-            playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
-            playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
-
-           
-
             if (zeroFinish && oneFinish)
             {
                 zeroFinish = false;
@@ -84,6 +89,12 @@ namespace Management
                 MenuManager.Instance.matchManager.monsterSpawned[0].SetActive(true);
                 MenuManager.Instance.matchManager.canMatch = true;
             }
+        }
+
+        public void UpdateExperience()
+        {
+            playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
+            playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
         }
 
         public void ResetBarMethod()
@@ -205,6 +216,40 @@ namespace Management
                 
                 yield return null;
             }
+        }
+
+        public IEnumerator alerteDislike()
+        {
+            Debug.Log("wallah match");
+            MenuManager.Instance.blockAction = true;
+            PageSwiper.canChange = false;
+            //Changer la boule pour désactiver les boutons.
+            tweener.TweenPositionTo(tweenPosition.transform.localPosition,1f,Easings.Ease.SmoothStep,true);
+            yield return new WaitForSeconds(1f);
+            textBubble.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            buttonSkip.SetActive(true);
+            Debug.Log("End");
+        }
+
+        public void AlerteDislike()
+        {
+            StartCoroutine(alerteDislike());
+        }
+        public void EndAlerteDislike()
+        {
+            StartCoroutine(endAlerteDislike());
+        }
+
+        public IEnumerator endAlerteDislike()
+        {
+            buttonSkip.SetActive(false);
+            textBubble.SetActive(false);
+            tweener.TweenPositionTo(initialPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
+            yield return new WaitForSeconds(1f);
+            MenuManager.Instance.blockAction = false;
+            PageSwiper.canChange = true;
+            //changer la bool pour pouvoir réutiliser les boutons.
         }
 
     }     
