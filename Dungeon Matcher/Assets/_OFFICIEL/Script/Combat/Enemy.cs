@@ -97,6 +97,19 @@ public class Enemy : MonoBehaviour
         {
             //skill.side = Skill.monsterSide.Enemy;
             enemySkills.Add(skill);
+
+            if (skill.isEcho)
+            {
+                skill.typeOfCapacity = Skill.capacityType.Echo;
+                skill.messageType = Skill.typeOfMessage.Small;
+                skill.isComboSkill = false;
+            }
+            if (skill.isPlagiat)
+            {
+                skill.typeOfCapacity = Skill.capacityType.Plagiat;
+                skill.messageType = Skill.typeOfMessage.Small;
+                skill.isComboSkill = false;
+            }
         }
         ShuffleEnemySkill();
     }

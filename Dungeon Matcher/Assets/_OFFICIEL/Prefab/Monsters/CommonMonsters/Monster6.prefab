@@ -44,8 +44,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   template: {fileID: 11400000, guid: ca29897f79a99f140b35b6a636bf6bdb, type: 2}
+  monsterIndexPosition: 0
+  numberOfFragments: 0
+  numberOfFragmentsRequired: 
+  monsterLevel: 0
   description: 
-  name: 
+  monsterName: 
   health: 0
+  maxHealth: 0
+  minHealth: 0
   rarety: 0
+  isGet: 0
+  statement: 1
   profilPicture: {fileID: 0}
+  fullMonsterImage: {fileID: 0}
+  side: 0
+  owner: {fileID: 0}
+  allySkills: []
+  ennemySkills: []

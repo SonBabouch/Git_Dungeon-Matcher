@@ -30,6 +30,7 @@ namespace Management
         [SerializeField] private GameObject notificationBubble;
         [SerializeField] private TextMeshProUGUI numberNotif;
 
+        [SerializeField] private GameObject noMatchBubble;
 
         private void Update()
         {
@@ -71,6 +72,7 @@ namespace Management
         }
         #endregion
 
+        #region GoTo...
         //navigation
         public void GoToList()
         {
@@ -155,8 +157,17 @@ namespace Management
             MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
 
         }
+        #endregion
 
-        
+        public IEnumerator NoMatchFeedback()
+        {
+            Tweener t = noMatchBubble.GetComponent<Tweener>();
+            Vector3 tweenScale = new Vector3 (-1, 1f, 1f);
+            t.TweenScaleTo(tweenScale,1f,Easings.Ease.SmoothStep);
+            yield return new WaitForSeconds(2f);
+            Vector3 initialTween = new Vector3(-0.01f, 0.01f, 0.01f);
+            t.TweenScaleTo(initialTween, 1f, Easings.Ease.SmoothStep);
+        }
 
     }
 }

@@ -72,6 +72,17 @@ public class Player : MonoBehaviour
             {
                 //skill.side = Skill.monsterSide.Ally;
                 playerSkills.Add(skill);
+
+                if (skill.isEcho)
+                {
+                    skill.typeOfCapacity = Skill.capacityType.Echo;
+                    skill.messageType = Skill.typeOfMessage.Small;
+                }
+
+                if (skill.isPlagiat)
+                {
+                    skill.typeOfCapacity = Skill.capacityType.Plagiat;
+                }
             }
         }
         ShufflePlayerSkills();

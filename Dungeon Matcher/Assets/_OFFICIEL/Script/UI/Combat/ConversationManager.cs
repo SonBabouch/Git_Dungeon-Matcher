@@ -562,7 +562,7 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
-
+        CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
         CombatManager.Instance.MessageIcon(msg, skill);
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Player;
         msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);
@@ -649,6 +649,7 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(enemyMsgPositions[1].transform);
         allMsg[1] = msg;
         skill.messageOwner = msg;
+        CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
         CombatManager.Instance.MessageIcon(msg, skill);
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Enemy;
         msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);

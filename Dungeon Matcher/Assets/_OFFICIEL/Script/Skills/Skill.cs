@@ -37,6 +37,7 @@ public abstract class Skill : ScriptableObject
     public bool chargingAttack;
 
     public bool isEcho;
+    public bool isPlagiat;
 
     public int skillIndex;
     public abstract void SetEnemyBoolType();

@@ -61,7 +61,7 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: a4168c85f48cdbc45895a7c749c021af, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
   - {fileID: 11400000, guid: 09bd3f01b1d68ca4782c265ba42f6321, type: 2}
   - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}

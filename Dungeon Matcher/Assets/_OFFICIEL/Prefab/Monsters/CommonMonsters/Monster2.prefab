@@ -55,13 +55,13 @@ MonoBehaviour:
   minHealth: 0
   rarety: 0
   isGet: 0
-  statement: 2
+  statement: 1
   profilPicture: {fileID: 0}
   fullMonsterImage: {fileID: 21300000, guid: 8eaf68bf3af19d24482b224358b800db, type: 3}
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: a4168c85f48cdbc45895a7c749c021af, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
   - {fileID: 11400000, guid: 958c92bd9eafec24b9bec67dc66c6553, type: 2}
   - {fileID: 11400000, guid: 62506a4adc49cc54cbcb5effb2af7e30, type: 2}

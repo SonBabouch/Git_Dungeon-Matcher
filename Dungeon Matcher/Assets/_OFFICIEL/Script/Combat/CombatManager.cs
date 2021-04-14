@@ -233,6 +233,8 @@ public class CombatManager : MonoBehaviour
                 Player.Instance.playerHand[i].messageType = Player.Instance.lastPlayerCompetence.messageType;
                 Player.Instance.playerHand[i].isComboSkill = Player.Instance.lastPlayerCompetence.isComboSkill;
                 Player.Instance.playerHand[i].chargingAttack = Player.Instance.lastPlayerCompetence.chargingAttack;
+                Player.Instance.playerHand[i].isComboSkill = Player.Instance.lastPlayerCompetence.isComboSkill;
+                Player.Instance.playerHand[i].comboEffectValue = Player.Instance.lastPlayerCompetence.comboEffectValue;
             }
 
             if (Player.Instance.playerHand[i].typeOfCapacity == Skill.capacityType.Plagiat && Enemy.Instance.lastEnemyCompetence != null)
@@ -244,6 +246,9 @@ public class CombatManager : MonoBehaviour
                 Player.Instance.playerHand[i].messageType = Enemy.Instance.lastEnemyCompetence.messageType;
                 Player.Instance.playerHand[i].isComboSkill = Enemy.Instance.lastEnemyCompetence.isComboSkill;
                 Player.Instance.playerHand[i].chargingAttack = Enemy.Instance.lastEnemyCompetence.chargingAttack;
+                Player.Instance.playerHand[i].chargingAttack = Enemy.Instance.lastEnemyCompetence.chargingAttack;
+                Player.Instance.playerHand[i].isComboSkill = Enemy.Instance.lastEnemyCompetence.isComboSkill;
+                Player.Instance.playerHand[i].comboEffectValue = Enemy.Instance.lastEnemyCompetence.comboEffectValue;
             }
         }
 
@@ -362,6 +367,75 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void EmojiIcon(Image image,Skill skill)
+    {
+       Sprite spriteToShow = null;
+
+            switch (skill.typeOfCapacity)
+            {
+                case Skill.capacityType.Attack:
+                    spriteToShow = iconRessource[0];
+                    break;
+                case Skill.capacityType.CoupDeVent:
+                    spriteToShow = iconRessource[1];
+                    break;
+                case Skill.capacityType.Defense:
+                    spriteToShow = iconRessource[2];
+                    break;
+                case Skill.capacityType.DivinTouch:
+                    spriteToShow = iconRessource[3];
+                    break;
+                case Skill.capacityType.Drain:
+                    spriteToShow = iconRessource[4];
+                    break;
+                case Skill.capacityType.Echo:
+                    spriteToShow = iconRessource[5];
+                    break;
+                case Skill.capacityType.Heal:
+                    spriteToShow = iconRessource[6];
+                    break;
+                case Skill.capacityType.Paralysie:
+                    spriteToShow = iconRessource[7];
+                    break;
+                case Skill.capacityType.Plagiat:
+                    spriteToShow = iconRessource[8];
+                    break;
+                case Skill.capacityType.Mark:
+                    spriteToShow = iconRessource[9];
+                    break;
+                case Skill.capacityType.Curse:
+                    spriteToShow = iconRessource[10];
+                    break;
+                case Skill.capacityType.Cramp:
+                    spriteToShow = iconRessource[11];
+                    break;
+                case Skill.capacityType.Charm:
+                    spriteToShow = iconRessource[12];
+                    break;
+                case Skill.capacityType.Silence:
+                    spriteToShow = iconRessource[13];
+                    break;
+                case Skill.capacityType.Lock:
+                    spriteToShow = iconRessource[14];
+                    break;
+                case Skill.capacityType.Break:
+                    spriteToShow = iconRessource[15];
+                    break;
+                case Skill.capacityType.Ralentissement:
+                    spriteToShow = iconRessource[16];
+                    break;
+                case Skill.capacityType.Acceleration:
+                    spriteToShow = iconRessource[17];
+                    break;
+                case Skill.capacityType.Confuse:
+                    spriteToShow = iconRessource[18];
+                    break;
+                    default:
+                    break;
+            }
+        image.sprite = spriteToShow;
+        spriteToShow = null;
+    }
     public void MessageIcon(GameObject message,Skill skill)
     {
         
@@ -429,12 +503,13 @@ public class CombatManager : MonoBehaviour
                     default:
                     break;
             }
+
         if (skill.messageType == Skill.typeOfMessage.Big || skill.messageType == Skill.typeOfMessage.Small)
         {
             message.GetComponent<MessageBehaviour>().iconeImage.sprite = spriteToShow;
         }
 
-
+        spriteToShow = null;
     }
 
     public void ButtonTypeOf()

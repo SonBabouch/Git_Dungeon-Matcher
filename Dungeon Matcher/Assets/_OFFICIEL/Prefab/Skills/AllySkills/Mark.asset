@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: Mark
   effectValue: 0
+  messageOwner: {fileID: 0}
   side: 1
   messageType: 2
   typeOfCapacity: 9
@@ -23,9 +24,10 @@ MonoBehaviour:
   crampEnergyCost: 20
   isComboSkill: 0
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
-  skillIndex: 0
+  skillIndex: 4
   monster: {fileID: 0}
   owner: {fileID: 0}
