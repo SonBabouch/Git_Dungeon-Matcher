@@ -25,6 +25,16 @@ public class Echo : Skill
 
     public override void Use()
     {
+        if (isEcho)
+        {
+            UpdateEchoValue();
+        }
+
+        if (isPlagiat)
+        {
+            UpdatePlagiatValue();
+        }
+
         realUse();
     }
 
@@ -35,7 +45,7 @@ public class Echo : Skill
 
     public override void PlayerEffect()
     {
-        Player.Instance.lastPlayerCompetence.PlayerEffect();
+        lastCompetenceReference.PlayerEffect();
 
         if (!chargingAttack)
         {
@@ -51,7 +61,7 @@ public class Echo : Skill
     public override void MonsterEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastEnemyCompetence.MonsterEffect();
+        lastCompetenceReference.MonsterEffect();
 
         if (!chargingAttack)
         {
@@ -62,7 +72,7 @@ public class Echo : Skill
         typeOfCapacity = capacityType.Echo;
         isComboSkill = false;
         chargingAttack = false;
-        
+        lastCompetenceReference = null;
     }
 
     public override void SetEnemyBoolType()

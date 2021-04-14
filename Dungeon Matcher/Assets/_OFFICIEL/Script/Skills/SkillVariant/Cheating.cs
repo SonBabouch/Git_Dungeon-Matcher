@@ -28,7 +28,7 @@ public class Cheating : Skill
     public override void PlayerEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        Enemy.Instance.lastEnemyCompetence.PlayerEffect();
+        lastCompetenceReference.PlayerEffect();
 
         if (!chargingAttack)
         {
@@ -38,10 +38,17 @@ public class Cheating : Skill
 
         Player.Instance.lastPlayerCompetence = this;
         Player.Instance.canAttack = true;
+
+        isComboSkill = false;
+        messageType = typeOfMessage.Small;
+        typeOfCapacity = capacityType.Plagiat;
+        isPlagiat = true;
+        isEcho = false;
+        lastCompetenceReference = null;
     }
     public override void MonsterEffect()
     {
-        Player.Instance.lastPlayerCompetence.MonsterEffect();
+        lastCompetenceReference.MonsterEffect();
 
         if (!chargingAttack)
         {
@@ -51,6 +58,12 @@ public class Cheating : Skill
 
         Enemy.Instance.lastEnemyCompetence = this;
         Enemy.Instance.canAttack = true;
+        isComboSkill = false;
+        messageType = typeOfMessage.Small;
+        typeOfCapacity = capacityType.Plagiat;
+        isPlagiat = true;
+        isEcho = false;
+        lastCompetenceReference = null;
     }
 
     public override void SetEnemyBoolType()

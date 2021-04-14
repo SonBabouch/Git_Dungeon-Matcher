@@ -39,6 +39,8 @@ public abstract class Skill : ScriptableObject
     public bool isEcho;
     public bool isPlagiat;
 
+    public Skill lastCompetenceReference;
+
     public int skillIndex;
     public abstract void SetEnemyBoolType();
     public abstract void Initialize(GameObject obj);
@@ -209,5 +211,15 @@ public abstract class Skill : ScriptableObject
         }
         CombatManager.Instance.index = 0;
         Enemy.Instance.enemyIndex = 0;
+    }
+
+    public void UpdateEchoValue()
+    {
+        lastCompetenceReference = Player.Instance.lastPlayerCompetence;
+    }
+
+    public void UpdatePlagiatValue()
+    {
+        lastCompetenceReference = Enemy.Instance.lastEnemyCompetence;
     }
 }
