@@ -68,11 +68,13 @@ public class Echo : Skill
             Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
             Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
         }
-        
-        typeOfCapacity = capacityType.Echo;
-        isComboSkill = false;
-        chargingAttack = false;
+
+        messageType = typeOfMessage.Small;
+        typeOfCapacity = capacityType.Plagiat;
+        isPlagiat = true;
+        isEcho = false;
         lastCompetenceReference = null;
+
     }
 
     public override void SetEnemyBoolType()
