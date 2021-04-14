@@ -12,7 +12,7 @@ public abstract class Skill : ScriptableObject
     public string skillDescription;
     public float effectValue;
 
-    public GameObject owner;
+    public GameObject messageOwner;
 
     public enum monsterSide { Enemy, Ally }
     public monsterSide side;

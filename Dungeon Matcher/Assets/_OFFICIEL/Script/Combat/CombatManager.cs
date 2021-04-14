@@ -417,7 +417,16 @@ public class CombatManager : MonoBehaviour
                 case Skill.capacityType.Break:
                     spriteToShow = iconRessource[15];
                     break;
-                default:
+                case Skill.capacityType.Ralentissement:
+                    spriteToShow = iconRessource[16];
+                    break;
+                case Skill.capacityType.Acceleration:
+                    spriteToShow = iconRessource[17];
+                    break;
+                case Skill.capacityType.Confuse:
+                    spriteToShow = iconRessource[18];
+                    break;
+                    default:
                     break;
             }
         if (skill.messageType == Skill.typeOfMessage.Big || skill.messageType == Skill.typeOfMessage.Small)
@@ -452,6 +461,7 @@ public class CombatManager : MonoBehaviour
                 case Skill.typeOfMessage.Emoji:
                     spriteToShow = typeRessource[2];
                     break;
+                
                 default:
                     break;
             }

@@ -493,10 +493,10 @@ public class ConversationManager : MonoBehaviour
         msg.transform.SetParent(playerMsgPositions[1].transform);
         allMsg[1] = msg;
         
-        skill.owner = msg;
+        skill.messageOwner = msg;
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
 
@@ -514,11 +514,11 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(ChargingMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[0].transform);
         allMsg[0] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
 
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             
         }
 
@@ -533,13 +533,13 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[2].transform);
         allMsg[2] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
 
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
         else
@@ -556,10 +556,10 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(EmojiPlayer.gameObject, playerMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[1].transform);
         allMsg[1] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
 
@@ -586,10 +586,10 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[1].transform);
         allMsg[1] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
 
@@ -607,11 +607,11 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[0].transform);
         allMsg[0] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
         
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             
         }
 
@@ -627,10 +627,10 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[2].transform);
         allMsg[2] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
         if (skill.comesFromCurse)
         {
-            skill.owner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
 
@@ -648,7 +648,7 @@ public class ConversationManager : MonoBehaviour
         GameObject msg = Instantiate(EmojiEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[1].transform);
         allMsg[1] = msg;
-        skill.owner = msg;
+        skill.messageOwner = msg;
         CombatManager.Instance.MessageIcon(msg, skill);
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Enemy;
         msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);
