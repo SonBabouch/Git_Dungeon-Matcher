@@ -176,6 +176,7 @@ MonoBehaviour:
   playerLevel: {fileID: 8224612494735233240}
   bagManager: {fileID: 8224612494735233221}
   monsterEncyclopedie: {fileID: 5708665035815912933}
+  stillcurrent: 0
 --- !u!114 &8224612494735233241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,9 +225,10 @@ MonoBehaviour:
   monsterSpawned: []
   storedIndex: 
   maxStoredValues: 3
-  ChanceCount: 0
-  MaxChanceCount: 0
+  ChanceCount: 100
+  MaxChanceCount: 100
   nbOfProfilsMax: 3
+  numberOfDislike: 0
   monsterPresented: {fileID: 0}
   profilPresented: {fileID: 0}
 --- !u!114 &8224612494735233243
@@ -483,7 +485,7 @@ PrefabInstance:
         type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 19b3be359edd30347abeabd288e7a8c9,
+      objectReference: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 117d7e950ec732d4ea425ff3e2367a51, type: 3}
@@ -564,7 +566,7 @@ PrefabInstance:
         type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 3f9b51805f86c54449c552c9b0cb3305,
+      objectReference: {fileID: 11400000, guid: 7e7fe7d265a52674caae0b17dba2fcb0,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
@@ -971,7 +973,7 @@ PrefabInstance:
         type: 3}
       propertyPath: template
       value: 
-      objectReference: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26,
+      objectReference: {fileID: 11400000, guid: 3f9b51805f86c54449c552c9b0cb3305,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128c2a1f3f9096949820c2766d880706, type: 3}
@@ -1048,6 +1050,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761877609787509778, guid: 7a039f75641777a438d344dd7123858c,
+        type: 3}
+      propertyPath: template
+      value: 
+      objectReference: {fileID: 11400000, guid: 19b3be359edd30347abeabd288e7a8c9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a039f75641777a438d344dd7123858c, type: 3}
 --- !u!4 &1183653127822256677 stripped

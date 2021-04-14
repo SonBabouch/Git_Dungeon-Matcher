@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 namespace Management
 {
@@ -22,7 +23,6 @@ namespace Management
 
         public bool canMatch = true;
 
-
         public List<GameObject> monsterSpawned = new List<GameObject>();
 
         [Header("Sécurité")]
@@ -36,6 +36,8 @@ namespace Management
         public int MaxChanceCount;
 
         public int nbOfProfilsMax;
+
+        public int numberOfDislike = 0;
 
         [Header("Profil")]
         public GameObject monsterPresented;
@@ -214,8 +216,6 @@ namespace Management
                     MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
                 }
 
-
-
                 if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible)
                 {
                     matchList.Add(monsterPresented);
@@ -262,7 +262,7 @@ namespace Management
                 MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
 
                 Tirage();
-
+                numberOfDislike = 0;
 
             }
             else
@@ -304,12 +304,29 @@ namespace Management
                 MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
 
                 Tirage();
+
+
+                if (numberOfDislike < 5)
+                {
+                    numberOfDislike++;
+                }
+                else
+                { 
+                    numberOfDislike = 0;
+                    StartCoroutine(AlerteDislike());  
+                }
             }
             else
             {
                 return;
             }
 
+        }
+
+        private IEnumerator AlerteDislike() 
+        {
+            Debug.Log("wallah match");
+            yield return null;
         }
         #endregion
     }
