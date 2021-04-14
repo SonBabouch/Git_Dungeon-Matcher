@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
+using UnityEngine.UI;
 
 namespace Management
 {
@@ -20,6 +22,9 @@ namespace Management
 
         //Title Screen
         [SerializeField] private GameObject titleScreen;
+        [SerializeField] private GameObject gameTitle;
+        [SerializeField] private GameObject tapToStart;
+        private bool trigger = false;
 
         //Notifications
         [SerializeField] private GameObject notificationBubble;
@@ -35,11 +40,36 @@ namespace Management
             }
         }
 
-
+        #region TitleScreen
         public void TitleScreen()
         {
-            titleScreen.SetActive(false);
+            if(!trigger)
+            {
+                trigger = true;
+                float value = 1f;
+                tapToStart.SetActive(false);
+                StartCoroutine(ScreenFade(value, titleScreen));
+                StartCoroutine(ScreenFade(value, gameTitle));
+            }
         }
+
+        private IEnumerator ScreenFade(float value, GameObject GO)
+        {
+            Image image = GO.GetComponent<Image>();
+            if(image.color.a > 0)
+            {
+                image.color = new Vector4(image.color.r, image.color.g, image.color.b, value);
+                yield return new WaitForSeconds(0.1f);
+                value -= 0.1f;
+                StartCoroutine(ScreenFade(value, GO));
+            }
+            else
+            {
+                value = 1;
+                GO.SetActive(false);
+            }    
+        }
+        #endregion
 
         //navigation
         public void GoToList()
