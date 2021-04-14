@@ -14,17 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: Cramp
   effectValue: 0
+  owner: {fileID: 0}
   side: 1
   messageType: 2
-  typeOfCapacity: 0
+  typeOfCapacity: 11
   trueEnergyCost: 1
   energyCost: 10
   initialEnergyCost: 10
   crampEnergyCost: 20
   isComboSkill: 0
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
+  skillIndex: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

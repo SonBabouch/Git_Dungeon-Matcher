@@ -14,17 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: Break
   effectValue: 0
+  owner: {fileID: 0}
   side: 1
   messageType: 0
-  typeOfCapacity: 0
+  typeOfCapacity: 15
   trueEnergyCost: 2
   energyCost: 20
   initialEnergyCost: 20
   crampEnergyCost: 30
   isComboSkill: 0
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
+  skillIndex: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

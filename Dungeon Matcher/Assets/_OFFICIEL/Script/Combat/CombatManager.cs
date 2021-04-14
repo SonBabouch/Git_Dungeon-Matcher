@@ -345,6 +345,15 @@ public class CombatManager : MonoBehaviour
                 case Skill.capacityType.Break:
                     spriteToShow = iconRessource[15];
                     break;
+                case Skill.capacityType.Ralentissement:
+                    spriteToShow = iconRessource[16];
+                    break;
+                case Skill.capacityType.Acceleration:
+                    spriteToShow = iconRessource[17];
+                    break;
+                case Skill.capacityType.Confuse:
+                    spriteToShow = iconRessource[18];
+                    break;
                 default:
                     break;
             }
