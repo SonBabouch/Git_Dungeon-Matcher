@@ -497,7 +497,7 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            skill.comesFromCurse = false;
+            
         }
 
         CombatManager.Instance.MessageIcon(msg, skill);
@@ -521,6 +521,10 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             
         }
+        else
+        {
+            skill.messageOwner.GetComponent<Image>().color = Color.blue;
+        }
 
 
         messageToSpawn = typeToSpawn.Null;
@@ -540,7 +544,7 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            skill.comesFromCurse = false;
+            
         }
         else
         {
@@ -560,7 +564,7 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            skill.comesFromCurse = false;
+            
         }
         CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
         CombatManager.Instance.MessageIcon(msg, skill);
@@ -590,7 +594,7 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            skill.comesFromCurse = false;
+           
         }
 
         CombatManager.Instance.MessageIcon(msg, skill);
@@ -612,7 +616,11 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            
+
+        }
+        else
+        {
+            skill.messageOwner.GetComponent<Image>().color = Color.red;
         }
 
 
@@ -631,8 +639,9 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            skill.comesFromCurse = false;
+
         }
+       
 
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);

@@ -137,12 +137,15 @@ public class MessageManager : MonoBehaviour
     [HideInInspector] public string[] enemyIndex4Windstorm = new string[4];
     [HideInInspector] public string[] enemyIndex5Windstorm = new string[4];
 
+    public string[] cursedMessagePlayer = new string[4];
+    [HideInInspector] public string[] cursedMessageMonster = new string[4];
+
     [Header("ArraysOfEnemyChargedmMessages")]
-     public string[] enemyIndex1Charged = new string[4];
-     public string[] enemyIndex2Charged = new string[4];
-    public string[] enemyIndex3Charged = new string[4];
-     public string[] enemyIndex4Charged = new string[4];
-     public string[] enemyIndex5Charged = new string[4];
+    [HideInInspector] public string[] enemyIndex1Charged = new string[4];
+    [HideInInspector] public string[] enemyIndex2Charged = new string[4];
+    [HideInInspector] public string[] enemyIndex3Charged = new string[4];
+    [HideInInspector] public string[] enemyIndex4Charged = new string[4];
+    [HideInInspector] public string[] enemyIndex5Charged = new string[4];
 
 
     private string[] chosenList;
@@ -151,471 +154,478 @@ public class MessageManager : MonoBehaviour
     {
         instance = this;
         conversationIndex = 0;
-
     }
 
     public void ChoseArray(Skill skill, GameObject Go)
     {
-        switch (skill.side)
+        if (skill.comesFromCurse)
         {
-            case Skill.monsterSide.Enemy:
-                if (skill.typeOfCapacity == Skill.capacityType.Echo)
-                {
-                    skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
-                }
-                if (skill.typeOfCapacity == Skill.capacityType.Plagiat)
-                {
-                    skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
-                }
-
-                if (skill.chargingAttack)
-                {
-                    switch (conversationIndex)
+            Debug.Log("cursedMessage");
+            skill.comesFromCurse = false;
+            chosenList = cursedMessagePlayer;
+        }
+        else
+        {
+            switch (skill.side)
+            {
+                case Skill.monsterSide.Enemy:
+                    if (skill.typeOfCapacity == Skill.capacityType.Echo)
                     {
-                        case 0:
-                            chosenList = enemyIndex1Charged;
-                            break;
-                        case 1:
-                            chosenList = enemyIndex2Charged;
-                            break;
-                        case 2:
-                            chosenList = enemyIndex3Charged;
-                            break;
-                        case 3:
-                            chosenList = enemyIndex4Charged;
-                            break;
-                        case 4:
-                            chosenList = enemyIndex5Charged;
-                            break;
-                        default:
-                            break;
+                        skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
                     }
-                }
-                else
-                {
-                    switch (skill.typeOfCapacity)
+                    if (skill.typeOfCapacity == Skill.capacityType.Plagiat)
                     {
-                        //[MÉMO À MOI-MÊME] L'ordre est : Attack - Defense - Heal - Break - Drain - Paralysie - Charm - DivinTouch - CoupDeVent.
-                        case Skill.capacityType.Attack:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Attack;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Attack;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Attack;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Attack;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Attack;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Defense:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Defense;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Defense;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Defense;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Defense;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Defense;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Heal:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Heal;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Heal;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Heal;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Heal;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Heal;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Break:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Break;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Break;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Break;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Break;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Break;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Drain:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Drain;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Drain;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Drain;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Drain;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Drain;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Paralysie:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Paralysis;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Paralysis;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Paralysis;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Paralysis;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Paralysis;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Charm:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Charm;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Charm;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Charm;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Charm;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Charm;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.DivinTouch:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1DivineTouch;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2DivineTouch;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3DivineTouch;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4DivineTouch;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5DivineTouch;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.CoupDeVent:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = enemyIndex1Windstorm;
-                                    break;
-                                case 1:
-                                    chosenList = enemyIndex2Windstorm;
-                                    break;
-                                case 2:
-                                    chosenList = enemyIndex3Windstorm;
-                                    break;
-                                case 3:
-                                    chosenList = enemyIndex4Windstorm;
-                                    break;
-                                case 4:
-                                    chosenList = enemyIndex5Windstorm;
-                                    break;
-                            }
-                            break;
-                        default:
-                            break;
+                        skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
                     }
 
-                }
-                break;
-
-
-            case Skill.monsterSide.Ally:
-
-                if (skill.typeOfCapacity == Skill.capacityType.Echo)
-                {
-                    skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
-                }
-                if (skill.typeOfCapacity == Skill.capacityType.Plagiat)
-                {
-                    skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
-                }
-
-                //on regarde d'abord si l'attaque est chargée ou non
-                if (skill.chargingAttack)
-                {
-                    switch (conversationIndex)
+                    if (skill.chargingAttack)
                     {
-                        case 0:
-                            chosenList = playerIndex1Charged;
-                            break;
-                        case 1:
-                            chosenList = playerIndex2Charged;
-                            break;
-                        case 2:
-                            chosenList = playerIndex3Charged;
-                            break;
-                        case 3:
-                            chosenList = playerIndex4Charged;
-                            break;
-                        case 4:
-                            chosenList = playerIndex5Charged;
-                            break;
-                        default:
-                            break;
+                        switch (conversationIndex)
+                        {
+                            case 0:
+                                chosenList = enemyIndex1Charged;
+                                break;
+                            case 1:
+                                chosenList = enemyIndex2Charged;
+                                break;
+                            case 2:
+                                chosenList = enemyIndex3Charged;
+                                break;
+                            case 3:
+                                chosenList = enemyIndex4Charged;
+                                break;
+                            case 4:
+                                chosenList = enemyIndex5Charged;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-                else
-                {
-                    switch (skill.typeOfCapacity)
+                    else
                     {
-                        //[MÉMO À MOI-MÊME] L'ordre est : Attack - Defense - Heal - Break - Drain - Paralysie - Charm - DivinTouch - CoupDeVent.
-                        case Skill.capacityType.Attack:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Attack;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Attack;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Attack;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Attack;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Attack;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Defense:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Defense;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Defense;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Defense;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Defense;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Defense;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Heal:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Heal;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Heal;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Heal;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Heal;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Heal;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Break:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Break;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Break;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Break;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Break;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Break;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Drain:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Drain;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Drain;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Drain;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Drain;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Drain;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Paralysie:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Paralysis;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Paralysis;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Paralysis;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Paralysis;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Paralysis;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.Charm:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Charm;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Charm;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Charm;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Charm;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Charm;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.DivinTouch:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1DivineTouch;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2DivineTouch;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3DivineTouch;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4DivineTouch;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5DivineTouch;
-                                    break;
-                            }
-                            break;
-                        case Skill.capacityType.CoupDeVent:
-                            switch (conversationIndex)
-                            {
-                                case 0:
-                                    chosenList = playerIndex1Windstorm;
-                                    break;
-                                case 1:
-                                    chosenList = playerIndex2Windstorm;
-                                    break;
-                                case 2:
-                                    chosenList = playerIndex3Windstorm;
-                                    break;
-                                case 3:
-                                    chosenList = playerIndex4Windstorm;
-                                    break;
-                                case 4:
-                                    chosenList = playerIndex5Windstorm;
-                                    break;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                break;
-            default:
-                break;
+                        switch (skill.typeOfCapacity)
+                        {
+                            //[MÉMO À MOI-MÊME] L'ordre est : Attack - Defense - Heal - Break - Drain - Paralysie - Charm - DivinTouch - CoupDeVent.
+                            case Skill.capacityType.Attack:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Attack;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Attack;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Attack;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Attack;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Attack;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Defense:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Defense;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Defense;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Defense;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Defense;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Defense;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Heal:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Heal;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Heal;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Heal;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Heal;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Heal;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Break:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Break;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Break;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Break;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Break;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Break;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Drain:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Drain;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Drain;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Drain;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Drain;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Drain;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Paralysie:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Paralysis;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Paralysis;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Paralysis;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Paralysis;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Paralysis;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Charm:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Charm;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Charm;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Charm;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Charm;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Charm;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.DivinTouch:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1DivineTouch;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2DivineTouch;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3DivineTouch;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4DivineTouch;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5DivineTouch;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.CoupDeVent:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = enemyIndex1Windstorm;
+                                        break;
+                                    case 1:
+                                        chosenList = enemyIndex2Windstorm;
+                                        break;
+                                    case 2:
+                                        chosenList = enemyIndex3Windstorm;
+                                        break;
+                                    case 3:
+                                        chosenList = enemyIndex4Windstorm;
+                                        break;
+                                    case 4:
+                                        chosenList = enemyIndex5Windstorm;
+                                        break;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
 
+                    }
+                    break;
+
+
+                case Skill.monsterSide.Ally:
+
+                    if (skill.typeOfCapacity == Skill.capacityType.Echo)
+                    {
+                        skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
+                    }
+                    if (skill.typeOfCapacity == Skill.capacityType.Plagiat)
+                    {
+                        skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
+                    }
+
+                    //on regarde d'abord si l'attaque est chargée ou non
+                    if (skill.chargingAttack)
+                    {
+                        switch (conversationIndex)
+                        {
+                            case 0:
+                                chosenList = playerIndex1Charged;
+                                break;
+                            case 1:
+                                chosenList = playerIndex2Charged;
+                                break;
+                            case 2:
+                                chosenList = playerIndex3Charged;
+                                break;
+                            case 3:
+                                chosenList = playerIndex4Charged;
+                                break;
+                            case 4:
+                                chosenList = playerIndex5Charged;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (skill.typeOfCapacity)
+                        {
+                            //[MÉMO À MOI-MÊME] L'ordre est : Attack - Defense - Heal - Break - Drain - Paralysie - Charm - DivinTouch - CoupDeVent.
+                            case Skill.capacityType.Attack:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Attack;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Attack;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Attack;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Attack;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Attack;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Defense:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Defense;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Defense;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Defense;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Defense;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Defense;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Heal:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Heal;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Heal;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Heal;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Heal;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Heal;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Break:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Break;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Break;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Break;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Break;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Break;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Drain:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Drain;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Drain;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Drain;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Drain;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Drain;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Paralysie:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Paralysis;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Paralysis;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Paralysis;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Paralysis;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Paralysis;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.Charm:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Charm;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Charm;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Charm;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Charm;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Charm;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.DivinTouch:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1DivineTouch;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2DivineTouch;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3DivineTouch;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4DivineTouch;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5DivineTouch;
+                                        break;
+                                }
+                                break;
+                            case Skill.capacityType.CoupDeVent:
+                                switch (conversationIndex)
+                                {
+                                    case 0:
+                                        chosenList = playerIndex1Windstorm;
+                                        break;
+                                    case 1:
+                                        chosenList = playerIndex2Windstorm;
+                                        break;
+                                    case 2:
+                                        chosenList = playerIndex3Windstorm;
+                                        break;
+                                    case 3:
+                                        chosenList = playerIndex4Windstorm;
+                                        break;
+                                    case 4:
+                                        chosenList = playerIndex5Windstorm;
+                                        break;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+
+            }
         }
 
         WriteMessages(Go);
-
     }
     public void WriteMessages(GameObject message)
     {

@@ -45,10 +45,6 @@ public class CombatManager : MonoBehaviour
         //combatList = MenuManager.Instance.matchManager.matchList;
     }
 
-    private void Start()
-    {
-       
-    }
 
     public void InitializeBattle()
     {
@@ -63,6 +59,11 @@ public class CombatManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            InitializeBattle();
+        }
+
         if (inCombat)
         {
             RunningTimer();

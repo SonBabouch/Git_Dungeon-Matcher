@@ -27,7 +27,7 @@ public class CSV_ReaderAlt : MonoBehaviour
         //2 : Split les lignes du CSV. (Au total 52).
         playerLines = t.text.Split(new char[] { '\n' });
         //3 : La dernière pause problème, on lui injecte des valeurs.
-        playerLines[52] = "1; 2; 3; 4; 5; 6; 7";
+        playerLines[53] = "1; 2; 3; 4; 5; 6; 7";
         //Debug.Log(playerLines);
 
         for (int i = 1; i < playerLines.Length-1; i++)
@@ -189,6 +189,9 @@ public class CSV_ReaderAlt : MonoBehaviour
                     break;
                 case 50:
                     MessageManager.instance.playerIndex5DivineTouch = playerLinesAlt;
+                    break;
+                case 52:
+                    MessageManager.instance.cursedMessagePlayer = playerLinesAlt;
                     break;
                 default:
                     break;

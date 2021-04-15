@@ -82,8 +82,9 @@ public abstract class Skill : ScriptableObject
                             {
                                 comesFromCurse = true;
                                 //switch la carte de la main de l'enemy;
-                                break;
+                                
                             }
+                            comesFromCurse = false;
                         }
                         //=> Sinon ca fait la suite.
                         if (chargingAttack)
@@ -135,15 +136,20 @@ public abstract class Skill : ScriptableObject
                         if (Player.Instance.isCurse)
                         {
                             int test = Random.Range(0, 100);
-                            Debug.Log(test);
-                            if (test < 30)
+                            //Debug.Log(test);
+                            if (test < 70)
                             {
                                 Debug.Log("Cursed");
                                 comesFromCurse = true;
                                 CombatManager.Instance.ButtonsUpdate();
                                 InUse();
                             }
-                            Debug.Log("PasCursed");
+                            else
+                            {
+                                comesFromCurse = false;
+                                Debug.Log("PasCursed");
+                            }
+                            
                         }
                         if (chargingAttack)
                         {
