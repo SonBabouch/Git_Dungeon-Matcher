@@ -64,6 +64,7 @@ public class BasicAttack : Skill
         comesFromCombo = false;
         Player.Instance.canAttack = true;
         Enemy.Instance.isDefending = false;
+        CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void MonsterEffect()
@@ -95,6 +96,7 @@ public class BasicAttack : Skill
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;
         Player.Instance.isDefending = false;
+        CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()

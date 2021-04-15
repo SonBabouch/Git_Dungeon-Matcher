@@ -18,7 +18,20 @@ public class Cheating : Skill
 
     public override void Use()
     {
-        realUse();
+        if (Player.Instance.lastPlayerCompetence != null)
+        {
+            if (isEcho)
+            {
+                UpdateEchoValue();
+            }
+
+            if (isPlagiat)
+            {
+                UpdatePlagiatValue();
+            }
+
+            realUse();
+        }
     }
     public override void InUse()
     {
@@ -45,6 +58,8 @@ public class Cheating : Skill
         isPlagiat = true;
         isEcho = false;
         lastCompetenceReference = null;
+
+        CombatManager.Instance.ButtonsUpdate();
     }
     public override void MonsterEffect()
     {
@@ -64,6 +79,8 @@ public class Cheating : Skill
         isPlagiat = true;
         isEcho = false;
         lastCompetenceReference = null;
+
+        CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()

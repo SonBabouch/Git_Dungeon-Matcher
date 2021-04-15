@@ -20,7 +20,7 @@ public abstract class Skill : ScriptableObject
     public enum typeOfMessage { Small, Big, Emoji, Charging }
     public typeOfMessage messageType;
 
-    public enum capacityType { Attack, Heal, Defense,Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat, Mark,Curse,Cramp,Charm,Silence,Lock,Break, Ralentissement,Acceleration,Confuse};
+    public enum capacityType { Attack, Heal, Defense, Paralysie, DivinTouch, CoupDeVent, Drain, Echo, Plagiat, Mark, Curse, Cramp, Charm, Silence, Lock, Break, Ralentissement, Acceleration, Confuse };
     public capacityType typeOfCapacity;
 
     [Header("Energy Cost")]
@@ -92,7 +92,7 @@ public abstract class Skill : ScriptableObject
                             {
                                 Enemy.Instance.energy -= energyCost;
                                 Enemy.Instance.trueEnergy -= trueEnergyCost;
-                                
+
                                 //ici ca sera Enemy plutot que player
                                 Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyChargeAttack(this));
                             }
@@ -215,11 +215,29 @@ public abstract class Skill : ScriptableObject
 
     public void UpdateEchoValue()
     {
-        lastCompetenceReference = Player.Instance.lastPlayerCompetence;
+        if (side == monsterSide.Ally)
+        {
+            lastCompetenceReference = Player.Instance.lastPlayerCompetence;
+        }
+        else
+        {
+            lastCompetenceReference = Enemy.Instance.lastEnemyCompetence;
+        }
+
+
     }
 
     public void UpdatePlagiatValue()
     {
-        lastCompetenceReference = Enemy.Instance.lastEnemyCompetence;
+        if (side == monsterSide.Ally)
+        {
+            lastCompetenceReference = Enemy.Instance.lastEnemyCompetence;
+
+        }
+        else
+        {
+            lastCompetenceReference = Player.Instance.lastPlayerCompetence;
+        }
     }
 }
+

@@ -28,6 +28,8 @@ public class CombatManager : MonoBehaviour
     //Combo = 0 /  
     public Sprite[] typeRessource;
 
+    public Color initialButtonColor;
+
     private void Awake()
     {
         if (Instance == null)
@@ -64,6 +66,7 @@ public class CombatManager : MonoBehaviour
         Player.Instance.SetPlayerHandAndDraw();
         Enemy.Instance.InitializeMonster();
         Enemy.Instance.SetEnemyHandAndDraw();
+        NoEchoFeedback();
     }
     public IEnumerator PlayerEnergyGenerator()
     {
@@ -197,9 +200,26 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void NoEchoFeedback()
+    {
+        for (int i = 0; i < Player.Instance.playerHand.Count; i++)
+        {
+            if (Player.Instance.playerHand[i].isEcho || Player.Instance.playerHand[i].isPlagiat)
+            {
+                CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color= Color.grey;
+            }
+            else
+            {
+                CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
+            }
+        }
+    }
+
     #region Buttons
     void ButtonsInfos()
     {
+        NoEchoFeedback();
+
         for (int i = 0; i < Player.Instance.playerDraw.Count; i++)
         {
             if (Player.Instance.playerDraw[i].isEcho)

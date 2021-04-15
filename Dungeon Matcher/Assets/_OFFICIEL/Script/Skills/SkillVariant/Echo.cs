@@ -25,17 +25,20 @@ public class Echo : Skill
 
     public override void Use()
     {
-        if (isEcho)
+        if (Enemy.Instance.lastEnemyCompetence != null)
         {
-            UpdateEchoValue();
-        }
+            if (isEcho)
+            {
+                UpdateEchoValue();
+            }
 
-        if (isPlagiat)
-        {
-            UpdatePlagiatValue();
-        }
+            if (isPlagiat)
+            {
+                UpdatePlagiatValue();
+            }
 
-        realUse();
+            realUse();
+        }
     }
 
     public override void InUse()

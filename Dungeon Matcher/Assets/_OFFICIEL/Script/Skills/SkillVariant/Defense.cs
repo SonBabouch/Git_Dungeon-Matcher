@@ -46,7 +46,7 @@ public class Defense : Skill
 
         Player.Instance.lastPlayerCompetence = this;
         Player.Instance.canAttack = true;
-
+        CombatManager.Instance.ButtonsUpdate();
     }
 
     //5- Effect On The Monster
@@ -60,7 +60,7 @@ public class Defense : Skill
 
         Enemy.Instance.lastEnemyCompetence = this;
         Enemy.Instance.canAttack = true;
-
+        CombatManager.Instance.ButtonsUpdate();
     }
 
     //6- Launching of the attack

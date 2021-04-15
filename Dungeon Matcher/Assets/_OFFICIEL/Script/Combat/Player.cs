@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Management;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -113,6 +114,8 @@ public class Player : MonoBehaviour
             playerDraw[i] = playerSkills[i + 4];
         }
     }
+
+    
 
     public void PlayerSwapSkill(int index)
     {

@@ -162,6 +162,7 @@ public class Enemy : MonoBehaviour
         enemyHand.RemoveAt(index);
         enemyHand.Insert(index, enemyDraw[0]);
         enemyDraw.RemoveAt(0);
+        CombatManager.Instance.ButtonsUpdate();
     }
     #endregion
 
