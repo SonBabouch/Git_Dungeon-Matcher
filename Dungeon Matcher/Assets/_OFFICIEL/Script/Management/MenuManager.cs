@@ -22,10 +22,10 @@ namespace Management
         public BagManager bagManager;
         public MonsterEncyclopedie monsterEncyclopedie;
 
-        public enum gameState { Shop,Match,List,Bag }  //Index 0 à 3 (dans l'ordre).
-        public static gameState currentGameState;
+        public enum Menu { Shop,Match,List,Bag }  //Index 0 à 3 (dans l'ordre).
+        public static Menu currentGameStateMenu;
 
-        public gameState stillcurrent;
+        public Menu stillcurrent;
         public bool blockAction = false;
 
 
@@ -43,11 +43,11 @@ namespace Management
         }
         private void Start()
         {
-            currentGameState = gameState.Match;
+            currentGameStateMenu = Menu.Match;
         }
         private void Update()
         {
-            stillcurrent = currentGameState;
+            stillcurrent = currentGameStateMenu;
         }
     }
 }

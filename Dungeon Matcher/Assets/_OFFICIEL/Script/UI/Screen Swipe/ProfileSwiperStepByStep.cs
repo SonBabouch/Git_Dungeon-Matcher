@@ -34,7 +34,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
 
     void Update()
     {
-        if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameState == MenuManager.gameState.Match && MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.canvasManager.pageSwiper.onDrag == false)
+        if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameStateMenu == MenuManager.Menu.Match && MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.canvasManager.pageSwiper.onDrag == false)
         {
             if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
             {

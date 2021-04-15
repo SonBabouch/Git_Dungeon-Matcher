@@ -63,7 +63,7 @@ namespace Management
         //Change le Game State selon le menu actuel
         public void SwitchToListMenu()
         {
-            MenuManager.currentGameState = MenuManager.gameState.List;
+            MenuManager.currentGameStateMenu = MenuManager.Menu.List;
         }
 
         //A appeler à chaque fois que le joueur perd ou gagne de l'energie.
@@ -150,7 +150,7 @@ namespace Management
 
         public void UpdateParticuleSystemRare()
         {
-            if (ThereIsARare && MenuManager.currentGameState == MenuManager.gameState.Match)
+            if (ThereIsARare && MenuManager.currentGameStateMenu == MenuManager.Menu.Match)
             {
                 var emission = rareSystemParticule.emission;
                 emission.enabled = true;

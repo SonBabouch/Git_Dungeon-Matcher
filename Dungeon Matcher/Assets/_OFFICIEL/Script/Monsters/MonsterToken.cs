@@ -40,6 +40,11 @@ public class MonsterToken : MonoBehaviour
 
     private void Start()
     {
+
+        if (true)
+        {
+
+        }
         //Ajouter une bool qui switch selon ou l'on est dans la scene (Soit Combat / Soit Menu).
         foreach (Skill skill in allySkills)
         {

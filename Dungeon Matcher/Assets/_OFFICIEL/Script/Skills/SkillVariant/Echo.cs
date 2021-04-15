@@ -16,7 +16,6 @@ public class Echo : Skill
         crampEnergyCost = initialEnergyCost + 1;
         owner = obj;
         owner.GetComponent<MonsterToken>();
-        CombatManager.Instance.ButtonsUpdate();
 
         typeOfCapacity = capacityType.Echo;
         chargingAttack = false;

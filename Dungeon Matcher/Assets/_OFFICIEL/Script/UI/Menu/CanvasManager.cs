@@ -93,7 +93,7 @@ namespace Management
             {
                 pageSwiper.GetComponent<PageSwiper>().GoToList();
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
-                MenuManager.currentGameState = MenuManager.gameState.List;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.List;
             }
 
             MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
@@ -113,7 +113,7 @@ namespace Management
             {
                 pageSwiper.GetComponent<PageSwiper>().GoToMatch();
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
-                MenuManager.currentGameState = MenuManager.gameState.Match;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
             }
             MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
         }
@@ -137,7 +137,7 @@ namespace Management
                 pageSwiper.GetComponent<PageSwiper>().GoToShop();
 
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
-                MenuManager.currentGameState = MenuManager.gameState.Shop;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
 
                 
             }
@@ -152,7 +152,7 @@ namespace Management
             pageSwiper.GetComponent<PageSwiper>().GoToBag();
             //Faire le changement de Panel;
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
-            MenuManager.currentGameState = MenuManager.gameState.Bag;
+            MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
 
             MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
 

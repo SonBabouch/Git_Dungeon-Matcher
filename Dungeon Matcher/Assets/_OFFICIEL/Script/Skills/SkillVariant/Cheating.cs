@@ -41,7 +41,10 @@ public class Cheating : Skill
     public override void PlayerEffect()
     {
         //potentiellement yield return 0.1 secondes -> Coroutine
-        lastCompetenceReference.PlayerEffect();
+        if(lastCompetenceReference != null)
+        {
+            lastCompetenceReference.PlayerEffect();
+        }    
 
         if (!chargingAttack)
         {

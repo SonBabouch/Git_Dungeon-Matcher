@@ -116,16 +116,16 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         switch (currentPanelNumber)
         {   
             case -1:
-                MenuManager.currentGameState = MenuManager.gameState.Shop;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
                 break;
             case 0:
-                MenuManager.currentGameState = MenuManager.gameState.Match;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
                 break;
             case 1:
-                MenuManager.currentGameState = MenuManager.gameState.List;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.List;
                 break;
             case 2:
-                MenuManager.currentGameState = MenuManager.gameState.Bag;
+                MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
                 break;
             default:
                 break;
@@ -186,7 +186,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 1;
                     
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameState = MenuManager.gameState.List;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.List;
                     break;
 
                 case 0:
@@ -197,7 +197,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 1;
                     
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameState = MenuManager.gameState.List;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.List;
                     break;
 
                 case 2:
@@ -208,7 +208,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 1;
                     
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameState = MenuManager.gameState.List;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.List;
                     break;
                 default:
                     break;
@@ -234,7 +234,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 2;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
-                    MenuManager.currentGameState = MenuManager.gameState.Bag;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
                     break;
 
                 case 0:
@@ -245,7 +245,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 2;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameState = MenuManager.gameState.Bag;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
                     break;
 
                 case 1:
@@ -256,7 +256,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 2;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameState = MenuManager.gameState.Bag;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
                     break;
                 default:
                     break;
@@ -281,7 +281,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = -1;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
-                    MenuManager.currentGameState = MenuManager.gameState.Shop;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
                     break;
 
                 case 1:
@@ -292,7 +292,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = -1;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameState = MenuManager.gameState.Shop;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
                     break;
 
                 case 0:
@@ -303,7 +303,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = -1;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameState = MenuManager.gameState.Shop;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
                     break;
                 default:
                     break;
@@ -329,7 +329,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 0;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
-                    MenuManager.currentGameState = MenuManager.gameState.Match;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
                     break;
 
                 case 1:
@@ -340,7 +340,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 0;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
-                    MenuManager.currentGameState = MenuManager.gameState.Match;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
                     break;
 
                 case 2:
@@ -351,7 +351,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 0;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameState = MenuManager.gameState.Match;
+                    MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
                     break;
                 default:
                     break;

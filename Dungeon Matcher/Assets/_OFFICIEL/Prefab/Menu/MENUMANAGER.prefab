@@ -177,6 +177,7 @@ MonoBehaviour:
   bagManager: {fileID: 8224612494735233221}
   monsterEncyclopedie: {fileID: 5708665035815912933}
   stillcurrent: 0
+  blockAction: 0
 --- !u!114 &8224612494735233241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +488,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26,
         type: 2}
+    - target: {fileID: 8761877609787509778, guid: 117d7e950ec732d4ea425ff3e2367a51,
+        type: 3}
+      propertyPath: allySkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 117d7e950ec732d4ea425ff3e2367a51, type: 3}
 --- !u!4 &5061437120062851749 stripped
@@ -567,6 +574,12 @@ PrefabInstance:
       propertyPath: template
       value: 
       objectReference: {fileID: 11400000, guid: 7e7fe7d265a52674caae0b17dba2fcb0,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: d2a6930b7f476cc4d8fff8483b34fa06,
+        type: 3}
+      propertyPath: allySkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
@@ -659,6 +672,12 @@ PrefabInstance:
       propertyPath: statement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8761877609787509778, guid: d2a6930b7f476cc4d8fff8483b34fa06,
+        type: 3}
+      propertyPath: allySkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a6930b7f476cc4d8fff8483b34fa06, type: 3}
 --- !u!4 &4058008413495544219 stripped

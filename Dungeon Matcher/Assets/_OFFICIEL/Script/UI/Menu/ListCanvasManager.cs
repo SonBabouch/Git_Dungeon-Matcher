@@ -48,7 +48,7 @@ namespace Management
         //changement de la State machine
         public void SwitchToMatchMenu()
         {
-            MenuManager.currentGameState = MenuManager.gameState.Match;
+            MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
         }
 
         //appeler à chaque match pour update le visuel du menu

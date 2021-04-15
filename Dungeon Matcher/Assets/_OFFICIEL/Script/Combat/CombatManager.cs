@@ -15,6 +15,7 @@ public class CombatManager : MonoBehaviour
     public bool takingTimeAway = false;
 
     public bool isCombatEnded = false;
+    public bool inCombat = false;
 
     public List<Button> combatButtons;
     [Header("BoutonsUI")]
@@ -46,18 +47,27 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
+       
+    }
+
+    public void InitializeBattle()
+    {
         //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
         CharacterSkillInitialisation();
         ButtonsInitialization();
 
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
+        inCombat = true;
     }
 
     private void FixedUpdate()
     {
-        RunningTimer();
-        ButtonIndex();
+        if (inCombat)
+        {
+            RunningTimer();
+            ButtonIndex();
+        }
     }
 
     public void CharacterSkillInitialisation()
@@ -197,6 +207,7 @@ public class CombatManager : MonoBehaviour
         else if(secondsLeft <= minSecondsLeft)
         {
             isCombatEnded = true;
+            inCombat = false;
         }
     }
 
@@ -204,11 +215,14 @@ public class CombatManager : MonoBehaviour
     {
         for (int i = 0; i < Player.Instance.playerHand.Count; i++)
         {
-            if (Player.Instance.playerHand[i].isEcho || Player.Instance.playerHand[i].isPlagiat)
+            if (Player.Instance.playerHand[i].isEcho && Player.Instance.lastPlayerCompetence ==null)
             {
                 CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color= Color.grey;
             }
-            else
+            else if (Player.Instance.playerHand[i].isPlagiat && Enemy.Instance.lastEnemyCompetence == null)
+            {
+                CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = Color.grey;
+            }else
             {
                 CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
             }
