@@ -75,9 +75,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        EnemyBasicBehavior();
+        StartCoroutine(EnemyBasicBehavior());
     }
 
     public void InitializeMonster()
@@ -195,14 +195,17 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-
-    public void EnemyBasicBehavior()
+    int minValue;
+    int maxValue;
+    int averageValue;
+    public IEnumerator EnemyBasicBehavior()
     {
-        if(trueEnergy >= 3f && canAttack && ConversationManager.Instance.canAttack)
-        {
-            enemyIndex = Random.Range(0, enemyHand.Count);
-            enemyHand[enemyIndex].Use();
-        }
+        CheckTypeOfSkillInHand();
+        UseSkill();
+        yield return new WaitForSeconds(2f);
+        ResetAllBools();
+        StartCoroutine(EnemyBasicBehavior());
+
     }
 
     public void CheckTypeOfSkillInHand()
@@ -211,5 +214,84 @@ public class Enemy : MonoBehaviour
         {
             skillInHand.SetEnemyBoolType();
         }
+         minValue = enemyHand[0].energyCost;
+         maxValue = enemyHand[0].energyCost;
+         averageValue = (enemyHand[0].energyCost + enemyHand[1].energyCost + enemyHand[2].energyCost + enemyHand[3].energyCost) / enemyHand.Count; ;
+        for (int i = 1; i < enemyHand.Count; i++)
+        {
+            if(enemyHand[i].energyCost < minValue)
+            {
+                minValue = enemyHand[i].energyCost;
+            }
+            if(enemyHand[i].energyCost > maxValue)
+            {
+                maxValue = enemyHand[i].energyCost;
+            }
+        }
+    }
+
+    public void UseSkill()
+    {
+        #region attack
+        if (canUseAttack == true)
+        {
+            StartCoroutine(ChooseSkillToUSe(Skill.capacityType.Attack));
+            return;
+        }
+        #endregion
+
+        #region Heal
+        if (canUseHeal)
+        {
+            StartCoroutine(ChooseSkillToUSe(Skill.capacityType.Heal));
+            return;
+        }
+        #endregion
+    }
+
+    public IEnumerator ChooseSkillToUSe(Skill.capacityType skillType)
+    {
+        ResetAllBools();
+        bool _running = true;
+        while(_running)
+        {
+            List<Skill> allSkillsOfThisType = new List<Skill>();
+            foreach (Skill skillInHand in enemyHand)
+            {
+                if (skillInHand.typeOfCapacity == skillType)
+                {
+                    allSkillsOfThisType.Add(skillInHand);
+                }
+            }
+
+            int _index = Random.Range(0, allSkillsOfThisType.Count);
+
+            if (trueEnergy >= allSkillsOfThisType[_index].trueEnergyCost && canAttack && ConversationManager.Instance.canAttack)
+            {
+                allSkillsOfThisType[_index].Use();
+                _running = false;
+            }
+            yield return null;
+        }
+    }
+
+    private void ResetAllBools()
+    {
+        canUseAttack = false;
+        canUseBreak = false;
+        canUseCharm = false;
+        canUseCoupdeVent = false;
+        canUseCramp = false;
+        canUseCurse = false;
+        canUseDefense = false;
+        canUseDivinTouch = false;
+        canUseDrain = false;
+        canUseEcho = false;
+        canUseHeal = false;
+        canUseLock = false;
+        canUseMark = false;
+        canUseParalysie = false;
+        canUsePlagiat = false;
+        canUseSilence = false;
     }
 }

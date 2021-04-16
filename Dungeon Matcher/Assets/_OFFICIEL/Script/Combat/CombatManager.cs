@@ -25,6 +25,8 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI[] energyCostText;
     public TextMeshProUGUI[] damageText;
 
+    public float energyPerSeconds;
+
     public Sprite[] iconRessource;
 
     //Combo = 0 /  
@@ -90,7 +92,7 @@ public class CombatManager : MonoBehaviour
        
         yield return new WaitForSeconds(0.1f);
         
-        Player.Instance.energy += 1 * Player.Instance.modifierEnergy;
+        Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
 
         if(Player.Instance.energy > Player.Instance.maxEnergy)
         {
@@ -140,7 +142,7 @@ public class CombatManager : MonoBehaviour
     public IEnumerator EnemyEnergyGenerator()
     {
         yield return new WaitForSeconds(0.1f);
-        Enemy.Instance.energy += 1 * Enemy.Instance.energyModifierEnemy;
+        Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.energyModifierEnemy;
         if (Enemy.Instance.energy >= Enemy.Instance.maxEnergy)
         {
             Enemy.Instance.energy = Enemy.Instance.maxEnergy;
@@ -192,7 +194,7 @@ public class CombatManager : MonoBehaviour
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        Enemy.Instance.health -= 1f;
+        Enemy.Instance.health -= 0.5f;
         secondsLeft -= 1;
         if(secondsLeft < 10)
         {
