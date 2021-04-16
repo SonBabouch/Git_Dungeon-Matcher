@@ -235,16 +235,24 @@ public class Enemy : MonoBehaviour
         #region attack
         if (canUseAttack)
         {
-            ChooseSkillToUSe(Skill.capacityType.Attack);
-            return;
+            int chanceToLaunch = Random.Range(0, 101);
+            if(chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Attack);
+                return;
+            }
         }
         #endregion
 
         #region Heal
         if (canUseHeal)
         {
-            ChooseSkillToUSe(Skill.capacityType.Heal);
-            return;
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Heal);
+                return;
+            }
         }
         #endregion
     }
@@ -258,7 +266,7 @@ public class Enemy : MonoBehaviour
             enemyHand[enemyIndex].Use();
         }
 
-
+        #region TestCode
         //ResetAllBools();
         //bool _running = true;
         //while(_running)
@@ -285,6 +293,7 @@ public class Enemy : MonoBehaviour
         //allSkillsOfThisType.Clear();
         //yield return null;
         //}
+        #endregion
     }
 
     private void ResetAllBools()
