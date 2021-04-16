@@ -202,7 +202,7 @@ public class Enemy : MonoBehaviour
     {
         CheckTypeOfSkillInHand();
         UseSkill();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         ResetAllBools();
         StartCoroutine(EnemyBasicBehavior());
 
@@ -233,9 +233,9 @@ public class Enemy : MonoBehaviour
     public void UseSkill()
     {
         #region attack
-        if (canUseAttack == true)
+        if (canUseAttack)
         {
-            StartCoroutine(ChooseSkillToUSe(Skill.capacityType.Attack));
+            ChooseSkillToUSe(Skill.capacityType.Attack);
             return;
         }
         #endregion
@@ -243,36 +243,48 @@ public class Enemy : MonoBehaviour
         #region Heal
         if (canUseHeal)
         {
-            StartCoroutine(ChooseSkillToUSe(Skill.capacityType.Heal));
+            ChooseSkillToUSe(Skill.capacityType.Heal);
             return;
         }
         #endregion
     }
 
-    public IEnumerator ChooseSkillToUSe(Skill.capacityType skillType)
+    public void ChooseSkillToUSe(Skill.capacityType skillType)
     {
-        ResetAllBools();
-        bool _running = true;
-        while(_running)
+        enemyIndex = Random.Range(0, enemyHand.Count);
+
+        if (enemyHand[enemyIndex].typeOfCapacity == skillType)
         {
-            List<Skill> allSkillsOfThisType = new List<Skill>();
-            foreach (Skill skillInHand in enemyHand)
-            {
-                if (skillInHand.typeOfCapacity == skillType)
-                {
-                    allSkillsOfThisType.Add(skillInHand);
-                }
-            }
-
-            int _index = Random.Range(0, allSkillsOfThisType.Count);
-
-            if (trueEnergy >= allSkillsOfThisType[_index].trueEnergyCost && canAttack && ConversationManager.Instance.canAttack)
-            {
-                allSkillsOfThisType[_index].Use();
-                _running = false;
-            }
-            yield return null;
+            enemyHand[enemyIndex].Use();
         }
+
+
+        //ResetAllBools();
+        //bool _running = true;
+        //while(_running)
+        //{
+        //List<Skill> allSkillsOfThisType = new List<Skill>();
+
+        //foreach (Skill skillInHand in enemyHand)
+        //{
+        //    if (skillInHand.typeOfCapacity == skillType)
+        //    {
+        //        allSkillsOfThisType.Add(skillInHand);
+        //    }
+        //}
+
+
+        //enemyIndex = Random.Range(0, allSkillsOfThisType.Count);
+        //Debug.Log("enemyIndex : " + enemyIndex + " allSkillsOfThisType Count " + allSkillsOfThisType.Count);
+
+        //if (trueEnergy >= allSkillsOfThisType[enemyIndex].trueEnergyCost && canAttack)
+        //{
+        //    allSkillsOfThisType[enemyIndex].Use();
+        //    _running = false;
+        //}
+        //allSkillsOfThisType.Clear();
+        //yield return null;
+        //}
     }
 
     private void ResetAllBools()
