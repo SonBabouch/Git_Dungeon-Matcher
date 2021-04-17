@@ -6,8 +6,6 @@ using Management;
 
     public class MonsterEncyclopedie : MonoBehaviour
     {
-        
-
         public GameObject commonMonsterParents;
         public GameObject rareMonsterParents;
 
@@ -17,7 +15,6 @@ using Management;
         // Start is called before the first frame update
         void Awake()
         {
-
             //Initialisation des valeurs pour chaque Monstres.
             foreach (Transform child in commonMonsterParents.transform)
             {
@@ -39,33 +36,32 @@ using Management;
             {
                 allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
             }
-
-            
         }
-       
+
         public void UpdateMonsterEncyclopedie()
         {
-            for (int i = 0; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i++)
-            {
-                allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
-            }
+        for (int i = 0; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i++)
+        {
+            allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+        }
 
-            for (int i = MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel]; i++)
-            {
+        for (int i = MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel]; i++)
+        {
             allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
-            }
+        }
 
-            for (int i = 0; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i++)
-            {
-                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
-            }
+        for (int i = 0; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i++)
+        {
+            allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+        }
 
-            for (int i = MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel]; i++)
-            {
-                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
-            }
-
-    }
+        for (int i = MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i < MenuManager.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel]; i++)
+        {
+            allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
+        }
+            allCommonMonster[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            allCommonMonster[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        }  
        
     }
 

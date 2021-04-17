@@ -27,6 +27,8 @@ namespace Management
         //Tous les Tests ne se feront pas à l'écran car on affiche que 3 combat atm;
         private IEnumerator TestClaimEnum()
         {
+            MenuManager.Instance.canvasManager.listCanvas.combatButton.SetActive(false);
+
             yield return new WaitForSeconds(1f);
             //Tout les tests ont été fait;
             if (currentTest == listCurrentSize)
@@ -48,6 +50,7 @@ namespace Management
                     Destroy(objectToRemove); 
                 }
 
+                
                 //Full Reset
                 MenuManager.Instance.matchManager.matchList = null;
                 

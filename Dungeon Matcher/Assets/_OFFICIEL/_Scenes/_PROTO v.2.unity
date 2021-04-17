@@ -3912,6 +3912,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2088558426}
     m_Modifications:
+    - target: {fileID: 923942448476800374, guid: 4614c2cbe54a2cd47be341abc9584319,
+        type: 3}
+      propertyPath: side
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063142396469072134, guid: 4614c2cbe54a2cd47be341abc9584319,
+        type: 3}
+      propertyPath: side
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224612494735233243, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: popButton
@@ -3927,6 +3937,11 @@ PrefabInstance:
       propertyPath: canvasManager
       value: 
       objectReference: {fileID: 440444608}
+    - target: {fileID: 8224612494735233246, guid: 4614c2cbe54a2cd47be341abc9584319,
+        type: 3}
+      propertyPath: stillcurrent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224612494735233247, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: m_LocalPosition.x

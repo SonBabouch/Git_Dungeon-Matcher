@@ -60,7 +60,6 @@ namespace Management
                 rareMonsterList.Add(MenuManager.Instance.monsterEncyclopedie.allRareMonster[i]);
             }
 
-
             for (int i = 0; i < nbOfProfilsMax; i++)
             {
                 FirstTirage();
@@ -107,8 +106,6 @@ namespace Management
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
                 //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
                
-                
-                profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
                 //Le monstre est ajouté à une liste pouvant être traquée.
                 monsterSpawned.Insert(0,profilSpawned);
                 
@@ -117,7 +114,8 @@ namespace Management
                 //Debug.Log(monsterPresented);
 
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateProfilPosition();
-                
+                profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
+
         }
 
         public void FirstTirage()

@@ -16,7 +16,7 @@ namespace Management
         [SerializeField] private GameObject parentPositions;
 
         //Bas d'écran
-        [SerializeField] private GameObject combatButton;
+        public GameObject combatButton;
         [SerializeField] private GameObject alerteCombat;
 
         //Prefab à instancier quand le joueur match
@@ -31,14 +31,14 @@ namespace Management
             }
         }
 
-        private void Update()
+        public void UpdateCombatButton()
         {
-            if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2 )
+            if (MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
             {
                 alerteCombat.SetActive(true);
                 combatButton.SetActive(false);
             }
-            else if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count == 2 && MenuManager.Instance.matchManager.matchList.Count >=1)
+            else if (MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count == 2 && MenuManager.Instance.matchManager.matchList.Count >= 1)
             {
                 combatButton.SetActive(true);
                 alerteCombat.SetActive(false);

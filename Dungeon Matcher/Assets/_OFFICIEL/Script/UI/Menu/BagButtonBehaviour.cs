@@ -46,30 +46,30 @@ public class BagButtonBehaviour : MonoBehaviour
         {
             return;
         }
-
-        switch (MenuManager.Instance.bagManager.monsterTeam.Count)
+        else if (monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim)
         {
-            case 0:
-                MenuManager.Instance.bagManager.monsterTeam.Add(monsterContainer);
-                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
-                break;
-            case 1:
-                MenuManager.Instance.bagManager.monsterTeam.Insert(1,monsterContainer);
-                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
-                break;
-            case 2:
-                GameObject monsterToRemove = MenuManager.Instance.bagManager.monsterTeam[1];
-                monsterToRemove.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+            switch (MenuManager.Instance.bagManager.monsterTeam.Count)
+            {
+                case 0:
+                    MenuManager.Instance.bagManager.monsterTeam.Add(monsterContainer);
+                    monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                    break;
+                case 1:
+                    MenuManager.Instance.bagManager.monsterTeam.Insert(1, monsterContainer);
+                    monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                    break;
+                case 2:
+                    GameObject monsterToRemove = MenuManager.Instance.bagManager.monsterTeam[1];
+                    monsterToRemove.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
 
-                MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
-                MenuManager.Instance.bagManager.monsterTeam.Insert(1, monsterContainer);
-                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
-                break;
-            default:
-                print("Incorrect intelligence level.");
-                break;
+                    MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
+                    MenuManager.Instance.bagManager.monsterTeam.Insert(1, monsterContainer);
+                    monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Equipe;
+                    break;
+                default:
+                    break;
+            }
         }
-
         MenuManager.Instance.canvasManager.bagCanvas.UpdateEquipeButton();
     }
 
@@ -81,15 +81,14 @@ public class BagButtonBehaviour : MonoBehaviour
     public void Selected()
     {
         if(MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != gameObject 
-            && MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null 
-            )
+            && MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null && (gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim) )
         {
             MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
             animator.SetTrigger("Selected");
             MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = gameObject;
             MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected = gameObject.GetComponent<BagButtonBehaviour>().monsterContainer;
         }
-        else
+        else if(gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim)
         {
             MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = gameObject;
             MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected = gameObject.GetComponent<BagButtonBehaviour>().monsterContainer;
