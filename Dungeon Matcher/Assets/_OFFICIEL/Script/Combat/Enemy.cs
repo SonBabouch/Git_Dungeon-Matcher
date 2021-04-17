@@ -255,6 +255,126 @@ public class Enemy : MonoBehaviour
             }
         }
         #endregion
+
+        #region cramp
+        if (canUseCramp)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Cramp);
+                return;
+            }
+        }
+        #endregion
+
+        #region Drain
+        if (canUseDrain)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Drain);
+                return;
+            }
+        }
+        #endregion
+
+        #region Curse
+        if (canUseCurse)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Curse);
+                return;
+            }
+        }
+        #endregion
+
+        #region Mark
+        if (canUseMark)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Mark);
+                return;
+            }
+        }
+        #endregion
+
+        #region Silence
+        if (canUseSilence)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Silence);
+                return;
+            }
+        }
+        #endregion
+
+        #region Paralysie
+        if (canUseParalysie)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Paralysie);
+                return;
+            }
+        }
+        #endregion
+
+        #region Charm
+        if (canUseCharm)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Charm);
+                return;
+            }
+        }
+        #endregion
+
+        #region Lock
+        if (canUseLock)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Lock);
+                return;
+            }
+        }
+        #endregion
+
+        #region CoupDeVent
+        if (canUseCoupdeVent)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.CoupDeVent);
+                return;
+            }
+        }
+        #endregion
+
+        #region DivineTouch
+        if (canUseDivinTouch)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.DivinTouch);
+                return;
+            }
+        }
+        #endregion
     }
 
     public void ChooseSkillToUSe(Skill.capacityType skillType)
@@ -298,21 +418,21 @@ public class Enemy : MonoBehaviour
 
     private void ResetAllBools()
     {
-        canUseAttack = false;
-        canUseBreak = false;
-        canUseCharm = false;
-        canUseCoupdeVent = false;
-        canUseCramp = false;
-        canUseCurse = false;
-        canUseDefense = false;
-        canUseDivinTouch = false;
-        canUseDrain = false;
+        canUseAttack = false; //Done
+        canUseBreak = false; 
+        canUseCharm = false; //Done
+        canUseCoupdeVent = false; //Done
+        canUseCramp = false; //Done
+        canUseCurse = false; //Done
+        canUseDefense = false; 
+        canUseDivinTouch = false; //
+        canUseDrain = false; //Done
         canUseEcho = false;
-        canUseHeal = false;
-        canUseLock = false;
-        canUseMark = false;
-        canUseParalysie = false;
+        canUseHeal = false; //Done
+        canUseLock = false; //Done
+        canUseMark = false; //Done
+        canUseParalysie = false; //Done
         canUsePlagiat = false;
-        canUseSilence = false;
+        canUseSilence = false; //Done
     }
 }
