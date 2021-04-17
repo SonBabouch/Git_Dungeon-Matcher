@@ -10,7 +10,10 @@ public class EnemyUi : MonoBehaviour
 
     private void Update()
     {
-        enemyHealthBar.fillAmount = Enemy.Instance.health / Enemy.Instance.maxHealth;
-        enemyEnergyBar.fillAmount = Enemy.Instance.energy / Enemy.Instance.maxEnergy;
+        if (CombatManager.Instance.inCombat)
+        {
+            enemyHealthBar.fillAmount = Enemy.Instance.health / Enemy.Instance.maxHealth;
+            enemyEnergyBar.fillAmount = Enemy.Instance.energy / Enemy.Instance.maxEnergy;
+        }
     }
 }

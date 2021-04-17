@@ -16,6 +16,7 @@ public class CombatManager : MonoBehaviour
 
     public bool isCombatEnded = false;
     public bool inCombat = false;
+    public int combatInt = 0;
 
     public List<Button> combatButtons;
     [Header("BoutonsUI")]
@@ -48,13 +49,15 @@ public class CombatManager : MonoBehaviour
 
     public void InitializeBattle()
     {
-        //timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
+        secondsLeft = maxSecondsLeft;
         CharacterSkillInitialisation();
         ButtonsInitialization();
+        MenuTransitionCombat.Instance.topOfBG.GetComponent<Tweener>().TweenPositionTo(MenuTransitionCombat.Instance.topOfBGTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
 
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
         inCombat = true;
+        isCombatEnded = false;
     }
 
     private void FixedUpdate()
@@ -68,6 +71,7 @@ public class CombatManager : MonoBehaviour
         {
             RunningTimer();
             ButtonIndex();
+            UpdateHealthPoint();
         }
     }
 
@@ -209,6 +213,43 @@ public class CombatManager : MonoBehaviour
         {
             isCombatEnded = true;
             inCombat = false;
+            OnCombatEnd();
+        }
+    }
+
+    void UpdateHealthPoint()
+    {
+        if(Enemy.Instance.health < 0)
+        {
+            Enemy.Instance.health = 0;
+        }
+        
+        if(Enemy.Instance.health > 100)
+        {
+            Enemy.Instance.health = 100;
+        }
+    }
+    //Se lance à la fin d'un combat.
+    public void OnCombatEnd()
+    {
+        MenuTransitionCombat.Instance.numberOfBattle++;
+        MenuTransitionCombat.Instance.ShowCombatDetails(Enemy.Instance.health);
+    }
+
+    
+
+    public void ContinueCombat()
+    {
+        if (combatInt < Enemy.Instance.enemyMonsters.Count)
+        {
+            //Lancer une autre Coroutine puis celle ci;
+            MenuTransitionCombat.Instance.DisableDetails();
+            
+        }
+        else
+        {
+            //Pour garder les references et pas être coupé dans l'animation.
+            MenuTransitionCombat.Instance.GoToMenuTransition(); 
         }
     }
 
@@ -614,19 +655,19 @@ public class CombatManager : MonoBehaviour
     public int index;
     public void ButtonIndex()
     {
-        if(combatButtons[0].GetComponent<MyButton>().isPressed == true)
+        if(combatButtons[0].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             index = 0;
         }
-        if (combatButtons[1].GetComponent<MyButton>().isPressed == true)
+        if (combatButtons[1].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             index = 1;
         }
-        if (combatButtons[2].GetComponent<MyButton>().isPressed == true)
+        if (combatButtons[2].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             index = 2;
         }
-        if (combatButtons[3].GetComponent<MyButton>().isPressed == true)
+        if (combatButtons[3].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             index = 3;
         }

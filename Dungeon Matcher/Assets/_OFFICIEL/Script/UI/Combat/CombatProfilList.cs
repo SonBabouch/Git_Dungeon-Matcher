@@ -19,6 +19,8 @@ public class CombatProfilList : MonoBehaviour
     [SerializeField] private TextMeshProUGUI chanceDrop;
     public GameObject monsterContainer;
 
+    public GameObject claimFeedback;
+    public GameObject noClaimFeedback;
 
     //S'appele quand le profil est matché.
     public void UpdateVisualMatch()
@@ -31,9 +33,12 @@ public class CombatProfilList : MonoBehaviour
 
         profilImage.sprite = profilAsset;
         numberCombatText.text = "Combat " + numberCombat.ToString() + ".";
-
     }
 
+    public void UpdateClaimChance()
+    {
+        chanceDrop.text = chanceClaim.ToString();
+    }
     
 
     //Fonction on click

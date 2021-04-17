@@ -66,8 +66,10 @@ namespace Management
             instantiatedProfil.GetComponent<CombatProfilList>().numberCombat = MenuManager.Instance.listManager.listCurrentSize;
             //Debug.Log("2");
             instantiatedProfil.GetComponent<CombatProfilList>().UpdateVisualMatch();
-            
+            MenuManager.Instance.listManager.listPrefab.Add(instantiatedProfil);
         }
+
+       
     }
 
     

@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
 
     public PlayerUI playerUi;
 
-    [SerializeField]
-    private List<GameObject> allyMonsters;
+    
+    public List<GameObject> allyMonsters;
     public List<Skill> playerSkills;
     public float health;
     public float maxHealth;

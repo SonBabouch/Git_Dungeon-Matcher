@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     public float energyModifierEnemy;
     public int trueEnergy;
     public GameObject currentMonster;
-    [SerializeField]
-    private List<GameObject> enemyMonsters = new List<GameObject>();
+
+    public List<GameObject> enemyMonsters = new List<GameObject>();
     [SerializeField]
     private List<Skill> enemySkills = new List<Skill>();
     [SerializeField]
