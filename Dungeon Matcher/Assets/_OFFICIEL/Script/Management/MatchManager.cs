@@ -60,6 +60,10 @@ namespace Management
                 rareMonsterList.Add(MenuManager.Instance.monsterEncyclopedie.allRareMonster[i]);
             }
 
+            commonMonsterList[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            commonMonsterList[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+
+
             for (int i = 0; i < nbOfProfilsMax; i++)
             {
                 FirstTirage();
@@ -105,7 +109,7 @@ namespace Management
                 profilSpawned.SetActive(false);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
                 //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
-               
+                profilSpawned.GetComponent<ProfilBehaviour>().Initialisation(true);
                 //Le monstre est ajouté à une liste pouvant être traquée.
                 monsterSpawned.Insert(0,profilSpawned);
                 
@@ -114,7 +118,7 @@ namespace Management
                 //Debug.Log(monsterPresented);
 
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateProfilPosition();
-                profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
+                
 
         }
 
@@ -151,7 +155,7 @@ namespace Management
             profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
             //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
 
-            profilSpawned.GetComponent<ProfilBehaviour>().Initialisation();
+            profilSpawned.GetComponent<ProfilBehaviour>().Initialisation(true);
             //Le monstre est ajouté à une liste pouvant être traquée.
             monsterSpawned.Insert(0, profilSpawned);
             //Debug.Log(monsterPresented);
@@ -206,7 +210,7 @@ namespace Management
                     MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
                 }
 
-                if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible)
+                if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
                 {
                     matchList.Add(monsterPresented);
 
@@ -217,9 +221,11 @@ namespace Management
                     //Debug.Log("1");
                     //Instantie le profil matché dans la liste.
                     MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
+                    MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
                 }
                 else
                 {
+                    //Si Indisponible => Ici
                     MenuManager.Instance.canvasManager.StartCoroutine(MenuManager.Instance.canvasManager.NoMatchFeedback());
                 }
 

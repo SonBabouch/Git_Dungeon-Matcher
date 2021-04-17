@@ -242,6 +242,7 @@ public class MenuTransitionCombat : MonoBehaviour
         ManagerManager.Instance.menuManager.SetActive(true);
         yield return new WaitForSeconds(1f);
         startCombatButton.SetActive(false);
+
         for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
         {
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().chanceClaim = storedValue[i];
@@ -254,6 +255,7 @@ public class MenuTransitionCombat : MonoBehaviour
         botSlider1.GetComponent<Tweener>().TweenPositionTo(botSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
 
         yield return new WaitForSeconds(1f);
+        numberOfBattle = 0;
         Management.MenuManager.Instance.listManager.TestClaim();
     }
 }

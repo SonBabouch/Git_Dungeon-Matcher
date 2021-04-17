@@ -220,7 +220,7 @@ namespace Management
 
         public IEnumerator alerteDislike()
         {
-            Debug.Log("wallah match");
+            //Debug.Log("wallah match");
             MenuManager.Instance.blockAction = true;
             PageSwiper.canChange = false;
             //Changer la boule pour désactiver les boutons.

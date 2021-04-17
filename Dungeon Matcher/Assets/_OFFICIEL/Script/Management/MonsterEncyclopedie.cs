@@ -59,8 +59,8 @@ using Management;
         {
             allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
         }
-            allCommonMonster[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
-            allCommonMonster[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        MenuManager.Instance.matchManager.commonMonsterList[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        MenuManager.Instance.matchManager.commonMonsterList[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
         }  
        
     }

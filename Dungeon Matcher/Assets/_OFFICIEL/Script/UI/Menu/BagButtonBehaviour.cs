@@ -71,6 +71,7 @@ public class BagButtonBehaviour : MonoBehaviour
             }
         }
         MenuManager.Instance.canvasManager.bagCanvas.UpdateEquipeButton();
+        MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
     }
 
     public void Upgrade()
@@ -81,7 +82,7 @@ public class BagButtonBehaviour : MonoBehaviour
     public void Selected()
     {
         if(MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != gameObject 
-            && MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null && (gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim) )
+            && MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null && (gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim))
         {
             MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
             animator.SetTrigger("Selected");

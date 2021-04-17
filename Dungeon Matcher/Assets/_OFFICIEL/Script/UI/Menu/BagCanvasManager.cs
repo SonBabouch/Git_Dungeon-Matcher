@@ -77,7 +77,7 @@ public class BagCanvasManager : MonoBehaviour
     {
         if(MenuManager.Instance.bagManager.monsterTeam[0] != null)
         {
-            MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+            MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
             UpdateEquipeButton();
         }
@@ -88,7 +88,7 @@ public class BagCanvasManager : MonoBehaviour
     {
         if (MenuManager.Instance.bagManager.monsterTeam[1] != null)
         {
-            MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+            MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
             UpdateEquipeButton();
         }

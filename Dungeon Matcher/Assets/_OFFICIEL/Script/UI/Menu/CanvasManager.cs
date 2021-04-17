@@ -39,7 +39,14 @@ namespace Management
                 notificationBubble.SetActive(true);
                 numberNotif.text = MenuManager.Instance.listManager.listCurrentSize.ToString();
             }
+            else
+            {
+                numberNotif.text = MenuManager.Instance.listManager.listCurrentSize.ToString();
+                notificationBubble.SetActive(false);
+                
+            }
         }
+        
 
         #region TitleScreen
         public void TitleScreen()

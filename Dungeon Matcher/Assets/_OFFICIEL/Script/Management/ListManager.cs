@@ -51,9 +51,18 @@ namespace Management
                 }
 
                 
-                //Full Reset
-                MenuManager.Instance.matchManager.matchList = null;
+                for (int i = 0; i < MenuManager.Instance.matchManager.monsterSpawned.Count; i++)
+                {
+                    MenuManager.Instance.matchManager.monsterSpawned[i].GetComponent<ProfilBehaviour>().Initialisation(false);
+                }
                 
+
+                //Full Reset
+                listCurrentSize = 0;
+                MenuTransitionCombat.Instance.storedValue = new List<float>();
+                MenuManager.Instance.matchManager.matchList = new List<GameObject>();
+                MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+                MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
                 MenuManager.Instance.blockAction = false;
                 PageSwiper.canChange = true;
             }
@@ -62,8 +71,9 @@ namespace Management
                 MenuManager.Instance.blockAction = true;
                 PageSwiper.canChange = false;
                 popButton.SetActive(false);
-                int randomTest = Random.Range(0, 100);
 
+                int randomTest = Random.Range(0, 100);
+                Debug.Log(randomTest);
                 CombatProfilList CPL = listPrefab[currentTest].GetComponent<CombatProfilList>();
                 if (randomTest < CPL.chanceClaim)
                 {
@@ -75,10 +85,11 @@ namespace Management
                 }
                 else
                 {
+                   
                     //Test Failed;
                     listPrefab[currentTest].GetComponent<CombatProfilList>().monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
                     Vector3 scaleVectorFeedback = new Vector3(1, 1, 1);
-                    CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
+                    CPL.noClaimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
                     //afficher FeedBack;
                 }
 
