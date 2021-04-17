@@ -24,7 +24,7 @@ public class ProfilBehaviour : MonoBehaviour
         health.text = monsterPick.GetComponent<MonsterToken>().health.ToString();
         profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
 
-        if (monsterPick.GetComponent<MonsterToken>().isGet)
+        if (monsterPick.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPick.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
         {
             certification.SetActive(true);
         }

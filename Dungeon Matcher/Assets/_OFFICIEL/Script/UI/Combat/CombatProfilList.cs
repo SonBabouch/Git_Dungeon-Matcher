@@ -37,18 +37,8 @@ public class CombatProfilList : MonoBehaviour
 
     public void UpdateClaimChance()
     {
+        chanceDrop.enabled = true;
         chanceDrop.text = chanceClaim.ToString();
-    }
-    
-
-    //Fonction on click
-    public void OnClickButton()
-    {
-        //Checker cb de combat on été fait.
-        //Si c'est celui qui doit être fait :
-        //Checker si le joueur a des monstres :
-        //Si il en a pas deux, on lance pas => Afficher un message.
-        //Si y'en 
     }
 
     public void UpdateVisualCombat()

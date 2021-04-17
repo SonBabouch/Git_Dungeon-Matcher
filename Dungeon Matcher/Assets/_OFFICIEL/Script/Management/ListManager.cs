@@ -24,36 +24,16 @@ namespace Management
             StartCoroutine(TestClaimEnum());
         }
 
+        //Tous les Tests ne se feront pas à l'écran car on affiche que 3 combat atm;
         private IEnumerator TestClaimEnum()
         {
-            MenuManager.Instance.blockAction = true;
-            PageSwiper.canChange = false;
-            popButton.SetActive(false);
-            int randomTest = Random.Range(0, 100);
-
-            CombatProfilList CPL = listPrefab[currentTest].GetComponent<CombatProfilList>();
-            if (randomTest < CPL.chanceClaim)
-            {
-                //Test Réussi;
-                CPL.monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
-                //afficher FeedBack
-                Vector3 scaleVectorFeedback = new Vector3(0,0,0);
-                CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
-            }
-            else
-            {
-                //Test Failed;
-                listPrefab[currentTest].GetComponent<CombatProfilList>().monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
-                Vector3 scaleVectorFeedback = new Vector3(0, 0, 0);
-                CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
-                //afficher FeedBack;
-            }
-
-            currentTest++;
             yield return new WaitForSeconds(1f);
-
+            //Tout les tests ont été fait;
             if (currentTest == listCurrentSize)
             {
+                currentTest = 0;
+                popButton.SetActive(false);
+
                 for (int i = 0; i < listPrefab.Count; i++)
                 {
                     Vector3 scaleVector = new Vector3(0, 0, 0);
@@ -68,11 +48,38 @@ namespace Management
                     Destroy(objectToRemove); 
                 }
 
+                //Full Reset
+                MenuManager.Instance.matchManager.matchList = null;
+                
                 MenuManager.Instance.blockAction = false;
                 PageSwiper.canChange = true;
             }
-            else
+            else   //Il reste des tests à faire.
             {
+                MenuManager.Instance.blockAction = true;
+                PageSwiper.canChange = false;
+                popButton.SetActive(false);
+                int randomTest = Random.Range(0, 100);
+
+                CombatProfilList CPL = listPrefab[currentTest].GetComponent<CombatProfilList>();
+                if (randomTest < CPL.chanceClaim)
+                {
+                    //Test Réussi;
+                    CPL.monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+                    //afficher FeedBack
+                    Vector3 scaleVectorFeedback = new Vector3(1, 1, 1);
+                    CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
+                }
+                else
+                {
+                    //Test Failed;
+                    listPrefab[currentTest].GetComponent<CombatProfilList>().monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+                    Vector3 scaleVectorFeedback = new Vector3(1, 1, 1);
+                    CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
+                    //afficher FeedBack;
+                }
+
+                currentTest++;
                 popButton.SetActive(true);
             }
         }
