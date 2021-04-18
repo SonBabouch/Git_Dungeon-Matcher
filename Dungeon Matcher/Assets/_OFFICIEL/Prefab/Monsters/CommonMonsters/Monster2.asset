@@ -17,9 +17,9 @@ MonoBehaviour:
     on n'est pas prise de t\xEAte !"
   monsterName: Noel et Joel
   health: 25
+  maxHealth: 0
+  minHealh: 0
   rarety: 0
   statement: 2
   monsterIndexPosition: 2
-  profilPicture: {fileID: 21300000, guid: c8ea675b75eeb5e489dd1a164046d030, type: 3}
-  side: 0
-  inCombat: 0
+  profilPicture: {fileID: 21300000, guid: 5af00c4cbafdf7c4da9f9ba42bdfc9f4, type: 3}

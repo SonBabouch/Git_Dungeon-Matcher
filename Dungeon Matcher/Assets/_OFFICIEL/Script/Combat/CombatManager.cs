@@ -43,6 +43,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Player.Instance.health = Player.Instance.minHealth;
         //combatList = MenuManager.Instance.matchManager.matchList;
     }
 
@@ -50,6 +51,7 @@ public class CombatManager : MonoBehaviour
     public void InitializeBattle()
     {
         secondsLeft = maxSecondsLeft;
+        ResetBools();
         CharacterSkillInitialisation();
         ButtonsInitialization();
         MenuTransitionCombat.Instance.topOfBG.GetComponent<Tweener>().TweenPositionTo(MenuTransitionCombat.Instance.topOfBGTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
@@ -269,6 +271,25 @@ public class CombatManager : MonoBehaviour
                 CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
             }
         }
+    }
+
+    public void ResetBools()
+    {
+        Player.Instance.isSkillUsed = false;
+        Player.Instance.isBurn = false;
+        Player.Instance.isCurse = false;
+        Player.Instance.isCharging = false;
+        Player.Instance.isCramp = false;
+        Player.Instance.isCombo = false;
+        Player.Instance.isDefending = false;
+        Player.Instance.isBoosted = false;
+
+        Enemy.Instance.isCurse = false;
+        Enemy.Instance.isCharging = false;
+        Enemy.Instance.isCramp = false;
+        Enemy.Instance.isCombo = false;
+        Enemy.Instance.isDefending = false;
+        Enemy.Instance.isBoosted = false;
     }
 
     #region Buttons

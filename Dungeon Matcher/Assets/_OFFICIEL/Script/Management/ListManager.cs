@@ -93,6 +93,8 @@ namespace Management
                     //afficher FeedBack;
                 }
 
+                MenuManager.Instance.playerLevel.GiveExperience(5 + 3 * currentTest);
+
                 currentTest++;
                 popButton.SetActive(true);
             }

@@ -12,14 +12,7 @@ public class PlayerLevel : MonoBehaviour
     public void Update()
     {
         //Traque le moment ou le joueur passe de niveau;
-        if(currentExperience >= requiredExperience[playerLevel - 1])
-        {
-            currentExperience = 0;
-            playerLevel++;
-
-            //Permet de Update le Visuel et l'état des monstres dans le Jeu
-            Management.MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
-        }
+        
     }
 
     public IEnumerator GiveExperience(int numberOfExperience)
@@ -30,11 +23,25 @@ public class PlayerLevel : MonoBehaviour
             experienceToGet++;
             Management.MenuManager.Instance.canvasManager.matchCanvas.UpdateExperience();
             yield return new WaitForSeconds(0.1f);
+            CheckLevelUp();
             StartCoroutine(GiveExperience(numberOfExperience));
         }
         else
         {
+            CheckLevelUp();
             experienceToGet = 0;
+        }
+    }
+
+    public void CheckLevelUp()
+    {
+        if (currentExperience >= requiredExperience[playerLevel - 1])
+        {
+            currentExperience = 0;
+            playerLevel++;
+
+            //Permet de Update le Visuel et l'état des monstres dans le Jeu
+            Management.MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
         }
     }
 }

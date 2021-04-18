@@ -18,9 +18,9 @@ MonoBehaviour:
     ;)"
   monsterName: Loukatmi
   health: 21
+  maxHealth: 0
+  minHealh: 0
   rarety: 0
   statement: 2
   monsterIndexPosition: 3
-  profilPicture: {fileID: 21300000, guid: e489ae6486b00b74396e919d200124c5, type: 3}
-  side: 0
-  inCombat: 0
+  profilPicture: {fileID: 21300000, guid: 6d0ddce040e15fa4ba2d36dfbe7e16d7, type: 3}

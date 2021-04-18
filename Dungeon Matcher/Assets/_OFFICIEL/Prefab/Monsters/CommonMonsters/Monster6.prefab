@@ -57,7 +57,7 @@ MonoBehaviour:
   isGet: 0
   statement: 2
   profilPicture: {fileID: 0}
-  fullMonsterImage: {fileID: 0}
+  fullMonsterImage: {fileID: 21300000, guid: b9e24fe885485984086994ec01ca1f88, type: 3}
   side: 0
   owner: {fileID: 0}
   allySkills: []

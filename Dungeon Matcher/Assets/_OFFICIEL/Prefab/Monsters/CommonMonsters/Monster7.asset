@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Monster7
   m_EditorClassIdentifier: 
-  description: Monster7
-  monsterName: Monster7
+  description: "Oiseau de nuit en permanence en d\xE9calage horaire. Je vis la nuit
+    en UTC-10.  Ne sois pas le soleil de ma vie, laisse-moi dormir stp.  J'ai une
+    t\xEAte bizarre, mais uniquement au r\xE9veil !"
+  monsterName: Tikikaputt
   health: 10
+  maxHealth: 0
+  minHealh: 0
   rarety: 0
   statement: 0
   monsterIndexPosition: 7
-  profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}
-  side: 0
-  inCombat: 0
+  profilPicture: {fileID: 21300000, guid: 3379d45f89082ab439450dd1497d74d7, type: 3}

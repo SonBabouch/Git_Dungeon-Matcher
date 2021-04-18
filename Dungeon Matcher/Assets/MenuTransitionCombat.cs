@@ -83,7 +83,6 @@ public class MenuTransitionCombat : MonoBehaviour
         }
         else
         {
-           
             GoToMenuTransition();
         }
 
@@ -167,6 +166,8 @@ public class MenuTransitionCombat : MonoBehaviour
                 ConversationManager.Instance.allMsg[i] = null;
             }
         }
+
+        //reset Bool;
 
         Vector3 scaleVector = new Vector3(1f, 1f, 1f);
         heart.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
