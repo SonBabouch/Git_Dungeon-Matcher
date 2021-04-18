@@ -49,7 +49,7 @@ namespace Management
                     listPrefab.Remove(objectToRemove);
                     Destroy(objectToRemove); 
                 }
-
+                
                 
                 for (int i = 0; i < MenuManager.Instance.matchManager.monsterSpawned.Count; i++)
                 {

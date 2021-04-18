@@ -252,7 +252,7 @@ public class ConversationManager : MonoBehaviour
             if (allMsg[i] != null)
             {
                 numberOfMessageTotal++;
-                StartCoroutine(CancelMessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally)); ;
+                StartCoroutine(CancelMessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally)); 
             }
         }
     }
@@ -261,38 +261,8 @@ public class ConversationManager : MonoBehaviour
     
     IEnumerator CancelMessageMovement(GameObject message, int index, bool ally)
     {
-        //Déplacer message joueur
-        if (message.GetComponent<MessageBehaviour>().ally)
-        {
-            while (message.transform.position.y > playerMsgPositions[index - 1].transform.position.y)
-            {
-                Vector3 translateVector = new Vector3(0f, -4f, 0f);
-                message.transform.Translate(translateVector);
-                yield return null;
-
-            }
-            numberOfMessageMoved++;
-            message.transform.SetParent(playerMsgPositions[index - 1].transform);
-            message.transform.localPosition = Vector3.zero;
-        }
-        else //Déplacer message ennemi
-        {
-            while (message.transform.position.y < enemyMsgPositions[index - 1].transform.position.y)
-            {
-                Vector3 translateVector = new Vector3(0f, -4f, 0f);
-                message.transform.Translate(translateVector);
-                yield return null;
-
-            }
-            numberOfMessageMoved++;
-            message.transform.SetParent(enemyMsgPositions[index - 1].transform);
-            message.transform.localPosition = Vector3.zero;
-        }
-
-        if (numberOfMessageMoved == numberOfMessageTotal)
-        {   //5 - Quand tous les messages ont bougés, je peux update leur emplacement dans l'array.
-            UpdateArrayIndexCancel();
-        }
+        //5 - je peux update leur emplacement dans l'array.
+        UpdateArrayIndexCancel();
 
         yield return null;
     }
@@ -306,7 +276,7 @@ public class ConversationManager : MonoBehaviour
         {
             while (message.transform.position.y < playerMsgPositions[index + 1].transform.position.y)
             {
-                Vector3 translateVector = new Vector3(0f, 10f, 0f);
+                Vector3 translateVector = new Vector3(0f, 20f, 0f);
                 message.transform.Translate(translateVector);
                 yield return null;
 
@@ -319,7 +289,7 @@ public class ConversationManager : MonoBehaviour
         {
             while (message.transform.position.y < enemyMsgPositions[index + 1].transform.position.y)
             {
-                Vector3 translateVector = new Vector3(0f, 10f, 0f);
+                Vector3 translateVector = new Vector3(0f, 20f, 0f);
                 message.transform.Translate(translateVector);
                 yield return null;
 

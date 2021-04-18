@@ -10,7 +10,7 @@ public class EnemyUi : MonoBehaviour
     public Image enemyEnergyBar;
 
     public Image profilPicture;
-    public Text monsterName;
+    public TextMeshProUGUI monsterName;
 
     private void Update()
     {

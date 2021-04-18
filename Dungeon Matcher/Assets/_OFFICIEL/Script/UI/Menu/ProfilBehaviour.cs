@@ -71,7 +71,7 @@ public class ProfilBehaviour : MonoBehaviour
     {
         for (int i = 0; i < lenght; i++)
         {
-            Vector3 translate = new Vector3(50, 0, 1);
+            Vector3 translate = new Vector3(100, 0, 1);
             gameObject.transform.Translate(translate);
             yield return null;
         }

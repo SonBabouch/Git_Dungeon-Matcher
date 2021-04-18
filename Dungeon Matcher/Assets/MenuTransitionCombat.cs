@@ -252,6 +252,7 @@ public class MenuTransitionCombat : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         numberOfBattle = 0;
+        Enemy.Instance.health = Enemy.Instance.minHealth;
         Management.MenuManager.Instance.listManager.TestClaim();
     }
 }

@@ -196,7 +196,7 @@ namespace Management
         {
             if (currentProfil.transform.position.y < profilPosition[currentLoop].transform.position.y)
             {
-                Vector3 translateVector = new Vector3(0f, 1.2f, 0f);
+                Vector3 translateVector = new Vector3(0f, 20f, 0f);
                 currentProfil.transform.Translate(translateVector);
                 yield return new WaitForSeconds(0.001f);
                 StartCoroutine(ProfilMovement(currentProfil, currentLoop));
@@ -214,6 +214,7 @@ namespace Management
                 }
 
                 currentProfil.transform.SetParent(profilPosition[currentLoop].transform);
+                currentProfil.transform.SetAsFirstSibling();
                 currentProfil.transform.localPosition = Vector3.zero;
                 
                 yield return null;
