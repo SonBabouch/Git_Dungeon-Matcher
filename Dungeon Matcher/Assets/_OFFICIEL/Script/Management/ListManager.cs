@@ -55,10 +55,12 @@ namespace Management
                 {
                     MenuManager.Instance.matchManager.monsterSpawned[i].GetComponent<ProfilBehaviour>().Initialisation(false);
                 }
-                
 
+                MenuManager.Instance.playerLevel.GiveExperience(5 * (listCurrentSize+2));
+                
                 //Full Reset
                 listCurrentSize = 0;
+                
                 MenuTransitionCombat.Instance.storedValue = new List<float>();
                 MenuManager.Instance.matchManager.matchList = new List<GameObject>();
                 MenuManager.Instance.canvasManager.listCanvas.UpdateList();
@@ -73,7 +75,7 @@ namespace Management
                 popButton.SetActive(false);
 
                 int randomTest = Random.Range(0, 100);
-                Debug.Log(randomTest);
+                //Debug.Log(randomTest);
                 CombatProfilList CPL = listPrefab[currentTest].GetComponent<CombatProfilList>();
                 if (randomTest < CPL.chanceClaim)
                 {
@@ -93,7 +95,7 @@ namespace Management
                     //afficher FeedBack;
                 }
 
-                MenuManager.Instance.playerLevel.GiveExperience(5 + 3 * currentTest);
+                
 
                 currentTest++;
                 popButton.SetActive(true);

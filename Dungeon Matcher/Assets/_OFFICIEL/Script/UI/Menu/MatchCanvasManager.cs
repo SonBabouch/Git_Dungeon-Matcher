@@ -58,6 +58,8 @@ namespace Management
             emission.enabled = false;
 
             UpdateEnergy();
+
+            UpdateExperience();
         }
 
         //Change le Game State selon le menu actuel
@@ -229,7 +231,7 @@ namespace Management
             textBubble.SetActive(true);
             yield return new WaitForSeconds(1f);
             buttonSkip.SetActive(true);
-            Debug.Log("End");
+            //Debug.Log("End");
         }
 
         public void AlerteDislike()

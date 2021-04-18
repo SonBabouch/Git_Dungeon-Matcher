@@ -17,19 +17,22 @@ public class PlayerLevel : MonoBehaviour
 
     public IEnumerator GiveExperience(int numberOfExperience)
     {
-        if (experienceToGet < numberOfExperience)
+        if (experienceToGet == numberOfExperience)
         {
-            currentExperience++;
-            experienceToGet++;
-            Management.MenuManager.Instance.canvasManager.matchCanvas.UpdateExperience();
-            yield return new WaitForSeconds(0.1f);
+            Debug.Log("else");
             CheckLevelUp();
-            StartCoroutine(GiveExperience(numberOfExperience));
+            experienceToGet = 0;
+            yield return null;
         }
         else
         {
+            Debug.Log(experienceToGet);
+            currentExperience++;
+            experienceToGet++;
+            Management.MenuManager.Instance.canvasManager.matchCanvas.UpdateExperience();
+            yield return new WaitForSeconds(0.05f);
             CheckLevelUp();
-            experienceToGet = 0;
+            StartCoroutine(GiveExperience(numberOfExperience));
         }
     }
 

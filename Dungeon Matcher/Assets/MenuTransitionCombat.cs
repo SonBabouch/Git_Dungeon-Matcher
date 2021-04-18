@@ -28,7 +28,7 @@ public class MenuTransitionCombat : MonoBehaviour
     [SerializeField] private GameObject botSliderTweenPosition;
 
     public GameObject topOfBG;
-    public Vector3 topOfBGInitialPosition;
+    public GameObject topOfBGInitialPosition;
     public GameObject topOfBGTweenPosition;
     
     
@@ -69,7 +69,7 @@ public class MenuTransitionCombat : MonoBehaviour
             Destroy(gameObject);
         }
 
-        topOfBGInitialPosition = topOfBG.transform.localPosition;
+        
         topSliderInitialPosition = topSlider0.transform.localPosition;
         botSliderInitialPosition = botSlider0.transform.localPosition;
     }
@@ -197,7 +197,7 @@ public class MenuTransitionCombat : MonoBehaviour
     private IEnumerator EnumDisableDetails()
     {
         skipButton.GetComponent<Button>().enabled = false;
-        topOfBG.GetComponent<Tweener>().TweenPositionTo(topOfBGInitialPosition, 1f, Easings.Ease.SmoothStep, true);
+        topOfBG.GetComponent<Tweener>().TweenPositionTo(topOfBGInitialPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
         heart.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
         heartBG.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
         results.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
@@ -207,11 +207,6 @@ public class MenuTransitionCombat : MonoBehaviour
         results.text = "0%";
         StartCombatCoroutine();
     }
-
-
-
-
-
 
 
     //retour vers les menus quand plus de combat.
@@ -255,7 +250,7 @@ public class MenuTransitionCombat : MonoBehaviour
         botSlider0.GetComponent<Tweener>().TweenPositionTo(botSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
         botSlider1.GetComponent<Tweener>().TweenPositionTo(botSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         numberOfBattle = 0;
         Management.MenuManager.Instance.listManager.TestClaim();
     }

@@ -43,7 +43,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Player.Instance.health = Player.Instance.minHealth;
+        
         //combatList = MenuManager.Instance.matchManager.matchList;
     }
 
@@ -55,7 +55,7 @@ public class CombatManager : MonoBehaviour
         CharacterSkillInitialisation();
         ButtonsInitialization();
         MenuTransitionCombat.Instance.topOfBG.GetComponent<Tweener>().TweenPositionTo(MenuTransitionCombat.Instance.topOfBGTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
-
+        Player.Instance.health = Player.Instance.minHealth;
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
         inCombat = true;
