@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ac76f159b98fbe4eb7c59c2617a2cc8, type: 3}
-  m_Name: Heal
+  m_Name: Heal 1
   m_EditorClassIdentifier: 
-  skillDescription: 20 Heal
+  skillDescription: "R\xE9cup\xE8re 20"
   effectValue: 20
+  messageOwner: {fileID: 0}
   side: 1
   messageType: 0
   typeOfCapacity: 1
@@ -23,9 +24,13 @@ MonoBehaviour:
   crampEnergyCost: 30
   isComboSkill: 0
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 30
   chargingAttack: 0
   isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
+  skillIndex: 0
   himSelf: {fileID: 0}
   monster: {fileID: 0}
   owner: {fileID: 0}

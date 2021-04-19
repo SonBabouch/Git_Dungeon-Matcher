@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fee059c5848534686e5e870e3f01bc, type: 3}
   m_Name: Curse
   m_EditorClassIdentifier: 
-  skillDescription: Curse
+  skillDescription: "Mal\xE9diction"
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
@@ -28,6 +28,8 @@ MonoBehaviour:
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
   skillIndex: 3
   monster: {fileID: 0}
   owner: {fileID: 0}

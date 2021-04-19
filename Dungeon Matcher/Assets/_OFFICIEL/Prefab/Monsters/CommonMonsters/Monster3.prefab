@@ -65,4 +65,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f377e9a35f56ab5498f6b5c373b36e07, type: 2}
   - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}
   - {fileID: 11400000, guid: 6a6eba9ec79a6094094fd0f55ee9bc1d, type: 2}
-  ennemySkills: []
+  ennemySkills:
+  - {fileID: 11400000, guid: 12ca176f613a8d047a49085db8f560e1, type: 2}
+  - {fileID: 11400000, guid: 12ca176f613a8d047a49085db8f560e1, type: 2}
+  - {fileID: 11400000, guid: 4f0d3b6f15db58244b4d7a734d50fc3a, type: 2}
+  - {fileID: 11400000, guid: 4f0d3b6f15db58244b4d7a734d50fc3a, type: 2}
+  - {fileID: 11400000, guid: cb95f262dcb3d2548bd8f34678a97f45, type: 2}
+  - {fileID: 11400000, guid: cb95f262dcb3d2548bd8f34678a97f45, type: 2}
+  - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
+  - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}

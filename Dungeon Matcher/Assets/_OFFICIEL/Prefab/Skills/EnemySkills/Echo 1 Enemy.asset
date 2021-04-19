@@ -27,7 +27,7 @@ MonoBehaviour:
   comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0
-  isEcho: 0
+  isEcho: 1
   isPlagiat: 0
   lastCompetenceReference: {fileID: 0}
   skillIndex: 0
