@@ -42,24 +42,26 @@ public class Enemy : MonoBehaviour
     public float boostAttack = 1f;
 
     [Header("what in hand bools")]
-    [SerializeField] public bool canUseAttack;
-    [SerializeField] public bool canUseBreak;
-    [SerializeField] public bool canUseCharm;
-    [SerializeField] public bool canUseCoupdeVent;
-    [SerializeField] public bool canUseCramp;
-    [SerializeField] public bool canUseCurse;
-    [SerializeField] public bool canUseDefense;
-    [SerializeField] public bool canUseDivinTouch;
-    [SerializeField] public bool canUseDrain;
-    [SerializeField] public bool canUseEcho;
-    [SerializeField] public bool canUseHeal;
-    [SerializeField] public bool canUseLock;
-    [SerializeField] public bool canUseMark;
-    [SerializeField] public bool canUseParalysie;
-    [SerializeField] public bool canUsePlagiat;
-    [SerializeField] public bool canUseSilence;
+    public bool canUseAttack;
+    public bool canUseBreak;
+    public bool canUseCharm;
+    public bool canUseCoupdeVent;
+    public bool canUseCramp;
+    public bool canUseCurse;
+    public bool canUseDefense;
+    public bool canUseDivinTouch;
+    public bool canUseDrain;
+    public bool canUseEcho;
+    public bool canUseHeal;
+    public bool canUseLock;
+    public bool canUseMark;
+    public bool canUseParalysie;
+    public bool canUsePlagiat;
+    public bool canUseSilence;
 
-
+    [Header("Behavior Bools")]
+    public bool useHeal;
+    public bool useDefenseMove;
 
 
     private void Awake()
@@ -77,9 +79,13 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(EnemyBasicBehavior());
+        StartCoroutine(ChooseEnemiBehavior());
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
     public void InitializeMonster()
     {
         canAttack = true;
@@ -198,6 +204,12 @@ public class Enemy : MonoBehaviour
     int minValue;
     int maxValue;
     int averageValue;
+
+    public IEnumerator ChooseEnemiBehavior()
+    {
+        StartCoroutine(EnemyBasicBehavior());
+        yield return new WaitForSeconds(0f);
+    }
     public IEnumerator EnemyBasicBehavior()
     {
         CheckTypeOfSkillInHand();
@@ -207,6 +219,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(EnemyBasicBehavior());
 
     }
+
 
     public void CheckTypeOfSkillInHand()
     {
