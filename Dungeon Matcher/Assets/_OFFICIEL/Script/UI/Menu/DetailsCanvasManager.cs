@@ -21,14 +21,16 @@ public class DetailsCanvasManager : MonoBehaviour
     [SerializeField] private Image fullMonsterImage;
 
     //Skills Description
-    [SerializeField] private Image skill1Image;
-    [SerializeField] private Image skill2Image;
-    [SerializeField] private Image skill3Image;
-    [SerializeField] private Image skill4Image;
+    [SerializeField] private Image[] skillTypeOf;
+    [SerializeField] private Image[] skillCapacity;
+
     [SerializeField] private TextMeshProUGUI skill1Text;
     [SerializeField] private TextMeshProUGUI skill2Text;
     [SerializeField] private TextMeshProUGUI skill3Text;
     [SerializeField] private TextMeshProUGUI skill4Text;
+
+    [SerializeField] private Sprite[] iconRessource;
+    [SerializeField] private Sprite[] typeRessource;
 
     public void UpdateDetailsMenu()
     {
@@ -37,26 +39,127 @@ public class DetailsCanvasManager : MonoBehaviour
         {
             //Description Stuff
             GameObject monsterToShow = MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected;
-            monsterLevel.text = monsterToShow.GetComponent<MonsterToken>().monsterLevel.ToString();
+            monsterLevel.text = "Level " + monsterToShow.GetComponent<MonsterToken>().monsterLevel.ToString();
             monsterName.text = monsterToShow.GetComponent<MonsterToken>().monsterName;
             monsterDescription.text = monsterToShow.GetComponent<MonsterToken>().description;
             fullMonsterImage.sprite = monsterToShow.GetComponent<MonsterToken>().fullMonsterImage;
+            monsterAge.text = monsterToShow.GetComponent<MonsterToken>().health.ToString();
 
+            //Description Skills
+            skill1Text.text = monsterToShow.GetComponent<MonsterToken>().allySkills[0].skillDescription;
+            skill2Text.text = monsterToShow.GetComponent<MonsterToken>().allySkills[1].skillDescription;
+            skill3Text.text = monsterToShow.GetComponent<MonsterToken>().allySkills[2].skillDescription;
+            skill4Text.text = monsterToShow.GetComponent<MonsterToken>().allySkills[3].skillDescription;
 
-            /*Description Skills
-            skill1Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[0].skillName;
-            skill2Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[1].skillName;
-            skill3Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[2].skillName;
-            skill4Text.text = monsterToShow.GetComponent<Monster.MonsterToken>().skills[3].skillName;
-
-            skill1Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[0].skillImage;
-            skill2Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[1].skillImage;
-            skill3Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[2].skillImage;
-            skill4Image.sprite = monsterToShow.GetComponent<Monster.MonsterToken>().skills[3].skillImage;
-            */
+            for (int i = 0; i < skillTypeOf.Length; i++)
+            {
+                UpdateTypeOfImage(monsterToShow.GetComponent<MonsterToken>().allySkills[i],i);
+                UpdateCapacityImage(monsterToShow.GetComponent<MonsterToken>().allySkills[i],i);
+            }
+            
         }
         
        
+    }
+
+    public void UpdateTypeOfImage(Skill monsterSkill, int currentIndex)
+    {
+        Sprite spriteToShow = null;
+
+        switch (monsterSkill.typeOfCapacity)
+        {
+            case Skill.capacityType.Attack:
+                spriteToShow = iconRessource[0];
+                break;
+            case Skill.capacityType.CoupDeVent:
+                spriteToShow = iconRessource[1];
+                break;
+            case Skill.capacityType.Defense:
+                spriteToShow = iconRessource[2];
+                break;
+            case Skill.capacityType.DivinTouch:
+                spriteToShow = iconRessource[3];
+                break;
+            case Skill.capacityType.Drain:
+                spriteToShow = iconRessource[4];
+                break;
+            case Skill.capacityType.Echo:
+                spriteToShow = iconRessource[5];
+                break;
+            case Skill.capacityType.Heal:
+                spriteToShow = iconRessource[6];
+                break;
+            case Skill.capacityType.Paralysie:
+                spriteToShow = iconRessource[7];
+                break;
+            case Skill.capacityType.Plagiat:
+                spriteToShow = iconRessource[8];
+                break;
+            case Skill.capacityType.Mark:
+                spriteToShow = iconRessource[9];
+                break;
+            case Skill.capacityType.Curse:
+                spriteToShow = iconRessource[10];
+                break;
+            case Skill.capacityType.Cramp:
+                spriteToShow = iconRessource[11];
+                break;
+            case Skill.capacityType.Charm:
+                spriteToShow = iconRessource[12];
+                break;
+            case Skill.capacityType.Silence:
+                spriteToShow = iconRessource[13];
+                break;
+            case Skill.capacityType.Lock:
+                spriteToShow = iconRessource[14];
+                break;
+            case Skill.capacityType.Break:
+                spriteToShow = iconRessource[15];
+                break;
+            case Skill.capacityType.Ralentissement:
+                spriteToShow = iconRessource[16];
+                break;
+            case Skill.capacityType.Acceleration:
+                spriteToShow = iconRessource[17];
+                break;
+            case Skill.capacityType.Confuse:
+                spriteToShow = iconRessource[18];
+                break;
+            default:
+                break;
+        }
+
+        skillCapacity[currentIndex].sprite = spriteToShow;
+    }
+
+    public void UpdateCapacityImage(Skill monsterSkill, int currentIndex)
+    {
+        Sprite spriteToShow = null;
+
+        switch (monsterSkill.messageType)
+        {
+            case Skill.typeOfMessage.Small:
+                if (monsterSkill.isComboSkill)
+                {
+                    spriteToShow = typeRessource[0];
+                }
+                else
+                {
+                    spriteToShow = typeRessource[1]; 
+                }
+                break;
+            case Skill.typeOfMessage.Big:
+                spriteToShow = typeRessource[2];
+                break;
+            case Skill.typeOfMessage.Emoji:
+                spriteToShow = typeRessource[3];
+                break;
+
+            default:
+                break;
+        }
+
+        skillTypeOf[currentIndex].sprite = spriteToShow;
     }
 
 }

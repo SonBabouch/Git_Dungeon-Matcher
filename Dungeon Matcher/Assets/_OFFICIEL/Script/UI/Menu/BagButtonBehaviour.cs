@@ -29,7 +29,7 @@ public class BagButtonBehaviour : MonoBehaviour
 
     public void Details()
     {
-        if(MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible || MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
+        if(MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim)
         {
             MenuManager.Instance.canvasManager.bagCanvas.detailsBackground.SetActive(true);
             MenuManager.Instance.bagManager.detailShow = true;

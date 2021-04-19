@@ -620,18 +620,18 @@ public class CombatManager : MonoBehaviour
                 case Skill.typeOfMessage.Small:
                     if (Player.Instance.playerHand[i].isComboSkill)
                     {
-                        spriteToShow = typeRessource[0];
+                        spriteToShow = typeRessource[0]; //Combo = 0
                     }
                     else
                     {
-                        spriteToShow = null; //Ou mettre icon qui indique que c'est instant.
+                        spriteToShow = typeRessource[1]; //basic = 0
                     }
                     break;
                 case Skill.typeOfMessage.Big:
-                    spriteToShow = typeRessource[1];
+                    spriteToShow = typeRessource[2]; // Chargée = 2
                     break;
                 case Skill.typeOfMessage.Emoji:
-                    spriteToShow = typeRessource[2];
+                    spriteToShow = typeRessource[3]; //Emoji = 3
                     break;
                 
                 default:
