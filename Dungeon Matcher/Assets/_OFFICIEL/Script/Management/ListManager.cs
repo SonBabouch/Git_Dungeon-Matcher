@@ -65,7 +65,7 @@ namespace Management
                 MenuManager.Instance.matchManager.matchList = new List<GameObject>();
                 MenuManager.Instance.canvasManager.listCanvas.UpdateList();
                 MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
-                PlayerLevel.currentExperience += 7 * (currentTest * 2);
+                PlayerLevel.currentExperience += 7 * ((currentTest+1) * 2);
                 MenuManager.Instance.playerLevel.CheckLevelUp();
                 MenuManager.Instance.blockAction = false;
                 PageSwiper.canChange = true;
