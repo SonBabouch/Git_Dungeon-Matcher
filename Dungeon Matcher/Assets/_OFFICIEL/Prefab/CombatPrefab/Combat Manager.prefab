@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerDisplay: {fileID: 1273854986550061022}
-  secondsLeft: 10
-  maxSecondsLeft: 10
+  secondsLeft: 45
+  maxSecondsLeft: 45
   minSecondsLeft: 0
   takingTimeAway: 0
   isCombatEnded: 0

@@ -3284,6 +3284,7 @@ GameObject:
   - component: {fileID: 432679441}
   - component: {fileID: 432679443}
   - component: {fileID: 432679442}
+  - component: {fileID: 432679444}
   m_Layer: 5
   m_Name: DetailsBackground
   m_TagString: Untagged
@@ -3347,6 +3348,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432679440}
   m_CullTransparentMesh: 0
+--- !u!114 &432679444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432679440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72606750af586b40baa933998cf6118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &436885907 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4735417508092452634, guid: 48c2ce5e19d1027478dfb94f43572ccd,
@@ -4616,33 +4629,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2088558426}
     m_Modifications:
-    - target: {fileID: 4712097665811192650, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: allySkills.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2,
-        type: 2}
-    - target: {fileID: 7524236609219050868, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: allySkills.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2,
-        type: 2}
-    - target: {fileID: 8224612494735233242, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: numberRarePool.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8224612494735233242, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: numberRarePool.Array.data[3]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8224612494735233242, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: canMatch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8224612494735233243, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
       propertyPath: popButton
@@ -4652,11 +4638,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MENUMANAGER
-      objectReference: {fileID: 0}
-    - target: {fileID: 8224612494735233244, guid: 4614c2cbe54a2cd47be341abc9584319,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224612494735233246, guid: 4614c2cbe54a2cd47be341abc9584319,
         type: 3}
@@ -5348,13 +5329,14 @@ GameObject:
   m_Component:
   - component: {fileID: 631634298}
   - component: {fileID: 631634297}
+  - component: {fileID: 631634299}
   m_Layer: 5
   m_Name: DetailsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &631634297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,7 +5402,7 @@ RectTransform:
   m_GameObject: {fileID: 631634296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 432679441}
   - {fileID: 1540556061}
@@ -5441,6 +5423,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1080, y: 1523.4558}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &631634299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631634296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72606750af586b40baa933998cf6118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &639008635
 GameObject:
   m_ObjectHideFlags: 0
