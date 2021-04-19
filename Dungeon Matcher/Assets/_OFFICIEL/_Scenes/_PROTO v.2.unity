@@ -5390,18 +5390,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ff087803c5bf10e4f86ad3a2b7f426d1, type: 3}
   - {fileID: 21300000, guid: 51c8a8f09de47ef4fa8f21f5add34533, type: 3}
   - {fileID: 21300000, guid: e88552c4c25387543b6f3ef4c0b6edfa, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 3c1a3ff262652e945b2ab358f7f35fe9, type: 3}
   - {fileID: 21300000, guid: 49282081e08755b4d8e2d2cec93f4943, type: 3}
   - {fileID: 21300000, guid: 8da4521f6276cb149bc76618b9128c18, type: 3}
   - {fileID: 21300000, guid: 95137aabc141f4646aecbb1c9ea656e0, type: 3}
   - {fileID: 21300000, guid: 1fa9bf2674cfaa2429e444ffe40f0266, type: 3}
   - {fileID: 21300000, guid: 8e2891b6ccfe8ae47bb5b9fee3bc3a07, type: 3}
   - {fileID: 21300000, guid: fbe7c136a91f33d4d9920d0afd2a8e02, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 9d6bf0c479823354db2e5f49e382dd01, type: 3}
   - {fileID: 21300000, guid: 9d716a65091b74446b0286029dd08bc5, type: 3}
   - {fileID: 21300000, guid: bf742bc8f2596f44498254a8c95b67a4, type: 3}
   - {fileID: 21300000, guid: 555a96b50d167154a9da336393bfe2b2, type: 3}
-  - {fileID: 21300000, guid: b0daab4308a15314cb5459fa9f44ee8b, type: 3}
+  - {fileID: 21300000, guid: da0887ef6b0c5a24abb2977c98185c57, type: 3}
   - {fileID: 21300000, guid: a78c395de94ce074cb137846315a37d4, type: 3}
   - {fileID: 21300000, guid: 7883b846fa37b6342b9218bf7cffacac, type: 3}
   - {fileID: 21300000, guid: e72aecdb80a30a04787b1c3d70d5dd07, type: 3}
@@ -5409,7 +5409,7 @@ MonoBehaviour:
   typeRessource:
   - {fileID: 21300000, guid: feedade5a1bb1104ca90f8fba357ffd9, type: 3}
   - {fileID: 21300000, guid: d4e918764f598f641a3b7966b8fee256, type: 3}
-  - {fileID: 21300000, guid: 77561968883474745bdd19b4665bfe20, type: 3}
+  - {fileID: 21300000, guid: 500797a093a65a24fa7d042589af3485, type: 3}
   - {fileID: 21300000, guid: f2e02619c47364a489587e78fa357b2f, type: 3}
 --- !u!224 &631634298
 RectTransform:
@@ -6165,6 +6165,8 @@ MonoBehaviour:
   canUseParalysie: 0
   canUsePlagiat: 0
   canUseSilence: 0
+  useHeal: 0
+  useDefenseMove: 0
 --- !u!1 &729298730
 GameObject:
   m_ObjectHideFlags: 0
@@ -20243,6 +20245,7 @@ MonoBehaviour:
   currentButtonSelected: {fileID: 0}
   currentMonsterSelected: {fileID: 0}
   detailsBackground: {fileID: 631634296}
+  detailsBackgroundBG: {fileID: 0}
   bagButtonParent: {fileID: 1680983775}
   bagButtonList: []
   equipeButton:
