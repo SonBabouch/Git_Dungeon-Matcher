@@ -17,15 +17,15 @@ MonoBehaviour:
   messageOwner: {fileID: 0}
   side: 1
   messageType: 0
-  typeOfCapacity: 8
+  typeOfCapacity: 0
   trueEnergyCost: 3
-  energyCost: 30
+  energyCost: 20
   initialEnergyCost: 30
-  crampEnergyCost: 40
-  isComboSkill: 0
+  crampEnergyCost: 30
+  isComboSkill: 1
   comesFromCombo: 0
   comesFromCurse: 0
-  comboEffectValue: 0
+  comboEffectValue: 40
   chargingAttack: 0
   isEcho: 0
   isPlagiat: 1

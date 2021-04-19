@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: 20 Heal
   effectValue: 20
+  messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 1
@@ -23,9 +24,12 @@ MonoBehaviour:
   crampEnergyCost: 30
   isComboSkill: 0
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
   skillIndex: 0
   himSelf: {fileID: 0}
   monster: {fileID: 0}
