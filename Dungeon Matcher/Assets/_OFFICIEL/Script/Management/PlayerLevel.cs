@@ -42,7 +42,7 @@ public class PlayerLevel : MonoBehaviour
         {
             currentExperience = 0;
             playerLevel++;
-
+            Management.MenuManager.Instance.canvasManager.matchCanvas.UpdateExperience();
             //Permet de Update le Visuel et l'état des monstres dans le Jeu
             Management.MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
         }

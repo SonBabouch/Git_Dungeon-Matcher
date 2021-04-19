@@ -57,12 +57,13 @@ public class CombatManager : MonoBehaviour
         CharacterSkillInitialisation();
         ButtonsInitialization();
         MenuTransitionCombat.Instance.topOfBG.GetComponent<Tweener>().TweenPositionTo(MenuTransitionCombat.Instance.topOfBGTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
-        Player.Instance.health = Player.Instance.minHealth;
+        
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
         Enemy.Instance.StartCoroutine(Enemy.Instance.ChooseEnemiBehavior());
         inCombat = true;
         isCombatEnded = false;
+        ConversationManager.Instance.canAttack = true;
     }
 
     private void FixedUpdate()
@@ -195,7 +196,7 @@ public class CombatManager : MonoBehaviour
     {
         takingTimeAway = true;
         yield return new WaitForSeconds(1);
-        Enemy.Instance.health -= 0.5f;
+        Enemy.Instance.health -= 1f;
         secondsLeft -= 1;
         if(secondsLeft < 10)
         {
@@ -237,6 +238,7 @@ public class CombatManager : MonoBehaviour
     //Se lance à la fin d'un combat.
     public void OnCombatEnd()
     {
+        ConversationManager.Instance.canAttack = false;
         MenuTransitionCombat.Instance.numberOfBattle++;
         MenuTransitionCombat.Instance.ShowCombatDetails(Enemy.Instance.health);
     }

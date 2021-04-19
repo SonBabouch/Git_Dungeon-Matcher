@@ -56,7 +56,7 @@ namespace Management
                     MenuManager.Instance.matchManager.monsterSpawned[i].GetComponent<ProfilBehaviour>().Initialisation(false);
                 }
 
-                MenuManager.Instance.playerLevel.GiveExperience(5 * (listCurrentSize+2));
+               
                 
                 //Full Reset
                 listCurrentSize = 0;
@@ -65,6 +65,8 @@ namespace Management
                 MenuManager.Instance.matchManager.matchList = new List<GameObject>();
                 MenuManager.Instance.canvasManager.listCanvas.UpdateList();
                 MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+                PlayerLevel.currentExperience += 7 * (currentTest * 2);
+                MenuManager.Instance.playerLevel.CheckLevelUp();
                 MenuManager.Instance.blockAction = false;
                 PageSwiper.canChange = true;
             }

@@ -167,6 +167,15 @@ public class MenuTransitionCombat : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < ConversationManager.Instance.emojis.Count; i++)
+        {
+            if(ConversationManager.Instance.emojis[i]!= null)
+            {
+                ConversationManager.Instance.emojis.Remove(ConversationManager.Instance.emojis[i]);
+                Destroy(ConversationManager.Instance.emojis[i]);
+            }
+        }
+
         //reset Bool;
 
         Vector3 scaleVector = new Vector3(1f, 1f, 1f);
@@ -232,6 +241,15 @@ public class MenuTransitionCombat : MonoBehaviour
                 ConversationManager.Instance.allMsg[i] = null;
             }
         }
+
+        for (int i = 0; i < ConversationManager.Instance.emojis.Count; i++)
+        {
+            if (ConversationManager.Instance.emojis[i] != null)
+            {
+                ConversationManager.Instance.emojis.Remove(ConversationManager.Instance.emojis[i]);
+                Destroy(ConversationManager.Instance.emojis[i]);
+            }
+        }
         yield return new WaitForSeconds(1f);
 
         ManagerManager.Instance.combatManager.SetActive(false);
@@ -252,7 +270,7 @@ public class MenuTransitionCombat : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         numberOfBattle = 0;
-        Enemy.Instance.health = Enemy.Instance.minHealth;
+        Player.Instance.health = Player.Instance.startHealth;
         Management.MenuManager.Instance.listManager.TestClaim();
     }
 }

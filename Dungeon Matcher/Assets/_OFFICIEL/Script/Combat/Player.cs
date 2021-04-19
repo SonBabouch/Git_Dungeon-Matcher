@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
 
     public PlayerUI playerUi;
 
+  
     
     public List<GameObject> allyMonsters;
     public List<Skill> playerSkills;
     public float health;
     public float maxHealth;
     public float minHealth;
+    public int startHealth;
 
     public float energy;
     public float maxEnergy;
