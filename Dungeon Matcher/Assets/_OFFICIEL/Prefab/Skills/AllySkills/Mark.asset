@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9307214975270e04d8dcff01b1e98c36, type: 3}
   m_Name: Mark
   m_EditorClassIdentifier: 
-  skillDescription: Mark
+  skillDescription: Cris de Guerre
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
@@ -28,6 +28,8 @@ MonoBehaviour:
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
   skillIndex: 4
   monster: {fileID: 0}
   owner: {fileID: 0}

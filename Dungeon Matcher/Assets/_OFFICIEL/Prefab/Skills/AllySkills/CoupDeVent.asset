@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c167868c1b0e745bbf4ec760156631, type: 3}
   m_Name: CoupDeVent
   m_EditorClassIdentifier: 
-  skillDescription: Wind
+  skillDescription: Coup de Vent
   effectValue: 0
+  messageOwner: {fileID: 0}
   side: 1
   messageType: 0
   typeOfCapacity: 5
@@ -23,8 +24,12 @@ MonoBehaviour:
   crampEnergyCost: 50
   isComboSkill: 0
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0
   isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
+  skillIndex: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

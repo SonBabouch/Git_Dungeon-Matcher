@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack 3
   m_EditorClassIdentifier: 
-  skillDescription: 30 Damage
+  skillDescription: "30 d\xE9g\xE2ts"
   effectValue: 30
+  messageOwner: {fileID: 0}
   side: 1
   messageType: 0
   typeOfCapacity: 0
@@ -23,8 +24,12 @@ MonoBehaviour:
   crampEnergyCost: 40
   isComboSkill: 1
   comesFromCombo: 0
+  comesFromCurse: 0
   comboEffectValue: 40
   chargingAttack: 0
   isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
+  skillIndex: 0
   monster: {fileID: 0}
   owner: {fileID: 0}

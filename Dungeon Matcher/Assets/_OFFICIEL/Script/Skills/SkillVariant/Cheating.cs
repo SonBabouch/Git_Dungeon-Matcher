@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Skills/Cheating")]
+[CreateAssetMenu(menuName = "Skills/Plagiat")]
 public class Cheating : Skill
 {
     [SerializeField]
