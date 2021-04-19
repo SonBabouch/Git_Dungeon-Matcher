@@ -19,7 +19,7 @@ MonoBehaviour:
   messageType: 0
   typeOfCapacity: 0
   trueEnergyCost: 2
-  energyCost: 2
+  energyCost: 20
   initialEnergyCost: 20
   crampEnergyCost: 30
   isComboSkill: 0
