@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
 
         if(energy == maxEnergy)
         {
-            enemyHasMaxEnergyBehavior();
+            StartCoroutine(enemyHasMaxEnergyBehavior());
 
         }
         else StartCoroutine(EnemyBasicBehavior());
@@ -218,23 +218,25 @@ public class Enemy : MonoBehaviour
     }
     public IEnumerator EnemyBasicBehavior()
     {
+        Debug.Log("basic");
         if (canAttack)
         {
             CheckTypeOfSkillInHand();
             UseSkill();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             ResetAllBools();
             EnemyBehavior();
         }
     }
 
-    public void enemyHasMaxEnergyBehavior()
+    public IEnumerator enemyHasMaxEnergyBehavior()
     {
+        Debug.Log("maxMana");
         if (canAttack)
         {
-            StopCoroutine(EnemyBasicBehavior());
             enemyIndex = Random.Range(0, enemyHand.Count);
             enemyHand[enemyIndex].Use();
+            yield return new WaitForSeconds(1f);
             EnemyBehavior();
         }
     }
