@@ -60,9 +60,11 @@ public class CombatManager : MonoBehaviour
         Player.Instance.health = Player.Instance.minHealth;
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
-        Enemy.Instance.EnemyBehavior();
+        Enemy.Instance.canAttack = true;
+        ConversationManager.Instance.canAttack = true;
         inCombat = true;
         isCombatEnded = false;
+        Enemy.Instance.EnemyBehavior();
     }
 
     private void FixedUpdate()
@@ -237,6 +239,8 @@ public class CombatManager : MonoBehaviour
     //Se lance à la fin d'un combat.
     public void OnCombatEnd()
     {
+        ConversationManager.Instance.canAttack = false;
+        Enemy.Instance.canAttack = false;
         MenuTransitionCombat.Instance.numberOfBattle++;
         MenuTransitionCombat.Instance.ShowCombatDetails(Enemy.Instance.health);
     }

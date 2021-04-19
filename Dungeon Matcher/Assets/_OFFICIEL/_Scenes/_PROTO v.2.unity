@@ -20239,7 +20239,7 @@ MonoBehaviour:
   currentButtonSelected: {fileID: 0}
   currentMonsterSelected: {fileID: 0}
   detailsBackground: {fileID: 631634296}
-  detailsBackgroundBG: {fileID: 0}
+  detailsBackgroundBG: {fileID: 432679440}
   bagButtonParent: {fileID: 1680983775}
   bagButtonList: []
   equipeButton:

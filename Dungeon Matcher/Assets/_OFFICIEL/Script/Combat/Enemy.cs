@@ -206,6 +206,7 @@ public class Enemy : MonoBehaviour
     int averageValue;
     public void EnemyBehavior()
     {
+
         if(energy == maxEnergy)
         {
             enemyHasMaxEnergyBehavior();
@@ -217,19 +218,25 @@ public class Enemy : MonoBehaviour
     }
     public IEnumerator EnemyBasicBehavior()
     {
-        CheckTypeOfSkillInHand();
-        UseSkill();
-        yield return new WaitForSeconds(3f);
-        ResetAllBools();
-        EnemyBehavior();
+        if (canAttack)
+        {
+            CheckTypeOfSkillInHand();
+            UseSkill();
+            yield return new WaitForSeconds(3f);
+            ResetAllBools();
+            EnemyBehavior();
+        }
     }
 
     public void enemyHasMaxEnergyBehavior()
     {
-        StopCoroutine(EnemyBasicBehavior());
-        enemyIndex = Random.Range(0, enemyHand.Count);
-        enemyHand[enemyIndex].Use();
-        EnemyBehavior();
+        if (canAttack)
+        {
+            StopCoroutine(EnemyBasicBehavior());
+            enemyIndex = Random.Range(0, enemyHand.Count);
+            enemyHand[enemyIndex].Use();
+            EnemyBehavior();
+        }
     }
 
     public void CheckTypeOfSkillInHand()
