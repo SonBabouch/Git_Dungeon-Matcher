@@ -12,6 +12,7 @@ public class BagCanvasManager : MonoBehaviour
     public GameObject currentMonsterSelected;
 
     public GameObject detailsBackground;
+    public GameObject detailsBackgroundBG;
 
     [SerializeField] private GameObject bagButtonParent;
     public List<GameObject> bagButtonList = new List<GameObject>();
@@ -51,8 +52,10 @@ public class BagCanvasManager : MonoBehaviour
 
     public void closeDetails()
     {
-        detailsBackground.SetActive(false);
-        MenuManager.Instance.bagManager.GetComponent<BagManager>().detailShow = false;
+        Vector3 tweenScale = new Vector3(0, 0, 0);
+        MenuManager.Instance.canvasManager.bagCanvas.detailsBackground.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
+        MenuManager.Instance.canvasManager.bagCanvas.detailsBackgroundBG.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
+        MenuManager.Instance.blockAction = false;
     }
 
     public void UpdateEquipeButton()

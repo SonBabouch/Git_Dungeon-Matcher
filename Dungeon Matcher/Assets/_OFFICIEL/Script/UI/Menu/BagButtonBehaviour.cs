@@ -31,7 +31,11 @@ public class BagButtonBehaviour : MonoBehaviour
     {
         if(MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim)
         {
-            MenuManager.Instance.canvasManager.bagCanvas.detailsBackground.SetActive(true);
+            MenuManager.Instance.blockAction = true;
+            Vector3 tweenScale = new Vector3(1, 1, 1);
+            MenuManager.Instance.canvasManager.bagCanvas.detailsBackgroundBG.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.4f, Easings.Ease.SmoothStep);
+            MenuManager.Instance.canvasManager.bagCanvas.detailsBackground.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
+
             MenuManager.Instance.bagManager.detailShow = true;
             MenuManager.Instance.canvasManager.detailsCanvasManager.UpdateDetailsMenu();
             UnSelected();
