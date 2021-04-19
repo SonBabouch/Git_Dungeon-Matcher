@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ChooseEnemiBehavior());
+        //StartCoroutine(ChooseEnemiBehavior());
     }
 
     private void FixedUpdate()

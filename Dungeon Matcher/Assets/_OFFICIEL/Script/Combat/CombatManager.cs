@@ -60,6 +60,7 @@ public class CombatManager : MonoBehaviour
         Player.Instance.health = Player.Instance.minHealth;
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
+        Enemy.Instance.StartCoroutine(Enemy.Instance.ChooseEnemiBehavior());
         inCombat = true;
         isCombatEnded = false;
     }
