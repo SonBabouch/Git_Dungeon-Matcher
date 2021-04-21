@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Drain 1 Enemy
   m_EditorClassIdentifier: 
   skillDescription: 
-  effectValue: 0
+  effectValue: 20
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0

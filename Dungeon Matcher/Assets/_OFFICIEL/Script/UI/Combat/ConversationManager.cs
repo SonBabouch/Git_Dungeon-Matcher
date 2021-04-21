@@ -70,18 +70,6 @@ public class ConversationManager : MonoBehaviour
         //Debug.Log(allMsg.Length);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && Player.Instance.isCharging)
-        {
-            //A mettre dans le break.
-            StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
-            Player.Instance.isCharging = false;
-            canAttack = false;
-            CancelPosition(); 
-        }
-    }
-
     //1 - Le joueur appuie sur un bouton, ca lance SendMessage (enemy ou allié). Mettre 0 en EmojiEffect si l'attaque n'est pas un Emoji
     public void SendMessagesPlayer(Skill capacity, int numberForEmojiEffect)
     {
