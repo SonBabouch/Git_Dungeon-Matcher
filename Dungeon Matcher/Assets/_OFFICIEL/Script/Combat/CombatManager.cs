@@ -52,6 +52,8 @@ public class CombatManager : MonoBehaviour
 
     public void InitializeBattle()
     {
+        Enemy.Instance.enemyMonsters = Management.MenuManager.Instance.matchManager.matchList;
+
         secondsLeft = maxSecondsLeft;
         ResetBools();
         CharacterSkillInitialisation();
