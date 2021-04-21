@@ -19,14 +19,12 @@ public class PlayerLevel : MonoBehaviour
     {
         if (experienceToGet == numberOfExperience)
         {
-            Debug.Log("else");
             CheckLevelUp();
             experienceToGet = 0;
             yield return null;
         }
         else
         {
-            Debug.Log(experienceToGet);
             currentExperience++;
             experienceToGet++;
             Management.MenuManager.Instance.canvasManager.matchCanvas.UpdateExperience();
