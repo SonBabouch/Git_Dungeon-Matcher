@@ -44,6 +44,10 @@ public class Cheating : Skill
         if(lastCompetenceReference != null)
         {
             lastCompetenceReference.PlayerEffect();
+        }
+        else
+        {
+            Enemy.Instance.lastEnemyCompetence.PlayerEffect();
         }    
 
         if (!chargingAttack)
@@ -66,7 +70,16 @@ public class Cheating : Skill
     }
     public override void MonsterEffect()
     {
-        lastCompetenceReference.MonsterEffect();
+        if(lastCompetenceReference != null)
+        {
+            lastCompetenceReference.MonsterEffect();
+        }
+        else
+        {
+            Player.Instance.lastPlayerCompetence.MonsterEffect();
+        }
+
+        
 
         if (!chargingAttack)
         {

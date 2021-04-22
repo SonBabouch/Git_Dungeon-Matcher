@@ -11,7 +11,7 @@ public class ProfilBehaviour : MonoBehaviour
     public Image profilAsset;
     public TextMeshProUGUI profilName;
     public TextMeshProUGUI description;
-    public TextMeshProUGUI health;
+
     public GameObject certification;
 
     public void Initialisation(bool firstTime)
@@ -23,7 +23,7 @@ public class ProfilBehaviour : MonoBehaviour
             profilAsset.sprite = monsterPick.GetComponent<MonsterToken>().profilPicture;
 
             description.text = monsterPick.GetComponent<MonsterToken>().description;
-            health.text = monsterPick.GetComponent<MonsterToken>().health.ToString();
+            
             profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
 
             if (monsterPick.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPick.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
