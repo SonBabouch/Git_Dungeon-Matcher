@@ -16,8 +16,8 @@ MonoBehaviour:
     en UTC-10.  Ne sois pas le soleil de ma vie, laisse-moi dormir stp.  J'ai une
     t\xEAte bizarre, mais uniquement au r\xE9veil !"
   monsterName: Tikikaputt
-  health: 10
-  maxHealth: 0
+  health: 20
+  maxHealth: 100
   minHealh: 0
   rarety: 0
   statement: 0

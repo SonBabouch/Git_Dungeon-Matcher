@@ -45,28 +45,34 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        //combatList = MenuManager.Instance.matchManager.matchList;
     }
 
 
     public void InitializeBattle()
     {
-        Enemy.Instance.enemyMonsters = Management.MenuManager.Instance.matchManager.matchList;
-
-        secondsLeft = maxSecondsLeft;
-        ResetBools();
-        CharacterSkillInitialisation();
-        ButtonsInitialization();
         MenuTransitionCombat.Instance.topOfBG.GetComponent<Tweener>().TweenPositionTo(MenuTransitionCombat.Instance.topOfBGTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
+        
+        Enemy.Instance.enemyMonsters = Management.MenuManager.Instance.matchManager.matchList;
+        Enemy.Instance.currentMonster = Management.MenuManager.Instance.matchManager.matchList[MenuTransitionCombat.Instance.numberOfBattle];
+        secondsLeft = maxSecondsLeft;
+        
+        CharacterSkillInitialisation();
+        
+
         Player.Instance.health = Player.Instance.minHealth;
+
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
+
+        //Faire que tout le monde puisse jouer.
+        Player.Instance.canAttack = true;
         Enemy.Instance.canAttack = true;
         ConversationManager.Instance.canAttack = true;
         inCombat = true;
         isCombatEnded = false;
+
         Enemy.Instance.EnemyBehavior();
+        ButtonsInfos();
     }
 
     private void FixedUpdate()
@@ -87,14 +93,13 @@ public class CombatManager : MonoBehaviour
     public void CharacterSkillInitialisation()
     {
         Player.Instance.InitializePlayer();
-        Player.Instance.SetPlayerHandAndDraw();
+        
         Enemy.Instance.InitializeMonster();
         Enemy.Instance.SetEnemyHandAndDraw();
-        NoEchoFeedback();
+        
     }
     public IEnumerator PlayerEnergyGenerator()
     {
-       
         yield return new WaitForSeconds(0.1f);
         
         Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
@@ -243,11 +248,10 @@ public class CombatManager : MonoBehaviour
     {
         ConversationManager.Instance.canAttack = false;
         Enemy.Instance.canAttack = false;
+        isCombatEnded = false;
         MenuTransitionCombat.Instance.numberOfBattle++;
         MenuTransitionCombat.Instance.ShowCombatDetails(Enemy.Instance.health);
     }
-
-    
 
     public void ContinueCombat()
     {
@@ -255,7 +259,6 @@ public class CombatManager : MonoBehaviour
         {
             //Lancer une autre Coroutine puis celle ci;
             MenuTransitionCombat.Instance.DisableDetails();
-            
         }
         else
         {
@@ -657,7 +660,7 @@ public class CombatManager : MonoBehaviour
         {
             combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
         }
-        ButtonsInfos();
+        
         Player.Instance.UpdateComboVisuel();
 
     }

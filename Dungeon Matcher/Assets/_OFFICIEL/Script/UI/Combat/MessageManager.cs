@@ -171,11 +171,19 @@ public class MessageManager : MonoBehaviour
                 case Skill.monsterSide.Enemy:
                     if (skill.typeOfCapacity == Skill.capacityType.Echo)
                     {
-                        skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
+                        if(Enemy.Instance.lastEnemyCompetence != null)
+                        {
+                            skill.typeOfCapacity = Enemy.Instance.lastEnemyCompetence.typeOfCapacity;
+                            skill.chargingAttack = Enemy.Instance.lastEnemyCompetence.chargingAttack;
+                        }
                     }
                     if (skill.typeOfCapacity == Skill.capacityType.Plagiat)
                     {
-                        skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
+                        if(Player.Instance.lastPlayerCompetence != null)
+                        {
+                            skill.typeOfCapacity = Player.Instance.lastPlayerCompetence.typeOfCapacity;
+                            skill.chargingAttack = Player.Instance.lastPlayerCompetence.chargingAttack;
+                        }
                     }
 
                     if (skill.chargingAttack)

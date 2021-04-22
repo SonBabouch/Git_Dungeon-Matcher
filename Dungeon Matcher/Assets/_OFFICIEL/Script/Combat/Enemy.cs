@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     public List<GameObject> enemyMonsters = new List<GameObject>();
     [SerializeField]
-    private List<Skill> enemySkills = new List<Skill>();
+    public List<Skill> enemySkills = new List<Skill>();
     [SerializeField]
     public List<Skill> enemyHand = new List<Skill>();
     [SerializeField]
@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
     public bool useHeal;
     public bool useDefenseMove;
 
+    public EnemyUi enemyUi;
 
     private void Awake()
     {
@@ -77,15 +78,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        //StartCoroutine(ChooseEnemiBehavior());
-    }
-
-    private void FixedUpdate()
-    {
-        
-    }
     public void InitializeMonster()
     {
         canAttack = true;
@@ -94,7 +86,6 @@ public class Enemy : MonoBehaviour
             monster.GetComponent<MonsterToken>().Initialize();
         }
 
-        currentMonster = enemyMonsters[0];
         health = currentMonster.GetComponent<MonsterToken>().health;
         maxHealth = currentMonster.GetComponent<MonsterToken>().maxHealth;
         minHealth = currentMonster.GetComponent<MonsterToken>().minHealth;

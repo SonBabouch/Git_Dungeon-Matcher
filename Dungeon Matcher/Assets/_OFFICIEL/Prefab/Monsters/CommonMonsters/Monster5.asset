@@ -16,8 +16,8 @@ MonoBehaviour:
     La postillon du p\xE9on n'atteint pas la brillance de ma crini\xE8re.  Tu perdras
     toujours contre moi au shi-fu-mi."
   monsterName: Sandy Paid
-  health: 21
-  maxHealth: 0
+  health: 20
+  maxHealth: 100
   minHealh: 0
   rarety: 0
   statement: 2

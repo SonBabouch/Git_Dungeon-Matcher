@@ -17,8 +17,8 @@ MonoBehaviour:
     vie c'est comme une bo\xEEte de nuit, je ne laisse pas rentrer n'importe qui
     ;)"
   monsterName: Loukatmi
-  health: 21
-  maxHealth: 0
+  health: 20
+  maxHealth: 100
   minHealh: 0
   rarety: 0
   statement: 2

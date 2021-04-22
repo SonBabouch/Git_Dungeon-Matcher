@@ -23,4 +23,9 @@ public class EnemyUi : MonoBehaviour
             profilPicture.sprite = Enemy.Instance.currentMonster.GetComponent<MonsterToken>().profilPicture;
         }
     }
+
+    public void UpdateBarreResultat()
+    {
+        enemyHealthBar.fillAmount = Enemy.Instance.health / Enemy.Instance.maxHealth;
+    }
 }

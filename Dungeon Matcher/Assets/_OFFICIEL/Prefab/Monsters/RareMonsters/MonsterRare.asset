@@ -15,7 +15,9 @@ MonoBehaviour:
   description: RARE1
   monsterName: RARE1
   health: 20
+  maxHealth: 200
+  minHealh: 0
   rarety: 1
+  statement: 0
+  monsterIndexPosition: 0
   profilPicture: {fileID: 0}
-  side: 0
-  inCombat: 0

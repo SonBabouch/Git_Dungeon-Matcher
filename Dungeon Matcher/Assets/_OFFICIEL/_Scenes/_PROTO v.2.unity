@@ -4539,51 +4539,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3780729219898967904, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3780729219898967904, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075785543404294741, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 540
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292150974736132410, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_Name
-      value: Parent
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036345021491197655, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 538
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036345021491197655, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 335
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036345021491197655, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1085
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036345021491197655, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606525776707269390, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 544
-      objectReference: {fileID: 0}
     - target: {fileID: 6958789301845541581, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
       propertyPath: comboSkillFeedback.Array.data[0]
@@ -4604,11 +4559,6 @@ PrefabInstance:
       propertyPath: comboSkillFeedback.Array.data[3]
       value: 
       objectReference: {fileID: 370496921}
-    - target: {fileID: 7231546448609520723, guid: e383cf0074529d546b18a93a1cc531b6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 540
-      objectReference: {fileID: 0}
     - target: {fileID: 8977588376116025295, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
       propertyPath: m_Name
@@ -6250,8 +6200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 0
-  minHealth: 0
+  maxHealth: 100
+  minHealth: 100
   energy: 30
   maxEnergy: 60
   energyModifierEnemy: 1
@@ -6300,6 +6250,7 @@ MonoBehaviour:
   canUseSilence: 0
   useHeal: 0
   useDefenseMove: 0
+  enemyUi: {fileID: 726375614}
 --- !u!1 &729298730
 GameObject:
   m_ObjectHideFlags: 0
@@ -21769,7 +21720,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 826989779}
-        m_MethodName: EndCombatCoroutine
+        m_MethodName: StartCombatAfterAnnonce
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

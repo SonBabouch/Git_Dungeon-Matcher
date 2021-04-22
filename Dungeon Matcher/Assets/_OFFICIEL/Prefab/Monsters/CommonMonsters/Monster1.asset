@@ -16,7 +16,7 @@ MonoBehaviour:
     fais moins de 3 m\xE8tres, tu m'int\xE9resses pas.  Ajoute-moi quand m\xEAme
     sur Rawrchat : @6ReineDesMers"
   monsterName: Marina
-  health: 22
+  health: 20
   maxHealth: 100
   minHealh: 0
   rarety: 0
