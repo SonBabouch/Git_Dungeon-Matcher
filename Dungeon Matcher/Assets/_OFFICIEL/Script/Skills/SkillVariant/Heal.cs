@@ -61,7 +61,7 @@ public class Heal : Skill
         Player.Instance.lastPlayerCompetence = this;
         Player.Instance.canAttack = true;
         comesFromCombo = false;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void MonsterEffect()
@@ -95,7 +95,7 @@ public class Heal : Skill
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;
         Enemy.Instance.lastEnemyCompetence = this;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()

@@ -136,12 +136,12 @@ public abstract class Skill : ScriptableObject
                         if (Player.Instance.isCurse)
                         {
                             int test = Random.Range(0, 100);
-                            //Debug.Log(test);
+
                             if (test < 70)
                             {
                                 Debug.Log("Cursed");
                                 comesFromCurse = true;
-                                CombatManager.Instance.ButtonsUpdate();
+                                //CombatManager.Instance.ButtonsUpdate();
                                 InUse();
                             }
                             else
@@ -189,7 +189,6 @@ public abstract class Skill : ScriptableObject
                     {
                         energyCost = initialEnergyCost;
                     }
-
 
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this, index);

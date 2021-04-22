@@ -185,7 +185,7 @@ public class MessageBehaviour : MonoBehaviour
                     break; 
                 case effect.Cramp:
                     Player.Instance.isCramp = false;
-                    CombatManager.Instance.ButtonsUpdate();
+                    //CombatManager.Instance.ButtonsUpdate();
                     break;
                 default:
                     break;

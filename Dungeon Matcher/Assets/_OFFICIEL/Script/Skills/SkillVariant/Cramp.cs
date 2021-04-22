@@ -31,14 +31,14 @@ public class Cramp : Skill
     public override void MonsterEffect()
     {
         Player.Instance.isCramp = true;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
 
         Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
         Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
 
         Enemy.Instance.lastEnemyCompetence = this;
         Enemy.Instance.canAttack = true;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void PlayerEffect()
@@ -51,7 +51,7 @@ public class Cramp : Skill
 
         Player.Instance.lastPlayerCompetence = this;
         Player.Instance.canAttack = true;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()

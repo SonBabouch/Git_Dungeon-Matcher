@@ -62,7 +62,7 @@ public class Cheating : Skill
         isEcho = false;
         lastCompetenceReference = null;
 
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
     public override void MonsterEffect()
     {
@@ -83,7 +83,7 @@ public class Cheating : Skill
         isEcho = false;
         lastCompetenceReference = null;
 
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()

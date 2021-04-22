@@ -124,8 +124,8 @@ public class Enemy : MonoBehaviour
     {
         Enemy.Instance.lastEnemyCompetence = skillToCharge;
         Enemy.Instance.isCharging = true;
-        CombatManager.Instance.ButtonsUpdate();
-        ConversationManager.Instance.SendMessagesEnemy(skillToCharge, 0);
+        //CombatManager.Instance.ButtonsUpdate();
+        ConversationManager.Instance.SendMessagesPlayer(skillToCharge, 0);
         yield return new WaitForSeconds(enemyChargingTime);
         //Debug.Log("End");
         Enemy.Instance.isCharging = false;
@@ -168,7 +168,7 @@ public class Enemy : MonoBehaviour
         enemyHand.RemoveAt(index);
         enemyHand.Insert(index, enemyDraw[0]);
         enemyDraw.RemoveAt(0);
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
     #endregion
 
@@ -218,7 +218,6 @@ public class Enemy : MonoBehaviour
     }
     public IEnumerator EnemyBasicBehavior()
     {
-        Debug.Log("basic");
         if (canAttack)
         {
             CheckTypeOfSkillInHand();

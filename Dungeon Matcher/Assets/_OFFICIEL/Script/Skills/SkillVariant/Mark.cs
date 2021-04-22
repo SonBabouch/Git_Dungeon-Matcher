@@ -39,7 +39,7 @@ public class Mark : Skill
             Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
             Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
         }
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void MonsterEffect()
@@ -52,7 +52,7 @@ public class Mark : Skill
             Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
             Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
         }
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()

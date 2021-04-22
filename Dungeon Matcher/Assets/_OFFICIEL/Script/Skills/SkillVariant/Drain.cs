@@ -61,7 +61,7 @@ public class Drain : Skill
         Player.Instance.lastPlayerCompetence = this;
         comesFromCombo = false;
         Player.Instance.canAttack = true;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void MonsterEffect()
@@ -96,7 +96,7 @@ public class Drain : Skill
         Enemy.Instance.lastEnemyCompetence = this;
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;
-        CombatManager.Instance.ButtonsUpdate();
+        //CombatManager.Instance.ButtonsUpdate();
     }
 
     public override void SetEnemyBoolType()
