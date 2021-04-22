@@ -56,7 +56,7 @@ namespace Management
                     MenuManager.Instance.matchManager.monsterSpawned[i].GetComponent<ProfilBehaviour>().Initialisation(false);
                 }
 
-                MenuManager.Instance.playerLevel.GiveExperience(5 * (listCurrentSize+2));
+                MenuManager.Instance.playerLevel.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(5 * (listCurrentSize + 2)));
                 
                 //Full Reset
                 listCurrentSize = 0;

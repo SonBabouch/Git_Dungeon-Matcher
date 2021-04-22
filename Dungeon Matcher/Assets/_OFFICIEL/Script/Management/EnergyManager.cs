@@ -20,4 +20,14 @@ public class EnergyManager : MonoBehaviour
         MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
     }
 
+    public void GiveEnergy()
+    {
+        energy = maxEnergy;
+        MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+    }
+
+    public void GivePlayerExperience()
+    {
+        MenuManager.Instance.playerLevel.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(5));
+    }
 }

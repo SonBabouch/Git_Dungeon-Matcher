@@ -14,7 +14,7 @@ public class BasicAttack : Skill
     public override void Initialize(GameObject obj)
     {
         energyCost = initialEnergyCost;
-        crampEnergyCost = initialEnergyCost + 1;
+        crampEnergyCost = initialEnergyCost + 10;
         owner = obj;
         owner.GetComponent<MonsterToken>();
     }

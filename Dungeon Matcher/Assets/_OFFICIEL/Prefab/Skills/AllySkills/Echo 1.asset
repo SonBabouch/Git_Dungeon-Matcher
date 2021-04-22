@@ -17,19 +17,19 @@ MonoBehaviour:
   messageOwner: {fileID: 0}
   side: 1
   messageType: 0
-  typeOfCapacity: 7
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
-  isComboSkill: 0
+  typeOfCapacity: 0
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
+  isComboSkill: 1
   comesFromCombo: 0
   comesFromCurse: 0
-  comboEffectValue: 0
+  comboEffectValue: 40
   chargingAttack: 0
   isEcho: 1
   isPlagiat: 0
-  lastCompetenceReference: {fileID: 11400000, guid: 09bd3f01b1d68ca4782c265ba42f6321,
+  lastCompetenceReference: {fileID: 11400000, guid: 569dce34347666043be89a3400bfb127,
     type: 2}
   skillIndex: 0
   monster: {fileID: 0}

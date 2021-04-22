@@ -21,7 +21,7 @@ MonoBehaviour:
   trueEnergyCost: 3
   energyCost: 30
   initialEnergyCost: 30
-  crampEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

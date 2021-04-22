@@ -14,6 +14,7 @@ namespace Management
         public TextMeshProUGUI listeState;
         public List<GameObject> listPosition = new List<GameObject>();
         [SerializeField] private GameObject parentPositions;
+        public TextMeshProUGUI playerHealth;
 
         //Bas d'écran
         public GameObject combatButton;
@@ -29,6 +30,7 @@ namespace Management
             {
                 listPosition.Add(child.gameObject);
             }
+            playerHealth.text = "PV : 100 /100 ";
         }
 
         public void UpdateCombatButton()
@@ -54,6 +56,7 @@ namespace Management
         //appeler à chaque match pour update le visuel du menu
         public void UpdateList()
         {
+            
             listeState.text = "Taille " + MenuManager.Instance.listManager.listCurrentSize + " / " + MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1];
         }
 

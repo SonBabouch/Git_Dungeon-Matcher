@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
         Enemy.Instance.lastEnemyCompetence = skillToCharge;
         Enemy.Instance.isCharging = true;
         CombatManager.Instance.ButtonsUpdate();
-        ConversationManager.Instance.SendMessagesPlayer(skillToCharge, 0);
+        ConversationManager.Instance.SendMessagesEnemy(skillToCharge, 0);
         yield return new WaitForSeconds(enemyChargingTime);
         //Debug.Log("End");
         Enemy.Instance.isCharging = false;
