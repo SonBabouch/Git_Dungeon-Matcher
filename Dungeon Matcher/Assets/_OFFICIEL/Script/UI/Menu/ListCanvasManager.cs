@@ -19,6 +19,7 @@ namespace Management
         //Bas d'écran
         public GameObject combatButton;
         [SerializeField] private GameObject alerteCombat;
+        [SerializeField] private TextMeshProUGUI alerteCombatText;
 
         //Prefab à instancier quand le joueur match
         [SerializeField] private GameObject listPrefab;
@@ -31,10 +32,22 @@ namespace Management
                 listPosition.Add(child.gameObject);
             }
             playerHealth.text = "PV : 100 /100 ";
+            UpdateCombatButton();
         }
 
         public void UpdateCombatButton()
         {
+            if(MenuManager.Instance.matchManager.matchList.Count == 0)
+            {
+                alerteCombatText.text = "Va matcher un Monstre.";
+            }
+            else if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
+            {
+                alerteCombatText.text = "Ton équipe n'est pas complète.";
+            }
+
+            
+
             if (MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
             {
                 alerteCombat.SetActive(true);

@@ -37,6 +37,7 @@ public class MonsterToken : MonoBehaviour
     public GameObject owner;
     public List<Skill> allySkills;
     public List<Skill> ennemySkills;
+    public string[] monsterHashTag;
 
     private void Start()
     {

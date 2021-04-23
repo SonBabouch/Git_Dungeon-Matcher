@@ -75,6 +75,18 @@ public class BagCanvasManager : MonoBehaviour
         
     }
 
+    public void RemoveAll()
+    {
+        MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
+        equipeButton[0].sprite = defaultImage;
+        MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
+        equipeButton[1].sprite = defaultImage;
+        UpdateEquipeButton();
+        MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+    }
+
     public void RemoveLeftEquipement()
     {
         if(MenuManager.Instance.bagManager.monsterTeam[0] != null)
@@ -82,6 +94,7 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
             UpdateEquipeButton();
+            MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
         }
 
     }
@@ -93,6 +106,7 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
             UpdateEquipeButton();
+            MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
         }
     }
 }

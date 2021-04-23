@@ -47,7 +47,7 @@ MonoBehaviour:
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 1
   description: "Je suis un mec \xE9norme et un peu sec, si tu cherches de la masse,
     je vais t'en donner. Bref, tu fais pas le poids."
   monsterName: Grogrumo
@@ -75,3 +75,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ec8722f3de8fd04c821499b5a2d17aa, type: 2}
   - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
   - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
+  monsterHashTag:
+  - Lourd
+  - Attaque
