@@ -67,6 +67,9 @@ public class Player : MonoBehaviour
 
     public void InitializePlayer()
     {
+
+        allyMonsters = MenuManager.Instance.bagManager.monsterTeam;
+
         foreach (GameObject monster in allyMonsters)
         {
             foreach (Skill skill in monster.GetComponent<MonsterToken>().allySkills)
@@ -104,6 +107,8 @@ public class Player : MonoBehaviour
     public void ShufflePlayerSkills()
     {
         playerSkills.ShuffleFisherYates();
+
+        SetPlayerHandAndDraw();
     }
 
     public void SetPlayerHandAndDraw()
@@ -113,6 +118,9 @@ public class Player : MonoBehaviour
             playerHand[i] = playerSkills[i];
             playerDraw[i] = playerSkills[i + 4];
         }
+
+       CombatManager.Instance.ButtonsInitialization();
+       CombatManager.Instance.NoEchoFeedback();
     }
 
     

@@ -17,8 +17,8 @@ MonoBehaviour:
     FOLIE avec mes accessoires kawaiii d'E-Cat ;p Gamer jusqu'au bout des pattes
     UwU
   monsterName: Miss_FurLola
-  health: 10
-  maxHealth: 0
+  health: 20
+  maxHealth: 100
   minHealh: 0
   rarety: 0
   statement: 0

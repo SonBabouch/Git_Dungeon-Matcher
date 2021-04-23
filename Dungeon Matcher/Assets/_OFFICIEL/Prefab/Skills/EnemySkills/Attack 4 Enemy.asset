@@ -26,7 +26,7 @@ MonoBehaviour:
   comesFromCombo: 0
   comesFromCurse: 0
   comboEffectValue: 0
-  chargingAttack: 1
+  chargingAttack: 0
   isEcho: 0
   isPlagiat: 0
   lastCompetenceReference: {fileID: 0}

@@ -17,8 +17,8 @@ MonoBehaviour:
     c'est ma s\xE9rie pr\xE9f\xE9r\xE9e !!! (^u^) Si toi aussi, t'aimes l'Heroic
     Fantasy, viens discuter OwO"
   monsterName: Julian
-  health: 18
-  maxHealth: 0
+  health: 20
+  maxHealth: 100
   minHealh: 0
   rarety: 0
   statement: 1
