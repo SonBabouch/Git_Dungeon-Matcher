@@ -36,7 +36,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     {
         if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManager.currentGameStateMenu == MenuManager.Menu.Match && MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.canvasManager.pageSwiper.onDrag == false)
         {
-            if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
+            if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
             {
                 MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(true);
                 //Debug.Log("La");
@@ -47,11 +47,11 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                 MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
             }
 
-            if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x)
+            if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
             {
                 MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(true);
             }
-            else if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x)
+            else if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x )
             {
                 MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
             }
@@ -71,7 +71,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject &&  !MenuManager.Instance.blockAction)
+        if (MenuManager.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject &&  !MenuManager.Instance.blockAction)
         {
             //3.1- Récupération des donner X et Y 
             float differenceX = data.pressPosition.x - data.position.x;
@@ -94,14 +94,13 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
     //4- On End Drag
     public void OnEndDrag(PointerEventData data)
     {
-        if (MenuManager.Instance.matchManager.canMatch && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && !MenuManager.Instance.blockAction)
+        if (!MenuManager.Instance.blockAction)
         {
             float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 
             //4.1- Vérification pour savoir si le pourcentage de l'écran dragué est superieur ou égale au pourcentage à drag pour valider la saisi
             if (Mathf.Abs(percentage) >= percentThreshold) //Le swip est validé
             {
-
                 Vector2 newLocation = panelLocation; //on récupère la position du panel pour pouvoir la changer juste après
 
                 //4.1.1- Modification de la futur position du panel holder vers le nouveau panel
@@ -114,10 +113,12 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     }
                     else
                     {
-                        transform.position = panelLocation;
+                        Debug.Log("Can't Dislike");
+                        transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                     }
 
+                    
                 }
                 else if (percentage < 0)//vers la gauche
                 {
@@ -129,15 +130,16 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     }
                     else
                     {
-                        transform.position = panelLocation;
+                        Debug.Log("Can't like");
+                        transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                     }
 
 
-
+                  
                 }
 
-                panelLocation = newLocation; //Attribution de la nouvelle position du panel holder
+               
 
             }
             else //Le swip n'est pas validé
@@ -147,7 +149,6 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                 transform.rotation = panelRotation;
 
                 //print("position de base");
-
             }
 
             
