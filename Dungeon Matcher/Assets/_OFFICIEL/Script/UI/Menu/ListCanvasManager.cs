@@ -11,7 +11,8 @@ namespace Management
     public class ListCanvasManager : MonoBehaviour
     {
         //Elements D'UI
-        public TextMeshProUGUI listeState;
+        [SerializeField] private TextMeshProUGUI currentSizeText;
+        [SerializeField] private TextMeshProUGUI maxSizeText;
         public List<GameObject> listPosition = new List<GameObject>();
         [SerializeField] private GameObject parentPositions;
         public TextMeshProUGUI playerHealth;
@@ -24,6 +25,8 @@ namespace Management
         //Prefab à instancier quand le joueur match
         [SerializeField] private GameObject listPrefab;
 
+        
+
         private void Awake()
         {
             //Récupère tous les enfants de l'objet parent pour les ajouter dans un tableau.
@@ -31,8 +34,8 @@ namespace Management
             {
                 listPosition.Add(child.gameObject);
             }
-            playerHealth.text = "PV : 100 /100 ";
             UpdateCombatButton();
+            UpdateList();
         }
 
         public void UpdateCombatButton()
@@ -69,8 +72,8 @@ namespace Management
         //appeler à chaque match pour update le visuel du menu
         public void UpdateList()
         {
-            
-            listeState.text = "Taille " + MenuManager.Instance.listManager.listCurrentSize + " / " + MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1];
+            currentSizeText.text = MenuManager.Instance.listManager.listCurrentSize.ToString();
+            maxSizeText.text = MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1].ToString();
         }
 
         //Instancier le profil à une position particulière. 

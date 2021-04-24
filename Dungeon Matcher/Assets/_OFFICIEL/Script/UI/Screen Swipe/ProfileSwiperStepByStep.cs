@@ -114,6 +114,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     else
                     {
                         Debug.Log("Can't Dislike");
+                        StartCoroutine(MenuManager.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                     }
@@ -131,6 +132,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     else
                     {
                         Debug.Log("Can't like");
+                        StartCoroutine(MenuManager.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                     }
