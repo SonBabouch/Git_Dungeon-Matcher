@@ -26,6 +26,7 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI[] damageText;
 
     public float energyPerSeconds;
+    public Skill selectedSkill = null;
 
     public Sprite[] iconRessource;
 
@@ -34,6 +35,7 @@ public class CombatManager : MonoBehaviour
 
     public Color initialButtonColor;
 
+    public TextMeshProUGUI attackDetails;
 
     [Header("Alerte")]
     [SerializeField] private GameObject alerteText;
@@ -316,9 +318,7 @@ public class CombatManager : MonoBehaviour
 
     public IEnumerator AlerteMessage(int timer)
     {
-        
         alerteText.GetComponent<TextMeshProUGUI>().text = "Il reste " + timer.ToString() + " secondes !";
-       
 
         Debug.Log("Middle");
         alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 250);
@@ -697,25 +697,35 @@ public class CombatManager : MonoBehaviour
 
     public void ButtonsInitialization()
     {
-        for (int i = 0; i < combatButtons.Count; i++)
-        {
-            combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
-        }
-        
         Player.Instance.UpdateComboVisuel();
-
     }
     public void ButtonsUpdate()
     {
         ResetButtons();
         Player.Instance.PlayerSwapSkill(index);
-        
-        for (int i = 0; i < combatButtons.Count; i++)
-        {
-            combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
-        }
         ButtonsInfos();
-        
+    }
+
+    public void UseAttack()
+    {
+        if(selectedSkill != null)
+        {
+            if(Player.Instance.isCramp && Player.Instance.energy >= selectedSkill.crampEnergyCost)
+            {
+                selectedSkill.Use();
+                selectedSkill = null;
+                UpdateDescription();
+            }
+            else if(Player.Instance.energy >= selectedSkill.initialEnergyCost)
+            {
+                selectedSkill.Use();
+                selectedSkill = null;
+                UpdateDescription();
+            }
+               
+
+            
+        }
     }
 
     public void ResetButtons()
@@ -731,20 +741,38 @@ public class CombatManager : MonoBehaviour
     {
         if(combatButtons[0].GetComponent<MyButton>().isPressed == true && inCombat)
         {
-            index = 0;
+            selectedSkill = Player.Instance.playerHand[0];
+            UpdateDescription();
         }
         if (combatButtons[1].GetComponent<MyButton>().isPressed == true && inCombat)
         {
-            index = 1;
+            selectedSkill = Player.Instance.playerHand[1];
+            UpdateDescription();
         }
         if (combatButtons[2].GetComponent<MyButton>().isPressed == true && inCombat)
         {
-            index = 2;
+            selectedSkill = Player.Instance.playerHand[2];
+            UpdateDescription();
         }
         if (combatButtons[3].GetComponent<MyButton>().isPressed == true && inCombat)
         {
-            index = 3;
+            selectedSkill = Player.Instance.playerHand[3];
+            UpdateDescription();
         }
     }
+
+    public void UpdateDescription()
+    {
+        if(selectedSkill != null)
+        {
+            attackDetails.text = selectedSkill.skillDescription;
+        }
+        else
+        {
+            attackDetails.text = "";
+        }
+    }
+
+        
     #endregion
 }
