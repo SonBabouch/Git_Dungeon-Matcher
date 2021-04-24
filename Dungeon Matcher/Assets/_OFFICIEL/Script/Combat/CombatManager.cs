@@ -34,6 +34,9 @@ public class CombatManager : MonoBehaviour
 
     public Color initialButtonColor;
 
+
+    [Header("Alerte")]
+    [SerializeField] private GameObject alerteText;
     private void Awake()
     {
         if (Instance == null)
@@ -206,6 +209,12 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         Enemy.Instance.health -= 0.5f;
         secondsLeft -= 1;
+
+        if(secondsLeft == 20 || secondsLeft == 10) {
+
+            StartCoroutine(AlerteMessage(secondsLeft));
+        }
+
         if(secondsLeft < 10)
         {
             timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
@@ -302,6 +311,38 @@ public class CombatManager : MonoBehaviour
         Enemy.Instance.isCombo = false;
         Enemy.Instance.isDefending = false;
         Enemy.Instance.isBoosted = false;
+    }
+
+
+    public IEnumerator AlerteMessage(int timer)
+    {
+        
+        alerteText.GetComponent<TextMeshProUGUI>().text = "Il reste " + timer.ToString() + " secondes !";
+       
+
+        Debug.Log("Middle");
+        alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 250);
+        byte alphaText = 250;
+
+        for (int i = 250; i > 0; i -= 25)
+        {
+            alphaText -= 25;
+            yield return new WaitForSeconds(0.1f);
+            alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, alphaText);
+        }
+
+        for(int i = 0; i<250; i += 25)
+        {
+            alphaText += 25;
+            yield return new WaitForSeconds(0.1f);
+            alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, alphaText);
+        }
+    
+
+        yield return new WaitForSeconds(0.3f);
+        alphaText = 0;
+        alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 0);
+        Debug.Log("End");
     }
 
     #region Buttons
