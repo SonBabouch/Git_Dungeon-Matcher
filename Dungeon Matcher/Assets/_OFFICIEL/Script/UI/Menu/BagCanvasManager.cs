@@ -19,6 +19,7 @@ public class BagCanvasManager : MonoBehaviour
 
     public List<Image> equipeButton = new List<Image>();
     private Sprite defaultImage;
+
     private void Awake()
     {
         foreach (Transform child in bagButtonParent.transform)
@@ -56,6 +57,7 @@ public class BagCanvasManager : MonoBehaviour
         MenuManager.Instance.canvasManager.bagCanvas.detailsBackground.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
         MenuManager.Instance.canvasManager.bagCanvas.detailsBackgroundBG.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
         MenuManager.Instance.blockAction = false;
+        MenuManager.Instance.bagManager.detailShow = false;
     }
 
     public void UpdateEquipeButton()
