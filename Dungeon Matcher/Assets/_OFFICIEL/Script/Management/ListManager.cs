@@ -81,9 +81,15 @@ namespace Management
                 {
                     //Test Réussi;
                     CPL.monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+                    CPL.monsterContainer.GetComponent<MonsterToken>().isGet = true;
                     //afficher FeedBack
                     Vector3 scaleVectorFeedback = new Vector3(1, 1, 1);
                     CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
+
+                    for (int i = 0; i < MenuManager.Instance.canvasManager.bagCanvas.bagButtonList.Count; i++)
+                    {
+                        MenuManager.Instance.canvasManager.bagCanvas.bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
+                    }
                 }
                 else
                 {

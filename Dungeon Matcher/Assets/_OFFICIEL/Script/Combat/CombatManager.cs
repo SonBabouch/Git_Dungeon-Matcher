@@ -34,6 +34,7 @@ public class CombatManager : MonoBehaviour
     public Sprite[] typeRessource;
 
     public Color initialButtonColor;
+    public Color selectedButton;
 
     public TextMeshProUGUI attackDetails;
 
@@ -289,9 +290,6 @@ public class CombatManager : MonoBehaviour
             else if (Player.Instance.playerHand[i].isPlagiat && Enemy.Instance.lastEnemyCompetence == null)
             {
                 CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = Color.grey;
-            }else
-            {
-                CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
             }
         }
     }
@@ -320,7 +318,7 @@ public class CombatManager : MonoBehaviour
     {
         alerteText.GetComponent<TextMeshProUGUI>().text = "Il reste " + timer.ToString() + " secondes !";
 
-        Debug.Log("Middle");
+        //Debug.Log("Middle");
         alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 250);
         byte alphaText = 250;
 
@@ -342,7 +340,7 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         alphaText = 0;
         alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 0);
-        Debug.Log("End");
+        //Debug.Log("End");
     }
 
     #region Buttons
@@ -742,23 +740,37 @@ public class CombatManager : MonoBehaviour
         if(combatButtons[0].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             selectedSkill = Player.Instance.playerHand[0];
-            UpdateDescription();
+            index = 0;
+
         }
-        if (combatButtons[1].GetComponent<MyButton>().isPressed == true && inCombat)
+        else if (combatButtons[1].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             selectedSkill = Player.Instance.playerHand[1];
-            UpdateDescription();
+            index = 1;
         }
-        if (combatButtons[2].GetComponent<MyButton>().isPressed == true && inCombat)
+        else if (combatButtons[2].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             selectedSkill = Player.Instance.playerHand[2];
-            UpdateDescription();
+            index = 2;
         }
-        if (combatButtons[3].GetComponent<MyButton>().isPressed == true && inCombat)
+        else if (combatButtons[3].GetComponent<MyButton>().isPressed == true && inCombat)
         {
             selectedSkill = Player.Instance.playerHand[3];
-            UpdateDescription();
+            index = 3;
         }
+        UpdateDescription();
+        UpdateSelectedVisuel();
+        NoEchoFeedback();
+    }
+
+    public void UpdateSelectedVisuel()
+    {
+        for (int i = 0; i < combatButtons.Count; i++)
+        {
+            combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
+        }
+
+        combatButtons[index].gameObject.GetComponent<Image>().color = selectedButton;
     }
 
     public void UpdateDescription()

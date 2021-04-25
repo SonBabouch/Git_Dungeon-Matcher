@@ -60,8 +60,28 @@ public class MonsterEncyclopedie : MonoBehaviour
             allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
         }
 
-        MenuManager.Instance.matchManager.commonMonsterList[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
-        MenuManager.Instance.matchManager.commonMonsterList[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        //redonner les monstres claim;
+        for (int i = 0; i < MenuManager.Instance.matchManager.commonMonsterList.Count; i++)
+        {
+            if (MenuManager.Instance.matchManager.commonMonsterList[i].GetComponent<MonsterToken>().isGet)
+            {
+                MenuManager.Instance.matchManager.commonMonsterList[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            }
+        }
+
+        for (int i = 0; i < MenuManager.Instance.matchManager.rareMonsterList.Count; i++)
+        {
+            if (MenuManager.Instance.matchManager.rareMonsterList[i].GetComponent<MonsterToken>().isGet)
+            {
+                MenuManager.Instance.matchManager.rareMonsterList[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            }
+        }
+
+        //Update le visuel du sac;
+        for (int i = 0; i < MenuManager.Instance.canvasManager.bagCanvas.bagButtonList.Count; i++)
+        {
+            MenuManager.Instance.canvasManager.bagCanvas.bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
+        }
     }
 
 }

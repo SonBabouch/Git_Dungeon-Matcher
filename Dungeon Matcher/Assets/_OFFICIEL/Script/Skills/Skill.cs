@@ -214,7 +214,6 @@ public abstract class Skill : ScriptableObject
                 }
                 break;
         }
-        CombatManager.Instance.index = 0;
         Enemy.Instance.enemyIndex = 0;
     }
 

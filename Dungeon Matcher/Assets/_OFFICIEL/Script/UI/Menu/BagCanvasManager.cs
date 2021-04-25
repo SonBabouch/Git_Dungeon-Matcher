@@ -39,12 +39,14 @@ public class BagCanvasManager : MonoBehaviour
         {
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.allCommonMonster[i].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
         }
 
         for (int i = MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i < MenuManager.Instance.monsterEncyclopedie.allRareMonster.Count + MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
         {
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
         }
 
         MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();

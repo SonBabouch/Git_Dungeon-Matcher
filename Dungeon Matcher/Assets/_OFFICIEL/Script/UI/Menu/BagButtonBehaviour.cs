@@ -34,11 +34,6 @@ public class BagButtonBehaviour : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        UpdateColor();
-    }
-
     public void UpdateColor()
     {
         if (monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
