@@ -47,7 +47,7 @@ MonoBehaviour:
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 1
   description: 
   monsterName: Lookatmi
   health: 0

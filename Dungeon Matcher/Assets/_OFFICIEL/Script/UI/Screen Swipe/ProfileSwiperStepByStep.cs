@@ -110,6 +110,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     if (MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManager.energy > 0)
                     {
                         MenuManager.Instance.matchManager.Dislike();
+                            
                     }
                     else
                     {
@@ -128,6 +129,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     if (MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManager.energy > 0)
                     {
                         MenuManager.Instance.matchManager.Match();
+                        
                     }
                     else
                     {

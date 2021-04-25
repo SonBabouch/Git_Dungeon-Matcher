@@ -8,6 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Skill : ScriptableObject
 {
+    public string skillName;
+
     [Header("Common")]
     public string skillDescription;
     public float effectValue;

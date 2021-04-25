@@ -431,10 +431,10 @@ public class CombatManager : MonoBehaviour
             energyCostText[3].color = Color.black;
         }
 
-        damageText[0].text = Player.Instance.playerHand[0].skillDescription;
-        damageText[1].text = Player.Instance.playerHand[1].skillDescription;
-        damageText[2].text = Player.Instance.playerHand[2].skillDescription;
-        damageText[3].text = Player.Instance.playerHand[3].skillDescription;
+        damageText[0].text = Player.Instance.playerHand[0].skillName;
+        damageText[1].text = Player.Instance.playerHand[1].skillName;
+        damageText[2].text = Player.Instance.playerHand[2].skillName;
+        damageText[3].text = Player.Instance.playerHand[3].skillName;
 
         ButtonIcon();
         ButtonTypeOf();
@@ -706,7 +706,7 @@ public class CombatManager : MonoBehaviour
 
     public void UseAttack()
     {
-        if(selectedSkill != null)
+        if(selectedSkill != null && !Player.Instance.isCharging)
         {
             if(Player.Instance.isCramp && Player.Instance.energy >= selectedSkill.crampEnergyCost)
             {
@@ -777,7 +777,25 @@ public class CombatManager : MonoBehaviour
     {
         if(selectedSkill != null)
         {
-            attackDetails.text = selectedSkill.skillDescription;
+            if(selectedSkill.typeOfCapacity == Skill.capacityType.Echo)
+            {
+                attackDetails.text = selectedSkill.skillDescription + "(" +(Player.Instance.lastPlayerCompetence.name)+ ")";
+            }
+
+            else if(selectedSkill.typeOfCapacity == Skill.capacityType.Plagiat)
+            {
+                attackDetails.text = selectedSkill.skillDescription + "(" + (Enemy.Instance.lastEnemyCompetence.name) + ")";
+            }
+
+            else if (selectedSkill.isComboSkill)
+            {
+                attackDetails.text = selectedSkill.skillDescription + "(Combo: " + selectedSkill.comboEffectValue + ")";
+            }
+            else
+            {
+                attackDetails.text = selectedSkill.skillDescription;
+            }
+
         }
         else
         {

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack 3
   m_EditorClassIdentifier: 
-  skillDescription: "30 d\xE9g\xE2ts"
+  skillName: Attaque
+  skillDescription: "Infliger 30 d\xE9gats \xE0 l'adversaire."
   effectValue: 30
   messageOwner: {fileID: 0}
   side: 1

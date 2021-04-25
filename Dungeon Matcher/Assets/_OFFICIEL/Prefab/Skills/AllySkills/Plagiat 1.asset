@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc09a9edf9e9c04d9321f214f8d2b36, type: 3}
   m_Name: Plagiat 1
   m_EditorClassIdentifier: 
-  skillDescription: Plagiat
+  skillName: Plagiat
+  skillDescription: "Copie la derni\xE8re comp\xE9tence de l'adversaire."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
   messageType: 0
   typeOfCapacity: 0
   trueEnergyCost: 3
-  energyCost: 30
+  energyCost: 20
   initialEnergyCost: 30
   crampEnergyCost: 40
   isComboSkill: 1

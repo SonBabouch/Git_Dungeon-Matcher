@@ -47,7 +47,7 @@ MonoBehaviour:
   monsterIndexPosition: 1
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 1
   description: "Jeune sir\xE8ne cherche son barracuda pour trip aquatique.  Si tu
     fais moins de 3 m\xE8tres, tu m'int\xE9resses pas.  Ajoute-moi quand m\xEAme
     sur Rawrchat : @6ReineDesMers"

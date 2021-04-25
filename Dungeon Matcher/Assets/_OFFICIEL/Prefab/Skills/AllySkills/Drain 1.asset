@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58279a1362a1f841a33e62aeccca0fc, type: 3}
   m_Name: Drain 1
   m_EditorClassIdentifier: 
-  skillDescription: Drain
+  skillName: Drain
+  skillDescription: "Inflige 20 d\xE9gats. Soigne de 20 d\xE9gats."
   effectValue: 20
   messageOwner: {fileID: 0}
   side: 1

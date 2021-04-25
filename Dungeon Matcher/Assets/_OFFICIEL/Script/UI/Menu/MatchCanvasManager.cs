@@ -11,6 +11,8 @@ namespace Management
     /// </summary>
     public class MatchCanvasManager : MonoBehaviour
     {
+        public MatchFeedBack matchFeedback;
+
         //Apparition du GameObject Profil à un point précis dans la scène.
         public GameObject profilPrefab;
         public GameObject[] profilPosition;

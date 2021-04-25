@@ -222,11 +222,13 @@ namespace Management
                     //Instantie le profil matché dans la liste.
                     MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
                     MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+                    MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(true);
                 }
                 else
                 {
                     //Si Indisponible => Ici
                     MenuManager.Instance.canvasManager.StartCoroutine(MenuManager.Instance.canvasManager.NoMatchFeedback());
+                    MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(false);
                 }
 
                 //Afficher FeedBackErreur.
@@ -284,6 +286,7 @@ namespace Management
 
 
                 monsterSpawned.Remove(profilPresented);
+                MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnDislikeFeedback();
 
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)

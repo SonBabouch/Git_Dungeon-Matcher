@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fee059c5848534686e5e870e3f01bc, type: 3}
   m_Name: Curse
   m_EditorClassIdentifier: 
-  skillDescription: "Mal\xE9diction"
+  skillName: "Mal\xE9diction"
+  skillDescription: "Les messages de l'adversaire ont 20% de chance d'\xEAtre annul\xE9."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1

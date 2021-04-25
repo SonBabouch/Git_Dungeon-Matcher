@@ -604,8 +604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerDisplay: {fileID: 1273854986550061022}
-  secondsLeft: 25
-  maxSecondsLeft: 25
+  secondsLeft: 45
+  maxSecondsLeft: 45
   minSecondsLeft: 0
   takingTimeAway: 0
   isCombatEnded: 0
@@ -664,6 +664,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 500797a093a65a24fa7d042589af3485, type: 3}
   - {fileID: 21300000, guid: f2e02619c47364a489587e78fa357b2f, type: 3}
   initialButtonColor: {r: 1, g: 1, b: 1, a: 1}
+  selectedButton: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
   attackDetails: {fileID: 1152016945}
   alerteText: {fileID: 611829502}
   index: 0
@@ -1110,10 +1111,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273854986186883806}
     m_Modifications:
+    - target: {fileID: 916579595, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 153
+      objectReference: {fileID: 0}
     - target: {fileID: 3267444185313052444, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7573319943405721528, guid: 1f4e7a3b45acb5e4dbfbdb190d5b7c55,
         type: 3}
