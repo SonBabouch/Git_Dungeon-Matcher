@@ -51,6 +51,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
 
@@ -78,6 +79,8 @@ public class CombatManager : MonoBehaviour
         isCombatEnded = false;
 
         Enemy.Instance.EnemyBehavior();
+        Player.Instance.lastPlayerCompetence = null;
+        Enemy.Instance.lastEnemyCompetence = null;
         ButtonsInfos();
     }
 
@@ -777,16 +780,14 @@ public class CombatManager : MonoBehaviour
     {
         if(selectedSkill != null)
         {
-            if(selectedSkill.typeOfCapacity == Skill.capacityType.Echo)
+            if(selectedSkill.isEcho)
             {
-                attackDetails.text = selectedSkill.skillDescription + "(" +(Player.Instance.lastPlayerCompetence.name)+ ")";
+                attackDetails.text = selectedSkill.skillDescription + "(" +(Player.Instance.lastPlayerCompetence.skillName) + ")";
             }
-
-            else if(selectedSkill.typeOfCapacity == Skill.capacityType.Plagiat)
+            else if(selectedSkill.isPlagiat)
             {
-                attackDetails.text = selectedSkill.skillDescription + "(" + (Enemy.Instance.lastEnemyCompetence.name) + ")";
+                attackDetails.text = selectedSkill.skillDescription + "(" + (Enemy.Instance.lastEnemyCompetence.skillName) + ")";
             }
-
             else if (selectedSkill.isComboSkill)
             {
                 attackDetails.text = selectedSkill.skillDescription + "(Combo: " + selectedSkill.comboEffectValue + ")";
