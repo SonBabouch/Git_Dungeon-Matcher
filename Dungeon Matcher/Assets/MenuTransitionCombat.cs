@@ -129,10 +129,6 @@ public class MenuTransitionCombat : MonoBehaviour
     {
         StartCoroutine(StartCombatAfterAnnonceEnum());
     }
-
-    
-   
-
    
     //4- On lance le décompte pour le combat.
     public IEnumerator StartCombatAfterAnnonceEnum()
