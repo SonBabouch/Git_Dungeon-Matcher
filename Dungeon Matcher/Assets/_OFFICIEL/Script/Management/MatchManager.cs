@@ -108,7 +108,8 @@ namespace Management
                 GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform.position, Quaternion.identity);
                 profilSpawned.SetActive(false);
                 profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
-                //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                
                 profilSpawned.GetComponent<ProfilBehaviour>().Initialisation(true);
                 //Le monstre est ajouté à une liste pouvant être traquée.
                 monsterSpawned.Insert(0,profilSpawned);
@@ -118,8 +119,8 @@ namespace Management
                 //Debug.Log(monsterPresented);
 
                 MenuManager.Instance.canvasManager.matchCanvas.UpdateProfilPosition();
-                
 
+            profilSpawned.transform.localPosition = Vector3.zero;
         }
 
         public void FirstTirage()
@@ -153,8 +154,8 @@ namespace Management
             //Instantier le gameObject avec le bon positionnement;
             GameObject profilSpawned = Instantiate(MenuManager.Instance.canvasManager.matchCanvas.profilPrefab, MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform.position, Quaternion.identity);
             profilSpawned.transform.SetParent(MenuManager.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
-            //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
 
+            
             profilSpawned.GetComponent<ProfilBehaviour>().Initialisation(true);
             //Le monstre est ajouté à une liste pouvant être traquée.
             monsterSpawned.Insert(0, profilSpawned);
@@ -162,6 +163,7 @@ namespace Management
             MenuManager.Instance.canvasManager.matchCanvas.UpdateFirstPosition();
             monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
             profilPresented = monsterSpawned[monsterSpawned.Count-1];
+            profilSpawned.transform.localPosition = Vector3.zero;
         }
         
         
