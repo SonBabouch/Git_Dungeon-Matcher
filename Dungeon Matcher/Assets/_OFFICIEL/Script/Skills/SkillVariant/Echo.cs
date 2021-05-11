@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skills/Echo")]
 public class Echo : Skill
 {
+
     [SerializeField]
     private MonsterToken monster;
     [SerializeField]

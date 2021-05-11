@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9307214975270e04d8dcff01b1e98c36, type: 3}
   m_Name: Mark
   m_EditorClassIdentifier: 
-  skillDescription: Cris de Guerre
+  skillName: Marque
+  skillDescription: "Augmente vos d\xE9gats de 25%."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
@@ -21,7 +22,7 @@ MonoBehaviour:
   trueEnergyCost: 1
   energyCost: 10
   initialEnergyCost: 10
-  crampEnergyCost: 20
+  crampEnergyCost: 11
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

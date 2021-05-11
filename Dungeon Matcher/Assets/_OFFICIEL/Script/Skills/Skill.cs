@@ -8,6 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class Skill : ScriptableObject
 {
+    public string skillName;
+
     [Header("Common")]
     public string skillDescription;
     public float effectValue;
@@ -214,7 +216,6 @@ public abstract class Skill : ScriptableObject
                 }
                 break;
         }
-        CombatManager.Instance.index = 0;
         Enemy.Instance.enemyIndex = 0;
     }
 

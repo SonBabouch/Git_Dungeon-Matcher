@@ -11,7 +11,8 @@ namespace Management
     public class ListCanvasManager : MonoBehaviour
     {
         //Elements D'UI
-        public TextMeshProUGUI listeState;
+        [SerializeField] private TextMeshProUGUI currentSizeText;
+        [SerializeField] private TextMeshProUGUI maxSizeText;
         public List<GameObject> listPosition = new List<GameObject>();
         [SerializeField] private GameObject parentPositions;
         public TextMeshProUGUI playerHealth;
@@ -19,9 +20,12 @@ namespace Management
         //Bas d'écran
         public GameObject combatButton;
         [SerializeField] private GameObject alerteCombat;
+        [SerializeField] private TextMeshProUGUI alerteCombatText;
 
         //Prefab à instancier quand le joueur match
         [SerializeField] private GameObject listPrefab;
+
+        
 
         private void Awake()
         {
@@ -30,11 +34,23 @@ namespace Management
             {
                 listPosition.Add(child.gameObject);
             }
-            playerHealth.text = "PV : 100 /100 ";
+            UpdateCombatButton();
+            UpdateList();
         }
 
         public void UpdateCombatButton()
         {
+            if(MenuManager.Instance.matchManager.matchList.Count == 0)
+            {
+                alerteCombatText.text = "Va matcher un Monstre.";
+            }
+            else if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
+            {
+                alerteCombatText.text = "Ton équipe n'est pas complète.";
+            }
+
+            
+
             if (MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
             {
                 alerteCombat.SetActive(true);
@@ -56,8 +72,8 @@ namespace Management
         //appeler à chaque match pour update le visuel du menu
         public void UpdateList()
         {
-            
-            listeState.text = "Taille " + MenuManager.Instance.listManager.listCurrentSize + " / " + MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1];
+            currentSizeText.text = MenuManager.Instance.listManager.listCurrentSize.ToString();
+            maxSizeText.text = MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1].ToString();
         }
 
         //Instancier le profil à une position particulière. 

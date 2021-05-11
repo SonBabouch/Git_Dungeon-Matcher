@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: MonsterRare
   m_EditorClassIdentifier: 
   description: RARE1
-  monsterName: RARE1
+  monsterName: Julian
   health: 20
   maxHealth: 200
   minHealh: 0
   rarety: 1
-  statement: 0
+  statement: 1
   monsterIndexPosition: 0
   profilPicture: {fileID: 0}

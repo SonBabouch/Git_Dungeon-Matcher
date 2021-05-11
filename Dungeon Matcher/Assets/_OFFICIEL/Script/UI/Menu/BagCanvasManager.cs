@@ -19,6 +19,7 @@ public class BagCanvasManager : MonoBehaviour
 
     public List<Image> equipeButton = new List<Image>();
     private Sprite defaultImage;
+
     private void Awake()
     {
         foreach (Transform child in bagButtonParent.transform)
@@ -38,12 +39,14 @@ public class BagCanvasManager : MonoBehaviour
         {
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.allCommonMonster[i].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
         }
 
         for (int i = MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i < MenuManager.Instance.monsterEncyclopedie.allRareMonster.Count + MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
         {
             bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManager.Instance.monsterEncyclopedie.allRareMonster[i - MenuManager.Instance.monsterEncyclopedie.allCommonMonster.Count].gameObject;
             bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
+            bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
         }
 
         MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
@@ -56,6 +59,7 @@ public class BagCanvasManager : MonoBehaviour
         MenuManager.Instance.canvasManager.bagCanvas.detailsBackground.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
         MenuManager.Instance.canvasManager.bagCanvas.detailsBackgroundBG.GetComponent<Tweener>().TweenScaleTo(tweenScale, 0.5f, Easings.Ease.SmoothStep);
         MenuManager.Instance.blockAction = false;
+        MenuManager.Instance.bagManager.detailShow = false;
     }
 
     public void UpdateEquipeButton()
@@ -75,6 +79,18 @@ public class BagCanvasManager : MonoBehaviour
         
     }
 
+    public void RemoveAll()
+    {
+        MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
+        equipeButton[0].sprite = defaultImage;
+        MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+        MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
+        equipeButton[1].sprite = defaultImage;
+        UpdateEquipeButton();
+        MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+    }
+
     public void RemoveLeftEquipement()
     {
         if(MenuManager.Instance.bagManager.monsterTeam[0] != null)
@@ -82,6 +98,7 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
             UpdateEquipeButton();
+            MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
         }
 
     }
@@ -93,6 +110,7 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam[1].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
             UpdateEquipeButton();
+            MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
         }
     }
 }

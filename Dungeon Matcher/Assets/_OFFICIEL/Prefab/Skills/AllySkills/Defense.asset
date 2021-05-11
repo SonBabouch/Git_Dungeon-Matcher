@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c8b71b2f75b364e883201f63137047, type: 3}
   m_Name: Defense
   m_EditorClassIdentifier: 
-  skillDescription: "D\xE9fense"
+  skillName: "D\xE9fense"
+  skillDescription: Bloque la prochaine attaque.
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1

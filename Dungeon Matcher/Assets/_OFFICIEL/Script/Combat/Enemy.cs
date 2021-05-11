@@ -225,9 +225,18 @@ public class Enemy : MonoBehaviour
         if (canAttack)
         {
             enemyIndex = Random.Range(0, enemyHand.Count);
-            enemyHand[enemyIndex].Use();
-            yield return new WaitForSeconds(1f);
-            EnemyBehavior();
+            if ((enemyHand[enemyIndex].typeOfCapacity == Skill.capacityType.Echo && lastEnemyCompetence == null|| (enemyHand[enemyIndex].typeOfCapacity == Skill.capacityType.Plagiat &&  Player.Instance.lastPlayerCompetence == null))){
+
+                StartCoroutine(enemyHasMaxEnergyBehavior());
+            }
+            else
+            {
+                enemyHand[enemyIndex].Use();
+                yield return new WaitForSeconds(1f);
+                EnemyBehavior();
+            }
+
+            
         }
     }
 

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c167868c1b0e745bbf4ec760156631, type: 3}
   m_Name: CoupDeVent
   m_EditorClassIdentifier: 
-  skillDescription: Coup de Vent
+  skillName: Coud de Vent
+  skillDescription: Nettoie le terrain.
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
@@ -21,7 +22,7 @@ MonoBehaviour:
   trueEnergyCost: 4
   energyCost: 40
   initialEnergyCost: 40
-  crampEnergyCost: 50
+  crampEnergyCost: 41
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

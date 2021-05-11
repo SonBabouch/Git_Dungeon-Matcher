@@ -26,6 +26,7 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI[] damageText;
 
     public float energyPerSeconds;
+    public Skill selectedSkill = null;
 
     public Sprite[] iconRessource;
 
@@ -33,7 +34,12 @@ public class CombatManager : MonoBehaviour
     public Sprite[] typeRessource;
 
     public Color initialButtonColor;
+    public Color selectedButton;
 
+    public TextMeshProUGUI attackDetails;
+
+    [Header("Alerte")]
+    [SerializeField] private GameObject alerteText;
     private void Awake()
     {
         if (Instance == null)
@@ -45,6 +51,7 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
 
@@ -72,6 +79,8 @@ public class CombatManager : MonoBehaviour
         isCombatEnded = false;
 
         Enemy.Instance.EnemyBehavior();
+        Player.Instance.lastPlayerCompetence = null;
+        Enemy.Instance.lastEnemyCompetence = null;
         ButtonsInfos();
     }
 
@@ -206,6 +215,12 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         Enemy.Instance.health -= 0.5f;
         secondsLeft -= 1;
+
+        if(secondsLeft == 20 || secondsLeft == 10) {
+
+            StartCoroutine(AlerteMessage(secondsLeft));
+        }
+
         if(secondsLeft < 10)
         {
             timerDisplay.GetComponent<TextMeshProUGUI>().text = "" + secondsLeft;
@@ -278,9 +293,6 @@ public class CombatManager : MonoBehaviour
             else if (Player.Instance.playerHand[i].isPlagiat && Enemy.Instance.lastEnemyCompetence == null)
             {
                 CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = Color.grey;
-            }else
-            {
-                CombatManager.Instance.combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
             }
         }
     }
@@ -302,6 +314,36 @@ public class CombatManager : MonoBehaviour
         Enemy.Instance.isCombo = false;
         Enemy.Instance.isDefending = false;
         Enemy.Instance.isBoosted = false;
+    }
+
+
+    public IEnumerator AlerteMessage(int timer)
+    {
+        alerteText.GetComponent<TextMeshProUGUI>().text = "Il reste " + timer.ToString() + " secondes !";
+
+        //Debug.Log("Middle");
+        alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 250);
+        byte alphaText = 250;
+
+        for (int i = 250; i > 0; i -= 25)
+        {
+            alphaText -= 25;
+            yield return new WaitForSeconds(0.1f);
+            alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, alphaText);
+        }
+
+        for(int i = 0; i<250; i += 25)
+        {
+            alphaText += 25;
+            yield return new WaitForSeconds(0.1f);
+            alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, alphaText);
+        }
+    
+
+        yield return new WaitForSeconds(0.3f);
+        alphaText = 0;
+        alerteText.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 0);
+        //Debug.Log("End");
     }
 
     #region Buttons
@@ -392,10 +434,10 @@ public class CombatManager : MonoBehaviour
             energyCostText[3].color = Color.black;
         }
 
-        damageText[0].text = Player.Instance.playerHand[0].skillDescription;
-        damageText[1].text = Player.Instance.playerHand[1].skillDescription;
-        damageText[2].text = Player.Instance.playerHand[2].skillDescription;
-        damageText[3].text = Player.Instance.playerHand[3].skillDescription;
+        damageText[0].text = Player.Instance.playerHand[0].skillName;
+        damageText[1].text = Player.Instance.playerHand[1].skillName;
+        damageText[2].text = Player.Instance.playerHand[2].skillName;
+        damageText[3].text = Player.Instance.playerHand[3].skillName;
 
         ButtonIcon();
         ButtonTypeOf();
@@ -656,25 +698,35 @@ public class CombatManager : MonoBehaviour
 
     public void ButtonsInitialization()
     {
-        for (int i = 0; i < combatButtons.Count; i++)
-        {
-            combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
-        }
-        
         Player.Instance.UpdateComboVisuel();
-
     }
     public void ButtonsUpdate()
     {
         ResetButtons();
         Player.Instance.PlayerSwapSkill(index);
-        
-        for (int i = 0; i < combatButtons.Count; i++)
-        {
-            combatButtons[i].onClick.AddListener(Player.Instance.playerHand[i].Use);
-        }
         ButtonsInfos();
-        
+    }
+
+    public void UseAttack()
+    {
+        if(selectedSkill != null && !Player.Instance.isCharging)
+        {
+            if(Player.Instance.isCramp && Player.Instance.energy >= selectedSkill.crampEnergyCost)
+            {
+                selectedSkill.Use();
+                selectedSkill = null;
+                UpdateDescription();
+            }
+            else if(Player.Instance.energy >= selectedSkill.initialEnergyCost)
+            {
+                selectedSkill.Use();
+                selectedSkill = null;
+                UpdateDescription();
+            }
+               
+
+            
+        }
     }
 
     public void ResetButtons()
@@ -690,20 +742,68 @@ public class CombatManager : MonoBehaviour
     {
         if(combatButtons[0].GetComponent<MyButton>().isPressed == true && inCombat)
         {
+            selectedSkill = Player.Instance.playerHand[0];
             index = 0;
+
         }
-        if (combatButtons[1].GetComponent<MyButton>().isPressed == true && inCombat)
+        else if (combatButtons[1].GetComponent<MyButton>().isPressed == true && inCombat)
         {
+            selectedSkill = Player.Instance.playerHand[1];
             index = 1;
         }
-        if (combatButtons[2].GetComponent<MyButton>().isPressed == true && inCombat)
+        else if (combatButtons[2].GetComponent<MyButton>().isPressed == true && inCombat)
         {
+            selectedSkill = Player.Instance.playerHand[2];
             index = 2;
         }
-        if (combatButtons[3].GetComponent<MyButton>().isPressed == true && inCombat)
+        else if (combatButtons[3].GetComponent<MyButton>().isPressed == true && inCombat)
         {
+            selectedSkill = Player.Instance.playerHand[3];
             index = 3;
         }
+        UpdateDescription();
+        UpdateSelectedVisuel();
+        NoEchoFeedback();
     }
+
+    public void UpdateSelectedVisuel()
+    {
+        for (int i = 0; i < combatButtons.Count; i++)
+        {
+            combatButtons[i].gameObject.GetComponent<Image>().color = initialButtonColor;
+        }
+
+        combatButtons[index].gameObject.GetComponent<Image>().color = selectedButton;
+    }
+
+    public void UpdateDescription()
+    {
+        if(selectedSkill != null)
+        {
+            if(selectedSkill.isEcho)
+            {
+                attackDetails.text = selectedSkill.skillDescription + "(" +(Player.Instance.lastPlayerCompetence.skillName) + ")";
+            }
+            else if(selectedSkill.isPlagiat)
+            {
+                attackDetails.text = selectedSkill.skillDescription + "(" + (Enemy.Instance.lastEnemyCompetence.skillName) + ")";
+            }
+            else if (selectedSkill.isComboSkill)
+            {
+                attackDetails.text = selectedSkill.skillDescription + "(Combo: " + selectedSkill.comboEffectValue + ")";
+            }
+            else
+            {
+                attackDetails.text = selectedSkill.skillDescription;
+            }
+
+        }
+        else
+        {
+            attackDetails.text = "";
+        }
+    }
+
+        
     #endregion
 }

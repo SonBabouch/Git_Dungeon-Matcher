@@ -11,6 +11,8 @@ namespace Management
     /// </summary>
     public class MatchCanvasManager : MonoBehaviour
     {
+        public MatchFeedBack matchFeedback;
+
         //Apparition du GameObject Profil à un point précis dans la scène.
         public GameObject profilPrefab;
         public GameObject[] profilPosition;
@@ -44,6 +46,7 @@ namespace Management
         [SerializeField] private GameObject advertising;
         public Tweener tweener;
         [SerializeField] private GameObject textBubble;
+        [SerializeField] private TextMeshProUGUI conseillereMsg;
         [SerializeField] private GameObject buttonSkip;
         [SerializeField] private GameObject initialPosition;
         [SerializeField] private GameObject tweenPosition;
@@ -221,23 +224,24 @@ namespace Management
             }
         }
 
-        public IEnumerator alerteDislike()
+        public IEnumerator alerteDislike(string message)
         {
             //Debug.Log("wallah match");
             MenuManager.Instance.blockAction = true;
             PageSwiper.canChange = false;
             //Changer la boule pour désactiver les boutons.
+            conseillereMsg.text = message;
             tweener.TweenPositionTo(tweenPosition.transform.localPosition,1f,Easings.Ease.SmoothStep,true);
             yield return new WaitForSeconds(1f);
             textBubble.SetActive(true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
             buttonSkip.SetActive(true);
             //Debug.Log("End");
         }
 
         public void AlerteDislike()
         {
-            StartCoroutine(alerteDislike());
+            StartCoroutine(alerteDislike("Si tu ne matches pas, tu ne pourras pas devenir plus fort..."));
         }
         public void EndAlerteDislike()
         {

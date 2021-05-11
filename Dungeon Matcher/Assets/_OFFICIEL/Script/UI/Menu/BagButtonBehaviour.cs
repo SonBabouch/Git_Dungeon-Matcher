@@ -18,14 +18,38 @@ public class BagButtonBehaviour : MonoBehaviour
 
     public GameObject monsterContainer;
 
+
+    public Color claimColor;
+    public Color unclaimColor;
+    public Color indisponibleColor;
+
+
     private void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         detailsButton.SetActive(false);
         equipButton.SetActive(false);
         upgradeButton.SetActive(false);
+
+        
     }
 
+    public void UpdateColor()
+    {
+        if (monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
+        {
+            gameObject.GetComponent<Image>().color = claimColor;
+
+        }
+        else if(monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible)
+        {
+            gameObject.GetComponent<Image>().color = indisponibleColor;
+        }
+        else
+        {
+            gameObject.GetComponent<Image>().color = unclaimColor;
+        }
+    }
 
     public void Details()
     {

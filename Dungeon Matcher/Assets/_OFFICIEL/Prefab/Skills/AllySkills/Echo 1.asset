@@ -12,24 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433c9d858dfa7b42b8ed7f8d0354084, type: 3}
   m_Name: Echo 1
   m_EditorClassIdentifier: 
-  skillDescription: Echo
+  skillName: Echo
+  skillDescription: "Copie votre derni\xE8re comp\xE9tence."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
   messageType: 0
-  typeOfCapacity: 0
-  trueEnergyCost: 3
-  energyCost: 30
-  initialEnergyCost: 30
-  crampEnergyCost: 40
-  isComboSkill: 1
+  typeOfCapacity: 7
+  trueEnergyCost: 2
+  energyCost: 20
+  initialEnergyCost: 20
+  crampEnergyCost: 21
+  isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0
-  comboEffectValue: 40
+  comboEffectValue: 30
   chargingAttack: 0
   isEcho: 1
   isPlagiat: 0
-  lastCompetenceReference: {fileID: 11400000, guid: 569dce34347666043be89a3400bfb127,
+  lastCompetenceReference: {fileID: 11400000, guid: 38711e406d1093b44b8ef7556e7f8cd2,
     type: 2}
   skillIndex: 0
   monster: {fileID: 0}

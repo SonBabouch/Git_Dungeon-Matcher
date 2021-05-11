@@ -546,6 +546,9 @@ MonoBehaviour:
   equipButton: {fileID: 879698641760924600}
   upgradeButton: {fileID: 6672914622411765576}
   monsterContainer: {fileID: 0}
+  claimColor: {r: 1, g: 1, b: 1, a: 1}
+  unclaimColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+  indisponibleColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!95 &3970657118458235396
 Animator:
   serializedVersion: 3

@@ -12,6 +12,9 @@ public class ProfilBehaviour : MonoBehaviour
     public TextMeshProUGUI profilName;
     public TextMeshProUGUI description;
 
+    public TextMeshProUGUI[] hashtag;
+    public TextMeshProUGUI level;
+
     public GameObject certification;
 
     public void Initialisation(bool firstTime)
@@ -25,6 +28,13 @@ public class ProfilBehaviour : MonoBehaviour
             description.text = monsterPick.GetComponent<MonsterToken>().description;
             
             profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
+
+            for (int i = 0; i < hashtag.Length; i++)
+            {
+                hashtag[i].text = "#" + monsterPick.GetComponent<MonsterToken>().monsterHashTag[i];
+            }
+
+            level.text = "Niveau : " + monsterPick.GetComponent<MonsterToken>().monsterLevel.ToString();
 
             if (monsterPick.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPick.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
             {

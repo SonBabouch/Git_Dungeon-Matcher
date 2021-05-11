@@ -62,3 +62,6 @@ MonoBehaviour:
   owner: {fileID: 0}
   allySkills: []
   ennemySkills: []
+  monsterHashTag:
+  - 
+  - 

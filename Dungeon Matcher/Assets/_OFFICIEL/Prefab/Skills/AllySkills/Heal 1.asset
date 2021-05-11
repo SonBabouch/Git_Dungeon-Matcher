@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac76f159b98fbe4eb7c59c2617a2cc8, type: 3}
   m_Name: Heal 1
   m_EditorClassIdentifier: 
-  skillDescription: "R\xE9cup\xE8re 20"
+  skillName: Soin
+  skillDescription: "R\xE9cup\xE8re 20 points de vie."
   effectValue: 20
   messageOwner: {fileID: 0}
   side: 1
@@ -21,7 +22,7 @@ MonoBehaviour:
   trueEnergyCost: 2
   energyCost: 20
   initialEnergyCost: 20
-  crampEnergyCost: 30
+  crampEnergyCost: 21
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0
