@@ -26,7 +26,7 @@ public class CircleScale : MonoBehaviour
     private IEnumerator Scale()
     {
         gameObject.transform.localScale = new Vector3(0f, 0f, 0f);
-        Vector3 scaleVector = new Vector3(1, 1, 1);
+        Vector3 scaleVector = new Vector3(1.15f, 1.15f, 1.15f);
         gameObject.GetComponent<Tweener>().TweenScaleTo(scaleVector,1f,Easings.Ease.SmootherStep);
         yield return null;
         yield return new WaitForSeconds(1f);

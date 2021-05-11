@@ -34,8 +34,7 @@ namespace Management
 
         //rareStuff;
         [SerializeField] private Image rareBar;
-        [SerializeField] private GameObject rareParticules;
-        [SerializeField] private ParticleSystem rareSystemParticule;
+       
         public bool ThereIsARare = false;
 
         //Marker
@@ -55,10 +54,7 @@ namespace Management
         {
             tweener = advertising.GetComponent<Tweener>();
 
-            rareSystemParticule = rareParticules.GetComponent<ParticleSystem>();
-
-            var emission = rareSystemParticule.emission;
-            emission.enabled = false;
+            
 
             UpdateEnergy();
 
@@ -98,7 +94,7 @@ namespace Management
 
         public void UpdateExperience()
         {
-            playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
+            playerLevelText.text = PlayerLevel.playerLevel.ToString();
             playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
         }
 
@@ -147,25 +143,12 @@ namespace Management
         public void UpdateProfilPosition()
         {
             
-            UpdateParticuleSystemRare();
 
             StartCoroutine(StarterCoroutine());
 
         }
 
-        public void UpdateParticuleSystemRare()
-        {
-            if (ThereIsARare && MenuManager.currentGameStateMenu == MenuManager.Menu.Match)
-            {
-                var emission = rareSystemParticule.emission;
-                emission.enabled = true;
-            }
-            else
-            {
-                var emission = rareSystemParticule.emission;
-                emission.enabled = false;
-            }
-        }
+      
 
         IEnumerator IncreaseBar(int lenght)
         {
