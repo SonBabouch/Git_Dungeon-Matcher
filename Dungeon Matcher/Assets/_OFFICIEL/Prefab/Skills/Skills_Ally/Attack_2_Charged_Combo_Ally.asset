@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
+  m_Name: Attack_2_Charged_Combo_Ally
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDescription: 
+  effectValue: 15
+  messageOwner: {fileID: 0}
+  side: 1
+  messageType: 0
+  typeOfCapacity: 0
+  trueEnergyCost: 2
+  energyCost: 20
+  initialEnergyCost: 20
+  crampEnergyCost: 30
+  isComboSkill: 1
+  comesFromCombo: 0
+  comesFromCurse: 0
+  comboEffectValue: 20
+  chargingAttack: 0
+  isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
+  skillIndex: 0
+  monster: {fileID: 0}
+  owner: {fileID: 0}
