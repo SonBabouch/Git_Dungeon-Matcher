@@ -86,8 +86,8 @@ MonoBehaviour:
   health: 0
   maxHealth: 100
   minHealth: 0
-  energy: 30
-  maxEnergy: 60
+  energy: 50
+  maxEnergy: 100
   modifierEnergy: 1
   trueEnergy: 0
   playerHand:
@@ -327,7 +327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e3003cab887cb404f817b8647a0afbc2,
+      objectReference: {fileID: 21300000, guid: cfe97d288a3b0b74e929af3a76f5be1d,
         type: 3}
     - target: {fileID: 2477600537068925383, guid: faaf019c564df07438196cc17c530a29,
         type: 3}
