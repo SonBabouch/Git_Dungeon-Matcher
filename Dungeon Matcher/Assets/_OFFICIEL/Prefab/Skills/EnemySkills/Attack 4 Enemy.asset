@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack 4 Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 40 Damage
   effectValue: 40
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 0
-  trueEnergyCost: 4
-  energyCost: 40
-  initialEnergyCost: 40
-  crampEnergyCost: 50
+  trueEnergyCost: 6
+  energyCost: 60
+  initialEnergyCost: 60
+  crampEnergyCost: 70
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

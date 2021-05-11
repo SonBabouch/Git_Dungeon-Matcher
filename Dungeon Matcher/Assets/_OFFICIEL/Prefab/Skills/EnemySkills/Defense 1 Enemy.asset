@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c8b71b2f75b364e883201f63137047, type: 3}
   m_Name: Defense 1 Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 2
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

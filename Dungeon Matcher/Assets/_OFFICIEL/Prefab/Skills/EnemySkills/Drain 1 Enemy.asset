@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58279a1362a1f841a33e62aeccca0fc, type: 3}
   m_Name: Drain 1 Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 
   effectValue: 20
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 6
-  trueEnergyCost: 3
-  energyCost: 30
-  initialEnergyCost: 30
-  crampEnergyCost: 40
+  trueEnergyCost: 5
+  energyCost: 50
+  initialEnergyCost: 50
+  crampEnergyCost: 60
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

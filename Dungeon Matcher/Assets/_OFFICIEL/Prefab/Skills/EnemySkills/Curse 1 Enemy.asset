@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fee059c5848534686e5e870e3f01bc, type: 3}
   m_Name: Curse 1 Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 10
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 50
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

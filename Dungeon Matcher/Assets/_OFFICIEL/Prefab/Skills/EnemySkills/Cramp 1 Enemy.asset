@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7dc68aeb20c6d4cb994e3e4896f329, type: 3}
   m_Name: Cramp 1 Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 
   effectValue: 20
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 11
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

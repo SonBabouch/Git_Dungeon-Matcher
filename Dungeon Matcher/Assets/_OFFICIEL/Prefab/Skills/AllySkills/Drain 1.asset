@@ -19,10 +19,10 @@ MonoBehaviour:
   side: 1
   messageType: 0
   typeOfCapacity: 6
-  trueEnergyCost: 3
-  energyCost: 30
-  initialEnergyCost: 30
-  crampEnergyCost: 40
+  trueEnergyCost: 5
+  energyCost: 50
+  initialEnergyCost: 50
+  crampEnergyCost: 60
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

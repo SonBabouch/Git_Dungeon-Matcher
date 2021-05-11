@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c167868c1b0e745bbf4ec760156631, type: 3}
   m_Name: Coup de Vent Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 5
-  trueEnergyCost: 4
-  energyCost: 40
-  initialEnergyCost: 40
-  crampEnergyCost: 50
+  trueEnergyCost: 6
+  energyCost: 60
+  initialEnergyCost: 60
+  crampEnergyCost: 70
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

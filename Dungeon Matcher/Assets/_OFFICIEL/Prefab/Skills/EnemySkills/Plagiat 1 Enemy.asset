@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc09a9edf9e9c04d9321f214f8d2b36, type: 3}
   m_Name: Plagiat 1 Enemy
   m_EditorClassIdentifier: 
+  skillName: 
   skillDescription: 
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0
   messageType: 0
   typeOfCapacity: 8
-  trueEnergyCost: 3
-  energyCost: 30
-  initialEnergyCost: 30
-  crampEnergyCost: 40
+  trueEnergyCost: 5
+  energyCost: 50
+  initialEnergyCost: 50
+  crampEnergyCost: 60
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0
