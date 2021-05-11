@@ -307,7 +307,7 @@ MonoBehaviour:
   canUseSilence: 0
   useHeal: 0
   useDefenseMove: 0
-  enemyUi: {fileID: 0}
+  enemyUi: {fileID: 3052418605312078779}
 --- !u!114 &3052418605312078779
 MonoBehaviour:
   m_ObjectHideFlags: 0
