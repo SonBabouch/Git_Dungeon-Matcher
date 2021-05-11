@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
-  m_Name: Monster7
+  m_Name: Tikikaputt
   m_EditorClassIdentifier: 
   description: "Oiseau de nuit en permanence en d\xE9calage horaire. Je vis la nuit
     en UTC-10.  Ne sois pas le soleil de ma vie, laisse-moi dormir stp.  J'ai une

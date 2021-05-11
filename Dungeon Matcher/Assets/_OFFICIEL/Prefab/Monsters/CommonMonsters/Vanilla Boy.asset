@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
-  m_Name: Monster0
+  m_Name: Vanilla Boy
   m_EditorClassIdentifier: 
-  description: "Je suis un mec \xE9norme et un peu sec, si tu cherches de la masse,
-    je vais t'en donner. Bref, tu fais pas le poids."
-  monsterName: Grogrumo
-  health: 20
+  description: Monster8
+  monsterName: Vanilla Boy
+  health: 10
   maxHealth: 100
   minHealh: 0
   rarety: 0
   statement: 0
-  monsterIndexPosition: 0
-  profilPicture: {fileID: 21300000, guid: 7e01b8164c2e07f408ee85c72bf54d29, type: 3}
+  monsterIndexPosition: 8
+  profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}

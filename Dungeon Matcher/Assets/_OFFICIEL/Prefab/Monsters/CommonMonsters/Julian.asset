@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
-  m_Name: MonsterRare
+  m_Name: Julian
   m_EditorClassIdentifier: 
-  description: RARE1
+  description: "Salut ! ^^ J'adore jouer \xE0 Final Dragon of Legends - Rise of the
+    Street Brawlers (Paladin level 157) :3 J'ai aussi tous les livres Archie Thunder,
+    c'est ma s\xE9rie pr\xE9f\xE9r\xE9e !!! (^u^) Si toi aussi, t'aimes l'Heroic
+    Fantasy, viens discuter OwO"
   monsterName: Julian
   health: 20
-  maxHealth: 200
+  maxHealth: 100
   minHealh: 0
-  rarety: 1
+  rarety: 0
   statement: 1
-  monsterIndexPosition: 0
-  profilPicture: {fileID: 0}
+  monsterIndexPosition: 4
+  profilPicture: {fileID: 21300000, guid: 2adb38eb3a8667c45b80214a4cf3ebb0, type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
-  m_Name: Monster5
+  m_Name: Sandy Paid
   m_EditorClassIdentifier: 
   description: "Si on match ensemble, pr\xE9pare-toi \xE0 c\xF4toyer les \xE9toiles.
     La postillon du p\xE9on n'atteint pas la brillance de ma crini\xE8re.  Tu perdras

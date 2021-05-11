@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731263988056315023}
   - component: {fileID: 8761877609787509778}
   m_Layer: 0
-  m_Name: Monster8
+  m_Name: Tetargaryen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,13 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 11400000, guid: 721d0beb2b916b04a9943a3d90eadd45, type: 2}
+  template: {fileID: 11400000, guid: 699d8b4acc3677f438097df5aa91deb7, type: 2}
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 1
   description: 
-  monsterName: 
+  monsterName: "T\xE9targaryen"
   health: 0
   maxHealth: 0
   minHealth: 0
@@ -57,11 +57,23 @@ MonoBehaviour:
   isGet: 0
   statement: 2
   profilPicture: {fileID: 0}
-  fullMonsterImage: {fileID: 0}
+  fullMonsterImage: {fileID: 21300000, guid: 0f486443cd9a33145bbba09dd1cb21a7, type: 3}
   side: 0
-  owner: {fileID: 0}
-  allySkills: []
-  ennemySkills: []
+  owner: {fileID: 3352059483369707408}
+  allySkills:
+  - {fileID: 11400000, guid: e8ead98fa5d4c0247b44e3af60d3d703, type: 2}
+  - {fileID: 11400000, guid: aa4a5a408a87d154899687ad81b699bc, type: 2}
+  - {fileID: 11400000, guid: 09bd3f01b1d68ca4782c265ba42f6321, type: 2}
+  - {fileID: 11400000, guid: 602273d1cb3758e419076324ed4719ae, type: 2}
+  ennemySkills:
+  - {fileID: 11400000, guid: 12ca176f613a8d047a49085db8f560e1, type: 2}
+  - {fileID: 11400000, guid: 12ca176f613a8d047a49085db8f560e1, type: 2}
+  - {fileID: 11400000, guid: 68126908127bd674d8ed7e89089252cd, type: 2}
+  - {fileID: 11400000, guid: 68126908127bd674d8ed7e89089252cd, type: 2}
+  - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
+  - {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb, type: 2}
+  - {fileID: 11400000, guid: 3ec8722f3de8fd04c821499b5a2d17aa, type: 2}
+  - {fileID: 11400000, guid: 3ec8722f3de8fd04c821499b5a2d17aa, type: 2}
   monsterHashTag:
-  - 
-  - 
+  - '#Polyvalent'
+  - '#Jeune'

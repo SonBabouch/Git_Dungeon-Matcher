@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7731263988056315023}
   - component: {fileID: 8761877609787509778}
   m_Layer: 0
-  m_Name: Monster9
+  m_Name: Arnolda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   numberOfFragmentsRequired: 
   monsterLevel: 0
   description: 
-  monsterName: 
+  monsterName: Arnolda
   health: 0
   maxHealth: 0
   minHealth: 0
