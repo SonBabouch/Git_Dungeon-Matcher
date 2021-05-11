@@ -26,7 +26,7 @@ public class ProfilBehaviour : MonoBehaviour
         rectTrans.offsetMin = Vector2.zero;
         rectTrans.offsetMax = Vector2.zero;
 
-
+        rectTrans.localScale = new Vector3(1f, 1f, 1f);
 
     }
 
