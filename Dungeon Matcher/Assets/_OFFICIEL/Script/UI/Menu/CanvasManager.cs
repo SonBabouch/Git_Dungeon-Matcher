@@ -166,9 +166,9 @@ namespace Management
         }
         #endregion
 
-        public IEnumerator NoMatchFeedback()
+        public IEnumerator NoMatchFeedback(GameObject go)
         {
-            Tweener t = noMatchBubble.GetComponent<Tweener>();
+            Tweener t = go.GetComponent<Tweener>();
             Vector3 tweenScale = new Vector3 (-1, 1f, 1f);
             t.TweenScaleTo(tweenScale,1f,Easings.Ease.SmoothStep);
             yield return new WaitForSeconds(2f);

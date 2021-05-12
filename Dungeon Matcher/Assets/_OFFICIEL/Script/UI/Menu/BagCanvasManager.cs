@@ -14,6 +14,9 @@ public class BagCanvasManager : MonoBehaviour
     public GameObject detailsBackground;
     public GameObject detailsBackgroundBG;
 
+    [SerializeField] private GameObject leftCross;
+    [SerializeField] private GameObject rightCross;
+
     [SerializeField] private GameObject bagButtonParent;
     public List<GameObject> bagButtonList = new List<GameObject>();
 
@@ -28,7 +31,8 @@ public class BagCanvasManager : MonoBehaviour
         }
         defaultImage = equipeButton[0].GetComponent<Image>().sprite;
 
-       
+        leftCross.SetActive(false);
+        rightCross.SetActive(false);
     }
     private void Start()
     {
@@ -76,7 +80,17 @@ public class BagCanvasManager : MonoBehaviour
         {
             equipeButton[1].sprite = defaultImage;
         }
-        
+
+        if (MenuManager.Instance.bagManager.monsterTeam.Count == 1)
+        {
+            leftCross.SetActive(true);
+        }
+
+        if (MenuManager.Instance.bagManager.monsterTeam.Count == 2)
+        {
+            rightCross.SetActive(true);
+        }
+
     }
 
     public void RemoveAll()
@@ -89,6 +103,13 @@ public class BagCanvasManager : MonoBehaviour
         equipeButton[1].sprite = defaultImage;
         UpdateEquipeButton();
         MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+
+        
+            leftCross.SetActive(false);
+            equipeButton[0].sprite = defaultImage;
+            rightCross.SetActive(false);
+            equipeButton[1].sprite = defaultImage;
+        
     }
 
     public void RemoveLeftEquipement()
@@ -97,10 +118,24 @@ public class BagCanvasManager : MonoBehaviour
         {
             MenuManager.Instance.bagManager.monsterTeam[0].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
+
             UpdateEquipeButton();
             MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+
+            
         }
 
+        if (MenuManager.Instance.bagManager.monsterTeam.Count == 0)
+        {
+            leftCross.SetActive(false);
+            equipeButton[0].sprite = defaultImage;
+        }
+
+        if (MenuManager.Instance.bagManager.monsterTeam.Count == 1)
+        {
+            rightCross.SetActive(false);
+            equipeButton[1].sprite = defaultImage;
+        }
     }
 
     public void RemoveRightEquipement()
@@ -111,6 +146,20 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
             UpdateEquipeButton();
             MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+
+            
+        }
+
+        if (MenuManager.Instance.bagManager.monsterTeam.Count == 0)
+        {
+            leftCross.SetActive(false);
+            equipeButton[0].sprite = defaultImage;
+        }
+
+        if (MenuManager.Instance.bagManager.monsterTeam.Count == 1)
+        {
+            rightCross.SetActive(false);
+            equipeButton[1].sprite = defaultImage;
         }
     }
 }
