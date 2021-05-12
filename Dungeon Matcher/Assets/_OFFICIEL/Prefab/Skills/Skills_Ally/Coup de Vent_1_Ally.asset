@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c167868c1b0e745bbf4ec760156631, type: 3}
+  m_Name: Coup de Vent_1_Ally
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDescription: 
+  effectValue: 0
+  messageOwner: {fileID: 0}
+  side: 1
+  messageType: 0
+  typeOfCapacity: 5
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
+  isComboSkill: 0
+  comesFromCombo: 0
+  comesFromCurse: 0
+  comboEffectValue: 0
+  chargingAttack: 0
+  isEcho: 0
+  isPlagiat: 0
+  lastCompetenceReference: {fileID: 0}
+  skillIndex: 0
+  monster: {fileID: 0}
+  owner: {fileID: 0}

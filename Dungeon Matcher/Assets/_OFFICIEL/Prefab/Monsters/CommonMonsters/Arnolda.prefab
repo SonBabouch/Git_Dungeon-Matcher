@@ -60,8 +60,20 @@ MonoBehaviour:
   fullMonsterImage: {fileID: 0}
   side: 0
   owner: {fileID: 0}
-  allySkills: []
-  ennemySkills: []
+  allySkills:
+  - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ennemySkills:
+  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
+  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   monsterHashTag:
-  - 
-  - 
+  - Attaque
+  - "Alt\xE9rations"

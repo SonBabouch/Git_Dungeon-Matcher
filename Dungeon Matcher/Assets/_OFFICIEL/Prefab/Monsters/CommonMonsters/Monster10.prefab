@@ -60,8 +60,20 @@ MonoBehaviour:
   fullMonsterImage: {fileID: 0}
   side: 0
   owner: {fileID: 0}
-  allySkills: []
-  ennemySkills: []
+  allySkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ennemySkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   monsterHashTag:
   - 
   - 
