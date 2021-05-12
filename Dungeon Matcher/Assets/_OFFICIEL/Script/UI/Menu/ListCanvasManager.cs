@@ -34,6 +34,11 @@ namespace Management
             {
                 listPosition.Add(child.gameObject);
             }
+            
+        }
+
+        private void Start()
+        {
             UpdateCombatButton();
             UpdateList();
         }

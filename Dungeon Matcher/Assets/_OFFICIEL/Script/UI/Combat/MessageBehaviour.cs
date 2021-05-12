@@ -7,6 +7,8 @@ public class MessageBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
 
+    public Image messageBG;
+
     public Image iconeImage;
     public enum team{Player,Enemy};
     public team teamMsg;
