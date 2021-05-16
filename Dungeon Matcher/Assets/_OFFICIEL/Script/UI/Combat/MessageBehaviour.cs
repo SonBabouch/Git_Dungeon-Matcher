@@ -12,7 +12,7 @@ public class MessageBehaviour : MonoBehaviour
     public team teamMsg;
 
     //Changer BoostInspiration & SlowInspiration plutot que inspirationLimitation;
-    public enum effect {InspirationLimitation, AttiranceLimitation, Curse, Mark, Charm, Silence, Lock, Cramp };
+    public enum effect {Slowdown, Acceleration, Curse, Mark, Charm, Silence, Lock, Cramp };
     public effect EmojiEffect;
 
    
@@ -28,10 +28,10 @@ public class MessageBehaviour : MonoBehaviour
         {
             //0 = Null;
             case 1:
-                EmojiEffect = effect.InspirationLimitation;
+                EmojiEffect = effect.Slowdown;
                 break;
             case 2:
-                EmojiEffect = effect.AttiranceLimitation;
+                EmojiEffect = effect.Acceleration;
                 break;
             case 3:
                 EmojiEffect = effect.Curse;
@@ -60,11 +60,11 @@ public class MessageBehaviour : MonoBehaviour
         {
             switch (EmojiEffect)
             {
-                case effect.InspirationLimitation:
-                    //Change la bool en true;
+                case effect.Slowdown:
+                    Enemy.Instance.isSlowed = true;
                     break;
-                case effect.AttiranceLimitation:
-                    //Change la bool en true;
+                case effect.Acceleration:
+                    Player.Instance.isAccelerated = true;
                     break;
                 case effect.Curse:
                     Enemy.Instance.isCurse = true;
@@ -92,11 +92,11 @@ public class MessageBehaviour : MonoBehaviour
         {
             switch (EmojiEffect)
             {
-                case effect.InspirationLimitation:
-                    //Change la bool en false;
+                case effect.Slowdown:
+                    Player.Instance.isSlowed = true;
                     break;
-                case effect.AttiranceLimitation:
-                    //Change la bool en false;
+                case effect.Acceleration:
+                    Enemy.Instance.isAccelerated = true;
                     break;
                 case effect.Curse:
                     Player.Instance.isCurse = true;
@@ -129,11 +129,11 @@ public class MessageBehaviour : MonoBehaviour
         {
             switch (EmojiEffect)
             {
-                case effect.InspirationLimitation:
-                    //Effet
+                case effect.Slowdown:
+                    Enemy.Instance.isSlowed = false;
                     break;
-                case effect.AttiranceLimitation:
-                    //Effet
+                case effect.Acceleration:
+                    Player.Instance.isAccelerated = false;
                     break;
                 case effect.Curse:
                     Enemy.Instance.isCurse = false;
@@ -162,11 +162,11 @@ public class MessageBehaviour : MonoBehaviour
         {
             switch (EmojiEffect)
             {
-                case effect.InspirationLimitation:
-                    //Effet
+                case effect.Slowdown:
+                    Player.Instance.isSlowed = false;
                     break;
-                case effect.AttiranceLimitation:
-                    //Effet
+                case effect.Acceleration:
+                    Enemy.Instance.isAccelerated = false;
                     break;
                 case effect.Curse:
                     Player.Instance.isCurse = false;

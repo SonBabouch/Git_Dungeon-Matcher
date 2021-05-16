@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
   m_Name: Attack_2_Charged_Combo_Enemy
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: Drague
+  skillDescription: Augmente la Jauge d'Attirance adverse.
   effectValue: 15
   messageOwner: {fileID: 0}
   side: 0

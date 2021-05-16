@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3352059483369707408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7731263988056315023}
+  - component: {fileID: 8761877609787509778}
+  m_Layer: 0
+  m_Name: Lutteur King
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7731263988056315023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352059483369707408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8761877609787509778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352059483369707408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 11400000, guid: 32740706e51019346b096df6848d0428, type: 2}
+  monsterIndexPosition: 0
+  numberOfFragments: 0
+  numberOfFragmentsRequired: 
+  monsterLevel: 3
+  description: 
+  monsterName: Lutteur King
+  health: 0
+  maxHealth: 0
+  minHealth: 0
+  rarety: 0
+  isGet: 0
+  statement: 2
+  profilPicture: {fileID: 0}
+  fullMonsterImage: {fileID: 0}
+  side: 0
+  owner: {fileID: 3352059483369707408}
+  allySkills:
+  - {fileID: 11400000, guid: a595536b422cbc4439779baa08b8f0f5, type: 2}
+  - {fileID: 11400000, guid: 931dd26692913b34895f02c8f1c198fe, type: 2}
+  - {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78, type: 2}
+  - {fileID: 11400000, guid: 31d8c952217abbc49b9c4ac02088875b, type: 2}
+  ennemySkills:
+  - {fileID: 11400000, guid: d4565e6a520d73c4dbc1ec3de7bc02de, type: 2}
+  - {fileID: 11400000, guid: ef447d481825a73448f3ca70f420dd71, type: 2}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
+  - {fileID: 11400000, guid: 2160456c75bd4f6419ea28c5e23dc244, type: 2}
+  - {fileID: 11400000, guid: ee212587d58269a43b3092a240d2abca, type: 2}
+  - {fileID: 11400000, guid: 2160456c75bd4f6419ea28c5e23dc244, type: 2}
+  - {fileID: 11400000, guid: ef447d481825a73448f3ca70f420dd71, type: 2}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
+  monsterHashTag:
+  - Attaque
+  - "D\xE9fense"

@@ -47,9 +47,9 @@ MonoBehaviour:
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 2
   description: 
-  monsterName: 
+  monsterName: Miss_Furlola
   health: 0
   maxHealth: 0
   minHealth: 0
@@ -59,21 +59,21 @@ MonoBehaviour:
   profilPicture: {fileID: 0}
   fullMonsterImage: {fileID: 21300000, guid: b9e24fe885485984086994ec01ca1f88, type: 3}
   side: 0
-  owner: {fileID: 0}
+  owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 6ffaf2bf0c7bd3f49ab4abdf1f63152b, type: 2}
+  - {fileID: 11400000, guid: 309ae4f3d7c60b543b9ea3aed4122c1d, type: 2}
+  - {fileID: 11400000, guid: 27e8e1fc64b67a0409f859a925416d73, type: 2}
+  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
   ennemySkills:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
+  - {fileID: 11400000, guid: 4d66cd1d2353f954ba4229a7646e103f, type: 2}
+  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 597c5d8717c2a0d4d86badf74f6c33d4, type: 2}
+  - {fileID: 11400000, guid: 597c5d8717c2a0d4d86badf74f6c33d4, type: 2}
+  - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
+  - {fileID: 11400000, guid: 4d66cd1d2353f954ba4229a7646e103f, type: 2}
+  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
   monsterHashTag:
   - Soin
   - "Alt\xE9rations"

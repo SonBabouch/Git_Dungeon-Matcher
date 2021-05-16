@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82863cfe6bcf62d448562dfc7227de03, type: 3}
   m_Name: Break_2_Enemy
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: Punchline
+  skillDescription: "Annule le lancement d'une capacit\xE9 charg\xE9e."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0

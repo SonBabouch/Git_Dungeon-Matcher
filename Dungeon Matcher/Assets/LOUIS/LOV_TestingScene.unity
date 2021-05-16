@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 1273854986186883806, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1273854986186883806, guid: 605908147add77a4499ff67b9d35900e,
         type: 3}
@@ -211,6 +211,7 @@ MonoBehaviour:
   playerLines: []
   enemyLines: []
   playerLinesAlt: []
+  enemyLinesAlt: []
   playerFilePath: PlayerMessages
   enemyFilePath: EnemyMessages
 --- !u!114 &304975379 stripped
@@ -325,6 +326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2435598693780802966, guid: a3308b51da5fa204a91b8b953cb71e7f,
+        type: 3}
+      propertyPath: currentMonster
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6337657827009170765, guid: a3308b51da5fa204a91b8b953cb71e7f,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -424,10 +430,27 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: allyMonsters.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: allyMonsters.Array.data[0]
+      value: 
+      objectReference: {fileID: 3352059483369707408, guid: 117d7e950ec732d4ea425ff3e2367a51,
+        type: 3}
+    - target: {fileID: 1504451362838087437, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: allyMonsters.Array.data[1]
+      value: 
+      objectReference: {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a,
+        type: 3}
     - target: {fileID: 2336706625598943703, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2336706625598943703, guid: e383cf0074529d546b18a93a1cc531b6,
         type: 3}
@@ -723,5 +746,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

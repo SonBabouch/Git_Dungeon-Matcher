@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Tetargaryen
   m_EditorClassIdentifier: 
-  description: RARE1
+  description: "Ne te fie pas \xE0 mon apparence, je suis une vouivre millin\xE9raire.
+    J'appr\xE9cierai que tu me vouvoies ;p  Si tu veux conna\xEEtre le  secret de
+    ma jeunesse \xE9ternelle, swipe \xE0 droite (\xE0 tes risques et p\xE9rils) ;)"
   monsterName: "T\xE9targaryen"
   health: 20
   maxHealth: 200
   minHealh: 0
   rarety: 1
   statement: 1
-  monsterIndexPosition: 0
+  monsterIndexPosition: 8
   profilPicture: {fileID: 0}

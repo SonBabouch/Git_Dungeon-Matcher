@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9307214975270e04d8dcff01b1e98c36, type: 3}
   m_Name: Cri de Guerre_1_Ally
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: Courage
+  skillDescription: "Tant que l'emoji est visible \xE0 l'\xE9cran, le lanceur voit
+    sa puissance multiplier par 1,2."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1

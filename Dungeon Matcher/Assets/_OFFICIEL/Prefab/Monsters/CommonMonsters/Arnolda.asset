@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500b2f1f16d77c43804b4db57aea537, type: 3}
   m_Name: Arnolda
   m_EditorClassIdentifier: 
-  description: Monster9
+  description: "Moi muscl\xE9. Si toi aimer muscle alors toi aimer moi. Avoir point
+    faible : moi pas aimer petites jambes. Avoir jolies pics \xE0 la t\xEAte. Toi
+    aimer pics \xE0 la t\xEAte ?"
   monsterName: Arnolda
   health: 20
   maxHealth: 100
   minHealh: 0
   rarety: 0
-  statement: 0
+  statement: 1
   monsterIndexPosition: 9
-  profilPicture: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}
+  profilPicture: {fileID: 0}

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c8b71b2f75b364e883201f63137047, type: 3}
   m_Name: Defense_1_Charged_Enemy
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: Bloquage
+  skillDescription: "Emp\xEAche l'augmentation de la Jauge d'Attirance du lanceur
+    pour la prochaine attaque."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0

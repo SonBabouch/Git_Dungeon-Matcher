@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c167868c1b0e745bbf4ec760156631, type: 3}
   m_Name: Coup de Vent_1_Ally
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: "D\xE9stabilisation"
+  skillDescription: "R\xE9initialise int\xE9gralement la main adverse."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1

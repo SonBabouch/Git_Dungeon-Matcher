@@ -110,10 +110,30 @@ public class CombatManager : MonoBehaviour
     public IEnumerator PlayerEnergyGenerator()
     {
         yield return new WaitForSeconds(0.1f);
-        
-        Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
 
-        if(Player.Instance.energy > Player.Instance.maxEnergy)
+        //Vitesse de rechargement de la Jauge d'Inspiration en fonction des effets en jeu
+        if (!Player.Instance.isAccelerated)
+        {
+            Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
+        }
+        else if (!Player.Instance.isSlowed)
+        {
+            Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
+        }
+        else if (Player.Instance.isSlowed && Player.Instance.isAccelerated)
+        {
+            Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
+        }
+        else if (Player.Instance.isAccelerated)
+        {
+            Player.Instance.energy += energyPerSeconds * Player.Instance.upgradeModifierEnergy;
+        }
+        else if (Player.Instance.isSlowed)
+        {
+            Player.Instance.energy += energyPerSeconds * Player.Instance.downgradeModifierEnergy;
+        }
+
+        if (Player.Instance.energy > Player.Instance.maxEnergy)
         {
             Player.Instance.energy = Player.Instance.maxEnergy;
         }
@@ -161,11 +181,33 @@ public class CombatManager : MonoBehaviour
     public IEnumerator EnemyEnergyGenerator()
     {
         yield return new WaitForSeconds(0.1f);
-        Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.energyModifierEnemy;
+
+        if (!Enemy.Instance.isAccelerated)
+        {
+            Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.energyModifierEnemy;
+        }
+        else if (!Enemy.Instance.isSlowed)
+        {
+            Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.energyModifierEnemy;
+        }
+        else if (Enemy.Instance.isSlowed && Enemy.Instance.isAccelerated)
+        {
+            Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.energyModifierEnemy;
+        }
+        else if (Enemy.Instance.isAccelerated)
+        {
+            Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.upgradeModifierEnergy;
+        }
+        else if (Enemy.Instance.isSlowed)
+        {
+            Enemy.Instance.energy += energyPerSeconds * Enemy.Instance.downgradeModifierEnergy;
+        }
+
         if (Enemy.Instance.energy >= Enemy.Instance.maxEnergy)
         {
             Enemy.Instance.energy = Enemy.Instance.maxEnergy;
         }
+
         GetEnemyTrueEnergy();
 
         if (!isCombatEnded)
@@ -307,6 +349,8 @@ public class CombatManager : MonoBehaviour
         Player.Instance.isCombo = false;
         Player.Instance.isDefending = false;
         Player.Instance.isBoosted = false;
+        Player.Instance.isAccelerated = false;
+        Player.Instance.isSlowed = false;
 
         Enemy.Instance.isCurse = false;
         Enemy.Instance.isCharging = false;
@@ -314,6 +358,8 @@ public class CombatManager : MonoBehaviour
         Enemy.Instance.isCombo = false;
         Enemy.Instance.isDefending = false;
         Enemy.Instance.isBoosted = false;
+        Enemy.Instance.isAccelerated = false;
+        Enemy.Instance.isSlowed = false;
     }
 
 
@@ -501,7 +547,7 @@ public class CombatManager : MonoBehaviour
                 case Skill.capacityType.Break:
                     spriteToShow = iconRessource[15];
                     break;
-                case Skill.capacityType.Ralentissement:
+                case Skill.capacityType.Slowdown:
                     spriteToShow = iconRessource[16];
                     break;
                 case Skill.capacityType.Acceleration:
@@ -572,7 +618,7 @@ public class CombatManager : MonoBehaviour
                 case Skill.capacityType.Break:
                     spriteToShow = iconRessource[15];
                     break;
-                case Skill.capacityType.Ralentissement:
+                case Skill.capacityType.Slowdown:
                     spriteToShow = iconRessource[16];
                     break;
                 case Skill.capacityType.Acceleration:
@@ -642,7 +688,7 @@ public class CombatManager : MonoBehaviour
                 case Skill.capacityType.Break:
                     spriteToShow = iconRessource[15];
                     break;
-                case Skill.capacityType.Ralentissement:
+                case Skill.capacityType.Slowdown:
                     spriteToShow = iconRessource[16];
                     break;
                 case Skill.capacityType.Acceleration:

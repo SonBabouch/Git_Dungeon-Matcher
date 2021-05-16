@@ -62,19 +62,19 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
-  - {fileID: 11400000, guid: 11b4944546c81d5449bc78c84051bb4e, type: 2}
-  - {fileID: 11400000, guid: 7fb6521d071b275438114b56e0ff233b, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
+  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
+  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
+  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
   ennemySkills:
-  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
-  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
+  - {fileID: 11400000, guid: ee212587d58269a43b3092a240d2abca, type: 2}
   - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
+  - {fileID: 11400000, guid: 596b770a55775434e9f01910bee11fcb, type: 2}
+  - {fileID: 11400000, guid: 120c52a2cc77fb845a5fba1306c6ff44, type: 2}
   - {fileID: 11400000, guid: 093465c18ca2b1644bba819823bec266, type: 2}
-  - {fileID: 11400000, guid: 093465c18ca2b1644bba819823bec266, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
+  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
+  - {fileID: 11400000, guid: 120c52a2cc77fb845a5fba1306c6ff44, type: 2}
   monsterHashTag:
   - "D\xE9fense"
   - Attaque

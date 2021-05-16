@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public float energy;
     public float maxEnergy;
     public float modifierEnergy = 1f;
+    public float upgradeModifierEnergy = 1.4f;
+    public float downgradeModifierEnergy = 0.7f;
     public float trueEnergy=0;
     public List<Skill> playerHand = new List<Skill>();
     public List<Skill> playerDraw = new List<Skill>();
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
     public bool isCurse;
     public bool isCharging;
     public bool isCramp = false;
+    public bool isAccelerated = false;
+    public bool isSlowed = false;
 
     public bool isCombo = false;
     public bool isDefending = false;

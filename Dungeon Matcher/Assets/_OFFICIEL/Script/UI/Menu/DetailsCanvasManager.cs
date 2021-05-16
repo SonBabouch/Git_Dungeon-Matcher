@@ -116,7 +116,7 @@ public class DetailsCanvasManager : MonoBehaviour
             case Skill.capacityType.Break:
                 spriteToShow = iconRessource[15];
                 break;
-            case Skill.capacityType.Ralentissement:
+            case Skill.capacityType.Slowdown:
                 spriteToShow = iconRessource[16];
                 break;
             case Skill.capacityType.Acceleration:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sandy Paid
   m_EditorClassIdentifier: 
   description: "Si on match ensemble, pr\xE9pare-toi \xE0 c\xF4toyer les \xE9toiles.
-    La postillon du p\xE9on n'atteint pas la brillance de ma crini\xE8re.  Tu perdras
+    Le postillon du p\xE9on n'atteint pas la brillance de ma crini\xE8re.  Tu perdras
     toujours contre moi au shi-fu-mi."
   monsterName: Sandy Paid
   health: 20

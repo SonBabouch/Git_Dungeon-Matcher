@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public float energy;
     public float maxEnergy;
     public float energyModifierEnemy;
+    public float upgradeModifierEnergy = 1.4f;
+    public float downgradeModifierEnergy = 0.7f;
     public int trueEnergy;
     public GameObject currentMonster;
 
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour
     public bool isDefending = false;
     public bool isCurse = false;
     public bool canAttack = true;
+    public bool isAccelerated = false;
+    public bool isSlowed = false;
 
     public bool isCombo = false;
     [SerializeField] private float comboTime;
@@ -58,6 +62,8 @@ public class Enemy : MonoBehaviour
     public bool canUseParalysie;
     public bool canUsePlagiat;
     public bool canUseSilence;
+    public bool canUseSlowdown;
+    public bool canUseAcceleration;
 
     [Header("Behavior Bools")]
     public bool useHeal;
@@ -407,6 +413,28 @@ public class Enemy : MonoBehaviour
             }
         }
         #endregion
+
+        #region Acceleration
+        if (canUseAcceleration)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if(chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Acceleration);
+            }
+        }
+        #endregion
+
+        #region Slowdown
+        if (canUseSlowdown)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if(chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Slowdown);
+            }
+        }
+        #endregion
     }
 
     public void ChooseSkillToUSe(Skill.capacityType skillType)
@@ -466,5 +494,6 @@ public class Enemy : MonoBehaviour
         canUseParalysie = false; //Done
         canUsePlagiat = false;
         canUseSilence = false; //Done
+        canUseSlowdown = false;
     }
 }

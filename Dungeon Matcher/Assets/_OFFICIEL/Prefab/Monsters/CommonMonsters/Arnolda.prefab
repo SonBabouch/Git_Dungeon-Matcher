@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 11400000, guid: a793faa2e27f3f24aa49d55691bb5bbc, type: 2}
+  template: {fileID: 11400000, guid: f417d7c19d132634bacab55956a2f3d2, type: 2}
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 2
   description: 
   monsterName: Arnolda
   health: 0
@@ -59,21 +59,21 @@ MonoBehaviour:
   profilPicture: {fileID: 0}
   fullMonsterImage: {fileID: 0}
   side: 0
-  owner: {fileID: 0}
+  owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 86c2e31371b4bb845a97c78c5f8a6082, type: 2}
+  - {fileID: 11400000, guid: 7b1721bb0be1b954a9792a4256bb243e, type: 2}
+  - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
+  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
   ennemySkills:
-  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
-  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: ee212587d58269a43b3092a240d2abca, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
+  - {fileID: 11400000, guid: d4565e6a520d73c4dbc1ec3de7bc02de, type: 2}
+  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
   monsterHashTag:
   - Attaque
   - "Alt\xE9rations"

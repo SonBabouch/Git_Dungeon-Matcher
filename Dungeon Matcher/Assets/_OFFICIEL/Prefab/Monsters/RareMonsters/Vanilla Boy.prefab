@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3352059483369707408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7731263988056315023}
+  - component: {fileID: 8761877609787509778}
+  m_Layer: 0
+  m_Name: Vanilla Boy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7731263988056315023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352059483369707408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8761877609787509778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352059483369707408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 11400000, guid: 38094c753ebfe6c49b9d76547638ab26, type: 2}
+  monsterIndexPosition: 0
+  numberOfFragments: 0
+  numberOfFragmentsRequired: 
+  monsterLevel: 2
+  description: 
+  monsterName: Vanilla Boy
+  health: 0
+  maxHealth: 0
+  minHealth: 0
+  rarety: 0
+  isGet: 0
+  statement: 1
+  profilPicture: {fileID: 0}
+  fullMonsterImage: {fileID: 21300000, guid: 0f486443cd9a33145bbba09dd1cb21a7, type: 3}
+  side: 0
+  owner: {fileID: 3352059483369707408}
+  allySkills:
+  - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
+  - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
+  - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
+  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
+  ennemySkills:
+  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
+  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
+  - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
+  - {fileID: 11400000, guid: 7359e23de772e5845b267abd9403adff, type: 2}
+  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
+  - {fileID: 11400000, guid: 7359e23de772e5845b267abd9403adff, type: 2}
+  monsterHashTag:
+  - Attaque
+  - Soin

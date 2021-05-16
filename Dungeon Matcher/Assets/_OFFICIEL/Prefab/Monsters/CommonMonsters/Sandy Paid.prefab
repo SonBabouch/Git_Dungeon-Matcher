@@ -47,9 +47,9 @@ MonoBehaviour:
   monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
-  monsterLevel: 0
+  monsterLevel: 3
   description: 
-  monsterName: 
+  monsterName: Sandy Paid
   health: 0
   maxHealth: 0
   minHealth: 0
@@ -61,19 +61,19 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
+  - {fileID: 11400000, guid: bd41c6bea7d24ac44937984d82b3b0e9, type: 2}
+  - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
   - {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78, type: 2}
-  - {fileID: 11400000, guid: 86c2e31371b4bb845a97c78c5f8a6082, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: 2160456c75bd4f6419ea28c5e23dc244, type: 2}
+  - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
+  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: d4565e6a520d73c4dbc1ec3de7bc02de, type: 2}
   - {fileID: 11400000, guid: 2160456c75bd4f6419ea28c5e23dc244, type: 2}
-  - {fileID: 11400000, guid: d4565e6a520d73c4dbc1ec3de7bc02de, type: 2}
-  - {fileID: 11400000, guid: d4565e6a520d73c4dbc1ec3de7bc02de, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 5308a5f8dcc6aa34d94b426fad75af35, type: 2}
+  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 5308a5f8dcc6aa34d94b426fad75af35, type: 2}
   monsterHashTag:
   - Attaque
   - "Alt\xE9rations"

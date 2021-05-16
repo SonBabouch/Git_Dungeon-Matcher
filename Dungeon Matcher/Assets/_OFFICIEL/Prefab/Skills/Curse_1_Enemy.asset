@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fee059c5848534686e5e870e3f01bc, type: 3}
   m_Name: Curse_1_Enemy
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: Bafouillage
+  skillDescription: "Tant que l'emoji est visible \xE0 l'\xE9cran, toutes les capacit\xE9s
+    adverses lanc\xE9es ont 25% d\u2019\xE9chouer."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0
@@ -31,6 +32,6 @@ MonoBehaviour:
   isEcho: 0
   isPlagiat: 0
   lastCompetenceReference: {fileID: 0}
-  skillIndex: 0
+  skillIndex: 3
   monster: {fileID: 0}
   owner: {fileID: 0}
