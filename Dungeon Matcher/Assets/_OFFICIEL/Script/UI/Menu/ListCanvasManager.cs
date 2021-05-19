@@ -13,7 +13,7 @@ namespace Management
         //Elements D'UI
         [SerializeField] private TextMeshProUGUI currentSizeText;
         [SerializeField] private TextMeshProUGUI maxSizeText;
-        public List<GameObject> listPosition = new List<GameObject>();
+
         [SerializeField] private GameObject parentPositions;
         public TextMeshProUGUI playerHealth;
 
@@ -29,11 +29,7 @@ namespace Management
 
         private void Awake()
         {
-            //Récupère tous les enfants de l'objet parent pour les ajouter dans un tableau.
-            foreach (Transform child in parentPositions.transform)
-            {
-                listPosition.Add(child.gameObject);
-            }
+
             UpdateCombatButton();
             UpdateList();
         }
@@ -79,9 +75,11 @@ namespace Management
         //Instancier le profil à une position particulière. 
         public void InstantiateProfil()
         {
-            GameObject instantiatedProfil =  Instantiate(listPrefab, listPosition[MenuManager.Instance.listManager.listCurrentSize - 1].transform.position, Quaternion.identity);
-            instantiatedProfil.transform.SetParent(listPosition[MenuManager.Instance.listManager.listCurrentSize - 1].transform);
-            instantiatedProfil.transform.localScale = new Vector3(1f, 1f, 1f);
+            GameObject instantiatedProfil =  Instantiate(listPrefab, parentPositions.transform.position, Quaternion.identity);
+
+            instantiatedProfil.transform.SetParent(parentPositions.transform);
+
+            //instantiatedProfil.transform.localScale = new Vector3(1f, 1f, 1f);
             instantiatedProfil.GetComponent<CombatProfilList>().numberCombat = MenuManager.Instance.listManager.listCurrentSize;
             //Debug.Log("2");
             instantiatedProfil.GetComponent<CombatProfilList>().UpdateVisualMatch();
