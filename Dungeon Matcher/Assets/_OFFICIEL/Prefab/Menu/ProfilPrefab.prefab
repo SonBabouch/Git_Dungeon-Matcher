@@ -623,6 +623,7 @@ MonoBehaviour:
   - {fileID: 2414480233873268214}
   level: {fileID: 6401598266474647340}
   certification: {fileID: 8386600967784260294}
+  rectTrans: {fileID: 720733492877758810}
 --- !u!1 &6575054851233564746
 GameObject:
   m_ObjectHideFlags: 0

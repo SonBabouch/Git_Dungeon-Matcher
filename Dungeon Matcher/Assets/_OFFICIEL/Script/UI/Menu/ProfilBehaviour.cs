@@ -17,6 +17,18 @@ public class ProfilBehaviour : MonoBehaviour
 
     public GameObject certification;
 
+    public RectTransform rectTrans;
+
+    private void Start()
+    {
+        rectTrans = gameObject.GetComponent<RectTransform>();
+
+        rectTrans.offsetMin = Vector2.zero;
+        rectTrans.offsetMax = Vector2.zero;
+
+        //rectTrans.localScale = new Vector3(1f, 1f, 1f);
+    }
+
     public void Initialisation(bool firstTime)
     {
         if (firstTime)
