@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Cramp_1_Ally
   m_EditorClassIdentifier: 
   skillName: Panique
-  skillDescription: "Tant que l'emoji est visible \xE0 l'\xE9cran, les capacit\xE9s
-    adverses voient leur co\xFBt augmenter de 1."
+  skillDescription: "Augmente le co\xFBt des capacit\xE9s adverses de 1."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
@@ -23,7 +22,7 @@ MonoBehaviour:
   trueEnergyCost: 2
   energyCost: 20
   initialEnergyCost: 20
-  crampEnergyCost: 30
+  crampEnergyCost: 21
   isComboSkill: 1
   comesFromCombo: 0
   comesFromCurse: 0

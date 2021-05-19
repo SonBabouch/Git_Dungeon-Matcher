@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Drain_1_Combo_Ally
   m_EditorClassIdentifier: 
   skillName: "Su\xE7on"
-  skillDescription: "Le lanceur augmente la Jauge d'Attirance adverse et baisse la
-    sienne en cons\xE9quent."
+  skillDescription: "Augmente la Jauge d'Attirance adverse et baisse la sienne en
+    cons\xE9quent."
   effectValue: 10
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 0
   typeOfCapacity: 6
   trueEnergyCost: 1

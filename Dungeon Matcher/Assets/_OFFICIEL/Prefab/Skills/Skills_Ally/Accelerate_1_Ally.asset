@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Accelerate_1_Ally
   m_EditorClassIdentifier: 
   skillName: Augmentation
-  skillDescription: 
+  skillDescription: "Acc\xE9l\xE8re la recharge automatique de la Jauge d'Inspiration
+    du lanceur."
   effectValue: 0
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 2
   typeOfCapacity: 17
   trueEnergyCost: 2

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86166918fcb3996469e59a89b8549b80, type: 3}
   m_Name: Ralentissement_1_Ally
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDescription: 
+  skillName: Torpeur
+  skillDescription: Ralentit la recharge automatique de la Jauge d'Inspitation adverse.
   effectValue: 0
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 2
   typeOfCapacity: 16
   trueEnergyCost: 1

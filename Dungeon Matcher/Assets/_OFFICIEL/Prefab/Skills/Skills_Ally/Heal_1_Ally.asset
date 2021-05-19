@@ -16,13 +16,13 @@ MonoBehaviour:
   skillDescription: Baisse la Jauge d'Attirance du lanceur.
   effectValue: 10
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 0
   typeOfCapacity: 1
   trueEnergyCost: 1
   energyCost: 10
   initialEnergyCost: 10
-  crampEnergyCost: 20
+  crampEnergyCost: 11
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

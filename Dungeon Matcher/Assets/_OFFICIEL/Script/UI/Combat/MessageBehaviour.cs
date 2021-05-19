@@ -131,9 +131,11 @@ public class MessageBehaviour : MonoBehaviour
             {
                 case effect.Slowdown:
                     Enemy.Instance.isSlowed = false;
+                    //Debug.Log("End Slow");
                     break;
                 case effect.Acceleration:
                     Player.Instance.isAccelerated = false;
+                    //Debug.Log("End Accelerated");
                     break;
                 case effect.Curse:
                     Enemy.Instance.isCurse = false;

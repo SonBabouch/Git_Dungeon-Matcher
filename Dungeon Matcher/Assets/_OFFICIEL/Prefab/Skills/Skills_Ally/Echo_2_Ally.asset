@@ -16,13 +16,13 @@ MonoBehaviour:
   skillDescription: "Copie la derni\xE8re capacit\xE9 utilis\xE9e par le lanceur."
   effectValue: 0
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 0
   typeOfCapacity: 7
   trueEnergyCost: 1
   energyCost: 10
   initialEnergyCost: 10
-  crampEnergyCost: 20
+  crampEnergyCost: 11
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

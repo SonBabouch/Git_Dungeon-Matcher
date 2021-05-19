@@ -112,25 +112,25 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         //Vitesse de rechargement de la Jauge d'Inspiration en fonction des effets en jeu
-        if (!Player.Instance.isAccelerated)
+        if (!Player.Instance.isAccelerated && !Player.Instance.isSlowed)
         {
             Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
-        }
-        else if (!Player.Instance.isSlowed)
-        {
-            Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
+            //Debug.Log("Normal");
         }
         else if (Player.Instance.isSlowed && Player.Instance.isAccelerated)
         {
             Player.Instance.energy += energyPerSeconds * Player.Instance.modifierEnergy;
+            //Debug.Log("Normal");
         }
-        else if (Player.Instance.isAccelerated)
+        else if (Player.Instance.isAccelerated && !Player.Instance.isSlowed)
         {
             Player.Instance.energy += energyPerSeconds * Player.Instance.upgradeModifierEnergy;
+            //Debug.Log("Accelerated");
         }
-        else if (Player.Instance.isSlowed)
+        else if (!Player.Instance.isAccelerated && Player.Instance.isSlowed)
         {
             Player.Instance.energy += energyPerSeconds * Player.Instance.downgradeModifierEnergy;
+            //Debug.Log("Slowed");
         }
 
         if (Player.Instance.energy > Player.Instance.maxEnergy)

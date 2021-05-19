@@ -141,7 +141,7 @@ public abstract class Skill : ScriptableObject
 
                             if (test < 70)
                             {
-                                Debug.Log("Cursed");
+                                //Debug.Log("Cursed");
                                 comesFromCurse = true;
                                 //CombatManager.Instance.ButtonsUpdate();
                                 InUse();
@@ -149,7 +149,7 @@ public abstract class Skill : ScriptableObject
                             else
                             {
                                 comesFromCurse = false;
-                                Debug.Log("PasCursed");
+                                //Debug.Log("PasCursed");
                             }
                             
                         }

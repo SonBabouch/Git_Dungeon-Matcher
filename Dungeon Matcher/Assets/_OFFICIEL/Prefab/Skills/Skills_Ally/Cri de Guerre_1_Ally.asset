@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Cri de Guerre_1_Ally
   m_EditorClassIdentifier: 
   skillName: Courage
-  skillDescription: "Tant que l'emoji est visible \xE0 l'\xE9cran, le lanceur voit
-    sa puissance multiplier par 1,2."
+  skillDescription: Multiplie la puissance du joueur par 1,2.
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
@@ -23,7 +22,7 @@ MonoBehaviour:
   trueEnergyCost: 2
   energyCost: 20
   initialEnergyCost: 20
-  crampEnergyCost: 30
+  crampEnergyCost: 21
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

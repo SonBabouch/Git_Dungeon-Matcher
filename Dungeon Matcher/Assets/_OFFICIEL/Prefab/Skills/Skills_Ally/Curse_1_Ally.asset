@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Curse_1_Ally
   m_EditorClassIdentifier: 
   skillName: Bafouillage
-  skillDescription: "Tant que l'emoji est visible \xE0 l'\xE9cran, toutes les capacit\xE9s
-    adverses lanc\xE9es ont 25% d\u2019\xE9chouer."
+  skillDescription: "Toutes les capacit\xE9s adverses lanc\xE9es ont 25% d\u2019\xE9chouer."
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1

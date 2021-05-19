@@ -16,7 +16,7 @@ MonoBehaviour:
   skillDescription: Baisse la Jauge d'Attirance du lanceur.
   effectValue: 12
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 0
   typeOfCapacity: 1
   trueEnergyCost: 1

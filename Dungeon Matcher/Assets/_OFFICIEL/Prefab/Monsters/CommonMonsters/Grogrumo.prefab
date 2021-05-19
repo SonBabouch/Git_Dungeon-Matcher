@@ -63,7 +63,7 @@ MonoBehaviour:
   owner: {fileID: 3352059483369707408}
   allySkills:
   - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
-  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
+  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
   - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
   - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
   ennemySkills:

@@ -16,7 +16,7 @@ MonoBehaviour:
   skillDescription: Nothing
   effectValue: 0
   messageOwner: {fileID: 0}
-  side: 0
+  side: 1
   messageType: 0
   typeOfCapacity: 0
   trueEnergyCost: 1
