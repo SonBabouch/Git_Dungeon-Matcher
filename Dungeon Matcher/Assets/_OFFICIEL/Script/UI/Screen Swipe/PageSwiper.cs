@@ -166,7 +166,6 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         panelLocation = endPos;
         canChange = true;
-        MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
         CancelMatch();
     }
 
