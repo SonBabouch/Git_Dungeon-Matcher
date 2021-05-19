@@ -29,6 +29,8 @@ public class ProfilBehaviour : MonoBehaviour
             
             profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
 
+            //Reset 
+
             for (int i = 0; i < hashtag.Length; i++)
             {
                 hashtag[i].text = "#" + monsterPick.GetComponent<MonsterToken>().monsterHashTag[i];
