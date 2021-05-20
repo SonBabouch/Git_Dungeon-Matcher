@@ -100,6 +100,7 @@ public class BagButtonBehaviour : MonoBehaviour
         }
         MenuManager.Instance.canvasManager.bagCanvas.UpdateEquipeButton();
         MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+        MenuManager.Instance.canvasManager.bagCanvas.RemoveCross();
     }
 
     public void Upgrade()
