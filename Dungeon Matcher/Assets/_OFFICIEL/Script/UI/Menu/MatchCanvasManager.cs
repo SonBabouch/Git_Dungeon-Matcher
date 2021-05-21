@@ -91,7 +91,7 @@ namespace Management
 
         public void UpdateExperience()
         {
-            playerLevelText.text = "Niveau : " + PlayerLevel.playerLevel.ToString();
+            playerLevelText.text = PlayerLevel.playerLevel.ToString();
             playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
         }
 
