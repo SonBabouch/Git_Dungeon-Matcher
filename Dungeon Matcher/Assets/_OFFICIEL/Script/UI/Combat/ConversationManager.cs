@@ -47,8 +47,9 @@ public class ConversationManager : MonoBehaviour
     public bool canAttack = true;
 
 
-    public GameObject playerChargingAttackPos;
-    public GameObject enemyChargingAttackPos;
+    public GameObject playerChargingAttack;
+    public GameObject enemyChargingAttack;
+    [SerializeField] private Color cyanColor;
 
     private void Awake()
     {
@@ -188,13 +189,9 @@ public class ConversationManager : MonoBehaviour
             {
                 PrintMessage(skillType);
             }
-
-           
-
         }
         else
         {
-
             for (int i = allMsg.Length - 1; i > 0; i--)
             {
                 if (allMsg[i] != null)
@@ -215,18 +212,14 @@ public class ConversationManager : MonoBehaviour
     #region ChargingRegion
     public void UpdateLastMessageState(Skill skill)
     {
-            if (allMsg[0].GetComponent<MessageBehaviour>().teamMsg == MessageBehaviour.team.Player)
-            {
-                //SetActiveFalse serait mieux
-                Destroy(allMsg[0]);
-                SendMessagesPlayer(skill,0);
-            }
-            else
-            {
-                //SetActiveFalse serait mieux
-                Destroy(allMsg[0]);
-                SendMessagesEnemy(skill, 0);
-            }
+        if(skill.side == Skill.monsterSide.Ally)
+        {
+            SendMessagesPlayer(skill, 0);
+        }
+        else
+        {
+            SendMessagesEnemy(skill, 0);
+        }
     }
 
     public void CancelPosition()
@@ -473,10 +466,8 @@ public class ConversationManager : MonoBehaviour
 
     public void PlayerChargingMessage(Skill skill)
     {
-        GameObject msg = Instantiate(ChargingMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
-        msg.transform.SetParent(playerMsgPositions[0].transform);
-        allMsg[0] = msg;
-        skill.messageOwner = msg;
+        playerChargingAttack.SetActive(true);
+        skill.messageOwner = playerChargingAttack;
 
         if (skill.comesFromCurse)
         {
@@ -485,16 +476,16 @@ public class ConversationManager : MonoBehaviour
         }
         else
         {
-            skill.messageOwner.GetComponent<Image>().color = Color.blue;
+            skill.messageOwner.GetComponent<Image>().color = cyanColor;
         }
 
-
         messageToSpawn = typeToSpawn.Null;
-        canAttack = true;
     }
 
     public void PlayerLargeMessage(Skill skill)
     {
+        playerChargingAttack.SetActive(false);
+
         Debug.Log("BigMessage");
         GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[2].transform);
@@ -508,10 +499,7 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             
         }
-        else
-        {
-            skill.PlayerEffect();
-        }
+       
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         //Lancer Methode pour le Text;
@@ -547,7 +535,6 @@ public class ConversationManager : MonoBehaviour
     #region Enemy
     public void EnemySmallMessage(Skill skill)
     {
-
         //A lancer à la fin de la coroutine.
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[1].transform);
@@ -569,12 +556,11 @@ public class ConversationManager : MonoBehaviour
 
     public void EnemyChargingMessage(Skill skill)
     {
+        //Initialisation.
+        enemyChargingAttack.SetActive(true);
+        skill.messageOwner = enemyChargingAttack;
 
-        GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
-        msg.transform.SetParent(enemyMsgPositions[0].transform);
-        allMsg[0] = msg;
-        skill.messageOwner = msg;
-        
+        //Changer la couleur du message qui se charge en fonction de si il est curse ou non.
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
@@ -585,37 +571,33 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = Color.red;
         }
 
-
         messageToSpawn = typeToSpawn.Null;
-        canAttack = true;
-        
     }
 
     public void EnemyLargeMessage(Skill skill)
     {
-     
+        enemyChargingAttack.SetActive(false);
+
         GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[2].transform);
         allMsg[2] = msg;
         skill.messageOwner = msg;
+
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
 
         }
        
-
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
-        skill.MonsterEffect();
+        
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
-        
     }
 
     public void EnemyEmojis(Skill skill)
     {
-      
         GameObject msg = Instantiate(EmojiEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[1].transform);
         allMsg[1] = msg;
