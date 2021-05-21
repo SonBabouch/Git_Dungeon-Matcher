@@ -17,6 +17,18 @@ public class ProfilBehaviour : MonoBehaviour
 
     public GameObject certification;
 
+    public RectTransform rectTrans;
+
+    private void Start()
+    {
+        rectTrans = gameObject.GetComponent<RectTransform>();
+
+        rectTrans.offsetMin = Vector2.zero;
+        rectTrans.offsetMax = Vector2.zero;
+
+        rectTrans.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+    }
+
     public void Initialisation(bool firstTime)
     {
         if (firstTime)
@@ -28,6 +40,8 @@ public class ProfilBehaviour : MonoBehaviour
             description.text = monsterPick.GetComponent<MonsterToken>().description;
             
             profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
+
+            //Reset 
 
             for (int i = 0; i < hashtag.Length; i++)
             {

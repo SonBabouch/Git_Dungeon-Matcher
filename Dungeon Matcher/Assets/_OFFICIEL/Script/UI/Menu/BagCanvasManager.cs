@@ -20,6 +20,9 @@ public class BagCanvasManager : MonoBehaviour
     public List<Image> equipeButton = new List<Image>();
     private Sprite defaultImage;
 
+    [SerializeField] private GameObject leftCross;
+    [SerializeField] private GameObject rightCross;
+
     private void Awake()
     {
         foreach (Transform child in bagButtonParent.transform)
@@ -32,6 +35,9 @@ public class BagCanvasManager : MonoBehaviour
     }
     private void Start()
     {
+        leftCross.SetActive(false);
+        rightCross.SetActive(false);
+
         currentButtonSelected = null;
         currentMonsterSelected = null;
 
@@ -89,6 +95,7 @@ public class BagCanvasManager : MonoBehaviour
         equipeButton[1].sprite = defaultImage;
         UpdateEquipeButton();
         MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+        RemoveCross();
     }
 
     public void RemoveLeftEquipement()
@@ -99,6 +106,12 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[0]);
             UpdateEquipeButton();
             MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+            RemoveCross();
+        }
+
+        if(MenuManager.Instance.bagManager.monsterTeam.Count == 0)
+        {
+            equipeButton[0].sprite = defaultImage;
         }
 
     }
@@ -111,6 +124,27 @@ public class BagCanvasManager : MonoBehaviour
             MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
             UpdateEquipeButton();
             MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+            RemoveCross();
+        }
+    }
+
+    public void RemoveCross()
+    {
+        switch (MenuManager.Instance.bagManager.monsterTeam.Count)
+        {
+            case 0:
+                leftCross.SetActive(false);
+                
+                break;
+            case 1:
+                leftCross.SetActive(true);
+                rightCross.SetActive(false);
+                break;
+            case 2:
+                rightCross.SetActive(true);
+                break;
+            default:
+                break;
         }
     }
 }

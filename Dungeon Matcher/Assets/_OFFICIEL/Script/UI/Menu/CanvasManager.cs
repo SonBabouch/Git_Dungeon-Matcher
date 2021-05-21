@@ -103,7 +103,7 @@ namespace Management
                 MenuManager.currentGameStateMenu = MenuManager.Menu.List;
             }
 
-            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
+            
         }
         public void GoToMatch()
         {
@@ -122,7 +122,7 @@ namespace Management
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
                 MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
             }
-            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
+            
         }
         public void GoToShop()
         {
@@ -148,7 +148,7 @@ namespace Management
 
                 
             }
-            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
+            
         }
         public void GoToBag()
         {
@@ -161,7 +161,7 @@ namespace Management
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
             MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
 
-            MenuManager.Instance.canvasManager.matchCanvas.UpdateParticuleSystemRare();
+            
 
         }
         #endregion

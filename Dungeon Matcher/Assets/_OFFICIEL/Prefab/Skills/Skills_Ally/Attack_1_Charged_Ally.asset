@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d6da04b579ebce4aaf998662afaa649, type: 3}
-  m_Name: Attack_1_Charged_Combo_Ally
+  m_Name: Attack_1_Charged_Ally
   m_EditorClassIdentifier: 
   skillName: Drague
   skillDescription: Augmente la Jauge d'Attirance adverse.
   effectValue: 10
   messageOwner: {fileID: 0}
   side: 1
-  messageType: 0
+  messageType: 3
   typeOfCapacity: 0
   trueEnergyCost: 1
   energyCost: 10
   initialEnergyCost: 10
   crampEnergyCost: 20
-  isComboSkill: 1
+  isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0
   comboEffectValue: 10

@@ -22,9 +22,13 @@ public class CombatProfilList : MonoBehaviour
     public GameObject claimFeedback;
     public GameObject noClaimFeedback;
 
+    [SerializeField] private RectTransform rectTransform;
+
     //S'appele quand le profil est matché.
     public void UpdateVisualMatch()
     {
+        rectTransform.sizeDelta = new Vector2(1000, 250);
+      
         monsterContainer = MenuManager.Instance.matchManager.matchList[MenuManager.Instance.matchManager.matchList.Count - 1];
         profilAsset = monsterContainer.GetComponent<MonsterToken>().profilPicture;
         //Permet de set les visuel lors du match.

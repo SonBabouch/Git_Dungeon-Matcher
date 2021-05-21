@@ -14,7 +14,7 @@ public class BagButtonBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject detailsButton;
     [SerializeField] private GameObject equipButton;
-    [SerializeField] private GameObject upgradeButton;
+  
 
     public GameObject monsterContainer;
 
@@ -29,7 +29,7 @@ public class BagButtonBehaviour : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         detailsButton.SetActive(false);
         equipButton.SetActive(false);
-        upgradeButton.SetActive(false);
+     
 
         
     }
@@ -100,11 +100,7 @@ public class BagButtonBehaviour : MonoBehaviour
         }
         MenuManager.Instance.canvasManager.bagCanvas.UpdateEquipeButton();
         MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
-    }
-
-    public void Upgrade()
-    {
-
+        MenuManager.Instance.canvasManager.bagCanvas.RemoveCross();
     }
 
     public void Selected()
