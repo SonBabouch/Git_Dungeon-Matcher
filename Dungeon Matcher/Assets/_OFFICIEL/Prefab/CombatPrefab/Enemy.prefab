@@ -260,11 +260,11 @@ MonoBehaviour:
   energy: 50
   maxEnergy: 100
   energyModifierEnemy: 1
+  upgradeModifierEnergy: 1.4
+  downgradeModifierEnergy: 0.7
   trueEnergy: 0
   currentMonster: {fileID: 0}
-  enemyMonsters:
-  - {fileID: 3352059483369707408, guid: d94d6824f6eb7294db9b6a149f44605a, type: 3}
-  - {fileID: 3352059483369707408, guid: f2c245234c5ab6844b81620a815fc6eb, type: 3}
+  enemyMonsters: []
   enemySkills: []
   enemyHand:
   - {fileID: 0}
@@ -284,6 +284,8 @@ MonoBehaviour:
   isDefending: 0
   isCurse: 0
   canAttack: 0
+  isAccelerated: 0
+  isSlowed: 0
   isCombo: 0
   comboTime: 0
   maxComboTime: 0
@@ -305,6 +307,8 @@ MonoBehaviour:
   canUseParalysie: 0
   canUsePlagiat: 0
   canUseSilence: 0
+  canUseSlowdown: 0
+  canUseAcceleration: 0
   useHeal: 0
   useDefenseMove: 0
   enemyUi: {fileID: 3052418605312078779}
