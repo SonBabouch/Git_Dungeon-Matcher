@@ -46,6 +46,10 @@ public class ConversationManager : MonoBehaviour
 
     public bool canAttack = true;
 
+
+    public GameObject playerChargingAttackPos;
+    public GameObject enemyChargingAttackPos;
+
     private void Awake()
     {
         Instance = this;
@@ -303,7 +307,7 @@ public class ConversationManager : MonoBehaviour
         {
             while (message.transform.position.y < playerMsgPositions[index + 2].transform.position.y)
             {
-                Vector3 translateVector = new Vector3(0f, 12f, 0f);
+                Vector3 translateVector = new Vector3(0f, 20f, 0f);
                 message.transform.Translate(translateVector);
                 yield return null;
 
@@ -316,7 +320,7 @@ public class ConversationManager : MonoBehaviour
         {
             while (message.transform.position.y < enemyMsgPositions[index + 2].transform.position.y)
             {
-                Vector3 translateVector = new Vector3(0f, 12f, 0f);
+                Vector3 translateVector = new Vector3(0f, 20f, 0f);
                 message.transform.Translate(translateVector);
                 yield return null;
 
