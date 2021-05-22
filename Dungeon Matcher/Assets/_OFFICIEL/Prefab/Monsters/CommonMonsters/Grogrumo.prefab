@@ -57,15 +57,15 @@ MonoBehaviour:
   rarety: 0
   isGet: 1
   statement: 1
-  profilPicture: {fileID: 21300000, guid: ad20a9c16cc042f4d86a3ff17b4e9b4a, type: 3}
+  profilPicture: {fileID: 21300000, guid: 7e01b8164c2e07f408ee85c72bf54d29, type: 3}
   fullMonsterImage: {fileID: 21300000, guid: 8105c4819d642ae428eb661225cc8909, type: 3}
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
-  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
-  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
-  - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
+  - {fileID: 11400000, guid: be4ed5baefbb09242aa55b378114f070, type: 2}
+  - {fileID: 11400000, guid: a595536b422cbc4439779baa08b8f0f5, type: 2}
+  - {fileID: 11400000, guid: ad4f4f1e1df0bf842a10638983b0cce5, type: 2}
+  - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: ee212587d58269a43b3092a240d2abca, type: 2}
   - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}

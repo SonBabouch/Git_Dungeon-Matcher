@@ -50,6 +50,7 @@ public abstract class Skill : ScriptableObject
     public abstract void PlayerEffect();
     public abstract void MonsterEffect();
     public abstract void InUse();
+    public abstract void PlaySound();
 
     public void realUse()
     {

@@ -20,7 +20,20 @@ public class MatchSoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    public void Update()
+    {
+        if (OnOffButton.Instance.isOn)
+        {
+            audioSourceA.mute = false;
+            audioSourceB.mute = false;
+        }
+        else
+        {
+            audioSourceA.mute = true;
+            audioSourceB.mute = true;
+        }
     }
 
     public void PlayClips(int i)

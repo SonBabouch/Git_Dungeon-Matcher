@@ -23,6 +23,22 @@ public class FightSoundManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (OnOffButton.Instance.isOn)
+        {
+            audioSourceA.mute = false;
+            audioSourceB.mute = false;
+            audioSourceC.mute = false;
+        }
+        else
+        {
+            audioSourceA.mute = true;
+            audioSourceB.mute = true;
+            audioSourceC.mute = false;
+        }
+    }
+
     public void PlayClips(int i)
     {
         //Number 0 = phaseC_damages

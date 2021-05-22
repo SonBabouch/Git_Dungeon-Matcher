@@ -32,8 +32,9 @@ public class Heal : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         //Combo effect
-        if(comesFromCombo)
+        if (comesFromCombo)
         {
             Player.Instance.health -= comboEffectValue;
         }
@@ -66,6 +67,7 @@ public class Heal : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         //Combo effect
         if (comesFromCombo)
         {
@@ -101,5 +103,11 @@ public class Heal : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseHeal = true;
+    }
+
+    public override void PlaySound()
+    {
+        Debug.Log("Son Heal");
+        FightSoundManager.Instance.PlayClips(1);
     }
 }

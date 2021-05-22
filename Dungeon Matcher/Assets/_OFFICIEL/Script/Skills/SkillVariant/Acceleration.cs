@@ -30,6 +30,7 @@ public class Acceleration : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Player.Instance.isAccelerated = true;
         Player.Instance.lastPlayerCompetence = this;
 
@@ -42,6 +43,7 @@ public class Acceleration : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         Enemy.Instance.isAccelerated = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
@@ -55,5 +57,10 @@ public class Acceleration : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseAcceleration = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(5);
     }
 }

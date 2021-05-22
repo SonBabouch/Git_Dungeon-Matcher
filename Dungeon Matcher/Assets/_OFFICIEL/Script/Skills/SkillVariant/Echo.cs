@@ -48,6 +48,7 @@ public class Echo : Skill
 
     public override void PlayerEffect()
     {
+        PlayerPlaySound();
         lastCompetenceReference.PlayerEffect();
 
         if (!chargingAttack)
@@ -63,6 +64,7 @@ public class Echo : Skill
 
     public override void MonsterEffect()
     {
+        MonsterPlaySound();
         //potentiellement yield return 0.1 secondes -> Coroutine
         lastCompetenceReference.MonsterEffect();
 
@@ -83,5 +85,20 @@ public class Echo : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseEcho = true;
+    }
+
+    public override void PlaySound()
+    {
+
+    }
+
+    public void PlayerPlaySound()
+    {
+        Player.Instance.lastPlayerCompetence.PlaySound();
+    }
+
+    public void MonsterPlaySound()
+    {
+        Enemy.Instance.lastEnemyCompetence.PlaySound();
     }
 }

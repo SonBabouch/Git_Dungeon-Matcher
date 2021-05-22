@@ -33,6 +33,7 @@ public class BasicAttack : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Player.Instance.AllyAlteration();
 
         if (Enemy.Instance.isDefending == false)
@@ -69,7 +70,8 @@ public class BasicAttack : Skill
 
     public override void MonsterEffect()
     {
-        if(Player.Instance.isDefending == false)
+        PlaySound();
+        if (Player.Instance.isDefending == false)
         {
             if(comesFromCombo)
             {
@@ -102,6 +104,12 @@ public class BasicAttack : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseAttack = true;
+    }
+
+    public override void PlaySound()
+    {
+        Debug.Log("Son Attaque");
+        FightSoundManager.Instance.PlayClips(0);
     }
 }
 

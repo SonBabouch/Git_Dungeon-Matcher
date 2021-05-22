@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: "Tout comme mes m\xE8ches, je suis rebelle. Fais pas gaffe \xE0 ma
     bouille, tu risques de tomber sous le charme * wink wink * Avec mes lunettes,
-    j'suis trop swag. J'suis pas l\xE0 pour du s\xE9rieux, comme on dit, qu'importe
-    le flacon pourvu qu'on ait livresse ;p"
+    j'suis trop swag. Comme on dit, qu'importe le flacon pourvu qu'on ait livresse
+    ;p"
   monsterName: Est'Aile
   health: 20
   maxHealth: 100
@@ -23,4 +23,4 @@ MonoBehaviour:
   rarety: 0
   statement: 0
   monsterIndexPosition: 0
-  profilPicture: {fileID: 0}
+  profilPicture: {fileID: 21300000, guid: 618bb46559aeab6478a57f53d5f6e33e, type: 3}

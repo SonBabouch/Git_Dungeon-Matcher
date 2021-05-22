@@ -28,6 +28,7 @@ public class Break : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
 
         if (!chargingAttack)
@@ -43,6 +44,7 @@ public class Break : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
 
         if (!chargingAttack)
@@ -59,5 +61,10 @@ public class Break : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseBreak = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(4);
     }
 }

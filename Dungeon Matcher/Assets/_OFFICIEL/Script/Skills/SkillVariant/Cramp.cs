@@ -30,6 +30,7 @@ public class Cramp : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         Player.Instance.isCramp = true;
         //CombatManager.Instance.ButtonsUpdate();
 
@@ -43,6 +44,7 @@ public class Cramp : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Enemy.Instance.isCramp = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
@@ -57,6 +59,11 @@ public class Cramp : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseCramp = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(9);
     }
 }
 

@@ -30,6 +30,7 @@ public class Drain : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Player.Instance.AllyAlteration();
         if(comesFromCombo)
         {
@@ -66,7 +67,8 @@ public class Drain : Skill
 
     public override void MonsterEffect()
     {
-        if(comesFromCombo)
+        PlaySound();
+        if (comesFromCombo)
         {
             Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
             Enemy.Instance.health -= comboEffectValue * Enemy.Instance.boostAttack;
@@ -102,5 +104,10 @@ public class Drain : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseDrain = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(10);
     }
 }

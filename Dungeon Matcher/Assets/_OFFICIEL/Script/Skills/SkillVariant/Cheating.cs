@@ -40,8 +40,9 @@ public class Cheating : Skill
 
     public override void PlayerEffect()
     {
+        MonsterPlaySound();
         //potentiellement yield return 0.1 secondes -> Coroutine
-        if(lastCompetenceReference != null)
+        if (lastCompetenceReference != null)
         {
             lastCompetenceReference.PlayerEffect();
         }
@@ -70,7 +71,8 @@ public class Cheating : Skill
     }
     public override void MonsterEffect()
     {
-        if(lastCompetenceReference != null)
+        PlayerPlaySound();
+        if (lastCompetenceReference != null)
         {
             lastCompetenceReference.MonsterEffect();
         }
@@ -102,5 +104,20 @@ public class Cheating : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUsePlagiat = true;
+    }
+
+    public override void PlaySound()
+    {
+
+    }
+
+    public void PlayerPlaySound()
+    {
+        Enemy.Instance.lastEnemyCompetence.PlaySound();
+    }
+
+    public void MonsterPlaySound()
+    {
+        Player.Instance.lastPlayerCompetence.PlaySound();
     }
 }
