@@ -221,35 +221,8 @@ public class ConversationManager : MonoBehaviour
         }
     }
 
-    public void CancelPosition()
-    {
-        //Mettre feedback Break
-
-        Destroy(allMsg[0]);
-        allMsg[0] = null;
-
-        numberOfMessageTotal = 0;
-
-        //3- Compte le nombre de message présent. Donc le nombre de message à déplacer.
-        for (int i = 1; i < allMsg.Length-1; i++)
-        {
-            if (allMsg[i] != null)
-            {
-                numberOfMessageTotal++;
-                StartCoroutine(CancelMessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally)); 
-            }
-        }
-    }
-    #endregion
-
-    
-    IEnumerator CancelMessageMovement(GameObject message, int index, bool ally)
-    {
-        //5 - je peux update leur emplacement dans l'array.
-        UpdateArrayIndexCancel();
-
-        yield return null;
-    }
+ 
+   
     
 
     //4- Animation des Messages.
@@ -375,24 +348,6 @@ public class ConversationManager : MonoBehaviour
         UpdateEmojiEffect(skillToSpawn);
     }
 
-    void UpdateArrayIndexCancel()
-    {
-        //6 - Reset des messages à bouger.
-        numberOfMessageMoved = 0;
-        numberOfMessageTotal = 0;
-
-        for (int i = 1; i < allMsg.Length - 1; i++)
-        {
-            if(allMsg[i] != null)
-            {
-                //7 - Tous les messages augmente d'un index (en partant du haut).
-                allMsg[i - 1] = allMsg[i];
-            }
-        }
-
-        canAttack = true;
-    }
-
     //rejoue les effets des emojis si jamais ils sont en double pas de soucis;
     void UpdateEmojiEffect(Skill skillToSpawn)
     {
@@ -439,6 +394,8 @@ public class ConversationManager : MonoBehaviour
 
         }
     }
+
+    #endregion
 
     #region Player
     public void PlayerSmallMessage(Skill skill)
@@ -543,7 +500,7 @@ public class ConversationManager : MonoBehaviour
         canAttack = true;
     }
     #endregion
-
+    
     #region Enemy
     public void EnemySmallMessage(Skill skill)
     {
@@ -571,6 +528,7 @@ public class ConversationManager : MonoBehaviour
         //Initialisation.
         enemyChargingAttack.SetActive(true);
         skill.messageOwner = enemyChargingAttack;
+        skill.messageType = Skill.typeOfMessage.Big;
         Enemy.Instance.isCharging = true;
 
         //Changer la couleur du message qui se charge en fonction de si il est curse ou non.
@@ -587,6 +545,7 @@ public class ConversationManager : MonoBehaviour
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
         Enemy.Instance.canAttack = false;
+        StartCoroutine(Enemy.Instance.EndEnemyChargeAttack(skill));
     }
 
     public void EnemyLargeMessage(Skill skill)
@@ -632,6 +591,4 @@ public class ConversationManager : MonoBehaviour
         canAttack = true;
     }
     #endregion
-
-
 }

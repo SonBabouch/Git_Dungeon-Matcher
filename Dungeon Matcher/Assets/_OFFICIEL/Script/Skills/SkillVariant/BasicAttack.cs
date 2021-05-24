@@ -57,7 +57,6 @@ public class BasicAttack : Skill
         if(messageType == typeOfMessage.Big)
         {
             messageType = typeOfMessage.Charging;
-
         }
 
         Player.Instance.lastPlayerCompetence = this;

@@ -120,12 +120,14 @@ public class Enemy : MonoBehaviour
     public IEnumerator EnemyChargeAttack(Skill skillToCharge)
     {
         Enemy.Instance.isCharging = true;
-
         Enemy.Instance.lastEnemyCompetence = skillToCharge;
-        ConversationManager.Instance.SendMessagesPlayer(skillToCharge, 0);
-        yield return new WaitForSeconds(enemyChargingTime);
+        ConversationManager.Instance.SendMessagesEnemy(skillToCharge, 0);
+        yield return null;
+    }
 
-        Enemy.Instance.isCharging = false;
+    public IEnumerator EndEnemyChargeAttack(Skill skillToCharge)
+    {
+        yield return new WaitForSeconds(enemyChargingTime);
 
         if (ConversationManager.Instance.enemyChargingAttack.activeInHierarchy)
         {
@@ -140,7 +142,7 @@ public class Enemy : MonoBehaviour
         {
             skillToCharge.comesFromCurse = false;
         }
-        
+        Enemy.Instance.isCharging = false;
     }
 
     #region Shuffle
