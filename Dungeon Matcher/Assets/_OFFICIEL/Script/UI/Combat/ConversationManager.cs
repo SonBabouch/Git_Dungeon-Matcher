@@ -11,12 +11,10 @@ public class ConversationManager : MonoBehaviour
 
     //Prefabs To Instantiate.
     [SerializeField] private GameObject SmallMessagePlayer;
-    [SerializeField] private GameObject ChargingMessagePlayer;
     [SerializeField] private GameObject BigMessagePlayer;
     [SerializeField] private GameObject EmojiPlayer;
 
     [SerializeField] private GameObject SmallMessageEnemy;
-    [SerializeField] private GameObject ChargingMessageEnemy;
     [SerializeField] private GameObject BigMessageEnemy;
     [SerializeField] private GameObject EmojiEnemy;
 
@@ -174,12 +172,13 @@ public class ConversationManager : MonoBehaviour
         //Si un gros message va être instancier, on déplace de deux
         if (skillType.messageType == Skill.typeOfMessage.Big)
         {
+            Debug.Log("Double");
             //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
             for (int i = allMsg.Length - 3; i > 0; i--)
             {
                 if (allMsg[i] != null)
                 {
-                    Debug.Log("Double");
+                    
                     numberOfMessageTotal++;
                     StartCoroutine(MessageMovementDouble(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
                 }
@@ -449,6 +448,7 @@ public class ConversationManager : MonoBehaviour
         allMsg[1] = msg;
         
         skill.messageOwner = msg;
+
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
@@ -466,42 +466,54 @@ public class ConversationManager : MonoBehaviour
 
     public void PlayerChargingMessage(Skill skill)
     {
+        Debug.Log("ChargingAttack");
         playerChargingAttack.SetActive(true);
         skill.messageOwner = playerChargingAttack;
+        skill.messageType = Skill.typeOfMessage.Big;
+        Player.Instance.isCharging = true;
 
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            
         }
         else
         {
+            //Mettre la couleur Cyan
             skill.messageOwner.GetComponent<Image>().color = cyanColor;
         }
 
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
+        Player.Instance.canAttack = false;
+        StartCoroutine(Player.Instance.EndPlayerChargeAttack(skill));
     }
 
     public void PlayerLargeMessage(Skill skill)
     {
         playerChargingAttack.SetActive(false);
+        Player.Instance.isCharging = false;
+
 
         Debug.Log("BigMessage");
         GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[2].transform);
         allMsg[2] = msg;
         skill.messageOwner = msg;
+        
 
-        CombatManager.Instance.MessageIcon(msg, skill);
-        messageManager.ChoseArray(skill, msg);
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             
         }
-       
+
+        CombatManager.Instance.MessageIcon(msg, skill);
+        messageManager.ChoseArray(skill, msg);
+
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
+        Player.Instance.canAttack = true;
+        skill.messageType = Skill.typeOfMessage.Charging;
         //Lancer Methode pour le Text;
     }
 
@@ -514,7 +526,7 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            
+            skill.comesFromCurse = false;
         }
         CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
         CombatManager.Instance.MessageIcon(msg, skill);
@@ -559,6 +571,7 @@ public class ConversationManager : MonoBehaviour
         //Initialisation.
         enemyChargingAttack.SetActive(true);
         skill.messageOwner = enemyChargingAttack;
+        Enemy.Instance.isCharging = true;
 
         //Changer la couleur du message qui se charge en fonction de si il est curse ou non.
         if (skill.comesFromCurse)
@@ -572,13 +585,15 @@ public class ConversationManager : MonoBehaviour
         }
 
         messageToSpawn = typeToSpawn.Null;
+        canAttack = true;
+        Enemy.Instance.canAttack = false;
     }
 
     public void EnemyLargeMessage(Skill skill)
     {
         enemyChargingAttack.SetActive(false);
-
-        GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
+        Enemy.Instance.isCharging = false;
+        GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[2].transform);
         allMsg[2] = msg;
         skill.messageOwner = msg;
@@ -594,6 +609,8 @@ public class ConversationManager : MonoBehaviour
         
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
+        Enemy.Instance.canAttack = true;
+        skill.messageType = Skill.typeOfMessage.Charging;
     }
 
     public void EnemyEmojis(Skill skill)

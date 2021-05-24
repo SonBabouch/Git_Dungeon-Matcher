@@ -157,11 +157,14 @@ public class Player : MonoBehaviour
         Player.Instance.isCharging = true;
         Player.Instance.lastPlayerCompetence = skillToCharge;
         ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
-        yield return new WaitForSeconds(playerChargingTime);
-        skillToCharge.messageType = Skill.typeOfMessage.Big;
-        ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
-        Player.Instance.isCharging = false;
+        yield return null;
 
+    }
+
+    public IEnumerator EndPlayerChargeAttack(Skill skillToCharge)
+    {
+        yield return new WaitForSeconds(playerChargingTime);
+       
         if (ConversationManager.Instance.playerChargingAttack.activeInHierarchy)
         {
             ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
@@ -175,6 +178,7 @@ public class Player : MonoBehaviour
         {
             skillToCharge.comesFromCurse = false;
         }
+        Player.Instance.isCharging = false;
     }
 
     #region Combo
