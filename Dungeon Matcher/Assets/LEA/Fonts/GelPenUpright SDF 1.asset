@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: GelPenUpright SDF
+  m_Name: GelPenUpright SDF 1
   m_EditorClassIdentifier: 
   hashCode: -658789471
   material: {fileID: 9163628726538090429}
@@ -2573,7 +2573,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: GelPenUpright SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -2634,7 +2634,7 @@ Material:
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
     - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.31937894
+    - _ScaleRatioC: 0.32709342
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -2647,10 +2647,10 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 512
     - _TextureWidth: 512
-    - _UnderlayDilate: 0.19
+    - _UnderlayDilate: 0.07
     - _UnderlayOffsetX: 0
     - _UnderlayOffsetY: -1
-    - _UnderlaySoftness: 0.93
+    - _UnderlaySoftness: 1
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
     - _WeightBold: 0.75
