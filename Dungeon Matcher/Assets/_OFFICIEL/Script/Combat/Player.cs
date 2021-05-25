@@ -164,7 +164,8 @@ public class Player : MonoBehaviour
     public IEnumerator EndPlayerChargeAttack(Skill skillToCharge)
     {
         yield return new WaitForSeconds(playerChargingTime);
-       
+        yield return new WaitForSeconds(0.01f);
+
         if (ConversationManager.Instance.playerChargingAttack.activeInHierarchy)
         {
             ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
@@ -172,7 +173,12 @@ public class Player : MonoBehaviour
 
         if (!skillToCharge.comesFromCurse)
         {
-            skillToCharge.PlayerEffect();
+
+            if (!CombatManager.Instance.isCombatEnded)
+            {
+                skillToCharge.PlayerEffect();
+            }
+            
         }
         else
         {

@@ -143,7 +143,10 @@ public class Enemy : MonoBehaviour
 
         if (!skillToCharge.comesFromCurse)
         {
-            skillToCharge.MonsterEffect();
+            if (!CombatManager.Instance.isCombatEnded)
+            {
+                skillToCharge.MonsterEffect();
+            }
         }
         else
         {

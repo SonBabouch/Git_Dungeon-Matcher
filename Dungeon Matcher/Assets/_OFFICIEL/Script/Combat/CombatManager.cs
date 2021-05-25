@@ -284,6 +284,21 @@ public class CombatManager : MonoBehaviour
         }
         else if(secondsLeft <= minSecondsLeft)
         {
+            //Stoper les Coroutines des attacks
+            if (Player.Instance.isCharging)
+            {
+                StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
+                StopCoroutine(Player.Instance.EndPlayerChargeAttack(Player.Instance.lastPlayerCompetence));
+                ConversationManager.Instance.playerChargingAttack.SetActive(false);
+            }
+
+            if (Enemy.Instance.isCharging)
+            {
+                StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
+                StopCoroutine(Enemy.Instance.EndEnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
+                ConversationManager.Instance.enemyChargingAttack.SetActive(false);
+            }
+
             isCombatEnded = true;
             inCombat = false;
             OnCombatEnd();
@@ -310,6 +325,9 @@ public class CombatManager : MonoBehaviour
         isCombatEnded = false;
         MenuTransitionCombat.Instance.numberOfBattle++;
         MenuTransitionCombat.Instance.ShowCombatDetails(Enemy.Instance.health);
+
+        
+        
     }
 
     public void ContinueCombat()
