@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using Management;
+using System.Collections;
 
 public class CombatProfilList : MonoBehaviour
 {
@@ -39,9 +40,24 @@ public class CombatProfilList : MonoBehaviour
         profilImage.sprite = profilAsset;
     }
 
-    public void UpdateVisualCombat()
+    public IEnumerator UpdateVisualCombat()
     {
         chanceDrop.enabled = true;
-        chanceDrop.text = chanceClaim.ToString() + " %";
+        float trueChanceClaim = chanceClaim;
+        chanceClaim = 0;
+
+
+        for (int i = 0; i < trueChanceClaim; i++)
+        {
+            chanceClaim++;
+            chanceDrop.text = chanceClaim.ToString() + " %";
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //Afficher les coeurs et leur tween selon le montant atteint avec sécurité si objet;
+
+
+        //A la fin mettre une bool qui permet de vérifier que toute l'anim à été joué.
+        
     }
 }

@@ -285,7 +285,6 @@ public class MenuTransitionCombat : MonoBehaviour
 
     public IEnumerator FinishCombatGoToMenu()
     {
-
         button.SetActive(false);
         
         TransitionSlideIn();
@@ -311,6 +310,7 @@ public class MenuTransitionCombat : MonoBehaviour
         {
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().chanceClaim = storedValue[i];
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().UpdateVisualCombat();
+            yield return new WaitForSeconds(0.5f);
         }
 
         TransitionSlideOut();
@@ -321,4 +321,6 @@ public class MenuTransitionCombat : MonoBehaviour
         Enemy.Instance.health = Enemy.Instance.minHealth;
         Management.MenuManager.Instance.listManager.TestClaim();
     }
+
+    
 }
