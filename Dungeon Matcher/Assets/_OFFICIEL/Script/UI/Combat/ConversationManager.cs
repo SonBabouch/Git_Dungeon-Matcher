@@ -11,12 +11,10 @@ public class ConversationManager : MonoBehaviour
 
     //Prefabs To Instantiate.
     [SerializeField] private GameObject SmallMessagePlayer;
-    [SerializeField] private GameObject ChargingMessagePlayer;
     [SerializeField] private GameObject BigMessagePlayer;
     [SerializeField] private GameObject EmojiPlayer;
 
     [SerializeField] private GameObject SmallMessageEnemy;
-    [SerializeField] private GameObject ChargingMessageEnemy;
     [SerializeField] private GameObject BigMessageEnemy;
     [SerializeField] private GameObject EmojiEnemy;
 
@@ -47,8 +45,9 @@ public class ConversationManager : MonoBehaviour
     public bool canAttack = true;
 
 
-    public GameObject playerChargingAttackPos;
-    public GameObject enemyChargingAttackPos;
+    public GameObject playerChargingAttack;
+    public GameObject enemyChargingAttack;
+    [SerializeField] private Color cyanColor;
 
     private void Awake()
     {
@@ -173,12 +172,13 @@ public class ConversationManager : MonoBehaviour
         //Si un gros message va être instancier, on déplace de deux
         if (skillType.messageType == Skill.typeOfMessage.Big)
         {
+            Debug.Log("Double");
             //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
             for (int i = allMsg.Length - 3; i > 0; i--)
             {
                 if (allMsg[i] != null)
                 {
-                    Debug.Log("Double");
+                    
                     numberOfMessageTotal++;
                     StartCoroutine(MessageMovementDouble(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
                 }
@@ -188,13 +188,9 @@ public class ConversationManager : MonoBehaviour
             {
                 PrintMessage(skillType);
             }
-
-           
-
         }
         else
         {
-
             for (int i = allMsg.Length - 1; i > 0; i--)
             {
                 if (allMsg[i] != null)
@@ -215,49 +211,18 @@ public class ConversationManager : MonoBehaviour
     #region ChargingRegion
     public void UpdateLastMessageState(Skill skill)
     {
-            if (allMsg[0].GetComponent<MessageBehaviour>().teamMsg == MessageBehaviour.team.Player)
-            {
-                //SetActiveFalse serait mieux
-                Destroy(allMsg[0]);
-                SendMessagesPlayer(skill,0);
-            }
-            else
-            {
-                //SetActiveFalse serait mieux
-                Destroy(allMsg[0]);
-                SendMessagesEnemy(skill, 0);
-            }
-    }
-
-    public void CancelPosition()
-    {
-        //Mettre feedback Break
-
-        Destroy(allMsg[0]);
-        allMsg[0] = null;
-
-        numberOfMessageTotal = 0;
-
-        //3- Compte le nombre de message présent. Donc le nombre de message à déplacer.
-        for (int i = 1; i < allMsg.Length-1; i++)
+        if(skill.side == Skill.monsterSide.Ally)
         {
-            if (allMsg[i] != null)
-            {
-                numberOfMessageTotal++;
-                StartCoroutine(CancelMessageMovement(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally)); 
-            }
+            SendMessagesPlayer(skill, 0);
+        }
+        else
+        {
+            SendMessagesEnemy(skill, 0);
         }
     }
-    #endregion
 
-    
-    IEnumerator CancelMessageMovement(GameObject message, int index, bool ally)
-    {
-        //5 - je peux update leur emplacement dans l'array.
-        UpdateArrayIndexCancel();
-
-        yield return null;
-    }
+ 
+   
     
 
     //4- Animation des Messages.
@@ -383,24 +348,6 @@ public class ConversationManager : MonoBehaviour
         UpdateEmojiEffect(skillToSpawn);
     }
 
-    void UpdateArrayIndexCancel()
-    {
-        //6 - Reset des messages à bouger.
-        numberOfMessageMoved = 0;
-        numberOfMessageTotal = 0;
-
-        for (int i = 1; i < allMsg.Length - 1; i++)
-        {
-            if(allMsg[i] != null)
-            {
-                //7 - Tous les messages augmente d'un index (en partant du haut).
-                allMsg[i - 1] = allMsg[i];
-            }
-        }
-
-        canAttack = true;
-    }
-
     //rejoue les effets des emojis si jamais ils sont en double pas de soucis;
     void UpdateEmojiEffect(Skill skillToSpawn)
     {
@@ -448,6 +395,8 @@ public class ConversationManager : MonoBehaviour
         }
     }
 
+    #endregion
+
     #region Player
     public void PlayerSmallMessage(Skill skill)
     {
@@ -456,6 +405,7 @@ public class ConversationManager : MonoBehaviour
         allMsg[1] = msg;
         
         skill.messageOwner = msg;
+
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
@@ -473,47 +423,54 @@ public class ConversationManager : MonoBehaviour
 
     public void PlayerChargingMessage(Skill skill)
     {
-        GameObject msg = Instantiate(ChargingMessagePlayer.gameObject, playerMsgPositions[0].transform.position, Quaternion.identity);
-        msg.transform.SetParent(playerMsgPositions[0].transform);
-        allMsg[0] = msg;
-        skill.messageOwner = msg;
+        Debug.Log("ChargingAttack");
+        playerChargingAttack.SetActive(true);
+        skill.messageOwner = playerChargingAttack;
+        skill.messageType = Skill.typeOfMessage.Big;
+        Player.Instance.isCharging = true;
 
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            
         }
         else
         {
-            skill.messageOwner.GetComponent<Image>().color = Color.blue;
+            //Mettre la couleur Cyan
+            skill.messageOwner.GetComponent<Image>().color = cyanColor;
         }
-
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
+        Player.Instance.canAttack = false;
+        StartCoroutine(Player.Instance.EndPlayerChargeAttack(skill));
     }
 
     public void PlayerLargeMessage(Skill skill)
     {
+        playerChargingAttack.SetActive(false);
+        Player.Instance.isCharging = false;
+
+
         Debug.Log("BigMessage");
         GameObject msg = Instantiate(BigMessagePlayer.gameObject, playerMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[2].transform);
         allMsg[2] = msg;
         skill.messageOwner = msg;
+        
 
-        CombatManager.Instance.MessageIcon(msg, skill);
-        messageManager.ChoseArray(skill, msg);
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
             
         }
-        else
-        {
-            skill.PlayerEffect();
-        }
+
+        CombatManager.Instance.MessageIcon(msg, skill);
+        messageManager.ChoseArray(skill, msg);
+
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
+        Player.Instance.canAttack = true;
+        skill.messageType = Skill.typeOfMessage.Charging;
         //Lancer Methode pour le Text;
     }
 
@@ -526,7 +483,7 @@ public class ConversationManager : MonoBehaviour
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
-            
+            skill.comesFromCurse = false;
         }
         CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
         CombatManager.Instance.MessageIcon(msg, skill);
@@ -543,11 +500,10 @@ public class ConversationManager : MonoBehaviour
         canAttack = true;
     }
     #endregion
-
+    
     #region Enemy
     public void EnemySmallMessage(Skill skill)
     {
-
         //A lancer à la fin de la coroutine.
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[1].transform);
@@ -569,12 +525,13 @@ public class ConversationManager : MonoBehaviour
 
     public void EnemyChargingMessage(Skill skill)
     {
+        //Initialisation.
+        enemyChargingAttack.SetActive(true);
+        skill.messageOwner = enemyChargingAttack;
+        skill.messageType = Skill.typeOfMessage.Big;
+        Enemy.Instance.isCharging = true;
 
-        GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[0].transform.position, Quaternion.identity);
-        msg.transform.SetParent(enemyMsgPositions[0].transform);
-        allMsg[0] = msg;
-        skill.messageOwner = msg;
-        
+        //Changer la couleur du message qui se charge en fonction de si il est curse ou non.
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
@@ -585,37 +542,38 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = Color.red;
         }
 
-
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
-        
+        Enemy.Instance.canAttack = false;
+        StartCoroutine(Enemy.Instance.EndEnemyChargeAttack(skill));
     }
 
     public void EnemyLargeMessage(Skill skill)
     {
-     
-        GameObject msg = Instantiate(ChargingMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
+        enemyChargingAttack.SetActive(false);
+        Enemy.Instance.isCharging = false;
+        GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[2].transform);
         allMsg[2] = msg;
         skill.messageOwner = msg;
+
         if (skill.comesFromCurse)
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
 
         }
        
-
         CombatManager.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
-        skill.MonsterEffect();
+        
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
-        
+        Enemy.Instance.canAttack = true;
+        skill.messageType = Skill.typeOfMessage.Charging;
     }
 
     public void EnemyEmojis(Skill skill)
     {
-      
         GameObject msg = Instantiate(EmojiEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[1].transform);
         allMsg[1] = msg;
@@ -633,6 +591,4 @@ public class ConversationManager : MonoBehaviour
         canAttack = true;
     }
     #endregion
-
-
 }

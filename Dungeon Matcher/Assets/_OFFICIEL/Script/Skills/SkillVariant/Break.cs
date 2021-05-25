@@ -28,32 +28,51 @@ public class Break : Skill
 
     public override void PlayerEffect()
     {
-        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
-
-        if (!chargingAttack)
+        if (Enemy.Instance.isCharging)
         {
-            Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
-            Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
-        }
+            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
+            Enemy.Instance.StopCoroutine(Enemy.Instance.EndEnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
+            Enemy.Instance.lastEnemyCompetence.messageType = typeOfMessage.Charging;
 
-        Player.Instance.lastPlayerCompetence = this;
-        Player.Instance.canAttack = true;
-        //CombatManager.Instance.ButtonsUpdate();
+            if (!chargingAttack)
+            {
+                Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
+                Player.Instance.StartCoroutine(Player.Instance.PlayerCombo());
+            }
+
+            Player.Instance.lastPlayerCompetence = this;
+            Player.Instance.canAttack = true;
+
+            ConversationManager.Instance.enemyChargingAttack.SetActive(false);
+            Enemy.Instance.canAttack = true;
+            ConversationManager.Instance.canAttack = true;
+            Enemy.Instance.isCharging = false;
+            //Lancer l'animation
+        }
     }
 
     public override void MonsterEffect()
     {
-        Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
-
-        if (!chargingAttack)
+        if (Player.Instance.isCharging)
         {
-            Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
-            Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
-        }
+            Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
+            Player.Instance.StopCoroutine(Player.Instance.EndPlayerChargeAttack(Player.Instance.lastPlayerCompetence));
+            Player.Instance.lastPlayerCompetence.messageType = typeOfMessage.Charging;
 
-        Enemy.Instance.lastEnemyCompetence = this;
-        Enemy.Instance.canAttack = true;
-        //CombatManager.Instance.ButtonsUpdate();
+            if (!chargingAttack)
+            {
+                Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
+                Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
+            }
+
+            Enemy.Instance.lastEnemyCompetence = this;
+            Enemy.Instance.canAttack = true;
+
+            ConversationManager.Instance.playerChargingAttack.SetActive(false);
+            ConversationManager.Instance.canAttack = true;
+            Player.Instance.canAttack = true;
+            Player.Instance.isCharging = false;
+        }
     }
 
     public override void SetEnemyBoolType()

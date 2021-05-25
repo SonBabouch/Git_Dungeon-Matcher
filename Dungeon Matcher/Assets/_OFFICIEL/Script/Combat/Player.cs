@@ -154,14 +154,21 @@ public class Player : MonoBehaviour
 
     public IEnumerator PlayerChargeAttack(Skill skillToCharge)
     {
-        Player.Instance.lastPlayerCompetence = skillToCharge;
         Player.Instance.isCharging = true;
+        Player.Instance.lastPlayerCompetence = skillToCharge;
         ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
+        yield return null;
+
+    }
+
+    public IEnumerator EndPlayerChargeAttack(Skill skillToCharge)
+    {
         yield return new WaitForSeconds(playerChargingTime);
-        skillToCharge.messageType = Skill.typeOfMessage.Big;
-        //Debug.Log("End");
-        ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
-        Player.Instance.isCharging = false;
+       
+        if (ConversationManager.Instance.playerChargingAttack.activeInHierarchy)
+        {
+            ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
+        }
 
         if (!skillToCharge.comesFromCurse)
         {
@@ -171,6 +178,7 @@ public class Player : MonoBehaviour
         {
             skillToCharge.comesFromCurse = false;
         }
+        Player.Instance.isCharging = false;
     }
 
     #region Combo

@@ -119,15 +119,17 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator EnemyChargeAttack(Skill skillToCharge)
     {
-        Enemy.Instance.lastEnemyCompetence = skillToCharge;
         Enemy.Instance.isCharging = true;
-        //CombatManager.Instance.ButtonsUpdate();
-        ConversationManager.Instance.SendMessagesPlayer(skillToCharge, 0);
-        yield return new WaitForSeconds(enemyChargingTime);
-        //Debug.Log("End");
-        Enemy.Instance.isCharging = false;
+        Enemy.Instance.lastEnemyCompetence = skillToCharge;
+        ConversationManager.Instance.SendMessagesEnemy(skillToCharge, 0);
+        yield return null;
+    }
 
-        if (ConversationManager.Instance.allMsg[0] != null)
+    public IEnumerator EndEnemyChargeAttack(Skill skillToCharge)
+    {
+        yield return new WaitForSeconds(enemyChargingTime);
+
+        if (ConversationManager.Instance.enemyChargingAttack.activeInHierarchy)
         {
             ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
         }
@@ -140,7 +142,7 @@ public class Enemy : MonoBehaviour
         {
             skillToCharge.comesFromCurse = false;
         }
-        
+        Enemy.Instance.isCharging = false;
     }
 
     #region Shuffle
