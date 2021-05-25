@@ -19,6 +19,8 @@ namespace Management
 
         //Player Information
         public TextMeshProUGUI energy;
+        public TextMeshProUGUI superLike;
+        public GameObject superlikeSpend;
         public GameObject energySpend;
         public TextMeshProUGUI playerLevelText;
         public Image playerExperienceBar;
@@ -70,6 +72,11 @@ namespace Management
             energy.text = EnergyManager.energy.ToString() + "/" + EnergyManager.maxEnergy.ToString();
         }
 
+        public void UpdateSuperLike()
+        {
+            superLike.text = EnergyManager.superlikeCount.ToString();
+        }
+
         public void IncreaseRareBar()
         {
             int NeedToFill = 10;
@@ -100,7 +107,6 @@ namespace Management
             StartCoroutine(ResetBar());
         }
        
-
         public void ShowExpérience()
         {
             experienceText.text = PlayerLevel.currentExperience.ToString() + " / " + MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1].ToString();

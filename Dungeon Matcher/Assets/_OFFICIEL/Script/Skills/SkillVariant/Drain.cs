@@ -68,13 +68,31 @@ public class Drain : Skill
     {
         if(comesFromCombo)
         {
-            Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
-            Enemy.Instance.health -= comboEffectValue * Enemy.Instance.boostAttack;
+            if(Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            {
+                Player.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+                
+                Enemy.Instance.health -= (comboEffectValue * Player.Instance.boostAttack)/2;
+            }
+            else
+            {
+                Player.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+                Enemy.Instance.health -= comboEffectValue * Player.Instance.boostAttack;
+            }
+                    
         }
         else
         {
-            Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
-            Enemy.Instance.health -= effectValue * Enemy.Instance.boostAttack;
+            if (Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            {
+                Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
+                Enemy.Instance.health -= (effectValue * Enemy.Instance.boostAttack)/2;
+            }
+            else
+            {
+                Player.Instance.health += effectValue * Player.Instance.boostAttack;
+                Enemy.Instance.health -= effectValue * Player.Instance.boostAttack;
+            }
         }
 
         if (Enemy.Instance.health < 0)
@@ -96,6 +114,7 @@ public class Drain : Skill
         Enemy.Instance.lastEnemyCompetence = this;
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;
+        Enemy.Instance.isDefending = false;
         //CombatManager.Instance.ButtonsUpdate();
     }
 

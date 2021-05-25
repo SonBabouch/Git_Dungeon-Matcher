@@ -199,81 +199,144 @@ namespace Management
         }
 
         //A activer quand le bouton match est préssé.
-        public void Match()
+        public void Match(bool isSuperLike)
         {
-            if (monsterSpawned.Count != 0 && EnergyManager.energy >0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel-1] && canMatch && !MenuManager.Instance.blockAction)
-            {
-                //Debug.Log("In");
-                //Checker si (energie > 0 && liste pas complète).
-                if(MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+
+            if (isSuperLike)
+            {   
+                if(EnergyManager.superlikeCount > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManager.Instance.blockAction && monsterSpawned.Count != 0)
                 {
-                    MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
+                    if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
+                    {
+                        monsterPresented.GetComponent<MonsterToken>().isSuperlike = true;
+                        matchList.Add(monsterPresented);
+                        
+
+                        //Augmentation de la taille de la liste actuelle.
+                        MenuManager.Instance.listManager.listCurrentSize++;
+                        MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+
+                        //Debug.Log("1");
+                        //Instantie le profil matché dans la liste.
+                        MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil(true);
+                        MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+                        MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(true);
+                    }
+                    else
+                    {
+                        //Si Indisponible => Ici
+                        MenuManager.Instance.canvasManager.StartCoroutine(MenuManager.Instance.canvasManager.NoMatchFeedback());
+                        MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(false);
+                    }
+
+                    monsterSpawned.Remove(profilPresented);
+
+                    //pour eviter la null reference d'index quand il n'y a plus de profils.
+                    if (monsterSpawned.Count == 0)
+                    {
+                        //Trigger Animation et Destroy sur le Prefab
+                        profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50,true);
+
+                        //Reset le controle des boutons sur le profil suivant
+                        monsterPresented = null;
+                        profilPresented = null;
+                    }
+                    else
+                    {
+                        //Trigger Animation et Destroy sur le Prefab
+                        profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50,true);
+                        //Reset le controle des boutons sur le profil suivant
+                        monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                        profilPresented = monsterSpawned[monsterSpawned.Count - 1];
+                    }
+
+                    MenuManager.Instance.canvasManager.matchCanvas.IncreaseRareBar();
+
+                    //Mettre superlikeSpend
+                    //MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
+
+                    Tirage();
+                    MenuManager.Instance.canvasManager.matchCanvas.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(2));
+                    numberOfDislike = 0;
+
+                    EnergyManager.superlikeCount--;
+                 
+                    MenuManager.Instance.canvasManager.matchCanvas.UpdateSuperLike();
                 }
-
-                if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
-                {
-                    matchList.Add(monsterPresented);
-
-                    //Augmentation de la taille de la liste actuelle.
-                    MenuManager.Instance.listManager.listCurrentSize++;
-                    MenuManager.Instance.canvasManager.listCanvas.UpdateList();
-
-                    //Debug.Log("1");
-                    //Instantie le profil matché dans la liste.
-                    MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil();
-                    MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
-                    MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(true);
-                }
-                else
-                {
-                    //Si Indisponible => Ici
-                    MenuManager.Instance.canvasManager.StartCoroutine(MenuManager.Instance.canvasManager.NoMatchFeedback());
-                    MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(false);
-                }
-
-                //Afficher FeedBackErreur.
-
-                //Baisse de l'energy
-                EnergyManager.energy--;
-                MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
-                
-                monsterSpawned.Remove(profilPresented);
-
-                //pour eviter la null reference d'index quand il n'y a plus de profils.
-                if (monsterSpawned.Count == 0)
-                {
-                    //Trigger Animation et Destroy sur le Prefab
-                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50);
-
-                    //Reset le controle des boutons sur le profil suivant
-                    monsterPresented = null;
-                    profilPresented = null;
-                }
-                else
-                {
-                    //Trigger Animation et Destroy sur le Prefab
-                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50);
-                    //Reset le controle des boutons sur le profil suivant
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
-                    profilPresented = monsterSpawned[monsterSpawned.Count-1];
-                }
-
-                MenuManager.Instance.canvasManager.matchCanvas.IncreaseRareBar();
-
-                MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
-
-                Tirage();
-                MenuManager.Instance.canvasManager.matchCanvas.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(2));
-                numberOfDislike = 0;
-
             }
             else
             {
-                return;
-            }
+                if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManager.Instance.blockAction)
+                {
+                    //Debug.Log("In");
+                    //Checker si (energie > 0 && liste pas complète).
+                    if (MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+                    {
+                        MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
+                    }
 
+                    if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
+                    {
+                        matchList.Add(monsterPresented);
+
+                        //Augmentation de la taille de la liste actuelle.
+                        MenuManager.Instance.listManager.listCurrentSize++;
+                        MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+
+                        //Debug.Log("1");
+                        //Instantie le profil matché dans la liste.
+                        MenuManager.Instance.canvasManager.listCanvas.InstantiateProfil(false);
+                        MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+                        MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(true);
+                    }
+                    else
+                    {
+                        //Si Indisponible => Ici
+                        MenuManager.Instance.canvasManager.StartCoroutine(MenuManager.Instance.canvasManager.NoMatchFeedback());
+                        MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnLikeFeedBack(false);
+                    }
+
+                    //Afficher FeedBackErreur.
+
+                    //Baisse de l'energy
+                    EnergyManager.energy--;
+                    MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
+
+                    monsterSpawned.Remove(profilPresented);
+
+                    //pour eviter la null reference d'index quand il n'y a plus de profils.
+                    if (monsterSpawned.Count == 0)
+                    {
+                        //Trigger Animation et Destroy sur le Prefab
+                        profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50,false);
+
+                        //Reset le controle des boutons sur le profil suivant
+                        monsterPresented = null;
+                        profilPresented = null;
+                    }
+                    else
+                    {
+                        //Trigger Animation et Destroy sur le Prefab
+                        profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50,false);
+                        //Reset le controle des boutons sur le profil suivant
+                        monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                        profilPresented = monsterSpawned[monsterSpawned.Count - 1];
+                    }
+
+                    MenuManager.Instance.canvasManager.matchCanvas.IncreaseRareBar();
+
+                    MenuManager.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
+
+                    Tirage();
+                    MenuManager.Instance.canvasManager.matchCanvas.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(2));
+                    numberOfDislike = 0;
+
+                }
+            }
         }
 
+      
+        
         //A activer quand le bouton dislike est préssé.
         public void Dislike()
         {

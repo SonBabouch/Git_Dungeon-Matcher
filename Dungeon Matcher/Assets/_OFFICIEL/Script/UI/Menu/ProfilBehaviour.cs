@@ -19,6 +19,8 @@ public class ProfilBehaviour : MonoBehaviour
 
     public RectTransform rectTrans;
 
+    public Button superlikeButton;
+
     private void Start()
     {
         rectTrans = gameObject.GetComponent<RectTransform>();
@@ -27,6 +29,11 @@ public class ProfilBehaviour : MonoBehaviour
         rectTrans.offsetMax = Vector2.zero;
 
         rectTrans.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+    }
+
+    public void Superlike()
+    {
+        MenuManager.Instance.matchManager.Match(true);
     }
 
     public void Initialisation(bool firstTime)
@@ -74,9 +81,9 @@ public class ProfilBehaviour : MonoBehaviour
        
     }
 
-    public void MatchAnim(int lenght)
+    public void MatchAnim(int lenght, bool isSuperlike)
     {
-        StartCoroutine(MatchFade(lenght));
+        StartCoroutine(MatchFade(lenght, isSuperlike));
     }
 
     public void DisLikeAnim(int lenght)
@@ -91,14 +98,28 @@ public class ProfilBehaviour : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator MatchFade(int lenght)
+    IEnumerator MatchFade(int lenght, bool isSuperlike)
     {
-        for (int i = 0; i < lenght; i++)
+        if (isSuperlike)
         {
-            Vector3 translate = new Vector3(100, 0, 1);
-            gameObject.transform.Translate(translate);
-            yield return null;
+            for (int i = 0; i < lenght; i++)
+            {
+                Vector3 translate = new Vector3(40f, 0, 1);
+                gameObject.transform.Translate(translate);
+                yield return null;
+            }
         }
+        else
+        {
+            for (int i = 0; i < lenght; i++)
+            {
+                Vector3 translate = new Vector3(100, 0, 1);
+                gameObject.transform.Translate(translate);
+                yield return null;
+            }
+        }
+
+        
         Destroy();
     }
 

@@ -26,6 +26,7 @@ public class MonsterToken : MonoBehaviour
     [HideInInspector] public enum statementEnum { Equipe,Claim, Disponible, Indisponible };
     public bool isGet;
     public statementEnum statement;
+    public bool isSuperlike = false;
 
     public Sprite profilPicture;
     public Sprite fullMonsterImage;

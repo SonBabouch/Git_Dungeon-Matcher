@@ -18,7 +18,7 @@ MonoBehaviour:
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 0
-  messageType: 3
+  messageType: 0
   typeOfCapacity: 2
   trueEnergyCost: 1
   energyCost: 10

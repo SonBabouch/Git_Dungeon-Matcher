@@ -93,6 +93,13 @@ public class Enemy : MonoBehaviour
         }
 
         health = currentMonster.GetComponent<MonsterToken>().health;
+
+        if (currentMonster.GetComponent<MonsterToken>().isSuperlike)
+        {
+            health += 20;
+            currentMonster.GetComponent<MonsterToken>().isSuperlike = false;
+        }
+
         maxHealth = currentMonster.GetComponent<MonsterToken>().maxHealth;
         minHealth = currentMonster.GetComponent<MonsterToken>().minHealth;
 
@@ -136,7 +143,10 @@ public class Enemy : MonoBehaviour
 
         if (!skillToCharge.comesFromCurse)
         {
-            skillToCharge.MonsterEffect();
+            if (!CombatManager.Instance.isCombatEnded)
+            {
+                skillToCharge.MonsterEffect();
+            }
         }
         else
         {

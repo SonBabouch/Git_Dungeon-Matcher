@@ -39,14 +39,33 @@ public class BasicAttack : Skill
         {
             if(comesFromCombo)
             {
-                Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+                if(Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+                {
+                    Enemy.Instance.health += (comboEffectValue * Player.Instance.boostAttack)/2;
+                }
+                else
+                {
+                    Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
+                }
             }
             else
             {
-                Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+                if (Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+                {
+                    Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+                }
+                else
+                {
+                    Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
+                }
             }
         }
-        
+
+        if (Enemy.Instance.health < 0)
+        {
+            Enemy.Instance.health = 0;
+        }
+
 
         if (!chargingAttack)
         {
