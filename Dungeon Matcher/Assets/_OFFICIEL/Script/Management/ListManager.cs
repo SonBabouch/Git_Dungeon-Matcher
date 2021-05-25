@@ -28,8 +28,10 @@ namespace Management
         private IEnumerator TestClaimEnum()
         {
             MenuManager.Instance.canvasManager.listCanvas.combatButton.SetActive(false);
-
-            yield return new WaitForSeconds(1f);
+            popButton.SetActive(false);
+            
+            yield return new WaitForSeconds(0.1f);
+           
             //Tout les tests ont été fait;
             if (currentTest == listCurrentSize)
             {
