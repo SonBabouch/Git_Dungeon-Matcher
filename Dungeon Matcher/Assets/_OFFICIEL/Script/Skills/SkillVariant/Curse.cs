@@ -31,6 +31,7 @@ public class Curse : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Enemy.Instance.isCurse = true;
         Player.Instance.lastPlayerCompetence = this;
 
@@ -44,6 +45,7 @@ public class Curse : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         Player.Instance.isCurse = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
@@ -58,5 +60,10 @@ public class Curse : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseCurse = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(12);
     }
 }

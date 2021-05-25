@@ -56,7 +56,7 @@ MonoBehaviour:
   rarety: 0
   isGet: 0
   statement: 1
-  profilPicture: {fileID: 0}
+  profilPicture: {fileID: 21300000, guid: 2adb38eb3a8667c45b80214a4cf3ebb0, type: 3}
   fullMonsterImage: {fileID: 21300000, guid: 0f486443cd9a33145bbba09dd1cb21a7, type: 3}
   side: 0
   owner: {fileID: 3352059483369707408}

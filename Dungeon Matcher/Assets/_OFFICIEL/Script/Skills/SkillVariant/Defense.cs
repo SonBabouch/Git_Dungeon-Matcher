@@ -39,6 +39,7 @@ public class Defense : Skill
     //4- Effect On the Player
     public override void PlayerEffect()
     {
+        PlaySound();
         Player.Instance.isDefending = true;
 
         Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());
@@ -52,7 +53,7 @@ public class Defense : Skill
     //5- Effect On The Monster
     public override void MonsterEffect()
     {
-
+        PlaySound();
         Enemy.Instance.isDefending = true;
 
         Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
@@ -69,4 +70,8 @@ public class Defense : Skill
         Enemy.Instance.canUseDefense = true;
     }
 
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(2);
+    }
 }

@@ -110,7 +110,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     if (MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManager.energy > 0)
                     {
                         MenuManager.Instance.matchManager.Dislike();
-                            
+                        MatchSoundManager.Instance.PlayClips(0);
                     }
                     else
                     {
@@ -118,6 +118,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                         StartCoroutine(MenuManager.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
+                        MatchSoundManager.Instance.PlayClips(12);
                     }
 
                     
@@ -130,6 +131,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                     {
                         MenuManager.Instance.matchManager.Match(false);
                         
+                        MatchSoundManager.Instance.PlayClips(1);
                     }
                     else
                     {
@@ -137,6 +139,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                         StartCoroutine(MenuManager.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
+                        MatchSoundManager.Instance.PlayClips(12);
                     }
 
 
@@ -148,7 +151,7 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             }
             else //Le swip n'est pas validé
             {
-
+                MatchSoundManager.Instance.PlayClips(12);
                 transform.localPosition = Vector3.zero;
                 transform.rotation = panelRotation;
 

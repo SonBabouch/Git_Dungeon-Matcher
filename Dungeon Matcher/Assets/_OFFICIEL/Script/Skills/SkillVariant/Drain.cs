@@ -30,6 +30,7 @@ public class Drain : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Player.Instance.AllyAlteration();
         if(comesFromCombo)
         {
@@ -66,7 +67,8 @@ public class Drain : Skill
 
     public override void MonsterEffect()
     {
-        if(comesFromCombo)
+        PlaySound();
+        if (comesFromCombo)
         {
             if(Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
@@ -121,5 +123,10 @@ public class Drain : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseDrain = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(10);
     }
 }

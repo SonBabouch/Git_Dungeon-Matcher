@@ -31,6 +31,7 @@ public class Mark : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Player.Instance.isBoosted = true;
         Player.Instance.lastPlayerCompetence = this;
 
@@ -44,6 +45,7 @@ public class Mark : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         Enemy.Instance.isBoosted = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
@@ -58,5 +60,10 @@ public class Mark : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseMark = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(13);
     }
 }

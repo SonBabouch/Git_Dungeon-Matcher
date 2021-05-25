@@ -30,6 +30,7 @@ public class Slowdown : Skill
 
     public override void PlayerEffect()
     {
+        PlaySound();
         Enemy.Instance.isSlowed = true;
         Player.Instance.lastPlayerCompetence = this;
 
@@ -42,6 +43,7 @@ public class Slowdown : Skill
 
     public override void MonsterEffect()
     {
+        PlaySound();
         Player.Instance.isSlowed = true;
         Enemy.Instance.lastEnemyCompetence = this;
 
@@ -55,5 +57,10 @@ public class Slowdown : Skill
     public override void SetEnemyBoolType()
     {
         Enemy.Instance.canUseSlowdown = true;
+    }
+
+    public override void PlaySound()
+    {
+        FightSoundManager.Instance.PlayClips(6);
     }
 }
