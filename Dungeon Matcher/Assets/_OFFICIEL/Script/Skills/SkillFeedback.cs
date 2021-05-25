@@ -11,12 +11,16 @@ public class SkillFeedback : MonoBehaviour
     public GameObject playerDefense;
     public GameObject playerDefenseShield;
     [Header("Object To Tween")]
-    [SerializeField] private GameObject initialPos;
-    [SerializeField]  private GameObject tweenPos;
+    [SerializeField] private GameObject playerInitialPos;
+    [SerializeField]  private GameObject playerTweenPos;
 
     [Header("Enemi")]
     public GameObject enemiHeal;
-    //public GameObject enemiDefense;
+    public GameObject enemiDefense;
+    public GameObject enemiDefenseShield;
+    [Header("Object To Tween")]
+    [SerializeField] private GameObject enemiInitialPos;
+    [SerializeField] private GameObject enemiTweenPos;
 
 
     private void Awake()
@@ -36,14 +40,13 @@ public class SkillFeedback : MonoBehaviour
     {
         if (Player.Instance.isDefending)
         {
-
             playerDefense.SetActive(true);
-            playerDefenseShield.GetComponent<Tweener>().TweenPositionTo(tweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
+            playerDefenseShield.GetComponent<Tweener>().TweenPositionTo(playerTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
 
         }
         else if (Player.Instance.isDefending == false && playerDefense.activeSelf == true)
         {
-            playerDefenseShield.transform.localPosition = initialPos.transform.localPosition;
+            playerDefenseShield.transform.localPosition = playerInitialPos.transform.localPosition;
             playerDefense.SetActive(false);
         }
     }
@@ -73,5 +76,19 @@ public class SkillFeedback : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         enemiHeal.SetActive(false);
+    }
+
+    public void EnemiDefenseFeedback()
+    {
+        if(Enemy.Instance.isDefending)
+        {
+            enemiDefense.SetActive(true);
+            enemiDefenseShield.GetComponent<Tweener>().TweenPositionTo(enemiTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
+        }
+        else if(Enemy.Instance.isDefending == false && enemiDefense.activeSelf == true)
+        {
+            enemiDefenseShield.transform.localPosition = enemiInitialPos.transform.localPosition;
+            enemiDefense.SetActive(false);
+        }
     }
 }
