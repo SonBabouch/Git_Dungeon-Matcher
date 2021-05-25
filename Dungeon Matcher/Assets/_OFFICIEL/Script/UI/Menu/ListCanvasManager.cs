@@ -73,7 +73,7 @@ namespace Management
         }
 
         //Instancier le profil à une position particulière. 
-        public void InstantiateProfil()
+        public void InstantiateProfil(bool isSuperlike)
         {
             GameObject instantiatedProfil =  Instantiate(listPrefab, parentPositions.transform.position, Quaternion.identity);
 

@@ -64,7 +64,9 @@ public class CombatManager : MonoBehaviour
         secondsLeft = maxSecondsLeft;
         
         CharacterSkillInitialisation();
-        
+
+
+       
 
         Player.Instance.health = Player.Instance.minHealth;
 

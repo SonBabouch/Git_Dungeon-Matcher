@@ -93,6 +93,13 @@ public class Enemy : MonoBehaviour
         }
 
         health = currentMonster.GetComponent<MonsterToken>().health;
+
+        if (currentMonster.GetComponent<MonsterToken>().isSuperlike)
+        {
+            health += 20;
+            currentMonster.GetComponent<MonsterToken>().isSuperlike = false;
+        }
+
         maxHealth = currentMonster.GetComponent<MonsterToken>().maxHealth;
         minHealth = currentMonster.GetComponent<MonsterToken>().minHealth;
 

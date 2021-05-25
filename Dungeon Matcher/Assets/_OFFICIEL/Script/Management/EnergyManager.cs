@@ -9,6 +9,8 @@ public class EnergyManager : MonoBehaviour
     public static int energy;
     public static int maxEnergy;
 
+    public static int superlikeCount;
+
     public float productionTime;
 
     // Start is called before the first frame update
@@ -16,18 +18,26 @@ public class EnergyManager : MonoBehaviour
     {
         //Initialisation
         maxEnergy = 30;
+        superlikeCount = 5;
         energy = maxEnergy;
-        MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+        MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
     }
 
     public void GiveEnergy()
     {
         energy = maxEnergy;
-        MenuManager.Instance.canvasManager.GetComponent<CanvasManager>().matchCanvas.GetComponent<MatchCanvasManager>().UpdateEnergy();
+        MenuManager.Instance.canvasManager.matchCanvas.UpdateEnergy();
     }
 
     public void GivePlayerExperience()
     {
         MenuManager.Instance.playerLevel.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(5));
+    }
+
+    public void GiveSuperLike()
+    {
+        superlikeCount++;
+        MenuManager.Instance.canvasManager.matchCanvas.UpdateSuperLike();
+        
     }
 }
