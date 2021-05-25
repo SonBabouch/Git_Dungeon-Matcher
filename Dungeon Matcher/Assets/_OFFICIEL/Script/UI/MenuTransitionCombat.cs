@@ -310,7 +310,7 @@ public class MenuTransitionCombat : MonoBehaviour
         for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
         {
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().chanceClaim = storedValue[i];
-            Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().UpdateClaimChance();
+            Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().UpdateVisualCombat();
         }
 
         TransitionSlideOut();
