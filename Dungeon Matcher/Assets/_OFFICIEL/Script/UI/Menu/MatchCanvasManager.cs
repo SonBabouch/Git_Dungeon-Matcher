@@ -107,6 +107,11 @@ namespace Management
             StartCoroutine(ResetBar());
         }
        
+       
+        public void SpendSuperlikeFB()
+        {
+            superlikeSpend.GetComponent<Animator>().SetBool("Superlike", true);
+        }
 
         public void ShowExpérience()
         {
