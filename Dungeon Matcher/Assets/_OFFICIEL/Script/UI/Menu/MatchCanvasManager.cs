@@ -107,12 +107,6 @@ namespace Management
             StartCoroutine(ResetBar());
         }
        
-       
-        public void SpendSuperlikeFB()
-        {
-            superlikeSpend.GetComponent<Animator>().SetBool("Superlike", true);
-        }
-
         public void ShowExpérience()
         {
             experienceText.text = PlayerLevel.currentExperience.ToString() + " / " + MenuManager.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1].ToString();

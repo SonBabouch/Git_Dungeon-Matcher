@@ -13,6 +13,7 @@ public class MenuTransitionCombat : MonoBehaviour
     [SerializeField] private Image leaderMonster;
     [SerializeField] private Image enemyMonster;
     [SerializeField] private GameObject button;
+    
 
     public int numberOfBattle = 0;
 
@@ -51,6 +52,7 @@ public class MenuTransitionCombat : MonoBehaviour
     [SerializeField] private Image heartBG;
     [SerializeField] private TextMeshProUGUI results;
     [SerializeField] private Button skipButton;
+    [SerializeField] private GameObject buttonToPass;
     #endregion
 
     public GameObject startCombatButton;
@@ -230,10 +232,10 @@ public class MenuTransitionCombat : MonoBehaviour
         //reset Bool;
 
         Vector3 scaleVector = new Vector3(1f, 1f, 1f);
+        buttonToPass.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
         heart.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
         heartBG.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
         results.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
-        skipButton.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
         skipButton.GetComponent<Button>().enabled = false;
 
         storedValue.Add(value);
@@ -247,6 +249,7 @@ public class MenuTransitionCombat : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+        skipButton.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
         skipButton.GetComponent<Button>().enabled = true;
     }
 
@@ -260,9 +263,9 @@ public class MenuTransitionCombat : MonoBehaviour
 
     private IEnumerator EnumDisableDetails()
     {
-       
         skipButton.GetComponent<Button>().enabled = false;
         topOfBG.GetComponent<Tweener>().TweenPositionTo(topOfBGInitialPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
+        buttonToPass.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
         heart.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
         heartBG.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
         results.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);

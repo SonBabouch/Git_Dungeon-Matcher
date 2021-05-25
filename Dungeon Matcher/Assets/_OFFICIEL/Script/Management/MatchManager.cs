@@ -260,7 +260,7 @@ namespace Management
                     numberOfDislike = 0;
 
                     EnergyManager.superlikeCount--;
-                    MenuManager.Instance.canvasManager.matchCanvas.SpendSuperlikeFB();  
+                 
                     MenuManager.Instance.canvasManager.matchCanvas.UpdateSuperLike();
                 }
             }
