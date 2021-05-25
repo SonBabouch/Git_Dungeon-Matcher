@@ -32,6 +32,12 @@ namespace Management
 
         [SerializeField] private GameObject noMatchBubble;
 
+        [SerializeField] private GameObject topBar;
+        [SerializeField] private GameObject shopButton;
+        [SerializeField] private GameObject matchButton;
+        [SerializeField] private GameObject listButton;
+        [SerializeField] private GameObject bagButton;
+
         private void Update()
         {
             if(MenuManager.Instance.listManager.listCurrentSize > 0)
@@ -98,6 +104,7 @@ namespace Management
             //Faire le changement de Panel;
             if (MenuManager.Instance.bagManager.detailShow == false)
             {
+                topBar.GetComponent<Tweener>().TweenPositionTo(listButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep,true);
                 pageSwiper.GetComponent<PageSwiper>().GoToList();
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
                 MenuManager.currentGameStateMenu = MenuManager.Menu.List;
@@ -118,6 +125,7 @@ namespace Management
             //Faire le changement de Panel;
             if (MenuManager.Instance.bagManager.detailShow == false)
             {
+                topBar.GetComponent<Tweener>().TweenPositionTo(matchButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
                 pageSwiper.GetComponent<PageSwiper>().GoToMatch();
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
                 MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
@@ -142,7 +150,7 @@ namespace Management
             if (MenuManager.Instance.bagManager.detailShow == false)
             {
                 pageSwiper.GetComponent<PageSwiper>().GoToShop();
-
+                topBar.GetComponent<Tweener>().TweenPositionTo(shopButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
                 MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
 
@@ -160,8 +168,8 @@ namespace Management
             //Faire le changement de Panel;
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
             MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
+            topBar.GetComponent<Tweener>().TweenPositionTo(bagButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
 
-            
 
         }
         #endregion
