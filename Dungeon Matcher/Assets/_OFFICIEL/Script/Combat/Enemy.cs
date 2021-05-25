@@ -227,7 +227,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator enemyHasMaxEnergyBehavior()
     {
-        Debug.Log("maxMana");
+        //Debug.Log("maxMana");
         if (canAttack)
         {
             enemyIndex = Random.Range(0, enemyHand.Count);

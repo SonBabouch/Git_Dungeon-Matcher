@@ -192,9 +192,9 @@ public abstract class Skill : ScriptableObject
                         energyCost = initialEnergyCost;
                     }
 
+
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this, index);
-
                 }
                 break;
 
