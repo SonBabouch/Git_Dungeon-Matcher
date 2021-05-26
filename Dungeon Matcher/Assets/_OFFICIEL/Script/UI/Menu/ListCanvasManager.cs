@@ -25,11 +25,12 @@ namespace Management
         //Prefab à instancier quand le joueur match
         [SerializeField] private GameObject listPrefab;
 
+        public GameObject popButton;
+
         
 
         private void Awake()
         {
-
             UpdateCombatButton();
             UpdateList();
         }
@@ -44,8 +45,6 @@ namespace Management
             {
                 alerteCombatText.text = "Ton équipe n'est pas complète.";
             }
-
-            
 
             if (MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
             {

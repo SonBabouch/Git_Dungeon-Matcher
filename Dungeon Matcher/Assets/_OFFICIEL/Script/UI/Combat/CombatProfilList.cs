@@ -26,8 +26,14 @@ public class CombatProfilList : MonoBehaviour
     public GameObject[] fullHeart;
     public GameObject PPParent;
     public GameObject HeartParent;
+    public GameObject sparkles;
 
     public bool isClaim = false;
+
+    public bool firstHeartDone = false;
+    public bool secondHeartDone = false;
+    public bool thirddHeartDone = false;
+
 
     [SerializeField] private RectTransform rectTransform;
 
@@ -44,7 +50,7 @@ public class CombatProfilList : MonoBehaviour
         profilImage.sprite = profilAsset;
     }
 
-    public IEnumerator UpdateVisualCombat()
+    public IEnumerator UpdateVisualEndCombat()
     {
         chanceDrop.enabled = true;
         float trueChanceClaim = chanceClaim;
@@ -54,47 +60,105 @@ public class CombatProfilList : MonoBehaviour
         HeartParent.GetComponent<Tweener>().TweenPositionTo(heartTweenPosition.transform.localPosition, 1f, Easings.Ease.SmootherStep, true);
         
         yield return new WaitForSeconds(1f);
-        
+
+        //Increase Value + Spawn Heart
+        #region Value
         for (int i = 0; i < trueChanceClaim; i++)
         {
             chanceClaim++;
             chanceDrop.text = chanceClaim.ToString() + " %";
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
+
+            if (monsterContainer.GetComponent<MonsterToken>().isGet)
+            {
+                if (chanceClaim >= 25 && !firstHeartDone)
+                {
+                    firstHeartDone = true;
+                    Vector3 tweenPosition = new Vector3(1f, 1f, 1f);
+                    fullHeart[0].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
+                }
+
+                if (chanceClaim >= 50 && !secondHeartDone)
+                {
+                    secondHeartDone = true;
+                    Vector3 tweenPosition = new Vector3(1f, 1f, 1f);
+                    fullHeart[1].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
+                }
+
+                if(chanceClaim >= 75 && !thirddHeartDone)
+                {
+                    thirddHeartDone = true;
+                    Vector3 tweenPosition = new Vector3(1f, 1f, 1f);
+                    fullHeart[2].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
+                }
+            }
         }
 
-        if(chanceClaim >= 50)
+        if (monsterContainer.GetComponent<MonsterToken>().isGet)
+        {
+            Vector3 tweenPosition = new Vector3(1f, 1f, 1f);
+            if (!firstHeartDone)
+            {
+                emptyHeart[0].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
+            }
+
+            if (!secondHeartDone)
+            {
+                emptyHeart[1].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
+            }
+
+            if (!thirddHeartDone)
+            {
+                emptyHeart[2].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
+            }
+        }
+        #endregion
+
+        if (chanceClaim >= 10)
         {
             isClaim = true;
+           
         }
 
 
         if (monsterContainer.GetComponent<MonsterToken>().isGet)
         {
             //Dans le cas ou le monstre est déja Get.
-            
+            //Augementer du nombre de score sur ce monstre
+            MenuManager.Instance.canvasManager.listCanvas.popButton.SetActive(true);
         }
         else
         {
             //Dans le cas ou le monstre n'est pas encore Get.
             if (isClaim)
             {
+                monsterContainer.GetComponent<MonsterToken>().isGet = true;
                 //Dans le cas ou ca se passe bien.
                 claimFeedback.SetActive(true);
                 Vector3 twwenVector = new Vector3(1f, 1f, 1f);
-                claimFeedback.GetComponent<Tweener>().TweenScaleTo(twwenVector, 0.5f, Easings.Ease.SmoothStep);
-                yield return new WaitForSeconds(0.5f);
-                //Activer l'animation de Sparkles;
+                claimFeedback.GetComponent<Tweener>().TweenScaleTo(twwenVector, 0.3f, Easings.Ease.SmoothStep);
+                yield return new WaitForSeconds(0.25f);
+                sparkles.SetActive(true);
+                sparkles.GetComponent<Animator>().SetTrigger("Sparkles");
+                MenuManager.Instance.canvasManager.listCanvas.popButton.SetActive(true);
             }
             else
             {
                 //Dans le cas ou ca se passe pas bien.
+                noClaimFeedback.SetActive(true);
                 Vector3 twwenVector = new Vector3(1f, 1f, 1f);
                 noClaimFeedback.GetComponent<Tweener>().TweenScaleTo(twwenVector, 0.5f, Easings.Ease.SmoothStep);
                 yield return new WaitForSeconds(0.5f);
+                MenuManager.Instance.canvasManager.listCanvas.popButton.SetActive(true);
             }
         }
 
         //A la fin mettre une bool qui permet de vérifier que toute l'anim à été joué.
 
+    }
+
+    public IEnumerator DispawnPrefab()
+    {
+        yield return null;
     }
 }

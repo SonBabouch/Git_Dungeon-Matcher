@@ -21,94 +21,30 @@ namespace Management
 
         public void TestClaim()
         {
-            StartCoroutine(TestClaimEnum());
-        }
-
-        //Tous les Tests ne se feront pas à l'écran car on affiche que 3 combat atm;
-        private IEnumerator TestClaimEnum()
-        {
-            MenuManager.Instance.canvasManager.listCanvas.combatButton.SetActive(false);
             popButton.SetActive(false);
-            
-            yield return new WaitForSeconds(0.1f);
-           
-            //Tout les tests ont été fait;
-            if (currentTest == listCurrentSize)
+
+            if (currentTest <= MenuManager.Instance.matchManager.matchList.Count)
             {
+                StartCoroutine(MenuManager.Instance.listManager.listPrefab[currentTest].GetComponent<CombatProfilList>().UpdateVisualEndCombat());
+                currentTest++;
+            }
+            else
+            {
+                MenuManager.Instance.blockAction = true;
                 currentTest = 0;
-                popButton.SetActive(false);
 
                 for (int i = 0; i < listPrefab.Count; i++)
                 {
-                    Vector3 scaleVector = new Vector3(0, 0, 0);
-                    listPrefab[i].GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
-                }
-                yield return new WaitForSeconds(1f);
-
-                for (int j = 0; j < listPrefab.Count; j++)
-                {
-                    GameObject objectToRemove = listPrefab[j];
-                    listPrefab.Remove(objectToRemove);
-                    Destroy(objectToRemove); 
-                }
-                
-                
-                for (int i = 0; i < MenuManager.Instance.matchManager.monsterSpawned.Count; i++)
-                {
-                    MenuManager.Instance.matchManager.monsterSpawned[i].GetComponent<ProfilBehaviour>().Initialisation(false);
+                    StartCoroutine(listPrefab[i].GetComponent<CombatProfilList>().DispawnPrefab());
                 }
 
-                MenuManager.Instance.playerLevel.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(5 * (listCurrentSize + 2)));
-                
-                //Full Reset
-                listCurrentSize = 0;
-                
-                MenuTransitionCombat.Instance.storedValue = new List<float>();
-                MenuManager.Instance.matchManager.matchList = new List<GameObject>();
-                MenuManager.Instance.canvasManager.listCanvas.UpdateList();
-                MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
-                MenuManager.Instance.blockAction = false;
-                PageSwiper.canChange = true;
-            }
-            else   //Il reste des tests à faire.
-            {
-                MenuManager.Instance.blockAction = true;
-                PageSwiper.canChange = false;
-                popButton.SetActive(false);
+               
+                //C'est la fin.
+                //Faire despawn tous les profils.
 
-                int randomTest = Random.Range(0, 100);
-                //Debug.Log(randomTest);
-                CombatProfilList CPL = listPrefab[currentTest].GetComponent<CombatProfilList>();
-                if (randomTest < CPL.chanceClaim)
-                {
-                    //Test Réussi;
-                    CPL.monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
-                    CPL.monsterContainer.GetComponent<MonsterToken>().isGet = true;
-                    //afficher FeedBack
-                    Vector3 scaleVectorFeedback = new Vector3(1, 1, 1);
-                    CPL.claimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
-
-                    for (int i = 0; i < MenuManager.Instance.canvasManager.bagCanvas.bagButtonList.Count; i++)
-                    {
-                        MenuManager.Instance.canvasManager.bagCanvas.bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
-                    }
-                }
-                else
-                {
-                   
-                    //Test Failed;
-                    listPrefab[currentTest].GetComponent<CombatProfilList>().monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
-                    Vector3 scaleVectorFeedback = new Vector3(1, 1, 1);
-                    CPL.noClaimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVectorFeedback, 1f, Easings.Ease.SmoothStep);
-                    //afficher FeedBack;
-                }
-
-                
-
-                currentTest++;
-                popButton.SetActive(true);
-            }
+            }    
         }
-    }
+
+    }  
 }
 
