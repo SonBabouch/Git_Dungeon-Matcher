@@ -6,21 +6,39 @@ using UnityEngine.UI;
 public class SkillFeedback : MonoBehaviour
 {
     public static SkillFeedback Instance;
-    [Header("Player")]
-    public GameObject playerHeal;
-    public GameObject playerDefense;
-    public GameObject playerDefenseShield;
-    [Header("Object To Tween")]
-    [SerializeField] private GameObject playerInitialPos;
-    [SerializeField]  private GameObject playerTweenPos;
 
-    [Header("Enemi")]
-    public GameObject enemiHeal;
-    public GameObject enemiDefense;
-    public GameObject enemiDefenseShield;
-    [Header("Object To Tween")]
-    [SerializeField] private GameObject enemiInitialPos;
-    [SerializeField] private GameObject enemiTweenPos;
+
+
+    [Header("Player Heal")] [Header("Player")]
+    [SerializeField] private GameObject playerHeal;
+
+    [Header("Player Defense")]
+    [SerializeField] private GameObject playerDefense;
+    [SerializeField] private GameObject playerDefenseShield;
+    [SerializeField] private GameObject playerGlow;
+
+    [Header("Player Tweening Pos")]
+    [SerializeField] private GameObject playerShieldInitialPos;
+    [SerializeField] private GameObject playerShieldTweenPos;
+    [Space]
+    [SerializeField] private GameObject playerGlowInitialPos;
+    [SerializeField] private GameObject playerGlowTweenPos;
+
+
+    [Header("Enemi Heal")] [Header("Enemi")]
+    [SerializeField] private GameObject enemiHeal;
+
+    [Header("Enemi Defense")]
+    [SerializeField] private GameObject enemiDefense;
+    [SerializeField] private GameObject enemiDefenseShield;
+    [SerializeField] private GameObject enemiGlow;
+
+    [Header("Enemi Tweening Pos")]
+    [SerializeField] private GameObject enemiShieldInitialPos;
+    [SerializeField] private GameObject enemiShieldTweenPos;
+    [Space]
+    [SerializeField] private GameObject enemiGlowInitialPos;
+    [SerializeField] private GameObject enemiGlowTweenPos;
 
 
     private void Awake()
@@ -41,12 +59,14 @@ public class SkillFeedback : MonoBehaviour
         if (Player.Instance.isDefending)
         {
             playerDefense.SetActive(true);
-            playerDefenseShield.GetComponent<Tweener>().TweenPositionTo(playerTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
+            playerDefenseShield.GetComponent<Tweener>().TweenPositionTo(playerShieldTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
+            playerGlow.GetComponent<Tweener>().TweenPositionTo(playerGlowTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
 
         }
         else if (Player.Instance.isDefending == false && playerDefense.activeSelf == true)
         {
-            playerDefenseShield.transform.localPosition = playerInitialPos.transform.localPosition;
+            playerDefenseShield.transform.localPosition = playerShieldInitialPos.transform.localPosition;
+            playerGlow.transform.localPosition = playerGlowInitialPos.transform.localPosition;
             playerDefense.SetActive(false);
         }
     }
@@ -83,11 +103,13 @@ public class SkillFeedback : MonoBehaviour
         if(Enemy.Instance.isDefending)
         {
             enemiDefense.SetActive(true);
-            enemiDefenseShield.GetComponent<Tweener>().TweenPositionTo(enemiTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
+            enemiDefenseShield.GetComponent<Tweener>().TweenPositionTo(enemiShieldTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
+            enemiGlow.GetComponent<Tweener>().TweenPositionTo(enemiGlowTweenPos.transform.localPosition, 0.1f, Easings.Ease.SmoothStep, true);
         }
         else if(Enemy.Instance.isDefending == false && enemiDefense.activeSelf == true)
         {
-            enemiDefenseShield.transform.localPosition = enemiInitialPos.transform.localPosition;
+            enemiDefenseShield.transform.localPosition = enemiShieldInitialPos.transform.localPosition;
+            enemiGlow.transform.localPosition = enemiGlowInitialPos.transform.localPosition;
             enemiDefense.SetActive(false);
         }
     }
