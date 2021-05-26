@@ -44,36 +44,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   template: {fileID: 11400000, guid: f5cf0fb36c3dc0144a9fec119421ac40, type: 2}
-  monsterIndexPosition: 1
+  monsterIndexPosition: 0
   numberOfFragments: 0
   numberOfFragmentsRequired: 
   monsterLevel: 1
-  description: "Jeune sir\xE8ne cherche son barracuda pour trip aquatique.  Si tu
-    fais moins de 3 m\xE8tres, tu m'int\xE9resses pas.  Ajoute-moi quand m\xEAme
-    sur Rawrchat : @6ReineDesMers"
+  description: 
   monsterName: Marina
-  health: 22
-  maxHealth: 100
+  health: 0
+  maxHealth: 0
   minHealth: 0
   rarety: 0
   isGet: 1
   statement: 1
+  isSuperlike: 0
   profilPicture: {fileID: 21300000, guid: 62d3117fca21a8f44a005554c0363ccf, type: 3}
   fullMonsterImage: {fileID: 21300000, guid: a8b1d8d3d0d89104e979db5bcbe742fe, type: 3}
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-<<<<<<< HEAD
-  - {fileID: 11400000, guid: 45cb37f411b1d114b8d254dc718d7c00, type: 2}
-  - {fileID: 11400000, guid: be4ed5baefbb09242aa55b378114f070, type: 2}
-  - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
-  - {fileID: 11400000, guid: 46fc2f00722b49e49bfc03f7dbf440fd, type: 2}
-=======
   - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
   - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
   - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
   - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
->>>>>>> PRBA_Feedback_Polish
   ennemySkills:
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
@@ -84,5 +76,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
   monsterHashTag:
-  - Soin
   - Attaque
+  - "D\xE9fense"
