@@ -84,6 +84,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        SkillFeedback.Instance.EnemiDefenseFeedback();
+    }
     public void InitializeMonster()
     {
         canAttack = true;
@@ -239,7 +243,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator enemyHasMaxEnergyBehavior()
     {
-        Debug.Log("maxMana");
+        //Debug.Log("maxMana");
         if (canAttack)
         {
             enemyIndex = Random.Range(0, enemyHand.Count);

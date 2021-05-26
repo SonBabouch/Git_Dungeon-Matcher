@@ -36,11 +36,11 @@ public class Heal : Skill
         //Combo effect
         if (comesFromCombo)
         {
-            Player.Instance.health -= comboEffectValue;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerHealFeedback(comboEffectValue));
         }
         else
         {
-            Player.Instance.health -= effectValue;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerHealFeedback(effectValue));
         }
 
         if(Player.Instance.health < 0)
@@ -59,6 +59,7 @@ public class Heal : Skill
             messageType = typeOfMessage.Charging;
         }
 
+
         Player.Instance.lastPlayerCompetence = this;
         Player.Instance.canAttack = true;
         comesFromCombo = false;
@@ -71,11 +72,11 @@ public class Heal : Skill
         //Combo effect
         if (comesFromCombo)
         {
-            Enemy.Instance.health -= comboEffectValue;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback(comboEffectValue));
         }
         else
         {
-            Enemy.Instance.health -= effectValue;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback(effectValue));
         }
 
         if (Enemy.Instance.health < 0)
@@ -93,6 +94,7 @@ public class Heal : Skill
         {
             messageType = typeOfMessage.Charging;
         }
+
 
         comesFromCombo = false;
         Enemy.Instance.canAttack = true;

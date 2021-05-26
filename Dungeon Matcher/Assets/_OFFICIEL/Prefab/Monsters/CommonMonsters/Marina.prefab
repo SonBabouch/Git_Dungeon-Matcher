@@ -63,19 +63,26 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
+<<<<<<< HEAD
   - {fileID: 11400000, guid: 45cb37f411b1d114b8d254dc718d7c00, type: 2}
   - {fileID: 11400000, guid: be4ed5baefbb09242aa55b378114f070, type: 2}
   - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
   - {fileID: 11400000, guid: 46fc2f00722b49e49bfc03f7dbf440fd, type: 2}
+=======
+  - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
+  - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
+  - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
+  - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
+>>>>>>> PRBA_Feedback_Polish
   ennemySkills:
-  - {fileID: 11400000, guid: 711184239ef6fcd4686dd2953ec0a363, type: 2}
-  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
-  - {fileID: 11400000, guid: 596b770a55775434e9f01910bee11fcb, type: 2}
-  - {fileID: 11400000, guid: b76cead96b96de74a96923f70a7bf7dd, type: 2}
-  - {fileID: 11400000, guid: 2c80f61bd2b75ac4e88ff1cc10946fa8, type: 2}
-  - {fileID: 11400000, guid: 596b770a55775434e9f01910bee11fcb, type: 2}
-  - {fileID: 11400000, guid: 711184239ef6fcd4686dd2953ec0a363, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
+  - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
   monsterHashTag:
   - Soin
   - Attaque

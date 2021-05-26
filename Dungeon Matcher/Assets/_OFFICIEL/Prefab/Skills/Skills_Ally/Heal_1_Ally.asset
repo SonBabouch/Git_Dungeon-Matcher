@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Soin
   skillDescription: Baisse la Jauge d'Attirance du lanceur.
-  effectValue: 10
+  effectValue: 20
   messageOwner: {fileID: 0}
   side: 1
   messageType: 0
