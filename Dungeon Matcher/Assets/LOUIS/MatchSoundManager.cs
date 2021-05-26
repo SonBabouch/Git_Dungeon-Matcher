@@ -8,9 +8,8 @@ public class MatchSoundManager : MonoBehaviour
     public AudioSource audioSourceA;
     public AudioSource audioSourceB;
     public List<AudioClip> audioClips;
-    OnOffButton
-
-    public void Awake()
+    
+    private void Awake()
     {
         if (Instance == null)
         {
