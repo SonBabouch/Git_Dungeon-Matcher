@@ -24,6 +24,10 @@ public class CombatProfilList : MonoBehaviour
     public GameObject noClaimFeedback;
     public GameObject[] emptyHeart;
     public GameObject[] fullHeart;
+    public GameObject PPParent;
+    public GameObject HeartParent;
+
+    public bool isClaim = false;
 
     [SerializeField] private RectTransform rectTransform;
 
@@ -46,7 +50,11 @@ public class CombatProfilList : MonoBehaviour
         float trueChanceClaim = chanceClaim;
         chanceClaim = 0;
 
-
+        PPParent.GetComponent<Tweener>().TweenPositionTo(ppTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep,true);
+        HeartParent.GetComponent<Tweener>().TweenPositionTo(heartTweenPosition.transform.localPosition, 1f, Easings.Ease.SmootherStep, true);
+        
+        yield return new WaitForSeconds(1f);
+        
         for (int i = 0; i < trueChanceClaim; i++)
         {
             chanceClaim++;
@@ -54,10 +62,39 @@ public class CombatProfilList : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        //Afficher les coeurs et leur tween selon le montant atteint avec sécurité si objet;
+        if(chanceClaim >= 50)
+        {
+            isClaim = true;
+        }
 
+
+        if (monsterContainer.GetComponent<MonsterToken>().isGet)
+        {
+            //Dans le cas ou le monstre est déja Get.
+            
+        }
+        else
+        {
+            //Dans le cas ou le monstre n'est pas encore Get.
+            if (isClaim)
+            {
+                //Dans le cas ou ca se passe bien.
+                claimFeedback.SetActive(true);
+                Vector3 twwenVector = new Vector3(1f, 1f, 1f);
+                claimFeedback.GetComponent<Tweener>().TweenScaleTo(twwenVector, 0.5f, Easings.Ease.SmoothStep);
+                yield return new WaitForSeconds(0.5f);
+                //Activer l'animation de Sparkles;
+            }
+            else
+            {
+                //Dans le cas ou ca se passe pas bien.
+                Vector3 twwenVector = new Vector3(1f, 1f, 1f);
+                noClaimFeedback.GetComponent<Tweener>().TweenScaleTo(twwenVector, 0.5f, Easings.Ease.SmoothStep);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
 
         //A la fin mettre une bool qui permet de vérifier que toute l'anim à été joué.
-        
+
     }
 }

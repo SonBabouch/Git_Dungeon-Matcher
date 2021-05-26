@@ -929,6 +929,7 @@ GameObject:
   - component: {fileID: 3740115349288106585}
   - component: {fileID: 4435101534096573975}
   - component: {fileID: 6128569045959768729}
+  - component: {fileID: 4090554619432147993}
   m_Layer: 0
   m_Name: NoClaimFeedBack
   m_TagString: Untagged
@@ -1052,6 +1053,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4090554619432147993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831914272300327676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72606750af586b40baa933998cf6118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8524058428306293638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profilAsset: {fileID: 0}
-  numberCombat: 0
   heartTweenPosition: {fileID: 3910474899037343059}
   ppTweenPosition: {fileID: 9116268126236761920}
   chanceClaim: 0
@@ -1125,6 +1137,9 @@ MonoBehaviour:
   - {fileID: 3646239913525691975}
   - {fileID: 9001057019876119552}
   - {fileID: 4160096507657227740}
+  PPParent: {fileID: 0}
+  HeartParent: {fileID: 0}
+  isClaim: 0
   rectTransform: {fileID: 8524058428306293637}
 --- !u!114 &6018665461406728416
 MonoBehaviour:
