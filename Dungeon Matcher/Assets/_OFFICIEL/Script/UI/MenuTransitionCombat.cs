@@ -272,6 +272,7 @@ public class MenuTransitionCombat : MonoBehaviour
         skipButton.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 1f, Easings.Ease.SmoothStep);
         skipButton.GetComponent<Button>().enabled = false;
         yield return new WaitForSeconds(1f);
+        SkillFeedback.Instance.EndCombatReset();
         results.text = " ";
         StartCombatCoroutine();
     }
@@ -309,9 +310,9 @@ public class MenuTransitionCombat : MonoBehaviour
         for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
         {
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().chanceClaim = storedValue[i];
-            yield return new WaitForSeconds(0.5f);
-        }
 
+        }
+        storedValue.Clear();
         TransitionSlideOut();
 
         yield return new WaitForSeconds(0.1f);

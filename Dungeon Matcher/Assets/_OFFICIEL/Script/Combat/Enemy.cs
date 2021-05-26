@@ -93,6 +93,7 @@ public class Enemy : MonoBehaviour
     }
     public void InitializeMonster()
     {
+     
         canAttack = true;
         foreach (GameObject monster in enemyMonsters)
         {

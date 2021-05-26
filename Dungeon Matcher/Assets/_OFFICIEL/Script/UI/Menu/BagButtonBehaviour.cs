@@ -25,7 +25,11 @@ public class BagButtonBehaviour : MonoBehaviour
         if (monsterContainer.GetComponent<MonsterToken>().isGet)
         {
             gameObject.GetComponent<Image>().color = claimColor;
-            monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+
+            if (monsterContainer.GetComponent<MonsterToken>().statement != MonsterToken.statementEnum.Equipe)
+            {
+                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            }
         }
         else if(monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible)
         {

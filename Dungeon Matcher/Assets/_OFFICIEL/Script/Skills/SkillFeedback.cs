@@ -83,6 +83,12 @@ public class SkillFeedback : MonoBehaviour
         for (int i = 0; i < numberOfDamage; i++)
         {
             Player.Instance.health -= 1f;
+
+            if (Player.Instance.health < 0)
+            {
+                Player.Instance.health = 0;
+            }
+
             yield return new WaitForSeconds(0.05f);
         }
         yield return new WaitForSeconds(0.1f);
@@ -125,6 +131,11 @@ public class SkillFeedback : MonoBehaviour
         for (int i = 0; i < numberOfDamage; i++)
         {
             Enemy.Instance.health -= 1f;
+            if (Enemy.Instance.health < 0)
+            {
+                Enemy.Instance.health = 0;
+            }
+
             yield return new WaitForSeconds(0.05f);
         }
         yield return new WaitForSeconds(0.1f);
@@ -146,4 +157,17 @@ public class SkillFeedback : MonoBehaviour
             enemiDefense.SetActive(false);
         }
     }
+
+
+    public void EndCombatReset()
+    {
+        enemiDefenseShield.transform.localPosition = enemiShieldInitialPos.transform.localPosition;
+        enemiGlow.transform.localPosition = enemiGlowInitialPos.transform.localPosition;
+        enemiDefense.SetActive(false);
+
+        playerDefenseShield.transform.localPosition = playerShieldInitialPos.transform.localPosition;
+        playerGlow.transform.localPosition = playerGlowInitialPos.transform.localPosition;
+        playerDefense.SetActive(false);
+    }
+
 }

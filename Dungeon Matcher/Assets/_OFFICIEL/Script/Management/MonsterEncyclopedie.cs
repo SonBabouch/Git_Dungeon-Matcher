@@ -44,7 +44,10 @@ public class MonsterEncyclopedie : MonoBehaviour
         {
             if (allCommonMonster[i].GetComponent<MonsterToken>().isGet)
             {
-                allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+                if(allCommonMonster[i].GetComponent<MonsterToken>().statement != MonsterToken.statementEnum.Equipe)
+                {
+                    allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+                }
             }    
         }
 

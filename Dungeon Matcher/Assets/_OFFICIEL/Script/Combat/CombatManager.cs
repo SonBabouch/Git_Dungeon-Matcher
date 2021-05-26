@@ -362,6 +362,7 @@ public class CombatManager : MonoBehaviour
 
     public void ResetBools()
     {
+        
         Player.Instance.isSkillUsed = false;
         Player.Instance.isBurn = false;
         Player.Instance.isCurse = false;
