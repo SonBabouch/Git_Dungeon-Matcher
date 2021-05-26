@@ -16,13 +16,33 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     public float easing = 0.5f; //seconds pour changer d'écran
     public int currentPanelNumber = 0;
 
-    public GameObject[] panelLocations; 
+    public GameObject[] panelLocations;
+    public RectTransform rectTrans;
+
+    float trueScreenWidth;
 
     //2- Void Start
     void Start()
     {
+        trueScreenWidth = rectTrans.rect.width;
+        print(trueScreenWidth);
 
         panelLocation = transform.position; //récupère les position du panel holder
+
+        //Shop
+        RectTransformExtensions.Left(panelLocations[0].GetComponent<RectTransform>(), -trueScreenWidth);
+        RectTransformExtensions.Right(panelLocations[0].GetComponent<RectTransform>(), trueScreenWidth);
+        print(panelLocations[0].GetComponent<RectTransform>());
+
+        //List
+        RectTransformExtensions.Left(panelLocations[2].GetComponent<RectTransform>(), trueScreenWidth);
+        RectTransformExtensions.Right(panelLocations[2].GetComponent<RectTransform>(), -trueScreenWidth);
+        print(panelLocations[2].GetComponent<RectTransform>());
+
+        //Bag
+        RectTransformExtensions.Left(panelLocations[3].GetComponent<RectTransform>(), 2 * trueScreenWidth);
+        RectTransformExtensions.Right(panelLocations[3].GetComponent<RectTransform>(), -2 * trueScreenWidth);
+        print(panelLocations[3].GetComponent<RectTransform>());
 
     }
 
