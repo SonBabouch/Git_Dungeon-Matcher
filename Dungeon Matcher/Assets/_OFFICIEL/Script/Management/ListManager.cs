@@ -32,11 +32,6 @@ namespace Management
                 }
 
                 StartCoroutine(EndAnimation());
-                //Attendre 1 Secondes et redonner le controle au joueur.
-
-                //C'est la fin.
-                //Faire despawn tous les profils.
-
             }
             else
             {
@@ -56,6 +51,7 @@ namespace Management
                 Destroy(MenuManager.Instance.listManager.listPrefab[i]);
             }
             MenuManager.Instance.listManager.listPrefab.Clear();
+            MenuManager.Instance.matchManager.matchList.Clear();
             MenuManager.Instance.listManager.listCurrentSize = 0;
             currentTest = 0;
             MenuManager.Instance.canvasManager.listCanvas.UpdateList();

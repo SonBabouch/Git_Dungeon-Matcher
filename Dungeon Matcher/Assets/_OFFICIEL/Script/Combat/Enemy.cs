@@ -86,10 +86,14 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        SkillFeedback.Instance.EnemiDefenseFeedback();
+        if (CombatManager.Instance.inCombat)
+        {
+            SkillFeedback.Instance.EnemiDefenseFeedback();
+        }
     }
     public void InitializeMonster()
     {
+     
         canAttack = true;
         foreach (GameObject monster in enemyMonsters)
         {
@@ -223,7 +227,6 @@ public class Enemy : MonoBehaviour
         if(energy == maxEnergy)
         {
             StartCoroutine(enemyHasMaxEnergyBehavior());
-
         }
         else StartCoroutine(EnemyBasicBehavior());
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Management;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// This script makes the behaviour of the BagButton.
@@ -10,36 +11,25 @@ using UnityEngine.UI;
 /// </summary>
 public class BagButtonBehaviour : MonoBehaviour
 {
-    private Animator animator;
-
-    [SerializeField] private GameObject detailsButton;
-    [SerializeField] private GameObject equipButton;
-  
-
     public GameObject monsterContainer;
-
 
     public Color claimColor;
     public Color unclaimColor;
     public Color indisponibleColor;
 
-
-    private void Start()
-    {
-        animator = gameObject.GetComponent<Animator>();
-        detailsButton.SetActive(false);
-        equipButton.SetActive(false);
-     
-
-        
-    }
+    public GameObject scoreParent;
+    public TextMeshProUGUI scoreText;
 
     public void UpdateColor()
     {
-        if (monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
+        if (monsterContainer.GetComponent<MonsterToken>().isGet)
         {
             gameObject.GetComponent<Image>().color = claimColor;
 
+            if (monsterContainer.GetComponent<MonsterToken>().statement != MonsterToken.statementEnum.Equipe)
+            {
+                monsterContainer.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            }
         }
         else if(monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible)
         {
@@ -49,6 +39,17 @@ public class BagButtonBehaviour : MonoBehaviour
         {
             gameObject.GetComponent<Image>().color = unclaimColor;
         }
+
+        if (monsterContainer.GetComponent<MonsterToken>().isGet)
+        {
+            UpdateScoreInt();
+        }
+    }
+
+    public void UpdateScoreInt()
+    {
+        scoreParent.SetActive(true);
+        scoreText.text = monsterContainer.GetComponent<MonsterToken>().scoring.ToString();
     }
 
     public void Details()
@@ -62,7 +63,6 @@ public class BagButtonBehaviour : MonoBehaviour
 
             MenuManager.Instance.bagManager.detailShow = true;
             MenuManager.Instance.canvasManager.detailsCanvasManager.UpdateDetailsMenu();
-            UnSelected();
             MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
             MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected = null;
         }    
@@ -88,7 +88,7 @@ public class BagButtonBehaviour : MonoBehaviour
                     break;
                 case 2:
                     GameObject monsterToRemove = MenuManager.Instance.bagManager.monsterTeam[1];
-                    monsterToRemove.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
+                    monsterToRemove.GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
 
                     MenuManager.Instance.bagManager.monsterTeam.Remove(MenuManager.Instance.bagManager.monsterTeam[1]);
                     MenuManager.Instance.bagManager.monsterTeam.Insert(1, monsterContainer);
@@ -108,8 +108,6 @@ public class BagButtonBehaviour : MonoBehaviour
         if(MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != gameObject 
             && MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null && (gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe || gameObject.GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim))
         {
-            MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
-            animator.SetTrigger("Selected");
             MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentButtonSelected = gameObject;
             MenuManager.Instance.canvasManager.bagCanvas.GetComponent<BagCanvasManager>().currentMonsterSelected = gameObject.GetComponent<BagButtonBehaviour>().monsterContainer;
         }
@@ -117,12 +115,7 @@ public class BagButtonBehaviour : MonoBehaviour
         {
             MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = gameObject;
             MenuManager.Instance.canvasManager.bagCanvas.currentMonsterSelected = gameObject.GetComponent<BagButtonBehaviour>().monsterContainer;
-            animator.SetTrigger("Selected");
         }
     }
 
-    public void UnSelected()
-    {
-        animator.SetTrigger("Unselected");
-    }
 }
