@@ -30,7 +30,11 @@ public class SkillFeedback : MonoBehaviour
     [SerializeField] private GameObject playerAccelerateDecelerate;
     #endregion
 
+
     [Header("Enemi Heal")] [Header("Enemi")]
+    [Space]
+    [Space]
+    [Space]
     [SerializeField] private GameObject enemiHeal;
 
     [Header("Enemi Defense")]
