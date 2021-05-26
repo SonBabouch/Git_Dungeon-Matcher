@@ -12,6 +12,8 @@ public class EnemyUi : MonoBehaviour
     public Image profilPicture;
     public TextMeshProUGUI monsterName;
 
+    public TextMeshProUGUI healthPointText;
+
     private void Update()
     {
         if (CombatManager.Instance.inCombat)
@@ -21,11 +23,14 @@ public class EnemyUi : MonoBehaviour
 
             monsterName.text = Enemy.Instance.currentMonster.GetComponent<MonsterToken>().monsterName;
             profilPicture.sprite = Enemy.Instance.currentMonster.GetComponent<MonsterToken>().profilPicture;
+
+            healthPointText.text = Enemy.Instance.health.ToString();
         }
     }
 
     public void UpdateBarreResultat()
     {
+        healthPointText.text = Enemy.Instance.health.ToString();
         enemyHealthBar.fillAmount = Enemy.Instance.health / Enemy.Instance.maxHealth;
     }
 }
