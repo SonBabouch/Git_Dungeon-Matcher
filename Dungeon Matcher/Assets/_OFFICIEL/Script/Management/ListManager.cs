@@ -40,6 +40,7 @@ namespace Management
             }
             else
             {
+                MenuManager.Instance.blockAction = true;
                 popButton.SetActive(false);
                 StartCoroutine(MenuManager.Instance.listManager.listPrefab[currentTest].GetComponent<CombatProfilList>().UpdateVisualEndCombat());
                 currentTest++;
@@ -48,13 +49,16 @@ namespace Management
 
         public IEnumerator EndAnimation()
         {
+            popButton.SetActive(false);
             yield return new WaitForSeconds(1f);
             for (int i = 0; i < MenuManager.Instance.listManager.listPrefab.Count; i++)
             {
                 Destroy(MenuManager.Instance.listManager.listPrefab[i]);
             }
-            popButton.SetActive(false);
             MenuManager.Instance.listManager.listPrefab.Clear();
+            MenuManager.Instance.listManager.listCurrentSize = 0;
+            currentTest = 0;
+            MenuManager.Instance.canvasManager.listCanvas.UpdateList();
             MenuManager.Instance.blockAction = false;
         }
 

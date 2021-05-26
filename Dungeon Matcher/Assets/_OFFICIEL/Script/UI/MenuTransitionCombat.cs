@@ -248,8 +248,8 @@ public class MenuTransitionCombat : MonoBehaviour
             Enemy.Instance.enemyUi.UpdateBarreResultat();
         }
 
-        yield return new WaitForSeconds(1f);
-        skipButton.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+        skipButton.GetComponent<Tweener>().TweenScaleTo(scaleVector, 0.3f, Easings.Ease.SmoothStep);
+        yield return new WaitForSeconds(0.3f);
         skipButton.GetComponent<Button>().enabled = true;
     }
 

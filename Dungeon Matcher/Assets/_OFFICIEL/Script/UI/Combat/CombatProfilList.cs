@@ -161,7 +161,7 @@ public class CombatProfilList : MonoBehaviour
     public IEnumerator DispawnPrefab()
     {
         MenuManager.Instance.listManager.currentTest++;
-        MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+        chanceDrop.enabled = false;
         PPParent.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition,0.5f,Easings.Ease.SmoothStep,true);
         HeartParent.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition, 0.5f,Easings.Ease.SmoothStep,true);
         yield return new WaitForSeconds(0.5f);

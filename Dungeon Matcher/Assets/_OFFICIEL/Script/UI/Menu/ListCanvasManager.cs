@@ -29,7 +29,7 @@ namespace Management
 
         
 
-        private void Awake()
+        private void Start()
         {
             UpdateCombatButton();
             UpdateList();
