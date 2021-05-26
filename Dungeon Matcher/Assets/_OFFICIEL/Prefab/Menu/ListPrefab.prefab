@@ -1321,6 +1321,7 @@ MonoBehaviour:
   profilAsset: {fileID: 0}
   heartTweenPosition: {fileID: 3910474899037343059}
   ppTweenPosition: {fileID: 9116268126236761920}
+  initialPosition: {fileID: 626520692292135476}
   chanceClaim: 0
   profilImage: {fileID: 6999137104477411928}
   chanceDrop: {fileID: 7165498576239301095}
