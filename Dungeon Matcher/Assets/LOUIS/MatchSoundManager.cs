@@ -8,6 +8,7 @@ public class MatchSoundManager : MonoBehaviour
     public AudioSource audioSourceA;
     public AudioSource audioSourceB;
     public List<AudioClip> audioClips;
+    OnOffButton
 
     public void Awake()
     {
@@ -22,7 +23,7 @@ public class MatchSoundManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    /*public void Update()
     {
         if (OnOffButton.Instance.isOn)
         {
@@ -34,7 +35,7 @@ public class MatchSoundManager : MonoBehaviour
             audioSourceA.mute = true;
             audioSourceB.mute = true;
         }
-    }
+    }*/
 
     public void PlayClips(int i)
     {
