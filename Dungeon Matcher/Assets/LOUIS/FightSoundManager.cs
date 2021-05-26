@@ -23,7 +23,7 @@ public class FightSoundManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    /*public void Update()
     {
         if (OnOffButton.Instance.isOn)
         {
@@ -37,7 +37,7 @@ public class FightSoundManager : MonoBehaviour
             audioSourceB.mute = true;
             audioSourceC.mute = false;
         }
-    }
+    }*/
 
     public void PlayClips(int i)
     {
