@@ -21,30 +21,43 @@ namespace Management
 
         public void TestClaim()
         {
-            popButton.SetActive(false);
-
-            if (currentTest <= MenuManager.Instance.matchManager.matchList.Count)
+            if(currentTest == MenuManager.Instance.matchManager.matchList.Count)
             {
-                StartCoroutine(MenuManager.Instance.listManager.listPrefab[currentTest].GetComponent<CombatProfilList>().UpdateVisualEndCombat());
-                currentTest++;
-            }
-            else
-            {
-                MenuManager.Instance.blockAction = true;
                 currentTest = 0;
+                MenuManager.Instance.blockAction = true;
 
                 for (int i = 0; i < listPrefab.Count; i++)
                 {
                     StartCoroutine(listPrefab[i].GetComponent<CombatProfilList>().DispawnPrefab());
                 }
 
-               
+                StartCoroutine(EndAnimation());
+                //Attendre 1 Secondes et redonner le controle au joueur.
+
                 //C'est la fin.
                 //Faire despawn tous les profils.
 
-            }    
+            }
+            else
+            {
+                popButton.SetActive(false);
+                StartCoroutine(MenuManager.Instance.listManager.listPrefab[currentTest].GetComponent<CombatProfilList>().UpdateVisualEndCombat());
+                currentTest++;
+            }
         }
 
-    }  
+        public IEnumerator EndAnimation()
+        {
+            yield return new WaitForSeconds(1f);
+            for (int i = 0; i < MenuManager.Instance.listManager.listPrefab.Count; i++)
+            {
+                Destroy(MenuManager.Instance.listManager.listPrefab[i]);
+            }
+            popButton.SetActive(false);
+            MenuManager.Instance.listManager.listPrefab.Clear();
+            MenuManager.Instance.blockAction = false;
+        }
+
+    }
 }
 

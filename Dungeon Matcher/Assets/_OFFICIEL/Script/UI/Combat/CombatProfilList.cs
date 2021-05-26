@@ -11,6 +11,7 @@ public class CombatProfilList : MonoBehaviour
     
     [SerializeField] private GameObject heartTweenPosition;
     [SerializeField] private GameObject ppTweenPosition;
+    [SerializeField] private GameObject initialPosition;
 
     //Valeur à set à la fin du Combat.
     public float chanceClaim;
@@ -159,6 +160,10 @@ public class CombatProfilList : MonoBehaviour
 
     public IEnumerator DispawnPrefab()
     {
-        yield return null;
+        MenuManager.Instance.listManager.currentTest++;
+        PPParent.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition,0.5f,Easings.Ease.SmoothStep,true);
+        HeartParent.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition, 0.5f,Easings.Ease.SmoothStep,true);
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 0.3f, Easings.Ease.SmoothStep);
     }
 }
