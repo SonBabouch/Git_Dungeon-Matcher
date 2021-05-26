@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class SkillFeedback : MonoBehaviour
 {
     public static SkillFeedback Instance;
+    [SerializeField] private Animator playerAnim;
+    //[SerializeField] private Animator enemiAnim;
 
 
-
+    #region Player
     [Header("Player Heal")] [Header("Player")]
     [SerializeField] private GameObject playerHeal;
 
@@ -17,13 +19,16 @@ public class SkillFeedback : MonoBehaviour
     [SerializeField] private GameObject playerDefenseShield;
     [SerializeField] private GameObject playerGlow;
 
-    [Header("Player Tweening Pos")]
+    [Header("Player Defense Tweening Pos")]
     [SerializeField] private GameObject playerShieldInitialPos;
     [SerializeField] private GameObject playerShieldTweenPos;
     [Space]
     [SerializeField] private GameObject playerGlowInitialPos;
     [SerializeField] private GameObject playerGlowTweenPos;
 
+    [Header("Player Accelerate/Decelerate")]
+    [SerializeField] private GameObject playerAccelerateDecelerate;
+    #endregion
 
     [Header("Enemi Heal")] [Header("Enemi")]
     [SerializeField] private GameObject enemiHeal;
@@ -71,7 +76,6 @@ public class SkillFeedback : MonoBehaviour
         }
     }
 
-
     public IEnumerator PlayerHealFeedback(float numberOfDamage)
     {
         playerHeal.SetActive(true);
@@ -83,6 +87,35 @@ public class SkillFeedback : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         playerHeal.SetActive(false);
+    }
+
+    public void PlayerAccelerateDecelerateFeedback()
+    {
+        if(!Player.Instance.isAccelerated && !Player.Instance.isSlowed)
+        {
+            playerAccelerateDecelerate.SetActive(false);
+            playerAnim.SetBool("isAccelerated", false);
+            playerAnim.SetBool("isSlowed", false);
+        }
+        else if (Player.Instance.isAccelerated && Player.Instance.isSlowed)
+        {
+            playerAccelerateDecelerate.SetActive(false);
+            playerAnim.SetBool("isAccelerated", false);
+            playerAnim.SetBool("isSlowed", false);
+        }
+        if(Player.Instance.isAccelerated && !Player.Instance.isSlowed)
+        {
+            playerAccelerateDecelerate.SetActive(true);
+            playerAnim.SetBool("isAccelerated", true);
+            playerAnim.SetBool("isSlowed", false);
+        }
+        if(Player.Instance.isSlowed && !Player.Instance.isAccelerated)
+        {
+            playerAccelerateDecelerate.SetActive(true);
+            playerAnim.SetBool("isSlowed", true);
+            playerAnim.SetBool("isAccelerated", false);
+        }
+
     }
 
     public IEnumerator EnemiHealFeedback(float numberOfDamage)

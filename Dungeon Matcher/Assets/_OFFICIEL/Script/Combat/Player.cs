@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
     {
         limitHealthAndEnergy();
         SkillFeedback.Instance.PlayerDefenseFeedback();
+        SkillFeedback.Instance.PlayerAccelerateDecelerateFeedback();
     }
 
     public void InitializePlayer()
