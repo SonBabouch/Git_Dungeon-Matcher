@@ -78,9 +78,6 @@ namespace Management
             GameObject instantiatedProfil =  Instantiate(listPrefab, parentPositions.transform.position, Quaternion.identity);
 
             instantiatedProfil.transform.SetParent(parentPositions.transform);
-
-            //instantiatedProfil.transform.localScale = new Vector3(1f, 1f, 1f);
-            instantiatedProfil.GetComponent<CombatProfilList>().numberCombat = MenuManager.Instance.listManager.listCurrentSize;
             //Debug.Log("2");
             instantiatedProfil.GetComponent<CombatProfilList>().UpdateVisualMatch();
             MenuManager.Instance.listManager.listPrefab.Add(instantiatedProfil);
