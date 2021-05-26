@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 3703082488084835539}
   - component: {fileID: 7131477214526701427}
   - component: {fileID: 2560216835545904562}
+  - component: {fileID: 5355188515370040468}
   - component: {fileID: 5573372876228777913}
   - component: {fileID: 3970657118458235396}
   m_Layer: 5
@@ -396,6 +397,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5355188515370040468}
+        m_MethodName: FirstClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5355188515370040468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630200999447732031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2349eed4019a384438b9319b5ec8f33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bagButton: {fileID: 5573372876228777913}
 --- !u!114 &5573372876228777913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detailsButton: {fileID: 3889249203722665975}
   equipButton: {fileID: 879698641760924600}
-  upgradeButton: {fileID: 0}
   monsterContainer: {fileID: 0}
   claimColor: {r: 1, g: 1, b: 1, a: 1}
   unclaimColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
