@@ -96,7 +96,6 @@ namespace Management
 
             if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
-                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
                 MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
                 
             }
@@ -117,7 +116,6 @@ namespace Management
             
             if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
-                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
                 MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
             }
 
@@ -140,8 +138,6 @@ namespace Management
 
             if (MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
-                
-                MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected.GetComponent<BagButtonBehaviour>().UnSelected();
                 MenuManager.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
             }
 

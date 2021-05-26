@@ -33,7 +33,7 @@ public class CombatProfilList : MonoBehaviour
 
     public bool firstHeartDone = false;
     public bool secondHeartDone = false;
-    public bool thirddHeartDone = false;
+    public bool thirdHeartDone = false;
 
 
     [SerializeField] private RectTransform rectTransform;
@@ -86,9 +86,9 @@ public class CombatProfilList : MonoBehaviour
                     fullHeart[1].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
                 }
 
-                if(chanceClaim >= 75 && !thirddHeartDone)
+                if(chanceClaim >= 75 && !thirdHeartDone)
                 {
-                    thirddHeartDone = true;
+                    thirdHeartDone = true;
                     Vector3 tweenPosition = new Vector3(1f, 1f, 1f);
                     fullHeart[2].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
                 }
@@ -108,7 +108,7 @@ public class CombatProfilList : MonoBehaviour
                 emptyHeart[1].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
             }
 
-            if (!thirddHeartDone)
+            if (!thirdHeartDone)
             {
                 emptyHeart[2].GetComponent<Tweener>().TweenScaleTo(tweenPosition, 0.1f, Easings.Ease.SmootherStep);
             }
@@ -127,6 +127,23 @@ public class CombatProfilList : MonoBehaviour
             //Dans le cas ou le monstre est déja Get.
             //Augementer du nombre de score sur ce monstre
             MenuManager.Instance.canvasManager.listCanvas.popButton.SetActive(true);
+            MenuManager.Instance.playerLevel.GiveExperience(5);
+
+            if (firstHeartDone)
+            {
+                monsterContainer.GetComponent<MonsterToken>().scoring++;
+            }
+
+            if (secondHeartDone)
+            {
+                monsterContainer.GetComponent<MonsterToken>().scoring++;
+            }
+
+            if (thirdHeartDone)
+            {
+                 monsterContainer.GetComponent<MonsterToken>().scoring++;
+            }
+            MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
         }
         else
         {
@@ -134,10 +151,12 @@ public class CombatProfilList : MonoBehaviour
             if (isClaim)
             {
                 monsterContainer.GetComponent<MonsterToken>().isGet = true;
+                MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
+                MenuManager.Instance.playerLevel.GiveExperience(5);
                 //Dans le cas ou ca se passe bien.
                 claimFeedback.SetActive(true);
-                Vector3 twwenVector = new Vector3(1f, 1f, 1f);
-                claimFeedback.GetComponent<Tweener>().TweenScaleTo(twwenVector, 0.3f, Easings.Ease.SmoothStep);
+                Vector3 tweenVector = new Vector3(1f, 1f, 1f);
+                claimFeedback.GetComponent<Tweener>().TweenScaleTo(tweenVector, 0.3f, Easings.Ease.SmoothStep);
                 yield return new WaitForSeconds(0.25f);
                 sparkles.SetActive(true);
                 sparkles.GetComponent<Animator>().SetTrigger("Sparkles");

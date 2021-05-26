@@ -38,6 +38,32 @@ public class MonsterEncyclopedie : MonoBehaviour
         }
     }
 
+    public void GetNewMonsters()
+    {
+        for (int i = 0; i < allCommonMonster.Count; i++)
+        {
+            if (allCommonMonster[i].GetComponent<MonsterToken>().isGet)
+            {
+                allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            }    
+        }
+
+
+        for (int i = 0; i < allRareMonster.Count; i++)
+        {
+            if (allRareMonster[i].GetComponent<MonsterToken>().isGet)
+            {
+                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+            }
+        }
+
+        //Update le visuel du sac;
+        for (int i = 0; i < MenuManager.Instance.canvasManager.bagCanvas.bagButtonList.Count; i++)
+        {
+            MenuManager.Instance.canvasManager.bagCanvas.bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
+        }
+    }
+
     public void UpdateMonsterEncyclopedie()
     {
         for (int i = 0; i < MenuManager.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i++)

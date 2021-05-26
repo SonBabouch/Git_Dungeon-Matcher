@@ -40,6 +40,8 @@ public class MonsterToken : MonoBehaviour
     public List<Skill> ennemySkills;
     public string[] monsterHashTag;
 
+    public int scoring = 1;
+
     private void Start()
     {
         //Ajouter une bool qui switch selon ou l'on est dans la scene (Soit Combat / Soit Menu).

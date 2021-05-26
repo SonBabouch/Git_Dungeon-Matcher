@@ -66,10 +66,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        limitHealthAndEnergy();
-        SkillFeedback.Instance.PlayerDefenseFeedback();
-        SkillFeedback.Instance.PlayerAccelerateDecelerateFeedback();
+        if (CombatManager.Instance.inCombat)
+        {
+            limitHealthAndEnergy();
+            SkillFeedback.Instance.PlayerDefenseFeedback();
+            SkillFeedback.Instance.PlayerAccelerateDecelerateFeedback();
+        }
     }
+
 
     public void InitializePlayer()
     {

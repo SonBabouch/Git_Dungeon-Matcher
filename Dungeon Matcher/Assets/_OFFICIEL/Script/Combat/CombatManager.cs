@@ -65,10 +65,12 @@ public class CombatManager : MonoBehaviour
         
         CharacterSkillInitialisation();
 
-
-       
-
         Player.Instance.health = Player.Instance.minHealth;
+
+        Player.Instance.energy = 50;
+        Player.Instance.trueEnergy = 5;
+        Enemy.Instance.energy = 50;
+        Enemy.Instance.trueEnergy = 5;
 
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
@@ -221,7 +223,6 @@ public class CombatManager : MonoBehaviour
 
     public void GetEnemyTrueEnergy()
     {
-
         float energy = Enemy.Instance.energy;
 
         if (energy < 10)
