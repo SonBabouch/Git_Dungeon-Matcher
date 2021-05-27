@@ -3736,7 +3736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &423157745
 Transform:
   m_ObjectHideFlags: 0
@@ -5340,6 +5340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977588376116025295, guid: e383cf0074529d546b18a93a1cc531b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e383cf0074529d546b18a93a1cc531b6, type: 3}
@@ -9474,7 +9479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.00048828125}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &893309479
@@ -16434,6 +16439,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3052418606536704006, guid: 4bac142f50dcb7245a457df6a9c1e988,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3052418606536704007, guid: 4bac142f50dcb7245a457df6a9c1e988,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -17177,7 +17187,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1445865180}
   m_HandleRect: {fileID: 1445865179}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -20221,6 +20231,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 3060031189444664315}
   enemiAnim: {fileID: 1524197205}
+  green:
+    serializedVersion: 2
+    rgba: 4280273458
+  red:
+    serializedVersion: 2
+    rgba: 4280234698
   playerHeal: {fileID: 3060031188827569044}
   playerDefense: {fileID: 3060031189438667555}
   playerDefenseShield: {fileID: 3060031188439352808}

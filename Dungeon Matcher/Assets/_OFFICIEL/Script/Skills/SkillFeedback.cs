@@ -8,6 +8,9 @@ public class SkillFeedback : MonoBehaviour
     public static SkillFeedback Instance;
     [SerializeField] private Animator playerAnim;
     [SerializeField] private Animator enemiAnim;
+    [Space]
+    [SerializeField] private Color32 green = new Color32(50, 202, 31, 255);
+    [SerializeField] private Color32 red = new Color32(202, 50, 31, 255);
 
 
     #region Player statement
@@ -63,7 +66,7 @@ public class SkillFeedback : MonoBehaviour
         }
     }
 
-    #region Player
+    #region Player methods
     public void PlayerDefenseFeedback()
     {
         if (Player.Instance.isDefending)
@@ -123,10 +126,17 @@ public class SkillFeedback : MonoBehaviour
 
     }
 
+    public IEnumerator PlayerAttackFeedBack()
+    {
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.5f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+    }
+
 
     #endregion
 
-    #region
+    #region Enemi methods
     public IEnumerator EnemiHealFeedback(float numberOfDamage)
     {
         enemiHeal.SetActive(true);
@@ -182,6 +192,14 @@ public class SkillFeedback : MonoBehaviour
             enemiAnim.SetBool("isSlowed", true);
             enemiAnim.SetBool("isAccelerated", false);
         }
+
+    }
+
+    public IEnumerator EnemiAttackFeedBack()
+    {
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.5f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
 
     }
     #endregion

@@ -42,10 +42,12 @@ public class BasicAttack : Skill
             {
                 if(Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
                 {
+                    SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
                     Enemy.Instance.health += (comboEffectValue * Player.Instance.boostAttack)/2;
                 }
                 else
                 {
+                    SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
                     Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
                 }
             }
@@ -53,10 +55,12 @@ public class BasicAttack : Skill
             {
                 if (Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
                 {
+                    SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
                     Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
                 }
                 else
                 {
+                    SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
                     Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
                 }
             }
@@ -93,11 +97,14 @@ public class BasicAttack : Skill
         {
             if(comesFromCombo)
             {
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
                 Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
             }
             else
             {
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
                 Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
+
             }
         }
 
@@ -126,7 +133,7 @@ public class BasicAttack : Skill
 
     public override void PlaySound()
     {
-        Debug.Log("Son Attaque");
+        //Debug.Log("Son Attaque");
         FightSoundManager.Instance.PlayClips(0);
     }
 }

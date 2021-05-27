@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     public PlayerUI playerUi;
-
+    public GameObject playerHealthBar;
     
     public List<GameObject> allyMonsters;
     public List<Skill> playerSkills;

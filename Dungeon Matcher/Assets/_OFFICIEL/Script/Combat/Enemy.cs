@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
     public bool useDefenseMove;
 
     public EnemyUi enemyUi;
+    public GameObject enemiHealthBar;
 
     public bool enemiUsedBreak;
 
