@@ -39,21 +39,25 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
             if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
             {
                 MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(true);
+                MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().yesTampon.SetActive(true);
                 //Debug.Log("La");
             }
             else if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x)
             {
                 //Debug.Log("Ici");
                 MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
+                MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().yesTampon.SetActive(false);
             }
 
             if (gameObject.transform.position.x < MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
             {
                 MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(true);
+                MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().nopeTampon.SetActive(true);
             }
             else if (gameObject.transform.position.x > MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x )
             {
                 MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+                MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().nopeTampon.SetActive(false);
             }
         }
 

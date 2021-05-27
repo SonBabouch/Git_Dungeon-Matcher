@@ -53,6 +53,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             onDrag = true;
             MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().yesTampon.SetActive(false);
+            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().nopeTampon.SetActive(false);
             MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
 
             float difference = data.pressPosition.x - data.position.x; //Différence entre les deux positions pour savoir vers quel coté on swip, positif à droite et négatif à gauche
@@ -167,6 +169,8 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             MenuManager.Instance.matchManager.canMatch = false;
             MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
             MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
+            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().yesTampon.SetActive(false);
+            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().nopeTampon.SetActive(false);
         }
     }
 
