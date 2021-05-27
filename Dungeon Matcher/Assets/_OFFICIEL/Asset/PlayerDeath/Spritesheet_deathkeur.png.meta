@@ -236,7 +236,7 @@ TextureImporter:
         serializedVersion: 2
         x: 3428
         y: 0
-        width: 857
+        width: 860
         height: 650
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -255,9 +255,9 @@ TextureImporter:
       name: Spritesheet_deathkeur_5
       rect:
         serializedVersion: 2
-        x: 4285
+        x: 4288
         y: 0
-        width: 857
+        width: 854
         height: 650
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -278,7 +278,7 @@ TextureImporter:
         serializedVersion: 2
         x: 5142
         y: 0
-        width: 857
+        width: 840
         height: 650
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -299,7 +299,7 @@ TextureImporter:
         serializedVersion: 2
         x: 5999
         y: 0
-        width: 857
+        width: 848
         height: 650
       alignment: 7
       pivot: {x: 0.5, y: 0}

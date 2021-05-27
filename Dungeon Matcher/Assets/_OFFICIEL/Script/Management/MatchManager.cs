@@ -201,7 +201,6 @@ namespace Management
         //A activer quand le bouton match est préssé.
         public void Match(bool isSuperLike)
         {
-
             if (isSuperLike)
             {   
                 if(EnergyManager.superlikeCount > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManager.Instance.blockAction && monsterSpawned.Count != 0)
@@ -334,8 +333,6 @@ namespace Management
                 }
             }
         }
-
-      
         
         //A activer quand le bouton dislike est préssé.
         public void Dislike()

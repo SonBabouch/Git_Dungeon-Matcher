@@ -49,6 +49,12 @@ public class ConversationManager : MonoBehaviour
     public GameObject enemyChargingAttack;
     [SerializeField] private Color cyanColor;
 
+
+    [Header("FallingPosition")]
+    public GameObject tweenPositionPlayer;
+    public GameObject tweenPositionEnemy;
+
+
     private void Awake()
     {
         Instance = this;

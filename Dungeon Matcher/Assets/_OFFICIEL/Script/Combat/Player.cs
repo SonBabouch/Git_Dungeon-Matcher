@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
 
     public void InitializePlayer()
     {
-
         allyMonsters = MenuManager.Instance.bagManager.monsterTeam;
 
         foreach (GameObject monster in allyMonsters)
