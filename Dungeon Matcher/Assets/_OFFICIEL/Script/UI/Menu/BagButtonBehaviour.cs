@@ -15,7 +15,7 @@ public class BagButtonBehaviour : MonoBehaviour
 
     public Color claimColor;
     public Color unclaimColor;
-    public Color indisponibleColor;
+    public Sprite unknownAssets;
 
     public GameObject scoreParent;
     public TextMeshProUGUI scoreText;
@@ -24,7 +24,9 @@ public class BagButtonBehaviour : MonoBehaviour
     {
         if (monsterContainer.GetComponent<MonsterToken>().isGet)
         {
+            gameObject.GetComponent<Image>().sprite = monsterContainer.GetComponent<MonsterToken>().profilPicture;
             gameObject.GetComponent<Image>().color = claimColor;
+           
 
             if (monsterContainer.GetComponent<MonsterToken>().statement != MonsterToken.statementEnum.Equipe)
             {
@@ -33,10 +35,11 @@ public class BagButtonBehaviour : MonoBehaviour
         }
         else if(monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible)
         {
-            gameObject.GetComponent<Image>().color = indisponibleColor;
+            gameObject.GetComponent<Image>().sprite = unknownAssets;
         }
         else
         {
+            gameObject.GetComponent<Image>().sprite = monsterContainer.GetComponent<MonsterToken>().profilPicture;
             gameObject.GetComponent<Image>().color = unclaimColor;
         }
 

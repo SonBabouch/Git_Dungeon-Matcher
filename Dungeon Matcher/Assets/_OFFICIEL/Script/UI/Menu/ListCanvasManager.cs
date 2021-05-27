@@ -27,7 +27,8 @@ namespace Management
 
         public GameObject popButton;
 
-        
+        public GameObject BackGroundResultat;
+        public GameObject BackGroundResultatText;
 
         private void Start()
         {
@@ -82,10 +83,11 @@ namespace Management
             MenuManager.Instance.listManager.listPrefab.Add(instantiatedProfil);
         }
 
-       
+        
     }
 
     
+
 
 }
 

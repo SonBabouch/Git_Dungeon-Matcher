@@ -496,10 +496,10 @@ public class CombatManager : MonoBehaviour
             energyCostText[2].text =  Player.Instance.playerHand[2].trueEnergyCost.ToString();
             energyCostText[3].text =  Player.Instance.playerHand[3].trueEnergyCost.ToString();
 
-            energyCostText[0].color = Color.black;
-            energyCostText[1].color = Color.black;
-            energyCostText[2].color = Color.black;
-            energyCostText[3].color = Color.black;
+            energyCostText[0].color = Color.white;
+            energyCostText[1].color = Color.white;
+            energyCostText[2].color = Color.white;
+            energyCostText[3].color = Color.white;
         }
 
         damageText[0].text = Player.Instance.playerHand[0].skillName;
