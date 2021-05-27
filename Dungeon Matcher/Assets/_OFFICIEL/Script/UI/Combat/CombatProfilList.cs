@@ -166,6 +166,7 @@ public class CombatProfilList : MonoBehaviour
                  monsterContainer.GetComponent<MonsterToken>().scoring++;
             }
             MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
+            MenuManager.Instance.canvasManager.bagCanvas.SortBag();
         }
         else
         {
@@ -174,6 +175,7 @@ public class CombatProfilList : MonoBehaviour
             {
                 monsterContainer.GetComponent<MonsterToken>().isGet = true;
                 MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
+                MenuManager.Instance.canvasManager.bagCanvas.SortBag();
                 PlayerLevel.currentExperience += 7;
                 //Dans le cas ou ca se passe bien.
                 claimFeedback.SetActive(true);

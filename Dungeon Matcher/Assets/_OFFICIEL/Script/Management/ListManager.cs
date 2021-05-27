@@ -45,7 +45,7 @@ namespace Management
         public IEnumerator EndAnimation()
         {
             popButton.SetActive(false);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
             for (int i = 0; i < MenuManager.Instance.listManager.listPrefab.Count; i++)
             {
                 Destroy(MenuManager.Instance.listManager.listPrefab[i]);
