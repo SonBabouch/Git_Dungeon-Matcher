@@ -278,7 +278,7 @@ MonoBehaviour:
   - {fileID: 0}
   enemyIndex: 0
   lastEnemyCompetence: {fileID: 0}
-  enemyChargingTime: 0
+  enemyChargingTime: 3
   isCramp: 0
   isCharging: 0
   isDefending: 0

@@ -10,7 +10,7 @@ public class SkillFeedback : MonoBehaviour
     [SerializeField] private Animator enemiAnim;
 
 
-    #region Player
+    #region Player statement
     [Header("Player Heal")] [Header("Player")]
     [SerializeField] private GameObject playerHeal;
 
@@ -30,7 +30,7 @@ public class SkillFeedback : MonoBehaviour
     [SerializeField] private GameObject playerAccelerateDecelerate;
     #endregion
 
-
+    #region Enemi Statement
     [Header("Enemi Heal")] [Header("Enemi")]
     [SerializeField] private GameObject enemiHeal;
 
@@ -48,7 +48,7 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Enemi Accelerate/Decelerate")]
     [SerializeField] private GameObject enemiAccelerateDecelerate;
-
+    #endregion
 
     private void Awake()
     {
@@ -63,6 +63,7 @@ public class SkillFeedback : MonoBehaviour
         }
     }
 
+    #region Player
     public void PlayerDefenseFeedback()
     {
         if (Player.Instance.isDefending)
@@ -122,6 +123,10 @@ public class SkillFeedback : MonoBehaviour
 
     }
 
+
+    #endregion
+
+    #region
     public IEnumerator EnemiHealFeedback(float numberOfDamage)
     {
         enemiHeal.SetActive(true);
@@ -179,4 +184,5 @@ public class SkillFeedback : MonoBehaviour
         }
 
     }
+    #endregion
 }

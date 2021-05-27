@@ -172,7 +172,7 @@ public class ConversationManager : MonoBehaviour
         //Si un gros message va être instancier, on déplace de deux
         if (skillType.messageType == Skill.typeOfMessage.Big)
         {
-            Debug.Log("Double");
+            //Debug.Log("Double");
             //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
             for (int i = allMsg.Length - 3; i > 0; i--)
             {

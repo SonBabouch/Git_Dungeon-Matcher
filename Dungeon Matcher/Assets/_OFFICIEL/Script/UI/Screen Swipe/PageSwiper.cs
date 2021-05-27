@@ -25,24 +25,24 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     void Start()
     {
         trueScreenWidth = rectTrans.rect.width;
-        print(trueScreenWidth);
+        //print(trueScreenWidth);
 
         panelLocation = transform.position; //récupère les position du panel holder
 
         //Shop
         RectTransformExtensions.Left(panelLocations[0].GetComponent<RectTransform>(), -trueScreenWidth);
         RectTransformExtensions.Right(panelLocations[0].GetComponent<RectTransform>(), trueScreenWidth);
-        print(panelLocations[0].GetComponent<RectTransform>());
+        //print(panelLocations[0].GetComponent<RectTransform>());
 
         //List
         RectTransformExtensions.Left(panelLocations[2].GetComponent<RectTransform>(), trueScreenWidth);
         RectTransformExtensions.Right(panelLocations[2].GetComponent<RectTransform>(), -trueScreenWidth);
-        print(panelLocations[2].GetComponent<RectTransform>());
+        //print(panelLocations[2].GetComponent<RectTransform>());
 
         //Bag
         RectTransformExtensions.Left(panelLocations[3].GetComponent<RectTransform>(), 2 * trueScreenWidth);
         RectTransformExtensions.Right(panelLocations[3].GetComponent<RectTransform>(), -2 * trueScreenWidth);
-        print(panelLocations[3].GetComponent<RectTransform>());
+        //print(panelLocations[3].GetComponent<RectTransform>());
 
     }
 
