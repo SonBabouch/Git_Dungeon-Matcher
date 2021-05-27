@@ -433,11 +433,11 @@ public class ConversationManager : MonoBehaviour
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
         }
-        else
-        {
-            //Mettre la couleur Cyan
-            skill.messageOwner.GetComponent<Image>().color = cyanColor;
-        }
+        //else
+        //{
+        //    //Mettre la couleur Cyan
+        //    skill.messageOwner.GetComponent<Image>().color = cyanColor;
+        //}
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;

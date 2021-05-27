@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         SkillFeedback.Instance.EnemiDefenseFeedback();
+        SkillFeedback.Instance.EnemiAccelerateDecelerateFeedback();
     }
     public void InitializeMonster()
     {

@@ -7,7 +7,7 @@ public class SkillFeedback : MonoBehaviour
 {
     public static SkillFeedback Instance;
     [SerializeField] private Animator playerAnim;
-    //[SerializeField] private Animator enemiAnim;
+    [SerializeField] private Animator enemiAnim;
 
 
     #region Player
@@ -32,9 +32,6 @@ public class SkillFeedback : MonoBehaviour
 
 
     [Header("Enemi Heal")] [Header("Enemi")]
-    [Space]
-    [Space]
-    [Space]
     [SerializeField] private GameObject enemiHeal;
 
     [Header("Enemi Defense")]
@@ -48,6 +45,9 @@ public class SkillFeedback : MonoBehaviour
     [Space]
     [SerializeField] private GameObject enemiGlowInitialPos;
     [SerializeField] private GameObject enemiGlowTweenPos;
+
+    [Header("Enemi Accelerate/Decelerate")]
+    [SerializeField] private GameObject enemiAccelerateDecelerate;
 
 
     private void Awake()
@@ -149,5 +149,34 @@ public class SkillFeedback : MonoBehaviour
             enemiGlow.transform.localPosition = enemiGlowInitialPos.transform.localPosition;
             enemiDefense.SetActive(false);
         }
+    }
+
+    public void EnemiAccelerateDecelerateFeedback()
+    {
+        if (!Enemy.Instance.isAccelerated && !Enemy.Instance.isSlowed)
+        {
+            enemiAccelerateDecelerate.SetActive(false);
+            enemiAnim.SetBool("isAccelerated", false);
+            enemiAnim.SetBool("isSlowed", false);
+        }
+        else if (Enemy.Instance.isAccelerated && Enemy.Instance.isSlowed)
+        {
+            enemiAccelerateDecelerate.SetActive(false);
+            enemiAnim.SetBool("isAccelerated", false);
+            enemiAnim.SetBool("isSlowed", false);
+        }
+        if (Enemy.Instance.isAccelerated && !Enemy.Instance.isSlowed)
+        {
+            enemiAccelerateDecelerate.SetActive(true);
+            enemiAnim.SetBool("isAccelerated", true);
+            enemiAnim.SetBool("isSlowed", false);
+        }
+        if (Enemy.Instance.isSlowed && !Enemy.Instance.isAccelerated)
+        {
+            enemiAccelerateDecelerate.SetActive(true);
+            enemiAnim.SetBool("isSlowed", true);
+            enemiAnim.SetBool("isAccelerated", false);
+        }
+
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8517463765138690268}
   - component: {fileID: 557122021631550047}
   - component: {fileID: -4458736376856033068}
+  - component: {fileID: 2315000152126881142}
   m_Layer: 5
   m_Name: ChargingMessagePlayer
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6170809799992078242, guid: ebef94f87e486d94580ce003afb3e868,
+  m_Sprite: {fileID: -5671895041133549089, guid: e34d64c40ad6df8489eee0dfcff5b470,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -96,3 +97,22 @@ MonoBehaviour:
   big: 0
   isCharging: 1
   emoji: 0
+--- !u!95 &2315000152126881142
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352670091459577414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
