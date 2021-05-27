@@ -347,9 +347,7 @@ namespace Management
                     MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
                 }
 
-
                 monsterSpawned.Remove(profilPresented);
-                MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnDislikeFeedback();
 
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)

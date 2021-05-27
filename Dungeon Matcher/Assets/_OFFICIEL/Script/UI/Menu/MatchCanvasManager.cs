@@ -20,7 +20,6 @@ namespace Management
         //Player Information
         public TextMeshProUGUI energy;
         public TextMeshProUGUI superLike;
-        public GameObject superlikeSpend;
         public GameObject energySpend;
         public TextMeshProUGUI playerLevelText;
         public Image playerExperienceBar;
