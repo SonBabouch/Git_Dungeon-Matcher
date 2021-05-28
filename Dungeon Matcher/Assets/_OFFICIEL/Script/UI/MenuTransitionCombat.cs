@@ -11,7 +11,11 @@ public class MenuTransitionCombat : MonoBehaviour
     #region transitionCombat
     [SerializeField] private GameObject detailsGO;
     [SerializeField] private Image leaderMonster;
+    [SerializeField] private Image leaderMonsterBG;
     [SerializeField] private Image enemyMonster;
+    [SerializeField] private Image enemyMonsterBG;
+    [SerializeField] private GameObject VS;
+    [SerializeField] private GameObject thunder;
     [SerializeField] private GameObject button;
     
 
@@ -118,10 +122,16 @@ public class MenuTransitionCombat : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         detailsGO.SetActive(true);
         leaderMonster.sprite = leaderMonsterAsset;
+        leaderMonsterBG.sprite = leaderMonsterAsset;
         enemyMonster.sprite = enemyMonsterAsset;
+        enemyMonsterBG.sprite = enemyMonsterAsset;
         yield return new WaitForSeconds(0.1f);
         topSlider0.GetComponent<Tweener>().TweenPositionTo(topSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
         botSlider0.GetComponent<Tweener>().TweenPositionTo(botSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
+        yield return new WaitForSeconds(1f);
+        thunder.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        VS.SetActive(true);
         button.SetActive(true);
     }
 

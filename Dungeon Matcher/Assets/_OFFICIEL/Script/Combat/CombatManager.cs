@@ -41,6 +41,13 @@ public class CombatManager : MonoBehaviour
     [Header("PlayerDeath")]
     public GameObject blackScreen;
     public GameObject breakingHeart;
+    public GameObject conseillere;
+    public GameObject initialPosition;
+    public GameObject tweenPosition;
+    private string currentText;
+    [SerializeField] private string MessageToTell;
+    public TextMeshProUGUI bubbleText;
+    public GameObject bubble;
 
     [Header("Alerte")]
     [SerializeField] private GameObject alerteText;
@@ -55,7 +62,6 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
 
@@ -179,12 +185,29 @@ public class CombatManager : MonoBehaviour
 
         //SetActive l'écran noir
         blackScreen.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         breakingHeart.SetActive(true);
-        yield return new WaitForSeconds(3f);
-
+        yield return new WaitForSeconds(4.5f);
+        conseillere.GetComponent<Tweener>().TweenPositionTo(tweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
+        bubble.SetActive(true);
+        Vector3 scaleVector = new Vector3(1f, 1f, 1f);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector,0.5f,Easings.Ease.SmoothStep);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(AffichageMessageEnum(0.03f, MessageToTell));
+        yield return new WaitForSeconds(3.2f);
+        //popButton to skip;
     }
-    
+
+    public IEnumerator AffichageMessageEnum(float delay, string fullText)
+    {
+        for (int i = 0; i < fullText.Length; i++)
+        {
+            currentText = fullText.Substring(0, i);
+            bubbleText.text = currentText;
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
 
     public void CharacterSkillInitialisation()
     {
