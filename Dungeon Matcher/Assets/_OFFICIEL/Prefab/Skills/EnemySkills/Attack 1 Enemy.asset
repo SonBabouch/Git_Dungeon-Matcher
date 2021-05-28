@@ -17,7 +17,7 @@ MonoBehaviour:
   effectValue: 10
   messageOwner: {fileID: 0}
   side: 0
-  messageType: 0
+  messageType: 1
   typeOfCapacity: 0
   trueEnergyCost: 3
   energyCost: 30
@@ -27,7 +27,7 @@ MonoBehaviour:
   comesFromCombo: 0
   comesFromCurse: 0
   comboEffectValue: 0
-  chargingAttack: 0
+  chargingAttack: 1
   isEcho: 0
   isPlagiat: 0
   lastCompetenceReference: {fileID: 0}

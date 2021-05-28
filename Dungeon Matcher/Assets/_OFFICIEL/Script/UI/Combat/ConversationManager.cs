@@ -537,10 +537,10 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
 
         }
-        else
-        {
-            skill.messageOwner.GetComponent<Image>().color = Color.red;
-        }
+        //else
+        //{
+        //    skill.messageOwner.GetComponent<Image>().color = Color.red;
+        //}
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;

@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public class SkillFeedback : MonoBehaviour
 {
     public static SkillFeedback Instance;
-    [SerializeField] private Animator playerAnim;
-    [SerializeField] private Animator enemiAnim;
-    [Space]
-    [SerializeField] private Color32 green = new Color32(50, 202, 31, 255);
-    [SerializeField] private Color32 red = new Color32(202, 50, 31, 255);
+    
+    private Color32 green = new Color32(50, 202, 31, 255);
+    private Color32 red = new Color32(202, 50, 31, 255);
 
 
     #region Player statement
@@ -31,6 +29,10 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Player Accelerate/Decelerate")]
     [SerializeField] private GameObject playerAccelerateDecelerate;
+    [SerializeField] private Animator playerAnim;
+
+    [Header("Player Break")]
+    [SerializeField] private GameObject playerBreak;
     #endregion
 
     #region Enemi Statement
@@ -51,6 +53,10 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Enemi Accelerate/Decelerate")]
     [SerializeField] private GameObject enemiAccelerateDecelerate;
+    [SerializeField] private Animator enemiAnim;
+
+    [Header("Enemi Break")]
+    [SerializeField] private GameObject enemiBreak;
     #endregion
 
     private void Awake()
@@ -129,11 +135,24 @@ public class SkillFeedback : MonoBehaviour
     public IEnumerator PlayerAttackFeedBack()
     {
         Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
         Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
     }
 
-
+    public IEnumerator PlayerBreakFeedback()
+    {
+        enemiBreak.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        enemiBreak.SetActive(false);
+    }
     #endregion
 
     #region Enemi methods
@@ -198,9 +217,23 @@ public class SkillFeedback : MonoBehaviour
     public IEnumerator EnemiAttackFeedBack()
     {
         Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+    }
 
+    public IEnumerator EnemiBreakFeedback()
+    {
+        playerBreak.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        playerBreak.SetActive(false);
     }
     #endregion
 }

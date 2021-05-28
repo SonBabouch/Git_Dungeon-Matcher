@@ -9479,7 +9479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00048828125}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &893309479
@@ -10753,6 +10753,101 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032514999}
+  m_CullTransparentMesh: 0
+--- !u!1 &1043789086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1043789087}
+  - component: {fileID: 1043789090}
+  - component: {fileID: 1043789089}
+  - component: {fileID: 1043789088}
+  m_Layer: 5
+  m_Name: PlayerBreak
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1043789087
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043789086}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1638631591}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.06277778, y: 0.32451558}
+  m_AnchorMax: {x: 0.14962964, y: 0.3854221}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1043789088
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043789086}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3f5bcab432d8bd4b80fda37ef28dc3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1043789089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043789086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 3652654745284960798, guid: e921d526c8407844591f5a30d95bce4c,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1043789090
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043789086}
   m_CullTransparentMesh: 0
 --- !u!1 &1092318743
 GameObject:
@@ -15273,6 +15368,42 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1619235504}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1638631590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1638631591}
+  m_Layer: 5
+  m_Name: Break
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1638631591
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638631590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1043789087}
+  m_Father: {fileID: 3060031187563365115}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -9.793213}
+  m_SizeDelta: {x: 0, y: 19.586792}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1641828725
 GameObject:
   m_ObjectHideFlags: 0
@@ -17187,7 +17318,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1445865180}
   m_HandleRect: {fileID: 1445865179}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -20149,6 +20280,7 @@ RectTransform:
   - {fileID: 3060031188823820758}
   - {fileID: 3060031187711730593}
   - {fileID: 3060031188381398949}
+  - {fileID: 1638631591}
   m_Father: {fileID: 1273854986682187952}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20229,14 +20361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fbb88e636b21849a7339ad309fd707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnim: {fileID: 3060031189444664315}
-  enemiAnim: {fileID: 1524197205}
-  green:
-    serializedVersion: 2
-    rgba: 4280273458
-  red:
-    serializedVersion: 2
-    rgba: 4280234698
   playerHeal: {fileID: 3060031188827569044}
   playerDefense: {fileID: 3060031189438667555}
   playerDefenseShield: {fileID: 3060031188439352808}
@@ -20246,6 +20370,8 @@ MonoBehaviour:
   playerGlowInitialPos: {fileID: 3060031187905289545}
   playerGlowTweenPos: {fileID: 3060031187791778833}
   playerAccelerateDecelerate: {fileID: 3060031189444664313}
+  playerAnim: {fileID: 3060031189444664315}
+  playerBreak: {fileID: 0}
   enemiHeal: {fileID: 3060031187649323677}
   enemiDefense: {fileID: 3060031188852231682}
   enemiDefenseShield: {fileID: 3060031188435839294}
@@ -20255,6 +20381,8 @@ MonoBehaviour:
   enemiGlowInitialPos: {fileID: 3060031187744901485}
   enemiGlowTweenPos: {fileID: 3060031187663040685}
   enemiAccelerateDecelerate: {fileID: 1524197203}
+  enemiAnim: {fileID: 1524197205}
+  enemiBreak: {fileID: 1043789086}
 --- !u!222 &3060031187649323664
 CanvasRenderer:
   m_ObjectHideFlags: 0

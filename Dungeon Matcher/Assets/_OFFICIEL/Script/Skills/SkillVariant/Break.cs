@@ -36,6 +36,7 @@ public class Break : Skill
             Enemy.Instance.StopCoroutine(Enemy.Instance.EndEnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
             Enemy.Instance.lastEnemyCompetence.messageType = typeOfMessage.Charging;
             Player.Instance.playerUsedBreak = true;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerBreakFeedback());
             PlaySound();
 
             if (!chargingAttack)
@@ -63,6 +64,7 @@ public class Break : Skill
             Player.Instance.StopCoroutine(Player.Instance.EndPlayerChargeAttack(Player.Instance.lastPlayerCompetence));
             Player.Instance.lastPlayerCompetence.messageType = typeOfMessage.Charging;
             Enemy.Instance.enemiUsedBreak = true;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiBreakFeedback());
             PlaySound();
 
 
