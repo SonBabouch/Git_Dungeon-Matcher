@@ -24,6 +24,8 @@ public class ProfilBehaviour : MonoBehaviour
     public GameObject yesTampon;
     public GameObject nopeTampon;
 
+    public GameObject rareSparkles;
+
     private void Start()
     {
         rectTrans = gameObject.GetComponent<RectTransform>();
@@ -32,6 +34,8 @@ public class ProfilBehaviour : MonoBehaviour
         rectTrans.offsetMax = Vector2.zero;
 
         rectTrans.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+
+        
     }
 
     public void Superlike()
@@ -52,6 +56,15 @@ public class ProfilBehaviour : MonoBehaviour
             profilName.text = monsterPick.GetComponent<MonsterToken>().monsterName;
 
             //Reset 
+
+            if(monsterPick.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            {
+                rareSparkles.SetActive(true);
+            }
+            else
+            {
+                rareSparkles.SetActive(false);
+            }
 
             for (int i = 0; i < hashtag.Length; i++)
             {
