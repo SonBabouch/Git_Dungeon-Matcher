@@ -57,7 +57,7 @@ MonoBehaviour:
   isGet: 1
   statement: 1
   isSuperlike: 0
-  profilPicture: {fileID: 21300000, guid: 62d3117fca21a8f44a005554c0363ccf, type: 3}
+  profilPicture: {fileID: 21300000, guid: 4cdef18062ffc4042b248363ed530095, type: 3}
   fullMonsterImage: {fileID: 21300000, guid: a8b1d8d3d0d89104e979db5bcbe742fe, type: 3}
   side: 0
   owner: {fileID: 3352059483369707408}
@@ -78,3 +78,4 @@ MonoBehaviour:
   monsterHashTag:
   - Attaque
   - "D\xE9fense"
+  scoring: 1

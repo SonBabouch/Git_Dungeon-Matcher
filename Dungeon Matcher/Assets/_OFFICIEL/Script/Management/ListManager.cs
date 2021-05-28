@@ -45,11 +45,18 @@ namespace Management
         public IEnumerator EndAnimation()
         {
             popButton.SetActive(false);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             for (int i = 0; i < MenuManager.Instance.listManager.listPrefab.Count; i++)
             {
                 Destroy(MenuManager.Instance.listManager.listPrefab[i]);
             }
+
+            float value = 1f;
+
+            StartCoroutine(MenuManager.Instance.canvasManager.ScreenFade(value, MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat));
+            StartCoroutine(MenuManager.Instance.canvasManager.TextFade(value, MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText));
+
+
             MenuManager.Instance.listManager.listPrefab.Clear();
             MenuManager.Instance.matchManager.matchList.Clear();
             MenuManager.Instance.listManager.listCurrentSize = 0;

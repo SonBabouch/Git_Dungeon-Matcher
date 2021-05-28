@@ -28,6 +28,7 @@ public class CombatProfilList : MonoBehaviour
     public GameObject PPParent;
     public GameObject HeartParent;
     public GameObject sparkles;
+    public GameObject bonusText;
 
     public bool isClaim = false;
 
@@ -60,7 +61,28 @@ public class CombatProfilList : MonoBehaviour
         PPParent.GetComponent<Tweener>().TweenPositionTo(ppTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep,true);
         HeartParent.GetComponent<Tweener>().TweenPositionTo(heartTweenPosition.transform.localPosition, 1f, Easings.Ease.SmootherStep, true);
         
-        yield return new WaitForSeconds(1f);
+        //Donner Le Bonus
+        //Animation Bonus
+        if(MenuManager.Instance.listManager.currentTest <1)
+        {
+            yield return new WaitForSeconds(1f);
+            bonusText.SetActive(true);
+            bonusText.GetComponent<TextMeshProUGUI>().text = "BONUS :  " + ((MenuManager.Instance.listManager.currentTest - 1) * 5).ToString();
+
+            for (int i = 0; i < (MenuManager.Instance.listManager.currentTest - 1) * 3; i++)
+            {
+                chanceClaim++;
+                chanceDrop.text = chanceClaim.ToString() + " %";
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        if(trueChanceClaim == 0)
+        {
+            chanceDrop.text = "0 %";
+        }
 
         //Increase Value + Spawn Heart
         #region Value
@@ -144,6 +166,7 @@ public class CombatProfilList : MonoBehaviour
                  monsterContainer.GetComponent<MonsterToken>().scoring++;
             }
             MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
+            MenuManager.Instance.canvasManager.bagCanvas.SortBag();
         }
         else
         {
@@ -152,7 +175,8 @@ public class CombatProfilList : MonoBehaviour
             {
                 monsterContainer.GetComponent<MonsterToken>().isGet = true;
                 MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
-                MenuManager.Instance.playerLevel.GiveExperience(5);
+                MenuManager.Instance.canvasManager.bagCanvas.SortBag();
+                PlayerLevel.currentExperience += 7;
                 //Dans le cas ou ca se passe bien.
                 claimFeedback.SetActive(true);
                 Vector3 tweenVector = new Vector3(1f, 1f, 1f);

@@ -67,7 +67,7 @@ namespace Management
             }
         }
 
-        private IEnumerator ScreenFade(float value, GameObject GO)
+        public IEnumerator ScreenFade(float value, GameObject GO)
         {
             Image image = GO.GetComponent<Image>();
             if(image.color.a > 0)
@@ -79,9 +79,26 @@ namespace Management
             }
             else
             {
-                value = 1;
+
                 GO.SetActive(false);
             }    
+        }
+
+        public IEnumerator TextFade(float value, GameObject GO)
+        {
+            TextMeshProUGUI text = GO.GetComponent<TextMeshProUGUI>();
+            if (text.color.a > 0)
+            {
+                text.color = new Vector4(text.color.r, text.color.g, text.color.b, value);
+                yield return new WaitForSeconds(0.1f);
+                value -= 0.1f;
+                StartCoroutine(TextFade(value, GO));
+            }
+            else 
+            { 
+            
+                GO.SetActive(false);
+            }
         }
         #endregion
 

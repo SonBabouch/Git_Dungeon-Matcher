@@ -56,6 +56,67 @@ public class BagCanvasManager : MonoBehaviour
         }
 
         MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
+        SortBag();
+    }
+
+    public void SortBag()
+    {
+        int currentPosition = 0;
+
+        for (int i = 0; i < bagButtonList.Count; i++)
+        {
+            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().isGet && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
+            {
+                bagButtonList[i].transform.SetSiblingIndex(currentPosition);
+                currentPosition++;
+            }
+        }
+
+        for (int i = 0; i < bagButtonList.Count; i++)
+        {
+            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().isGet && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            {
+                bagButtonList[i].transform.SetSiblingIndex(currentPosition);
+                currentPosition++;
+            }
+        }
+
+        for (int i = 0; i < bagButtonList.Count; i++)
+        {
+            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
+            {
+                bagButtonList[i].transform.SetSiblingIndex(currentPosition);
+                currentPosition++;
+            }
+        }
+
+        for (int i = 0; i < bagButtonList.Count; i++)
+        {
+            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            {
+                bagButtonList[i].transform.SetSiblingIndex(currentPosition);
+                currentPosition++;
+            }
+        }
+
+        for (int i = 0; i < bagButtonList.Count; i++)
+        {
+            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
+            {
+                bagButtonList[i].transform.SetSiblingIndex(currentPosition);
+                currentPosition++;
+            }
+        }
+
+        for (int i = 0; i < bagButtonList.Count; i++)
+        {
+            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            {
+                bagButtonList[i].transform.SetSiblingIndex(currentPosition);
+                currentPosition++;
+            }
+        }
+
     }
 
 

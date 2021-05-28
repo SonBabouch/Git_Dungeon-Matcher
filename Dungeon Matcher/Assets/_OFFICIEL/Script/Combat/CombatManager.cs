@@ -38,6 +38,18 @@ public class CombatManager : MonoBehaviour
 
     public TextMeshProUGUI attackDetails;
 
+    [Header("PlayerDeath")]
+    public GameObject blackScreen;
+    public GameObject breakingHeart;
+    public GameObject conseillere;
+    public GameObject initialPosition;
+    public GameObject tweenPosition;
+    private string currentText;
+    [SerializeField] private string MessageToTell;
+    public TextMeshProUGUI bubbleText;
+    public GameObject bubble;
+    public GameObject skipButton;
+
     [Header("Alerte")]
     [SerializeField] private GameObject alerteText;
     private void Awake()
@@ -51,7 +63,6 @@ public class CombatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
 
@@ -100,17 +111,168 @@ public class CombatManager : MonoBehaviour
             RunningTimer();
             ButtonIndex();
             UpdateHealthPoint();
+
+            if(Player.Instance.health >= Player.Instance.maxHealth)
+            {
+                PlayerDeath();
+            }
         }
     }
+
+    public void PlayerDeath()
+    {
+        inCombat = false;
+        StartCoroutine(PlayerDeathEnum());
+    }
+
+    public IEnumerator PlayerDeathEnum()
+    {
+        //Bloquer les Compétences/
+        isCombatEnded = true;
+        Player.Instance.canAttack = false;
+        Enemy.Instance.canAttack = false;
+        ConversationManager.Instance.canAttack = false;
+        ResetBools();
+
+        float maxWaitingTime = 0f;
+
+        //Tween Les message du Player;
+        for (int i = 0; i < ConversationManager.Instance.allMsg.Length; i++)
+        {
+            if (ConversationManager.Instance.allMsg[i] != null)
+            {
+                if (ConversationManager.Instance.allMsg[i].GetComponent<MessageBehaviour>().teamMsg == MessageBehaviour.team.Player)
+                {
+                    float currentWaitingTime = Random.Range(1f, 2f);
+                    ConversationManager.Instance.allMsg[i].GetComponent<Tweener>().TweenPositionTo(ConversationManager.Instance.tweenPositionPlayer.transform.localPosition, currentWaitingTime, Easings.Ease.SmoothStep, true);
+                    Vector3 rotationVector = new Vector3(0, 0, Random.Range(-10f,10f));
+                    ConversationManager.Instance.allMsg[i].GetComponent<Tweener>().TweenEulerTo(rotationVector,0.2f,Easings.Ease.SmoothStep,true);
+
+                    if (maxWaitingTime == 0)
+                    {
+                        maxWaitingTime = currentWaitingTime;
+                    }
+                    
+                    if(currentWaitingTime >= maxWaitingTime)
+                    {
+                        maxWaitingTime = currentWaitingTime;
+                    }
+                }
+            }
+        }
+
+        //Tween Les message du Enemy;
+        for (int i = 0; i < ConversationManager.Instance.allMsg.Length; i++)
+        {
+            if (ConversationManager.Instance.allMsg[i] != null)
+            {
+                if (ConversationManager.Instance.allMsg[i].GetComponent<MessageBehaviour>().teamMsg == MessageBehaviour.team.Enemy)
+                {
+                    float currentWaitingTime = Random.Range(1f, 2f);
+                    ConversationManager.Instance.allMsg[i].GetComponent<Tweener>().TweenPositionTo(ConversationManager.Instance.tweenPositionPlayer.transform.localPosition, currentWaitingTime, Easings.Ease.SmoothStep, true);
+                    Vector3 rotationVector = new Vector3(0, 0, Random.Range(-10f, 10f));
+                    ConversationManager.Instance.allMsg[i].GetComponent<Tweener>().TweenEulerTo(rotationVector, 0.2f, Easings.Ease.SmoothStep, true);
+
+
+                    if (currentWaitingTime >= maxWaitingTime)
+                    {
+                        maxWaitingTime = currentWaitingTime;
+                    }
+                }
+            }
+        }
+
+        yield return new WaitForSeconds(maxWaitingTime);        //Tous les messages sont tombés
+
+        //SetActive l'écran noir
+        blackScreen.SetActive(true);
+        yield return new WaitForSeconds(0.75f);
+        breakingHeart.SetActive(true);
+        yield return new WaitForSeconds(4.5f);
+        conseillere.GetComponent<Tweener>().TweenPositionTo(tweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
+        bubble.SetActive(true);
+        Vector3 scaleVector = new Vector3(1f, 1f, 1f);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector,0.5f,Easings.Ease.SmoothStep);
+        yield return new WaitForSeconds(0.6f);
+        StartCoroutine(AffichageMessageEnum(0.05f, MessageToTell));
+        yield return new WaitForSeconds(5.5f);
+        //popButton to skip;
+        skipButton.SetActive(true);
+    }
+
+    public void PlayerDeathGoToMenu()
+    {
+        StartCoroutine(PlayerDeathGoToMenuEnum());
+    }
+
+    public IEnumerator PlayerDeathGoToMenuEnum()
+    {
+        skipButton.SetActive(false);
+        Debug.Log("Here");
+
+        //Reset Combat
+        CombatManager.Instance.ResetBools();
+        Player.Instance.playerSkills.Clear();
+        Enemy.Instance.enemySkills.Clear();
+        ConversationManager.Instance.emojis.Clear();
+        Player.Instance.lastPlayerCompetence = null;
+        Enemy.Instance.lastEnemyCompetence = null;
+
+        //Destructions des Messages;
+        for (int i = 0; i < ConversationManager.Instance.allMsg.Length; i++)
+        {
+            if (ConversationManager.Instance.allMsg[i] != null)
+            {
+                Destroy(ConversationManager.Instance.allMsg[i].gameObject);
+                ConversationManager.Instance.allMsg[i] = null;
+            }
+        }
+
+        MenuTransitionCombat.Instance.storedValue.Clear();
+        Enemy.Instance.currentMonster = null;
+        Enemy.Instance.enemyMonsters.Clear();
+
+        MenuTransitionCombat.Instance.TransitionSlideIn();
+        yield return new WaitForSeconds(1f);
+        
+        //Reset les textes etc.
+        conseillere.transform.localPosition = initialPosition.transform.localPosition;
+        bubble.transform.localScale = new Vector3(0, 0, 0);
+        bubbleText.text = "";
+        currentText = "";
+        blackScreen.SetActive(false);
+        breakingHeart.SetActive(false);
+
+       
+        ManagerManager.Instance.menuManager.SetActive(true);
+        MenuTransitionCombat.Instance.startCombatButton.SetActive(false);
+        Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.SetActive(true);
+        MenuTransitionCombat.Instance.TransitionSlideOut();
+        ManagerManager.Instance.combatManager.SetActive(false);
+
+
+        //Mettre la transition sur Transition Menu.
+        MenuTransitionCombat.Instance.EndPlayerDeath();
+    }
+
+    public IEnumerator AffichageMessageEnum(float delay, string fullText)
+    {
+        for (int i = 0; i < fullText.Length; i++)
+        {
+            currentText = fullText.Substring(0, i);
+            bubbleText.text = currentText;
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
 
     public void CharacterSkillInitialisation()
     {
         Player.Instance.InitializePlayer();
-        
         Enemy.Instance.InitializeMonster();
         Enemy.Instance.SetEnemyHandAndDraw();
-        
     }
+
     public IEnumerator PlayerEnergyGenerator()
     {
         yield return new WaitForSeconds(0.1f);
@@ -323,12 +485,10 @@ public class CombatManager : MonoBehaviour
     {
         ConversationManager.Instance.canAttack = false;
         Enemy.Instance.canAttack = false;
+        Player.Instance.canAttack = false;
         isCombatEnded = false;
         MenuTransitionCombat.Instance.numberOfBattle++;
         MenuTransitionCombat.Instance.ShowCombatDetails(Enemy.Instance.health);
-
-        
-        
     }
 
     public void ContinueCombat()
@@ -362,7 +522,6 @@ public class CombatManager : MonoBehaviour
 
     public void ResetBools()
     {
-        
         Player.Instance.isSkillUsed = false;
         Player.Instance.isBurn = false;
         Player.Instance.isCurse = false;
@@ -383,7 +542,6 @@ public class CombatManager : MonoBehaviour
         Enemy.Instance.isAccelerated = false;
         Enemy.Instance.isSlowed = false;
     }
-
 
     public IEnumerator AlerteMessage(int timer)
     {
@@ -496,10 +654,10 @@ public class CombatManager : MonoBehaviour
             energyCostText[2].text =  Player.Instance.playerHand[2].trueEnergyCost.ToString();
             energyCostText[3].text =  Player.Instance.playerHand[3].trueEnergyCost.ToString();
 
-            energyCostText[0].color = Color.black;
-            energyCostText[1].color = Color.black;
-            energyCostText[2].color = Color.black;
-            energyCostText[3].color = Color.black;
+            energyCostText[0].color = Color.white;
+            energyCostText[1].color = Color.white;
+            energyCostText[2].color = Color.white;
+            energyCostText[3].color = Color.white;
         }
 
         damageText[0].text = Player.Instance.playerHand[0].skillName;
@@ -791,9 +949,6 @@ public class CombatManager : MonoBehaviour
                 selectedSkill = null;
                 UpdateDescription();
             }
-               
-
-            
         }
     }
 

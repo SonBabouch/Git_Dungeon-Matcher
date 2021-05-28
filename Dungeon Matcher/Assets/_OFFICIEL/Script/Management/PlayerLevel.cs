@@ -44,5 +44,6 @@ public class PlayerLevel : MonoBehaviour
             //Permet de Update le Visuel et l'état des monstres dans le Jeu
             Management.MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
         }
+      Management.MenuManager.Instance.canvasManager.bagCanvas.SortBag();
     }
 }

@@ -201,7 +201,6 @@ namespace Management
         //A activer quand le bouton match est préssé.
         public void Match(bool isSuperLike)
         {
-
             if (isSuperLike)
             {   
                 if(EnergyManager.superlikeCount > 0 && MenuManager.Instance.listManager.listCurrentSize < MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManager.Instance.blockAction && monsterSpawned.Count != 0)
@@ -334,8 +333,6 @@ namespace Management
                 }
             }
         }
-
-      
         
         //A activer quand le bouton dislike est préssé.
         public void Dislike()
@@ -347,9 +344,7 @@ namespace Management
                     MenuManager.Instance.canvasManager.matchCanvas.ThereIsARare = false;
                 }
 
-
                 monsterSpawned.Remove(profilPresented);
-                MenuManager.Instance.canvasManager.matchCanvas.matchFeedback.SpawnDislikeFeedback();
 
                 //pour eviter la null reference d'index quand il n'y a plus de profils.
                 if (monsterSpawned.Count == 0)

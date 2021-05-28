@@ -21,6 +21,9 @@ public class ProfilBehaviour : MonoBehaviour
 
     public Button superlikeButton;
 
+    public GameObject yesTampon;
+    public GameObject nopeTampon;
+
     private void Start()
     {
         rectTrans = gameObject.GetComponent<RectTransform>();
@@ -104,7 +107,7 @@ public class ProfilBehaviour : MonoBehaviour
         {
             for (int i = 0; i < lenght; i++)
             {
-                Vector3 translate = new Vector3(40f, 0, 1);
+                Vector3 translate = new Vector3(60f, 0, 1);
                 gameObject.transform.Translate(translate);
                 yield return null;
             }

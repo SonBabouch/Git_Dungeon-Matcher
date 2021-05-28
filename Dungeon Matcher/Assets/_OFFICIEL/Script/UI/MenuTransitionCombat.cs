@@ -11,7 +11,11 @@ public class MenuTransitionCombat : MonoBehaviour
     #region transitionCombat
     [SerializeField] private GameObject detailsGO;
     [SerializeField] private Image leaderMonster;
+    [SerializeField] private Image leaderMonsterBG;
     [SerializeField] private Image enemyMonster;
+    [SerializeField] private Image enemyMonsterBG;
+    [SerializeField] private GameObject VS;
+    [SerializeField] private GameObject thunder;
     [SerializeField] private GameObject button;
     
 
@@ -111,6 +115,48 @@ public class MenuTransitionCombat : MonoBehaviour
 
     }
 
+    public void EndPlayerDeath()
+    {
+        StartCoroutine(EndPlayerDeathEnum());
+    }
+
+    public IEnumerator EndPlayerDeathEnum()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Start");
+        Management.MenuManager.Instance.blockAction = true;
+        //Faire le Resultat des monstres;
+
+        for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
+        {
+            
+            
+            Vector3 scaleVector = new Vector3 (1, 1, 1);
+            Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().noClaimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+            Debug.Log("i");
+            
+        }
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
+        {
+            Destroy(Management.MenuManager.Instance.listManager.listPrefab[i].gameObject);
+        }
+
+        Management.MenuManager.Instance.listManager.listPrefab.Clear();
+        Management.MenuManager.Instance.listManager.listCurrentSize = 0;
+        Management.MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+        Management.MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+
+
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Finish");
+        StartCoroutine(Management.MenuManager.Instance.canvasManager.ScreenFade(1f, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat));
+        StartCoroutine(Management.MenuManager.Instance.canvasManager.TextFade(1f, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText));
+        yield return new WaitForSeconds(1f);
+        Management.MenuManager.Instance.blockAction = false;
+    }
+
     //2- Affichage des monstres si il reste des combats à faire.
     public IEnumerator AnnonceMonstreEnum(Sprite leaderMonsterAsset, Sprite enemyMonsterAsset)
     {
@@ -118,10 +164,16 @@ public class MenuTransitionCombat : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         detailsGO.SetActive(true);
         leaderMonster.sprite = leaderMonsterAsset;
+        leaderMonsterBG.sprite = leaderMonsterAsset;
         enemyMonster.sprite = enemyMonsterAsset;
+        enemyMonsterBG.sprite = enemyMonsterAsset;
         yield return new WaitForSeconds(0.1f);
         topSlider0.GetComponent<Tweener>().TweenPositionTo(topSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
         botSlider0.GetComponent<Tweener>().TweenPositionTo(botSliderInitialPosition, 1f, Easings.Ease.SmoothStep, true);
+        yield return new WaitForSeconds(1f);
+        thunder.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        VS.SetActive(true);
         button.SetActive(true);
     }
 
@@ -306,7 +358,7 @@ public class MenuTransitionCombat : MonoBehaviour
         ManagerManager.Instance.menuManager.SetActive(true);
         yield return new WaitForSeconds(1f);
         startCombatButton.SetActive(false);
-
+        Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.SetActive(true);
         for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
         {
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().chanceClaim = storedValue[i];
@@ -317,7 +369,7 @@ public class MenuTransitionCombat : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
         numberOfBattle = 0;
-
+        
         Enemy.Instance.health = Enemy.Instance.minHealth;
         Management.MenuManager.Instance.listManager.TestClaim();
     }
