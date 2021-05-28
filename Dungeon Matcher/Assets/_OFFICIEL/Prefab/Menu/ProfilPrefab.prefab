@@ -701,9 +701,10 @@ MonoBehaviour:
   level: {fileID: 6401598266474647340}
   certification: {fileID: 8386600967784260294}
   rectTrans: {fileID: 720733492877758810}
-  superlikeButton: {fileID: 0}
+  superlikeButton: {fileID: 4418911171647088808}
   yesTampon: {fileID: 1538315111556160105}
   nopeTampon: {fileID: 8511780770842798485}
+  rareSparkles: {fileID: 5258261532324034795}
 --- !u!1 &4753265380193660643
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +919,7 @@ Animator:
   m_GameObject: {fileID: 5258261532324034795}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb07831c2bb11a646840b3275ca721ae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
