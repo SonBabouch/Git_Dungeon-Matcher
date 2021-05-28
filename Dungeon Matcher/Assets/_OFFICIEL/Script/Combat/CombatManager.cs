@@ -463,7 +463,6 @@ public class CombatManager : MonoBehaviour
         Enemy.Instance.isSlowed = false;
     }
 
-
     public IEnumerator AlerteMessage(int timer)
     {
         alerteText.GetComponent<TextMeshProUGUI>().text = "Il reste " + timer.ToString() + " secondes !";
