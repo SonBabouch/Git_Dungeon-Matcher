@@ -92,8 +92,8 @@ public class Enemy : MonoBehaviour
         if (CombatManager.Instance.inCombat)
         {
             SkillFeedback.Instance.EnemiDefenseFeedback();
+            SkillFeedback.Instance.EnemiAccelerateDecelerateFeedback();
         }
-        SkillFeedback.Instance.EnemiAccelerateDecelerateFeedback();
     }
     public void InitializeMonster()
     {

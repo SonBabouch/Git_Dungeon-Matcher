@@ -165,7 +165,6 @@ public class Player : MonoBehaviour
         Player.Instance.lastPlayerCompetence = skillToCharge;
         ConversationManager.Instance.SendMessagesPlayer(skillToCharge,0);
         yield return null;
-
     }
 
     public IEnumerator EndPlayerChargeAttack(Skill skillToCharge)
