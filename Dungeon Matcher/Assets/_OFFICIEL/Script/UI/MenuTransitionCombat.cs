@@ -115,6 +115,48 @@ public class MenuTransitionCombat : MonoBehaviour
 
     }
 
+    public void EndPlayerDeath()
+    {
+        StartCoroutine(EndPlayerDeathEnum());
+    }
+
+    public IEnumerator EndPlayerDeathEnum()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("Start");
+        Management.MenuManager.Instance.blockAction = true;
+        //Faire le Resultat des monstres;
+
+        for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
+        {
+            
+            
+            Vector3 scaleVector = new Vector3 (1, 1, 1);
+            Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().noClaimFeedback.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+            Debug.Log("i");
+            
+        }
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
+        {
+            Destroy(Management.MenuManager.Instance.listManager.listPrefab[i].gameObject);
+        }
+
+        Management.MenuManager.Instance.listManager.listPrefab.Clear();
+        Management.MenuManager.Instance.listManager.listCurrentSize = 0;
+        Management.MenuManager.Instance.canvasManager.listCanvas.UpdateList();
+        Management.MenuManager.Instance.canvasManager.listCanvas.UpdateCombatButton();
+
+
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Finish");
+        StartCoroutine(Management.MenuManager.Instance.canvasManager.ScreenFade(1f, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat));
+        StartCoroutine(Management.MenuManager.Instance.canvasManager.TextFade(1f, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText));
+        yield return new WaitForSeconds(1f);
+        Management.MenuManager.Instance.blockAction = false;
+    }
+
     //2- Affichage des monstres si il reste des combats à faire.
     public IEnumerator AnnonceMonstreEnum(Sprite leaderMonsterAsset, Sprite enemyMonsterAsset)
     {

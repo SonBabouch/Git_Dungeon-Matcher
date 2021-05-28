@@ -48,6 +48,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private string MessageToTell;
     public TextMeshProUGUI bubbleText;
     public GameObject bubble;
+    public GameObject skipButton;
 
     [Header("Alerte")]
     [SerializeField] private GameObject alerteText;
@@ -192,10 +193,66 @@ public class CombatManager : MonoBehaviour
         bubble.SetActive(true);
         Vector3 scaleVector = new Vector3(1f, 1f, 1f);
         bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector,0.5f,Easings.Ease.SmoothStep);
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(AffichageMessageEnum(0.03f, MessageToTell));
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(0.6f);
+        StartCoroutine(AffichageMessageEnum(0.05f, MessageToTell));
+        yield return new WaitForSeconds(5.5f);
         //popButton to skip;
+        skipButton.SetActive(true);
+    }
+
+    public void PlayerDeathGoToMenu()
+    {
+        StartCoroutine(PlayerDeathGoToMenuEnum());
+    }
+
+    public IEnumerator PlayerDeathGoToMenuEnum()
+    {
+        skipButton.SetActive(false);
+        Debug.Log("Here");
+
+        //Reset Combat
+        CombatManager.Instance.ResetBools();
+        Player.Instance.playerSkills.Clear();
+        Enemy.Instance.enemySkills.Clear();
+        ConversationManager.Instance.emojis.Clear();
+        Player.Instance.lastPlayerCompetence = null;
+        Enemy.Instance.lastEnemyCompetence = null;
+
+        //Destructions des Messages;
+        for (int i = 0; i < ConversationManager.Instance.allMsg.Length; i++)
+        {
+            if (ConversationManager.Instance.allMsg[i] != null)
+            {
+                Destroy(ConversationManager.Instance.allMsg[i].gameObject);
+                ConversationManager.Instance.allMsg[i] = null;
+            }
+        }
+
+        MenuTransitionCombat.Instance.storedValue.Clear();
+        Enemy.Instance.currentMonster = null;
+        Enemy.Instance.enemyMonsters.Clear();
+
+        MenuTransitionCombat.Instance.TransitionSlideIn();
+        yield return new WaitForSeconds(1f);
+        
+        //Reset les textes etc.
+        conseillere.transform.localPosition = initialPosition.transform.localPosition;
+        bubble.transform.localScale = new Vector3(0, 0, 0);
+        bubbleText.text = "";
+        currentText = "";
+        blackScreen.SetActive(false);
+        breakingHeart.SetActive(false);
+
+       
+        ManagerManager.Instance.menuManager.SetActive(true);
+        MenuTransitionCombat.Instance.startCombatButton.SetActive(false);
+        Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.SetActive(true);
+        MenuTransitionCombat.Instance.TransitionSlideOut();
+        ManagerManager.Instance.combatManager.SetActive(false);
+
+
+        //Mettre la transition sur Transition Menu.
+        MenuTransitionCombat.Instance.EndPlayerDeath();
     }
 
     public IEnumerator AffichageMessageEnum(float delay, string fullText)

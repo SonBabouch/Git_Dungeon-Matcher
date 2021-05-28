@@ -40,10 +40,14 @@ namespace Management
         {
             if(MenuManager.Instance.matchManager.matchList.Count == 0)
             {
+                alerteCombat.SetActive(true);
+                alerteCombatText.enabled = true;
                 alerteCombatText.text = "Va matcher un Monstre.";
             }
             else if(MenuManager.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
             {
+                alerteCombat.SetActive(true);
+                alerteCombatText.enabled = true;
                 alerteCombatText.text = "Ton équipe n'est pas complète.";
             }
 
