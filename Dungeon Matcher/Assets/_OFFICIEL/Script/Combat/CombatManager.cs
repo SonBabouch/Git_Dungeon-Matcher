@@ -184,7 +184,8 @@ public class CombatManager : MonoBehaviour
 
         yield return new WaitForSeconds(maxWaitingTime);        //Tous les messages sont tombés
 
-        //SetActive l'écran noir
+        //SetActive l'écran noir & musique de défaite se met en route
+        FightSoundManager.Instance.deathScreen = true;
         blackScreen.SetActive(true);
         yield return new WaitForSeconds(0.75f);
         breakingHeart.SetActive(true);
@@ -242,8 +243,9 @@ public class CombatManager : MonoBehaviour
         currentText = "";
         blackScreen.SetActive(false);
         breakingHeart.SetActive(false);
+        FightSoundManager.Instance.deathScreen = false;
 
-       
+
         ManagerManager.Instance.menuManager.SetActive(true);
         MenuTransitionCombat.Instance.startCombatButton.SetActive(false);
         Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.SetActive(true);

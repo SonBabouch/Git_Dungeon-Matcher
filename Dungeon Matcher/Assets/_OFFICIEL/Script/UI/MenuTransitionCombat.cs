@@ -359,6 +359,7 @@ public class MenuTransitionCombat : MonoBehaviour
         yield return new WaitForSeconds(1f);
         startCombatButton.SetActive(false);
         Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.SetActive(true);
+        MatchSoundManager.Instance.resultsScreen = true;
         for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
         {
             Management.MenuManager.Instance.listManager.listPrefab[i].GetComponent<CombatProfilList>().chanceClaim = storedValue[i];

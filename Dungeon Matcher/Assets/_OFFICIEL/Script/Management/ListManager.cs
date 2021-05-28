@@ -53,6 +53,7 @@ namespace Management
 
             float value = 1f;
 
+            MatchSoundManager.Instance.resultsScreen = false;
             StartCoroutine(MenuManager.Instance.canvasManager.ScreenFade(value, MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat));
             StartCoroutine(MenuManager.Instance.canvasManager.TextFade(value, MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText));
 

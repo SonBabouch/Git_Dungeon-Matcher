@@ -8,10 +8,14 @@ public class FightSoundManager : MonoBehaviour
     public AudioSource audioSourceA;
     public AudioSource audioSourceB;
     public AudioSource audioSourceC;
+    public AudioSource fightOSTSource;
     public List<AudioClip> audioClips;
+
+    public bool deathScreen;
 
     public void Awake()
     {
+        deathScreen = false;
         if (Instance == null)
         {
             Instance = this;
@@ -23,21 +27,33 @@ public class FightSoundManager : MonoBehaviour
         }
     }
 
-    /*public void Update()
+    public void Start()
     {
         if (OnOffButton.Instance.isOn)
         {
-            audioSourceA.mute = false;
-            audioSourceB.mute = false;
-            audioSourceC.mute = false;
+            audioSourceA.enabled = true;
+            audioSourceB.enabled = true;
+            audioSourceC.enabled = true;
         }
         else
         {
-            audioSourceA.mute = true;
-            audioSourceB.mute = true;
-            audioSourceC.mute = false;
+            audioSourceA.enabled = false;
+            audioSourceB.enabled = false;
+            audioSourceC.enabled = false;
         }
-    }*/
+    }
+
+    public void Update()
+    {
+        if (deathScreen)
+        {
+            fightOSTSource.mute = true;
+        }
+        else
+        {
+            fightOSTSource.mute = false;
+        }
+    }
 
     public void PlayClips(int i)
     {

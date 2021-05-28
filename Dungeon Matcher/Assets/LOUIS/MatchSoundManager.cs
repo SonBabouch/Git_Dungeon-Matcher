@@ -7,10 +7,13 @@ public class MatchSoundManager : MonoBehaviour
     public static MatchSoundManager Instance;
     public AudioSource audioSourceA;
     public AudioSource audioSourceB;
+    public AudioSource menuOSTSource;
     public List<AudioClip> audioClips;
+    public bool resultsScreen;
     
     private void Awake()
     {
+        resultsScreen = false;
         if (Instance == null)
         {
             Instance = this;
@@ -22,8 +25,16 @@ public class MatchSoundManager : MonoBehaviour
         }
     }
 
-    /*public void Update()
+    public void Update()
     {
+        if (resultsScreen)
+        {
+            menuOSTSource.mute = true;
+        }
+        else
+        {
+            menuOSTSource.mute = false;
+        }
         if (OnOffButton.Instance.isOn)
         {
             audioSourceA.mute = false;
@@ -34,7 +45,7 @@ public class MatchSoundManager : MonoBehaviour
             audioSourceA.mute = true;
             audioSourceB.mute = true;
         }
-    }*/
+    }
 
     public void PlayClips(int i)
     {
