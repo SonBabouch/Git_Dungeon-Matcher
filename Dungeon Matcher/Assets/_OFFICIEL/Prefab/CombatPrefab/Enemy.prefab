@@ -278,7 +278,7 @@ MonoBehaviour:
   - {fileID: 0}
   enemyIndex: 0
   lastEnemyCompetence: {fileID: 0}
-  enemyChargingTime: 0
+  enemyChargingTime: 3
   isCramp: 0
   isCharging: 0
   isDefending: 0
@@ -312,6 +312,8 @@ MonoBehaviour:
   useHeal: 0
   useDefenseMove: 0
   enemyUi: {fileID: 3052418605312078779}
+  enemiHealthBar: {fileID: 3052418606536704004}
+  enemiUsedBreak: 0
 --- !u!114 &3052418605312078779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,14 +634,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: b0134c46bb31c474081cf0f4d7dfb1f6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: edf5fff65d5069c4b83004a7fa16c06e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66e092f40e8da744d8ee157ebb7acbb7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

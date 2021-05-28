@@ -70,6 +70,9 @@ public class Enemy : MonoBehaviour
     public bool useDefenseMove;
 
     public EnemyUi enemyUi;
+    public GameObject enemiHealthBar;
+
+    public bool enemiUsedBreak;
 
     private void Awake()
     {
@@ -90,6 +93,7 @@ public class Enemy : MonoBehaviour
         {
             SkillFeedback.Instance.EnemiDefenseFeedback();
         }
+        SkillFeedback.Instance.EnemiAccelerateDecelerateFeedback();
     }
     public void InitializeMonster()
     {
@@ -148,10 +152,9 @@ public class Enemy : MonoBehaviour
         {
             ConversationManager.Instance.UpdateLastMessageState(skillToCharge);
         }
-
         if (!skillToCharge.comesFromCurse)
         {
-            if (!CombatManager.Instance.isCombatEnded)
+            if (!CombatManager.Instance.isCombatEnded && !Player.Instance.playerUsedBreak)
             {
                 skillToCharge.MonsterEffect();
             }
@@ -160,7 +163,9 @@ public class Enemy : MonoBehaviour
         {
             skillToCharge.comesFromCurse = false;
         }
+        Player.Instance.playerUsedBreak = false;
         Enemy.Instance.isCharging = false;
+        yield return null;
     }
 
     #region Shuffle
@@ -223,7 +228,6 @@ public class Enemy : MonoBehaviour
     int averageValue;
     public void EnemyBehavior()
     {
-
         if(energy == maxEnergy)
         {
             StartCoroutine(enemyHasMaxEnergyBehavior());
@@ -240,6 +244,17 @@ public class Enemy : MonoBehaviour
             UseSkill();
             yield return new WaitForSeconds(1f);
             ResetAllBools();
+            yield return new WaitForSeconds(0.1f);
+            EnemyBehavior();
+        }
+        else if (!canAttack)
+        {
+            yield return new WaitForSeconds(Enemy.Instance.enemyChargingTime);
+            CheckTypeOfSkillInHand();
+            UseSkill();
+            yield return new WaitForSeconds(1f);
+            ResetAllBools();
+            yield return new WaitForSeconds(0.1f);
             EnemyBehavior();
         }
     }
@@ -308,6 +323,18 @@ public class Enemy : MonoBehaviour
             if (chanceToLaunch <= 70)
             {
                 ChooseSkillToUSe(Skill.capacityType.Heal);
+                return;
+            }
+        }
+        #endregion
+
+        #region Defense
+        if (canUseDefense)
+        {
+            int chanceToLaunch = Random.Range(0, 101);
+            if (chanceToLaunch <= 70)
+            {
+                ChooseSkillToUSe(Skill.capacityType.Defense);
                 return;
             }
         }

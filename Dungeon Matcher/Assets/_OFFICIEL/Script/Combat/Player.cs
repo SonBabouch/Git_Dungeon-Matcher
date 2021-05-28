@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     public PlayerUI playerUi;
-
+    public GameObject playerHealthBar;
     
     public List<GameObject> allyMonsters;
     public List<Skill> playerSkills;
@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
     public float maxComboTime;
 
     public bool canAttack = true;
+
+    public bool playerUsedBreak;
 
     private void Awake()
     {
@@ -179,7 +181,7 @@ public class Player : MonoBehaviour
         if (!skillToCharge.comesFromCurse)
         {
 
-            if (!CombatManager.Instance.isCombatEnded)
+            if (!CombatManager.Instance.isCombatEnded && !Enemy.Instance.enemiUsedBreak)
             {
                 skillToCharge.PlayerEffect();
             }
@@ -189,6 +191,7 @@ public class Player : MonoBehaviour
         {
             skillToCharge.comesFromCurse = false;
         }
+        Enemy.Instance.enemiUsedBreak = false;
         Player.Instance.isCharging = false;
     }
 

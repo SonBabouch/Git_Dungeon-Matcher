@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class SkillFeedback : MonoBehaviour
 {
     public static SkillFeedback Instance;
-    [SerializeField] private Animator playerAnim;
-    //[SerializeField] private Animator enemiAnim;
+    
+    private Color32 green = new Color32(50, 202, 31, 255);
+    private Color32 red = new Color32(202, 50, 31, 255);
 
 
-    #region Player
+    #region Player statement
     [Header("Player Heal")] [Header("Player")]
     [SerializeField] private GameObject playerHeal;
 
@@ -28,8 +29,13 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Player Accelerate/Decelerate")]
     [SerializeField] private GameObject playerAccelerateDecelerate;
+    [SerializeField] private Animator playerAnim;
+
+    [Header("Player Break")]
+    [SerializeField] private GameObject playerBreak;
     #endregion
 
+    #region Enemi Statement
     [Header("Enemi Heal")] [Header("Enemi")]
     [SerializeField] private GameObject enemiHeal;
 
@@ -45,6 +51,13 @@ public class SkillFeedback : MonoBehaviour
     [SerializeField] private GameObject enemiGlowInitialPos;
     [SerializeField] private GameObject enemiGlowTweenPos;
 
+    [Header("Enemi Accelerate/Decelerate")]
+    [SerializeField] private GameObject enemiAccelerateDecelerate;
+    [SerializeField] private Animator enemiAnim;
+
+    [Header("Enemi Break")]
+    [SerializeField] private GameObject enemiBreak;
+    #endregion
 
     private void Awake()
     {
@@ -59,6 +72,7 @@ public class SkillFeedback : MonoBehaviour
         }
     }
 
+    #region Player methods
     public void PlayerDefenseFeedback()
     {
         if (Player.Instance.isDefending)
@@ -124,6 +138,30 @@ public class SkillFeedback : MonoBehaviour
 
     }
 
+    public IEnumerator PlayerAttackFeedBack()
+    {
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Player.Instance.playerHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+    }
+
+    public IEnumerator PlayerBreakFeedback()
+    {
+        enemiBreak.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        enemiBreak.SetActive(false);
+    }
+    #endregion
+
+    #region Enemi methods
     public IEnumerator EnemiHealFeedback(float numberOfDamage)
     {
         enemiHeal.SetActive(true);
@@ -157,6 +195,58 @@ public class SkillFeedback : MonoBehaviour
             enemiDefense.SetActive(false);
         }
     }
+
+    public void EnemiAccelerateDecelerateFeedback()
+    {
+        if (!Enemy.Instance.isAccelerated && !Enemy.Instance.isSlowed)
+        {
+            enemiAccelerateDecelerate.SetActive(false);
+            enemiAnim.SetBool("isAccelerated", false);
+            enemiAnim.SetBool("isSlowed", false);
+        }
+        else if (Enemy.Instance.isAccelerated && Enemy.Instance.isSlowed)
+        {
+            enemiAccelerateDecelerate.SetActive(false);
+            enemiAnim.SetBool("isAccelerated", false);
+            enemiAnim.SetBool("isSlowed", false);
+        }
+        if (Enemy.Instance.isAccelerated && !Enemy.Instance.isSlowed)
+        {
+            enemiAccelerateDecelerate.SetActive(true);
+            enemiAnim.SetBool("isAccelerated", true);
+            enemiAnim.SetBool("isSlowed", false);
+        }
+        if (Enemy.Instance.isSlowed && !Enemy.Instance.isAccelerated)
+        {
+            enemiAccelerateDecelerate.SetActive(true);
+            enemiAnim.SetBool("isSlowed", true);
+            enemiAnim.SetBool("isAccelerated", false);
+        }
+
+    }
+
+    public IEnumerator EnemiAttackFeedBack()
+    {
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", green);
+        yield return new WaitForSeconds(0.1f);
+        Enemy.Instance.enemiHealthBar.GetComponent<Image>().material.SetColor("Color_9DC95DD3", red);
+    }
+
+    public IEnumerator EnemiBreakFeedback()
+    {
+        playerBreak.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        playerBreak.SetActive(false);
+    }
+    #endregion
 
 
     public void EndCombatReset()

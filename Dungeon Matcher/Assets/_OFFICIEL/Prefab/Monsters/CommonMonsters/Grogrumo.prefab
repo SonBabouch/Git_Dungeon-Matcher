@@ -68,14 +68,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad4f4f1e1df0bf842a10638983b0cce5, type: 2}
   - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
   ennemySkills:
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
-  - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
   monsterHashTag:
   - "D\xE9fense"
   - Attaque

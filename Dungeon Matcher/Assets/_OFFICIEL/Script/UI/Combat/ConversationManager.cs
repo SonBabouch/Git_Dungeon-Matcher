@@ -178,7 +178,7 @@ public class ConversationManager : MonoBehaviour
         //Si un gros message va être instancier, on déplace de deux
         if (skillType.messageType == Skill.typeOfMessage.Big)
         {
-            Debug.Log("Double");
+            //Debug.Log("Double");
             //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
             for (int i = allMsg.Length - 3; i > 0; i--)
             {
@@ -439,11 +439,11 @@ public class ConversationManager : MonoBehaviour
         {
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
         }
-        else
-        {
-            //Mettre la couleur Cyan
-            skill.messageOwner.GetComponent<Image>().color = cyanColor;
-        }
+        //else
+        //{
+        //    //Mettre la couleur Cyan
+        //    skill.messageOwner.GetComponent<Image>().color = cyanColor;
+        //}
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
@@ -543,10 +543,10 @@ public class ConversationManager : MonoBehaviour
             skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
 
         }
-        else
-        {
-            skill.messageOwner.GetComponent<Image>().color = Color.red;
-        }
+        //else
+        //{
+        //    skill.messageOwner.GetComponent<Image>().color = Color.red;
+        //}
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;

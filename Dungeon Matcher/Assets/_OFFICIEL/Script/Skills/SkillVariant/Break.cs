@@ -28,13 +28,16 @@ public class Break : Skill
 
     public override void PlayerEffect()
     {
-        PlaySound();
-        Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
+
+        //Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
         if (Enemy.Instance.isCharging)
         {
             Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
             Enemy.Instance.StopCoroutine(Enemy.Instance.EndEnemyChargeAttack(Enemy.Instance.lastEnemyCompetence));
             Enemy.Instance.lastEnemyCompetence.messageType = typeOfMessage.Charging;
+            Player.Instance.playerUsedBreak = true;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerBreakFeedback());
+            PlaySound();
 
             if (!chargingAttack)
             {
@@ -60,8 +63,10 @@ public class Break : Skill
             Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
             Player.Instance.StopCoroutine(Player.Instance.EndPlayerChargeAttack(Player.Instance.lastPlayerCompetence));
             Player.Instance.lastPlayerCompetence.messageType = typeOfMessage.Charging;
-        PlaySound();
-        Player.Instance.StopCoroutine(Player.Instance.PlayerChargeAttack(Player.Instance.lastPlayerCompetence));
+            Enemy.Instance.enemiUsedBreak = true;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiBreakFeedback());
+            PlaySound();
+
 
             if (!chargingAttack)
             {
