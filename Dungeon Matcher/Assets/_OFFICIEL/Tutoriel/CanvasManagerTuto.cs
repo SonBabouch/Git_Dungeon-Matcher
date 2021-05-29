@@ -94,7 +94,7 @@ public class CanvasManagerTuto : MonoBehaviour
     //navigation
     public void GoToList()
     {
-        if(TutorielManager.Instance.currentIndex == 13)
+        if(TutorielManager.Instance.currentIndex == 16 || TutorielManager.Instance.currentIndex > 24)
         {
             if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
             {
@@ -114,11 +114,13 @@ public class CanvasManagerTuto : MonoBehaviour
                 //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
                 MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
             }
+
+            StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere(true));
         }
     }
     public void GoToMatch()
     {
-        if (TutorielManager.Instance.currentIndex == 13)
+        if (TutorielManager.Instance.currentIndex > 22)
         {
             if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
             {
@@ -163,8 +165,10 @@ public class CanvasManagerTuto : MonoBehaviour
     }
     public void GoToBag()
     {
-        if (TutorielManager.Instance.currentIndex == 13)
+        if (TutorielManager.Instance.currentIndex >= 22)
         {
+            Debug.Log("GoToBag");
+
             if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
             {
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
@@ -173,8 +177,11 @@ public class CanvasManagerTuto : MonoBehaviour
             //Faire le changement de Panel;
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
             MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
+
+            StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere(true));
         }
     }
+
     #endregion
 
     public IEnumerator NoMatchFeedback()

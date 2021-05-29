@@ -109,7 +109,7 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 if (percentage > 0)//Vers la droite
                 {
 
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 &&( TutorielManager.Instance.currentIndex != 7 || TutorielManager.Instance.currentIndex != 13))
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && (TutorielManager.Instance.currentIndex != 7 || TutorielManager.Instance.currentIndex != 13))
                     {
                         MenuManagerTuto.Instance.matchManager.Dislike();
                         MatchSoundManager.Instance.PlayClips(0);
@@ -135,7 +135,7 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 {
 
                     //print("Like");
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && TutorielManager.Instance.currentIndex == 7)
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && (TutorielManager.Instance.currentIndex == 7 || TutorielManager.Instance.currentIndex >=22))
                     {
                         MenuManagerTuto.Instance.matchManager.Match(false);
 

@@ -259,10 +259,140 @@ public class TextBulle : MonoBehaviour
                     TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(false);
                     break;
                 }
-
+            case 16:
+                if (!needToSkip)
+                {
+                    needToSkip = true;
+                    TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(false);
+                    StartCoroutine(GoOutConseillere());
+                    break;
+                }
+                else
+                {
+                    needToSkip = false;
+                    skipButton.onClick.AddListener(SkipMessage);
+                    skipButton.gameObject.SetActive(true);
+                    skipArrow.SetActive(true);
+                    skipText.gameObject.SetActive(true);
+                    StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                    break;
+                }
+            case 17:
+                skipButton.onClick.AddListener(SkipMessage);
+                StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                break;
+            case 18:
+                if (!needToSkip)
+                {
+                    TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(true);
+                    StartCoroutine(DropShadowList());
+                    needToSkip = true;
+                    break;
+                }
+                else
+                {
+                    StartCoroutine(FadeListShadow());
+                    needToSkip = false;
+                    break;
+                }
+            case 19:
+                skipButton.onClick.AddListener(SkipMessage);
+                StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                break;
+            case 20:
+                skipButton.onClick.AddListener(SkipMessage);
+                StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                break;
+            case 21:
+                skipButton.onClick.AddListener(SkipMessage);
+                StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                break;
+            case 22:
+                if (!needToSkip)
+                {
+                    needToSkip = true;
+                    StartCoroutine(GoOutConseillere());
+                    TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(false);
+                    break;
+                }
+                else
+                {
+                    needToSkip = false;
+                    skipButton.onClick.AddListener(SkipMessage);
+                    StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                    break;
+                }
+            case 23:
+                skipButton.onClick.AddListener(SkipMessage);
+                StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                break;
+            case 24:
+                if (!needToSkip)
+                {
+                    StartCoroutine(WaitInfoBubble());
+                    TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(true);
+                    StartCoroutine(DropShadowBag());
+                    needToSkip = true;
+                    break;
+                }
+                else
+                {
+                    needToSkip = false;
+                    StartCoroutine(FadeBagShadow());
+                    break;
+                }
+            case 25:
+                if (!needToSkip)
+                {
+                    TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(false);
+                    StartCoroutine(GoOutConseillere());
+                    needToSkip = true;
+                    break;
+                }
+                else
+                {
+                    needToSkip = false;
+                    skipText.gameObject.SetActive(true);
+                    StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                    break;
+                }
+            case 26:
+                StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                skipButton.onClick.AddListener(SkipMessage);
+                skipButton.gameObject.SetActive(true);
+                skipArrow.SetActive(true);
+                skipText.gameObject.SetActive(true);
+                break;
+            case 27:
+                if (!needToSkip)
+                {
+                    needToSkip = true;
+                    StartCoroutine(GoOutConseillere());
+                    TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(false);
+                    break;
+                }
+                else
+                {
+                    skipButton.onClick.AddListener(SkipMessage);
+                    StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+                    break;
+                }
+            case 28:
+                StartCoroutine(GoOutConseillere());
+                break;
             default:
                 break;
         }
+    }
+
+    public void AfterSuperlike()
+    {
+        StartCoroutine(GoInConseillere(false));
+        skipButton.onClick.AddListener(SkipMessage);
+        skipButton.gameObject.SetActive(true);
+        skipArrow.SetActive(true);
+        skipText.gameObject.SetActive(true);
+        StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
     }
 
     #region Card
@@ -419,10 +549,66 @@ public class TextBulle : MonoBehaviour
     public IEnumerator FadeGiveSuperlikeShadow()
     {
         StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(0.5f, TutorielManager.Instance.shadowMask.shadowSuperlikeGiveChild));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(GoOutConseillere());
     }
     #endregion
 
+    #region List
+    public IEnumerator DropShadowList()
+    {
+        skipButton.gameObject.SetActive(false);
+        skipArrow.SetActive(false);
+        skipText.gameObject.SetActive(false);
+        StartCoroutine(WaitInfoBubble());
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeIn(0f, TutorielManager.Instance.shadowMask.shadowListChild));
+    }
+
+    public IEnumerator FadeListShadow()
+    {
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(0.5f, TutorielManager.Instance.shadowMask.shadowListChild));
+        yield return new WaitForSeconds(1f);
+        Vector3 scaleVector = new Vector3(1, 1, 1);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+
+        yield return new WaitForSeconds(1f);
+        skipButton.gameObject.SetActive(true);
+        skipArrow.SetActive(true);
+        skipText.gameObject.SetActive(true);
+
+        StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+        skipButton.onClick.AddListener(SkipMessage);
+    }
+    #endregion
+
+    #region Bag
+    public IEnumerator DropShadowBag()
+    {
+        skipButton.gameObject.SetActive(false);
+        skipArrow.SetActive(false);
+        skipText.gameObject.SetActive(false);
+        StartCoroutine(WaitInfoBubble());
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeIn(0f, TutorielManager.Instance.shadowMask.shadowShowEquipeChild));
+    }
+    public IEnumerator FadeBagShadow()
+    {
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(0.5f, TutorielManager.Instance.shadowMask.shadowShowEquipeChild));
+        yield return new WaitForSeconds(1f);
+        Vector3 scaleVector = new Vector3(1, 1, 1);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+
+        yield return new WaitForSeconds(1f);
+        skipButton.gameObject.SetActive(true);
+        skipArrow.SetActive(true);
+        skipText.gameObject.SetActive(true);
+
+        StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+        skipButton.onClick.AddListener(SkipMessage);
+    }
+
+    #endregion
     public IEnumerator WaitInfoBubble()
     {
         bubbleText.text = "";

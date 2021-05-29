@@ -100,6 +100,11 @@ public class BagButtonBehaviourTuto : MonoBehaviour
         MenuManagerTuto.Instance.canvasManager.bagCanvas.UpdateEquipeButton();
         MenuManagerTuto.Instance.canvasManager.listCanvas.UpdateCombatButton();
         MenuManagerTuto.Instance.canvasManager.bagCanvas.RemoveCross();
+
+        if(MenuManagerTuto.Instance.bagManager.monsterTeam.Count == 2)
+        {
+            TutorielManager.Instance.textBulle.AfterSuperlike();
+        }
     }
 
     public void Selected()
