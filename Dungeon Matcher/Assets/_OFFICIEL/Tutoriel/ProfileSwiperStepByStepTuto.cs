@@ -109,12 +109,12 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 if (percentage > 0)//Vers la droite
                 {
 
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && TutorielManager.Instance.currentIndex != 6)
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 &&( TutorielManager.Instance.currentIndex != 7 || TutorielManager.Instance.currentIndex != 13))
                     {
                         MenuManagerTuto.Instance.matchManager.Dislike();
                         MatchSoundManager.Instance.PlayClips(0);
                     }
-                    else if(TutorielManager.Instance.currentIndex !=6 )
+                    else if(TutorielManager.Instance.currentIndex !=7)
                     {
                         Debug.Log("Can't Dislike");
                         StartCoroutine(MenuManagerTuto.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
@@ -135,29 +135,25 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 {
 
                     //print("Like");
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0)
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && TutorielManager.Instance.currentIndex == 7)
                     {
                         MenuManagerTuto.Instance.matchManager.Match(false);
 
                         MatchSoundManager.Instance.PlayClips(1);
 
-                        if (TutorielManager.Instance.currentIndex == 6)
+                        if (TutorielManager.Instance.currentIndex == 7)
                         {
                             TutorielManager.Instance.numberOfmatch++;
 
                             if (TutorielManager.Instance.numberOfmatch == 2)
                             {
-                                TutorielManager.Instance.textBulle.needToSkip = false;
-                                StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere());
+                                TutorielManager.Instance.textBulle.AffichageMessage();
                             }    
                         }
-
-                        
                     }
                     else
                     {
-                        Debug.Log("Can't like");
-                        StartCoroutine(MenuManagerTuto.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
+                       
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                         MatchSoundManager.Instance.PlayClips(12);

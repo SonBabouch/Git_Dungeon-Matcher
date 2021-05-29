@@ -199,41 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4718d77a56c464a945e653c4e51aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &306286293
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 306286294}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &306286294
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306286293}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1854570874}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &325014994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -441,6 +406,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75b616200e59cc4fb42df069c49ebce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1272758282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8546458269467885802, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 761841773971417516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1606749089
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +449,7 @@ MonoBehaviour:
   MenuGO: {fileID: 3756496243311721218}
   CombatGO: {fileID: 325014995}
   currentIndex: 0
+  numberOfmatch: 0
 --- !u!4 &1606749091
 Transform:
   m_ObjectHideFlags: 0
@@ -508,12 +480,6 @@ MonoBehaviour:
   resultsObject: {fileID: 0}
   isOn: 0
   isTuto: 1
---- !u!224 &1854570874 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 761841774403693227, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-    type: 3}
-  m_PrefabInstance: {fileID: 761841773971417516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1854570878 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1854570878, guid: d1cd89ff8b2095240bf5a9c63dade09a,
@@ -533,6 +499,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1854570878, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
+      propertyPath: HideShadowParent
+      value: 
+      objectReference: {fileID: 1272758282}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[10]
+      value: "Les Super-Likes sont une fa\xE7on de swiper assez particuli\xE8re.
+        Ils permettent de te faciliter la vie lors de tes futurs affrontements. Pour
+        les utiliser il faut appuyer sur le bouton au centre du profil."
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[11]
+      value: Pour en obtenir, tu dois te rendre dans la boutique.
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[12]
+      value: "Je t\u2019invite maintenant \xE0 appuyer sur le bouton en bas \xE0
+        gauche de ton \xE9cran"
+      objectReference: {fileID: 0}
     - target: {fileID: 1484112784356827958, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -593,6 +581,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3468098026483909547, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.90588236
+      objectReference: {fileID: 0}
     - target: {fileID: 4518054221767207724, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -601,11 +594,6 @@ PrefabInstance:
     - target: {fileID: 4518054221767207724, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4518054221767207724, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4518054222093986440, guid: d1cd89ff8b2095240bf5a9c63dade09a,
@@ -621,11 +609,6 @@ PrefabInstance:
     - target: {fileID: 4518054222093986440, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4518054222381793551, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4518054222468584109, guid: d1cd89ff8b2095240bf5a9c63dade09a,
@@ -726,7 +709,7 @@ PrefabInstance:
     - target: {fileID: 4518054223291291389, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 4518054223429214161, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
@@ -736,7 +719,7 @@ PrefabInstance:
     - target: {fileID: 4518054223429214161, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 7263795387971556096, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
