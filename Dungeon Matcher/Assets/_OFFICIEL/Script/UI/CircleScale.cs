@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Management;
 
 public class CircleScale : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class CircleScale : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Management.MenuManager.Instance.matchManager.matchList.Count == Management.MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && !currentlyOnAnimation && Management.MenuManager.currentGameStateMenu != Management.MenuManager.Menu.List)
+       if(MenuManager.Instance.matchManager.matchList.Count == MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && !currentlyOnAnimation && MenuManager.currentGameStateMenu != MenuManager.Menu.List)
        {
             Debug.Log("Start");
             currentlyOnAnimation = true;
             StartCoroutine(Scale());
        }
-       else if(Management.MenuManager.currentGameStateMenu == Management.MenuManager.Menu.List)
+       else if(MenuManager.currentGameStateMenu == MenuManager.Menu.List)
        {
             StopCoroutine(Scale());
             gameObject.transform.localScale = new Vector3(0f, 0f, 0f);

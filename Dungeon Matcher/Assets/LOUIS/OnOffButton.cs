@@ -9,6 +9,8 @@ public class OnOffButton : MonoBehaviour
     public GameObject resultsObject;
     public bool isOn;
 
+    public bool isTuto = false;
+
     public void Awake()
     {
         if (Instance == null)
@@ -41,39 +43,81 @@ public class OnOffButton : MonoBehaviour
 
     public void Update()
     {
-        if (isOn)
+        if (!isTuto)
         {
-            if(ManagerManager.Instance.menuManager.activeInHierarchy)
+            if (isOn)
             {
-                MatchSoundManager.Instance.audioSourceA.enabled = true;
-                MatchSoundManager.Instance.audioSourceB.enabled = true;
-                MatchSoundManager.Instance.menuOSTSource.enabled = true;
-            }
+                if (ManagerManager.Instance.menuManager.activeInHierarchy)
+                {
+                    MatchSoundManager.Instance.audioSourceA.enabled = true;
+                    MatchSoundManager.Instance.audioSourceB.enabled = true;
+                    MatchSoundManager.Instance.menuOSTSource.enabled = true;
+                }
 
-            if (ManagerManager.Instance.combatManager.activeInHierarchy)
+                if (ManagerManager.Instance.combatManager.activeInHierarchy)
+                {
+                    FightSoundManager.Instance.audioSourceA.enabled = true;
+                    FightSoundManager.Instance.audioSourceB.enabled = true;
+                    FightSoundManager.Instance.audioSourceC.enabled = true;
+                    FightSoundManager.Instance.fightOSTSource.enabled = true;
+                }
+            }
+            else
             {
-                FightSoundManager.Instance.audioSourceA.enabled = true;
-                FightSoundManager.Instance.audioSourceB.enabled = true;
-                FightSoundManager.Instance.audioSourceC.enabled = true;
-                FightSoundManager.Instance.fightOSTSource.enabled = true;
+                if (ManagerManager.Instance.menuManager.activeInHierarchy)
+                {
+                    MatchSoundManager.Instance.audioSourceA.enabled = false;
+                    MatchSoundManager.Instance.audioSourceB.enabled = false;
+                    MatchSoundManager.Instance.menuOSTSource.enabled = false;
+                }
+
+                if (ManagerManager.Instance.combatManager.activeInHierarchy)
+                {
+                    FightSoundManager.Instance.audioSourceA.enabled = false;
+                    FightSoundManager.Instance.audioSourceB.enabled = false;
+                    FightSoundManager.Instance.audioSourceC.enabled = false;
+                    FightSoundManager.Instance.fightOSTSource.enabled = false;
+                }
             }
         }
-        else
+        else //C'est le tuto;
         {
-            if (ManagerManager.Instance.menuManager.activeInHierarchy)
+            if (isOn)
             {
-                MatchSoundManager.Instance.audioSourceA.enabled = false;
-                MatchSoundManager.Instance.audioSourceB.enabled = false;
-                MatchSoundManager.Instance.menuOSTSource.enabled = false;
-            }
+                if (TutorielManager.Instance.MenuGO.activeInHierarchy)
+                {
+                    MatchSoundManager.Instance.audioSourceA.enabled = true;
+                    MatchSoundManager.Instance.audioSourceB.enabled = true;
+                    MatchSoundManager.Instance.menuOSTSource.enabled = true;
+                }
 
-            if (ManagerManager.Instance.combatManager.activeInHierarchy)
+                if (TutorielManager.Instance.CombatGO.activeInHierarchy)
+                {
+                    FightSoundManager.Instance.audioSourceA.enabled = true;
+                    FightSoundManager.Instance.audioSourceB.enabled = true;
+                    FightSoundManager.Instance.audioSourceC.enabled = true;
+                    FightSoundManager.Instance.fightOSTSource.enabled = true;
+                }
+            }
+            else
             {
-                FightSoundManager.Instance.audioSourceA.enabled = false;
-                FightSoundManager.Instance.audioSourceB.enabled = false;
-                FightSoundManager.Instance.audioSourceC.enabled = false;
-                FightSoundManager.Instance.fightOSTSource.enabled = false;
+                if (TutorielManager.Instance.MenuGO.activeInHierarchy)
+                {
+                    MatchSoundManager.Instance.audioSourceA.enabled = false;
+                    MatchSoundManager.Instance.audioSourceB.enabled = false;
+                    MatchSoundManager.Instance.menuOSTSource.enabled = false;
+                }
+
+                if (TutorielManager.Instance.CombatGO.activeInHierarchy)
+                {
+                    FightSoundManager.Instance.audioSourceA.enabled = false;
+                    FightSoundManager.Instance.audioSourceB.enabled = false;
+                    FightSoundManager.Instance.audioSourceC.enabled = false;
+                    FightSoundManager.Instance.fightOSTSource.enabled = false;
+                }
             }
         }
+
+        
     }
 }

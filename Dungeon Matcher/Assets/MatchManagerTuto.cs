@@ -163,7 +163,7 @@ public class MatchManagerTuto : MonoBehaviour
     public void TirageIndexCommon()
     {
         //Tirage aléatoire parmis la pool de monstre selon le niveau du joueur.
-        int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevel.playerLevel]);
+        int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevelTuto.playerLevelTuto]);
         //Répéter la manip si le chiffre à déja été selectionné dans les X dernières valeurs.
         bool testGood = true;
         //Si y'a rien, ca rentre pas dedans.
@@ -259,7 +259,7 @@ public class MatchManagerTuto : MonoBehaviour
         }
         else
         {
-            if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
+            if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
             {
                 //Debug.Log("In");
                 //Checker si (energie > 0 && liste pas complète).
@@ -331,7 +331,7 @@ public class MatchManagerTuto : MonoBehaviour
     //A activer quand le bouton dislike est préssé.
     public void Dislike()
     {
-        if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
+        if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
         {
             if (MenuManagerTuto.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {

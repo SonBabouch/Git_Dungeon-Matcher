@@ -9,6 +9,9 @@ public class TutorielManager : MonoBehaviour
     public TextBulle textBulle;
     public MenuManagerTuto menuManager;
 
+    public GameObject MenuGO;
+    public GameObject CombatGO;
+
     private void Awake()
     {
         Instance = this;

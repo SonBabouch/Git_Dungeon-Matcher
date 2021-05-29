@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class TextBulle : MonoBehaviour
 {
+    public static TextBulle Instance;
+
     [Header("SkipButton")]
     [SerializeField] private Button skipButton;
     [SerializeField] private TextMeshProUGUI skipText;
@@ -30,6 +32,11 @@ public class TextBulle : MonoBehaviour
 
     public enum MessageStatement {typing, needToSkip, needNextMessage}
     public MessageStatement statement;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Initialisaition()
     {

@@ -67,12 +67,14 @@ public class MonsterEncyclopedieTuto : MonoBehaviour
 
     public void UpdateMonsterEncyclopedie()
     {
-        for (int i = 0; i < MenuManagerTuto.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i++)
+        Debug.Log(PlayerLevelTuto.playerLevelTuto);
+
+        for (int i = 0; i < MenuManagerTuto.Instance.matchManager.numberCommonPool[PlayerLevelTuto.playerLevelTuto]; i++)
         {
             allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
         }
 
-        for (int i = MenuManagerTuto.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel - 1]; i < MenuManagerTuto.Instance.matchManager.numberCommonPool[PlayerLevel.playerLevel]; i++)
+        for (int i = MenuManagerTuto.Instance.matchManager.numberCommonPool[PlayerLevelTuto.playerLevelTuto - 1]; i < MenuManagerTuto.Instance.matchManager.numberCommonPool[PlayerLevelTuto.playerLevelTuto]; i++)
         {
             allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
         }
@@ -82,7 +84,7 @@ public class MonsterEncyclopedieTuto : MonoBehaviour
             allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Disponible;
         }
 
-        for (int i = MenuManagerTuto.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel - 1]; i < MenuManagerTuto.Instance.matchManager.numberRarePool[PlayerLevel.playerLevel]; i++)
+        for (int i = MenuManagerTuto.Instance.matchManager.numberRarePool[PlayerLevelTuto.playerLevelTuto - 1]; i < MenuManagerTuto.Instance.matchManager.numberRarePool[PlayerLevelTuto.playerLevelTuto-1]; i++)
         {
             allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Indisponible;
         }

@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class PlayerLevelTuto : MonoBehaviour
 {
-    public static float currentExperience = 0;
-    public static int playerLevel = 1;
+    public static float currentExperienceTuto = 0;
+    public static int playerLevelTuto = 1;
     private int experienceToGet = 0;
 
     public int[] requiredExperience;
 
-    public void Update()
-    {
-        //Traque le moment ou le joueur passe de niveau;
-
-    }
 
     public IEnumerator GiveExperience(int numberOfExperience)
     {
@@ -26,7 +21,7 @@ public class PlayerLevelTuto : MonoBehaviour
         }
         else
         {
-            currentExperience++;
+            currentExperienceTuto++;
             experienceToGet++;
             MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateExperience();
             yield return new WaitForSeconds(0.05f);
@@ -37,10 +32,10 @@ public class PlayerLevelTuto : MonoBehaviour
 
     public void CheckLevelUp()
     {
-        if (currentExperience >= requiredExperience[playerLevel - 1])
+        if (currentExperienceTuto >= requiredExperience[playerLevelTuto - 1])
         {
-            currentExperience = 0;
-            playerLevel++;
+            currentExperienceTuto = 0;
+            playerLevelTuto++;
 
             //Permet de Update le Visuel et l'état des monstres dans le Jeu
             MenuManagerTuto.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();

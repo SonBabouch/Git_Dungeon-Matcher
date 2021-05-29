@@ -9,11 +9,7 @@ public class PlayerLevel : MonoBehaviour
     
     public int[] requiredExperience;
 
-    public void Update()
-    {
-        //Traque le moment ou le joueur passe de niveau;
-        
-    }
+   
 
     public IEnumerator GiveExperience(int numberOfExperience)
     {

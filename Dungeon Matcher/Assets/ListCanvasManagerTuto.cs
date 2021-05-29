@@ -39,19 +39,19 @@ public class ListCanvasManagerTuto : MonoBehaviour
             alerteCombatText.enabled = true;
             alerteCombatText.text = "Va matcher un Monstre.";
         }
-        else if (MenuManagerTuto.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
+        else if (MenuManagerTuto.Instance.bagManager.GetComponent<BagManagerTuto>().monsterTeam.Count != 2)
         {
             alerteCombat.SetActive(true);
             alerteCombatText.enabled = true;
             alerteCombatText.text = "Ton équipe n'est pas complète.";
         }
 
-        if (MenuManagerTuto.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count != 2)
+        if (MenuManagerTuto.Instance.bagManager.GetComponent<BagManagerTuto>().monsterTeam.Count != 2)
         {
             alerteCombat.SetActive(true);
             combatButton.SetActive(false);
         }
-        else if (MenuManagerTuto.Instance.bagManager.GetComponent<BagManager>().monsterTeam.Count == 2 && MenuManagerTuto.Instance.matchManager.matchList.Count >= 1)
+        else if (MenuManagerTuto.Instance.bagManager.GetComponent<BagManagerTuto>().monsterTeam.Count == 2 && MenuManagerTuto.Instance.matchManager.matchList.Count >= 1)
         {
             combatButton.SetActive(true);
             alerteCombat.SetActive(false);
