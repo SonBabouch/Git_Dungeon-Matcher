@@ -11,13 +11,13 @@ public class ManagerManager : MonoBehaviour
 
     public GameObject menuManager;
     public GameObject combatManager;
+    public GameObject transitionMenu;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

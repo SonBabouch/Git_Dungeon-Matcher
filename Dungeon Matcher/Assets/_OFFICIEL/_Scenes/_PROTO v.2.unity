@@ -379,6 +379,7 @@ MonoBehaviour:
   currentGameState: 1
   menuManager: {fileID: 2088558425}
   combatManager: {fileID: 423157744}
+  transitionMenu: {fileID: 1176194441}
 --- !u!114 &17560857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4867,8 +4868,8 @@ MonoBehaviour:
   fullCanvas: {fileID: 440444606}
   titleScreen: {fileID: 799371399}
   gameTitle: {fileID: 1949907683}
-  tutoButton: {fileID: 863840267}
-  gameButton: {fileID: 74691901}
+  tutoButton: {fileID: 917454847}
+  gameButton: {fileID: 184272335}
   notificationBubble: {fileID: 870062884}
   numberNotif: {fileID: 833459966}
   noMatchBubble: {fileID: 964232820}
@@ -9712,7 +9713,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 863840270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 440444608}
+        m_MethodName: TutoScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &863840270
 MonoBehaviour:
   m_ObjectHideFlags: 0

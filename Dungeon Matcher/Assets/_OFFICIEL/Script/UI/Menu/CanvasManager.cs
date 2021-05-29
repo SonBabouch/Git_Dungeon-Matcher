@@ -2,6 +2,7 @@
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Management
 {
@@ -67,6 +68,22 @@ namespace Management
                 StartCoroutine(ScreenFade(value, titleScreen));
                 StartCoroutine(ScreenFade(value, gameTitle));
             }
+        }
+
+        public void TutoScreen()
+        {
+
+            StartCoroutine(TutoScreenEnum());
+        }
+
+        public IEnumerator TutoScreenEnum()
+        {
+            MenuTransitionCombat.Instance.TransitionSlideIn();
+            yield return new WaitForSeconds(1f);
+            ManagerManager.Instance.menuManager.SetActive(false);
+            ManagerManager.Instance.combatManager.SetActive(false);
+            ManagerManager.Instance.transitionMenu.SetActive(false);
+            SceneManager.LoadScene(1);
         }
 
         public IEnumerator ScreenFade(float value, GameObject GO)
