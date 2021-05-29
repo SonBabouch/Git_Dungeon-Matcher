@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ConversationManager : MonoBehaviour
 {
-    public MessageManager messageManager;
+    public MessageManagerTuto messageManager;
 
     public Color cursedColor;
 

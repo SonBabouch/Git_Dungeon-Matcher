@@ -1676,6 +1676,23 @@ MonoBehaviour:
   VS: {fileID: 6018303566371433048}
   thunder: {fileID: 6018303566776130589}
   button: {fileID: 6018303568008737416}
+  numberOfBattle: 0
+  consiellere: {fileID: 0}
+  tweenPositionCt: {fileID: 0}
+  number3: {fileID: 0}
+  number2: {fileID: 0}
+  number1: {fileID: 0}
+  matchText: {fileID: 0}
+  topOfBG: {fileID: 0}
+  topOfBGInitialPosition: {fileID: 0}
+  topOfBGTweenPosition: {fileID: 0}
+  heart: {fileID: 6018303567786394213}
+  heartBG: {fileID: 6018303568075213081}
+  results: {fileID: 6018303566592943743}
+  skipButton: {fileID: 6018303566630303984}
+  buttonToPass: {fileID: 6018303566652587266}
+  startCombatButton: {fileID: 0}
+  storedValue: []
 --- !u!1 &6018303567366554386
 GameObject:
   m_ObjectHideFlags: 0

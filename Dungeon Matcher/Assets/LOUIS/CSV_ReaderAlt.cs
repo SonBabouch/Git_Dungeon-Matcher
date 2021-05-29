@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CSV_ReaderAlt : MonoBehaviour
 {
+    public bool isTuto;
 
     public string[] playerLines;
     public string[] enemyLines;
@@ -16,10 +17,381 @@ public class CSV_ReaderAlt : MonoBehaviour
 
     private void Start()
     {
-        ReadPlayerCSV();
-        ReadEnemyCSV();
+        if (!isTuto)
+        {
+            ReadPlayerCSV();
+            ReadEnemyCSV();
+        }
+        else
+        {
+            ReadPlayerCSVTuto();
+            ReadEnemyCSVTuto();
+        }
+
+        
     }
 
+    void ReadPlayerCSVTuto()
+    {
+        //1 : Récupère notre fichier.
+        TextAsset t = Resources.Load<TextAsset>(playerFilePath);
+        //2 : Split les lignes du CSV. (Au total 52).
+        playerLines = t.text.Split(new char[] { '\n' });
+        //3 : La dernière pause problème, on lui injecte des valeurs.
+        playerLines[53] = "1; 2; 3; 4; 5; 6; 7";
+        //Debug.Log(playerLines);
+
+        for (int i = 1; i < playerLines.Length - 1; i++)
+        {
+            //int totalColumns = playerLines[0].Split(';').Length; //7;
+
+            playerLinesAlt = playerLines[i].Split(';');
+
+            // charged / Break / Charme / Windstorm / Defense / Dégats / Drains / Para / Heal / DivineTouch
+
+            switch (i)
+            {
+                case 1:
+                    MessageManagerTuto.instance.playerIndex1Charged = playerLinesAlt;
+                    break;
+                case 2:
+                    MessageManagerTuto.instance.playerIndex2Charged = playerLinesAlt;
+                    break;
+                case 3:
+                    MessageManagerTuto.instance.playerIndex3Charged = playerLinesAlt;
+                    break;
+                case 4:
+                    MessageManagerTuto.instance.playerIndex4Charged = playerLinesAlt;
+                    break;
+                case 5:
+                    MessageManagerTuto.instance.playerIndex5Charged = playerLinesAlt;
+                    break;
+                case 6:
+                    MessageManagerTuto.instance.playerIndex1Break = playerLinesAlt;
+                    break;
+                case 7:
+                    MessageManagerTuto.instance.playerIndex2Break = playerLinesAlt;
+                    break;
+                case 8:
+                    MessageManagerTuto.instance.playerIndex3Break = playerLinesAlt;
+                    break;
+                case 9:
+                    MessageManagerTuto.instance.playerIndex4Break = playerLinesAlt;
+                    break;
+                case 10:
+                    MessageManagerTuto.instance.playerIndex5Break = playerLinesAlt;
+                    break;
+                case 11:
+                    MessageManagerTuto.instance.playerIndex1Charm = playerLinesAlt;
+                    break;
+                case 12:
+                    MessageManagerTuto.instance.playerIndex2Charm = playerLinesAlt;
+                    break;
+                case 13:
+                    MessageManagerTuto.instance.playerIndex3Charm = playerLinesAlt;
+                    break;
+                case 14:
+                    MessageManagerTuto.instance.playerIndex4Charm = playerLinesAlt;
+                    break;
+                case 15:
+                    MessageManagerTuto.instance.playerIndex5Charm = playerLinesAlt;
+                    break;
+                case 16:
+                    MessageManagerTuto.instance.playerIndex1Windstorm = playerLinesAlt;
+                    break;
+                case 17:
+                    MessageManagerTuto.instance.playerIndex2Windstorm = playerLinesAlt;
+                    break;
+                case 18:
+                    MessageManagerTuto.instance.playerIndex3Windstorm = playerLinesAlt;
+                    break;
+                case 19:
+                    MessageManagerTuto.instance.playerIndex4Windstorm = playerLinesAlt;
+                    break;
+                case 20:
+                    MessageManagerTuto.instance.playerIndex5Windstorm = playerLinesAlt;
+                    break;
+                case 21:
+                    MessageManagerTuto.instance.playerIndex1Defense = playerLinesAlt;
+                    break;
+                case 22:
+                    MessageManagerTuto.instance.playerIndex2Defense = playerLinesAlt;
+                    break;
+                case 23:
+                    MessageManagerTuto.instance.playerIndex3Defense = playerLinesAlt;
+                    break;
+                case 24:
+                    MessageManagerTuto.instance.playerIndex4Defense = playerLinesAlt;
+                    break;
+                case 25:
+                    MessageManagerTuto.instance.playerIndex5Defense = playerLinesAlt;
+                    break;
+                case 26:
+                    MessageManagerTuto.instance.playerIndex1Attack = playerLinesAlt;
+                    break;
+                case 27:
+                    MessageManagerTuto.instance.playerIndex2Attack = playerLinesAlt;
+                    break;
+                case 28:
+                    MessageManagerTuto.instance.playerIndex3Attack = playerLinesAlt;
+                    break;
+                case 29:
+                    MessageManagerTuto.instance.playerIndex4Attack = playerLinesAlt;
+                    break;
+                case 30:
+                    MessageManagerTuto.instance.playerIndex5Attack = playerLinesAlt;
+                    break;
+                case 31:
+                    MessageManagerTuto.instance.playerIndex1Drain = playerLinesAlt;
+                    break;
+                case 32:
+                    MessageManagerTuto.instance.playerIndex2Drain = playerLinesAlt;
+                    break;
+                case 33:
+                    MessageManagerTuto.instance.playerIndex3Drain = playerLinesAlt;
+                    break;
+                case 34:
+                    MessageManagerTuto.instance.playerIndex4Drain = playerLinesAlt;
+                    break;
+                case 35:
+                    MessageManagerTuto.instance.playerIndex5Drain = playerLinesAlt;
+                    break;
+                case 36:
+                    MessageManagerTuto.instance.playerIndex1Paralysis = playerLinesAlt;
+                    break;
+                case 37:
+                    MessageManagerTuto.instance.playerIndex2Paralysis = playerLinesAlt;
+                    break;
+                case 38:
+                    MessageManagerTuto.instance.playerIndex3Paralysis = playerLinesAlt;
+                    break;
+                case 39:
+                    MessageManagerTuto.instance.playerIndex4Paralysis = playerLinesAlt;
+                    break;
+                case 40:
+                    MessageManagerTuto.instance.playerIndex5Paralysis = playerLinesAlt;
+                    break;
+                case 41:
+                    MessageManagerTuto.instance.playerIndex1Heal = playerLinesAlt;
+                    break;
+                case 42:
+                    MessageManagerTuto.instance.playerIndex2Heal = playerLinesAlt;
+                    break;
+                case 43:
+                    MessageManagerTuto.instance.playerIndex3Heal = playerLinesAlt;
+                    break;
+                case 44:
+                    MessageManagerTuto.instance.playerIndex4Heal = playerLinesAlt;
+                    break;
+                case 45:
+                    MessageManagerTuto.instance.playerIndex5Heal = playerLinesAlt;
+                    break;
+                case 46:
+                    MessageManagerTuto.instance.playerIndex1DivineTouch = playerLinesAlt;
+                    break;
+                case 47:
+                    MessageManagerTuto.instance.playerIndex2DivineTouch = playerLinesAlt;
+                    break;
+                case 48:
+                    MessageManagerTuto.instance.playerIndex3DivineTouch = playerLinesAlt;
+                    break;
+                case 49:
+                    MessageManagerTuto.instance.playerIndex4DivineTouch = playerLinesAlt;
+                    break;
+                case 50:
+                    MessageManagerTuto.instance.playerIndex5DivineTouch = playerLinesAlt;
+                    break;
+                case 52:
+                    MessageManagerTuto.instance.cursedMessagePlayer = playerLinesAlt;
+                    break;
+                default:
+                    break;
+            }
+
+
+
+        }
+    }
+
+    void ReadEnemyCSVTuto()
+    {
+        //1 : Récupère notre fichier.
+        TextAsset t = Resources.Load<TextAsset>(enemyFilePath);
+        //2 : Split les lignes du CSV. (Au total 52).
+        enemyLines = t.text.Split(new char[] { '\n' });
+        //3 : La dernière pause problème, on lui injecte des valeurs.
+        enemyLines[52] = "1; 2; 3; 4; 5; 6; 7";
+        //Debug.Log(playerLines);
+
+        for (int i = 1; i < enemyLines.Length - 1; i++)
+        {
+            //int totalColumns = playerLines[0].Split(';').Length; //7;
+
+            enemyLinesAlt = enemyLines[i].Split(';');
+
+            // charged / Break / Charme / Windstorm / Defense / Dégats / Drains / Para / Heal / DivineTouch
+
+            switch (i)
+            {
+                case 1:
+                    MessageManagerTuto.instance.enemyIndex1Charged = enemyLinesAlt;
+                    break;
+                case 2:
+                    MessageManagerTuto.instance.enemyIndex2Charged = enemyLinesAlt;
+                    break;
+                case 3:
+                    MessageManagerTuto.instance.enemyIndex3Charged = enemyLinesAlt;
+                    break;
+                case 4:
+                    MessageManagerTuto.instance.enemyIndex4Charged = enemyLinesAlt;
+                    break;
+                case 5:
+                    MessageManagerTuto.instance.enemyIndex5Charged = enemyLinesAlt;
+                    break;
+                case 6:
+                    MessageManagerTuto.instance.enemyIndex1Break = enemyLinesAlt;
+                    break;
+                case 7:
+                    MessageManagerTuto.instance.enemyIndex2Break = enemyLinesAlt;
+                    break;
+                case 8:
+                    MessageManagerTuto.instance.enemyIndex3Break = enemyLinesAlt;
+                    break;
+                case 9:
+                    MessageManagerTuto.instance.enemyIndex4Break = enemyLinesAlt;
+                    break;
+                case 10:
+                    MessageManagerTuto.instance.enemyIndex5Break = enemyLinesAlt;
+                    break;
+                case 11:
+                    MessageManagerTuto.instance.enemyIndex1Charm = enemyLinesAlt;
+                    break;
+                case 12:
+                    MessageManagerTuto.instance.enemyIndex2Charm = enemyLinesAlt;
+                    break;
+                case 13:
+                    MessageManagerTuto.instance.enemyIndex3Charm = enemyLinesAlt;
+                    break;
+                case 14:
+                    MessageManagerTuto.instance.enemyIndex4Charm = enemyLinesAlt;
+                    break;
+                case 15:
+                    MessageManagerTuto.instance.enemyIndex5Charm = enemyLinesAlt;
+                    break;
+                case 16:
+                    MessageManagerTuto.instance.enemyIndex1Windstorm = enemyLinesAlt;
+                    break;
+                case 17:
+                    MessageManagerTuto.instance.enemyIndex2Windstorm = enemyLinesAlt;
+                    break;
+                case 18:
+                    MessageManagerTuto.instance.enemyIndex3Windstorm = enemyLinesAlt;
+                    break;
+                case 19:
+                    MessageManagerTuto.instance.enemyIndex4Windstorm = enemyLinesAlt;
+                    break;
+                case 20:
+                    MessageManagerTuto.instance.enemyIndex5Windstorm = enemyLinesAlt;
+                    break;
+                case 21:
+                    MessageManagerTuto.instance.enemyIndex1Defense = enemyLinesAlt;
+                    break;
+                case 22:
+                    MessageManagerTuto.instance.enemyIndex2Defense = enemyLinesAlt;
+                    break;
+                case 23:
+                    MessageManagerTuto.instance.enemyIndex3Defense = enemyLinesAlt;
+                    break;
+                case 24:
+                    MessageManagerTuto.instance.enemyIndex4Defense = enemyLinesAlt;
+                    break;
+                case 25:
+                    MessageManagerTuto.instance.enemyIndex5Defense = enemyLinesAlt;
+                    break;
+                case 26:
+                    MessageManagerTuto.instance.enemyIndex1Attack = enemyLinesAlt;
+                    break;
+                case 27:
+                    MessageManagerTuto.instance.enemyIndex2Attack = enemyLinesAlt;
+                    break;
+                case 28:
+                    MessageManagerTuto.instance.enemyIndex3Attack = enemyLinesAlt;
+                    break;
+                case 29:
+                    MessageManagerTuto.instance.enemyIndex4Attack = enemyLinesAlt;
+                    break;
+                case 30:
+                    MessageManagerTuto.instance.enemyIndex5Attack = enemyLinesAlt;
+                    break;
+                case 31:
+                    MessageManagerTuto.instance.enemyIndex1Drain = enemyLinesAlt;
+                    break;
+                case 32:
+                    MessageManagerTuto.instance.enemyIndex2Drain = enemyLinesAlt;
+                    break;
+                case 33:
+                    MessageManagerTuto.instance.enemyIndex3Drain = enemyLinesAlt;
+                    break;
+                case 34:
+                    MessageManagerTuto.instance.enemyIndex4Drain = enemyLinesAlt;
+                    break;
+                case 35:
+                    MessageManagerTuto.instance.enemyIndex5Drain = enemyLinesAlt;
+                    break;
+                case 36:
+                    MessageManagerTuto.instance.enemyIndex1Paralysis = enemyLinesAlt;
+                    break;
+                case 37:
+                    MessageManagerTuto.instance.enemyIndex2Paralysis = enemyLinesAlt;
+                    break;
+                case 38:
+                    MessageManagerTuto.instance.enemyIndex3Paralysis = enemyLinesAlt;
+                    break;
+                case 39:
+                    MessageManagerTuto.instance.enemyIndex4Paralysis = enemyLinesAlt;
+                    break;
+                case 40:
+                    MessageManagerTuto.instance.enemyIndex5Paralysis = enemyLinesAlt;
+                    break;
+                case 41:
+                    MessageManagerTuto.instance.enemyIndex1Heal = enemyLinesAlt;
+                    break;
+                case 42:
+                    MessageManagerTuto.instance.enemyIndex2Heal = enemyLinesAlt;
+                    break;
+                case 43:
+                    MessageManagerTuto.instance.enemyIndex3Heal = enemyLinesAlt;
+                    break;
+                case 44:
+                    MessageManagerTuto.instance.enemyIndex4Heal = enemyLinesAlt;
+                    break;
+                case 45:
+                    MessageManagerTuto.instance.enemyIndex5Heal = enemyLinesAlt;
+                    break;
+                case 46:
+                    MessageManagerTuto.instance.enemyIndex1DivineTouch = enemyLinesAlt;
+                    break;
+                case 47:
+                    MessageManagerTuto.instance.enemyIndex2DivineTouch = enemyLinesAlt;
+                    break;
+                case 48:
+                    MessageManagerTuto.instance.enemyIndex3DivineTouch = enemyLinesAlt;
+                    break;
+                case 49:
+                    MessageManagerTuto.instance.enemyIndex4DivineTouch = enemyLinesAlt;
+                    break;
+                case 50:
+                    MessageManagerTuto.instance.enemyIndex5DivineTouch = enemyLinesAlt;
+                    break;
+                default:
+                    break;
+            }
+
+
+
+        }
+    }
+    
     void ReadPlayerCSV()
     {
         //1 : Récupère notre fichier.
