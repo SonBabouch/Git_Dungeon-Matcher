@@ -63,7 +63,7 @@ MonoBehaviour:
   owner: {fileID: 3352059483369707408}
   allySkills:
   - {fileID: 11400000, guid: 7fb6521d071b275438114b56e0ff233b, type: 2}
-  - {fileID: 11400000, guid: 45cb37f411b1d114b8d254dc718d7c00, type: 2}
+  - {fileID: 11400000, guid: a595536b422cbc4439779baa08b8f0f5, type: 2}
   - {fileID: 11400000, guid: 11b4944546c81d5449bc78c84051bb4e, type: 2}
   - {fileID: 11400000, guid: 352d8a5c101c30b42b3ff7ccd7a93779, type: 2}
   ennemySkills:
@@ -71,9 +71,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
   - {fileID: 11400000, guid: d538fe76cd604714bb8ba2bad96fbc18, type: 2}
   - {fileID: 11400000, guid: e7de588753f83cb4eb95bb9c0dfb4469, type: 2}
-  - {fileID: 11400000, guid: 711184239ef6fcd4686dd2953ec0a363, type: 2}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
   - {fileID: 11400000, guid: 093465c18ca2b1644bba819823bec266, type: 2}
-  - {fileID: 11400000, guid: 711184239ef6fcd4686dd2953ec0a363, type: 2}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
   - {fileID: 11400000, guid: 093465c18ca2b1644bba819823bec266, type: 2}
   monsterHashTag:
   - "D\xE9fense"

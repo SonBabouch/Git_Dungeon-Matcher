@@ -65,16 +65,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ffaf2bf0c7bd3f49ab4abdf1f63152b, type: 2}
   - {fileID: 11400000, guid: 309ae4f3d7c60b543b9ea3aed4122c1d, type: 2}
   - {fileID: 11400000, guid: 27e8e1fc64b67a0409f859a925416d73, type: 2}
-  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
+  - {fileID: 11400000, guid: 7b1721bb0be1b954a9792a4256bb243e, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
   - {fileID: 11400000, guid: 4d66cd1d2353f954ba4229a7646e103f, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
   - {fileID: 11400000, guid: 597c5d8717c2a0d4d86badf74f6c33d4, type: 2}
   - {fileID: 11400000, guid: 597c5d8717c2a0d4d86badf74f6c33d4, type: 2}
   - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
   - {fileID: 11400000, guid: 4d66cd1d2353f954ba4229a7646e103f, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
   monsterHashTag:
   - Soin
   - "Alt\xE9rations"
