@@ -69,7 +69,7 @@ public class EnemyTuto : MonoBehaviour
     public bool useHeal;
     public bool useDefenseMove;
 
-    public EnemyUi enemyUi;
+    public EnemyUiTuto enemyUi;
     public GameObject enemiHealthBar;
 
     public bool enemiUsedBreak;
