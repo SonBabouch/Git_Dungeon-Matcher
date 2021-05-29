@@ -38,5 +38,10 @@ public class EnergyManagerTuto : MonoBehaviour
     {
         superlikeCount++;
         MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateSuperLike();
+
+        if(TutorielManager.Instance.currentIndex == 15)
+        {
+            TutorielManager.Instance.textBulle.AfterSuperlike();
+        }
     }
 }

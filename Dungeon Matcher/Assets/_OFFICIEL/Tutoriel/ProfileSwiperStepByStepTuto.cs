@@ -34,7 +34,7 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
     {
         if (MenuManagerTuto.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManagerTuto.currentGameStateMenu == MenuManagerTuto.Menu.Match && MenuManagerTuto.Instance.matchManager.canMatch && MenuManagerTuto.Instance.canvasManager.pageSwiper.onDrag == false)
         {
-            if (gameObject.transform.position.x > MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
+            if (gameObject.transform.position.x > MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1])
             {
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.SetActive(true);
                 MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().yesTampon.SetActive(true);
@@ -47,7 +47,7 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().yesTampon.SetActive(false);
             }
 
-            if (gameObject.transform.position.x < MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
+            if (gameObject.transform.position.x < MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1])
             {
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(true);
                 MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().nopeTampon.SetActive(true);
@@ -109,15 +109,21 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 if (percentage > 0)//Vers la droite
                 {
 
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0)
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && (TutorielManager.Instance.currentIndex != 7 || TutorielManager.Instance.currentIndex != 13))
                     {
                         MenuManagerTuto.Instance.matchManager.Dislike();
                         MatchSoundManager.Instance.PlayClips(0);
                     }
-                    else
+                    else if(TutorielManager.Instance.currentIndex !=7)
                     {
                         Debug.Log("Can't Dislike");
                         StartCoroutine(MenuManagerTuto.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
+                        transform.localPosition = Vector3.zero;
+                        transform.rotation = panelRotation;
+                        MatchSoundManager.Instance.PlayClips(12);
+                    }
+                    else
+                    {
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                         MatchSoundManager.Instance.PlayClips(12);
@@ -129,16 +135,25 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 {
 
                     //print("Like");
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0)
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && (TutorielManager.Instance.currentIndex == 7 || TutorielManager.Instance.currentIndex >=22))
                     {
                         MenuManagerTuto.Instance.matchManager.Match(false);
 
                         MatchSoundManager.Instance.PlayClips(1);
+
+                        if (TutorielManager.Instance.currentIndex == 7)
+                        {
+                            TutorielManager.Instance.numberOfmatch++;
+
+                            if (TutorielManager.Instance.numberOfmatch == 2)
+                            {
+                                TutorielManager.Instance.textBulle.AffichageMessage();
+                            }    
+                        }
                     }
                     else
                     {
-                        Debug.Log("Can't like");
-                        StartCoroutine(MenuManagerTuto.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
+                       
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                         MatchSoundManager.Instance.PlayClips(12);

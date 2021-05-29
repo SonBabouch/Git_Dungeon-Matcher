@@ -49,13 +49,13 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
     //3- On Drag void
     public void OnDrag(PointerEventData data)
     {
-        if (!MenuManager.Instance.blockAction)
+        if (!MenuManagerTuto.Instance.blockAction)
         {
             onDrag = true;
-            MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
-            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().yesTampon.SetActive(false);
-            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().nopeTampon.SetActive(false);
-            MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
+            MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+            MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().yesTampon.SetActive(false);
+            MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().nopeTampon.SetActive(false);
+            MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
 
             float difference = data.pressPosition.x - data.position.x; //Différence entre les deux positions pour savoir vers quel coté on swip, positif à droite et négatif à gauche
                                                                        //C'est aussi la position exact du pointer sur le l'écran lorsqu'il drag
@@ -77,7 +77,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
     //4- On End Drag void
     public void OnEndDrag(PointerEventData data)
     {
-        if (!MenuManager.Instance.blockAction)
+        if (!MenuManagerTuto.Instance.blockAction)
         {
             float percentage = (data.pressPosition.x - data.position.x) / Screen.width; //calcul du pourcentage de l'écran dragué 
 
@@ -138,20 +138,20 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
         switch (currentPanelNumber)
         {
             case -1:
-                MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
-                MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.shopButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
+                MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.shopButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
                 break;
             case 0:
-                MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
-                MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.matchButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
+                MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.matchButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
                 break;
             case 1:
-                MenuManager.currentGameStateMenu = MenuManager.Menu.List;
-                MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.listButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
+                MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.listButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
                 break;
             case 2:
-                MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
-                MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.bagButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
+                MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.bagButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
                 break;
             default:
                 break;
@@ -160,17 +160,17 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void CancelMatch()
     {
-        if (currentPanelNumber == 0 && canChange && !MenuManager.Instance.blockAction)
+        if (currentPanelNumber == 0 && canChange && !MenuManagerTuto.Instance.blockAction)
         {
-            MenuManager.Instance.matchManager.canMatch = true;
+            MenuManagerTuto.Instance.matchManager.canMatch = true;
         }
         else
         {
-            MenuManager.Instance.matchManager.canMatch = false;
-            MenuManager.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
-            MenuManager.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
-            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().yesTampon.SetActive(false);
-            MenuManager.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviour>().nopeTampon.SetActive(false);
+            MenuManagerTuto.Instance.matchManager.canMatch = false;
+            MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(false);
+            MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.SetActive(false);
+            MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().yesTampon.SetActive(false);
+            MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().nopeTampon.SetActive(false);
         }
     }
 
@@ -201,7 +201,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToList()
     {
-        if (canChange && !MenuManager.Instance.blockAction)
+        if (canChange && !MenuManagerTuto.Instance.blockAction)
         {
 
             Vector2 newLocation = panelLocation;
@@ -216,7 +216,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 1;
 
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.List;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
                     break;
 
                 case 0:
@@ -227,7 +227,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 1;
 
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.List;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
                     break;
 
                 case 2:
@@ -238,7 +238,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 1;
 
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.List;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
                     break;
                 default:
                     break;
@@ -250,9 +250,9 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToBag()
     {
-        if (canChange && !MenuManager.Instance.blockAction)
+        if (canChange && !MenuManagerTuto.Instance.blockAction)
         {
-            MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.bagButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+            MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.bagButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
             Vector2 newLocation = panelLocation;
 
             switch (currentPanelNumber)
@@ -265,7 +265,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 2;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
                     break;
 
                 case 0:
@@ -276,7 +276,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 2;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
                     break;
 
                 case 1:
@@ -287,7 +287,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = 2;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Bag;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
                     break;
                 default:
                     break;
@@ -298,9 +298,9 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToShop()
     {
-        if (canChange && !MenuManager.Instance.blockAction)
+        if (canChange && !MenuManagerTuto.Instance.blockAction)
         {
-            MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.shopButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+            MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.shopButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
             Vector2 newLocation = panelLocation;
 
             switch (currentPanelNumber)
@@ -313,7 +313,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = -1;
                     Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 3));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
                     break;
 
                 case 1:
@@ -324,7 +324,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = -1;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
                     break;
 
                 case 0:
@@ -335,7 +335,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     currentPanelNumber = -1;
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 1));
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Shop;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
                     break;
                 default:
                     break;
@@ -347,9 +347,9 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void GoToMatch()
     {
-        if (canChange && !MenuManager.Instance.blockAction)
+        if (canChange && !MenuManagerTuto.Instance.blockAction)
         {
-            MenuManager.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManager.Instance.canvasManager.matchButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
+            MenuManagerTuto.Instance.canvasManager.topBar.GetComponent<Tweener>().TweenPositionTo(MenuManagerTuto.Instance.canvasManager.matchButton.transform.localPosition, 0.75f, Easings.Ease.SmoothStep, true);
 
             Vector2 newLocation = panelLocation;
 
@@ -364,7 +364,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
 
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
                     break;
 
                 case 1:
@@ -376,7 +376,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing));
 
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
                     break;
 
                 case 2:
@@ -388,7 +388,7 @@ public class PageSwiperTuto : MonoBehaviour, IDragHandler, IEndDragHandler
                     //Debug.Log("Called");
                     StartCoroutine(SmoothMove(transform.position, newLocation, easing * 2));
 
-                    MenuManager.currentGameStateMenu = MenuManager.Menu.Match;
+                    MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
                     break;
                 default:
                     break;

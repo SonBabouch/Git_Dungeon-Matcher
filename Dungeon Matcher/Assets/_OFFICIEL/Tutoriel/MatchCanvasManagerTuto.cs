@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MatchCanvasManagerTuto : MonoBehaviour
 {
-    public MatchFeedBack matchFeedback;
+    public MatchFeedBackTuto matchFeedback;
 
     //Apparition du GameObject Profil à un point précis dans la scène.
     public GameObject profilPrefab;
@@ -63,12 +63,12 @@ public class MatchCanvasManagerTuto : MonoBehaviour
     //A appeler à chaque fois que le joueur perd ou gagne de l'energie.
     public void UpdateEnergy()
     {
-        energy.text = EnergyManager.energy.ToString() + "/" + EnergyManager.maxEnergy.ToString();
+        energy.text = EnergyManagerTuto.energy.ToString() + "/" + EnergyManagerTuto.maxEnergy.ToString();
     }
 
     public void UpdateSuperLike()
     {
-        superLike.text = EnergyManager.superlikeCount.ToString();
+        superLike.text = EnergyManagerTuto.superlikeCount.ToString();
     }
 
     public void IncreaseRareBar()
@@ -92,8 +92,8 @@ public class MatchCanvasManagerTuto : MonoBehaviour
 
     public void UpdateExperience()
     {
-        playerLevelText.text = PlayerLevel.playerLevel.ToString();
-        playerExperienceBar.fillAmount = (PlayerLevel.currentExperience / MenuManagerTuto.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1]);
+        playerLevelText.text = PlayerLevelTuto.playerLevelTuto.ToString();
+        playerExperienceBar.fillAmount = (PlayerLevelTuto.currentExperienceTuto / MenuManagerTuto.Instance.playerLevel.requiredExperience[PlayerLevelTuto.playerLevelTuto - 1]);
     }
 
     public void ResetBarMethod()
@@ -103,7 +103,7 @@ public class MatchCanvasManagerTuto : MonoBehaviour
 
     public void ShowExpérience()
     {
-        experienceText.text = PlayerLevel.currentExperience.ToString() + " / " + MenuManagerTuto.Instance.playerLevel.requiredExperience[PlayerLevel.playerLevel - 1].ToString();
+        experienceText.text = PlayerLevelTuto.currentExperienceTuto.ToString() + " / " + MenuManagerTuto.Instance.playerLevel.requiredExperience[PlayerLevelTuto.playerLevelTuto - 1].ToString();
 
         if (!switchExp)
         {

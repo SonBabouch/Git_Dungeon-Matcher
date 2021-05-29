@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CanvasManagerTuto : MonoBehaviour
 {
-    public PageSwiper pageSwiper;
+    public PageSwiperTuto pageSwiper;
 
     //Differents Menu
     public MatchCanvasManagerTuto matchCanvas;
@@ -94,83 +94,94 @@ public class CanvasManagerTuto : MonoBehaviour
     //navigation
     public void GoToList()
     {
-        if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
+        if(TutorielManager.Instance.currentIndex == 16 || TutorielManager.Instance.currentIndex > 24)
         {
-            MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
+            if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
+            {
+                MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
+            }
+
+            if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
+            {
+                MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
+
+            }
+
+            //Faire le changement de Panel;
+            if (MenuManagerTuto.Instance.bagManager.detailShow == false)
+            {
+                pageSwiper.GetComponent<PageSwiperTuto>().GoToList();
+                //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
+            }
+
+            StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere(true));
         }
-
-        if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
-        {
-            MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
-
-        }
-
-        //Faire le changement de Panel;
-        if (MenuManagerTuto.Instance.bagManager.detailShow == false)
-        {
-            pageSwiper.GetComponent<PageSwiper>().GoToList();
-            //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
-            MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
-        }
-
-
     }
     public void GoToMatch()
     {
-
-        if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
+        if (TutorielManager.Instance.currentIndex > 22)
         {
-            MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
+            if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
+            {
+                MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
+            }
+
+            //Faire le changement de Panel;
+            if (MenuManagerTuto.Instance.bagManager.detailShow == false)
+            {
+
+                pageSwiper.GetComponent<PageSwiperTuto>().GoToMatch();
+                //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
+            }
         }
-
-        //Faire le changement de Panel;
-        if (MenuManagerTuto.Instance.bagManager.detailShow == false)
-        {
-
-            pageSwiper.GetComponent<PageSwiper>().GoToMatch();
-            //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
-            MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
-        }
-
     }
     public void GoToShop()
     {
-        if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
+        if(TutorielManager.Instance.currentIndex == 13)
         {
-            MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
+            if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
+            {
+                MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
+            }
+
+            if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
+            {
+                MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
+            }
+
+            //Faire le changement de Panel;
+            if (MenuManagerTuto.Instance.bagManager.detailShow == false)
+            {
+                pageSwiper.GetComponent<PageSwiperTuto>().GoToShop();
+
+                //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
+                MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
+            }
+
+            StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere(true));
         }
-
-        if (MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected != null)
-        {
-            MenuManagerTuto.Instance.canvasManager.bagCanvas.currentButtonSelected = null;
-        }
-
-        //Faire le changement de Panel;
-        if (MenuManagerTuto.Instance.bagManager.detailShow == false)
-        {
-            pageSwiper.GetComponent<PageSwiper>().GoToShop();
-
-            //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
-            MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
-
-
-        }
-
     }
     public void GoToBag()
     {
-        if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
+        if (TutorielManager.Instance.currentIndex >= 22)
         {
-            MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
+            Debug.Log("GoToBag");
+
+            if (MenuManagerTuto.Instance.canvasManager.matchCanvas.switchExp)
+            {
+                MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
+            }
+            pageSwiper.GetComponent<PageSwiperTuto>().GoToBag();
+            //Faire le changement de Panel;
+            //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
+            MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
+
+            StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere(true));
         }
-        pageSwiper.GetComponent<PageSwiper>().GoToBag();
-        //Faire le changement de Panel;
-        //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
-        MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
-
-
-
     }
+
     #endregion
 
     public IEnumerator NoMatchFeedback()
