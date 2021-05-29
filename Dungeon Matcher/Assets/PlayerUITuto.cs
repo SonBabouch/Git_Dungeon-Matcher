@@ -13,10 +13,10 @@ public class PlayerUITuto : MonoBehaviour
 
     private void Update()
     {
-        playerHealthBar.fillAmount = Player.Instance.health / Player.Instance.maxHealth;
-        playerEnergyBar.fillAmount = Player.Instance.energy / Player.Instance.maxEnergy;
+        playerHealthBar.fillAmount = PlayerTuto.Instance.health / PlayerTuto.Instance.maxHealth;
+        playerEnergyBar.fillAmount = PlayerTuto.Instance.energy / PlayerTuto.Instance.maxEnergy;
 
-        healthPointText.text = Player.Instance.health.ToString();
+        healthPointText.text = PlayerTuto.Instance.health.ToString();
     }
 
 

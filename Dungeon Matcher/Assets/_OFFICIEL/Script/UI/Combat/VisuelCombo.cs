@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class VisuelCombo : MonoBehaviour
 {
     private Image image;
+    public bool isTuto = false;
 
     private void Start()
     {
@@ -15,6 +16,15 @@ public class VisuelCombo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        image.fillAmount = Player.Instance.comboTime / 100;
+        if (!isTuto)
+        {
+            image.fillAmount = Player.Instance.comboTime / 100;
+        }
+        else
+        {
+            image.fillAmount = PlayerTuto.Instance.comboTime / 100;
+        }
+
+       
     }
 }

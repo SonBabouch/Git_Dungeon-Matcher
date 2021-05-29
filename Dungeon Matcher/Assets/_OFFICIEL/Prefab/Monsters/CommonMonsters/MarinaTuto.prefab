@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3352059483369707408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7731263988056315023}
+  - component: {fileID: 8761877609787509778}
+  m_Layer: 0
+  m_Name: MarinaTuto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7731263988056315023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352059483369707408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8761877609787509778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352059483369707408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26be86f2bbb22e42b8b28fb6e1c3716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 11400000, guid: f5cf0fb36c3dc0144a9fec119421ac40, type: 2}
+  monsterIndexPosition: 0
+  numberOfFragments: 0
+  numberOfFragmentsRequired: 
+  monsterLevel: 1
+  description: 
+  monsterName: Marina
+  health: 0
+  maxHealth: 0
+  minHealth: 0
+  rarety: 0
+  isGet: 1
+  statement: 1
+  isSuperlike: 0
+  profilPicture: {fileID: 21300000, guid: 4cdef18062ffc4042b248363ed530095, type: 3}
+  fullMonsterImage: {fileID: 21300000, guid: a8b1d8d3d0d89104e979db5bcbe742fe, type: 3}
+  side: 0
+  owner: {fileID: 3352059483369707408}
+  allySkills:
+  - {fileID: 11400000, guid: 33fd2577182294f40a225914490681ce, type: 2}
+  - {fileID: 11400000, guid: 33fd2577182294f40a225914490681ce, type: 2}
+  - {fileID: 11400000, guid: 925439a3cd38f6d4faa3beb2dcbb7d8a, type: 2}
+  - {fileID: 11400000, guid: 925439a3cd38f6d4faa3beb2dcbb7d8a, type: 2}
+  ennemySkills:
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  - {fileID: 11400000, guid: 480bd2466327f55499b4a39ab8b6dac3, type: 2}
+  monsterHashTag:
+  - Attaque
+  - "D\xE9fense"
+  scoring: 1

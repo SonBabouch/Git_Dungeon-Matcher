@@ -101,7 +101,7 @@ public class BagButtonBehaviourTuto : MonoBehaviour
         MenuManagerTuto.Instance.canvasManager.listCanvas.UpdateCombatButton();
         MenuManagerTuto.Instance.canvasManager.bagCanvas.RemoveCross();
 
-        if(MenuManagerTuto.Instance.bagManager.monsterTeam.Count == 2)
+        if(MenuManagerTuto.Instance.bagManager.monsterTeam.Count == 2 && TutorielManager.Instance.currentIndex <26)
         {
             TutorielManager.Instance.textBulle.AfterSuperlike();
         }
