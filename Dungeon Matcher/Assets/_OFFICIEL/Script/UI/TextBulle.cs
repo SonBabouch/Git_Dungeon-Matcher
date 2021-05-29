@@ -97,7 +97,7 @@ public class TextBulle : MonoBehaviour
         if (TutorielManager.Instance.shadowMask.skipButton.isActiveAndEnabled)
         {
             needToSkip = true;
-            TutorielManager.Instance.shadowMask.skipButton.enabled = false;
+            TutorielManager.Instance.shadowMask.skipButton.gameObject.SetActive(false);
             StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(TutorielManager.Instance.shadowMask.shadowChild.GetComponent<Image>().color.a, TutorielManager.Instance.shadowMask.shadowChild));
             Vector3 scaleVector = new Vector3(1, 1, 1);
             bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);

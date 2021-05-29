@@ -10,10 +10,12 @@ public class ShadowMaskGestion : MonoBehaviour
     public Button skipButton;
     public Sprite spriteToShow;
 
+    public Sprite roundSprite;
+    public Sprite squareSprite;
+
     private void Awake()
     {
-        skipButton = shadowChild.GetComponent<Button>();
-        skipButton.enabled = false;
+        skipButton.gameObject.SetActive(false);
     }
 
     public IEnumerator ScreenFadeOut(float value, GameObject GO)
@@ -43,6 +45,6 @@ public class ShadowMaskGestion : MonoBehaviour
             value += 0.03f;
             StartCoroutine(ScreenFadeIn(value, GO));
         }
-        skipButton.enabled = true;
+        skipButton.gameObject.SetActive(true);
     }
 }
