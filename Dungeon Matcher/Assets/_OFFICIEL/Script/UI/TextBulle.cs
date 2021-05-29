@@ -7,10 +7,20 @@ using UnityEngine.Events;
 
 public class TextBulle : MonoBehaviour
 {
-    [SerializeField] private GameObject blackShader;
-    [SerializeField] private GameObject highlightPoint;
-    [SerializeField] private Button skipButton;
+    public static TextBulle Instance;
 
+    [Header("SkipButton")]
+    [SerializeField] private Button skipButton;
+    [SerializeField] private TextMeshProUGUI skipText;
+    [SerializeField] private GameObject skipArrow;
+
+    [Header("Conseillère")]
+    [SerializeField] private GameObject conseillere;
+    [SerializeField] private GameObject initialPosition;
+    [SerializeField] private GameObject tweenPosition;
+    [SerializeField] private GameObject bubble;
+
+    [Header("Messages")]
     [TextArea]
     public string[] messages;
     private string currentText;
@@ -23,11 +33,43 @@ public class TextBulle : MonoBehaviour
     public enum MessageStatement {typing, needToSkip, needNextMessage}
     public MessageStatement statement;
 
-
-    private void Start()
+    private void Awake()
     {
+        Instance = this;
+    }
+
+    public void Initialisaition()
+    {
+        skipArrow.SetActive(false);
+        skipText.gameObject.SetActive(false);
         statement = MessageStatement.needNextMessage;
+
+        StartCoroutine(GoInConseillere());
+    }
+
+    //Faire Rentrer la conseillère dans l'écran.
+    public IEnumerator GoInConseillere()
+    {
+        conseillere.GetComponent<Tweener>().TweenPositionTo(tweenPosition.transform.localPosition, 0.8f, Easings.Ease.SmoothStep, true);
+        
+        Vector3 scaleVector = new Vector3(1, 1, 1);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmootherStep);
+
+        yield return new WaitForSeconds(1f);
         AffichageMessage();
+    }
+
+    //Faire sortir la conseillère de l'écran.
+    public IEnumerator GoOutConseillere()
+    {
+        bubbleText.text = "";
+
+        conseillere.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition, 0.8f, Easings.Ease.SmoothStep, true);
+
+        Vector3 scaleVector = new Vector3(0,0,0);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmootherStep);
+
+        yield return new WaitForSeconds(1f);
     }
 
     public void ResetButton()
@@ -52,10 +94,14 @@ public class TextBulle : MonoBehaviour
      {
         ResetButton();
 
-        if(currentIndex == messages.Length)
+        if (currentIndex == 4) 
         {
             //Appeler la Méthode pour finir;
             skipButton.gameObject.SetActive(false);
+            skipArrow.SetActive(false);
+            skipText.gameObject.SetActive(false);
+            StartCoroutine(GoOutConseillere());
+    
         }
         else
         {
@@ -66,7 +112,11 @@ public class TextBulle : MonoBehaviour
 
     public IEnumerator AffichageMessageEnum(float delay, string fullText)
     {
+        skipArrow.SetActive(false);
+        skipText.gameObject.SetActive(false);
+
         statement = MessageStatement.typing;
+
         for (int i = 0; i < fullText.Length; i++)
         { 
             if(statement == MessageStatement.typing)
@@ -76,6 +126,10 @@ public class TextBulle : MonoBehaviour
                 yield return new WaitForSeconds(delay);
             }
         }
+
+        skipArrow.SetActive(true);
+        skipText.gameObject.SetActive(true);
+
         currentIndex++;
         statement = MessageStatement.needNextMessage;
     }

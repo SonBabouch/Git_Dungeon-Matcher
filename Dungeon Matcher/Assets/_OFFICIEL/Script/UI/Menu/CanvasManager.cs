@@ -2,6 +2,7 @@
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Management
 {
@@ -23,8 +24,9 @@ namespace Management
         //Title Screen
         [SerializeField] private GameObject titleScreen;
         [SerializeField] private GameObject gameTitle;
-        [SerializeField] private GameObject tapToStart;
         private bool trigger = false;
+        [SerializeField] private GameObject tutoButton;
+        [SerializeField] private GameObject gameButton;
 
         //Notifications
         [SerializeField] private GameObject notificationBubble;
@@ -59,12 +61,29 @@ namespace Management
         {
             if(!trigger)
             {
+                tutoButton.SetActive(false);
+                gameButton.SetActive(false);
                 trigger = true;
                 float value = 1f;
-                tapToStart.SetActive(false);
                 StartCoroutine(ScreenFade(value, titleScreen));
                 StartCoroutine(ScreenFade(value, gameTitle));
             }
+        }
+
+        public void TutoScreen()
+        {
+
+            StartCoroutine(TutoScreenEnum());
+        }
+
+        public IEnumerator TutoScreenEnum()
+        {
+            MenuTransitionCombat.Instance.TransitionSlideIn();
+            yield return new WaitForSeconds(1f);
+            ManagerManager.Instance.menuManager.SetActive(false);
+            ManagerManager.Instance.combatManager.SetActive(false);
+            ManagerManager.Instance.transitionMenu.SetActive(false);
+            SceneManager.LoadSceneAsync(1);
         }
 
         public IEnumerator ScreenFade(float value, GameObject GO)

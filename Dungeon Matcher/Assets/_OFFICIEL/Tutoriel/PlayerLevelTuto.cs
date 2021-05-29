@@ -1,15 +1,15 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class PlayerLevel : MonoBehaviour
+public class PlayerLevelTuto : MonoBehaviour
 {
-    public static float currentExperience =0;
-    public static int playerLevel = 1;
+    public static float currentExperienceTuto = 0;
+    public static int playerLevelTuto = 1;
     private int experienceToGet = 0;
-    
+
     public int[] requiredExperience;
 
-   
 
     public IEnumerator GiveExperience(int numberOfExperience)
     {
@@ -21,9 +21,9 @@ public class PlayerLevel : MonoBehaviour
         }
         else
         {
-            currentExperience++;
+            currentExperienceTuto++;
             experienceToGet++;
-            Management.MenuManager.Instance.canvasManager.matchCanvas.UpdateExperience();
+            MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateExperience();
             yield return new WaitForSeconds(0.05f);
             CheckLevelUp();
             StartCoroutine(GiveExperience(numberOfExperience));
@@ -32,14 +32,14 @@ public class PlayerLevel : MonoBehaviour
 
     public void CheckLevelUp()
     {
-        if (currentExperience >= requiredExperience[playerLevel - 1])
+        if (currentExperienceTuto >= requiredExperience[playerLevelTuto - 1])
         {
-            currentExperience = 0;
-            playerLevel++;
+            currentExperienceTuto = 0;
+            playerLevelTuto++;
 
             //Permet de Update le Visuel et l'état des monstres dans le Jeu
-            Management.MenuManager.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
+            MenuManagerTuto.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
         }
-      Management.MenuManager.Instance.canvasManager.bagCanvas.SortBag();
+        MenuManagerTuto.Instance.canvasManager.bagCanvas.SortBag();
     }
 }
