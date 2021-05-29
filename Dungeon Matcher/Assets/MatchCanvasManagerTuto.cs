@@ -6,7 +6,7 @@ using TMPro;
 
 public class MatchCanvasManagerTuto : MonoBehaviour
 {
-    public MatchFeedBack matchFeedback;
+    public MatchFeedBackTuto matchFeedback;
 
     //Apparition du GameObject Profil à un point précis dans la scène.
     public GameObject profilPrefab;
