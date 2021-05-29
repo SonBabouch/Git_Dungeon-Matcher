@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class BagManagerTuto : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Maximum 2 Monstres.
+    public List<GameObject> monsterTeam = new List<GameObject>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool detailShow = false;
 }
