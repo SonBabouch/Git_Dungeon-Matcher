@@ -1768,23 +1768,25 @@ MonoBehaviour:
   - "Attention cependant. Tes swipes sont limit\xE9s par une \xE9nergie se rechargeant
     avec le temps. Pour tes d\xE9buts, permets-moi de t\u2019en offrir gratuitement."
   - "Les Super-Likes sont une fa\xE7on de swiper assez particuli\xE8re. Ils permettent
-    de te faciliter la vie lors de tes futurs affrontements."
-  - "Pour ce faire, tu dois envoyer le profil vers le haut de l\u2019\xE9cran. Pour
-    en obtenir, tu dois te rendre dans la boutique."
-  - "Je t\u2019invite maintenant \xE0 appuyer sur ce bouton."
+    de te faciliter la vie lors de tes futurs affrontements. Pour les utiliser il
+    faut appuyer sur le bouton au centre du profil."
+  - Pour en obtenir, tu dois te rendre dans la boutique.
+  - "Je t\u2019invite maintenant \xE0 appuyer sur le bouton en bas \xE0 gauche de
+    ton \xE9cran."
   - "Cet \xE9cran est celui de la boutique, malheureusement en cours de construction
-    par nos \xE9quipes de charpentiers num\xE9riques."
-  - Tu peux aussi appuyer sur cet autre bouton si tu le souhaites.
+    par nos \xE9quipes de charpentiers num\xE9riques. Cependant les boutons sont
+    quand m\xEAme fonctionnels."
+  - "Tu peux aussi appuye sur ce bouton pour r\xE9cup\xE9rer des superlikes."
+  - "Bien, maintenant alons voir les monstres avec qui tu as match\xE9. Appuie sur
+    le bouton vert en bas de l'\xE9cran."
   - "Cet \xE9cran est celui de la Liste de Conqu\xEAtes. Comme tu peux le voir, elle
     r\xE9pertorie l\u2019ensemble de tes matchs r\xE9alis\xE9s pr\xE9c\xE9demment."
   - "Tout le charme de notre application r\xE9side en nos conversations entre monstres
-    et aventuriers. Vois ceci comme une forme de combat."
+    et aventuriers. Vois ceci comme une forme de combat"
   - "Ainsi, cette Liste de Conqu\xEAtes peut s\u2019apparenter \xE0 un encha\xEEnement
     de combat contre des monstres, autrement dit\_: un donjon\_!"
-  - "Vu que tu as une Liste, peux-tu lancer les combats\_? "
-  - "Pardonne ma fourberie, mais il est bon d\u2019apprendre par soi-m\xEAme certaines
-    choses. En effet, tu dois avoir une \xE9quipe pour combattre\_!"
-  - "Pourrais-tu appuyer sur ce bouton s\u2019il te pla\xEEt\_? Nous allons r\xE9gler
+  - "Cependant avant de partir au combat, il faut s'\xE9quiper ! Allons-y!"
+  - "Pourrais-tu appuyer sur ce bouton s\u2019il-te pla\xEEt\_? Nous allons r\xE9gler
     ce petit contre-temps."
   - "Oh, excuse moi, je suis juste au dessus de o\xF9 tu dois appuyer. Je te laisse
     la place."
@@ -1813,7 +1815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bc9311f513ba74692dd214a7c3ba1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HideShadowParent: {fileID: 0}
+  HideShadowParent: {fileID: 8546458269467885802}
   shadowParent: {fileID: 364815159}
   shadowChild: {fileID: 1776512776}
   shadowLikeParent: {fileID: 8149667653607862242}
@@ -13270,7 +13272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4518054223291291388
@@ -15275,7 +15277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4518054223429214175
@@ -16692,19 +16694,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1d77fc1e6641f4a8044dde4187e42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterLevel: {fileID: 0}
-  monsterName: {fileID: 0}
-  monsterDescription: {fileID: 0}
-  monsterAge: {fileID: 0}
-  fullMonsterImage: {fileID: 0}
-  skillTypeOf: []
-  skillCapacity: []
-  skill1Text: {fileID: 0}
-  skill2Text: {fileID: 0}
-  skill3Text: {fileID: 0}
-  skill4Text: {fileID: 0}
-  iconRessource: []
-  typeRessource: []
+  monsterLevel: {fileID: 4518054223352857209}
+  monsterName: {fileID: 4518054223594784088}
+  monsterDescription: {fileID: 4518054221741027131}
+  monsterAge: {fileID: 4518054223467932156}
+  fullMonsterImage: {fileID: 4518054223357192297}
+  skillTypeOf:
+  - {fileID: 4518054222451225612}
+  - {fileID: 4518054223156388305}
+  - {fileID: 4518054223158240181}
+  - {fileID: 4518054223487985096}
+  skillCapacity:
+  - {fileID: 4518054222783796212}
+  - {fileID: 4518054221713377214}
+  - {fileID: 4518054223568937038}
+  - {fileID: 4518054223339845455}
+  skill1Text: {fileID: 4518054222658444069}
+  skill2Text: {fileID: 4518054222797741385}
+  skill3Text: {fileID: 4518054223811775175}
+  skill4Text: {fileID: 4518054222275044256}
+  iconRessource:
+  - {fileID: 21300000, guid: ff087803c5bf10e4f86ad3a2b7f426d1, type: 3}
+  - {fileID: 21300000, guid: 51c8a8f09de47ef4fa8f21f5add34533, type: 3}
+  - {fileID: 21300000, guid: e88552c4c25387543b6f3ef4c0b6edfa, type: 3}
+  - {fileID: 21300000, guid: 3c1a3ff262652e945b2ab358f7f35fe9, type: 3}
+  - {fileID: 21300000, guid: 49282081e08755b4d8e2d2cec93f4943, type: 3}
+  - {fileID: 21300000, guid: 8da4521f6276cb149bc76618b9128c18, type: 3}
+  - {fileID: 21300000, guid: 95137aabc141f4646aecbb1c9ea656e0, type: 3}
+  - {fileID: 21300000, guid: 1fa9bf2674cfaa2429e444ffe40f0266, type: 3}
+  - {fileID: 21300000, guid: 8e2891b6ccfe8ae47bb5b9fee3bc3a07, type: 3}
+  - {fileID: 21300000, guid: fbe7c136a91f33d4d9920d0afd2a8e02, type: 3}
+  - {fileID: 21300000, guid: 9d6bf0c479823354db2e5f49e382dd01, type: 3}
+  - {fileID: 21300000, guid: 292cb3916dba703408c038f80422b26d, type: 3}
+  - {fileID: 21300000, guid: bf742bc8f2596f44498254a8c95b67a4, type: 3}
+  - {fileID: 21300000, guid: 555a96b50d167154a9da336393bfe2b2, type: 3}
+  - {fileID: 21300000, guid: 0e1b15f44c10af84c9f124145627eece, type: 3}
+  - {fileID: 21300000, guid: a78c395de94ce074cb137846315a37d4, type: 3}
+  - {fileID: 21300000, guid: 06128e694568e1240afe93151638aa4b, type: 3}
+  - {fileID: 21300000, guid: c03a1bcb9295d69438bf6b5e0f1958e7, type: 3}
+  - {fileID: 21300000, guid: 6b5e19e6d19ec2e459fc79980d0dde3e, type: 3}
+  typeRessource:
+  - {fileID: 21300000, guid: feedade5a1bb1104ca90f8fba357ffd9, type: 3}
+  - {fileID: 21300000, guid: d4e918764f598f641a3b7966b8fee256, type: 3}
+  - {fileID: 21300000, guid: 500797a093a65a24fa7d042589af3485, type: 3}
+  - {fileID: 21300000, guid: f2e02619c47364a489587e78fa357b2f, type: 3}
 --- !u!1 &4518054223721851709
 GameObject:
   m_ObjectHideFlags: 0
@@ -17892,8 +17925,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281.55, y: -60.1}
-  m_SizeDelta: {x: 432.63, y: 287.79272}
+  m_AnchoredPosition: {x: 268.3, y: -60.1}
+  m_SizeDelta: {x: 406.2129, y: 287.79272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3871728558481541381
 CanvasRenderer:

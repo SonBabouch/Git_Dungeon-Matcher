@@ -1378,7 +1378,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6018303567144170944}
-  - component: {fileID: 8444307492271171995}
   m_Layer: 0
   m_Name: TopCanvasCombat
   m_TagString: Untagged
@@ -1415,26 +1414,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8444307492271171995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6018303567144170947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 877a7d928015b4148bc749e33fd6a893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topSlider0: {fileID: 0}
-  topSlider1: {fileID: 0}
-  botSlider0: {fileID: 0}
-  botSlider1: {fileID: 0}
-  topSliderInitialPosition: {fileID: 0}
-  botSliderInitialPosition: {fileID: 0}
-  topSliderTweenPosition: {fileID: 0}
-  botSliderTweenPosition: {fileID: 0}
 --- !u!1 &6018303567170536360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,6 +1668,14 @@ MonoBehaviour:
   botSliderInitialPosition: {fileID: 881843307}
   topSliderTweenPosition: {fileID: 6018303567078041672}
   botSliderTweenPosition: {fileID: 6018303567371016939}
+  detailsGO: {fileID: 6018303567686042738}
+  leaderMonster: {fileID: 6018303567493108088}
+  leaderMonsterBG: {fileID: 6018303566868001163}
+  enemyMonster: {fileID: 6018303566358181325}
+  enemyMonsterBG: {fileID: 6018303566855179530}
+  VS: {fileID: 6018303566371433048}
+  thunder: {fileID: 6018303566776130589}
+  button: {fileID: 6018303568008737416}
 --- !u!1 &6018303567366554386
 GameObject:
   m_ObjectHideFlags: 0
