@@ -109,7 +109,7 @@ public class MonsterEncyclopedieTuto : MonoBehaviour
         //Update le visuel du sac;
         for (int i = 0; i < MenuManagerTuto.Instance.canvasManager.bagCanvas.bagButtonList.Count; i++)
         {
-            MenuManagerTuto.Instance.canvasManager.bagCanvas.bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
+            MenuManagerTuto.Instance.canvasManager.bagCanvas.bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().UpdateColor();
         }
     }
 }

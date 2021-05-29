@@ -21,7 +21,6 @@ public class MatchManagerTuto : MonoBehaviour
 
     [Header("Sécurité")]
     //Cette Liste permet de stocker X valeurs pour ne pas qu'il retombe.
-    public List<int> storedIndex = new List<int>();
     //Cette int permet de ne pas avoir le même index de sortie sur X tirages (ou X = maxStoredValues).
     [SerializeField] private int maxStoredValues;
 
@@ -118,31 +117,10 @@ public class MatchManagerTuto : MonoBehaviour
 
     public void FirstTirage()
     {
-        //2-Test pour savoir si un monstre rare sort ou non;
-        #region RaretyTest
-
-
-        if (MaxChanceCount == ChanceCount)
-        {
-            //C'est un rare.
-            choosenList = rareMonsterList;
-            //Reset de la chance pour ne pas re avoir de monstre Rare.
-            ChanceCount = 0;
-            //Tirage aléatoire parmis la pool de monstre rare selon le niveau du joueur.
-            int tirageIndex = Random.Range(0, numberRarePool[PlayerLevelTuto.playerLevelTuto]);
-            //MonsterPresented = Un monstre tiré dans la liste.
-            monsterPresented = choosenList[tirageIndex];
-        }
-        else
-        {
-            //C'est pas un rare donc on augmente la chance d'avoir un rare.
-
-            //La liste choisit est celles de monstres Communs.
-            choosenList = commonMonsterList;
-            //On lance une fonction pour verifier qu'un même index ne sort pas deux fois
-            TirageIndexCommon();
-        }
-        #endregion
+        //La liste choisit est celles de monstres Communs.
+        choosenList = commonMonsterList;
+        //On lance une fonction pour verifier qu'un même index ne sort pas deux fois
+        TirageIndexCommon();
 
         //Instantier le gameObject avec le bon positionnement;
         GameObject profilSpawned = Instantiate(MenuManagerTuto.Instance.canvasManager.matchCanvas.profilPrefab, MenuManagerTuto.Instance.canvasManager.matchCanvas.profilPosition[0].transform.position, Quaternion.identity);
@@ -162,34 +140,21 @@ public class MatchManagerTuto : MonoBehaviour
     // Permet de répéter le test de la valeur sortie pour ne pas qu'elle soit similaire sur 3 tirages d'affiléS.
     public void TirageIndexCommon()
     {
-        //Tirage aléatoire parmis la pool de monstre selon le niveau du joueur.
-        int tirageIndex = Random.Range(0, numberCommonPool[PlayerLevelTuto.playerLevelTuto]);
-        //Répéter la manip si le chiffre à déja été selectionné dans les X dernières valeurs.
-        bool testGood = true;
-        //Si y'a rien, ca rentre pas dedans.
-        for (int i = 0; i < storedIndex.Count; i++)
+        int tirageIndex = 0;
+        if (monsterSpawned.Count == 0)
         {
-            if (tirageIndex == storedIndex[i])
-            {
-                testGood = false;
-            }
+            tirageIndex = 0;
+        }
+        else if (monsterSpawned.Count == 1)
+        {
+            tirageIndex = 2;
+        }
+        else if (monsterSpawned.Count == 2)
+        {
+            tirageIndex = 1;
         }
 
-        if (testGood == false)
-        {
-            TirageIndexCommon();
-        }
-        else
-        {
-            //Debug.Log(tirageIndex);
-            monsterPresented = choosenList[tirageIndex];
-            storedIndex.Add(tirageIndex);
-
-            if (storedIndex.Count > maxStoredValues)
-            {
-                storedIndex.Remove(storedIndex[0]);
-            }
-        }
+        monsterPresented = choosenList[tirageIndex];
     }
 
     //A activer quand le bouton match est préssé.
@@ -228,7 +193,7 @@ public class MatchManagerTuto : MonoBehaviour
                 if (monsterSpawned.Count == 0)
                 {
                     //Trigger Animation et Destroy sur le Prefab
-                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50, true);
+                    profilPresented.GetComponent<ProfilBehaviourTuto>().MatchAnim(50, true);
 
                     //Reset le controle des boutons sur le profil suivant
                     monsterPresented = null;
@@ -310,7 +275,7 @@ public class MatchManagerTuto : MonoBehaviour
                 else
                 {
                     //Trigger Animation et Destroy sur le Prefab
-                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50, false);
+                    profilPresented.GetComponent<ProfilBehaviourTuto>().MatchAnim(50, false);
                     //Reset le controle des boutons sur le profil suivant
                     monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviourTuto>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];

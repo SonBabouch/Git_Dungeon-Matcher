@@ -41,16 +41,16 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
         {
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster[i].gameObject;
-            bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
+            bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer = MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster[i].gameObject;
+            bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
+            bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().UpdateColor();
         }
 
         for (int i = MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster.Count; i < MenuManagerTuto.Instance.monsterEncyclopedie.allRareMonster.Count + MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster.Count; i++)
         {
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer = MenuManagerTuto.Instance.monsterEncyclopedie.allRareMonster[i - MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster.Count].gameObject;
-            bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
-            bagButtonList[i].GetComponent<BagButtonBehaviour>().UpdateColor();
+            bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer = MenuManagerTuto.Instance.monsterEncyclopedie.allRareMonster[i - MenuManagerTuto.Instance.monsterEncyclopedie.allCommonMonster.Count].gameObject;
+            bagButtonList[i].GetComponent<Image>().sprite = bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().profilPicture;
+            bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().UpdateColor();
         }
 
         MenuManagerTuto.Instance.monsterEncyclopedie.UpdateMonsterEncyclopedie();
@@ -63,7 +63,7 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < bagButtonList.Count; i++)
         {
-            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().isGet && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
+            if (bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().isGet && bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
             {
                 bagButtonList[i].transform.SetSiblingIndex(currentPosition);
                 currentPosition++;
@@ -72,7 +72,7 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < bagButtonList.Count; i++)
         {
-            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().isGet && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            if (bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().isGet && bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
                 bagButtonList[i].transform.SetSiblingIndex(currentPosition);
                 currentPosition++;
@@ -81,7 +81,7 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < bagButtonList.Count; i++)
         {
-            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
+            if (bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible && bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
             {
                 bagButtonList[i].transform.SetSiblingIndex(currentPosition);
                 currentPosition++;
@@ -90,7 +90,7 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < bagButtonList.Count; i++)
         {
-            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            if (bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible && bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
                 bagButtonList[i].transform.SetSiblingIndex(currentPosition);
                 currentPosition++;
@@ -99,7 +99,7 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < bagButtonList.Count; i++)
         {
-            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
+            if (bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible && bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Common)
             {
                 bagButtonList[i].transform.SetSiblingIndex(currentPosition);
                 currentPosition++;
@@ -108,7 +108,7 @@ public class BagCanvasManagerTuto : MonoBehaviour
 
         for (int i = 0; i < bagButtonList.Count; i++)
         {
-            if (bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible && bagButtonList[i].GetComponent<BagButtonBehaviour>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            if (bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Indisponible && bagButtonList[i].GetComponent<BagButtonBehaviourTuto>().monsterContainer.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
                 bagButtonList[i].transform.SetSiblingIndex(currentPosition);
                 currentPosition++;

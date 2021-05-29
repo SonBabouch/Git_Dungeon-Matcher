@@ -34,7 +34,7 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
     {
         if (MenuManagerTuto.Instance.matchManager.profilPresented == gameObject.transform.parent.gameObject && MenuManagerTuto.currentGameStateMenu == MenuManagerTuto.Menu.Match && MenuManagerTuto.Instance.matchManager.canMatch && MenuManagerTuto.Instance.canvasManager.pageSwiper.onDrag == false)
         {
-            if (gameObject.transform.position.x > MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
+            if (gameObject.transform.position.x > MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1])
             {
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.likeMarker.SetActive(true);
                 MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().yesTampon.SetActive(true);
@@ -47,7 +47,7 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().yesTampon.SetActive(false);
             }
 
-            if (gameObject.transform.position.x < MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
+            if (gameObject.transform.position.x < MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.transform.position.x && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1])
             {
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.dislikeMarker.SetActive(true);
                 MenuManagerTuto.Instance.matchManager.profilPresented.GetComponent<ProfilBehaviourTuto>().nopeTampon.SetActive(true);

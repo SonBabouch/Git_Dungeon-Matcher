@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CanvasManagerTuto : MonoBehaviour
 {
-    public PageSwiper pageSwiper;
+    public PageSwiperTuto pageSwiper;
 
     //Differents Menu
     public MatchCanvasManagerTuto matchCanvas;
@@ -108,7 +108,7 @@ public class CanvasManagerTuto : MonoBehaviour
         //Faire le changement de Panel;
         if (MenuManagerTuto.Instance.bagManager.detailShow == false)
         {
-            pageSwiper.GetComponent<PageSwiper>().GoToList();
+            pageSwiper.GetComponent<PageSwiperTuto>().GoToList();
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 2);
             MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.List;
         }
@@ -127,7 +127,7 @@ public class CanvasManagerTuto : MonoBehaviour
         if (MenuManagerTuto.Instance.bagManager.detailShow == false)
         {
 
-            pageSwiper.GetComponent<PageSwiper>().GoToMatch();
+            pageSwiper.GetComponent<PageSwiperTuto>().GoToMatch();
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 1);
             MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Match;
         }
@@ -148,7 +148,7 @@ public class CanvasManagerTuto : MonoBehaviour
         //Faire le changement de Panel;
         if (MenuManagerTuto.Instance.bagManager.detailShow == false)
         {
-            pageSwiper.GetComponent<PageSwiper>().GoToShop();
+            pageSwiper.GetComponent<PageSwiperTuto>().GoToShop();
 
             //fullCanvas.GetComponent<Animator>().SetInteger("State", 0);
             MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Shop;
@@ -163,7 +163,7 @@ public class CanvasManagerTuto : MonoBehaviour
         {
             MenuManagerTuto.Instance.canvasManager.matchCanvas.ShowExpérience();
         }
-        pageSwiper.GetComponent<PageSwiper>().GoToBag();
+        pageSwiper.GetComponent<PageSwiperTuto>().GoToBag();
         //Faire le changement de Panel;
         //fullCanvas.GetComponent<Animator>().SetInteger("State", 3);
         MenuManagerTuto.currentGameStateMenu = MenuManagerTuto.Menu.Bag;
