@@ -8,9 +8,12 @@ public class TutorielManager : MonoBehaviour
     public MenuTransitionTuto menuTransition;
     public TextBulle textBulle;
     public MenuManagerTuto menuManager;
+    public ShadowMaskGestion shadowMask;
 
     public GameObject MenuGO;
     public GameObject CombatGO;
+
+    public int currentIndex = 0;
 
     private void Awake()
     {
@@ -28,5 +31,7 @@ public class TutorielManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         textBulle.Initialisaition();
     }
+
+
 
 }

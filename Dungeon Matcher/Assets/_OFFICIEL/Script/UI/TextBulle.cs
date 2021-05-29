@@ -28,7 +28,7 @@ public class TextBulle : MonoBehaviour
     public TextMeshProUGUI bubbleText;
 
     public bool isTyping = false;
-    public int currentIndex = 0;
+    
 
     public enum MessageStatement {typing, needToSkip, needNextMessage}
     public MessageStatement statement;
@@ -51,9 +51,9 @@ public class TextBulle : MonoBehaviour
     public IEnumerator GoInConseillere()
     {
         conseillere.GetComponent<Tweener>().TweenPositionTo(tweenPosition.transform.localPosition, 0.8f, Easings.Ease.SmoothStep, true);
-        
+
         Vector3 scaleVector = new Vector3(1, 1, 1);
-        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmootherStep);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
 
         yield return new WaitForSeconds(1f);
         AffichageMessage();
@@ -66,8 +66,8 @@ public class TextBulle : MonoBehaviour
 
         conseillere.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition, 0.8f, Easings.Ease.SmoothStep, true);
 
-        Vector3 scaleVector = new Vector3(0,0,0);
-        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmootherStep);
+        Vector3 scaleVector = new Vector3(0, 0, 0);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
 
         yield return new WaitForSeconds(1f);
     }
@@ -81,8 +81,8 @@ public class TextBulle : MonoBehaviour
     {
         if (statement == MessageStatement.typing)
         {
-            StopCoroutine(AffichageMessageEnum(0.05f, messages[currentIndex]));
-            currentText = messages[currentIndex];
+            StopCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+            currentText = messages[TutorielManager.Instance.currentIndex];
             bubbleText.text = currentText;
             statement = MessageStatement.needNextMessage;
             skipButton.onClick.AddListener(AffichageMessage);
@@ -90,25 +90,53 @@ public class TextBulle : MonoBehaviour
     }
 
     //Le mettre lorsque le joueur appuie sur le bouton.
-     void AffichageMessage()
-     {
+    public void AffichageMessage()
+    {
         ResetButton();
-
-        if (currentIndex == 4) 
+        bool needToSkip = false;
+        if (TutorielManager.Instance.shadowMask.skipButton.isActiveAndEnabled)
         {
-            //Appeler la Méthode pour finir;
-            skipButton.gameObject.SetActive(false);
-            skipArrow.SetActive(false);
-            skipText.gameObject.SetActive(false);
-            StartCoroutine(GoOutConseillere());
-    
+            needToSkip = true;
+            TutorielManager.Instance.shadowMask.skipButton.enabled = false;
+            StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(TutorielManager.Instance.shadowMask.shadowChild.GetComponent<Image>().color.a, TutorielManager.Instance.shadowMask.shadowChild));
+            Vector3 scaleVector = new Vector3(1, 1, 1);
+            bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+            Debug.Log("good");
+
+            //on lance le message suivant
+            skipButton.onClick.AddListener(SkipMessage);
+            StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+            skipButton.gameObject.SetActive(true);
         }
-        else
+        else if (TutorielManager.Instance.currentIndex == 2 && !needToSkip)
+        {
+                //Appeler la Méthode pour finir;
+                StartCoroutine(DropShadow());
+            Debug.Log("Dedans");
+        }else
         {
             skipButton.onClick.AddListener(SkipMessage);
-            StartCoroutine(AffichageMessageEnum(0.05f, messages[currentIndex]));
+            StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
         }
-     }
+    }
+
+    public IEnumerator DropShadow()
+    {
+        skipButton.gameObject.SetActive(false);
+        skipArrow.SetActive(false);
+        skipText.gameObject.SetActive(false);
+        StartCoroutine(WaitInfoBubble());
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeIn(0f, TutorielManager.Instance.shadowMask.shadowChild));
+    }
+
+    public IEnumerator WaitInfoBubble()
+    {
+        bubbleText.text = "";
+        Vector3 scaleVector = new Vector3(0, 0, 0);
+        bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+        yield return null;
+    }
 
     public IEnumerator AffichageMessageEnum(float delay, string fullText)
     {
@@ -118,8 +146,8 @@ public class TextBulle : MonoBehaviour
         statement = MessageStatement.typing;
 
         for (int i = 0; i < fullText.Length; i++)
-        { 
-            if(statement == MessageStatement.typing)
+        {
+            if (statement == MessageStatement.typing)
             {
                 currentText = fullText.Substring(0, i);
                 bubbleText.text = currentText;
@@ -130,7 +158,7 @@ public class TextBulle : MonoBehaviour
         skipArrow.SetActive(true);
         skipText.gameObject.SetActive(true);
 
-        currentIndex++;
+        TutorielManager.Instance.currentIndex++;
         statement = MessageStatement.needNextMessage;
     }
 

@@ -279,6 +279,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 325014994}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &364815159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 364815159, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 761841773971417516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &631337732
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +406,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 761841773971417516}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1854570873}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b75b616200e59cc4fb42df069c49ebce, type: 3}
@@ -439,8 +445,10 @@ MonoBehaviour:
   menuTransition: {fileID: 8444307493722292911}
   textBulle: {fileID: 721158920}
   menuManager: {fileID: 245574155}
+  shadowMask: {fileID: 1854570878}
   MenuGO: {fileID: 3756496243311721218}
   CombatGO: {fileID: 325014995}
+  currentIndex: 0
 --- !u!4 &1606749091
 Transform:
   m_ObjectHideFlags: 0
@@ -471,6 +479,100 @@ MonoBehaviour:
   resultsObject: {fileID: 0}
   isOn: 0
   isTuto: 1
+--- !u!1 &1776512776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1776512776, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 761841773971417516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1776512777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776512776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1776512778}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 721158920}
+        m_MethodName: AffichageMessage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1776512778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1776512778, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 761841773971417516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776512776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d87084c58738c4e95d34252299bc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1854570873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 761841774403693231, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 761841773971417516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854570878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854570873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bc9311f513ba74692dd214a7c3ba1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowParent: {fileID: 364815159}
+  shadowChild: {fileID: 1776512776}
+  skipButton: {fileID: 0}
+  spriteToShow: {fileID: 0}
 --- !u!1001 &761841773971417516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,6 +580,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 364815159, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 364815160, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 15
@@ -493,6 +599,18 @@ PrefabInstance:
     - target: {fileID: 364815160, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 928.2357
+      objectReference: {fileID: 0}
+    - target: {fileID: 364815162, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776512776, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776512778, guid: d1cd89ff8b2095240bf5a9c63dade09a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 761841773898438316, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
@@ -540,6 +658,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 676.373
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774248105266, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: "Salutations, Dompteur. Je te souhaite la bienvenue sur Dungeon Matcher,
+        la toute nouvelle application de rencontre de monstres et d\u2019aventuriers\_!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "Je me nomme Gertrude du Tuttaux (GdT pour les intimes). C\u2019est
+        moi qui aura l\u2019honneur de t\u2019aider \xE0 faire tes premiers pas sur
+        ce service."
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[2]
+      value: "Nous nous trouvons sur l\u2019\xC9cran de Swipe, qui te permettra de
+        liker ou non les profils de monstres de ton choix."
+      objectReference: {fileID: 0}
+    - target: {fileID: 761841774403693220, guid: d1cd89ff8b2095240bf5a9c63dade09a,
+        type: 3}
+      propertyPath: messages.Array.data[3]
+      value: "Les cartes que tu vois devant toi sont ces profils. Tu peux y voir
+        le selfie, l\u2019identit\xE9, une description et le style de combat de chaque
+        monstre."
       objectReference: {fileID: 0}
     - target: {fileID: 761841774502280713, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
@@ -945,7 +1094,7 @@ PrefabInstance:
     - target: {fileID: 6018303567331959963, guid: 27dffbe5e8ed7d64e892a3dede38d9e7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6018303568008737422, guid: 27dffbe5e8ed7d64e892a3dede38d9e7,
         type: 3}
