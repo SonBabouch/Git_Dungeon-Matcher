@@ -19384,6 +19384,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b56586070c2b6dd4cbff1f9c15581e14,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b56586070c2b6dd4cbff1f9c15581e14,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b56586070c2b6dd4cbff1f9c15581e14,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b56586070c2b6dd4cbff1f9c15581e14,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b906d045a1761d44fa41631f85cd2826,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: b906d045a1761d44fa41631f85cd2826,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: b906d045a1761d44fa41631f85cd2826,
+        type: 2}
+    - target: {fileID: 8761877609787509778, guid: 8fc7f430ddfd3964f8942aef15c59c90,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: b906d045a1761d44fa41631f85cd2826,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fc7f430ddfd3964f8942aef15c59c90, type: 3}
 --- !u!4 &373346178483341130 stripped

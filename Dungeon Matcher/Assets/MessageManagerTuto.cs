@@ -157,7 +157,7 @@ public class MessageManagerTuto : MonoBehaviour
         conversationIndex = 0;
     }
 
-    public void ChoseArray(Skill skill, GameObject Go)
+    public void ChoseArray(SkillTuto skill, GameObject Go)
     {
         if (skill.comesFromCurse)
         {
@@ -169,16 +169,16 @@ public class MessageManagerTuto : MonoBehaviour
         {
             switch (skill.side)
             {
-                case Skill.monsterSide.Enemy:
-                    if (skill.typeOfCapacity == Skill.capacityType.Echo)
+                case SkillTuto.monsterSide.Enemy:
+                    if (skill.typeOfCapacity == SkillTuto.capacityType.Echo)
                     {
-                        if (Enemy.Instance.lastEnemyCompetence != null)
+                        if (EnemyTuto.Instance.lastEnemyCompetence != null)
                         {
                             skill.typeOfCapacity = EnemyTuto.Instance.lastEnemyCompetence.typeOfCapacity;
                             skill.chargingAttack = EnemyTuto.Instance.lastEnemyCompetence.chargingAttack;
                         }
                     }
-                    if (skill.typeOfCapacity == Skill.capacityType.Plagiat)
+                    if (skill.typeOfCapacity == SkillTuto.capacityType.Plagiat)
                     {
                         if (Player.Instance.lastPlayerCompetence != null)
                         {

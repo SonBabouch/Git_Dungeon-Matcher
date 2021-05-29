@@ -27,7 +27,7 @@ public class EnemyTuto : MonoBehaviour
     [HideInInspector]
     public int enemyIndex;
 
-    public Skill lastEnemyCompetence;
+    public SkillTuto lastEnemyCompetence;
     public float enemyChargingTime;
 
     public bool isCramp = false;
@@ -136,7 +136,7 @@ public class EnemyTuto : MonoBehaviour
         ShuffleEnemySkill();
     }
 
-    public IEnumerator EnemyChargeAttack(Skill skillToCharge)
+    public IEnumerator EnemyChargeAttack(SkillTuto skillToCharge)
     {
         EnemyTuto.Instance.isCharging = true;
         EnemyTuto.Instance.lastEnemyCompetence = skillToCharge;
@@ -144,7 +144,7 @@ public class EnemyTuto : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator EndEnemyChargeAttack(Skill skillToCharge)
+    public IEnumerator EndEnemyChargeAttack(SkillTuto skillToCharge)
     {
         yield return new WaitForSeconds(enemyChargingTime);
 

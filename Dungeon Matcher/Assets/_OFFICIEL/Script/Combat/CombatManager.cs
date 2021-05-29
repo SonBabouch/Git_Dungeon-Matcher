@@ -815,7 +815,7 @@ public class CombatManager : MonoBehaviour
         image.sprite = spriteToShow;
         spriteToShow = null;
     }
-    public void MessageIcon(GameObject message,Skill skill)
+    public void MessageIcon(GameObject message, SkillTuto skill)
     {
         
             Sprite spriteToShow = null;

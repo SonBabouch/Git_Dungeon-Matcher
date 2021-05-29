@@ -80,24 +80,24 @@ public class ConversationManagerTuto : MonoBehaviour
     }
 
     //1 - Le joueur appuie sur un bouton, ca lance SendMessage (enemy ou allié). Mettre 0 en EmojiEffect si l'attaque n'est pas un Emoji
-    public void SendMessagesPlayer(Skill capacity, int numberForEmojiEffect)
+    public void SendMessagesPlayer(SkillTuto capacity, int numberForEmojiEffect)
     {
         //Le joueur ne peut pas attaquer tant que l'animation n'est pas finie
         canAttack = false;
         switch (capacity.messageType)
         {
-            case Skill.typeOfMessage.Small:
+            case SkillTuto.typeOfMessage.Small:
                 messageToSpawn = typeToSpawn.PlayerSmall;
                 UpdatePosition(capacity);
                 break;
-            case Skill.typeOfMessage.Charging:
+            case SkillTuto.typeOfMessage.Charging:
                 PlayerChargingMessage(capacity);
                 break;
-            case Skill.typeOfMessage.Big:
+            case SkillTuto.typeOfMessage.Big:
                 messageToSpawn = typeToSpawn.PlayerBig;
                 UpdatePosition(capacity);
                 break;
-            case Skill.typeOfMessage.Emoji:
+            case SkillTuto.typeOfMessage.Emoji:
                 messageToSpawn = typeToSpawn.PlayerEmote;
                 futurEmojiEffect = numberForEmojiEffect;
                 UpdatePosition(capacity);
@@ -106,23 +106,23 @@ public class ConversationManagerTuto : MonoBehaviour
                 break;
         }
     }
-    public void SendMessagesEnemy(Skill capacity, int numberForEmojiEffect)
+    public void SendMessagesEnemy(SkillTuto capacity, int numberForEmojiEffect)
     {
         canAttack = false;
         switch (capacity.messageType)
         {
-            case Skill.typeOfMessage.Small:
+            case SkillTuto.typeOfMessage.Small:
                 messageToSpawn = typeToSpawn.EnemySmall;
                 UpdatePosition(capacity);
                 break;
-            case Skill.typeOfMessage.Charging:
+            case SkillTuto.typeOfMessage.Charging:
                 EnemyChargingMessage(capacity);
                 break;
-            case Skill.typeOfMessage.Big:
+            case SkillTuto.typeOfMessage.Big:
                 messageToSpawn = typeToSpawn.EnemyBig;
                 UpdatePosition(capacity);
                 break;
-            case Skill.typeOfMessage.Emoji:
+            case SkillTuto.typeOfMessage.Emoji:
                 messageToSpawn = typeToSpawn.EnemyEmote;
                 futurEmojiEffect = numberForEmojiEffect;
                 UpdatePosition(capacity);
@@ -132,7 +132,7 @@ public class ConversationManagerTuto : MonoBehaviour
         }
     }
     //2 - Enleve le dernier message
-    public void UpdatePosition(Skill skillType)
+    public void UpdatePosition(SkillTuto skillType)
     {
         numberOfMessageTotal = 0;
 
@@ -215,9 +215,9 @@ public class ConversationManagerTuto : MonoBehaviour
 
 
     #region ChargingRegion
-    public void UpdateLastMessageState(Skill skill)
+    public void UpdateLastMessageState(SkillTuto skill)
     {
-        if (skill.side == Skill.monsterSide.Ally)
+        if (skill.side == SkillTuto.monsterSide.Ally)
         {
             SendMessagesPlayer(skill, 0);
         }
@@ -232,7 +232,7 @@ public class ConversationManagerTuto : MonoBehaviour
 
 
     //4- Animation des Messages.
-    IEnumerator MessageMovementSimple(GameObject message, int index, bool ally, Skill skillToSpawn)
+    IEnumerator MessageMovementSimple(GameObject message, int index, bool ally, SkillTuto skillToSpawn)
     {
         //Déplacer message joueur
         if (message.GetComponent<MessageBehaviour>().ally)
@@ -271,7 +271,7 @@ public class ConversationManagerTuto : MonoBehaviour
 
     }
 
-    IEnumerator MessageMovementDouble(GameObject message, int index, bool ally, Skill skillToSpawn)
+    IEnumerator MessageMovementDouble(GameObject message, int index, bool ally, SkillTuto skillToSpawn)
     {
         //Déplacer message joueur
         if (message.GetComponent<MessageBehaviour>().ally)
@@ -310,7 +310,7 @@ public class ConversationManagerTuto : MonoBehaviour
 
     }
 
-    void UpdateArrayIndexDouble(Skill skillToSpawn)
+    void UpdateArrayIndexDouble(SkillTuto skillToSpawn)
     {
         //print("Called");
 
@@ -333,7 +333,7 @@ public class ConversationManagerTuto : MonoBehaviour
         UpdateEmojiEffect(skillToSpawn);
 
     }
-    void UpdateArrayIndex(Skill skillToSpawn)
+    void UpdateArrayIndex(SkillTuto skillToSpawn)
     {
         //print("Called");
 
@@ -355,7 +355,7 @@ public class ConversationManagerTuto : MonoBehaviour
     }
 
     //rejoue les effets des emojis si jamais ils sont en double pas de soucis;
-    void UpdateEmojiEffect(Skill skillToSpawn)
+    void UpdateEmojiEffect(SkillTuto skillToSpawn)
     {
         for (int i = 0; i < emojis.Count - 1; i++)
         {
@@ -367,7 +367,7 @@ public class ConversationManagerTuto : MonoBehaviour
     }
 
     //Instancier le message en fonction de la compétences.
-    void PrintMessage(Skill capacity)
+    void PrintMessage(SkillTuto capacity)
     {
         switch (messageToSpawn)
         {
@@ -404,7 +404,7 @@ public class ConversationManagerTuto : MonoBehaviour
     #endregion
 
     #region Player
-    public void PlayerSmallMessage(Skill skill)
+    public void PlayerSmallMessage(SkillTuto skill)
     {
         GameObject msg = Instantiate(SmallMessagePlayer.gameObject, playerMsgPositions[1].transform.position, Quaternion.identity);
         msg.transform.SetParent(playerMsgPositions[1].transform);
@@ -414,11 +414,11 @@ public class ConversationManagerTuto : MonoBehaviour
 
         if (skill.comesFromCurse)
         {
-            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManagerTuto.Instance.cursedColor;
 
         }
 
-        CombatManager.Instance.MessageIcon(msg, skill);
+        CombatManagerTuto.Instance.MessageIcon(msg, skill);
         //Debug.Log(skill);
         messageManager.ChoseArray(skill, msg);
         skill.PlayerEffect();
@@ -427,13 +427,13 @@ public class ConversationManagerTuto : MonoBehaviour
         //Lancer Methode pour le Text;
     }
 
-    public void PlayerChargingMessage(Skill skill)
+    public void PlayerChargingMessage(SkillTuto skill)
     {
         Debug.Log("ChargingAttack");
         playerChargingAttack.SetActive(true);
         skill.messageOwner = playerChargingAttack;
-        skill.messageType = Skill.typeOfMessage.Big;
-        Player.Instance.isCharging = true;
+        skill.messageType = SkillTuto.typeOfMessage.Big;
+        PlayerTuto.Instance.isCharging = true;
 
         if (skill.comesFromCurse)
         {
@@ -451,10 +451,10 @@ public class ConversationManagerTuto : MonoBehaviour
         StartCoroutine(Player.Instance.EndPlayerChargeAttack(skill));
     }
 
-    public void PlayerLargeMessage(Skill skill)
+    public void PlayerLargeMessage(SkillTuto skill)
     {
         playerChargingAttack.SetActive(false);
-        Player.Instance.isCharging = false;
+        PlayerTuto.Instance.isCharging = false;
 
 
         Debug.Log("BigMessage");
@@ -475,8 +475,8 @@ public class ConversationManagerTuto : MonoBehaviour
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
-        Player.Instance.canAttack = true;
-        skill.messageType = Skill.typeOfMessage.Charging;
+        PlayerTuto.Instance.canAttack = true;
+        skill.messageType = SkillTuto.typeOfMessage.Charging;
         //Lancer Methode pour le Text;
     }
 
@@ -488,11 +488,11 @@ public class ConversationManagerTuto : MonoBehaviour
         skill.messageOwner = msg;
         if (skill.comesFromCurse)
         {
-            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManagerTuto.Instance.cursedColor;
             skill.comesFromCurse = false;
         }
-        CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
-        CombatManager.Instance.MessageIcon(msg, skill);
+        CombatManagerTuto.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
+        CombatManagerTuto.Instance.MessageIcon(msg, skill);
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Player;
         msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);
         msg.GetComponent<MessageBehaviour>().EmojiEffectBegin();
@@ -508,7 +508,7 @@ public class ConversationManagerTuto : MonoBehaviour
     #endregion
 
     #region Enemy
-    public void EnemySmallMessage(Skill skill)
+    public void EnemySmallMessage(SkillTuto skill)
     {
         //A lancer à la fin de la coroutine.
         GameObject msg = Instantiate(SmallMessageEnemy.gameObject, enemyMsgPositions[1].transform.position, Quaternion.identity);
@@ -521,7 +521,7 @@ public class ConversationManagerTuto : MonoBehaviour
 
         }
 
-        CombatManager.Instance.MessageIcon(msg, skill);
+        CombatManagerTuto.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
         skill.MonsterEffect();
         messageToSpawn = typeToSpawn.Null;
@@ -529,18 +529,18 @@ public class ConversationManagerTuto : MonoBehaviour
         //Lancer Methode pour le Text;
     }
 
-    public void EnemyChargingMessage(Skill skill)
+    public void EnemyChargingMessage(SkillTuto skill)
     {
         //Initialisation.
         enemyChargingAttack.SetActive(true);
         skill.messageOwner = enemyChargingAttack;
-        skill.messageType = Skill.typeOfMessage.Big;
-        Enemy.Instance.isCharging = true;
+        skill.messageType = SkillTuto.typeOfMessage.Big;
+        EnemyTuto.Instance.isCharging = true;
 
         //Changer la couleur du message qui se charge en fonction de si il est curse ou non.
         if (skill.comesFromCurse)
         {
-            skill.messageOwner.GetComponent<Image>().color = ConversationManager.Instance.cursedColor;
+            skill.messageOwner.GetComponent<Image>().color = ConversationManagerTuto.Instance.cursedColor;
 
         }
         //else
@@ -550,14 +550,14 @@ public class ConversationManagerTuto : MonoBehaviour
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
-        Enemy.Instance.canAttack = false;
-        StartCoroutine(Enemy.Instance.EndEnemyChargeAttack(skill));
+        EnemyTuto.Instance.canAttack = false;
+        StartCoroutine(EnemyTuto.Instance.EndEnemyChargeAttack(skill));
     }
 
-    public void EnemyLargeMessage(Skill skill)
+    public void EnemyLargeMessage(SkillTuto skill)
     {
         enemyChargingAttack.SetActive(false);
-        Enemy.Instance.isCharging = false;
+        EnemyTuto.Instance.isCharging = false;
         GameObject msg = Instantiate(BigMessageEnemy.gameObject, enemyMsgPositions[2].transform.position, Quaternion.identity);
         msg.transform.SetParent(enemyMsgPositions[2].transform);
         allMsg[2] = msg;
@@ -569,13 +569,13 @@ public class ConversationManagerTuto : MonoBehaviour
 
         }
 
-        CombatManager.Instance.MessageIcon(msg, skill);
+        CombatManagerTuto.Instance.MessageIcon(msg, skill);
         messageManager.ChoseArray(skill, msg);
 
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
-        Enemy.Instance.canAttack = true;
-        skill.messageType = Skill.typeOfMessage.Charging;
+        EnemyTuto.Instance.canAttack = true;
+        skill.messageType = SkillTuto.typeOfMessage.Charging;
     }
 
     public void EnemyEmojis(Skill skill)
@@ -584,8 +584,8 @@ public class ConversationManagerTuto : MonoBehaviour
         msg.transform.SetParent(enemyMsgPositions[1].transform);
         allMsg[1] = msg;
         skill.messageOwner = msg;
-        CombatManager.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
-        CombatManager.Instance.MessageIcon(msg, skill);
+        CombatManagerTuto.Instance.EmojiIcon(msg.GetComponent<Image>(), skill);
+        CombatManagerTuto.Instance.MessageIcon(msg, skill);
         msg.GetComponent<MessageBehaviour>().teamMsg = MessageBehaviour.team.Enemy;
         msg.GetComponent<MessageBehaviour>().GetEffect(futurEmojiEffect);
         futurEmojiEffect = 0;

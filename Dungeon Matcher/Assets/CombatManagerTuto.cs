@@ -634,7 +634,7 @@ public class CombatManagerTuto : MonoBehaviour
         }
 
 
-        if (Player.Instance.isCramp)
+        if (PlayerTuto.Instance.isCramp)
         {
             int cost1 = PlayerTuto.Instance.playerHand[0].trueEnergyCost + 1;
             int cost2 = PlayerTuto.Instance.playerHand[1].trueEnergyCost + 1;
@@ -817,7 +817,7 @@ public class CombatManagerTuto : MonoBehaviour
         image.sprite = spriteToShow;
         spriteToShow = null;
     }
-    public void MessageIcon(GameObject message, Skill skill)
+    public void MessageIcon(GameObject message, SkillTuto skill)
     {
 
         Sprite spriteToShow = null;
