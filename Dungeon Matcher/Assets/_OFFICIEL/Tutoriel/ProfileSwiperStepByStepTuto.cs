@@ -109,15 +109,21 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 if (percentage > 0)//Vers la droite
                 {
 
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0)
+                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && TutorielManager.Instance.currentIndex != 6)
                     {
                         MenuManagerTuto.Instance.matchManager.Dislike();
                         MatchSoundManager.Instance.PlayClips(0);
                     }
-                    else
+                    else if(TutorielManager.Instance.currentIndex !=6 )
                     {
                         Debug.Log("Can't Dislike");
                         StartCoroutine(MenuManagerTuto.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
+                        transform.localPosition = Vector3.zero;
+                        transform.rotation = panelRotation;
+                        MatchSoundManager.Instance.PlayClips(12);
+                    }
+                    else
+                    {
                         transform.localPosition = Vector3.zero;
                         transform.rotation = panelRotation;
                         MatchSoundManager.Instance.PlayClips(12);
@@ -134,6 +140,19 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                         MenuManagerTuto.Instance.matchManager.Match(false);
 
                         MatchSoundManager.Instance.PlayClips(1);
+
+                        if (TutorielManager.Instance.currentIndex == 6)
+                        {
+                            TutorielManager.Instance.numberOfmatch++;
+
+                            if (TutorielManager.Instance.numberOfmatch == 2)
+                            {
+                                TutorielManager.Instance.textBulle.needToSkip = false;
+                                StartCoroutine(TutorielManager.Instance.textBulle.GoInConseillere());
+                            }    
+                        }
+
+                        
                     }
                     else
                     {

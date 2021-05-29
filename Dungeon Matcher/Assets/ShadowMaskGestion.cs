@@ -5,13 +5,56 @@ using UnityEngine.UI;
 
 public class ShadowMaskGestion : MonoBehaviour
 {
+    public GameObject HideShadowParent;
+
+    [Header("CardShadow")]
     public GameObject shadowParent;
     public GameObject shadowChild;
-    public Button skipButton;
-    public Sprite spriteToShow;
 
-    public Sprite roundSprite;
-    public Sprite squareSprite;
+    [Header("LikeShadow")]
+    public GameObject shadowLikeParent;
+    public GameObject shadowLikeChild;
+
+    [Header("DislikeShadow")]
+    public GameObject shadowDislikeParent;
+    public GameObject shadowDislikeChild;
+
+    [Header("LevelShadow")]
+    public GameObject shadowLevelParent;
+    public GameObject shadowLevelChild;
+
+    [Header("EnergieShadow")]
+    public GameObject shadowEnergieParent;
+    public GameObject shadowEnergieChild;
+
+    [Header("SuperlikeShadow")]
+    public GameObject shadowSuperlikeParent;
+    public GameObject shadowSuperlikeChild;
+
+    [Header("SuperlikeGiveShadow")]
+    public GameObject shadowSuperlikeGiveParent;
+    public GameObject shadowSuperlikeGiveChild;
+
+    [Header("ListShadow")]
+    public GameObject shadowListParent;
+    public GameObject shadowListChild;
+
+
+    [Header("BagButtonShadow")]
+    public GameObject shadowBagButtonParent;
+    public GameObject shadowBagButtonChild;
+
+
+    [Header("ListButtonShadow")]
+    public GameObject shadowListButtonParent;
+    public GameObject shadowListButtonChild;
+
+    [Header("ShowEquipeShadow")]
+    public GameObject shadowShowEquipeParent;
+    public GameObject shadowShowEquipeChild;
+
+    [Header("Button")]
+    public Button skipButton;
 
     private void Awake()
     {
@@ -24,8 +67,8 @@ public class ShadowMaskGestion : MonoBehaviour
         if (image.color.a > 0)
         {
             image.color = new Vector4(image.color.r, image.color.g, image.color.b, value);
-            yield return new WaitForSeconds(0.1f);
-            value -= 0.1f;
+            yield return new WaitForSeconds(0.02f);
+            value -= 0.03f;
             StartCoroutine(ScreenFadeOut(value, GO));
         }
         else

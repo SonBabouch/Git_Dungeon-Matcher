@@ -14,6 +14,7 @@ public class TutorielManager : MonoBehaviour
     public GameObject CombatGO;
 
     public int currentIndex = 0;
+    public int numberOfmatch = 0;
 
     private void Awake()
     {

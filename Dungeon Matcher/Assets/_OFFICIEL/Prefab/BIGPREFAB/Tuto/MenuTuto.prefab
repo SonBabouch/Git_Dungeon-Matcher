@@ -31,12 +31,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1776512777}
-  m_Father: {fileID: 761841774403693227}
-  m_RootOrder: 2
+  m_Father: {fileID: 6121760641364770629}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.5, y: 15}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 1550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &364815163
@@ -115,17 +115,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625210690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 761841774403693227}
-  m_RootOrder: 13
+  m_Father: {fileID: 6121760641364770629}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 904.37964, y: 1964.5581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1625210694
 CanvasRenderer:
@@ -244,7 +244,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776512776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -452,7 +452,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7031214361570399090}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -542,13 +542,13 @@ RectTransform:
   m_Children:
   - {fileID: 761841773644305833}
   - {fileID: 761841775348155736}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 904.37964, y: 1964.5581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &761841773617969905
 CanvasRenderer:
@@ -1655,20 +1655,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 761841773617969910}
-  - {fileID: 8487330246362277663}
-  - {fileID: 364815160}
-  - {fileID: 6514652598516074664}
-  - {fileID: 7556530224849359485}
-  - {fileID: 4911011207949061893}
-  - {fileID: 2956885876663918313}
-  - {fileID: 3734260672245687185}
-  - {fileID: 5614871220059326941}
-  - {fileID: 1106433145839059539}
-  - {fileID: 3585909903669824119}
-  - {fileID: 1530220671386999254}
+  - {fileID: 6121760641364770629}
   - {fileID: 761841774990393596}
-  - {fileID: 1625210691}
   m_Father: {fileID: 4518054222902455112}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1765,6 +1753,50 @@ MonoBehaviour:
     non les profils de monstres de ton choix."
   - "Les cartes que tu vois devant toi sont ces profils. Tu peux y voir le selfie,
     l\u2019identit\xE9, une description et le style de combat de chaque monstre."
+  - "Pour liker un profil, tu n\u2019as qu\u2019\xE0 le glisser vers la droite. Si
+    tu souhaites le disliker, ce sera vers la gauche."
+  - "Bien entendu, ne t\u2019attends pas \xE0 ce que tu matches avec tous les monstres
+    que tu verras. Tu seras notifi\xE9 par un pop-up si cela arrive."
+  - "Tu n\u2019as qu\u2019\xE0 essayer\_! Like les deux premiers profils de la liste
+    pour voir\_!"
+  - "Pour plaire \xE0 davantage de monstres, tu dois monter de niveau (eh oui, ils
+    ne seront pas attir\xE9s par un bleu\_!). Le tiens est visible en haut de cet
+    \xE9cran\_!"
+  - "Bien entendu, ne t\u2019attends pas \xE0 ce que tu matches avec tous les monstres
+    que tu verras. Tu seras notifi\xE9 par un pop-up si cela arrive."
+  - "Attention cependant. Tes swipes sont limit\xE9s par une \xE9nergie se rechargeant
+    avec le temps. Pour tes d\xE9buts, permets-moi de t\u2019en offrir gratuitement."
+  - "Les Super-Likes sont une fa\xE7on de swiper assez particuli\xE8re. Ils permettent
+    de te faciliter la vie lors de tes futurs affrontements."
+  - "Pour ce faire, tu dois envoyer le profil vers le haut de l\u2019\xE9cran. Pour
+    en obtenir, tu dois te rendre dans la boutique."
+  - "Je t\u2019invite maintenant \xE0 appuyer sur ce bouton."
+  - "Cet \xE9cran est celui de la boutique, malheureusement en cours de construction
+    par nos \xE9quipes de charpentiers num\xE9riques."
+  - Tu peux aussi appuyer sur cet autre bouton si tu le souhaites.
+  - "Cet \xE9cran est celui de la Liste de Conqu\xEAtes. Comme tu peux le voir, elle
+    r\xE9pertorie l\u2019ensemble de tes matchs r\xE9alis\xE9s pr\xE9c\xE9demment."
+  - "Tout le charme de notre application r\xE9side en nos conversations entre monstres
+    et aventuriers. Vois ceci comme une forme de combat."
+  - "Ainsi, cette Liste de Conqu\xEAtes peut s\u2019apparenter \xE0 un encha\xEEnement
+    de combat contre des monstres, autrement dit\_: un donjon\_!"
+  - "Vu que tu as une Liste, peux-tu lancer les combats\_? "
+  - "Pardonne ma fourberie, mais il est bon d\u2019apprendre par soi-m\xEAme certaines
+    choses. En effet, tu dois avoir une \xE9quipe pour combattre\_!"
+  - "Pourrais-tu appuyer sur ce bouton s\u2019il te pla\xEEt\_? Nous allons r\xE9gler
+    ce petit contre-temps."
+  - "Oh, excuse moi, je suis juste au dessus de o\xF9 tu dois appuyer. Je te laisse
+    la place."
+  - "Sur cet \xE9cran, tu pourras retrouver les monstres que tu auras dompt\xE9 apr\xE8s
+    les avoir combattus. "
+  - "Bien s\xFBr, tu n\u2019en as pas encore, permets-moi donc de t\u2019en pr\xEAter
+    deux le temps de te faire \xE0 l\u2019application."
+  - "Comme tu auras pu le voir, ton \xE9quipement se compose de deux monstres dompt\xE9s.
+    Appuie deux fois rapidement sur les monstres pour les \xE9quiper\_!"
+  - "Parfait\_! Les monstres \xE9quip\xE9s te permettent de d\xE9finir les capacit\xE9s
+    que tu utiliseras en combat. En fait\u2026 tu utilises LEURS capacit\xE9s\_:p"
+  - "Tout est pr\xEAt maintenant, tu peux retourner \xE0 la Liste de Conqu\xEAtes\_!"
+  - "Essaye de lancer le combat d\xE9sormais."
   bubbleText: {fileID: 761841775062317337}
   isTyping: 0
   statement: 2
@@ -1780,12 +1812,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bc9311f513ba74692dd214a7c3ba1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideShadowParent: {fileID: 0}
   shadowParent: {fileID: 364815159}
   shadowChild: {fileID: 1776512776}
+  shadowLikeParent: {fileID: 8149667653607862242}
+  shadowLikeChild: {fileID: 5813394262160312853}
+  shadowDislikeParent: {fileID: 2493859617880257776}
+  shadowDislikeChild: {fileID: 3921559552088475250}
+  shadowLevelParent: {fileID: 6685589331248805918}
+  shadowLevelChild: {fileID: 3109164299320851061}
+  shadowEnergieParent: {fileID: 4269996041468129422}
+  shadowEnergieChild: {fileID: 6940343803722978977}
+  shadowSuperlikeParent: {fileID: 3285275299429453897}
+  shadowSuperlikeChild: {fileID: 2128958549811305441}
+  shadowSuperlikeGiveParent: {fileID: 4855650798510803423}
+  shadowSuperlikeGiveChild: {fileID: 2718129717913360108}
+  shadowListParent: {fileID: 7673268090505435097}
+  shadowListChild: {fileID: 6130597164134848525}
+  shadowBagButtonParent: {fileID: 6242057981873954547}
+  shadowBagButtonChild: {fileID: 8775095474436556}
+  shadowListButtonParent: {fileID: 7581925883134759279}
+  shadowListButtonChild: {fileID: 8138412164257801685}
+  shadowShowEquipeParent: {fileID: 746238380723382302}
+  shadowShowEquipeChild: {fileID: 7440689536920007835}
   skipButton: {fileID: 1625210692}
-  spriteToShow: {fileID: 0}
-  roundSprite: {fileID: 21300000, guid: b001c7338e96aee489b8a383919ecaf5, type: 3}
-  squareSprite: {fileID: 21300000, guid: 9ab1bf8ba6c96a248867e2b65c73322b, type: 3}
 --- !u!1 &761841774451628650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2533,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761841774990393571}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2491,7 +2541,7 @@ RectTransform:
   - {fileID: 761841774502280713}
   - {fileID: 761841773898438316}
   m_Father: {fileID: 761841774403693227}
-  m_RootOrder: 12
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3543,8 +3593,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9216360957971129383}
-  m_Father: {fileID: 761841774403693227}
-  m_RootOrder: 3
+  m_Father: {fileID: 6121760641364770629}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3780,7 +3830,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6900030535819288682}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3863,7 +3913,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3921559552088475250}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3943,7 +3993,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2003042558983605627}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7670,7 +7720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15921411, y: 0.48403126}
   m_AnchorMax: {x: 0.2514222, y: 0.7790918}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!222 &4518054222381793548
@@ -17836,7 +17886,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6026358079495299144}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18073,7 +18123,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2671902020124939190}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18162,8 +18212,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8738377838624505124}
-  m_Father: {fileID: 761841774403693227}
-  m_RootOrder: 1
+  m_Father: {fileID: 6121760641364770629}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18399,7 +18449,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813073175640489427}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18488,7 +18538,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5651593867018381986}
-  m_Father: {fileID: 761841774403693227}
+  m_Father: {fileID: 6121760641364770629}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18651,8 +18701,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6291522824878063893}
-  m_Father: {fileID: 761841774403693227}
-  m_RootOrder: 4
+  m_Father: {fileID: 6121760641364770629}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18709,6 +18759,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!1 &8546458269467885802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6121760641364770629}
+  m_Layer: 5
+  m_Name: HideAllShadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6121760641364770629
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546458269467885802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 761841773617969910}
+  - {fileID: 364815160}
+  - {fileID: 6514652598516074664}
+  - {fileID: 7556530224849359485}
+  - {fileID: 8487330246362277663}
+  - {fileID: 4911011207949061893}
+  - {fileID: 2956885876663918313}
+  - {fileID: 3734260672245687185}
+  - {fileID: 5614871220059326941}
+  - {fileID: 1106433145839059539}
+  - {fileID: 3585909903669824119}
+  - {fileID: 1530220671386999254}
+  - {fileID: 1625210691}
+  m_Father: {fileID: 761841774403693227}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &392620300567042762
 PrefabInstance:
   m_ObjectHideFlags: 0

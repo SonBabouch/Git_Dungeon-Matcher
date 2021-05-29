@@ -34,8 +34,6 @@ public class ProfilBehaviourTuto : MonoBehaviour
         rectTrans.offsetMax = Vector2.zero;
 
         rectTrans.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-
-
     }
 
     public void Superlike()

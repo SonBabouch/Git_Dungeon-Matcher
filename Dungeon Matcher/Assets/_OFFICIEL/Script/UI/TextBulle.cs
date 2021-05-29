@@ -20,6 +20,8 @@ public class TextBulle : MonoBehaviour
     [SerializeField] private GameObject tweenPosition;
     [SerializeField] private GameObject bubble;
 
+    public bool needToSkip = false;
+
     [Header("Messages")]
     [TextArea]
     public string[] messages;
@@ -93,8 +95,8 @@ public class TextBulle : MonoBehaviour
     public void AffichageMessage()
     {
         ResetButton();
-        bool needToSkip = false;
-        if (TutorielManager.Instance.shadowMask.skipButton.isActiveAndEnabled)
+        
+        if (TutorielManager.Instance.shadowMask.skipButton.isActiveAndEnabled && TutorielManager.Instance.currentIndex ==2)
         {
             needToSkip = true;
             TutorielManager.Instance.shadowMask.skipButton.gameObject.SetActive(false);
@@ -108,16 +110,64 @@ public class TextBulle : MonoBehaviour
             StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
             skipButton.gameObject.SetActive(true);
         }
+        else if (TutorielManager.Instance.shadowMask.skipButton.isActiveAndEnabled && TutorielManager.Instance.currentIndex == 4)
+        {
+            needToSkip = true;
+            TutorielManager.Instance.shadowMask.skipButton.gameObject.SetActive(false);
+            StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(TutorielManager.Instance.shadowMask.shadowChild.GetComponent<Image>().color.a, TutorielManager.Instance.shadowMask.shadowDislikeChild));
+            StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeOut(TutorielManager.Instance.shadowMask.shadowChild.GetComponent<Image>().color.a, TutorielManager.Instance.shadowMask.shadowLikeChild));
+            Vector3 scaleVector = new Vector3(1, 1, 1);
+            bubble.GetComponent<Tweener>().TweenScaleTo(scaleVector, 1f, Easings.Ease.SmoothStep);
+            Debug.Log("good");
+
+            //on lance le message suivant
+            skipButton.onClick.AddListener(SkipMessage);
+            StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+            skipButton.gameObject.SetActive(true);
+            Debug.Log("ici");
+        }
+        else if(TutorielManager.Instance.currentIndex == 6 && needToSkip)
+        {
+            Debug.Log("Dedans");
+            needToSkip = false;
+            TutorielManager.Instance.shadowMask.HideShadowParent.SetActive(false);
+            StartCoroutine(GoOutConseillere());
+        }
+        else if(TutorielManager.Instance.currentIndex == 6 && !needToSkip)
+        {
+            Debug.Log("Here");
+            skipButton.onClick.AddListener(SkipMessage);
+            StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
+        }
+        else if (TutorielManager.Instance.currentIndex == 4 && !needToSkip)
+        {
+            //Appeler la Méthode pour finir;
+            StartCoroutine(DropShadowLikeDislike());
+            
+        }
         else if (TutorielManager.Instance.currentIndex == 2 && !needToSkip)
         {
                 //Appeler la Méthode pour finir;
                 StartCoroutine(DropShadow());
-            Debug.Log("Dedans");
-        }else
+                
+        }
+        else
         {
+            Debug.Log("Here");
             skipButton.onClick.AddListener(SkipMessage);
             StartCoroutine(AffichageMessageEnum(0.05f, messages[TutorielManager.Instance.currentIndex]));
         }
+    }
+
+    public IEnumerator DropShadowLikeDislike()
+    {
+        skipButton.gameObject.SetActive(false);
+        skipArrow.SetActive(false);
+        skipText.gameObject.SetActive(false);
+        StartCoroutine(WaitInfoBubble());
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeIn(0f, TutorielManager.Instance.shadowMask.shadowDislikeChild));
+        StartCoroutine(TutorielManager.Instance.shadowMask.ScreenFadeIn(0f, TutorielManager.Instance.shadowMask.shadowLikeChild));
     }
 
     public IEnumerator DropShadow()
