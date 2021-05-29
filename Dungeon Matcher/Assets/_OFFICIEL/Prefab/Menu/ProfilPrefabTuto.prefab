@@ -651,7 +651,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720733492877758810}
-  - component: {fileID: 6255366077428215015}
   - component: {fileID: 4011349427817665650}
   m_Layer: 0
   m_Name: ProfilPrefabTuto
@@ -680,7 +679,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6255366077428215015
+--- !u!114 &4011349427817665650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -689,7 +688,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3276448039644258852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e8304b03204424bbb220d8cf1147a6, type: 3}
+  m_Script: {fileID: 11500000, guid: e6521a15e077b0c4c86dea6a79aa2621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPick: {fileID: 0}
@@ -706,30 +705,6 @@ MonoBehaviour:
   yesTampon: {fileID: 1538315111556160105}
   nopeTampon: {fileID: 8511780770842798485}
   rareSparkles: {fileID: 5258261532324034795}
---- !u!114 &4011349427817665650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3276448039644258852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6521a15e077b0c4c86dea6a79aa2621, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterPick: {fileID: 0}
-  profilAsset: {fileID: 0}
-  profilName: {fileID: 0}
-  description: {fileID: 0}
-  hashtag: []
-  level: {fileID: 0}
-  certification: {fileID: 0}
-  rectTrans: {fileID: 0}
-  superlikeButton: {fileID: 0}
-  yesTampon: {fileID: 0}
-  nopeTampon: {fileID: 0}
-  rareSparkles: {fileID: 0}
 --- !u!1 &4753265380193660643
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +823,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6255366077428215015}
+      - m_Target: {fileID: 0}
         m_MethodName: Superlike
         m_Mode: 1
         m_Arguments:

@@ -22,7 +22,6 @@ public class CanvasManagerTuto : MonoBehaviour
     //Title Screen
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameTitle;
-    private bool trigger = false;
     [SerializeField] private GameObject tutoButton;
     [SerializeField] private GameObject gameButton;
 

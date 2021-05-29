@@ -68,7 +68,7 @@ public class ListCanvasManagerTuto : MonoBehaviour
     public void UpdateList()
     {
         currentSizeText.text = MenuManagerTuto.Instance.listManager.listCurrentSize.ToString();
-        maxSizeText.text = MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1].ToString();
+        maxSizeText.text = MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1].ToString();
     }
 
     //Instancier le profil à une position particulière. 
@@ -78,7 +78,7 @@ public class ListCanvasManagerTuto : MonoBehaviour
 
         instantiatedProfil.transform.SetParent(parentPositions.transform);
         //Debug.Log("2");
-        instantiatedProfil.GetComponent<CombatProfilList>().UpdateVisualMatch();
+        instantiatedProfil.GetComponent<CombatProfilListTuto>().UpdateVisualMatch();
         MenuManagerTuto.Instance.listManager.listPrefab.Add(instantiatedProfil);
     }
 

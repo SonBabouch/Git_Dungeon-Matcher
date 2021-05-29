@@ -85,7 +85,7 @@ public class MatchManagerTuto : MonoBehaviour
             MenuManagerTuto.Instance.canvasManager.matchCanvas.ThereIsARare = true;
 
             //Tirage aléatoire parmis la pool de monstre rare selon le niveau du joueur.
-            int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel]);
+            int tirageIndex = Random.Range(0, numberRarePool[PlayerLevelTuto.playerLevelTuto]);
             //MonsterPresented = Un monstre tiré dans la liste.
             monsterPresented = choosenList[tirageIndex];
         }
@@ -103,11 +103,11 @@ public class MatchManagerTuto : MonoBehaviour
         profilSpawned.SetActive(false);
         profilSpawned.transform.SetParent(MenuManagerTuto.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
         //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
-        profilSpawned.GetComponent<ProfilBehaviour>().Initialisation(true);
+        profilSpawned.GetComponent<ProfilBehaviourTuto>().Initialisation(true);
         //Le monstre est ajouté à une liste pouvant être traquée.
         monsterSpawned.Insert(0, profilSpawned);
 
-        monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+        monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviourTuto>().monsterPick;
         profilPresented = monsterSpawned[monsterSpawned.Count - 1];
         //Debug.Log(monsterPresented);
 
@@ -129,7 +129,7 @@ public class MatchManagerTuto : MonoBehaviour
             //Reset de la chance pour ne pas re avoir de monstre Rare.
             ChanceCount = 0;
             //Tirage aléatoire parmis la pool de monstre rare selon le niveau du joueur.
-            int tirageIndex = Random.Range(0, numberRarePool[PlayerLevel.playerLevel]);
+            int tirageIndex = Random.Range(0, numberRarePool[PlayerLevelTuto.playerLevelTuto]);
             //MonsterPresented = Un monstre tiré dans la liste.
             monsterPresented = choosenList[tirageIndex];
         }
@@ -149,12 +149,12 @@ public class MatchManagerTuto : MonoBehaviour
         profilSpawned.transform.SetParent(MenuManagerTuto.Instance.canvasManager.matchCanvas.profilPosition[0].transform);
         //profilSpawned.transform.localScale = new Vector3(1f, 1f, 1f);
 
-        profilSpawned.GetComponent<ProfilBehaviour>().Initialisation(true);
+        profilSpawned.GetComponent<ProfilBehaviourTuto>().Initialisation(true);
         //Le monstre est ajouté à une liste pouvant être traquée.
         monsterSpawned.Insert(0, profilSpawned);
         //Debug.Log(monsterPresented);
         MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateFirstPosition();
-        monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+        monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviourTuto>().monsterPick;
         profilPresented = monsterSpawned[monsterSpawned.Count - 1];
     }
 
@@ -197,7 +197,7 @@ public class MatchManagerTuto : MonoBehaviour
     {
         if (isSuperLike)
         {
-            if (EnergyManager.superlikeCount > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManagerTuto.Instance.blockAction && monsterSpawned.Count != 0)
+            if (EnergyManagerTuto.superlikeCount > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && canMatch && !MenuManagerTuto.Instance.blockAction && monsterSpawned.Count != 0)
             {
                 if (monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Disponible || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Claim || monsterPresented.GetComponent<MonsterToken>().statement == MonsterToken.statementEnum.Equipe)
                 {
@@ -237,9 +237,9 @@ public class MatchManagerTuto : MonoBehaviour
                 else
                 {
                     //Trigger Animation et Destroy sur le Prefab
-                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50, true);
+                    profilPresented.GetComponent<ProfilBehaviourTuto>().MatchAnim(50, true);
                     //Reset le controle des boutons sur le profil suivant
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviourTuto>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
                 }
 
@@ -252,14 +252,14 @@ public class MatchManagerTuto : MonoBehaviour
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.StartCoroutine(MenuManagerTuto.Instance.playerLevel.GiveExperience(2));
                 numberOfDislike = 0;
 
-                EnergyManager.superlikeCount--;
+                EnergyManagerTuto.superlikeCount--;
 
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateSuperLike();
             }
         }
         else
         {
-            if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
+            if (monsterSpawned.Count != 0 && EnergyManagerTuto.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
             {
                 //Debug.Log("In");
                 //Checker si (energie > 0 && liste pas complète).
@@ -292,7 +292,7 @@ public class MatchManagerTuto : MonoBehaviour
                 //Afficher FeedBackErreur.
 
                 //Baisse de l'energy
-                EnergyManager.energy--;
+                EnergyManagerTuto.energy--;
                 MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateEnergy();
 
                 monsterSpawned.Remove(profilPresented);
@@ -301,7 +301,7 @@ public class MatchManagerTuto : MonoBehaviour
                 if (monsterSpawned.Count == 0)
                 {
                     //Trigger Animation et Destroy sur le Prefab
-                    profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50, false);
+                    profilPresented.GetComponent<ProfilBehaviourTuto>().MatchAnim(50, false);
 
                     //Reset le controle des boutons sur le profil suivant
                     monsterPresented = null;
@@ -312,7 +312,7 @@ public class MatchManagerTuto : MonoBehaviour
                     //Trigger Animation et Destroy sur le Prefab
                     profilPresented.GetComponent<ProfilBehaviour>().MatchAnim(50, false);
                     //Reset le controle des boutons sur le profil suivant
-                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                    monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviourTuto>().monsterPick;
                     profilPresented = monsterSpawned[monsterSpawned.Count - 1];
                 }
 
@@ -331,7 +331,7 @@ public class MatchManagerTuto : MonoBehaviour
     //A activer quand le bouton dislike est préssé.
     public void Dislike()
     {
-        if (monsterSpawned.Count != 0 && EnergyManager.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
+        if (monsterSpawned.Count != 0 && EnergyManagerTuto.energy > 0 && MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevelTuto.playerLevelTuto - 1] && canMatch && !MenuManagerTuto.Instance.blockAction)
         {
             if (MenuManagerTuto.Instance.canvasManager.matchCanvas.ThereIsARare && monsterPresented.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
@@ -343,18 +343,18 @@ public class MatchManagerTuto : MonoBehaviour
             //pour eviter la null reference d'index quand il n'y a plus de profils.
             if (monsterSpawned.Count == 0)
             {
-                profilPresented.GetComponent<ProfilBehaviour>().DisLikeAnim(50);
+                profilPresented.GetComponent<ProfilBehaviourTuto>().DisLikeAnim(50);
                 profilPresented = null;
                 monsterPresented = null;
             }
             else
             {
-                profilPresented.GetComponent<ProfilBehaviour>().DisLikeAnim(50);
-                monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviour>().monsterPick;
+                profilPresented.GetComponent<ProfilBehaviourTuto>().DisLikeAnim(50);
+                monsterPresented = monsterSpawned[monsterSpawned.Count - 1].GetComponent<ProfilBehaviourTuto>().monsterPick;
                 profilPresented = monsterSpawned[monsterSpawned.Count - 1];
 
             }
-            EnergyManager.energy--;
+            EnergyManagerTuto.energy--;
             MenuManagerTuto.Instance.canvasManager.matchCanvas.UpdateEnergy();
             MenuManagerTuto.Instance.canvasManager.matchCanvas.energySpend.GetComponent<Animator>().SetTrigger("Swip");
 
