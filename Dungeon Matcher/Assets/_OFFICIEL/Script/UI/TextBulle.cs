@@ -31,8 +31,7 @@ public class TextBulle : MonoBehaviour
     public enum MessageStatement {typing, needToSkip, needNextMessage}
     public MessageStatement statement;
 
-
-    private void Start()
+    public void Initialisaition()
     {
         skipArrow.SetActive(false);
         skipText.gameObject.SetActive(false);

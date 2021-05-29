@@ -83,7 +83,7 @@ namespace Management
             ManagerManager.Instance.menuManager.SetActive(false);
             ManagerManager.Instance.combatManager.SetActive(false);
             ManagerManager.Instance.transitionMenu.SetActive(false);
-            SceneManager.LoadScene(1);
+            SceneManager.LoadSceneAsync(1);
         }
 
         public IEnumerator ScreenFade(float value, GameObject GO)
