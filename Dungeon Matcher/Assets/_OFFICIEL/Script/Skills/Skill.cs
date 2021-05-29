@@ -185,14 +185,13 @@ public abstract class Skill : ScriptableObject
 
                 if (Player.Instance.energy >= energyCost)
                 {
-                    Player.Instance.energy -= energyCost;
-                    Player.Instance.trueEnergy -= trueEnergyCost;
-
                     if (Player.Instance.isCramp)
                     {
                         energyCost = initialEnergyCost;
                     }
 
+                    Player.Instance.energy -= energyCost;
+                    Player.Instance.trueEnergy -= trueEnergyCost;
 
                     CombatManager.Instance.ButtonsUpdate();
                     ConversationManager.Instance.SendMessagesPlayer(this, index);

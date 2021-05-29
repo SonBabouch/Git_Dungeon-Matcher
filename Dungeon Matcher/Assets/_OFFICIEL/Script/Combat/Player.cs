@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
             limitHealthAndEnergy();
             SkillFeedback.Instance.PlayerDefenseFeedback();
             SkillFeedback.Instance.PlayerAccelerateDecelerateFeedback();
+            //SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerCrampFeedback());
         }
     }
 

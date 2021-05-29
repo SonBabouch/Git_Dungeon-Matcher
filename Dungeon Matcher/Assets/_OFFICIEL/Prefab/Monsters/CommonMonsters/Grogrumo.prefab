@@ -63,19 +63,19 @@ MonoBehaviour:
   side: 0
   owner: {fileID: 3352059483369707408}
   allySkills:
-  - {fileID: 11400000, guid: be4ed5baefbb09242aa55b378114f070, type: 2}
-  - {fileID: 11400000, guid: a595536b422cbc4439779baa08b8f0f5, type: 2}
-  - {fileID: 11400000, guid: ad4f4f1e1df0bf842a10638983b0cce5, type: 2}
-  - {fileID: 11400000, guid: 06406a81c6cba4046bb51185b5aea3d7, type: 2}
+  - {fileID: 11400000, guid: 7b1721bb0be1b954a9792a4256bb243e, type: 2}
+  - {fileID: 11400000, guid: 7b1721bb0be1b954a9792a4256bb243e, type: 2}
+  - {fileID: 11400000, guid: 7b1721bb0be1b954a9792a4256bb243e, type: 2}
+  - {fileID: 11400000, guid: 7b1721bb0be1b954a9792a4256bb243e, type: 2}
   ennemySkills:
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
-  - {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
+  - {fileID: 11400000, guid: 182c64467e91bc348848ec4635148024, type: 2}
   monsterHashTag:
   - "D\xE9fense"
   - Attaque

@@ -10,6 +10,10 @@ public class SkillFeedback : MonoBehaviour
     private Color32 green = new Color32(50, 202, 31, 255);
     private Color32 red = new Color32(202, 50, 31, 255);
 
+    [Header("Coup de Vent")]
+    [SerializeField] private GameObject coupDeVent;
+
+
 
     #region Player statement
     [Header("Player Heal")] [Header("Player")]
@@ -33,6 +37,9 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Player Break")]
     [SerializeField] private GameObject playerBreak;
+
+    [Header("Player Cramp")]
+    [SerializeField] private GameObject playerCramp;
     #endregion
 
     #region Enemi Statement
@@ -57,6 +64,9 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Enemi Break")]
     [SerializeField] private GameObject enemiBreak;
+
+    [Header("Enemi Cramp")]
+    [SerializeField] private GameObject enemiCramp;
     #endregion
 
     private void Awake()
@@ -159,6 +169,13 @@ public class SkillFeedback : MonoBehaviour
         yield return new WaitForSeconds(1f);
         enemiBreak.SetActive(false);
     }
+
+    public IEnumerator PlayerCrampFeedback()
+    {
+        playerCramp.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        playerCramp.SetActive(false);
+    }
     #endregion
 
     #region Enemi methods
@@ -246,9 +263,21 @@ public class SkillFeedback : MonoBehaviour
         yield return new WaitForSeconds(1f);
         playerBreak.SetActive(false);
     }
+
+    public IEnumerator EnemiCrampFeedback()
+    {
+        enemiCramp.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        enemiCramp.SetActive(false);
+    }
     #endregion
 
-
+    public IEnumerator CoupDeVentFeedback()
+    {
+        coupDeVent.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        coupDeVent.SetActive(false);
+    }
     public void EndCombatReset()
     {
         enemiDefenseShield.transform.localPosition = enemiShieldInitialPos.transform.localPosition;

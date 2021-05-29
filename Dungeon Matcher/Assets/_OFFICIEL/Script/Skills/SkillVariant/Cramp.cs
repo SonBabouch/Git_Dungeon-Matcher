@@ -26,6 +26,17 @@ public class Cramp : Skill
     public override void InUse()
     {
         realInUse(skillIndex);
+        switch (side)
+        {
+            case monsterSide.Ally:
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerCrampFeedback());
+                break;
+            case monsterSide.Enemy:
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiCrampFeedback());
+                break;
+        
+        }
+
     }
 
     public override void MonsterEffect()
@@ -33,7 +44,7 @@ public class Cramp : Skill
         PlaySound();
         Player.Instance.isCramp = true;
         //CombatManager.Instance.ButtonsUpdate();
-
+        Debug.Log("hello");
         Enemy.Instance.StopCoroutine(Enemy.Instance.EnemyCombo());
         Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyCombo());
 
@@ -46,6 +57,7 @@ public class Cramp : Skill
     {
         PlaySound();
         Enemy.Instance.isCramp = true;
+        Debug.Log("hello");
         Enemy.Instance.lastEnemyCompetence = this;
 
         Player.Instance.StopCoroutine(Player.Instance.PlayerCombo());

@@ -24,7 +24,7 @@ MonoBehaviour:
   initialEnergyCost: 20
   crampEnergyCost: 21
   isComboSkill: 1
-  comesFromCombo: 0
+  comesFromCombo: 1
   comesFromCurse: 0
   comboEffectValue: 0
   chargingAttack: 0

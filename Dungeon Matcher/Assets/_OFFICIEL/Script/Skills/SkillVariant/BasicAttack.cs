@@ -35,7 +35,7 @@ public class BasicAttack : Skill
     {
         PlaySound();
         Player.Instance.AllyAlteration();
-
+        Debug.Log("hello");
         if (Enemy.Instance.isDefending == false)
         {
             if(comesFromCombo)
