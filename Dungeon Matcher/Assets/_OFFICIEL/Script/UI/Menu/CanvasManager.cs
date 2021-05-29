@@ -23,8 +23,9 @@ namespace Management
         //Title Screen
         [SerializeField] private GameObject titleScreen;
         [SerializeField] private GameObject gameTitle;
-        [SerializeField] private GameObject tapToStart;
         private bool trigger = false;
+        [SerializeField] private GameObject tutoButton;
+        [SerializeField] private GameObject gameButton;
 
         //Notifications
         [SerializeField] private GameObject notificationBubble;
@@ -59,9 +60,10 @@ namespace Management
         {
             if(!trigger)
             {
+                tutoButton.SetActive(false);
+                gameButton.SetActive(false);
                 trigger = true;
                 float value = 1f;
-                tapToStart.SetActive(false);
                 StartCoroutine(ScreenFade(value, titleScreen));
                 StartCoroutine(ScreenFade(value, gameTitle));
             }

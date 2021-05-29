@@ -43,23 +43,37 @@ public class OnOffButton : MonoBehaviour
     {
         if (isOn)
         {
-            MatchSoundManager.Instance.audioSourceA.enabled = true;
-            MatchSoundManager.Instance.audioSourceB.enabled = true;
-            MatchSoundManager.Instance.menuOSTSource.enabled = true;
-            FightSoundManager.Instance.audioSourceA.enabled = true;
-            FightSoundManager.Instance.audioSourceB.enabled = true;
-            FightSoundManager.Instance.audioSourceC.enabled = true;
-            FightSoundManager.Instance.fightOSTSource.enabled = true;
+            if(ManagerManager.Instance.menuManager.activeInHierarchy)
+            {
+                MatchSoundManager.Instance.audioSourceA.enabled = true;
+                MatchSoundManager.Instance.audioSourceB.enabled = true;
+                MatchSoundManager.Instance.menuOSTSource.enabled = true;
+            }
+
+            if (ManagerManager.Instance.combatManager.activeInHierarchy)
+            {
+                FightSoundManager.Instance.audioSourceA.enabled = true;
+                FightSoundManager.Instance.audioSourceB.enabled = true;
+                FightSoundManager.Instance.audioSourceC.enabled = true;
+                FightSoundManager.Instance.fightOSTSource.enabled = true;
+            }
         }
         else
         {
-            MatchSoundManager.Instance.audioSourceA.enabled = false;
-            MatchSoundManager.Instance.audioSourceB.enabled = false;
-            MatchSoundManager.Instance.menuOSTSource.enabled = false;
-            FightSoundManager.Instance.audioSourceA.enabled = false;
-            FightSoundManager.Instance.audioSourceB.enabled = false;
-            FightSoundManager.Instance.audioSourceC.enabled = false;
-            FightSoundManager.Instance.fightOSTSource.enabled = false;
+            if (ManagerManager.Instance.menuManager.activeInHierarchy)
+            {
+                MatchSoundManager.Instance.audioSourceA.enabled = false;
+                MatchSoundManager.Instance.audioSourceB.enabled = false;
+                MatchSoundManager.Instance.menuOSTSource.enabled = false;
+            }
+
+            if (ManagerManager.Instance.combatManager.activeInHierarchy)
+            {
+                FightSoundManager.Instance.audioSourceA.enabled = false;
+                FightSoundManager.Instance.audioSourceB.enabled = false;
+                FightSoundManager.Instance.audioSourceC.enabled = false;
+                FightSoundManager.Instance.fightOSTSource.enabled = false;
+            }
         }
     }
 }
