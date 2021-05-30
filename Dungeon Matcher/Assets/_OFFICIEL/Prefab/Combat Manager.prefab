@@ -2814,7 +2814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerDisplay: {fileID: 5163960969401654427}
   secondsLeft: 10
-  maxSecondsLeft: 10
+  maxSecondsLeft: 45
   minSecondsLeft: 0
   takingTimeAway: 0
   isCombatEnded: 0
@@ -2886,6 +2886,7 @@ MonoBehaviour:
   bubble: {fileID: 1262597379}
   skipButton: {fileID: 1340759668}
   alerteText: {fileID: 6199125138591464891}
+  arrow: {fileID: 6199125139645813419}
   index: 0
 --- !u!1 &5163960969823074021
 GameObject:

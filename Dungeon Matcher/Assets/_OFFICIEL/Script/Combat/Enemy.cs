@@ -269,10 +269,11 @@ public class Enemy : MonoBehaviour
         {
             enemyHand[enemyIndex].Use();
             yield return new WaitForSeconds(1f);
-            EnemyBehavior();
+            StartCoroutine(EnemyBehavior());
         }
         else if(!canAttack)
         {
+            yield return new WaitForSeconds(enemyChargingTime);
             StartCoroutine(EnemyBehavior());
         }
     }

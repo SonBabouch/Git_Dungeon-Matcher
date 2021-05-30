@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Soin
   skillDescription: Baisse la Jauge d'Attirance du lanceur.
-  effectValue: 10
+  effectValue: 25
   messageOwner: {fileID: 0}
   side: 0
   messageType: 3
   typeOfCapacity: 1
-  trueEnergyCost: 2
-  energyCost: 20
-  initialEnergyCost: 20
-  crampEnergyCost: 30
+  trueEnergyCost: 4
+  energyCost: 40
+  initialEnergyCost: 40
+  crampEnergyCost: 41
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0

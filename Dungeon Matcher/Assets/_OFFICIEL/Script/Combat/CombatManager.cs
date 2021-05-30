@@ -82,6 +82,7 @@ public class CombatManager : MonoBehaviour
         Player.Instance.trueEnergy = 5;
         Enemy.Instance.energy = 50;
         Enemy.Instance.trueEnergy = 5;
+        attackDetails.text = "";
 
         StartCoroutine(PlayerEnergyGenerator());
         StartCoroutine(EnemyEnergyGenerator());
@@ -111,9 +112,11 @@ public class CombatManager : MonoBehaviour
             RunningTimer();
             ButtonIndex();
             UpdateHealthPoint();
+            ActivateArrow();
 
-            if(Player.Instance.health >= Player.Instance.maxHealth)
+            if (Player.Instance.health >= Player.Instance.maxHealth)
             {
+                attackDetails.text = "";
                 PlayerDeath();
             }
         }
@@ -933,6 +936,19 @@ public class CombatManager : MonoBehaviour
         ResetButtons();
         Player.Instance.PlayerSwapSkill(index);
         ButtonsInfos();
+    }
+
+    public Button arrow;
+    public void ActivateArrow()
+    {
+        if(selectedSkill == null)
+        {
+            arrow.interactable = false;
+        }
+        else if(selectedSkill != null)
+        {
+            arrow.interactable = true;
+        }
     }
 
     public void UseAttack()

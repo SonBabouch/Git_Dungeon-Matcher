@@ -113,7 +113,6 @@ public class Heal : Skill
 
     public override void PlaySound()
     {
-        Debug.Log("Son Heal");
         FightSoundManager.Instance.PlayClips(1);
     }
 }

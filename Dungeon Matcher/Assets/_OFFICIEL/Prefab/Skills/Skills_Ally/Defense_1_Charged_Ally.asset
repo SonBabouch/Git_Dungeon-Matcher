@@ -18,17 +18,17 @@ MonoBehaviour:
   effectValue: 0
   messageOwner: {fileID: 0}
   side: 1
-  messageType: 3
+  messageType: 0
   typeOfCapacity: 2
-  trueEnergyCost: 1
-  energyCost: 10
-  initialEnergyCost: 10
-  crampEnergyCost: 20
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 0
   comesFromCombo: 0
   comesFromCurse: 0
   comboEffectValue: 0
-  chargingAttack: 1
+  chargingAttack: 0
   isEcho: 0
   isPlagiat: 0
   lastCompetenceReference: {fileID: 0}

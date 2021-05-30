@@ -19,14 +19,14 @@ MonoBehaviour:
   side: 1
   messageType: 0
   typeOfCapacity: 0
-  trueEnergyCost: 2
-  energyCost: 20
-  initialEnergyCost: 20
-  crampEnergyCost: 30
+  trueEnergyCost: 3
+  energyCost: 30
+  initialEnergyCost: 30
+  crampEnergyCost: 40
   isComboSkill: 1
   comesFromCombo: 0
   comesFromCurse: 0
-  comboEffectValue: 20
+  comboEffectValue: 30
   chargingAttack: 0
   isEcho: 0
   isPlagiat: 0
