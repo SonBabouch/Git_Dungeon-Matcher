@@ -228,6 +228,7 @@ public class Enemy : MonoBehaviour
     int averageValue;
     public IEnumerator EnemyBehavior()
     {
+        yield return new WaitForSeconds(1f);
         if(energy == maxEnergy)
         {
             StopCoroutine(EnemyBasicBehavior());

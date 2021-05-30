@@ -40,6 +40,12 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Player Cramp")]
     [SerializeField] private GameObject playerCramp;
+
+    [Header("Player Curse")]
+    [SerializeField] private GameObject playerCurse;
+
+    [Header("Player Mark")]
+    [SerializeField] private GameObject playerMark;
     #endregion
 
     #region Enemi Statement
@@ -67,6 +73,12 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Enemi Cramp")]
     [SerializeField] private GameObject enemiCramp;
+
+    [Header("Enemi Curse")]
+    [SerializeField] private GameObject enemiCurse;
+
+    [Header("Enemi Mark")]
+    [SerializeField] private GameObject enemiMark;
     #endregion
 
     private void Awake()
@@ -176,6 +188,20 @@ public class SkillFeedback : MonoBehaviour
         yield return new WaitForSeconds(1f);
         playerCramp.SetActive(false);
     }
+
+    public IEnumerator PlayerCurseFeedback()
+    {
+        playerCurse.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        playerCurse.SetActive(false);
+    }
+
+    public IEnumerator PlayerMarkFeedback()
+    {
+        playerMark.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        playerMark.SetActive(false);
+    }
     #endregion
 
     #region Enemi methods
@@ -269,6 +295,20 @@ public class SkillFeedback : MonoBehaviour
         enemiCramp.SetActive(true);
         yield return new WaitForSeconds(1f);
         enemiCramp.SetActive(false);
+    }
+
+    public IEnumerator EnemiCurseFeedback()
+    {
+        enemiCurse.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        enemiCurse.SetActive(false);
+    }
+
+    public IEnumerator EnemiMarkFeedback()
+    {
+        enemiMark.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        enemiMark.SetActive(false);
     }
     #endregion
 
