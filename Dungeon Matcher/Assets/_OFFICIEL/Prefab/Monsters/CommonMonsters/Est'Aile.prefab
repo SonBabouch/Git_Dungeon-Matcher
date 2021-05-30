@@ -63,17 +63,17 @@ MonoBehaviour:
   owner: {fileID: 3352059483369707408}
   allySkills:
   - {fileID: 11400000, guid: 0ebe003e32acad94788670ca920e4200, type: 2}
-  - {fileID: 11400000, guid: 309ae4f3d7c60b543b9ea3aed4122c1d, type: 2}
+  - {fileID: 11400000, guid: aeeb4f3243ea65849a51383dcb04a70f, type: 2}
   - {fileID: 11400000, guid: 6ffaf2bf0c7bd3f49ab4abdf1f63152b, type: 2}
-  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
+  - {fileID: 11400000, guid: a595536b422cbc4439779baa08b8f0f5, type: 2}
   ennemySkills:
-  - {fileID: 11400000, guid: 597c5d8717c2a0d4d86badf74f6c33d4, type: 2}
+  - {fileID: 11400000, guid: 7b8a6bbacbf1b514e97df651fca8b565, type: 2}
   - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
   - {fileID: 11400000, guid: d2e58931f1e347947ab88b205051318e, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 552403c59cdb8e94ebea21ec6d7ab963, type: 2}
   - {fileID: 11400000, guid: 7359e23de772e5845b267abd9403adff, type: 2}
-  - {fileID: 11400000, guid: 597c5d8717c2a0d4d86badf74f6c33d4, type: 2}
+  - {fileID: 11400000, guid: 7b8a6bbacbf1b514e97df651fca8b565, type: 2}
   - {fileID: 11400000, guid: 7359e23de772e5845b267abd9403adff, type: 2}
   monsterHashTag:
   - Soin

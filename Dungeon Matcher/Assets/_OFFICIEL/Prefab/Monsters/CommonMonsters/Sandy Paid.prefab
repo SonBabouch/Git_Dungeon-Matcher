@@ -65,15 +65,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd41c6bea7d24ac44937984d82b3b0e9, type: 2}
   - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
   - {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78, type: 2}
-  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
+  - {fileID: 11400000, guid: 8e9ce886076310947aa9bb57455b196c, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: 2160456c75bd4f6419ea28c5e23dc244, type: 2}
   - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 72ae7d99c9130a54ea16906c1d1e24a3, type: 2}
   - {fileID: 11400000, guid: d4565e6a520d73c4dbc1ec3de7bc02de, type: 2}
   - {fileID: 11400000, guid: 2160456c75bd4f6419ea28c5e23dc244, type: 2}
   - {fileID: 11400000, guid: 5308a5f8dcc6aa34d94b426fad75af35, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: 72ae7d99c9130a54ea16906c1d1e24a3, type: 2}
   - {fileID: 11400000, guid: 5308a5f8dcc6aa34d94b426fad75af35, type: 2}
   monsterHashTag:
   - Attaque

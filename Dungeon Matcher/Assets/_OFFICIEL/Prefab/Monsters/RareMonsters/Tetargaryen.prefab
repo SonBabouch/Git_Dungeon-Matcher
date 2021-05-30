@@ -56,6 +56,7 @@ MonoBehaviour:
   rarety: 0
   isGet: 0
   statement: 2
+  isSuperlike: 0
   profilPicture: {fileID: 21300000, guid: 286ebdd1e0c76174bb12bc2e0344b4fe, type: 3}
   fullMonsterImage: {fileID: 21300000, guid: 89b5c501a2ce6644188a58d445738377, type: 3}
   side: 0
@@ -64,16 +65,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2e3fb583391c5b347b3827c56bf8f873, type: 2}
   - {fileID: 11400000, guid: abd4569a28689be4fb91f3be2924ae94, type: 2}
   - {fileID: 11400000, guid: aeeb4f3243ea65849a51383dcb04a70f, type: 2}
-  - {fileID: 11400000, guid: 828039dfe61a1044083c9f0ed6261270, type: 2}
+  - {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78, type: 2}
   ennemySkills:
   - {fileID: 11400000, guid: 6dea60e82354ee3408ae1ba66e392559, type: 2}
   - {fileID: 11400000, guid: 7b8a6bbacbf1b514e97df651fca8b565, type: 2}
   - {fileID: 11400000, guid: 6dea60e82354ee3408ae1ba66e392559, type: 2}
   - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78, type: 2}
   - {fileID: 11400000, guid: ef447d481825a73448f3ca70f420dd71, type: 2}
-  - {fileID: 11400000, guid: ca38cd7a21ddac3439009d6e4ccf8463, type: 2}
+  - {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78, type: 2}
   - {fileID: 11400000, guid: 0479e2953017455409bb9126cb6adad8, type: 2}
   monsterHashTag:
   - Cute
   - "DragonMill\xE9naire"
+  scoring: 1
