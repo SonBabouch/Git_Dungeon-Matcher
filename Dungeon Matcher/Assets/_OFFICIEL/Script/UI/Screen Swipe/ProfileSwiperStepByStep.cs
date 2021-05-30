@@ -116,7 +116,15 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                         MenuManager.Instance.matchManager.Dislike();
                         MatchSoundManager.Instance.PlayClips(0);
                     }
-                    else
+                    else if (EnergyManager.energy <= 0)
+                    {
+
+                        StartCoroutine(MenuManager.Instance.canvasManager.matchCanvas.alerteDislike("Tu n'as plus d'énérgie, Va te recharger au Magasin."));
+                        transform.localPosition = Vector3.zero;
+                        transform.rotation = panelRotation;
+                        MatchSoundManager.Instance.PlayClips(12);
+                    }
+                    else if(MenuManager.Instance.listManager.listCurrentSize >= MenuManager.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1])
                     {
                         Debug.Log("Can't Dislike");
                         StartCoroutine(MenuManager.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
@@ -125,7 +133,9 @@ public class ProfileSwiperStepByStep : MonoBehaviour, IDragHandler, IEndDragHand
                         MatchSoundManager.Instance.PlayClips(12);
                     }
 
-                    
+
+
+
                 }
                 else if (percentage < 0)//vers la gauche
                 {

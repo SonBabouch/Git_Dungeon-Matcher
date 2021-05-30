@@ -31,7 +31,7 @@ public class EnergyManager : MonoBehaviour
 
     public void GivePlayerExperience()
     {
-        MenuManager.Instance.playerLevel.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(5));
+        MenuManager.Instance.playerLevel.StartCoroutine(MenuManager.Instance.playerLevel.GiveExperience(40));
     }
 
     public void GiveSuperLike()

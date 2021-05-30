@@ -30,6 +30,11 @@ public class PlayerLevel : MonoBehaviour
         }
     }
 
+    public void GiveExpérienceCheat()
+    {
+
+    }
+
     public void CheckLevelUp()
     {
         if (currentExperience >= requiredExperience[playerLevel - 1])

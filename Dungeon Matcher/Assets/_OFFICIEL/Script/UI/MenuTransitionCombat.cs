@@ -207,10 +207,6 @@ public class MenuTransitionCombat : MonoBehaviour
         ManagerManager.Instance.combatManager.SetActive(true);
         CombatManager.Instance.attackDetails.text = "";
 
-        Enemy.Instance.enemyUi.monsterName.text = Enemy.Instance.enemyMonsters[numberOfBattle].GetComponent<MonsterToken>().monsterName;
-        Enemy.Instance.enemyUi.profilPicture.sprite = Enemy.Instance.enemyMonsters[numberOfBattle].GetComponent<MonsterToken>().profilPicture;
-
-
         yield return new WaitForSeconds(1f);
 
         initialPosition = consiellere.transform.localPosition;
