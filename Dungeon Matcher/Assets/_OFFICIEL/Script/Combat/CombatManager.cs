@@ -947,7 +947,14 @@ public class CombatManager : MonoBehaviour
         }
         else if(selectedSkill != null)
         {
-            arrow.interactable = true;
+            if (selectedSkill.energyCost > Player.Instance.energy)
+            {
+                arrow.interactable = false;
+            }
+            else if (selectedSkill.energyCost <= Player.Instance.energy)
+            {
+                arrow.interactable = true;
+            }
         }
     }
 
