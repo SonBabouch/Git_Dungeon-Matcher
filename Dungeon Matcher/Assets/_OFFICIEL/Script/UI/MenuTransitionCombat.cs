@@ -365,7 +365,14 @@ public class MenuTransitionCombat : MonoBehaviour
         ManagerManager.Instance.menuManager.SetActive(true);
         yield return new WaitForSeconds(1f);
         startCombatButton.SetActive(false);
+
+        //Avant de setActive True : Redonner de l'alpha au BG
+
         Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.SetActive(true);
+        Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText.SetActive(true);
+        Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.GetComponent<Image>().color = new Vector4(Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.GetComponent<Image>().color.r, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.GetComponent<Image>().color.g, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultat.GetComponent<Image>().color.b, 1);
+        Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText.GetComponent<TextMeshProUGUI>().color = new Vector4(Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText.GetComponent<TextMeshProUGUI>().color.r, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText.GetComponent<TextMeshProUGUI>().color.g, Management.MenuManager.Instance.canvasManager.listCanvas.BackGroundResultatText.GetComponent<TextMeshProUGUI>().color.b, 1);
+
         MatchSoundManager.Instance.resultsScreen = true;
         for (int i = 0; i < Management.MenuManager.Instance.listManager.listPrefab.Count; i++)
         {

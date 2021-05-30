@@ -76,7 +76,10 @@ public class CombatManager : MonoBehaviour
         
         CharacterSkillInitialisation();
 
-        Player.Instance.health = Player.Instance.minHealth;
+        if(MenuTransitionCombat.Instance.numberOfBattle == 0)
+        {
+            Player.Instance.health = Player.Instance.minHealth;
+        }
 
         Player.Instance.energy = 50;
         Player.Instance.trueEnergy = 5;
