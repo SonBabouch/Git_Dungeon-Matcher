@@ -134,81 +134,84 @@ public class ConversationManager : MonoBehaviour
     //2 - Enleve le dernier message
     public void UpdatePosition(Skill skillType)
     {
-        numberOfMessageTotal = 0;
-
-        //2 - Enleve le dernier message
-        if (allMsg[allMsg.Length-1] != null)
+        if (!CombatManager.Instance.isCombatEnded)
         {
-            //Si le dernier message est un emoji
-            if (allMsg[allMsg.Length - 1].GetComponent<MessageBehaviour>().emoji)
-            {
-                //On enleve sont effet et on le suprime de la liste d'update des effets.
-                allMsg[allMsg.Length - 1].GetComponent<MessageBehaviour>().EmojiEffectEnd();
+            numberOfMessageTotal = 0;
 
-                if (emojis.Count > 0)
+            //2 - Enleve le dernier message
+            if (allMsg[allMsg.Length - 1] != null)
+            {
+                //Si le dernier message est un emoji
+                if (allMsg[allMsg.Length - 1].GetComponent<MessageBehaviour>().emoji)
                 {
-                    emojis.Remove(emojis[allMsg.Length - 1]);
+                    //On enleve sont effet et on le suprime de la liste d'update des effets.
+                    allMsg[allMsg.Length - 1].GetComponent<MessageBehaviour>().EmojiEffectEnd();
+
+                    if (emojis.Count > 0)
+                    {
+                        emojis.Remove(emojis[allMsg.Length - 1]);
+                    }
+                }
+
+                //Destroy le message
+                Destroy(allMsg[allMsg.Length - 1]);
+                allMsg[allMsg.Length - 1] = null;
+            }
+
+            //2 - Enleve l'avant dernier message
+            if (allMsg[allMsg.Length - 2] != null)
+            {
+                //Si le dernier message est un emoji
+                if (allMsg[allMsg.Length - 2].GetComponent<MessageBehaviour>().emoji)
+                {
+                    //On enleve sont effet et on le suprime de la liste d'update des effets.
+                    allMsg[allMsg.Length - 2].GetComponent<MessageBehaviour>().EmojiEffectEnd();
+
+                    if (emojis.Count > 0)
+                    {
+                        emojis.Remove(allMsg[allMsg.Length - 2]);
+                    }
+                }
+
+                Destroy(allMsg[allMsg.Length - 2]);
+                allMsg[allMsg.Length - 2] = null;
+            }
+
+            //Si un gros message va être instancier, on déplace de deux
+            if (skillType.messageType == Skill.typeOfMessage.Big)
+            {
+                //Debug.Log("Double");
+                //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
+                for (int i = allMsg.Length - 3; i > 0; i--)
+                {
+                    if (allMsg[i] != null)
+                    {
+
+                        numberOfMessageTotal++;
+                        StartCoroutine(MessageMovementDouble(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
+                    }
+                }
+
+                if (numberOfMessageTotal == 0)
+                {
+                    PrintMessage(skillType);
                 }
             }
-            
-            //Destroy le message
-            Destroy(allMsg[allMsg.Length - 1]);
-            allMsg[allMsg.Length - 1] = null;
-        }
-
-        //2 - Enleve l'avant dernier message
-        if (allMsg[allMsg.Length - 2] != null)
-        {
-            //Si le dernier message est un emoji
-            if (allMsg[allMsg.Length - 2].GetComponent<MessageBehaviour>().emoji)
+            else
             {
-                //On enleve sont effet et on le suprime de la liste d'update des effets.
-                allMsg[allMsg.Length - 2].GetComponent<MessageBehaviour>().EmojiEffectEnd();
-
-                if (emojis.Count > 0)
+                for (int i = allMsg.Length - 1; i > 0; i--)
                 {
-                    emojis.Remove(allMsg[allMsg.Length-2]);
+                    if (allMsg[i] != null)
+                    {
+                        numberOfMessageTotal++;
+                        StartCoroutine(MessageMovementSimple(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
+                    }
                 }
-            }
 
-            Destroy(allMsg[allMsg.Length - 2]);
-            allMsg[allMsg.Length - 2] = null;
-        }
-
-        //Si un gros message va être instancier, on déplace de deux
-        if (skillType.messageType == Skill.typeOfMessage.Big)
-        {
-            //Debug.Log("Double");
-            //3- Compte le nombre de message présent. Donc le nombre de message à déplacer. //Les deux derniers messages sont déja supp.
-            for (int i = allMsg.Length - 3; i > 0; i--)
-            {
-                if (allMsg[i] != null)
+                if (numberOfMessageTotal == 0)
                 {
-                    
-                    numberOfMessageTotal++;
-                    StartCoroutine(MessageMovementDouble(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
+                    PrintMessage(skillType);
                 }
-            }
-
-            if (numberOfMessageTotal == 0)
-            {
-                PrintMessage(skillType);
-            }
-        }
-        else
-        {
-            for (int i = allMsg.Length - 1; i > 0; i--)
-            {
-                if (allMsg[i] != null)
-                {
-                    numberOfMessageTotal++;
-                    StartCoroutine(MessageMovementSimple(allMsg[i], i, allMsg[i].GetComponent<MessageBehaviour>().ally, skillType));
-                }
-            }
-
-            if (numberOfMessageTotal == 0)
-            {
-                PrintMessage(skillType);
             }
         }
     }
@@ -234,79 +237,89 @@ public class ConversationManager : MonoBehaviour
     //4- Animation des Messages.
     IEnumerator MessageMovementSimple(GameObject message, int index, bool ally, Skill skillToSpawn)
     {
-        //Déplacer message joueur
-        if (message.GetComponent<MessageBehaviour>().ally)
+        if (!CombatManager.Instance.isCombatEnded)
         {
-            while (message.transform.position.y < playerMsgPositions[index + 1].transform.position.y)
+            //Déplacer message joueur
+            if (message.GetComponent<MessageBehaviour>().ally)
             {
-                Vector3 translateVector = new Vector3(0f, 20f, 0f);
-                message.transform.Translate(translateVector);
-                yield return null;
+                while (message.transform.position.y < playerMsgPositions[index + 1].transform.position.y)
+                {
+                    Vector3 translateVector = new Vector3(0f, 20f, 0f);
+                    message.transform.Translate(translateVector);
+                    yield return null;
 
+                }
+                numberOfMessageMoved++;
+                message.transform.SetParent(playerMsgPositions[index + 1].transform);
+                message.transform.localPosition = Vector3.zero;
             }
-            numberOfMessageMoved++;
-            message.transform.SetParent(playerMsgPositions[index + 1].transform);
-            message.transform.localPosition = Vector3.zero;
-        }
-        else //Déplacer message ennemi
-        {
-            while (message.transform.position.y < enemyMsgPositions[index + 1].transform.position.y)
+            else //Déplacer message ennemi
             {
-                Vector3 translateVector = new Vector3(0f, 20f, 0f);
-                message.transform.Translate(translateVector);
-                yield return null;
+                while (message.transform.position.y < enemyMsgPositions[index + 1].transform.position.y)
+                {
+                    Vector3 translateVector = new Vector3(0f, 20f, 0f);
+                    message.transform.Translate(translateVector);
+                    yield return null;
 
+                }
+                numberOfMessageMoved++;
+                message.transform.SetParent(enemyMsgPositions[index + 1].transform);
+                message.transform.localPosition = Vector3.zero;
             }
-            numberOfMessageMoved++;
-            message.transform.SetParent(enemyMsgPositions[index + 1].transform);
-            message.transform.localPosition = Vector3.zero;
+
+            if (numberOfMessageMoved == numberOfMessageTotal)
+            {   //5 - Quand tous les messages ont bougés, je peux update leur emplacement dans l'array.
+                UpdateArrayIndex(skillToSpawn);
+            }
+
+            yield return null;
+
         }
 
-        if(numberOfMessageMoved == numberOfMessageTotal)
-        {   //5 - Quand tous les messages ont bougés, je peux update leur emplacement dans l'array.
-            UpdateArrayIndex(skillToSpawn);
-        }
-
-        yield return null;
 
     }
 
     IEnumerator MessageMovementDouble(GameObject message, int index, bool ally, Skill skillToSpawn)
     {
-        //Déplacer message joueur
-        if (message.GetComponent<MessageBehaviour>().ally)
+        if (!CombatManager.Instance.isCombatEnded)
         {
-            while (message.transform.position.y < playerMsgPositions[index + 2].transform.position.y)
+            //Déplacer message joueur
+            if (message.GetComponent<MessageBehaviour>().ally)
             {
-                Vector3 translateVector = new Vector3(0f, 20f, 0f);
-                message.transform.Translate(translateVector);
-                yield return null;
+                while (message.transform.position.y < playerMsgPositions[index + 2].transform.position.y)
+                {
+                    Vector3 translateVector = new Vector3(0f, 20f, 0f);
+                    message.transform.Translate(translateVector);
+                    yield return null;
 
+                }
+                numberOfMessageMoved++;
+                message.transform.SetParent(playerMsgPositions[index + 2].transform);
+                message.transform.localPosition = Vector3.zero;
             }
-            numberOfMessageMoved++;
-            message.transform.SetParent(playerMsgPositions[index + 2].transform);
-            message.transform.localPosition = Vector3.zero;
-        }
-        else //Déplacer message ennemi
-        {
-            while (message.transform.position.y < enemyMsgPositions[index + 2].transform.position.y)
+            else //Déplacer message ennemi
             {
-                Vector3 translateVector = new Vector3(0f, 20f, 0f);
-                message.transform.Translate(translateVector);
-                yield return null;
+                while (message.transform.position.y < enemyMsgPositions[index + 2].transform.position.y)
+                {
+                    Vector3 translateVector = new Vector3(0f, 20f, 0f);
+                    message.transform.Translate(translateVector);
+                    yield return null;
 
+                }
+                numberOfMessageMoved++;
+                message.transform.SetParent(enemyMsgPositions[index + 2].transform);
+                message.transform.localPosition = Vector3.zero;
             }
-            numberOfMessageMoved++;
-            message.transform.SetParent(enemyMsgPositions[index + 2].transform);
-            message.transform.localPosition = Vector3.zero;
+
+            if (numberOfMessageMoved == numberOfMessageTotal)
+            {   //5 - Quand tous les messages ont bougés, je peux update leur emplacement dans l'array.
+                UpdateArrayIndexDouble(skillToSpawn);
+            }
+
+            yield return null;
+
         }
 
-        if (numberOfMessageMoved == numberOfMessageTotal)
-        {   //5 - Quand tous les messages ont bougés, je peux update leur emplacement dans l'array.
-            UpdateArrayIndexDouble(skillToSpawn);
-        }
-
-        yield return null;
 
     }
 

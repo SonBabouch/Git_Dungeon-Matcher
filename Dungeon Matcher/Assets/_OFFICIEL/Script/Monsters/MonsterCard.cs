@@ -22,7 +22,7 @@ public class MonsterCard : ScriptableObject
     public enum raretyEnum { Common, Rare };
     public raretyEnum rarety;
 
-    public enum statementEnum { Equipe, Disponible, Indisponible };
+    public enum statementEnum { Equipe, Claim, Disponible, Indisponible };
     public statementEnum statement;
 
     public int monsterIndexPosition;

@@ -89,7 +89,6 @@ public class MenuTransitionTuto : MonoBehaviour
 
     public int numberOfBattle = 0;
 
-   
 
     #region CountdownCombat
     [SerializeField] private GameObject consiellere;

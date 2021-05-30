@@ -140,7 +140,6 @@ public class CombatProfilListTuto : MonoBehaviour
         if (chanceClaim >= 10)
         {
             isClaim = true;
-
         }
 
 
@@ -209,5 +208,6 @@ public class CombatProfilListTuto : MonoBehaviour
         HeartParent.GetComponent<Tweener>().TweenPositionTo(initialPosition.transform.localPosition, 0.5f, Easings.Ease.SmoothStep, true);
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<Tweener>().TweenScaleTo(Vector3.zero, 0.3f, Easings.Ease.SmoothStep);
+        MenuManagerTuto.Instance.monsterEncyclopedie.GetNewMonsters();
     }
 }

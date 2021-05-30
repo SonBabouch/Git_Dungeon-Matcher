@@ -642,10 +642,10 @@ public class CombatManager : MonoBehaviour
             int cost3 = Player.Instance.playerHand[2].trueEnergyCost + 1;
             int cost4 = Player.Instance.playerHand[3].trueEnergyCost + 1;
 
-            energyCostText[0].text = "Cost = " + cost1;
-            energyCostText[1].text = "Cost = " + cost2;
-            energyCostText[2].text = "Cost = " + cost3;
-            energyCostText[3].text = "Cost = " + cost4;
+            energyCostText[0].text = cost1.ToString();
+            energyCostText[1].text = cost2.ToString();
+            energyCostText[2].text = cost3.ToString();
+            energyCostText[3].text = cost4.ToString();
 
             energyCostText[0].color = Color.red;
             energyCostText[1].color = Color.red;
@@ -909,10 +909,10 @@ public class CombatManager : MonoBehaviour
                     }
                     else
                     {
-                        spriteToShow = typeRessource[1]; //basic = 0
+                        spriteToShow = typeRessource[1]; //basic = 1
                     }
                     break;
-                case Skill.typeOfMessage.Big:
+                case Skill.typeOfMessage.Charging:
                     spriteToShow = typeRessource[2]; // Chargée = 2
                     break;
                 case Skill.typeOfMessage.Emoji:
