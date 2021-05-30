@@ -148,7 +148,7 @@ public class DetailsCanvasManager : MonoBehaviour
                     spriteToShow = typeRessource[1]; 
                 }
                 break;
-            case Skill.typeOfMessage.Big:
+            case Skill.typeOfMessage.Charging:
                 spriteToShow = typeRessource[2];
                 break;
             case Skill.typeOfMessage.Emoji:

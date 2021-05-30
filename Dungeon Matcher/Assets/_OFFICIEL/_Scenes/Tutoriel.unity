@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2408,11 +2408,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4518054221767207724, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4518054222093986440, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2488,11 +2483,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuTuto
       objectReference: {fileID: 0}
-    - target: {fileID: 4518054222468584110, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4518054222702302334, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2508,16 +2498,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4518054222850087374, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4518054222850087374, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4518054222883046783, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2526,11 +2506,6 @@ PrefabInstance:
     - target: {fileID: 4518054223429214161, guid: d1cd89ff8b2095240bf5a9c63dade09a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4518054223429214161, guid: d1cd89ff8b2095240bf5a9c63dade09a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7263795387971556096, guid: d1cd89ff8b2095240bf5a9c63dade09a,
@@ -2726,6 +2701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TRANSITIONCANVASTUTO
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018303567331959963, guid: 27dffbe5e8ed7d64e892a3dede38d9e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27dffbe5e8ed7d64e892a3dede38d9e7, type: 3}

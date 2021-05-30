@@ -137,7 +137,7 @@ public class CombatProfilList : MonoBehaviour
         }
         #endregion
 
-        if (chanceClaim >= 10)
+        if (chanceClaim >= 35)
         {
             isClaim = true;
            
@@ -149,7 +149,7 @@ public class CombatProfilList : MonoBehaviour
             //Dans le cas ou le monstre est déja Get.
             //Augementer du nombre de score sur ce monstre
             MenuManager.Instance.canvasManager.listCanvas.popButton.SetActive(true);
-            MenuManager.Instance.playerLevel.GiveExperience(5);
+            PlayerLevel.currentExperience += 10;
 
             if (firstHeartDone)
             {
@@ -176,7 +176,7 @@ public class CombatProfilList : MonoBehaviour
                 monsterContainer.GetComponent<MonsterToken>().isGet = true;
                 MenuManager.Instance.monsterEncyclopedie.GetNewMonsters();
                 MenuManager.Instance.canvasManager.bagCanvas.SortBag();
-                PlayerLevel.currentExperience += 7;
+                PlayerLevel.currentExperience += 10;
                 //Dans le cas ou ca se passe bien.
                 claimFeedback.SetActive(true);
                 Vector3 tweenVector = new Vector3(1f, 1f, 1f);
