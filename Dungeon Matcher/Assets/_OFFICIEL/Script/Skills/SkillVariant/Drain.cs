@@ -34,13 +34,17 @@ public class Drain : Skill
         Player.Instance.AllyAlteration();
         if(comesFromCombo)
         {
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.ComboFeedback());
+
             Enemy.Instance.health += comboEffectValue * Player.Instance.boostAttack;
-            Player.Instance.health -= comboEffectValue * Player.Instance.boostAttack;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerHealFeedback(comboEffectValue * Player.Instance.boostAttack));
         }
         else
         {
             Enemy.Instance.health += effectValue * Player.Instance.boostAttack;
-            Player.Instance.health -= effectValue * Player.Instance.boostAttack;
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerHealFeedback(effectValue * Player.Instance.boostAttack));
         }
 
         if (Player.Instance.health < 0)
@@ -70,16 +74,21 @@ public class Drain : Skill
         PlaySound();
         if (comesFromCombo)
         {
-            if(Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.ComboFeedback());
+
+            if (Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
                 Player.Instance.health += comboEffectValue * Player.Instance.boostAttack;
-                
-                Enemy.Instance.health -= (comboEffectValue * Player.Instance.boostAttack)/2;
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
+
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback((comboEffectValue * Player.Instance.boostAttack) / 2));
             }
             else
             {
                 Player.Instance.health += comboEffectValue * Player.Instance.boostAttack;
-                Enemy.Instance.health -= comboEffectValue * Player.Instance.boostAttack;
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
+
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback(comboEffectValue * Player.Instance.boostAttack));
             }
                     
         }
@@ -88,12 +97,16 @@ public class Drain : Skill
             if (Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
             {
                 Player.Instance.health += effectValue * Enemy.Instance.boostAttack;
-                Enemy.Instance.health -= (effectValue * Enemy.Instance.boostAttack)/2;
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
+
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback((effectValue * Player.Instance.boostAttack) / 2));
             }
             else
             {
                 Player.Instance.health += effectValue * Player.Instance.boostAttack;
-                Enemy.Instance.health -= effectValue * Player.Instance.boostAttack;
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
+
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback(effectValue * Player.Instance.boostAttack));
             }
         }
 

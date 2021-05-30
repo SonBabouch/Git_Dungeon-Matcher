@@ -32,6 +32,7 @@ public class CoupDeVent : Skill
     public override void PlayerEffect()
     {
         PlaySound();
+        SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.CoupDeVentFeedback());
         Player.Instance.AllyAlteration();
 
         Enemy.Instance.EnemySwapSkill(0);
@@ -50,6 +51,7 @@ public class CoupDeVent : Skill
     public override void MonsterEffect()
     {
         PlaySound();
+        SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.CoupDeVentFeedback());
         Player.Instance.PlayerSwapSkill(0);
         Player.Instance.PlayerSwapSkill(1);
         Player.Instance.PlayerSwapSkill(2);

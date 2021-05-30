@@ -27,6 +27,16 @@ public class Curse : Skill
     public override void InUse()
     {
         realInUse(skillIndex);
+        switch (side)
+        {
+            case monsterSide.Ally:
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerCurseFeedback());
+                break;
+            case monsterSide.Enemy:
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiCurseFeedback());
+                break;
+
+        }
     }
 
     public override void PlayerEffect()

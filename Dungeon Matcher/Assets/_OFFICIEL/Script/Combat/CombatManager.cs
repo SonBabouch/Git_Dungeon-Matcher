@@ -93,7 +93,7 @@ public class CombatManager : MonoBehaviour
         inCombat = true;
         isCombatEnded = false;
 
-        Enemy.Instance.EnemyBehavior();
+        Enemy.Instance.StartCoroutine(Enemy.Instance.EnemyBehavior());
         Player.Instance.lastPlayerCompetence = null;
         Enemy.Instance.lastEnemyCompetence = null;
         ButtonsInfos();

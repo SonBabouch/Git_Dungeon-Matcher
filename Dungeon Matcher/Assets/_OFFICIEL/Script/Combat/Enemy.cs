@@ -226,36 +226,39 @@ public class Enemy : MonoBehaviour
     int minValue;
     int maxValue;
     int averageValue;
-    public void EnemyBehavior()
+    public IEnumerator EnemyBehavior()
     {
+        yield return new WaitForSeconds(1f);
         if(energy == maxEnergy)
         {
+            StopCoroutine(EnemyBasicBehavior());
+            yield return new WaitForSeconds(0.1f);
             StartCoroutine(enemyHasMaxEnergyBehavior());
         }
         else StartCoroutine(EnemyBasicBehavior());
-
-
     }
     public IEnumerator EnemyBasicBehavior()
     {
         if (canAttack)
         {
             CheckTypeOfSkillInHand();
+            yield return new WaitForSeconds(0.1f);
             UseSkill();
             yield return new WaitForSeconds(1f);
             ResetAllBools();
             yield return new WaitForSeconds(0.1f);
-            EnemyBehavior();
+            StartCoroutine(EnemyBehavior());
         }
         else if (!canAttack)
         {
-            yield return new WaitForSeconds(Enemy.Instance.enemyChargingTime);
+            yield return new WaitForSeconds(enemyChargingTime);
             CheckTypeOfSkillInHand();
+            yield return new WaitForSeconds(0.1f);
             UseSkill();
             yield return new WaitForSeconds(1f);
             ResetAllBools();
             yield return new WaitForSeconds(0.1f);
-            EnemyBehavior();
+            StartCoroutine(EnemyBehavior());
         }
     }
 
@@ -264,19 +267,13 @@ public class Enemy : MonoBehaviour
         //Debug.Log("maxMana");
         if (canAttack)
         {
-            enemyIndex = Random.Range(0, enemyHand.Count);
-            if ((enemyHand[enemyIndex].typeOfCapacity == Skill.capacityType.Echo && lastEnemyCompetence == null|| (enemyHand[enemyIndex].typeOfCapacity == Skill.capacityType.Plagiat &&  Player.Instance.lastPlayerCompetence == null))){
-
-                StartCoroutine(enemyHasMaxEnergyBehavior());
-            }
-            else
-            {
-                enemyHand[enemyIndex].Use();
-                yield return new WaitForSeconds(1f);
-                EnemyBehavior();
-            }
-
-            
+            enemyHand[enemyIndex].Use();
+            yield return new WaitForSeconds(1f);
+            EnemyBehavior();
+        }
+        else if(!canAttack)
+        {
+            StartCoroutine(EnemyBehavior());
         }
     }
 
@@ -530,7 +527,7 @@ public class Enemy : MonoBehaviour
         canUseCoupdeVent = false; //Done
         canUseCramp = false; //Done
         canUseCurse = false; //Done
-        canUseDefense = false; 
+        canUseDefense = false; //Done
         canUseDivinTouch = false; //
         canUseDrain = false; //Done
         canUseEcho = false;

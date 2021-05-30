@@ -27,6 +27,16 @@ public class Mark : Skill
     public override void InUse()
     {
         realInUse(skillIndex);
+        switch (side)
+        {
+            case monsterSide.Ally:
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerMarkFeedback());
+                break;
+            case monsterSide.Enemy:
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiMarkFeedback());
+                break;
+
+        }
     }
 
     public override void PlayerEffect()

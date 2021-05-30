@@ -595,6 +595,7 @@ public class ConversationManager : MonoBehaviour
         //reset des valeurs pour instancier le prochain message.
         messageToSpawn = typeToSpawn.Null;
         canAttack = true;
+        Enemy.Instance.canAttack = true;
     }
     #endregion
 }
