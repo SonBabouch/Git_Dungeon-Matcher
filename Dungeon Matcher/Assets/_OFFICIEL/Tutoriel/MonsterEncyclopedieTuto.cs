@@ -42,10 +42,7 @@ public class MonsterEncyclopedieTuto : MonoBehaviour
         {
             if (allCommonMonster[i].GetComponent<MonsterToken>().isGet)
             {
-                if (allCommonMonster[i].GetComponent<MonsterToken>().statement != MonsterToken.statementEnum.Equipe)
-                {
-                    allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
-                }
+                allCommonMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             }
         }
 
@@ -54,7 +51,7 @@ public class MonsterEncyclopedieTuto : MonoBehaviour
         {
             if (allRareMonster[i].GetComponent<MonsterToken>().isGet)
             {
-                allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
+               allRareMonster[i].GetComponent<MonsterToken>().statement = MonsterToken.statementEnum.Claim;
             }
         }
 

@@ -786,6 +786,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 17560855}
     m_Modifications:
+    - target: {fileID: 251849678987289280, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: numberCommonPool.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 251849678987289280, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: numberCommonPool.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 251849678987289280, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: numberCommonPool.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 251849678987289280, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: numberCommonPool.Array.data[3]
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6535495135701422149, guid: 4ecce56d8a88d354382ac0182f5687f9,
         type: 3}
       propertyPath: m_AnchorMin.y
