@@ -61,6 +61,8 @@ public class MenuTransitionTuto : MonoBehaviour
         TutorielManager.Instance.MenuGO.SetActive(false);
         TutorielManager.Instance.SecondTuto.SetActive(true);
         TransitionSlideOut();
+
+        //Scale Le SecondTuto;
     }
 
     #region transitionCombat
