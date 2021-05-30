@@ -19,6 +19,6 @@ MonoBehaviour:
   maxHealth: 100
   minHealh: 0
   rarety: 0
-  statement: 0
+  statement: 1
   monsterIndexPosition: 0
   profilPicture: {fileID: 21300000, guid: 68d1cbc82d960b64a9eb0f324932feea, type: 3}
