@@ -10,6 +10,11 @@ public class MenuTransitionTuto : MonoBehaviour
     public MenuTransitionTuto menuTransition;
     public TextBulle textBulle;
 
+    [Header("Scrolling Tuto Combat")]
+    public GameObject tutoCombatScreenHolder;
+    private int numberOfScreen;
+    public RectTransform rectTrans;
+    private float trueScreenWidth;
 
     [Header("Transition")]
     public GameObject topSlider0;
@@ -56,13 +61,19 @@ public class MenuTransitionTuto : MonoBehaviour
 
     public IEnumerator SecondPartTutoEnum()
     {
+        //Rescaling RectTransform
+        //a. Récupération du nombre d'enfant et calcul de la taille du rect
+        numberOfScreen = tutoCombatScreenHolder.transform.childCount;
+        trueScreenWidth = rectTrans.rect.height;
+
+        //b. Rescaling
+        RectTransformExtensions.Bottom(tutoCombatScreenHolder.GetComponent<RectTransform>(), - trueScreenWidth * numberOfScreen);
+
         TransitionSlideIn();
         yield return new WaitForSeconds(1f);
         TutorielManager.Instance.MenuGO.SetActive(false);
         TutorielManager.Instance.SecondTuto.SetActive(true);
         TransitionSlideOut();
-
-        //Scale Le SecondTuto;
     }
 
     #region transitionCombat
