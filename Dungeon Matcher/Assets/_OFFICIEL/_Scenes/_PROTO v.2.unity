@@ -1145,6 +1145,42 @@ PrefabInstance:
       propertyPath: numberRarePool.Array.data[3]
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1999464464948431815, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: allySkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f2381c1a42ac4db43904552e84510b78,
+        type: 2}
+    - target: {fileID: 2314239177543428648, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ad3bd3ddeecab874ea08f4c0c15875bb,
+        type: 2}
+    - target: {fileID: 4807879921752145782, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e6971442e1502844aa54926ed91f61c6,
+        type: 2}
+    - target: {fileID: 4807879921752145782, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b8a6bbacbf1b514e97df651fca8b565,
+        type: 2}
+    - target: {fileID: 4807879921752145782, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: ennemySkills.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 075f58d7ffdb13f49b52eb1855d6725f,
+        type: 2}
+    - target: {fileID: 4807879921752145782, guid: 4ecce56d8a88d354382ac0182f5687f9,
+        type: 3}
+      propertyPath: allySkills.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: aeeb4f3243ea65849a51383dcb04a70f,
+        type: 2}
     - target: {fileID: 6535495135701422149, guid: 4ecce56d8a88d354382ac0182f5687f9,
         type: 3}
       propertyPath: m_AnchorMin.y
