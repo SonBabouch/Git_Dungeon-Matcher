@@ -7,6 +7,9 @@ using TMPro;
 public class MenuTransitionTuto : MonoBehaviour
 {
     public static MenuTransitionTuto Instance;
+    public MenuTransitionTuto menuTransition;
+    public TextBulle textBulle;
+
 
     [Header("Transition")]
     public GameObject topSlider0;
@@ -17,6 +20,19 @@ public class MenuTransitionTuto : MonoBehaviour
     public GameObject botSliderInitialPosition;
     public GameObject topSliderTweenPosition;
     public GameObject botSliderTweenPosition;
+
+    private void Start()
+    {
+        StartCoroutine(StartTuto());
+    }
+
+    private IEnumerator StartTuto()
+    {
+        TransitionSlideOut();
+        yield return new WaitForSeconds(1f);
+        textBulle.Initialisaition();
+    }
+
     public void TransitionSlideOut()
     {
         topSlider0.GetComponent<Tweener>().TweenPositionTo(topSliderInitialPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
@@ -79,7 +95,16 @@ public class MenuTransitionTuto : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Debug.Log("Destroy");
+            Destroy(gameObject);
+        }
     }
 
 

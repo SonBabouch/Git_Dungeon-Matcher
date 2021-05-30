@@ -1660,6 +1660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877a7d928015b4148bc749e33fd6a893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuTransition: {fileID: 3120554278673465583}
+  textBulle: {fileID: 0}
   topSlider0: {fileID: 6018303567542964697}
   topSlider1: {fileID: 6018303567366554386}
   botSlider0: {fileID: 6018303567076381544}
@@ -1676,6 +1678,23 @@ MonoBehaviour:
   VS: {fileID: 6018303566371433048}
   thunder: {fileID: 6018303566776130589}
   button: {fileID: 6018303568008737416}
+  numberOfBattle: 0
+  consiellere: {fileID: 0}
+  tweenPositionCt: {fileID: 0}
+  number3: {fileID: 0}
+  number2: {fileID: 0}
+  number1: {fileID: 0}
+  matchText: {fileID: 0}
+  topOfBG: {fileID: 0}
+  topOfBGInitialPosition: {fileID: 0}
+  topOfBGTweenPosition: {fileID: 0}
+  heart: {fileID: 0}
+  heartBG: {fileID: 0}
+  results: {fileID: 0}
+  skipButton: {fileID: 0}
+  buttonToPass: {fileID: 0}
+  startCombatButton: {fileID: 0}
+  storedValue: []
 --- !u!1 &6018303567366554386
 GameObject:
   m_ObjectHideFlags: 0

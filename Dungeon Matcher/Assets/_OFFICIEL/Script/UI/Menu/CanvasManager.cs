@@ -83,6 +83,7 @@ namespace Management
             ManagerManager.Instance.menuManager.SetActive(false);
             ManagerManager.Instance.combatManager.SetActive(false);
             ManagerManager.Instance.transitionMenu.SetActive(false);
+            OnOffButton.Instance.gameObject.SetActive(false);
             SceneManager.LoadSceneAsync(1);
         }
 
