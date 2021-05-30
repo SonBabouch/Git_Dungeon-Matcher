@@ -109,26 +109,9 @@ public class ProfileSwiperStepByStepTuto : MonoBehaviour, IDragHandler, IEndDrag
                 if (percentage > 0)//Vers la droite
                 {
 
-                    if (MenuManagerTuto.Instance.listManager.listCurrentSize < MenuManagerTuto.Instance.listManager.listMaxSize[PlayerLevel.playerLevel - 1] && EnergyManagerTuto.energy > 0 && (TutorielManager.Instance.currentIndex != 7 || TutorielManager.Instance.currentIndex != 13))
-                    {
-                        MenuManagerTuto.Instance.matchManager.Dislike();
-                        MatchSoundManager.Instance.PlayClips(0);
-                    }
-                    else if(TutorielManager.Instance.currentIndex !=7)
-                    {
-                        Debug.Log("Can't Dislike");
-                        StartCoroutine(MenuManagerTuto.Instance.canvasManager.matchCanvas.alerteDislike("Ta liste de conquêtes est déja pleine."));
-                        transform.localPosition = Vector3.zero;
-                        transform.rotation = panelRotation;
-                        MatchSoundManager.Instance.PlayClips(12);
-                    }
-                    else
-                    {
-                        transform.localPosition = Vector3.zero;
-                        transform.rotation = panelRotation;
-                        MatchSoundManager.Instance.PlayClips(12);
-                    }
-
+                    transform.localPosition = Vector3.zero;
+                    transform.rotation = panelRotation;
+                    MatchSoundManager.Instance.PlayClips(12);
 
                 }
                 else if (percentage < 0)//vers la gauche
