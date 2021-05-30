@@ -12,6 +12,7 @@ public class TutorielManager : MonoBehaviour
 
     public GameObject MenuGO;
     public GameObject CombatGO;
+    public GameObject SecondTuto;
 
     public int currentIndex = 0;
     public int numberOfmatch = 0;

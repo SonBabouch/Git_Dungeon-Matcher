@@ -49,6 +49,19 @@ public class MenuTransitionTuto : MonoBehaviour
         botSlider1.GetComponent<Tweener>().TweenPositionTo(botSliderTweenPosition.transform.localPosition, 1f, Easings.Ease.SmoothStep, true);
     }
 
+    public void SecondPartTuto()
+    {
+        StartCoroutine(SecondPartTutoEnum());
+    }
+
+    public IEnumerator SecondPartTutoEnum()
+    {
+        TransitionSlideIn();
+        yield return new WaitForSeconds(1f);
+        TutorielManager.Instance.MenuGO.SetActive(false);
+        TutorielManager.Instance.SecondTuto.SetActive(true);
+        TransitionSlideOut();
+    }
 
     #region transitionCombat
     [SerializeField] private GameObject detailsGO;

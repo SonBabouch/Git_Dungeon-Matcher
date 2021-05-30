@@ -54,8 +54,8 @@ namespace Management
                 
             }
         }
-        
 
+        public GameObject logo;
         #region TitleScreen
         public void TitleScreen()
         {
@@ -67,6 +67,7 @@ namespace Management
                 float value = 1f;
                 StartCoroutine(ScreenFade(value, titleScreen));
                 StartCoroutine(ScreenFade(value, gameTitle));
+                StartCoroutine(ScreenFade(value, logo));
             }
         }
 
