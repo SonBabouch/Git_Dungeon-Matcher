@@ -322,7 +322,7 @@ public class SkillFeedback : MonoBehaviour
     public IEnumerator ComboFeedback()
     {
         combo.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         combo.SetActive(false);
     }
     public void EndCombatReset()
