@@ -906,10 +906,10 @@ public class CombatManager : MonoBehaviour
                     }
                     else
                     {
-                        spriteToShow = typeRessource[1]; //basic = 0
+                        spriteToShow = typeRessource[1]; //basic = 1
                     }
                     break;
-                case Skill.typeOfMessage.Big:
+                case Skill.typeOfMessage.Charging:
                     spriteToShow = typeRessource[2]; // Chargée = 2
                     break;
                 case Skill.typeOfMessage.Emoji:
