@@ -344,9 +344,25 @@ public class CombatManager : MonoBehaviour
         {
             Player.Instance.trueEnergy = 5;
         }
-        else if (energy == 60)
+        else if (energy >= 60 && energy < 70)
         {
             Player.Instance.trueEnergy = 6;
+        }
+        else if (energy >= 70 && energy < 80)
+        {
+            Player.Instance.trueEnergy = 7;
+        }
+        else if (energy >= 80 && energy < 90)
+        {
+            Player.Instance.trueEnergy = 8;
+        }
+        else if (energy >= 90 && energy < 100)
+        {
+            Player.Instance.trueEnergy = 9;
+        }
+        else if (energy == 100)
+        {
+            Player.Instance.trueEnergy = 10;
         }
     }
     public IEnumerator EnemyEnergyGenerator()
@@ -416,9 +432,25 @@ public class CombatManager : MonoBehaviour
         {
             Enemy.Instance.trueEnergy = 5;
         }
-        else if (energy == 60)
+        else if (energy >= 60 && energy < 70)
         {
             Enemy.Instance.trueEnergy = 6;
+        }
+        else if (energy >= 70 && energy < 80)
+        {
+            Enemy.Instance.trueEnergy = 7;
+        }
+        else if (energy >= 80 && energy < 90)
+        {
+            Enemy.Instance.trueEnergy = 8;
+        }
+        else if (energy >= 90 && energy < 100)
+        {
+            Enemy.Instance.trueEnergy = 9;
+        }
+        else if (energy == 100)
+        {
+            Enemy.Instance.trueEnergy = 10;
         }
     }
     public IEnumerator CombatTimer()

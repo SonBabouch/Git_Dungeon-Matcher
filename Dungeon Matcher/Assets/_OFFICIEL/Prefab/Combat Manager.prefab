@@ -2813,7 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerDisplay: {fileID: 5163960969401654427}
-  secondsLeft: 10
+  secondsLeft: 45
   maxSecondsLeft: 45
   minSecondsLeft: 0
   takingTimeAway: 0

@@ -9,6 +9,7 @@ public class PlayerUI : MonoBehaviour
     public Image playerHealthBar;
     public Image playerEnergyBar;
     public TextMeshProUGUI healthPointText;
+    public TextMeshProUGUI energyText;
     public Image[] comboSkillFeedback;
 
     private void Update()
@@ -17,6 +18,7 @@ public class PlayerUI : MonoBehaviour
         playerEnergyBar.fillAmount = Player.Instance.energy / Player.Instance.maxEnergy;
 
         healthPointText.text = Player.Instance.health.ToString();
+        energyText.text = Player.Instance.trueEnergy.ToString();
     }
 
    

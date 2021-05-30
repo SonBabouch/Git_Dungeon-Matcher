@@ -2455,11 +2455,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Combat Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 5163960969759586714, guid: d89a30da772336b4f9db976ab20b276e,
-        type: 3}
-      propertyPath: secondsLeft
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 5163960969759586715, guid: d89a30da772336b4f9db976ab20b276e,
         type: 3}
       propertyPath: m_LocalPosition.x
