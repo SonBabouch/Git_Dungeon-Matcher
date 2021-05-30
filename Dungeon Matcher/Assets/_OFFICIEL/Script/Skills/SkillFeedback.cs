@@ -12,6 +12,7 @@ public class SkillFeedback : MonoBehaviour
 
     [Header("Coup de Vent")]
     [SerializeField] private GameObject coupDeVent;
+    [SerializeField] private GameObject combo;
 
 
 
@@ -317,6 +318,12 @@ public class SkillFeedback : MonoBehaviour
         coupDeVent.SetActive(true);
         yield return new WaitForSeconds(1f);
         coupDeVent.SetActive(false);
+    }
+    public IEnumerator ComboFeedback()
+    {
+        combo.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        combo.SetActive(false);
     }
     public void EndCombatReset()
     {

@@ -36,6 +36,8 @@ public class Heal : Skill
         //Combo effect
         if (comesFromCombo)
         {
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.ComboFeedback());
+
             SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerHealFeedback(comboEffectValue));
         }
         else
@@ -72,6 +74,8 @@ public class Heal : Skill
         //Combo effect
         if (comesFromCombo)
         {
+            SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.ComboFeedback());
+
             SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiHealFeedback(comboEffectValue));
         }
         else

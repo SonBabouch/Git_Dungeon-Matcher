@@ -40,6 +40,7 @@ public class BasicAttack : Skill
         {
             if(comesFromCombo)
             {
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.ComboFeedback());
                 if(Enemy.Instance.currentMonster.GetComponent<MonsterToken>().rarety == MonsterToken.raretyEnum.Rare)
                 {
                     SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.EnemiAttackFeedBack());
@@ -97,6 +98,8 @@ public class BasicAttack : Skill
         {
             if(comesFromCombo)
             {
+                SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.ComboFeedback());
+
                 SkillFeedback.Instance.StartCoroutine(SkillFeedback.Instance.PlayerAttackFeedBack());
                 Player.Instance.health += comboEffectValue * Enemy.Instance.boostAttack;
             }
